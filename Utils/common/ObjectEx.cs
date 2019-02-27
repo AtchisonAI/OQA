@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -85,11 +84,6 @@ namespace Utils
         public static async Task RunAsync(Action action)
         {
             await Task.Run(action);
-        }
-
-        public static string Dump(this object obj)
-        {
-            return JsonConvert.SerializeObject(obj);
         }
     }
 }

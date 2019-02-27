@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Reflection;
+using Syncfusion.Windows.Forms.Tools;
 
 namespace Utils.Authority
 {
@@ -20,7 +21,7 @@ namespace Utils.Authority
 
             foreach (FieldInfo fi in fieldInfo)
             {
-      //          System.Console.WriteLine(fieldPrefix +"   "+ fi.FieldType.ToString());
+//                System.Console.WriteLine(fieldPrefix +"   "+ fi.FieldType.ToString());
                 switch (fi.FieldType.Name)
                 {
                     case "ToolStripMenuItem":
@@ -34,14 +35,20 @@ namespace Utils.Authority
                         if (toolButtonItem != null && !IsAceessed(fieldPrefix + fi.Name))
                             toolButtonItem.Enabled = false;
                         break;
-                    case "Panel":
-                        //Panel panelItem = (Panel)fi.GetValue(obj);
-                        //if (panelItem != null && !IsAceessed(fieldPrefix + fi.Name))
-                        //    panelItem.Visible = false;
+                    case "DockingManager":
+                        DockingManager dockItem = (DockingManager)fi.GetValue(obj);
+                        foreach (Control q in dockItem.ControlsArray)
+                        {
+                            if(q != null && !IsAceessed(fieldPrefix + q.Name))
+                            {
+                                dockItem.SetEnableDocking(q, false);
+                                q.Visible = false;
+                            }
+                        }
                         break;
                     case "TreeView":
                         TreeView treeViewItem = (TreeView)fi.GetValue(obj);
-                        if (treeViewItem != null)
+                        if (treeViewItem != null && treeViewItem.Parent.Visible)
                         {
                             for (int i = 0; i < treeViewItem.Nodes.Count; ++i)
                             {

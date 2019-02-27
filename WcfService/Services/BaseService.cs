@@ -1,5 +1,4 @@
-﻿using Models;
-using Models.Message;
+﻿using Models.Message;
 using NPoco;
 using System;
 using System.Collections.Generic;
@@ -11,46 +10,54 @@ namespace WcfService
 {
     public class BaseService
     {
-        public IDatabase DB;
+        public string connectStringName = "WCFFrameDB";
+        private Dictionary<string, IDatabase> dbSet = new Dictionary<string, IDatabase>();
 
-        public BaseService()
+        private IDatabase GetDb()
         {
-            DB = new MyDB("WCFDataAccess");
+            IDatabase db = null;
+            if (!dbSet.TryGetValue(connectStringName, out db))
+            {
+                db = new MyDB(connectStringName);
+                dbSet.Add(connectStringName, db);
+            } 
+
+            return db;
         }
 
         public void BeginTrans()
         {
-            DB.BeginTransaction();
+            GetDb().BeginTransaction();
         }
 
         public void EndTrans()
         {
-            DB.CompleteTransaction();
+            GetDb().CompleteTransaction();
         }
 
         public string GetSystemDateTime()
         {
             string sql = "";
 
-            if (DB.DatabaseType == DatabaseType.SqlServer2005 ||
-                DB.DatabaseType == DatabaseType.SqlServer2008 ||
-                DB.DatabaseType == DatabaseType.SqlServer2012)
+            if (GetDb().DatabaseType == DatabaseType.SqlServer2005 ||
+                GetDb().DatabaseType == DatabaseType.SqlServer2008 ||
+                GetDb().DatabaseType == DatabaseType.SqlServer2012)
             {
                 sql = sql = "select replace(convert(varchar(100),getdate(),112)+convert(varchar(100),getdate(),8),':','') as sysdate";
             }
 
-            else if (DB.DatabaseType == DatabaseType.Oracle ||
-                DB.DatabaseType == DatabaseType.OracleManaged)
+            else if (GetDb().DatabaseType == DatabaseType.Oracle ||
+                GetDb().DatabaseType == DatabaseType.OracleManaged)
             {
                 //有错误
                 sql = "select strftime('%Y%m%d%H%M%S','now','localtime') as sysdate";
             }
             else
             {
-                throw new Exception(string.Format("Database Type {0} Not Supported!", DB.DatabaseType.ToString()));
+                throw new Exception(string.Format("Database Type {0} Not Supported!", GetDb().DatabaseType.ToString()));
             }
 
-            return DB.Fetch<string[]>(sql).Single()[0];
+            return GetDb().Fetch<string[]>(sql).Single()[0];
         }
 
         ///// <summary>
@@ -67,17 +74,17 @@ namespace WcfService
         //            updateReq.model.CreateTime = sysdate;
         //            updateReq.model.CreateUserId = updateReq.userId;
 
-        //            DB.Insert(updateReq.model);
+        //            GetDb().Insert(updateReq.model);
         //            break;
 
         //        case OpreateType.Update:
-        //            var oldModel = DB.SingleOrDefaultById<T>(updateReq.model);
+        //            var oldModel = GetDb().SingleOrDefaultById<T>(updateReq.model);
         //            if (oldModel == null)
         //            {
         //                updateReq.model.UpdateTime = sysdate;
         //                updateReq.model.UpdateUserId = updateReq.userId;
 
-        //                DB.Insert(updateReq.model);
+        //                GetDb().Insert(updateReq.model);
         //            }
         //            else
         //            {
@@ -86,12 +93,12 @@ namespace WcfService
         //                updateReq.model.UpdateTime = sysdate;
         //                updateReq.model.UpdateUserId = updateReq.userId;
 
-        //                DB.Update(updateReq.model);
+        //                GetDb().Update(updateReq.model);
         //            }
         //            break;
 
         //        case OpreateType.Delete:
-        //            DB.Delete(updateReq.model);
+        //            GetDb().Delete(updateReq.model);
         //            break;
         //    }
         //}
@@ -100,7 +107,7 @@ namespace WcfService
         /// <summary>
         /// 更新建模对象，根据对象的_ProStep属性判断是新增/修改，还是删除操作
         /// </summary>
-        /// <typeparam name="T">DB建模对象类型</typeparam>
+        /// <typeparam name="T">GetDb()建模对象类型</typeparam>
         /// <param name="inMsg">需要更新的建模对象</param>
         public void UpdateModelingObject<T>(UpdateModelReq<T> updateReq)
         {
@@ -108,23 +115,23 @@ namespace WcfService
             switch (updateReq.opreateType)
             {
                 case OpreateType.Insert:
-                    DB.Insert(updateReq.model);
+                    GetDb().Insert(updateReq.model);
                     break;
 
                 case OpreateType.Update:
-                    var oldModel = DB.SingleOrDefaultById<T>(updateReq.model);
+                    var oldModel = GetDb().SingleOrDefaultById<T>(updateReq.model);
                     if (oldModel == null)
                     {
-                        DB.Insert(updateReq.model);
+                        GetDb().Insert(updateReq.model);
                     }
                     else
                     {
-                        DB.Update(updateReq.model);
+                        GetDb().Update(updateReq.model);
                     }
                     break;
 
                 case OpreateType.Delete:
-                    DB.Delete(updateReq.model);
+                    GetDb().Delete(updateReq.model);
                     break;
             }
         }
@@ -146,7 +153,7 @@ namespace WcfService
         //        outMsg.model = inMsg.model;
         //    else
         //    {
-        //        outMsg.model = DB.SingleOrDefaultById<T>(inMsg.model);
+        //        outMsg.model = GetDb().SingleOrDefaultById<T>(inMsg.model);
         //    }
         //}
 
@@ -166,7 +173,7 @@ namespace WcfService
                 outMsg.model = inMsg.model;
             else
             {
-                outMsg.model = DB.SingleOrDefaultById<T>(inMsg.model);
+                outMsg.model = GetDb().SingleOrDefaultById<T>(inMsg.model);
             }
             outMsg._success = true;
         }
@@ -186,13 +193,13 @@ namespace WcfService
         //            foreach (var model in updateReq.Models)
         //            {
         //                //get the old modeling object for create user/create time
-        //                var oldModel = DB.SingleOrDefaultById<T>(model);
+        //                var oldModel = GetDb().SingleOrDefaultById<T>(model);
         //                if (oldModel == null)
         //                {
         //                    model.CreateTime = sysdate;
         //                    model.CreateUserId = updateReq.userId;
 
-        //                    DB.Insert(model);
+        //                    GetDb().Insert(model);
         //                }
         //                else
         //                {
@@ -201,14 +208,14 @@ namespace WcfService
         //                    model.UpdateTime = sysdate;
         //                    model.UpdateUserId = updateReq.userId;
 
-        //                    DB.Update(model);
+        //                    GetDb().Update(model);
         //                }
         //            }
         //            break;
 
         //        case OpreateType.Delete:
         //            foreach (var model in updateReq.Models)
-        //                DB.Delete(model);
+        //                GetDb().Delete(model);
         //            break;
         //    }
         //}
@@ -224,9 +231,9 @@ namespace WcfService
                 case OpreateType.Insert:
                     foreach (var model in updateReq.models)
                     {
-                        //var tableInfo = DB.PocoDataFactory.TableInfoForType(model.GetType());
-                        //var pd = DB.PocoDataFactory.ForObject(model, tableInfo.PrimaryKey, tableInfo.AutoIncrement);
-                        DB.Insert(model);
+                        //var tableInfo = GetDb().PocoDataFactory.TableInfoForType(model.GetType());
+                        //var pd = GetDb().PocoDataFactory.ForObject(model, tableInfo.PrimaryKey, tableInfo.AutoIncrement);
+                        GetDb().Insert(model);
                     }
                     break;
 
@@ -235,21 +242,21 @@ namespace WcfService
                     foreach (var model in updateReq.models)
                     {
                         //get the old modeling object for create user/create time
-                        var oldModel = DB.SingleOrDefaultById<T>(model);
+                        var oldModel = GetDb().SingleOrDefaultById<T>(model);
                         if (oldModel == null)
                         {
-                            DB.Insert(model);
+                            GetDb().Insert(model);
                         }
                         else
                         {
-                            DB.Update(model);
+                            GetDb().Update(model);
                         }
                     }
                     break;
 
                 case OpreateType.Delete:
                     foreach (var model in updateReq.models)
-                        DB.Delete(model);
+                        GetDb().Delete(model);
                     break;
             }
         }
@@ -273,7 +280,7 @@ namespace WcfService
         //    {
         //        outMsg.Models = new List<T>();
         //        foreach (var model in inMsg.Models)
-        //            outMsg.Models.Add(DB.SingleOrDefaultById<T>(model));
+        //            outMsg.Models.Add(GetDb().SingleOrDefaultById<T>(model));
         //    }
         //    outMsg.Models = inMsg.Models;
         //}
@@ -296,7 +303,7 @@ namespace WcfService
             {
                 outMsg.models = new List<T>();
                 foreach (var model in inMsg.models)
-                    outMsg.models.Add(DB.SingleOrDefaultById<T>(model));
+                    outMsg.models.Add(GetDb().SingleOrDefaultById<T>(model));
             }
             outMsg._success = true;
         }
@@ -352,11 +359,11 @@ namespace WcfService
         {
             if (req.queryConditionList != null && req.queryConditionList.Count > 0)
             {
-                return DB.Query<T>().Where(LambdaHelper.LambdaBuilder<T>(req.queryConditionList)).ToList();
+                return GetDb().Query<T>().Where(LambdaHelper.LambdaBuilder<T>(req.queryConditionList)).ToList();
             }
             else
             {
-                return DB.Query<T>().ToList();
+                return GetDb().Query<T>().ToList();
             }
         }
 
@@ -391,11 +398,11 @@ namespace WcfService
         {
             if (SortType.ASC == sortCondition.sortType)
             {
-                return DB.Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition.paramName)).ToPage(pageIndex, pageSize);
+                return GetDb().Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition.paramName)).ToPage(pageIndex, pageSize);
             }
             else
             {
-                return DB.Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition.paramName)).ToPage(pageIndex, pageSize);
+                return GetDb().Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition.paramName)).ToPage(pageIndex, pageSize);
             }
         }
 
@@ -406,22 +413,22 @@ namespace WcfService
             {
                 if (SortType.ASC == sortCondition1.sortType)
                 {
-                    return DB.Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
+                    return GetDb().Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
                 }
                 else
                 {
-                    return DB.Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
+                    return GetDb().Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
                 }
             }
             else
             {
                 if (SortType.ASC == sortCondition1.sortType)
                 {
-                    return DB.Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
+                    return GetDb().Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
                 }
                 else
                 {
-                    return DB.Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
+                    return GetDb().Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
                 }
             }
         }
@@ -449,11 +456,11 @@ namespace WcfService
         {
             if (SortType.ASC == sortCondition.sortType)
             {
-                return DB.Query<T>().Where("1=1").OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition.paramName)).ToPage(pageIndex, pageSize);
+                return GetDb().Query<T>().Where("1=1").OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition.paramName)).ToPage(pageIndex, pageSize);
             }
             else
             {
-                return DB.Query<T>().OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition.paramName)).ToPage(pageIndex, pageSize);
+                return GetDb().Query<T>().OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition.paramName)).ToPage(pageIndex, pageSize);
             }
         }
 
@@ -464,22 +471,22 @@ namespace WcfService
             {
                 if (SortType.ASC == sortCondition1.sortType)
                 {
-                    return DB.Query<T>().OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
+                    return GetDb().Query<T>().OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
                 }
                 else
                 {
-                    return DB.Query<T>().OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
+                    return GetDb().Query<T>().OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
                 }
             }
             else
             {
                 if (SortType.ASC == sortCondition1.sortType)
                 {
-                    return DB.Query<T>().OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
+                    return GetDb().Query<T>().OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
                 }
                 else
                 {
-                    return DB.Query<T>().OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
+                    return GetDb().Query<T>().OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
                 }
             }
         }

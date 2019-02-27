@@ -8,7 +8,6 @@ namespace WcfClient
     {
         public MainForm()
         {
-
             activeForm = null;
             InitializeComponent();
         }

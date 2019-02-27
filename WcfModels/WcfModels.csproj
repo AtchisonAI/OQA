@@ -63,7 +63,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IModelingObject.cs" />
     <Compile Include="QueryCondition.cs" />
-    <Compile Include="View\DemoClass.cs" />
     <Compile Include="View\ViewBase.cs" />
   </ItemGroup>
   <ItemGroup>

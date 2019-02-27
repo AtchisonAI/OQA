@@ -1,5 +1,4 @@
-﻿using System;
-using HiDM.FactoryWorks.Messages;
+﻿using HiDM.FactoryWorks.Messages;
 using HiDM.FactoryWorks.TibcoRV;
 using Models.Message;
 using WCFModels;
@@ -74,7 +73,6 @@ namespace WcfService.Services
         {
             return Query<ControlAccessString>(queryReq);
         }
-
 
         #endregion
 

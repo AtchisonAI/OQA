@@ -39,10 +39,5 @@ namespace WcfClient
             DialogResult = DialogResult.Cancel;
             Close();
         }
-
-        private void LoginForm_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

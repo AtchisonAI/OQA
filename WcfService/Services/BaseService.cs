@@ -1,5 +1,6 @@
 ﻿using Models.Message;
 using NPoco;
+using NPoco.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -343,18 +344,6 @@ namespace WcfService
             return rsp;
         }
 
-        private Page<T> PageQueryIml<T>(PageQueryReq req)
-        {
-            if (req.queryConditionList != null && req.queryConditionList.Count > 0)
-            {
-                return PageQueryByConditionWithSort<T>(req.queryConditionList, req.sortCondittionList, req.CurrentPage, req.ItemsPerPage);
-            }
-            else
-            {
-                return PageQueryNoConditionWithSort<T>(req.sortCondittionList, req.CurrentPage, req.ItemsPerPage);
-            }
-        }
-
         private IList<T> QueryIml<T>(QueryReq req)
         {
             if (req.queryConditionList != null && req.queryConditionList.Count > 0)
@@ -367,128 +356,41 @@ namespace WcfService
             }
         }
 
-        private void Assert(bool v)
+        private Page<T> PageQueryIml<T>(PageQueryReq req)
         {
-            if (!v)
+            IQueryProvider < T > provider = null;
+            if (req.queryConditionList != null && req.queryConditionList.Count > 0)
             {
-                throw new NotImplementedException();
+                provider = GetDb().Query<T>().Where(LambdaHelper.LambdaBuilder<T>(req.queryConditionList));
+            } else
+            {
+                provider = GetDb().Query<T>();
             }
-        }
 
-        private Page<T> PageQueryByConditionWithSort<T>(IList<QueryCondition> queryConditionList, IList<SortCondition> sortConditionList, int pageIndex, int pageSize)
-        {
-            if (sortConditionList.Count == 1)
+            if (req.sortCondittionList != null && req.sortCondittionList.Count > 0)
             {
-                return PageQueryByConditionWithSort<T>(queryConditionList, sortConditionList[0], pageIndex, pageSize);
-            }
-            else if (sortConditionList.Count == 2)
-            {
-                return PageQueryByConditionWithSort<T>(queryConditionList, sortConditionList[0], sortConditionList[1], pageIndex, pageSize);
-            }
-            else
-            {
-                Exception ex = new Exception("必须指定排序字段，最多支持两个排序字段");
-                LogHelper.WriteLog("必须指定排序字段，最多支持两个排序字段", ex);
-                return null;
-            }
-        }
-
-        //一个排序条件
-        private Page<T> PageQueryByConditionWithSort<T>(IList<QueryCondition> queryConditionList, SortCondition sortCondition, int pageIndex, int pageSize)
-        {
-            if (SortType.ASC == sortCondition.sortType)
-            {
-                return GetDb().Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition.paramName)).ToPage(pageIndex, pageSize);
-            }
-            else
-            {
-                return GetDb().Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition.paramName)).ToPage(pageIndex, pageSize);
-            }
-        }
-
-        //两个排序条件
-        private Page<T> PageQueryByConditionWithSort<T>(IList<QueryCondition> queryConditionList, SortCondition sortCondition0, SortCondition sortCondition1, int pageIndex, int pageSize)
-        {
-            if (SortType.ASC == sortCondition0.sortType)
-            {
-                if (SortType.ASC == sortCondition1.sortType)
+                int index = 1;
+                foreach (SortCondition sortCon in req.sortCondittionList)
                 {
-                    return GetDb().Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
-                }
-                else
-                {
-                    return GetDb().Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
+                    switch (sortCon.sortType)
+                    {
+                        case SortType.ASC:
+                            if (index == 1)
+                                provider = provider.OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCon.paramName));
+                            else
+                                provider = provider.ThenBy(LambdaHelper.LambdaBuilderByName<T>(sortCon.paramName));
+                            break;
+                        case SortType.DESC:
+                            if (index == 1)
+                                provider = provider.OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCon.paramName));
+                            else
+                                provider = provider.ThenByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCon.paramName));
+                            break;
+                    }
+                    index++;
                 }
             }
-            else
-            {
-                if (SortType.ASC == sortCondition1.sortType)
-                {
-                    return GetDb().Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
-                }
-                else
-                {
-                    return GetDb().Query<T>().Where(LambdaHelper.LambdaBuilder<T>(queryConditionList)).OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
-                }
-            }
-        }
-
-        private Page<T> PageQueryNoConditionWithSort<T>(IList<SortCondition> sortConditionList, int offset, int itemNum)
-        {
-            if (sortConditionList.Count == 1)
-            {
-                return PageQueryNoConditionWithSort<T>(sortConditionList[0], offset, itemNum);
-            }
-            else if (sortConditionList.Count == 2)
-            {
-                return PageQueryNoConditionWithSort<T>(sortConditionList[0], sortConditionList[1], offset, itemNum);
-            }
-            else
-            {
-                Exception ex = new Exception("必须指定排序字段，最多支持两个排序字段");
-                LogHelper.WriteLog("必须指定排序字段，最多支持两个排序字段", ex);
-                return null;
-            }
-        }
-
-        //一个排序条件
-        private Page<T> PageQueryNoConditionWithSort<T>(SortCondition sortCondition, int pageIndex, int pageSize)
-        {
-            if (SortType.ASC == sortCondition.sortType)
-            {
-                return GetDb().Query<T>().Where("1=1").OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition.paramName)).ToPage(pageIndex, pageSize);
-            }
-            else
-            {
-                return GetDb().Query<T>().OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition.paramName)).ToPage(pageIndex, pageSize);
-            }
-        }
-
-        //两个排序条件
-        private Page<T> PageQueryNoConditionWithSort<T>(SortCondition sortCondition0, SortCondition sortCondition1, int pageIndex, int pageSize)
-        {
-            if (SortType.ASC == sortCondition0.sortType)
-            {
-                if (SortType.ASC == sortCondition1.sortType)
-                {
-                    return GetDb().Query<T>().OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
-                }
-                else
-                {
-                    return GetDb().Query<T>().OrderBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
-                }
-            }
-            else
-            {
-                if (SortType.ASC == sortCondition1.sortType)
-                {
-                    return GetDb().Query<T>().OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenBy(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
-                }
-                else
-                {
-                    return GetDb().Query<T>().OrderByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition0.paramName)).ThenByDescending(LambdaHelper.LambdaBuilderByName<T>(sortCondition1.paramName)).ToPage(pageIndex, pageSize);
-                }
-            }
+            return provider.ToPage(req.CurrentPage, req.ItemsPerPage);
         }
     }
 }

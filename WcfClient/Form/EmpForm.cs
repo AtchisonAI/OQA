@@ -235,7 +235,8 @@ namespace WcfClient
         private void update_sfButton_Click(object sender, EventArgs e)
         {
             var record = emp_sfDataGrid.SelectedItem;
-            UpdateEmp((Emp)record, OpreateType.Update);
+            if(record != null)
+                UpdateEmp((Emp)record, OpreateType.Update);
         }
 
         private void delete_sfButton_Click(object sender, EventArgs e)

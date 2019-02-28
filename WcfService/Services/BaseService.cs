@@ -1,4 +1,5 @@
-﻿using Models.Message;
+﻿using Models;
+using Models.Message;
 using NPoco;
 using NPoco.Linq;
 using System;
@@ -61,48 +62,48 @@ namespace WcfService
             return GetDb().Fetch<string[]>(sql).Single()[0];
         }
 
-        ///// <summary>
-        ///// 更新建模对象，根据对象的_ProStep属性判断是新增/修改，还是删除操作
-        ///// </summary>
-        ///// <typeparam name="T">具有IModelingObject接口的建模对象类型</typeparam>
-        ///// <param name="inMsg">需要更新的建模对象</param>
-        //public void UpdateModelingObject<T>(UpdateModelReq<T> updateReq) where T : IModelingObject, new()
-        //{
-        //    var sysdate = GetSystemDateTime();
-        //    switch(updateReq.opreateType)
-        //    {
-        //        case OpreateType.Insert:
-        //            updateReq.model.CreateTime = sysdate;
-        //            updateReq.model.CreateUserId = updateReq.userId;
+        /// <summary>
+        /// 更新建模对象，根据对象的_ProStep属性判断是新增/修改，还是删除操作
+        /// </summary>
+        /// <typeparam name="T">具有ITrackModelObject接口的建模对象类型</typeparam>
+        /// <param name="inMsg">需要更新的建模对象</param>
+        public void UpdateTrackModel<T>(UpdateModelReq<T> updateReq) where T : ITrackModelObject, new()
+        {
+            var sysdate = GetSystemDateTime();
+            switch (updateReq.opreateType)
+            {
+                case OpreateType.Insert:
+                    updateReq.model.CreateTime = sysdate;
+                    updateReq.model.CreateUserId = updateReq.userId;
 
-        //            GetDb().Insert(updateReq.model);
-        //            break;
+                    GetDb().Insert(updateReq.model);
+                    break;
 
-        //        case OpreateType.Update:
-        //            var oldModel = GetDb().SingleOrDefaultById<T>(updateReq.model);
-        //            if (oldModel == null)
-        //            {
-        //                updateReq.model.UpdateTime = sysdate;
-        //                updateReq.model.UpdateUserId = updateReq.userId;
+                case OpreateType.Update:
+                    var oldModel = GetDb().SingleOrDefaultById<T>(updateReq.model);
+                    if (oldModel == null)
+                    {
+                        updateReq.model.UpdateTime = sysdate;
+                        updateReq.model.UpdateUserId = updateReq.userId;
 
-        //                GetDb().Insert(updateReq.model);
-        //            }
-        //            else
-        //            {
-        //                updateReq.model.CreateTime = oldModel.CreateTime;
-        //                updateReq.model.CreateUserId = oldModel.CreateUserId;
-        //                updateReq.model.UpdateTime = sysdate;
-        //                updateReq.model.UpdateUserId = updateReq.userId;
+                        GetDb().Insert(updateReq.model);
+                    }
+                    else
+                    {
+                        updateReq.model.CreateTime = oldModel.CreateTime;
+                        updateReq.model.CreateUserId = oldModel.CreateUserId;
+                        updateReq.model.UpdateTime = sysdate;
+                        updateReq.model.UpdateUserId = updateReq.userId;
 
-        //                GetDb().Update(updateReq.model);
-        //            }
-        //            break;
+                        GetDb().Update(updateReq.model);
+                    }
+                    break;
 
-        //        case OpreateType.Delete:
-        //            GetDb().Delete(updateReq.model);
-        //            break;
-        //    }
-        //}
+                case OpreateType.Delete:
+                    GetDb().Delete(updateReq.model);
+                    break;
+            }
+        }
 
 
         /// <summary>
@@ -110,7 +111,7 @@ namespace WcfService
         /// </summary>
         /// <typeparam name="T">GetDb()建模对象类型</typeparam>
         /// <param name="inMsg">需要更新的建模对象</param>
-        public void UpdateModelingObject<T>(UpdateModelReq<T> updateReq)
+        public void UpdateModel<T>(UpdateModelReq<T> updateReq)
         {
           //  var sysdate = GetSystemDateTime();
             switch (updateReq.opreateType)
@@ -166,9 +167,9 @@ namespace WcfService
         /// <param name="inMsg">需要更新的建模对象</param>
         /// <param name="outMsg">返回的建模对象</param>
         /// <param name="refreshModel">是否从数据库刷新建模对象</param>
-        public void UpdateModelingObject<T>(UpdateModelReq<T> inMsg, ModelRsp<T> outMsg, bool refreshModel = false)
+        public void UpdateModel<T>(UpdateModelReq<T> inMsg, ModelRsp<T> outMsg, bool refreshModel = false)
         {
-            UpdateModelingObject(inMsg);
+            UpdateModel(inMsg);
 
             if (!refreshModel)
                 outMsg.model = inMsg.model;
@@ -225,7 +226,7 @@ namespace WcfService
         /// 批量更新建模对象，根据对象的_ProStep属性判断是新增/修改，还是删除操作。
         /// </summary>
         /// <param name="inMsg">需要更新的建模对象列表</param>
-        public void UpdateModelingObjects<T>(UpdateModelListReq<T> updateReq)
+        public void UpdateModelObjects<T>(UpdateModelListReq<T> updateReq)
         {
             switch (updateReq.opreateType)
             {
@@ -239,7 +240,6 @@ namespace WcfService
                     break;
 
                 case OpreateType.Update:
-              //      var sysdate = GetSystemDateTime();
                     foreach (var model in updateReq.models)
                     {
                         //get the old modeling object for create user/create time
@@ -296,7 +296,7 @@ namespace WcfService
         /// <param name="refreshModel">是否从数据库刷新模对象列表</param>
         public void UpdateModelingObjects<T>(UpdateModelListReq<T> inMsg, ModelListRsp<T> outMsg, bool refreshModel = false)
         {
-            UpdateModelingObjects(inMsg);
+            UpdateModelObjects(inMsg);
 
             if (!refreshModel)
                 outMsg.models = inMsg.models;

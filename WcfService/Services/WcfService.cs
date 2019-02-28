@@ -117,14 +117,14 @@ namespace WcfService.Services
                 opreateType = updateReq.opreateType
             };
 
-            UpdateModelingObjects(req);
+            UpdateModelObjects(req);
 
             UpdateModelListReq<RmsUser> rmsReq = new UpdateModelListReq<RmsUser>()
             {
                 models = updateReq.model.rmsList,
                 opreateType = updateReq.opreateType
             };
-            UpdateModelingObjects(rmsReq);
+            UpdateModelObjects(rmsReq);
 
             EndTrans();
             return rsp;

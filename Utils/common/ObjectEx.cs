@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -30,11 +29,6 @@ namespace Utils
             }
         }
 
-        public static bool IsNullOrEmpty(this string str)
-        {
-            return string.IsNullOrEmpty(str);
-        }
-
         /// <summary>
         /// 定义一个资源文件名 资源文件名 = 工程的默认命名空间+文件名(不带扩展名)
         /// </summary>
@@ -59,21 +53,6 @@ namespace Utils
             {
                 return null;
             }
-        }
-        /// <summary>
-        /// 获取资源图片
-        /// </summary>
-        /// <param name="name">文件名</param>
-        /// <returns>资源图片</returns>
-        public static Bitmap GetResourceImage(String name)
-        {
-            Object tempbitmap = null;
-            tempbitmap = ReadFromResourceFile(name);
-            if (tempbitmap.GetType().Equals(typeof(Bitmap)))
-            {
-                return (Bitmap)tempbitmap;
-            }
-            return null;
         }
 
         public static async Task<T> RunAsync<T>(Func<T> func)

@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.Windows.Forms.Chart.ChartSeries chartSeries4 = new Syncfusion.Windows.Forms.Chart.ChartSeries();
-            Syncfusion.Windows.Forms.Chart.ChartCustomShapeInfo chartCustomShapeInfo4 = new Syncfusion.Windows.Forms.Chart.ChartCustomShapeInfo();
-            Syncfusion.Windows.Forms.Chart.ChartLineInfo chartLineInfo3 = new Syncfusion.Windows.Forms.Chart.ChartLineInfo();
             Syncfusion.Windows.Forms.Chart.ChartSeries chartSeries1 = new Syncfusion.Windows.Forms.Chart.ChartSeries();
             Syncfusion.Windows.Forms.Chart.ChartCustomShapeInfo chartCustomShapeInfo1 = new Syncfusion.Windows.Forms.Chart.ChartCustomShapeInfo();
             Syncfusion.Windows.Forms.Chart.ChartLineInfo chartLineInfo1 = new Syncfusion.Windows.Forms.Chart.ChartLineInfo();
-            Syncfusion.Windows.Forms.Chart.ChartSeries chartSeries5 = new Syncfusion.Windows.Forms.Chart.ChartSeries();
-            Syncfusion.Windows.Forms.Chart.ChartCustomShapeInfo chartCustomShapeInfo5 = new Syncfusion.Windows.Forms.Chart.ChartCustomShapeInfo();
+            Syncfusion.Windows.Forms.Chart.ChartSeries chartSeries2 = new Syncfusion.Windows.Forms.Chart.ChartSeries();
+            Syncfusion.Windows.Forms.Chart.ChartCustomShapeInfo chartCustomShapeInfo2 = new Syncfusion.Windows.Forms.Chart.ChartCustomShapeInfo();
+            Syncfusion.Windows.Forms.Chart.ChartLineInfo chartLineInfo2 = new Syncfusion.Windows.Forms.Chart.ChartLineInfo();
+            Syncfusion.Windows.Forms.Chart.ChartSeries chartSeries3 = new Syncfusion.Windows.Forms.Chart.ChartSeries();
+            Syncfusion.Windows.Forms.Chart.ChartCustomShapeInfo chartCustomShapeInfo3 = new Syncfusion.Windows.Forms.Chart.ChartCustomShapeInfo();
             this.sfScrollFrame1 = new Syncfusion.WinForms.Controls.SfScrollFrame();
             this.empChartControl = new Syncfusion.Windows.Forms.Chart.ChartControl();
             this.empPieChartControl = new Syncfusion.Windows.Forms.Chart.ChartControl();
@@ -67,7 +67,7 @@
             // 
             // empChartControl
             // 
-            this.empChartControl.BackInterior = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.Vertical, System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(209)))), ((int)(((byte)(226))))), System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(232)))), ((int)(((byte)(243))))));
+            this.empChartControl.BackInterior = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.Vertical, System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(209)))), ((int)(((byte)(226))))), System.Drawing.Color.White);
             this.empChartControl.ChartArea.BackInterior = new Syncfusion.Drawing.BrushInfo(System.Drawing.Color.Transparent);
             this.empChartControl.ChartArea.CursorLocation = new System.Drawing.Point(0, 0);
             this.empChartControl.ChartArea.CursorReDraw = false;
@@ -107,26 +107,26 @@
             this.empChartControl.PrimaryYAxis.LogLabelsDisplayMode = Syncfusion.Windows.Forms.Chart.LogLabelsDisplayMode.Default;
             this.empChartControl.PrimaryYAxis.Margin = true;
             this.empChartControl.PrimaryYAxis.TitleColor = System.Drawing.SystemColors.ControlText;
-            chartSeries4.FancyToolTip.ResizeInsideSymbol = true;
-            chartSeries4.Points.Add(1D, ((double)(145D)), ((double)(134D)), ((double)(35D)), ((double)(24D)));
-            chartSeries4.Points.Add(2D, ((double)(388D)), ((double)(222D)), ((double)(62D)), ((double)(5D)));
-            chartSeries4.Points.Add(3D, ((double)(142D)), ((double)(124D)), ((double)(72D)), ((double)(9D)));
-            chartSeries4.Points.Add(4D, ((double)(335D)), ((double)(166D)), ((double)(86D)), ((double)(38D)));
-            chartSeries4.Points.Add(5D, ((double)(358D)), ((double)(219D)), ((double)(95D)), ((double)(77D)));
-            chartSeries4.Resolution = 0D;
-            chartSeries4.StackingGroup = "Default Group";
-            chartSeries4.Style.AltTagFormat = "";
-            chartSeries4.Style.DrawTextShape = false;
-            chartLineInfo3.Alignment = System.Drawing.Drawing2D.PenAlignment.Center;
-            chartLineInfo3.Color = System.Drawing.SystemColors.ControlText;
-            chartLineInfo3.DashPattern = null;
-            chartLineInfo3.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            chartLineInfo3.Width = 1F;
-            chartCustomShapeInfo4.Border = chartLineInfo3;
-            chartCustomShapeInfo4.Color = System.Drawing.SystemColors.HighlightText;
-            chartCustomShapeInfo4.Type = Syncfusion.Windows.Forms.Chart.ChartCustomShape.Square;
-            chartSeries4.Style.TextShape = chartCustomShapeInfo4;
-            this.empChartControl.Series.Add(chartSeries4);
+            chartSeries1.FancyToolTip.ResizeInsideSymbol = true;
+            chartSeries1.Points.Add(1D, ((double)(145D)), ((double)(134D)), ((double)(35D)), ((double)(24D)));
+            chartSeries1.Points.Add(2D, ((double)(388D)), ((double)(222D)), ((double)(62D)), ((double)(5D)));
+            chartSeries1.Points.Add(3D, ((double)(142D)), ((double)(124D)), ((double)(72D)), ((double)(9D)));
+            chartSeries1.Points.Add(4D, ((double)(335D)), ((double)(166D)), ((double)(86D)), ((double)(38D)));
+            chartSeries1.Points.Add(5D, ((double)(358D)), ((double)(219D)), ((double)(95D)), ((double)(77D)));
+            chartSeries1.Resolution = 0D;
+            chartSeries1.StackingGroup = "Default Group";
+            chartSeries1.Style.AltTagFormat = "";
+            chartSeries1.Style.DrawTextShape = false;
+            chartLineInfo1.Alignment = System.Drawing.Drawing2D.PenAlignment.Center;
+            chartLineInfo1.Color = System.Drawing.SystemColors.ControlText;
+            chartLineInfo1.DashPattern = null;
+            chartLineInfo1.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            chartLineInfo1.Width = 1F;
+            chartCustomShapeInfo1.Border = chartLineInfo1;
+            chartCustomShapeInfo1.Color = System.Drawing.SystemColors.HighlightText;
+            chartCustomShapeInfo1.Type = Syncfusion.Windows.Forms.Chart.ChartCustomShape.Square;
+            chartSeries1.Style.TextShape = chartCustomShapeInfo1;
+            this.empChartControl.Series.Add(chartSeries1);
             this.empChartControl.ShowToolTips = true;
             this.empChartControl.Size = new System.Drawing.Size(686, 414);
             this.empChartControl.Spacing = 10F;
@@ -145,7 +145,7 @@
             // empPieChartControl
             // 
             this.empPieChartControl.BackInterior = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.Horizontal, new System.Drawing.Color[] {
-            System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(238)))), ((int)(((byte)(229))))),
+            System.Drawing.Color.White,
             System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(238)))), ((int)(((byte)(230))))),
             System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(238)))), ((int)(((byte)(230))))),
             System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(238)))), ((int)(((byte)(229)))))});
@@ -186,37 +186,37 @@
             this.empPieChartControl.PrimaryYAxis.Margin = true;
             this.empPieChartControl.PrimaryYAxis.TickColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(158)))), ((int)(((byte)(205)))));
             this.empPieChartControl.PrimaryYAxis.TitleColor = System.Drawing.SystemColors.ControlText;
-            chartSeries1.FancyToolTip.ResizeInsideSymbol = true;
-            chartSeries1.Name = "Default0";
-            chartSeries1.Resolution = 0D;
-            chartSeries1.StackingGroup = "Default Group";
-            chartSeries1.Style.AltTagFormat = "";
-            chartSeries1.Style.DrawTextShape = false;
-            chartLineInfo1.Alignment = System.Drawing.Drawing2D.PenAlignment.Center;
-            chartLineInfo1.Color = System.Drawing.SystemColors.ControlText;
-            chartLineInfo1.DashPattern = null;
-            chartLineInfo1.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            chartLineInfo1.Width = 1F;
-            chartCustomShapeInfo1.Border = chartLineInfo1;
-            chartCustomShapeInfo1.Color = System.Drawing.SystemColors.HighlightText;
-            chartCustomShapeInfo1.Type = Syncfusion.Windows.Forms.Chart.ChartCustomShape.Square;
-            chartSeries1.Style.TextShape = chartCustomShapeInfo1;
-            chartSeries1.Text = "Default0";
-            chartSeries1.Type = Syncfusion.Windows.Forms.Chart.ChartSeriesType.Pie;
-            chartSeries5.FancyToolTip.ResizeInsideSymbol = true;
-            chartSeries5.Name = "Default1";
-            chartSeries5.Resolution = 0D;
-            chartSeries5.StackingGroup = "Default Group";
-            chartSeries5.Style.AltTagFormat = "";
-            chartSeries5.Style.DrawTextShape = false;
-            chartCustomShapeInfo5.Border = chartLineInfo1;
-            chartCustomShapeInfo5.Color = System.Drawing.SystemColors.HighlightText;
-            chartCustomShapeInfo5.Type = Syncfusion.Windows.Forms.Chart.ChartCustomShape.Square;
-            chartSeries5.Style.TextShape = chartCustomShapeInfo5;
-            chartSeries5.Text = "Default1";
-            chartSeries5.Type = Syncfusion.Windows.Forms.Chart.ChartSeriesType.Pie;
-            this.empPieChartControl.Series.Add(chartSeries1);
-            this.empPieChartControl.Series.Add(chartSeries5);
+            chartSeries2.FancyToolTip.ResizeInsideSymbol = true;
+            chartSeries2.Name = "Default0";
+            chartSeries2.Resolution = 0D;
+            chartSeries2.StackingGroup = "Default Group";
+            chartSeries2.Style.AltTagFormat = "";
+            chartSeries2.Style.DrawTextShape = false;
+            chartLineInfo2.Alignment = System.Drawing.Drawing2D.PenAlignment.Center;
+            chartLineInfo2.Color = System.Drawing.SystemColors.ControlText;
+            chartLineInfo2.DashPattern = null;
+            chartLineInfo2.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            chartLineInfo2.Width = 1F;
+            chartCustomShapeInfo2.Border = chartLineInfo2;
+            chartCustomShapeInfo2.Color = System.Drawing.SystemColors.HighlightText;
+            chartCustomShapeInfo2.Type = Syncfusion.Windows.Forms.Chart.ChartCustomShape.Square;
+            chartSeries2.Style.TextShape = chartCustomShapeInfo2;
+            chartSeries2.Text = "Default0";
+            chartSeries2.Type = Syncfusion.Windows.Forms.Chart.ChartSeriesType.Pie;
+            chartSeries3.FancyToolTip.ResizeInsideSymbol = true;
+            chartSeries3.Name = "Default1";
+            chartSeries3.Resolution = 0D;
+            chartSeries3.StackingGroup = "Default Group";
+            chartSeries3.Style.AltTagFormat = "";
+            chartSeries3.Style.DrawTextShape = false;
+            chartCustomShapeInfo3.Border = chartLineInfo2;
+            chartCustomShapeInfo3.Color = System.Drawing.SystemColors.HighlightText;
+            chartCustomShapeInfo3.Type = Syncfusion.Windows.Forms.Chart.ChartCustomShape.Square;
+            chartSeries3.Style.TextShape = chartCustomShapeInfo3;
+            chartSeries3.Text = "Default1";
+            chartSeries3.Type = Syncfusion.Windows.Forms.Chart.ChartSeriesType.Pie;
+            this.empPieChartControl.Series.Add(chartSeries2);
+            this.empPieChartControl.Series.Add(chartSeries3);
             this.empPieChartControl.Size = new System.Drawing.Size(686, 414);
             this.empPieChartControl.TabIndex = 8;
             this.empPieChartControl.Tag = "589:351:657:471";
@@ -302,7 +302,7 @@
             this.delete_sfButton.AccessibleName = "Button";
             this.delete_sfButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.delete_sfButton.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
-            this.delete_sfButton.Location = new System.Drawing.Point(1069, 7);
+            this.delete_sfButton.Location = new System.Drawing.Point(1080, 7);
             this.delete_sfButton.Name = "delete_sfButton";
             this.delete_sfButton.Size = new System.Drawing.Size(66, 29);
             this.delete_sfButton.TabIndex = 9;
@@ -334,7 +334,7 @@
             this.update_sfButton.AccessibleName = "Button";
             this.update_sfButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.update_sfButton.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
-            this.update_sfButton.Location = new System.Drawing.Point(1008, 7);
+            this.update_sfButton.Location = new System.Drawing.Point(1006, 7);
             this.update_sfButton.Name = "update_sfButton";
             this.update_sfButton.Size = new System.Drawing.Size(66, 29);
             this.update_sfButton.TabIndex = 9;
@@ -383,7 +383,7 @@
             this.insert_sfButton.AccessibleName = "Button";
             this.insert_sfButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.insert_sfButton.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
-            this.insert_sfButton.Location = new System.Drawing.Point(944, 7);
+            this.insert_sfButton.Location = new System.Drawing.Point(931, 7);
             this.insert_sfButton.Name = "insert_sfButton";
             this.insert_sfButton.Size = new System.Drawing.Size(66, 29);
             this.insert_sfButton.TabIndex = 9;
@@ -438,11 +438,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1397, 870);
             this.Controls.Add(this.splitContainer1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "EmpForm";
             this.Tag = "1283:881:0:0";
             this.Text = "员工信息";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.EmpForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();

@@ -2,17 +2,15 @@
 using System.Windows.Forms;
 using System.Reflection;
 using Syncfusion.Windows.Forms.Tools;
+using WCFModels.Message;
 
-namespace Utils.Authority
+namespace WcfClient.Authority
 {
     public static class AuthorityControl
     {
         private static IList<string> accessStringList = new List<string>();
         private static Dictionary<string, string> controlAccesstring = new Dictionary<string, string>();
-
-        public static string userId { get; set; }
-        public static string passwd { get; set; }
-        public static string systmePrifex { get; set; }
+        private static UserProfile userProfile;
 
         public static void InitializeAuthority(object obj)
         {
@@ -94,11 +92,14 @@ namespace Utils.Authority
             controlAccesstring = accessStringMap;
         }
 
-        public static void LoadUserProfile(string id, string password, string prifex)
+        public static void LoadUserProfile(UserProfile profile)
         {
-            userId = id.Trim();
-            passwd = password.Trim();
-            systmePrifex = prifex.Trim();
+            userProfile = profile;
+        }
+
+        public static UserProfile GetUserProfile()
+        {
+            return userProfile;
         }
     }
 }

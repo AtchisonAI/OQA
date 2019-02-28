@@ -1,12 +1,5 @@
-﻿using Models.Message;
-using Syncfusion.Windows.Forms;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using Utils;
-using Utils.Authority;
-using WcfClient.WcfService;
-using WCFModels.MESDB.FWTST1;
-using WCFModels.Message;
+﻿using Syncfusion.Windows.Forms;
+using WcfClient.Authority;
 
 namespace WcfClient
 {

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WCFModels.Message" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCFModels.Message" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WcfService/WcfService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Models.Message" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WcfService/WcfService/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" />
+  <xs:complexType name="LoginReq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Models.Message" base="q1:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="userProfile" nillable="true" type="tns:UserProfile" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LoginReq" nillable="true" type="tns:LoginReq" />
+  <xs:complexType name="UserProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="passwd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="systemPrefix" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserProfile" nillable="true" type="tns:UserProfile" />
+  <xs:complexType name="QueryEmpReq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Models.Message" base="q2:PageQueryReq">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryEmpReq" nillable="true" type="tns:QueryEmpReq" />
+  <xs:complexType name="DemoView">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="empList" nillable="true" type="q3:ArrayOfEmp" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="rmsList" nillable="true" type="q4:ArrayOfRmsUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DemoView" nillable="true" type="tns:DemoView" />
+</xs:schema>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WcfService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WcfService/WcfService/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WcfService/WcfService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WcfService/WcfService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFModels.Message" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WcfService/WcfService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Models.Message" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WcfService/WcfService/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WcfService/WcfService/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/WCFModels" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WcfService/WcfService/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWcfContract_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IWcfContract_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWcfContract_QueryControlAccessString_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryControlAccessString" />
+  </wsdl:message>
+  <wsdl:message name="IWcfContract_QueryControlAccessString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryControlAccessStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWcfContract_QueryEmpInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryEmpInfo" />
+  </wsdl:message>
+  <wsdl:message name="IWcfContract_QueryEmpInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryEmpInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWcfContract_QueryEmpPercent_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryEmpPercent" />
+  </wsdl:message>
+  <wsdl:message name="IWcfContract_QueryEmpPercent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryEmpPercentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWcfContract_QueryEmpSum_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryEmpSum" />
+  </wsdl:message>
+  <wsdl:message name="IWcfContract_QueryEmpSum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryEmpSumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWcfContract_UpdateEmpInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmpInfo" />
+  </wsdl:message>
+  <wsdl:message name="IWcfContract_UpdateEmpInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmpInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWcfContract_UpdateDemoInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDemoInfo" />
+  </wsdl:message>
+  <wsdl:message name="IWcfContract_UpdateDemoInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDemoInfoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWcfContract">
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcfContract/Login" message="tns:IWcfContract_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcfContract/LoginResponse" message="tns:IWcfContract_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryControlAccessString">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcfContract/QueryControlAccessString" message="tns:IWcfContract_QueryControlAccessString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcfContract/QueryControlAccessStringResponse" message="tns:IWcfContract_QueryControlAccessString_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryEmpInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcfContract/QueryEmpInfo" message="tns:IWcfContract_QueryEmpInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcfContract/QueryEmpInfoResponse" message="tns:IWcfContract_QueryEmpInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryEmpPercent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcfContract/QueryEmpPercent" message="tns:IWcfContract_QueryEmpPercent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcfContract/QueryEmpPercentResponse" message="tns:IWcfContract_QueryEmpPercent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryEmpSum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcfContract/QueryEmpSum" message="tns:IWcfContract_QueryEmpSum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcfContract/QueryEmpSumResponse" message="tns:IWcfContract_QueryEmpSum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmpInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcfContract/UpdateEmpInfo" message="tns:IWcfContract_UpdateEmpInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcfContract/UpdateEmpInfoResponse" message="tns:IWcfContract_UpdateEmpInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDemoInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcfContract/UpdateDemoInfo" message="tns:IWcfContract_UpdateDemoInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcfContract/UpdateDemoInfoResponse" message="tns:IWcfContract_UpdateDemoInfo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWcfContract" type="tns:IWcfContract">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IWcfContract/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryControlAccessString">
+      <soap:operation soapAction="http://tempuri.org/IWcfContract/QueryControlAccessString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryEmpInfo">
+      <soap:operation soapAction="http://tempuri.org/IWcfContract/QueryEmpInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryEmpPercent">
+      <soap:operation soapAction="http://tempuri.org/IWcfContract/QueryEmpPercent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryEmpSum">
+      <soap:operation soapAction="http://tempuri.org/IWcfContract/QueryEmpSum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmpInfo">
+      <soap:operation soapAction="http://tempuri.org/IWcfContract/UpdateEmpInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDemoInfo">
+      <soap:operation soapAction="http://tempuri.org/IWcfContract/UpdateDemoInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WcfService">
+    <wsdl:port name="BasicHttpBinding_IWcfContract" binding="tns:BasicHttpBinding_IWcfContract">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/WcfService/WcfService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -47,14 +47,14 @@
             this.accessString_textBox.Location = new System.Drawing.Point(585, 19);
             this.accessString_textBox.Name = "accessString_textBox";
             this.accessString_textBox.Size = new System.Drawing.Size(347, 25);
-            this.accessString_textBox.TabIndex = 3;
+            this.accessString_textBox.TabIndex = 1;
             // 
             // contrlPath_textBox
             // 
             this.contrlPath_textBox.Location = new System.Drawing.Point(73, 19);
             this.contrlPath_textBox.Name = "contrlPath_textBox";
             this.contrlPath_textBox.Size = new System.Drawing.Size(347, 25);
-            this.contrlPath_textBox.TabIndex = 1;
+            this.contrlPath_textBox.TabIndex = 0;
             // 
             // path_label
             // 
@@ -80,7 +80,7 @@
             this.search_button.Location = new System.Drawing.Point(1424, 16);
             this.search_button.Name = "search_button";
             this.search_button.Size = new System.Drawing.Size(66, 30);
-            this.search_button.TabIndex = 4;
+            this.search_button.TabIndex = 2;
             this.search_button.Text = "查询";
             this.search_button.UseVisualStyleBackColor = true;
             this.search_button.Click += new System.EventHandler(this.search_button_Click);
@@ -91,7 +91,7 @@
             this.reset_button.Location = new System.Drawing.Point(1535, 16);
             this.reset_button.Name = "reset_button";
             this.reset_button.Size = new System.Drawing.Size(66, 30);
-            this.reset_button.TabIndex = 4;
+            this.reset_button.TabIndex = 3;
             this.reset_button.Text = "重置";
             this.reset_button.UseVisualStyleBackColor = true;
             this.reset_button.Click += new System.EventHandler(this.reset_button_Click);
@@ -113,7 +113,7 @@
             this.delete_button.Location = new System.Drawing.Point(1238, 16);
             this.delete_button.Name = "delete_button";
             this.delete_button.Size = new System.Drawing.Size(66, 30);
-            this.delete_button.TabIndex = 4;
+            this.delete_button.TabIndex = 6;
             this.delete_button.Text = "删除";
             this.delete_button.UseVisualStyleBackColor = true;
             this.delete_button.Click += new System.EventHandler(this.delete_button_Click);
@@ -124,7 +124,7 @@
             this.modify_button.Location = new System.Drawing.Point(1124, 16);
             this.modify_button.Name = "modify_button";
             this.modify_button.Size = new System.Drawing.Size(66, 30);
-            this.modify_button.TabIndex = 4;
+            this.modify_button.TabIndex = 5;
             this.modify_button.Text = "修改";
             this.modify_button.UseVisualStyleBackColor = true;
             this.modify_button.Click += new System.EventHandler(this.modify_button_Click);
@@ -151,7 +151,7 @@
             this.sfDataPager.Location = new System.Drawing.Point(616, 403);
             this.sfDataPager.Name = "sfDataPager";
             this.sfDataPager.Size = new System.Drawing.Size(376, 46);
-            this.sfDataPager.TabIndex = 6;
+            this.sfDataPager.TabIndex = 7;
             this.sfDataPager.Text = "sfDataPager";
             this.sfDataPager.PageIndexChanged += new System.EventHandler<Syncfusion.WinForms.DataPager.Events.PageIndexChangedEventArgs>(this.sfDataPager_PageIndexChanged);
             // 

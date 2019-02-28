@@ -145,7 +145,6 @@ namespace WcfClient
             this.System_ToolStripMenuItem.Name = "System_ToolStripMenuItem";
             this.System_ToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
             this.System_ToolStripMenuItem.Text = "系统";
-            this.System_ToolStripMenuItem.Click += new System.EventHandler(this.System_ToolStripMenuItem_Click);
             // 
             // Authority_ToolStripMenuItem
             // 

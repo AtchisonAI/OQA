@@ -11,7 +11,7 @@ namespace WcfClient
             InitializeComponent();
         }
 
-        private void logInBtn_Click(object sender, EventArgs e)
+        private void Login()
         {
             string userName = userNameTbx.Text.Trim();
             string passwd = passwdTbx.Text.Trim();
@@ -34,10 +34,35 @@ namespace WcfClient
             }
         }
 
+        private void logInBtn_Click(object sender, EventArgs e)
+        {
+            Login();
+        }
+
         private void cancleBtn_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private void userNameTbx_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = Convert.ToChar(e.KeyChar.ToString().ToUpper());
+
+            if (e.KeyChar == (char)13)
+            {
+                passwdTbx.Focus();
+            }
+        }
+
+        private void passwdTbx_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = Convert.ToChar(e.KeyChar.ToString().ToUpper());
+
+            if (e.KeyChar == (char)13)
+            {
+                Login();
+            }
         }
     }
 }

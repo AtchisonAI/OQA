@@ -39,11 +39,6 @@ namespace WcfClient
             return false;
         }
 
-        private void System_ToolStripMenuItem_Click(object sender, System.EventArgs e)
-        {
-
-        }
-
         EmpForm empFrm;
         private void Emp_ToolStripMenuItem_Click(object sender, System.EventArgs e)
         {

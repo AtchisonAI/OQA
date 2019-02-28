@@ -47,22 +47,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FSLib.Extension">
-      <HintPath>..\packages\Tibco\FSLib.Extension.dll</HintPath>
+      <HintPath>..\Components\FSLib.Extension.dll</HintPath>
     </Reference>
     <Reference Include="HiDM.FactoryWorks.Common">
-      <HintPath>..\packages\Tibco\HiDM.FactoryWorks.Common.dll</HintPath>
+      <HintPath>..\Components\HiDM.FactoryWorks.Common.dll</HintPath>
     </Reference>
     <Reference Include="HiDM.FactoryWorks.Messages">
-      <HintPath>..\packages\Tibco\HiDM.FactoryWorks.Messages.dll</HintPath>
+      <HintPath>..\Components\HiDM.FactoryWorks.Messages.dll</HintPath>
     </Reference>
     <Reference Include="HiDM.FactoryWorks.TibcoRV">
-      <HintPath>..\packages\Tibco\HiDM.FactoryWorks.TibcoRV.dll</HintPath>
+      <HintPath>..\Components\HiDM.FactoryWorks.TibcoRV.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="NPoco, Version=3.9.4.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="NPoco, Version=3.9.4.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Components\NPoco.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -75,7 +77,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="TIBCO.Rendezvous">
-      <HintPath>..\packages\Tibco\TIBCO.Rendezvous.dll</HintPath>
+      <HintPath>..\Components\TIBCO.Rendezvous.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

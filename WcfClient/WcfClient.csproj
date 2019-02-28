@@ -36,19 +36,45 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WcfService\bin\Debug\NPoco.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Chart.Base, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Chart.Windows, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.Core.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Data.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Diagram.Base, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Diagram.Windows, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.Edit.Windows, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.GridCommon.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.SfDataGrid.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.SfInput.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.SfListView.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Shared.Base, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
-    <Reference Include="Syncfusion.Tools.Windows, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Chart.Base, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Chart.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Chart.Windows, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Chart.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Core.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Core.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Data.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Data.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Diagram.Base, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Diagram.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Diagram.Windows, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Diagram.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Edit.Windows, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Edit.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.GridCommon.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.GridCommon.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.SfDataGrid.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfInput.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.SfInput.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfListView.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.SfListView.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Base, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Shared.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Windows, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Tools.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />

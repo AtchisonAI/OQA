@@ -38,7 +38,9 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.Tools.Windows, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Tools.Windows">
+      <HintPath>..\Components\Syncfusion.Tools.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />

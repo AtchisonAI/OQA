@@ -54,8 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authority\AuthorityControl.cs" />
-    <Compile Include="db\OracleHelper.cs" />
     <Compile Include="db\OracleDbHelper.cs" />
     <Compile Include="Encrypt\Encrypt.cs" />
     <Compile Include="common\ObjectEx.cs" />
@@ -67,6 +65,8 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Authority\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

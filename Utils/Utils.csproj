@@ -69,4 +69,7 @@
     <Folder Include="Authority\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetPath)" "$(ProjectDir)..\Components\" /d/r/y</PostBuildEvent>
+  </PropertyGroup>
 </Project>

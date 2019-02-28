@@ -23,6 +23,18 @@
   <wsdl:message name="IWcfContract_QueryControlAccessString_OutputMessage">
     <wsdl:part name="parameters" element="tns:QueryControlAccessStringResponse" />
   </wsdl:message>
+  <wsdl:message name="IWcfContract_PageQueryControlAccessString_InputMessage">
+    <wsdl:part name="parameters" element="tns:PageQueryControlAccessString" />
+  </wsdl:message>
+  <wsdl:message name="IWcfContract_PageQueryControlAccessString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PageQueryControlAccessStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWcfContract_UpdateControlAccessString_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateControlAccessString" />
+  </wsdl:message>
+  <wsdl:message name="IWcfContract_UpdateControlAccessString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateControlAccessStringResponse" />
+  </wsdl:message>
   <wsdl:message name="IWcfContract_QueryEmpInfo_InputMessage">
     <wsdl:part name="parameters" element="tns:QueryEmpInfo" />
   </wsdl:message>
@@ -62,6 +74,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IWcfContract/QueryControlAccessString" message="tns:IWcfContract_QueryControlAccessString_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWcfContract/QueryControlAccessStringResponse" message="tns:IWcfContract_QueryControlAccessString_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="PageQueryControlAccessString">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcfContract/PageQueryControlAccessString" message="tns:IWcfContract_PageQueryControlAccessString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcfContract/PageQueryControlAccessStringResponse" message="tns:IWcfContract_PageQueryControlAccessString_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateControlAccessString">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWcfContract/UpdateControlAccessString" message="tns:IWcfContract_UpdateControlAccessString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWcfContract/UpdateControlAccessStringResponse" message="tns:IWcfContract_UpdateControlAccessString_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="QueryEmpInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IWcfContract/QueryEmpInfo" message="tns:IWcfContract_QueryEmpInfo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWcfContract/QueryEmpInfoResponse" message="tns:IWcfContract_QueryEmpInfo_OutputMessage" />
@@ -96,6 +116,24 @@
     </wsdl:operation>
     <wsdl:operation name="QueryControlAccessString">
       <soap:operation soapAction="http://tempuri.org/IWcfContract/QueryControlAccessString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PageQueryControlAccessString">
+      <soap:operation soapAction="http://tempuri.org/IWcfContract/PageQueryControlAccessString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateControlAccessString">
+      <soap:operation soapAction="http://tempuri.org/IWcfContract/UpdateControlAccessString" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

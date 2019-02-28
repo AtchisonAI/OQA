@@ -29,6 +29,19 @@ namespace WcfClient.WcfService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfContract/QueryControlAccessString", ReplyAction="http://tempuri.org/IWcfContract/QueryControlAccessStringResponse")]
         System.Threading.Tasks.Task<Models.Message.ModelListRsp<WCFModels.MESDB.FWTST1.ControlAccessString>> QueryControlAccessStringAsync(Models.Message.QueryReq queryReq);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfContract/PageQueryControlAccessString", ReplyAction="http://tempuri.org/IWcfContract/PageQueryControlAccessStringResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(WCFModels.Message.QueryEmpReq))]
+        Models.Message.PageModelRsp<WCFModels.MESDB.FWTST1.ControlAccessString> PageQueryControlAccessString(Models.Message.PageQueryReq pageQueryReq);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfContract/PageQueryControlAccessString", ReplyAction="http://tempuri.org/IWcfContract/PageQueryControlAccessStringResponse")]
+        System.Threading.Tasks.Task<Models.Message.PageModelRsp<WCFModels.MESDB.FWTST1.ControlAccessString>> PageQueryControlAccessStringAsync(Models.Message.PageQueryReq pageQueryReq);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfContract/UpdateControlAccessString", ReplyAction="http://tempuri.org/IWcfContract/UpdateControlAccessStringResponse")]
+        Models.Message.ModelRsp<WCFModels.MESDB.FWTST1.ControlAccessString> UpdateControlAccessString(Models.Message.UpdateModelReq<WCFModels.MESDB.FWTST1.ControlAccessString> updateReq);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfContract/UpdateControlAccessString", ReplyAction="http://tempuri.org/IWcfContract/UpdateControlAccessStringResponse")]
+        System.Threading.Tasks.Task<Models.Message.ModelRsp<WCFModels.MESDB.FWTST1.ControlAccessString>> UpdateControlAccessStringAsync(Models.Message.UpdateModelReq<WCFModels.MESDB.FWTST1.ControlAccessString> updateReq);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWcfContract/QueryEmpInfo", ReplyAction="http://tempuri.org/IWcfContract/QueryEmpInfoResponse")]
         Models.Message.PageModelRsp<WCFModels.MESDB.FWTST1.Emp> QueryEmpInfo(WCFModels.Message.QueryEmpReq queryEmpReq);
         
@@ -105,6 +118,22 @@ namespace WcfClient.WcfService {
         
         public System.Threading.Tasks.Task<Models.Message.ModelListRsp<WCFModels.MESDB.FWTST1.ControlAccessString>> QueryControlAccessStringAsync(Models.Message.QueryReq queryReq) {
             return base.Channel.QueryControlAccessStringAsync(queryReq);
+        }
+        
+        public Models.Message.PageModelRsp<WCFModels.MESDB.FWTST1.ControlAccessString> PageQueryControlAccessString(Models.Message.PageQueryReq pageQueryReq) {
+            return base.Channel.PageQueryControlAccessString(pageQueryReq);
+        }
+        
+        public System.Threading.Tasks.Task<Models.Message.PageModelRsp<WCFModels.MESDB.FWTST1.ControlAccessString>> PageQueryControlAccessStringAsync(Models.Message.PageQueryReq pageQueryReq) {
+            return base.Channel.PageQueryControlAccessStringAsync(pageQueryReq);
+        }
+        
+        public Models.Message.ModelRsp<WCFModels.MESDB.FWTST1.ControlAccessString> UpdateControlAccessString(Models.Message.UpdateModelReq<WCFModels.MESDB.FWTST1.ControlAccessString> updateReq) {
+            return base.Channel.UpdateControlAccessString(updateReq);
+        }
+        
+        public System.Threading.Tasks.Task<Models.Message.ModelRsp<WCFModels.MESDB.FWTST1.ControlAccessString>> UpdateControlAccessStringAsync(Models.Message.UpdateModelReq<WCFModels.MESDB.FWTST1.ControlAccessString> updateReq) {
+            return base.Channel.UpdateControlAccessStringAsync(updateReq);
         }
         
         public Models.Message.PageModelRsp<WCFModels.MESDB.FWTST1.Emp> QueryEmpInfo(WCFModels.Message.QueryEmpReq queryEmpReq) {

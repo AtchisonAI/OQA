@@ -74,23 +74,23 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="PageQueryReq" nillable="true" type="tns:PageQueryReq" />
-  <xs:complexType name="PageModelRspOfEmpf1ACQ2Mn">
+  <xs:complexType name="PageModelRspOfControlAccessStringf1ACQ2Mn">
     <xs:annotation>
       <xs:appinfo>
         <GenericType Name="PageModelRspOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Models.Message" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="Emp" Namespace="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" />
+          <GenericParameter Name="ControlAccessString" Namespace="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" />
         </GenericType>
       </xs:appinfo>
     </xs:annotation>
     <xs:complexContent mixed="false">
       <xs:extension base="tns:PageRsp">
         <xs:sequence>
-          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="models" nillable="true" type="q5:ArrayOfEmp" />
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="models" nillable="true" type="q5:ArrayOfControlAccessString" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="PageModelRspOfEmpf1ACQ2Mn" nillable="true" type="tns:PageModelRspOfEmpf1ACQ2Mn" />
+  <xs:element name="PageModelRspOfControlAccessStringf1ACQ2Mn" nillable="true" type="tns:PageModelRspOfControlAccessStringf1ACQ2Mn" />
   <xs:complexType name="PageRsp">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseRsp">
@@ -105,6 +105,76 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="PageRsp" nillable="true" type="tns:PageRsp" />
+  <xs:complexType name="UpdateModelReqOfControlAccessStringf1ACQ2Mn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="UpdateModelReqOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Models.Message" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ControlAccessString" Namespace="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UpdateReq">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="model" nillable="true" type="q6:ControlAccessString" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateModelReqOfControlAccessStringf1ACQ2Mn" nillable="true" type="tns:UpdateModelReqOfControlAccessStringf1ACQ2Mn" />
+  <xs:complexType name="UpdateReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="opreateType" type="tns:OperateType" />
+          <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateReq" nillable="true" type="tns:UpdateReq" />
+  <xs:simpleType name="OperateType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Insert" />
+      <xs:enumeration value="Update" />
+      <xs:enumeration value="Delete" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OperateType" nillable="true" type="tns:OperateType" />
+  <xs:complexType name="ModelRspOfControlAccessStringf1ACQ2Mn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ModelRspOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Models.Message" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ControlAccessString" Namespace="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseRsp">
+        <xs:sequence>
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="model" nillable="true" type="q7:ControlAccessString" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModelRspOfControlAccessStringf1ACQ2Mn" nillable="true" type="tns:ModelRspOfControlAccessStringf1ACQ2Mn" />
+  <xs:complexType name="PageModelRspOfEmpf1ACQ2Mn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="PageModelRspOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Models.Message" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Emp" Namespace="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PageRsp">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="models" nillable="true" type="q8:ArrayOfEmp" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PageModelRspOfEmpf1ACQ2Mn" nillable="true" type="tns:PageModelRspOfEmpf1ACQ2Mn" />
   <xs:complexType name="ModelListRspOfCEmpPercentViewf1ACQ2Mn">
     <xs:annotation>
       <xs:appinfo>
@@ -116,7 +186,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseRsp">
         <xs:sequence>
-          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="models" nillable="true" type="q6:ArrayOfCEmpPercentView" />
+          <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="models" nillable="true" type="q9:ArrayOfCEmpPercentView" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -133,7 +203,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseRsp">
         <xs:sequence>
-          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="models" nillable="true" type="q7:ArrayOfCEmpSumView" />
+          <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="models" nillable="true" type="q10:ArrayOfCEmpSumView" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -150,31 +220,12 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:UpdateReq">
         <xs:sequence>
-          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="models" nillable="true" type="q8:ArrayOfEmp" />
+          <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="models" nillable="true" type="q11:ArrayOfEmp" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="UpdateModelListReqOfEmpf1ACQ2Mn" nillable="true" type="tns:UpdateModelListReqOfEmpf1ACQ2Mn" />
-  <xs:complexType name="UpdateReq">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:BaseReq">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="opreateType" type="tns:OpreateType" />
-          <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="UpdateReq" nillable="true" type="tns:UpdateReq" />
-  <xs:simpleType name="OpreateType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Insert" />
-      <xs:enumeration value="Update" />
-      <xs:enumeration value="Delete" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="OpreateType" nillable="true" type="tns:OpreateType" />
   <xs:complexType name="ModelListRspOfEmpf1ACQ2Mn">
     <xs:annotation>
       <xs:appinfo>
@@ -186,7 +237,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseRsp">
         <xs:sequence>
-          <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="models" nillable="true" type="q9:ArrayOfEmp" />
+          <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="models" nillable="true" type="q12:ArrayOfEmp" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -203,7 +254,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:UpdateReq">
         <xs:sequence>
-          <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WCFModels.Message" minOccurs="0" name="model" nillable="true" type="q10:DemoView" />
+          <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/WCFModels.Message" minOccurs="0" name="model" nillable="true" type="q13:DemoView" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -220,7 +271,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseRsp">
         <xs:sequence>
-          <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WCFModels.Message" minOccurs="0" name="model" nillable="true" type="q11:DemoView" />
+          <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/WCFModels.Message" minOccurs="0" name="model" nillable="true" type="q14:DemoView" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

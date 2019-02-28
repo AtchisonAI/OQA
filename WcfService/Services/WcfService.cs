@@ -74,6 +74,19 @@ namespace WcfService.Services
             return Query<ControlAccessString>(queryReq);
         }
 
+        public PageModelRsp<ControlAccessString> PageQueryControlAccessString(PageQueryReq pageQueryReq)
+        {
+            return PageQuery<ControlAccessString>(pageQueryReq);
+        }
+
+        public ModelRsp<ControlAccessString> UpdateControlAccessString(UpdateModelReq<ControlAccessString> updateReq)
+        {
+            ModelRsp<ControlAccessString> rsp = new ModelRsp<ControlAccessString>();
+            UpdateModel(updateReq, rsp,false);
+
+            return rsp;
+        }
+
         #endregion
 
         #region Emp

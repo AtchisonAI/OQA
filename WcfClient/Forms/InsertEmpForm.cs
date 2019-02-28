@@ -65,7 +65,7 @@ namespace WcfClient
             //       UpdateEmp(emp, OpreateType.Insert)
             UpdateModelReq<DemoView> updateReq = new UpdateModelReq<DemoView>();
             updateReq.model = dv;
-            updateReq.opreateType = OpreateType.Insert;
+            updateReq.opreateType = OperateType.Insert;
 
             WcfServiceHelper.WcfClient().UpdateDemoInfo(updateReq);
 
@@ -79,7 +79,7 @@ namespace WcfClient
             Close();
         }
 
-        private ModelListRsp<Emp> UpdateEmp(Emp empInfo, OpreateType operate)
+        private ModelListRsp<Emp> UpdateEmp(Emp empInfo, OperateType operate)
         {
             UpdateModelListReq<Emp> updateReq = new UpdateModelListReq<Emp>();
             updateReq.models.Add(empInfo);

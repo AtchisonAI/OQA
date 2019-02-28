@@ -72,14 +72,14 @@ namespace WcfService
             var sysdate = GetSystemDateTime();
             switch (updateReq.opreateType)
             {
-                case OpreateType.Insert:
+                case OperateType.Insert:
                     updateReq.model.CreateTime = sysdate;
                     updateReq.model.CreateUserId = updateReq.userId;
 
                     GetDb().Insert(updateReq.model);
                     break;
 
-                case OpreateType.Update:
+                case OperateType.Update:
                     var oldModel = GetDb().SingleOrDefaultById<T>(updateReq.model);
                     if (oldModel == null)
                     {
@@ -99,7 +99,7 @@ namespace WcfService
                     }
                     break;
 
-                case OpreateType.Delete:
+                case OperateType.Delete:
                     GetDb().Delete(updateReq.model);
                     break;
             }
@@ -116,11 +116,11 @@ namespace WcfService
           //  var sysdate = GetSystemDateTime();
             switch (updateReq.opreateType)
             {
-                case OpreateType.Insert:
+                case OperateType.Insert:
                     GetDb().Insert(updateReq.model);
                     break;
 
-                case OpreateType.Update:
+                case OperateType.Update:
                     var oldModel = GetDb().SingleOrDefaultById<T>(updateReq.model);
                     if (oldModel == null)
                     {
@@ -132,7 +132,7 @@ namespace WcfService
                     }
                     break;
 
-                case OpreateType.Delete:
+                case OperateType.Delete:
                     GetDb().Delete(updateReq.model);
                     break;
             }
@@ -230,7 +230,7 @@ namespace WcfService
         {
             switch (updateReq.opreateType)
             {
-                case OpreateType.Insert:
+                case OperateType.Insert:
                     foreach (var model in updateReq.models)
                     {
                         //var tableInfo = GetDb().PocoDataFactory.TableInfoForType(model.GetType());
@@ -239,7 +239,7 @@ namespace WcfService
                     }
                     break;
 
-                case OpreateType.Update:
+                case OperateType.Update:
                     foreach (var model in updateReq.models)
                     {
                         //get the old modeling object for create user/create time
@@ -255,7 +255,7 @@ namespace WcfService
                     }
                     break;
 
-                case OpreateType.Delete:
+                case OperateType.Delete:
                     foreach (var model in updateReq.models)
                         GetDb().Delete(model);
                     break;

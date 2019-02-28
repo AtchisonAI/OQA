@@ -37,6 +37,7 @@
             this.BorderColor = System.Drawing.Color.OliveDrab;
             this.BorderThickness = 2;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "BaseForm";
             this.Text = "BaseForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

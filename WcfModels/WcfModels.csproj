@@ -61,7 +61,7 @@
     <Compile Include="Message\WcfMsgBase.cs" />
     <Compile Include="Message\Login\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IModelingObject.cs" />
+    <Compile Include="ITrackModelObject.cs" />
     <Compile Include="QueryCondition.cs" />
     <Compile Include="View\ViewBase.cs" />
   </ItemGroup>

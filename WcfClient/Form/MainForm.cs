@@ -1,6 +1,5 @@
-﻿using Syncfusion.Windows.Forms.Tools;
-using System.Windows.Forms;
-using Utils.Authority;
+﻿using System.Windows.Forms;
+using WcfClient.Authority;
 
 namespace WcfClient
 {
@@ -85,8 +84,8 @@ namespace WcfClient
 
         private void MainForm_Load(object sender, System.EventArgs e)
         {
-            SetSytemStatusBar(AuthorityControl.systmePrifex.Trim(':'));
-            SetUserStatusBar(AuthorityControl.userId);
+            SetSytemStatusBar(AuthorityControl.GetUserProfile().systemPrefix.Trim(':'));
+            SetUserStatusBar(AuthorityControl.GetUserProfile().userId);
             SetActiveStatusBar(Text);
         }
 

@@ -1,7 +1,7 @@
 ﻿using Models.Message;
 using System.Collections.Generic;
 using Utils;
-using Utils.Authority;
+using WcfClient.Authority;
 using WcfClient.WcfService;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
@@ -58,7 +58,7 @@ namespace WcfClient
 
         private static void LoadUserProfile(UserProfile userProfile)
         {
-            AuthorityControl.LoadUserProfile(userProfile.userId, userProfile.passwd, userProfile.systemPrefix);
+            AuthorityControl.LoadUserProfile(userProfile);
         }
     }
 }

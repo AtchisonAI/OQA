@@ -34,7 +34,7 @@ namespace WcfClient
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             Syncfusion.Windows.Forms.Tools.CaptionButtonsCollection ccbSystem_panel = new Syncfusion.Windows.Forms.Tools.CaptionButtonsCollection();
             Syncfusion.Windows.Forms.Tools.CaptionButtonsCollection ccbEmp_panel = new Syncfusion.Windows.Forms.Tools.CaptionButtonsCollection();
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("员工信息");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("员工信息");
             this.dockingManager = new Syncfusion.Windows.Forms.Tools.DockingManager(this.components);
             this.System_panel = new System.Windows.Forms.Panel();
             this.Emp_panel = new System.Windows.Forms.Panel();
@@ -92,7 +92,7 @@ namespace WcfClient
             // 
             this.System_panel.Location = new System.Drawing.Point(1, 30);
             this.System_panel.Name = "System_panel";
-            this.System_panel.Size = new System.Drawing.Size(131, 615);
+            this.System_panel.Size = new System.Drawing.Size(135, 615);
             this.System_panel.TabIndex = 2;
             // 
             // Emp_panel
@@ -108,10 +108,10 @@ namespace WcfClient
             this.Emp_treeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Emp_treeView.Location = new System.Drawing.Point(0, 0);
             this.Emp_treeView.Name = "Emp_treeView";
-            treeNode2.Name = "Emp_Node";
-            treeNode2.Text = "员工信息";
+            treeNode1.Name = "Emp_Node";
+            treeNode1.Text = "员工信息";
             this.Emp_treeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode1});
             this.Emp_treeView.Size = new System.Drawing.Size(131, 615);
             this.Emp_treeView.TabIndex = 0;
             this.Emp_treeView.Click += new System.EventHandler(this.Emp_treeView_Click);

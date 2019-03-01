@@ -1,17 +1,13 @@
 ﻿using Syncfusion.Windows.Forms;
+using WcfClientCore.Form;
 
 namespace OQA_Core
 {
-    public partial class BaseForm : MetroForm
+    public partial class OQABaseForm : BaseForm
     {
-        public BaseForm()
+        public OQABaseForm()
         {
             InitializeComponent();
-        }
-
-        private void BaseForm_Load(object sender, System.EventArgs e)
-        {
-            AuthorityControl.InitializeAuthority(this);
         }
     }
 }

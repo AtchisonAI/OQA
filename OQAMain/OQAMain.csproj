@@ -285,9 +285,6 @@
     <Reference Include="WCFModels">
       <HintPath>..\Components\WCFModels.dll</HintPath>
     </Reference>
-    <Reference Include="WcfService">
-      <HintPath>..\Components\WcfService.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connected Services\CallService\Reference.cs">
@@ -295,12 +292,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="InsertEmpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsertEmpForm.Designer.cs">
+      <DependentUpon>InsertEmpForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Sever.cs" />
     <Compile Include="EmpForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -312,6 +314,9 @@
   <ItemGroup>
     <EmbeddedResource Include="EmpForm.resx">
       <DependentUpon>EmpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertEmpForm.resx">
+      <DependentUpon>InsertEmpForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -373,9 +378,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WcfClient\WcfClient.csproj">
-      <Project>{39E7EC5C-D223-4CF9-A034-969CB60AD090}</Project>
-      <Name>WcfClient</Name>
+    <ProjectReference Include="..\WcfClientCore\WcfClientCore.csproj">
+      <Project>{04786636-8825-4fda-8841-687c2880bf26}</Project>
+      <Name>WcfClientCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

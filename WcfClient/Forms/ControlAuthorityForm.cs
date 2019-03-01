@@ -1,8 +1,10 @@
-﻿using Models.Message;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using WcfClientCore.Form;
+using WcfClientCore.WcfSrv;
 using WCFModels;
 using WCFModels.MESDB.FWTST1;
+using WCFModels.Message;
 
 namespace WcfClient.Forms
 {
@@ -21,7 +23,7 @@ namespace WcfClient.Forms
                 AccessString = accessString_textBox.Text.Trim()
             };
 
-            WcfServiceHelper.UpdateControlAccessString(controlAcc, OperateType.Insert);
+            Srv.UpdateControlAccessString(controlAcc, OperateType.Insert);
             List<ControlAccessString> contrlList = new List<ControlAccessString>();
             contrlList.Add(controlAcc);
 
@@ -35,7 +37,7 @@ namespace WcfClient.Forms
             var recoder = sfDataGrid.SelectedItem;
             if ( recoder != null)
             {
-                WcfServiceHelper.UpdateControlAccessString((ControlAccessString)recoder, OperateType.Update);
+                Srv.UpdateControlAccessString((ControlAccessString)recoder, OperateType.Update);
             }
         }
 
@@ -44,7 +46,7 @@ namespace WcfClient.Forms
             var recoder = sfDataGrid.SelectedItem;
             if (recoder != null)
             {
-                WcfServiceHelper.UpdateControlAccessString((ControlAccessString)recoder,OperateType.Delete);
+                Srv.UpdateControlAccessString((ControlAccessString)recoder,OperateType.Delete);
             }
         }
 
@@ -104,7 +106,7 @@ namespace WcfClient.Forms
             };
 
             queryReq.sortCondittionList.Add(sortCon);
-            return WcfServiceHelper.WcfClient().PageQueryControlAccessString(queryReq);
+            return Srv.Client().PageQueryControlAccessString(queryReq);
         }
     }
 }

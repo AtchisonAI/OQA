@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Utils;
-using WCFModels;
 
-namespace Models.Message
+namespace WCFModels.Message
 {
     public enum OperateType
     {

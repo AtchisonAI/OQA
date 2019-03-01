@@ -1,6 +1,6 @@
 ﻿namespace OQA_Core
 {
-    partial class BaseForm
+    partial class OQABaseForm
     {
         /// <summary>
         /// Required designer variable.
@@ -42,7 +42,6 @@
             this.Name = "BaseForm";
             this.Text = "BaseForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.BaseForm_Load);
             this.ResumeLayout(false);
 
         }

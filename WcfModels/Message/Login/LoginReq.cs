@@ -1,5 +1,4 @@
-﻿using Models.Message;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace WCFModels.Message
 {

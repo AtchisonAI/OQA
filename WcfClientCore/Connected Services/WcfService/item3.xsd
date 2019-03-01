@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WCFModels.Message" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCFModels.Message" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WcfService/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WcfService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/WCFModels" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WcfService/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" />
+  <xs:complexType name="LoginReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="userProfile" nillable="true" type="tns:UserProfile" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LoginReq" nillable="true" type="tns:LoginReq" />
+  <xs:complexType name="BaseReq">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="BaseReq" nillable="true" type="tns:BaseReq" />
+  <xs:complexType name="UserProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="passwd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="systemPrefix" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserProfile" nillable="true" type="tns:UserProfile" />
+  <xs:complexType name="ModelListRspOfstring">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ModelListRspOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/WCFModels.Message" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseRsp">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="models" nillable="true" type="q1:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModelListRspOfstring" nillable="true" type="tns:ModelListRspOfstring" />
+  <xs:complexType name="BaseRsp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="_ErrorMsg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="_MsgCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="_StackTrace" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="__ByPass" type="xs:boolean" />
+      <xs:element minOccurs="0" name="_success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseRsp" nillable="true" type="tns:BaseRsp" />
+  <xs:complexType name="QueryReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WCFModels" minOccurs="0" name="queryConditionList" nillable="true" type="q2:ArrayOfQueryCondition" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryReq" nillable="true" type="tns:QueryReq" />
+  <xs:complexType name="ModelListRspOfControlAccessStringf1ACQ2Mn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ModelListRspOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/WCFModels.Message" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ControlAccessString" Namespace="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseRsp">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="models" nillable="true" type="q3:ArrayOfControlAccessString" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModelListRspOfControlAccessStringf1ACQ2Mn" nillable="true" type="tns:ModelListRspOfControlAccessStringf1ACQ2Mn" />
+  <xs:complexType name="PageQueryReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CurrentPage" type="xs:int" />
+          <xs:element minOccurs="0" name="ItemsPerPage" type="xs:int" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WCFModels" minOccurs="0" name="sortCondittionList" nillable="true" type="q4:ArrayOfSortCondition" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PageQueryReq" nillable="true" type="tns:PageQueryReq" />
+  <xs:complexType name="PageModelRspOfControlAccessStringf1ACQ2Mn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="PageModelRspOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/WCFModels.Message" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ControlAccessString" Namespace="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PageRsp">
+        <xs:sequence>
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="models" nillable="true" type="q5:ArrayOfControlAccessString" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PageModelRspOfControlAccessStringf1ACQ2Mn" nillable="true" type="tns:PageModelRspOfControlAccessStringf1ACQ2Mn" />
+  <xs:complexType name="PageRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseRsp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CurrentPage" type="xs:int" />
+          <xs:element minOccurs="0" name="IsMorePage" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ItemsPerPage" type="xs:int" />
+          <xs:element minOccurs="0" name="TotalItems" type="xs:int" />
+          <xs:element minOccurs="0" name="TotalPage" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PageRsp" nillable="true" type="tns:PageRsp" />
+  <xs:complexType name="UpdateModelReqOfControlAccessStringf1ACQ2Mn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="UpdateModelReqOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/WCFModels.Message" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ControlAccessString" Namespace="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UpdateReq">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="model" nillable="true" type="q6:ControlAccessString" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateModelReqOfControlAccessStringf1ACQ2Mn" nillable="true" type="tns:UpdateModelReqOfControlAccessStringf1ACQ2Mn" />
+  <xs:complexType name="UpdateReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="opreateType" type="tns:OperateType" />
+          <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateReq" nillable="true" type="tns:UpdateReq" />
+  <xs:simpleType name="OperateType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Insert" />
+      <xs:enumeration value="Update" />
+      <xs:enumeration value="Delete" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OperateType" nillable="true" type="tns:OperateType" />
+  <xs:complexType name="ModelRspOfControlAccessStringf1ACQ2Mn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ModelRspOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/WCFModels.Message" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ControlAccessString" Namespace="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseRsp">
+        <xs:sequence>
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCFModels.MESDB.FWTST1" minOccurs="0" name="model" nillable="true" type="q7:ControlAccessString" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModelRspOfControlAccessStringf1ACQ2Mn" nillable="true" type="tns:ModelRspOfControlAccessStringf1ACQ2Mn" />
+</xs:schema>

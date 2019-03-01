@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using WcfClientCore.WcfSrv;
 using WCFModels.Message;
 
 namespace WcfClient
@@ -22,7 +23,7 @@ namespace WcfClient
             }
             else
             {
-                if (WcfServiceHelper.Login(new UserProfile(userName, passwd, "OQA:")))
+                if (Srv.Login(new UserProfile(userName, passwd, "OQA:")))
                 {
                     DialogResult = DialogResult.OK;
                     Close();

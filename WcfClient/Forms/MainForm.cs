@@ -1,6 +1,8 @@
-﻿using System.Windows.Forms;
-using WcfClient.Authority;
+﻿using OQAMain;
+using System.Windows.Forms;
 using WcfClient.Forms;
+using WcfClientCore.Form;
+using WcfClientCore.Utils.Authority;
 
 namespace WcfClient
 {
@@ -39,20 +41,12 @@ namespace WcfClient
             return false;
         }
 
-        EmpForm empFrm;
         private void Emp_ToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            if (empFrm !=null && empFrm.IsDisposed == false)
-            {
-                empFrm.Activate();
-            }
-            else
-            {
-                empFrm = new EmpForm();
-                dockingManager.SetEnableDocking(empFrm, true);
-                dockingManager.SetAsMDIChild(empFrm, true);
-                empFrm.Show();
-            }
+            EmpForm empFrm = new EmpForm();
+            dockingManager.SetEnableDocking(empFrm, true);
+            dockingManager.SetAsMDIChild(empFrm, true);
+            empFrm.Show();
 
             SetActiveStatusBar(empFrm.Text);
         }

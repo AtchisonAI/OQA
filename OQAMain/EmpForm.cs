@@ -1,19 +1,15 @@
-﻿using Models.Message;
-using Syncfusion.Windows.Forms.Chart;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using WCFModels;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
-using Utils;
 using OQA_Core;
-//using WcfClient;
 
 namespace OQAMain
 {
-    public partial class EmpForm : BaseForm
+    public partial class EmpForm : OQABaseForm
     {
         public EmpForm()
         {
@@ -86,8 +82,7 @@ namespace OQAMain
         private PageModelRsp<Emp> PageQueryEmp(int index,int pageSize)
         {
             QueryEmpReq queryEmpReq = AllocateQueryEmpReq(index, pageSize);
-              return Svr.CallService().QueryEmpInfo(queryEmpReq);
-            
+              return OQASrv.CallServer().QueryEmpInfo(queryEmpReq);
         }
 
 

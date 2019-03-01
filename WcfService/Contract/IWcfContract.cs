@@ -1,10 +1,4 @@
-﻿using Models.Message;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ServiceModel;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 
@@ -28,23 +22,5 @@ namespace WcfService.Contract
         ModelRsp<ControlAccessString> UpdateControlAccessString(UpdateModelReq<ControlAccessString> updateReq);
 
         #endregion
-
-        #region Emp
-        [OperationContract]
-        PageModelRsp<Emp> QueryEmpInfo(QueryEmpReq queryEmpReq);
-
-        [OperationContract]
-        ModelListRsp<CEmpPercentView> QueryEmpPercent(QueryReq queryReq);
-
-        [OperationContract]
-        ModelListRsp<CEmpSumView> QueryEmpSum(QueryReq queryReq);
-
-        [OperationContract]
-        ModelListRsp<Emp> UpdateEmpInfo(UpdateModelListReq<Emp> updateReq);
-        #endregion
-
-        [OperationContract]
-        ModelRsp<DemoView> UpdateDemoInfo(UpdateModelReq<DemoView> updateReq);
-
     }
 }

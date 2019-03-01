@@ -1,29 +1,45 @@
-﻿using Models;
-using Models.Message;
-using NPoco;
+﻿using NPoco;
 using NPoco.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Utils.Log;
 using WCFModels;
+using WCFModels.Message;
 
 namespace WcfService
 {
     public class BaseService
     {
         public string connectStringName = "WCFFrameDB";
-        private Dictionary<string, IDatabase> dbSet = new Dictionary<string, IDatabase>();
+        public IDatabase db;
+        //private Dictionary<string, IDatabase> dbSet = new Dictionary<string, IDatabase>();
+
+        public BaseService()
+        {
+            db = new MyDB(connectStringName);
+        }
+
+        public BaseService( string connectStr)
+        {
+            connectStringName = connectStr;
+            db = new MyDB(connectStringName);
+        }
+
+        //private IDatabase GetDb()
+        //{
+        //    IDatabase db = null;
+        //    if (!dbSet.TryGetValue(connectStringName, out db))
+        //    {
+        //        db = new MyDB(connectStringName);
+        //        dbSet.Add(connectStringName, db);
+        //    } 
+
+        //    return db;
+        //}
 
         private IDatabase GetDb()
         {
-            IDatabase db = null;
-            if (!dbSet.TryGetValue(connectStringName, out db))
-            {
-                db = new MyDB(connectStringName);
-                dbSet.Add(connectStringName, db);
-            } 
-
             return db;
         }
 

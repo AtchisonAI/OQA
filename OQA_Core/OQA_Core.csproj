@@ -73,6 +73,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -80,18 +82,28 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WCFModels">
-      <HintPath>..\WCFModels\bin\Debug\WCFModels.dll</HintPath>
+    <Reference Include="Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="WCFModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\WCFModels.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthorityControl.cs" />
     <Compile Include="BaseForms\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BaseForms\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\OQAService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="OQASrv.cs" />
     <Compile Include="GlobalConstant.cs" />
     <Compile Include="CommonFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,6 +115,56 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\OQAService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OQAService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OQAService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OQAService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OQAService\item4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OQAService\OQAService.wsdl" />
+    <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpPercentView.datasource" />
+    <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpSumView.datasource" />
+    <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.Emp.datasource" />
+    <None Include="Properties\DataSources\WCFModels.Message.DemoView.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WcfClientCore\WcfClientCore.csproj">
+      <Project>{04786636-8825-4fda-8841-687c2880bf26}</Project>
+      <Name>WcfClientCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\OQAService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OQAService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OQAService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OQAService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OQAService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

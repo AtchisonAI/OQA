@@ -1,5 +1,4 @@
-﻿using Models.Message;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using WCFModels.MESDB.FWTST1;
 

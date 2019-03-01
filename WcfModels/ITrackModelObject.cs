@@ -1,6 +1,6 @@
 ﻿using NPoco;
 
-namespace Models
+namespace WCFModels
 {
     public interface ITrackModelObject
     {

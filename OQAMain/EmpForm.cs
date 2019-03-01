@@ -6,6 +6,8 @@ using WCFModels;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 using OQA_Core;
+using Syncfusion.Windows.Forms.Chart;
+using WcfClientCore.Utils.Chart;
 
 namespace OQAMain
 {
@@ -29,6 +31,7 @@ namespace OQAMain
 
             emp_sfDataPager.Refresh();
 
+            DrawChart();
         }
 
         private void reset_btn_Click(object sender, System.EventArgs e)
@@ -166,13 +169,13 @@ namespace OQAMain
             updateReq.models.Add(empInfo);
             updateReq.opreateType = operate;
 
-           // var res = WcfServiceHelper.WcfClient().UpdateEmpInfo(updateReq);
+            var res = OQASrv.CallServer().UpdateEmpInfo(updateReq);
         }
 
         private void insert_sfButton_Click(object sender, EventArgs e)
         {
-            //InsertEmpForm form = new InsertEmpForm();
-            //form.Show();
+            InsertEmpForm form = new InsertEmpForm();
+            form.Show();
         }
 
         private void update_sfButton_Click(object sender, EventArgs e)
@@ -189,6 +192,61 @@ namespace OQAMain
             emp_sfDataGrid.Refresh();
         }
 
+        private void empPieChartControl_ChartRegionClick(object sender, ChartRegionMouseEventArgs e)
+        {
+            if (empPieChartControl.Series3D)
+            {
+                empPieChartControl.Series3D = false;
+            }
+            else
+            {
+                empPieChartControl.Series3D = true;
+            }
+        }
 
+        private void empChartControl_ChartRegionClick(object sender, ChartRegionMouseEventArgs e)
+        {
+            if (empChartControl.Series3D)
+            {
+                empChartControl.Series3D = false;
+            }
+            else
+            {
+                empChartControl.Series3D = true;
+            }
+        }
+
+        private void DrawChart()
+        {
+            QueryReq queryReq = new QueryReq();
+            var percentRes = OQASrv.CallServer().QueryEmpPercent(queryReq).models;
+            var sumRes = OQASrv.CallServer().QueryEmpSum(queryReq).models;
+
+            if (empChartControl.Visible == false)
+            {
+                empChartControl.Visible = true;
+            }
+
+            if (empPieChartControl.Visible == false)
+            {
+                empPieChartControl.Visible = true;
+            }
+
+            empChartControl.ResetChart();
+            empChartControl.AddSeries("Sum", sumRes, ChartSeriesType.Column, true);
+
+            empChartControl.AddSecY(ChartAxesLayoutMode.Stacking, ChartTitleDrawMode.Wrap);
+            empChartControl.AddSeries("Percent", percentRes, ChartSeriesType.Line, false);
+            empChartControl.SetLegend();
+            empChartControl.Skins = Skins.Metro;
+            empChartControl.Series3D = true;
+
+            empPieChartControl.ResetChart();
+            empPieChartControl.AddSeries("Sum", sumRes, ChartSeriesType.Pie, true);
+
+            empPieChartControl.SetLegend();
+            empPieChartControl.Skins = Skins.Metro;
+            empPieChartControl.Series3D = true;
+        }
     }
 }

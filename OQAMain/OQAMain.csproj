@@ -290,11 +290,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\CallService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -319,28 +314,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\CallService\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CallService\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CallService\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CallService\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CallService\item4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CallService\item5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CallService\item6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CallService\WcfService.wsdl" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpPercentView.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpSumView.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.ControlAccessString.datasource" />
@@ -349,27 +322,6 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\CallService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\CallService\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\CallService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\CallService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\CallService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

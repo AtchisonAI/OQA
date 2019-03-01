@@ -169,13 +169,13 @@ namespace OQAMain
             updateReq.models.Add(empInfo);
             updateReq.opreateType = operate;
 
-           // var res = WcfServiceHelper.WcfClient().UpdateEmpInfo(updateReq);
+            var res = OQASrv.CallServer().UpdateEmpInfo(updateReq);
         }
 
         private void insert_sfButton_Click(object sender, EventArgs e)
         {
-            //InsertEmpForm form = new InsertEmpForm();
-            //form.Show();
+            InsertEmpForm form = new InsertEmpForm();
+            form.Show();
         }
 
         private void update_sfButton_Click(object sender, EventArgs e)

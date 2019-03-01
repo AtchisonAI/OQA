@@ -188,5 +188,7 @@ namespace OQAMain
             emp_sfDataGrid.DeleteSelectedRecords();
             emp_sfDataGrid.Refresh();
         }
+
+
     }
 }

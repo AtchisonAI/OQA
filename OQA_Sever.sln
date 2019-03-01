@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService", "..\WcfService\WcfService.csproj", "{A19B87EE-049D-4600-845C-F33B22DCEC8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService", "WcfService\WcfService.csproj", "{A19B87EE-049D-4600-845C-F33B22DCEC8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfModels", "..\WcfModels\WcfModels.csproj", "{479849CD-3F79-4B29-ACD0-ADCED9DC3A6E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfModels", "WcfModels\WcfModels.csproj", "{479849CD-3F79-4B29-ACD0-ADCED9DC3A6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfHost", "..\WcfHost\WcfHost.csproj", "{C2F9C329-024C-497E-9308-15457A3E947E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfHost", "WcfHost\WcfHost.csproj", "{C2F9C329-024C-497E-9308-15457A3E947E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

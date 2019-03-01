@@ -64,6 +64,19 @@
     <Compile Include="Message\RMS\QueryRmsUser.cs" />
     <Compile Include="Message\WcfMsgBase.cs" />
     <Compile Include="Message\Login\UserProfile.cs" />
+    <Compile Include="2.OQATableStruct\S_PKGSHPDAT.cs" />
+    <Compile Include="2.OQATableStruct\S_PKGSHPSTS.cs" />
+    <Compile Include="2.OQATableStruct\S_PKGSLTDEF.cs" />
+    <Compile Include="2.OQATableStruct\S_ISPIMGDEF.cs" />
+    <Compile Include="2.OQATableStruct\S_ISPLOTHIS.cs" />
+    <Compile Include="2.OQATableStruct\S_ISPLOTSTS.cs" />
+    <Compile Include="2.OQATableStruct\S_ISPWAFDFT.cs" />
+    <Compile Include="2.OQATableStruct\S_ISPWAFITM.cs" />
+    <Compile Include="2.OQATableStruct\S_ISPWAFSTS.cs" />
+    <Compile Include="2.OQATableStruct\S_OUT_PNDN.cs" />
+    <Compile Include="2.OQATableStruct\S_ISPITMDEF.cs" />
+    <Compile Include="2.OQATableStruct\S_ISPDFTDEF.cs" />
+    <Compile Include="2.OQATableStruct\S_ISPAREDEF.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ITrackModelObject.cs" />
     <Compile Include="QueryCondition.cs" />
@@ -72,6 +85,21 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="1.OQASeverStruct\1 Lot inspect\" />
+    <Folder Include="1.OQASeverStruct\10 Package Label Print\" />
+    <Folder Include="1.OQASeverStruct\11 Wafer Insection Record Print\" />
+    <Folder Include="1.OQASeverStruct\12 IOQA Ship List Print\" />
+    <Folder Include="1.OQASeverStruct\13 Defect code set\" />
+    <Folder Include="1.OQASeverStruct\2 Defect Lot result\" />
+    <Folder Include="1.OQASeverStruct\3 AOI inspection input\" />
+    <Folder Include="1.OQASeverStruct\4 Marco inspection input\" />
+    <Folder Include="1.OQASeverStruct\5 Mirco inspection input\" />
+    <Folder Include="1.OQASeverStruct\6 Defect send %28PNDN%29\" />
+    <Folder Include="1.OQASeverStruct\7 FOUP change\" />
+    <Folder Include="1.OQASeverStruct\8 Lot package\" />
+    <Folder Include="1.OQASeverStruct\9 Lot Transfer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -330,9 +330,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\WcfClientCore\WcfClientCore.csproj">
       <Project>{04786636-8825-4fda-8841-687c2880bf26}</Project>
       <Name>WcfClientCore</Name>

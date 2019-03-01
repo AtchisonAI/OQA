@@ -57,6 +57,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Emp\QueryEmpInfo.cs" />
     <Compile Include="Emp\EmpService.cs" />
     <Compile Include="IOQAContract.cs" />
     <Compile Include="OQABaseService.cs" />
@@ -74,6 +75,21 @@
       <Project>{a19b87ee-049d-4600-845c-f33b22dcec8b}</Project>
       <Name>WcfService</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="1 Lot inspect\" />
+    <Folder Include="10 Package Label Print\" />
+    <Folder Include="11 Wafer Insection Record Print\" />
+    <Folder Include="12 IOQA Ship List Print\" />
+    <Folder Include="13 Defect code set\" />
+    <Folder Include="2 Defect Lot result\" />
+    <Folder Include="3 AOI inspection input\" />
+    <Folder Include="4 Marco inspection input\" />
+    <Folder Include="5 Mirco inspection input\" />
+    <Folder Include="6 Defect send %28PNDN%29\" />
+    <Folder Include="7 FOUP change\" />
+    <Folder Include="8 Lot package\" />
+    <Folder Include="9 Lot Transfer\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

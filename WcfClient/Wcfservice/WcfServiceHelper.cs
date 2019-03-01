@@ -39,6 +39,17 @@ namespace WcfClient
             return WcfClient().QueryControlAccessString(req);
         }
 
+        public static ModelRsp<ControlAccessString> UpdateControlAccessString(ControlAccessString dbModel, OperateType type)
+        {
+            UpdateModelReq<ControlAccessString> updateReq = new UpdateModelReq<ControlAccessString>()
+            {
+                model = dbModel,
+                opreateType = type
+            };
+
+            return WcfClient().UpdateControlAccessString(updateReq);
+        }
+
         private static void LoadUserAccessString(IList<string> userAccessList)
         {
             AuthorityControl.LoadUserAccessString(userAccessList);

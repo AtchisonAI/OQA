@@ -30,73 +30,101 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="PageQueryControlAccessString">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="pageQueryReq" nillable="true" type="q5:PageQueryReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PageQueryControlAccessStringResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="PageQueryControlAccessStringResult" nillable="true" type="q6:PageModelRspOfControlAccessStringf1ACQ2Mn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateControlAccessString">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="updateReq" nillable="true" type="q7:UpdateModelReqOfControlAccessStringf1ACQ2Mn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateControlAccessStringResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="UpdateControlAccessStringResult" nillable="true" type="q8:ModelRspOfControlAccessStringf1ACQ2Mn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="QueryEmpInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WCFModels.Message" minOccurs="0" name="queryEmpReq" nillable="true" type="q5:QueryEmpReq" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFModels.Message" minOccurs="0" name="queryEmpReq" nillable="true" type="q9:QueryEmpReq" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="QueryEmpInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="QueryEmpInfoResult" nillable="true" type="q6:PageModelRspOfEmpf1ACQ2Mn" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="QueryEmpInfoResult" nillable="true" type="q10:PageModelRspOfEmpf1ACQ2Mn" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="QueryEmpPercent">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="queryReq" nillable="true" type="q7:QueryReq" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="queryReq" nillable="true" type="q11:QueryReq" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="QueryEmpPercentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="QueryEmpPercentResult" nillable="true" type="q8:ModelListRspOfCEmpPercentViewf1ACQ2Mn" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="QueryEmpPercentResult" nillable="true" type="q12:ModelListRspOfCEmpPercentViewf1ACQ2Mn" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="QueryEmpSum">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="queryReq" nillable="true" type="q9:QueryReq" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="queryReq" nillable="true" type="q13:QueryReq" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="QueryEmpSumResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="QueryEmpSumResult" nillable="true" type="q10:ModelListRspOfCEmpSumViewf1ACQ2Mn" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="QueryEmpSumResult" nillable="true" type="q14:ModelListRspOfCEmpSumViewf1ACQ2Mn" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateEmpInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="updateReq" nillable="true" type="q11:UpdateModelListReqOfEmpf1ACQ2Mn" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="updateReq" nillable="true" type="q15:UpdateModelListReqOfEmpf1ACQ2Mn" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateEmpInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="UpdateEmpInfoResult" nillable="true" type="q12:ModelListRspOfEmpf1ACQ2Mn" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="UpdateEmpInfoResult" nillable="true" type="q16:ModelListRspOfEmpf1ACQ2Mn" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateDemoInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="updateReq" nillable="true" type="q13:UpdateModelReqOfDemoViewGPUP1COi" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="updateReq" nillable="true" type="q17:UpdateModelReqOfDemoViewGPUP1COi" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateDemoInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="UpdateDemoInfoResult" nillable="true" type="q14:ModelRspOfDemoViewGPUP1COi" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Models.Message" minOccurs="0" name="UpdateDemoInfoResult" nillable="true" type="q18:ModelRspOfDemoViewGPUP1COi" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

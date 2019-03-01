@@ -41,6 +41,8 @@ namespace WcfClient
             this.Emp_treeView = new System.Windows.Forms.TreeView();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.System_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Authority_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ShortCut_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Emp_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Rep_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabbedGroupedMDIManager = new Syncfusion.Windows.Forms.Tools.TabbedGroupedMDIManager();
@@ -66,8 +68,11 @@ namespace WcfClient
             // 
             this.dockingManager.AnimateAutoHiddenWindow = true;
             this.dockingManager.AutoHideTabForeColor = System.Drawing.Color.Empty;
+            this.dockingManager.DockBehavior = Syncfusion.Windows.Forms.Tools.DockBehavior.VS2010;
             this.dockingManager.DockLayoutStream = ((System.IO.MemoryStream)(resources.GetObject("dockingManager.DockLayoutStream")));
+            this.dockingManager.DragProviderStyle = Syncfusion.Windows.Forms.Tools.DragProviderStyle.Whidbey;
             this.dockingManager.HostControl = this;
+            this.dockingManager.MenuStyle = Syncfusion.Windows.Forms.Tools.DockMenuStyle.VS2003;
             this.dockingManager.MetroButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dockingManager.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(158)))), ((int)(((byte)(218)))));
             this.dockingManager.MetroSplitterBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(159)))), ((int)(((byte)(183)))));
@@ -92,8 +97,9 @@ namespace WcfClient
             // 
             this.System_panel.Location = new System.Drawing.Point(1, 30);
             this.System_panel.Name = "System_panel";
-            this.System_panel.Size = new System.Drawing.Size(135, 615);
+            this.System_panel.Size = new System.Drawing.Size(131, 615);
             this.System_panel.TabIndex = 2;
+            this.System_panel.Visible = false;
             // 
             // Emp_panel
             // 
@@ -102,6 +108,7 @@ namespace WcfClient
             this.Emp_panel.Name = "Emp_panel";
             this.Emp_panel.Size = new System.Drawing.Size(131, 615);
             this.Emp_panel.TabIndex = 4;
+            this.Emp_panel.Visible = false;
             // 
             // Emp_treeView
             // 
@@ -132,10 +139,26 @@ namespace WcfClient
             // 
             // System_ToolStripMenuItem
             // 
+            this.System_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Authority_ToolStripMenuItem,
+            this.ShortCut_ToolStripMenuItem});
             this.System_ToolStripMenuItem.Name = "System_ToolStripMenuItem";
             this.System_ToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
             this.System_ToolStripMenuItem.Text = "系统";
-            this.System_ToolStripMenuItem.Click += new System.EventHandler(this.System_ToolStripMenuItem_Click);
+            // 
+            // Authority_ToolStripMenuItem
+            // 
+            this.Authority_ToolStripMenuItem.Name = "Authority_ToolStripMenuItem";
+            this.Authority_ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.Authority_ToolStripMenuItem.Text = "权限控制";
+            this.Authority_ToolStripMenuItem.Click += new System.EventHandler(this.Authority_ToolStripMenuItem_Click);
+            // 
+            // ShortCut_ToolStripMenuItem
+            // 
+            this.ShortCut_ToolStripMenuItem.Name = "ShortCut_ToolStripMenuItem";
+            this.ShortCut_ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.ShortCut_ToolStripMenuItem.Text = "快捷菜单";
+            this.ShortCut_ToolStripMenuItem.Click += new System.EventHandler(this.ShortCut_ToolStripMenuItem_Click);
             // 
             // Emp_ToolStripMenuItem
             // 
@@ -161,6 +184,7 @@ namespace WcfClient
             this.tabbedGroupedMDIManager.ImageSize = new System.Drawing.Size(16, 16);
             this.tabbedGroupedMDIManager.NeedUpdateHostedForm = false;
             this.tabbedGroupedMDIManager.ShowCloseButton = true;
+            this.tabbedGroupedMDIManager.ThemesEnabled = true;
             // 
             // statusBarAdv
             // 
@@ -256,6 +280,7 @@ namespace WcfClient
             this.Controls.Add(this.statusBarAdv);
             this.Controls.Add(this.menuStrip);
             this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.Location = new System.Drawing.Point(0, 0);
@@ -295,5 +320,7 @@ namespace WcfClient
         private Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel Active_statusBarAdvPanel;
         private Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel Date_statusBarAdvPanel;
         private Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel Time_statusBarAdvPanel;
+        private ToolStripMenuItem Authority_ToolStripMenuItem;
+        private ToolStripMenuItem ShortCut_ToolStripMenuItem;
     }
 }

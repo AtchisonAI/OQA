@@ -5,7 +5,7 @@ using WCFModels;
 
 namespace Models.Message
 {
-    public enum OpreateType
+    public enum OperateType
     {
         Insert,//表中无记录，需要新建
         Update,//表中有记录，需要更新
@@ -57,7 +57,7 @@ namespace Models.Message
     public class UpdateReq: BaseReq
     {
         [DataMember]
-        public OpreateType opreateType { get; set; }
+        public OperateType opreateType { get; set; }
 
         [DataMember]
         public string userId { get; set; }

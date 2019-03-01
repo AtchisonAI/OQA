@@ -7,7 +7,7 @@ namespace WCFModels.MESDB.FWTST1
 {
     [DataContract]
     [TableName("CONTROLACCESSSTRING")]
-    [PrimaryKey("ControlID")]
+    [PrimaryKey("ControlID" ,AutoIncrement = false)]
     [ExplicitColumns]
     public partial class ControlAccessString
     {

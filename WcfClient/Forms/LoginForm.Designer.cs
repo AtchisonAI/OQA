@@ -53,7 +53,7 @@
             this.logInBtn.Location = new System.Drawing.Point(243, 253);
             this.logInBtn.Name = "logInBtn";
             this.logInBtn.Size = new System.Drawing.Size(70, 32);
-            this.logInBtn.TabIndex = 0;
+            this.logInBtn.TabIndex = 2;
             this.logInBtn.Text = "登陆";
             this.logInBtn.UseVisualStyleBackColor = false;
             this.logInBtn.Click += new System.EventHandler(this.logInBtn_Click);
@@ -67,7 +67,7 @@
             this.cancleBtn.Location = new System.Drawing.Point(371, 253);
             this.cancleBtn.Name = "cancleBtn";
             this.cancleBtn.Size = new System.Drawing.Size(70, 32);
-            this.cancleBtn.TabIndex = 1;
+            this.cancleBtn.TabIndex = 3;
             this.cancleBtn.Text = "退出";
             this.cancleBtn.UseVisualStyleBackColor = false;
             this.cancleBtn.Click += new System.EventHandler(this.cancleBtn_Click);
@@ -77,7 +77,8 @@
             this.userNameTbx.Location = new System.Drawing.Point(257, 140);
             this.userNameTbx.Name = "userNameTbx";
             this.userNameTbx.Size = new System.Drawing.Size(191, 25);
-            this.userNameTbx.TabIndex = 2;
+            this.userNameTbx.TabIndex = 0;
+            this.userNameTbx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.userNameTbx_KeyPress);
             // 
             // passwdTbx
             // 
@@ -85,7 +86,8 @@
             this.passwdTbx.Name = "passwdTbx";
             this.passwdTbx.PasswordChar = '*';
             this.passwdTbx.Size = new System.Drawing.Size(191, 25);
-            this.passwdTbx.TabIndex = 3;
+            this.passwdTbx.TabIndex = 1;
+            this.passwdTbx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.passwdTbx_KeyPress);
             // 
             // pictureBox1
             // 
@@ -105,7 +107,7 @@
             this.id_label.ForeColor = System.Drawing.Color.DarkBlue;
             this.id_label.Location = new System.Drawing.Point(195, 143);
             this.id_label.Name = "id_label";
-            this.id_label.Size = new System.Drawing.Size(50, 18);
+            this.id_label.Size = new System.Drawing.Size(53, 19);
             this.id_label.TabIndex = 7;
             this.id_label.Text = "账号:";
             this.id_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -118,7 +120,7 @@
             this.pd_label.ForeColor = System.Drawing.Color.DarkBlue;
             this.pd_label.Location = new System.Drawing.Point(195, 198);
             this.pd_label.Name = "pd_label";
-            this.pd_label.Size = new System.Drawing.Size(50, 18);
+            this.pd_label.Size = new System.Drawing.Size(53, 19);
             this.pd_label.TabIndex = 7;
             this.pd_label.Text = "密码:";
             this.pd_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

@@ -21,6 +21,12 @@ namespace WcfService.Contract
         [OperationContract]
         ModelListRsp<ControlAccessString> QueryControlAccessString(QueryReq queryReq);
 
+        [OperationContract]
+        PageModelRsp<ControlAccessString> PageQueryControlAccessString(PageQueryReq pageQueryReq);
+
+        [OperationContract]
+        ModelRsp<ControlAccessString> UpdateControlAccessString(UpdateModelReq<ControlAccessString> updateReq);
+
         #endregion
 
         #region Emp

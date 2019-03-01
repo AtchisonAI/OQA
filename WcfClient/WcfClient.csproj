@@ -94,18 +94,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Utils\Authority\AuthorityControl.cs" />
-    <Compile Include="Form\BaseForm.cs">
+    <Compile Include="Forms\ControlAuthorityForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\BaseForm.Designer.cs">
+    <Compile Include="Forms\ControlAuthorityForm.Designer.cs">
+      <DependentUpon>ControlAuthorityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Authority\AuthorityControl.cs" />
+    <Compile Include="Forms\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Chart\ChartExt.cs" />
-    <Compile Include="Form\ShortcutForm.cs">
+    <Compile Include="Forms\ShortcutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\ShortcutForm.Designer.cs">
+    <Compile Include="Forms\ShortcutForm.Designer.cs">
       <DependentUpon>ShortcutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\WcfService\Reference.cs">
@@ -113,52 +119,55 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Form\EmpForm.cs">
+    <Compile Include="Forms\EmpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\EmpForm.Designer.cs">
+    <Compile Include="Forms\EmpForm.Designer.cs">
       <DependentUpon>EmpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\InsertEmpForm.cs">
+    <Compile Include="Forms\InsertEmpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\InsertEmpForm.Designer.cs">
+    <Compile Include="Forms\InsertEmpForm.Designer.cs">
       <DependentUpon>InsertEmpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\LoginForm.cs">
+    <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\LoginForm.Designer.cs">
+    <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Form\ReportForm.cs">
+    <Compile Include="Forms\ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\ReportForm.Designer.cs">
+    <Compile Include="Forms\ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Wcfservice\WcfServiceHelper.cs" />
-    <EmbeddedResource Include="Form\BaseForm.resx">
+    <EmbeddedResource Include="Forms\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\EmpForm.resx">
+    <EmbeddedResource Include="Forms\ControlAuthorityForm.resx">
+      <DependentUpon>ControlAuthorityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EmpForm.resx">
       <DependentUpon>EmpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\InsertEmpForm.resx">
+    <EmbeddedResource Include="Forms\InsertEmpForm.resx">
       <DependentUpon>InsertEmpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\LoginForm.resx">
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -170,12 +179,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form\ReportForm.resx">
+    <EmbeddedResource Include="Forms\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\ShortcutForm.resx">
+    <EmbeddedResource Include="Forms\ShortcutForm.resx">
       <DependentUpon>ShortcutForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Connected Services\WcfService\item.xsd">
       <SubType>Designer</SubType>
     </None>

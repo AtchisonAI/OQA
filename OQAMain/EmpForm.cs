@@ -165,7 +165,7 @@ namespace OQAMain
 
         }
 
-        private void UpdateEmp(Emp empInfo ,OpreateType operate)
+        private void UpdateEmp(Emp empInfo ,OperateType operate)
         {
             UpdateModelListReq<Emp> updateReq = new UpdateModelListReq<Emp>();
             updateReq.models.Add(empInfo);
@@ -183,13 +183,13 @@ namespace OQAMain
         private void update_sfButton_Click(object sender, EventArgs e)
         {
             var record = emp_sfDataGrid.SelectedItem;
-            UpdateEmp((Emp)record, OpreateType.Update);
+            UpdateEmp((Emp)record, OperateType.Update);
         }
 
         private void delete_sfButton_Click(object sender, EventArgs e)
         {
             var record = emp_sfDataGrid.SelectedItem;
-            UpdateEmp((Emp)record, OpreateType.Delete);
+            UpdateEmp((Emp)record, OperateType.Delete);
             emp_sfDataGrid.DeleteSelectedRecords();
             emp_sfDataGrid.Refresh();
         }

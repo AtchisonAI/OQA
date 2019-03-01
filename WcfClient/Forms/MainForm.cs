@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using WcfClient.Authority;
+using WcfClient.Forms;
 
 namespace WcfClient
 {
@@ -38,11 +39,6 @@ namespace WcfClient
             return false;
         }
 
-        private void System_ToolStripMenuItem_Click(object sender, System.EventArgs e)
-        {
-
-        }
-
         EmpForm empFrm;
         private void Emp_ToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
@@ -52,7 +48,6 @@ namespace WcfClient
             }
             else
             {
-
                 empFrm = new EmpForm();
                 dockingManager.SetEnableDocking(empFrm, true);
                 dockingManager.SetAsMDIChild(empFrm, true);
@@ -100,6 +95,21 @@ namespace WcfClient
         private void SetSytemStatusBar(string systemPrefixText)
         {
             System_statusBarAdvPanel.Text = "System:" + systemPrefixText;
+        }
+
+        private void Authority_ToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            ControlAuthorityForm contrlAuForm = new ControlAuthorityForm();
+            dockingManager.SetEnableDocking(contrlAuForm, true);
+            dockingManager.SetAsMDIChild(contrlAuForm, true);
+            contrlAuForm.Show();
+
+            SetActiveStatusBar(contrlAuForm.Text);
+        }
+
+        private void ShortCut_ToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+
         }
     }
 }

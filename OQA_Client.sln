@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OQA_Core", "OQA_Core\OQA_Core.csproj", "{6734161E-7D2D-485F-A48C-D0DFEA600583}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfClient", "WcfClient\WcfClient.csproj", "{39E7EC5C-D223-4CF9-A034-969CB60AD090}"
+	ProjectSection(ProjectDependencies) = postProject
+		{17247320-F8A8-45E1-9C4D-CCDE17E07F1A} = {17247320-F8A8-45E1-9C4D-CCDE17E07F1A}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

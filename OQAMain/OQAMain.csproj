@@ -282,11 +282,93 @@
     <Reference Include="Utils">
       <HintPath>..\Components\Utils.dll</HintPath>
     </Reference>
+    <Reference Include="WcfClientCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\WcfClientCore.dll</HintPath>
+    </Reference>
     <Reference Include="WCFModels">
       <HintPath>..\Components\WCFModels.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tran\FrmDefectLotResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tran\FrmDefectLotResult.Designer.cs">
+      <DependentUpon>FrmDefectLotResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tran\FrmAOIInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tran\FrmAOIInput.Designer.cs">
+      <DependentUpon>FrmAOIInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tran\FrmMarcoInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tran\FrmMarcoInput.Designer.cs">
+      <DependentUpon>FrmMarcoInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tran\FrmMircoInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tran\FrmMircoInput.Designer.cs">
+      <DependentUpon>FrmMircoInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tran\FrmDefectSend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tran\FrmDefectSend.Designer.cs">
+      <DependentUpon>FrmDefectSend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tran\FrmFoupChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tran\FrmFoupChange.Designer.cs">
+      <DependentUpon>FrmFoupChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tran\FrmLotPackage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tran\FrmLotPackage.Designer.cs">
+      <DependentUpon>FrmLotPackage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tran\FrmLotTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tran\FrmLotTransfer.Designer.cs">
+      <DependentUpon>FrmLotTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Print\FrmPackageLabelPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Print\FrmPackageLabelPrint.Designer.cs">
+      <DependentUpon>FrmPackageLabelPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Print\FrmWaferInspectRecordPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Print\FrmWaferInspectRecordPrint.Designer.cs">
+      <DependentUpon>FrmWaferInspectRecordPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Print\FrmOQAShipListPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Print\FrmOQAShipListPrint.Designer.cs">
+      <DependentUpon>FrmOQAShipListPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Set\FrmDefectCodeSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Set\FrmDefectCodeSet.Designer.cs">
+      <DependentUpon>FrmDefectCodeSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tran\FrmLotInspect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tran\FrmLotInspect.Designer.cs">
+      <DependentUpon>FrmLotInspect.cs</DependentUpon>
+    </Compile>
     <Compile Include="Demo\InsertEmpForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +389,45 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Tran\FrmDefectLotResult.resx">
+      <DependentUpon>FrmDefectLotResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tran\FrmAOIInput.resx">
+      <DependentUpon>FrmAOIInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tran\FrmMarcoInput.resx">
+      <DependentUpon>FrmMarcoInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tran\FrmMircoInput.resx">
+      <DependentUpon>FrmMircoInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tran\FrmDefectSend.resx">
+      <DependentUpon>FrmDefectSend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tran\FrmFoupChange.resx">
+      <DependentUpon>FrmFoupChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tran\FrmLotPackage.resx">
+      <DependentUpon>FrmLotPackage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tran\FrmLotTransfer.resx">
+      <DependentUpon>FrmLotTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Print\FrmPackageLabelPrint.resx">
+      <DependentUpon>FrmPackageLabelPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Print\FrmWaferInspectRecordPrint.resx">
+      <DependentUpon>FrmWaferInspectRecordPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Print\FrmOQAShipListPrint.resx">
+      <DependentUpon>FrmOQAShipListPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Set\FrmDefectCodeSet.resx">
+      <DependentUpon>FrmDefectCodeSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tran\FrmLotInspect.resx">
+      <DependentUpon>FrmLotInspect.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Demo\EmpForm.resx">
       <DependentUpon>EmpForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -328,12 +449,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WcfClientCore\WcfClientCore.csproj">
-      <Project>{04786636-8825-4fda-8841-687c2880bf26}</Project>
-      <Name>WcfClientCore</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

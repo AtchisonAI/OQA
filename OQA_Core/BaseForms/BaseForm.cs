@@ -9,5 +9,12 @@ namespace OQA_Core
         {
             InitializeComponent();
         }
+
+        private void btnClose_Click(object sender, System.EventArgs e)
+        {
+            this.Close();
+        }
+
+
     }
 }

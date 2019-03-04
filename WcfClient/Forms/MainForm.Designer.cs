@@ -34,7 +34,7 @@ namespace WcfClient
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             Syncfusion.Windows.Forms.Tools.CaptionButtonsCollection ccbSystem_panel = new Syncfusion.Windows.Forms.Tools.CaptionButtonsCollection();
             Syncfusion.Windows.Forms.Tools.CaptionButtonsCollection ccbEmp_panel = new Syncfusion.Windows.Forms.Tools.CaptionButtonsCollection();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("员工信息");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("员工信息");
             this.dockingManager = new Syncfusion.Windows.Forms.Tools.DockingManager(this.components);
             this.System_panel = new System.Windows.Forms.Panel();
             this.Emp_panel = new System.Windows.Forms.Panel();
@@ -43,8 +43,24 @@ namespace WcfClient
             this.System_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Authority_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ShortCut_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Emp_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.defectCodeSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oQA检验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lotInspectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aOIInspectionInputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marcoInspectionInputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mircoInspectionInputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.defectSendPNDNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.defectLotResultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oQA发货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.foupChangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lotPackageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lotTransferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.packageLabelPrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.waferInspactionRecordPrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iOQAShipListPrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Rep_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Emp_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabbedGroupedMDIManager = new Syncfusion.Windows.Forms.Tools.TabbedGroupedMDIManager();
             this.statusBarAdv = new Syncfusion.Windows.Forms.Tools.StatusBarAdv();
             this.System_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
@@ -115,10 +131,10 @@ namespace WcfClient
             this.Emp_treeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Emp_treeView.Location = new System.Drawing.Point(0, 0);
             this.Emp_treeView.Name = "Emp_treeView";
-            treeNode1.Name = "Emp_Node";
-            treeNode1.Text = "员工信息";
+            treeNode2.Name = "Emp_Node";
+            treeNode2.Text = "员工信息";
             this.Emp_treeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.Emp_treeView.Size = new System.Drawing.Size(131, 490);
             this.Emp_treeView.TabIndex = 0;
             this.Emp_treeView.Click += new System.EventHandler(this.Emp_treeView_Click);
@@ -128,8 +144,11 @@ namespace WcfClient
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.System_ToolStripMenuItem,
-            this.Emp_ToolStripMenuItem,
-            this.Rep_ToolStripMenuItem});
+            this.配置ToolStripMenuItem,
+            this.oQA检验ToolStripMenuItem,
+            this.oQA发货ToolStripMenuItem,
+            this.Rep_ToolStripMenuItem,
+            this.Emp_ToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -160,12 +179,130 @@ namespace WcfClient
             this.ShortCut_ToolStripMenuItem.Text = "快捷菜单";
             this.ShortCut_ToolStripMenuItem.Click += new System.EventHandler(this.ShortCut_ToolStripMenuItem_Click);
             // 
-            // Emp_ToolStripMenuItem
+            // 配置ToolStripMenuItem
             // 
-            this.Emp_ToolStripMenuItem.Name = "Emp_ToolStripMenuItem";
-            this.Emp_ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.Emp_ToolStripMenuItem.Text = "员工";
-            this.Emp_ToolStripMenuItem.Click += new System.EventHandler(this.Emp_ToolStripMenuItem_Click);
+            this.配置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.defectCodeSetToolStripMenuItem});
+            this.配置ToolStripMenuItem.Name = "配置ToolStripMenuItem";
+            this.配置ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.配置ToolStripMenuItem.Text = "配置";
+            // 
+            // defectCodeSetToolStripMenuItem
+            // 
+            this.defectCodeSetToolStripMenuItem.Name = "defectCodeSetToolStripMenuItem";
+            this.defectCodeSetToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.defectCodeSetToolStripMenuItem.Text = "Defect Code Set";
+            this.defectCodeSetToolStripMenuItem.Click += new System.EventHandler(this.defectCodeSetToolStripMenuItem_Click);
+            // 
+            // oQA检验ToolStripMenuItem
+            // 
+            this.oQA检验ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lotInspectToolStripMenuItem,
+            this.aOIInspectionInputToolStripMenuItem,
+            this.marcoInspectionInputToolStripMenuItem,
+            this.mircoInspectionInputToolStripMenuItem,
+            this.defectSendPNDNToolStripMenuItem,
+            this.defectLotResultToolStripMenuItem});
+            this.oQA检验ToolStripMenuItem.Name = "oQA检验ToolStripMenuItem";
+            this.oQA检验ToolStripMenuItem.Size = new System.Drawing.Size(72, 21);
+            this.oQA检验ToolStripMenuItem.Text = "OQA检验";
+            // 
+            // lotInspectToolStripMenuItem
+            // 
+            this.lotInspectToolStripMenuItem.Name = "lotInspectToolStripMenuItem";
+            this.lotInspectToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.lotInspectToolStripMenuItem.Text = "Lot Inspect";
+            this.lotInspectToolStripMenuItem.Click += new System.EventHandler(this.lotInspectToolStripMenuItem_Click);
+            // 
+            // aOIInspectionInputToolStripMenuItem
+            // 
+            this.aOIInspectionInputToolStripMenuItem.Name = "aOIInspectionInputToolStripMenuItem";
+            this.aOIInspectionInputToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.aOIInspectionInputToolStripMenuItem.Text = "AOI Inspection Input";
+            this.aOIInspectionInputToolStripMenuItem.Click += new System.EventHandler(this.aOIInspectionInputToolStripMenuItem_Click);
+            // 
+            // marcoInspectionInputToolStripMenuItem
+            // 
+            this.marcoInspectionInputToolStripMenuItem.Name = "marcoInspectionInputToolStripMenuItem";
+            this.marcoInspectionInputToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.marcoInspectionInputToolStripMenuItem.Text = "Marco Inspection Input";
+            this.marcoInspectionInputToolStripMenuItem.Click += new System.EventHandler(this.marcoInspectionInputToolStripMenuItem_Click);
+            // 
+            // mircoInspectionInputToolStripMenuItem
+            // 
+            this.mircoInspectionInputToolStripMenuItem.Name = "mircoInspectionInputToolStripMenuItem";
+            this.mircoInspectionInputToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.mircoInspectionInputToolStripMenuItem.Text = "Mirco Inspection Input";
+            this.mircoInspectionInputToolStripMenuItem.Click += new System.EventHandler(this.mircoInspectionInputToolStripMenuItem_Click);
+            // 
+            // defectSendPNDNToolStripMenuItem
+            // 
+            this.defectSendPNDNToolStripMenuItem.Name = "defectSendPNDNToolStripMenuItem";
+            this.defectSendPNDNToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.defectSendPNDNToolStripMenuItem.Text = "Defect Send PNDN";
+            this.defectSendPNDNToolStripMenuItem.Click += new System.EventHandler(this.defectSendPNDNToolStripMenuItem_Click);
+            // 
+            // defectLotResultToolStripMenuItem
+            // 
+            this.defectLotResultToolStripMenuItem.Name = "defectLotResultToolStripMenuItem";
+            this.defectLotResultToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.defectLotResultToolStripMenuItem.Text = "Defect Lot Result";
+            this.defectLotResultToolStripMenuItem.Click += new System.EventHandler(this.defectLotResultToolStripMenuItem_Click);
+            // 
+            // oQA发货ToolStripMenuItem
+            // 
+            this.oQA发货ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.foupChangeToolStripMenuItem,
+            this.lotPackageToolStripMenuItem,
+            this.lotTransferToolStripMenuItem,
+            this.packageLabelPrintToolStripMenuItem,
+            this.waferInspactionRecordPrintToolStripMenuItem,
+            this.iOQAShipListPrintToolStripMenuItem});
+            this.oQA发货ToolStripMenuItem.Name = "oQA发货ToolStripMenuItem";
+            this.oQA发货ToolStripMenuItem.Size = new System.Drawing.Size(72, 21);
+            this.oQA发货ToolStripMenuItem.Text = "OQA发货";
+            // 
+            // foupChangeToolStripMenuItem
+            // 
+            this.foupChangeToolStripMenuItem.Name = "foupChangeToolStripMenuItem";
+            this.foupChangeToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.foupChangeToolStripMenuItem.Text = "Foup Change";
+            this.foupChangeToolStripMenuItem.Click += new System.EventHandler(this.foupChangeToolStripMenuItem_Click);
+            // 
+            // lotPackageToolStripMenuItem
+            // 
+            this.lotPackageToolStripMenuItem.Name = "lotPackageToolStripMenuItem";
+            this.lotPackageToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.lotPackageToolStripMenuItem.Text = "Lot Package";
+            this.lotPackageToolStripMenuItem.Click += new System.EventHandler(this.lotPackageToolStripMenuItem_Click);
+            // 
+            // lotTransferToolStripMenuItem
+            // 
+            this.lotTransferToolStripMenuItem.Name = "lotTransferToolStripMenuItem";
+            this.lotTransferToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.lotTransferToolStripMenuItem.Text = "Lot Transfer";
+            this.lotTransferToolStripMenuItem.Click += new System.EventHandler(this.lotTransferToolStripMenuItem_Click);
+            // 
+            // packageLabelPrintToolStripMenuItem
+            // 
+            this.packageLabelPrintToolStripMenuItem.Name = "packageLabelPrintToolStripMenuItem";
+            this.packageLabelPrintToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.packageLabelPrintToolStripMenuItem.Text = "Package Label Print";
+            this.packageLabelPrintToolStripMenuItem.Click += new System.EventHandler(this.packageLabelPrintToolStripMenuItem_Click);
+            // 
+            // waferInspactionRecordPrintToolStripMenuItem
+            // 
+            this.waferInspactionRecordPrintToolStripMenuItem.Name = "waferInspactionRecordPrintToolStripMenuItem";
+            this.waferInspactionRecordPrintToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.waferInspactionRecordPrintToolStripMenuItem.Text = "Wafer Inspaction Record Print";
+            this.waferInspactionRecordPrintToolStripMenuItem.Click += new System.EventHandler(this.waferInspactionRecordPrintToolStripMenuItem_Click);
+            // 
+            // iOQAShipListPrintToolStripMenuItem
+            // 
+            this.iOQAShipListPrintToolStripMenuItem.Name = "iOQAShipListPrintToolStripMenuItem";
+            this.iOQAShipListPrintToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.iOQAShipListPrintToolStripMenuItem.Text = "IOQA Ship List Print";
+            this.iOQAShipListPrintToolStripMenuItem.Click += new System.EventHandler(this.iOQAShipListPrintToolStripMenuItem_Click);
             // 
             // Rep_ToolStripMenuItem
             // 
@@ -173,6 +310,13 @@ namespace WcfClient
             this.Rep_ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.Rep_ToolStripMenuItem.Text = "报表";
             this.Rep_ToolStripMenuItem.Click += new System.EventHandler(this.Rep_ToolStripMenuItem_Click);
+            // 
+            // Emp_ToolStripMenuItem
+            // 
+            this.Emp_ToolStripMenuItem.Name = "Emp_ToolStripMenuItem";
+            this.Emp_ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.Emp_ToolStripMenuItem.Text = "员工";
+            this.Emp_ToolStripMenuItem.Click += new System.EventHandler(this.Emp_ToolStripMenuItem_Click);
             // 
             // tabbedGroupedMDIManager
             // 
@@ -182,7 +326,6 @@ namespace WcfClient
             this.tabbedGroupedMDIManager.DropDownButtonToolTip = "";
             this.tabbedGroupedMDIManager.DropDownButtonVisible = true;
             this.tabbedGroupedMDIManager.ImageSize = new System.Drawing.Size(16, 16);
-            this.tabbedGroupedMDIManager.NeedUpdateHostedForm = false;
             this.tabbedGroupedMDIManager.ShowCloseButton = true;
             this.tabbedGroupedMDIManager.ThemesEnabled = true;
             // 
@@ -197,9 +340,9 @@ namespace WcfClient
             this.statusBarAdv.CustomLayoutBounds = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.statusBarAdv.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.statusBarAdv.Location = new System.Drawing.Point(0, 562);
-            this.statusBarAdv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.statusBarAdv.Margin = new System.Windows.Forms.Padding(2);
             this.statusBarAdv.Name = "statusBarAdv";
-            this.statusBarAdv.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.statusBarAdv.Padding = new System.Windows.Forms.Padding(2);
             this.statusBarAdv.Size = new System.Drawing.Size(1032, 26);
             this.statusBarAdv.Spacing = new System.Drawing.Size(2, 2);
             this.statusBarAdv.TabIndex = 15;
@@ -284,7 +427,7 @@ namespace WcfClient
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.Location = new System.Drawing.Point(0, 0);
-            this.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Margin = new System.Windows.Forms.Padding(3);
             this.Name = "MainForm";
             this.Text = "MainFrame";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -322,5 +465,21 @@ namespace WcfClient
         private Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel Time_statusBarAdvPanel;
         private ToolStripMenuItem Authority_ToolStripMenuItem;
         private ToolStripMenuItem ShortCut_ToolStripMenuItem;
+        private ToolStripMenuItem 配置ToolStripMenuItem;
+        private ToolStripMenuItem defectCodeSetToolStripMenuItem;
+        private ToolStripMenuItem oQA检验ToolStripMenuItem;
+        private ToolStripMenuItem lotInspectToolStripMenuItem;
+        private ToolStripMenuItem aOIInspectionInputToolStripMenuItem;
+        private ToolStripMenuItem marcoInspectionInputToolStripMenuItem;
+        private ToolStripMenuItem mircoInspectionInputToolStripMenuItem;
+        private ToolStripMenuItem defectSendPNDNToolStripMenuItem;
+        private ToolStripMenuItem defectLotResultToolStripMenuItem;
+        private ToolStripMenuItem oQA发货ToolStripMenuItem;
+        private ToolStripMenuItem foupChangeToolStripMenuItem;
+        private ToolStripMenuItem lotPackageToolStripMenuItem;
+        private ToolStripMenuItem lotTransferToolStripMenuItem;
+        private ToolStripMenuItem packageLabelPrintToolStripMenuItem;
+        private ToolStripMenuItem waferInspactionRecordPrintToolStripMenuItem;
+        private ToolStripMenuItem iOQAShipListPrintToolStripMenuItem;
     }
 }

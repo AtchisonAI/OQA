@@ -1,6 +1,4 @@
 ﻿using System;
-using Utils;
-using System.Data;
 
 //此为wcf契约服务的宿主程序，server端
 namespace WcfHost

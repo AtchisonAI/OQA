@@ -1,11 +1,13 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Windows.Forms;
+using WcfClientCore.Form;
 using WcfClientCore.WcfSrv;
 using WCFModels.Message;
 
 namespace WcfClient
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : BaseForm
     {
         public LoginForm()
         {
@@ -25,6 +27,7 @@ namespace WcfClient
             {
                 if (Srv.Login(new UserProfile(userName, passwd, "OQA:")))
                 {
+                    log.Info("登陆成功 "+"User: "+userName );
                     DialogResult = DialogResult.OK;
                     Close();
                 }

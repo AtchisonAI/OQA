@@ -42,6 +42,7 @@
             // 
             // logInBtn
             // 
+            this.logInBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.logInBtn.BackColor = System.Drawing.SystemColors.Highlight;
             this.logInBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.logInBtn.FlatAppearance.BorderSize = 0;
@@ -60,6 +61,7 @@
             // 
             // cancleBtn
             // 
+            this.cancleBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancleBtn.BackColor = System.Drawing.SystemColors.Highlight;
             this.cancleBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancleBtn.Font = new System.Drawing.Font("华文行楷", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -74,6 +76,8 @@
             // 
             // userNameTbx
             // 
+            this.userNameTbx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.userNameTbx.Location = new System.Drawing.Point(257, 140);
             this.userNameTbx.Name = "userNameTbx";
             this.userNameTbx.Size = new System.Drawing.Size(191, 25);
@@ -82,6 +86,8 @@
             // 
             // passwdTbx
             // 
+            this.passwdTbx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.passwdTbx.Location = new System.Drawing.Point(257, 195);
             this.passwdTbx.Name = "passwdTbx";
             this.passwdTbx.PasswordChar = '*';
@@ -101,6 +107,7 @@
             // 
             // id_label
             // 
+            this.id_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.id_label.AutoSize = true;
             this.id_label.BackColor = System.Drawing.Color.Transparent;
             this.id_label.Font = new System.Drawing.Font("华文新魏", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -114,6 +121,7 @@
             // 
             // pd_label
             // 
+            this.pd_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pd_label.AutoSize = true;
             this.pd_label.BackColor = System.Drawing.Color.Transparent;
             this.pd_label.Font = new System.Drawing.Font("华文新魏", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -127,12 +135,13 @@
             // 
             // tile_label
             // 
+            this.tile_label.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tile_label.BackColor = System.Drawing.Color.Transparent;
             this.tile_label.Font = new System.Drawing.Font("华文彩云", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tile_label.ForeColor = System.Drawing.Color.White;
             this.tile_label.Location = new System.Drawing.Point(2, 56);
             this.tile_label.Name = "tile_label";
-            this.tile_label.Size = new System.Drawing.Size(467, 64);
+            this.tile_label.Size = new System.Drawing.Size(474, 64);
             this.tile_label.TabIndex = 8;
             this.tile_label.Text = "OQA检验系统";
             this.tile_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -144,7 +153,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(472, 310);
+            this.ClientSize = new System.Drawing.Size(476, 311);
             this.Controls.Add(this.tile_label);
             this.Controls.Add(this.pd_label);
             this.Controls.Add(this.id_label);
@@ -154,10 +163,12 @@
             this.Controls.Add(this.cancleBtn);
             this.Controls.Add(this.logInBtn);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Login";
+            this.WindowState = System.Windows.Forms.FormWindowState.Normal;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -287,10 +287,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InsertEmpForm.cs">
+    <Compile Include="Demo\InsertEmpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InsertEmpForm.Designer.cs">
+    <Compile Include="Demo\InsertEmpForm.Designer.cs">
       <DependentUpon>InsertEmpForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
@@ -298,19 +298,19 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="EmpForm.cs">
+    <Compile Include="Demo\EmpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmpForm.Designer.cs">
+    <Compile Include="Demo\EmpForm.Designer.cs">
       <DependentUpon>EmpForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="EmpForm.resx">
+    <EmbeddedResource Include="Demo\EmpForm.resx">
       <DependentUpon>EmpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InsertEmpForm.resx">
+    <EmbeddedResource Include="Demo\InsertEmpForm.resx">
       <DependentUpon>InsertEmpForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -335,6 +335,7 @@
       <Name>WcfClientCore</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetPath)" "$(ProjectDir)..\Components\" /d/r/y</PostBuildEvent>

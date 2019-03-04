@@ -34,9 +34,6 @@
     <Reference Include="DemoCommon">
       <HintPath>..\Syncfusion.Tools.4.6\DemoCommon.dll</HintPath>
     </Reference>
-    <Reference Include="Infragistics2.Shared.v12.1, Version=12.1.20121.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
-    <Reference Include="Infragistics2.Win.Misc.v12.1, Version=12.1.20121.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics2.Win.v12.1, Version=12.1.20121.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="OQA_Core">
       <HintPath>..\Components\OQA_Core.dll</HintPath>
     </Reference>
@@ -393,7 +390,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Tran\FrmDefectLotResult.resx">
       <DependentUpon>FrmDefectLotResult.cs</DependentUpon>
     </EmbeddedResource>

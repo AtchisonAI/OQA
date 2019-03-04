@@ -79,6 +79,10 @@
     <Reference Include="TIBCO.Rendezvous">
       <HintPath>..\Components\TIBCO.Rendezvous.dll</HintPath>
     </Reference>
+    <Reference Include="Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\Utils.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contract\IWcfContract.cs" />
@@ -93,10 +97,6 @@
     <None Include="Congfig\packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Utils\Utils.csproj">
-      <Project>{498c0182-c70a-4143-86ea-f779e71f3b46}</Project>
-      <Name>Utils</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WCFModels\WcfModels.csproj">
       <Project>{479849cd-3f79-4b29-acd0-adced9dc3a6e}</Project>
       <Name>WcfModels</Name>

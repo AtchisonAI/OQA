@@ -77,10 +77,6 @@
       <Project>{93084370-ff48-4e22-943b-5a9359311041}</Project>
       <Name>OQAService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Utils\Utils.csproj">
-      <Project>{498c0182-c70a-4143-86ea-f779e71f3b46}</Project>
-      <Name>Utils</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

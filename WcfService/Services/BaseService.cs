@@ -1,9 +1,9 @@
-﻿using NPoco;
+﻿using log4net;
+using NPoco;
 using NPoco.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Utils.Log;
 using WCFModels;
 using WCFModels.Message;
 
@@ -11,6 +11,7 @@ namespace WcfService
 {
     public class BaseService
     {
+        public static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public string connectStringName = "WCFFrameDB";
         public IDatabase db;
         //private Dictionary<string, IDatabase> dbSet = new Dictionary<string, IDatabase>();

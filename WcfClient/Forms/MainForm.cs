@@ -105,5 +105,138 @@ namespace WcfClient
         {
 
         }
+
+        private void defectCodeSetToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FrmDefectCodeSet Frm = new FrmDefectCodeSet();  
+            Frm.Text = sender.ToString();
+            dockingManager.SetEnableDocking(Frm, true);
+            dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
+            Frm.Show();
+            SetActiveStatusBar(Frm.Text);
+        }
+
+        private void lotInspectToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FrmLotInspect Frm = new FrmLotInspect();
+            Frm.Text = sender.ToString();
+            dockingManager.SetEnableDocking(Frm, true);
+            dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
+            Frm.Show();
+            SetActiveStatusBar(Frm.Text);
+        }
+
+        private void aOIInspectionInputToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FrmAOIInput Frm = new FrmAOIInput();
+            dockingManager.SetEnableDocking(Frm, true);
+            dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());           
+            Frm.Show();
+            SetActiveStatusBar(Frm.Text);
+        }
+
+        private void marcoInspectionInputToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FrmMarcoInput Frm = new FrmMarcoInput();
+            dockingManager.SetEnableDocking(Frm, true);
+            dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
+            Frm.Show();
+            SetActiveStatusBar(Frm.Text);
+        }
+
+
+        private void defectSendPNDNToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FrmDefectSend Frm = new FrmDefectSend();
+            dockingManager.SetEnableDocking(Frm, true);
+            dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
+            Frm.Show();
+            SetActiveStatusBar(Frm.Text);
+        }
+
+        private void defectLotResultToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FrmDefectLotResult Frm = new FrmDefectLotResult();
+            dockingManager.SetEnableDocking(Frm, true);
+            dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
+            Frm.Show();
+            SetActiveStatusBar(Frm.Text);
+        }
+
+        private void foupChangeToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FrmFoupChange Frm = new FrmFoupChange();
+            dockingManager.SetEnableDocking(Frm, true);
+            dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
+            Frm.Show();
+            SetActiveStatusBar(Frm.Text);
+        }
+
+        private void lotPackageToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FrmLotPackage Frm = new FrmLotPackage();
+            dockingManager.SetEnableDocking(Frm, true);
+            dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
+            Frm.Show();
+            SetActiveStatusBar(Frm.Text);
+        }
+
+        private void lotTransferToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FrmLotTransfer Frm = new FrmLotTransfer();
+            dockingManager.SetEnableDocking(Frm, true);
+            dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
+            Frm.Show();
+            SetActiveStatusBar(Frm.Text);
+        }
+
+        private void packageLabelPrintToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FrmPackageLabelPrint Frm = new FrmPackageLabelPrint();
+            dockingManager.SetEnableDocking(Frm, true);
+            dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
+            Frm.Show();
+            SetActiveStatusBar(Frm.Text);
+        }
+
+        private void waferInspactionRecordPrintToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FrmWaferInspectRecordPrint Frm = new FrmWaferInspectRecordPrint();
+            dockingManager.SetEnableDocking(Frm, true);
+            dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
+            Frm.Show();
+            SetActiveStatusBar(Frm.Text);
+        }
+
+        private void iOQAShipListPrintToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FrmOQAShipListPrint Frm = new FrmOQAShipListPrint();
+            dockingManager.SetEnableDocking(Frm, true);
+            dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
+            Frm.Show();
+            SetActiveStatusBar(Frm.Text);
+        }
+
+        private void mircoInspectionInputToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FrmMircoInput Frm = new FrmMircoInput();
+            dockingManager.SetEnableDocking(Frm, true);
+            dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
+            Frm.Show();
+            SetActiveStatusBar(Frm.Text);
+        }
     }
 }

@@ -4,12 +4,12 @@ using WCFModels.Message;
 
 namespace OQAService.Services
 {
-    public class OQAService : OQABaseService, IOQAContract
+    public partial class OQAService : OQABaseService, IOQAContract
     {
-        public PageModelRsp<Emp> QueryEmpInfo(QueryEmpReq queryEmpReq)
-        {
-            return PageQuery<Emp>(queryEmpReq);
-        }
+        //public PageModelRsp<Emp> QueryEmpInfo(QueryEmpReq queryEmpReq)
+        //{
+        //    return PageQuery<Emp>(queryEmpReq);
+        //}
 
         public ModelListRsp<CEmpPercentView> QueryEmpPercent(QueryReq queryReq)
         {

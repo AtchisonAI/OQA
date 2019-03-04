@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Infragistics4.Shared.v12.1, Version=12.1.20121.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.Misc.v12.1, Version=12.1.20121.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.v12.1, Version=12.1.20121.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Syncfusion.Chart.Base">
       <HintPath>..\..\Syncfusion.Tools.4.6\Syncfusion.Chart.Base.dll</HintPath>
     </Reference>
@@ -74,6 +77,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -86,6 +90,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\Utils.dll</HintPath>
     </Reference>
+    <Reference Include="WcfClientCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\WcfClientCore.dll</HintPath>
+    </Reference>
     <Reference Include="WCFModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WCFModels.dll</HintPath>
@@ -97,6 +105,12 @@
     </Compile>
     <Compile Include="BaseForms\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseForms\BaseForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForms\BaseForm1.Designer.cs">
+      <DependentUpon>BaseForm1.cs</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\OQAService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -112,6 +126,10 @@
     <EmbeddedResource Include="BaseForms\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaseForms\BaseForm1.resx">
+      <DependentUpon>BaseForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
@@ -141,12 +159,6 @@
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpSumView.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.Emp.datasource" />
     <None Include="Properties\DataSources\WCFModels.Message.DemoView.datasource" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WcfClientCore\WcfClientCore.csproj">
-      <Project>{04786636-8825-4fda-8841-687c2880bf26}</Project>
-      <Name>WcfClientCore</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\OQAService\" />

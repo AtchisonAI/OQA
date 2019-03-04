@@ -7,8 +7,10 @@ using WCFModels.Message;
 
 namespace WcfClient
 {
-    public partial class LoginForm : BaseForm
+    public partial class LoginForm : Form
     {
+        public static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public LoginForm()
         {
             InitializeComponent();

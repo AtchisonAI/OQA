@@ -32,21 +32,22 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(650, 6);
+            this.btnClose.Location = new System.Drawing.Point(638, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(462, 6);
+            this.btnCreate.Location = new System.Drawing.Point(450, 6);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(556, 6);
+            this.btnEdite.Location = new System.Drawing.Point(544, 6);
             // 
             // FrmDefectCodeSet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 580);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.Name = "FrmDefectCodeSet";
             this.Text = "test";
             this.ResumeLayout(false);

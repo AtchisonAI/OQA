@@ -108,10 +108,11 @@ namespace WcfClient
 
         private void defectCodeSetToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            FrmDefectCodeSet Frm = new FrmDefectCodeSet();            
+            FrmDefectCodeSet Frm = new FrmDefectCodeSet();  
+            Frm.Text = sender.ToString();
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
-            Frm.Text = sender.ToString();
+            dockingManager.SetDockLabel(Frm, sender.ToString());
             Frm.Show();
             SetActiveStatusBar(Frm.Text);
         }
@@ -122,6 +123,7 @@ namespace WcfClient
             Frm.Text = sender.ToString();
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
             Frm.Show();
             SetActiveStatusBar(Frm.Text);
         }
@@ -129,11 +131,9 @@ namespace WcfClient
         private void aOIInspectionInputToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             FrmAOIInput Frm = new FrmAOIInput();
-            Frm.Text = sender.ToString();
-            //Frm.MdiParent = this;
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
-            Frm.Text = sender.ToString();
+            dockingManager.SetDockLabel(Frm, sender.ToString());           
             Frm.Show();
             SetActiveStatusBar(Frm.Text);
         }
@@ -143,6 +143,7 @@ namespace WcfClient
             FrmMarcoInput Frm = new FrmMarcoInput();
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
             Frm.Show();
             SetActiveStatusBar(Frm.Text);
         }
@@ -153,6 +154,7 @@ namespace WcfClient
             FrmDefectSend Frm = new FrmDefectSend();
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
             Frm.Show();
             SetActiveStatusBar(Frm.Text);
         }
@@ -162,6 +164,7 @@ namespace WcfClient
             FrmDefectLotResult Frm = new FrmDefectLotResult();
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
             Frm.Show();
             SetActiveStatusBar(Frm.Text);
         }
@@ -171,6 +174,7 @@ namespace WcfClient
             FrmFoupChange Frm = new FrmFoupChange();
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
             Frm.Show();
             SetActiveStatusBar(Frm.Text);
         }
@@ -180,6 +184,7 @@ namespace WcfClient
             FrmLotPackage Frm = new FrmLotPackage();
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
             Frm.Show();
             SetActiveStatusBar(Frm.Text);
         }
@@ -189,6 +194,7 @@ namespace WcfClient
             FrmLotTransfer Frm = new FrmLotTransfer();
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
             Frm.Show();
             SetActiveStatusBar(Frm.Text);
         }
@@ -198,6 +204,7 @@ namespace WcfClient
             FrmPackageLabelPrint Frm = new FrmPackageLabelPrint();
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
             Frm.Show();
             SetActiveStatusBar(Frm.Text);
         }
@@ -207,6 +214,7 @@ namespace WcfClient
             FrmWaferInspectRecordPrint Frm = new FrmWaferInspectRecordPrint();
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
             Frm.Show();
             SetActiveStatusBar(Frm.Text);
         }
@@ -216,6 +224,7 @@ namespace WcfClient
             FrmOQAShipListPrint Frm = new FrmOQAShipListPrint();
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
             Frm.Show();
             SetActiveStatusBar(Frm.Text);
         }
@@ -225,6 +234,7 @@ namespace WcfClient
             FrmMircoInput Frm = new FrmMircoInput();
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
+            dockingManager.SetDockLabel(Frm, sender.ToString());
             Frm.Show();
             SetActiveStatusBar(Frm.Text);
         }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -47,9 +48,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 580);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.Name = "FrmDefectCodeSet";
             this.Text = "test";
+            this.pnlMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

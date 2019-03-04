@@ -106,6 +106,12 @@
     <Compile Include="BaseForms\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseForms\BaseForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForms\BaseForm1.Designer.cs">
+      <DependentUpon>BaseForm1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\OQAService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -119,6 +125,9 @@
   <ItemGroup>
     <EmbeddedResource Include="BaseForms\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseForms\BaseForm1.resx">
+      <DependentUpon>BaseForm1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>

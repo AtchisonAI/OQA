@@ -57,6 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="1.OQASeverStruct\13 Defect code set\DefectCodeView.cs" />
+    <Compile Include="1.OQASeverStruct\3 AOI inspection input\AOIInputView.cs" />
+    <Compile Include="1.OQASeverStruct\4 Marco inspection input\MacroView.cs" />
+    <Compile Include="1.OQASeverStruct\5 Mirco inspection input\MicroView.cs" />
     <Compile Include="MESDB\FWTST1\Table\FWTST1_Table.cs" />
     <Compile Include="MESDB\FWTST1\View\FWTST1_View.cs" />
     <Compile Include="Message\Demo\DemoView.cs" />
@@ -93,9 +96,6 @@
     <Folder Include="1.OQASeverStruct\11 Wafer Insection Record Print\" />
     <Folder Include="1.OQASeverStruct\12 IOQA Ship List Print\" />
     <Folder Include="1.OQASeverStruct\2 Defect Lot result\" />
-    <Folder Include="1.OQASeverStruct\3 AOI inspection input\" />
-    <Folder Include="1.OQASeverStruct\4 Marco inspection input\" />
-    <Folder Include="1.OQASeverStruct\5 Mirco inspection input\" />
     <Folder Include="1.OQASeverStruct\6 Defect send %28PNDN%29\" />
     <Folder Include="1.OQASeverStruct\7 FOUP change\" />
     <Folder Include="1.OQASeverStruct\8 Lot package\" />

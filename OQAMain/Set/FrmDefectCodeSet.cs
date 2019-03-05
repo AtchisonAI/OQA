@@ -2,6 +2,8 @@
 using OQA_Core;
 using System;
 using System.Windows.Forms;
+using WCFModels.Message;
+using WCFModels.OQA;
 
 namespace OQAMain
 {
@@ -24,7 +26,9 @@ namespace OQAMain
 
         #region " Variable Definition "
         //private bool b_load_flag  ;
-
+        private string s_ISP_Type = " ";
+        private string s_Defect_Code = " ";
+        //private string s_Defect_Desc = " ";
         #endregion
 
 
@@ -38,12 +42,19 @@ namespace OQAMain
             {
                 case "CREATE":
 
-                    //            if (ComFunc.CheckValue(ComFunc.Trim(txtLotID.Text), 1) == false)
-                    //            {
-                    //                MessageBox.Show("必填内容输入为空！");
-                    //                txtLotID.Focus();
-                    //                return false;
-                    //            }
+                    if (ComFunc.CheckValue(txtIspType, 1) == false)
+                    {
+                        MessageBox.Show("必填内容输入为空！");
+                        txtIspType.Focus();
+                        return false;
+                    }
+
+                    if (ComFunc.CheckValue(txtDefectCode, 1) == false)
+                    {
+                        MessageBox.Show("必填内容输入为空！");
+                        txtIspType.Focus();
+                        return false;
+                    }
 
                     //            if ( ComFunc.CheckValue(ComFunc.Trim(txtNewQty1.Text), 1) == false)
                     //            {
@@ -92,6 +103,22 @@ namespace OQAMain
 
         }
 
+
+        private bool QueryDefectCodeInfo(char c_proc_step, char c_tran_flag)
+        {
+            ModelRsp<DefectCodeView> in_node = new ModelRsp<DefectCodeView>();
+
+            in_node.model.c_proc_step = c_proc_step;
+
+            in_node.model.c_tran_flag = c_tran_flag;
+
+            var data = OQASrv.CallServer().QueryDefectCodeInfo(in_node);
+
+            //LstIspCode.d
+
+            return true;
+        }
+
         #endregion
 
         #region "控件初始化 "        
@@ -127,6 +154,15 @@ namespace OQAMain
             {
                 //检查数据
                 if (CheckCondition("CREATE") == false) return;
+
+                if (ComFunc.Trim(s_ISP_Type) != "" && (ComFunc.Trim(s_Defect_Code) != ""))
+                {
+                    //GlobConst.TRAN_UPDATE
+                }
+                else
+                {
+                    //GlobConst.TRAN_CREATE
+                }
                 //调用事务服务
                 // if (UpdateBoxShipment(GlobConst.TRAN_CREATE) == false) return;
 
@@ -153,6 +189,67 @@ namespace OQAMain
             }
         }
 
+        private void rbnFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbnFilter.Checked == true)
+            {
+                txtFilter.Enabled = true;
+            }
+        }
 
+        private void rbnNoFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbnNoFilter.Checked == true)
+            {
+                ComFunc.FieldClear(txtFilter);
+                txtFilter.Enabled = false;
+            }
+        }
+
+        private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)13)
+            {
+                if (ComFunc.Trim(txtFilter.Text) != "")
+                {
+                    btnFilterView.PerformClick();
+                }
+            }
+        }
+
+        private void btnFilterView_Click(object sender, EventArgs e)
+        {
+            //QryDefectCodeInfo
+            try
+            {
+                //检查数据
+               // if (CheckCondition("TypeView") == false) return;
+
+
+                //调用事务服务
+                if (QueryDefectCodeInfo(GlobConst.TRAN_VIEW,'1') == false) return;
+
+                //控件重定义
+                //if (MPCF.Trim(txtBox_LotID.Text) != "")
+                //{
+                //控件初始化
+                //ComFunc.ClearList(lisOperLotList);
+                //ComFunc.ClearList(spdBox_SubTask);
+                ////MPCF.ClearList(spdOrderID);
+                //ComFunc.FieldClear(spdOrderID);
+                //ComFunc.ClearList(spdBox_LayoutID_MarkID);
+                //ComFunc.FieldClear(pnlTask);
+                //重新查询
+                //View_Lot_List("2");
+                //ViewSubLotListExt();
+                //ViewLotBoxListExt('2');
+                //View_Order_list(txtBox_LotID.Text);
+                //}
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
     }
 }

@@ -28,16 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OQABaseForm));
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnEdite = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlMenu.Controls.Add(this.btnRefresh);
             this.pnlMenu.Controls.Add(this.btnCreate);
             this.pnlMenu.Controls.Add(this.btnEdite);
             this.pnlMenu.Controls.Add(this.btnClose);
@@ -84,6 +87,16 @@
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnRefresh.Location = new System.Drawing.Point(5, 8);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(24, 24);
+            this.btnRefresh.TabIndex = 5;
+            // 
             // OQABaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -104,5 +117,6 @@
         protected System.Windows.Forms.Button btnCreate;
         protected System.Windows.Forms.Button btnEdite;
         protected System.Windows.Forms.Panel pnlMenu;
+        protected System.Windows.Forms.Button btnRefresh;
     }
 }

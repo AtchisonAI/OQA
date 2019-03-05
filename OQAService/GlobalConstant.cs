@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OQA_Core
+namespace OQAService
 {
-    public sealed class GlobConst
+    class GlobalConstant
     {
         public const char TRAN_CREATE = 'I';
         public const char TRAN_DELETE = 'D';

@@ -102,6 +102,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\Utils.dll</HintPath>
     </Reference>
+    <Reference Include="WcfClientCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\WcfClientCore.dll</HintPath>
+    </Reference>
+    <Reference Include="WCFModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\WCFModels.dll</HintPath>
+    </Reference>
+    <Reference Include="WcfService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\WcfService.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Forms\ControlAuthorityForm.cs">
@@ -196,18 +208,6 @@
     <ProjectReference Include="..\OQA_Core\OQA_Core.csproj">
       <Project>{6734161e-7d2d-485f-a48c-d0dfea600583}</Project>
       <Name>OQA_Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WcfClientCore\WcfClientCore.csproj">
-      <Project>{04786636-8825-4fda-8841-687c2880bf26}</Project>
-      <Name>WcfClientCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WCFModels\WcfModels.csproj">
-      <Project>{479849CD-3F79-4B29-ACD0-ADCED9DC3A6E}</Project>
-      <Name>WcfModels</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WcfService\WcfService.csproj">
-      <Project>{a19b87ee-049d-4600-845c-f33b22dcec8b}</Project>
-      <Name>WcfService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

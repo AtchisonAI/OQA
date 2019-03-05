@@ -1,6 +1,7 @@
 ﻿using System.ServiceModel;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
+using WCFModels.OQA;
 
 namespace OQAService.Contract
 {
@@ -23,5 +24,15 @@ namespace OQAService.Contract
         [OperationContract]
         ModelRsp<DemoView> UpdateDemoInfo(UpdateModelReq<DemoView> updateReq);
         #endregion
+
+        #region  Defect code set
+        [OperationContract]
+        ModelRsp<DefectCodeView> QueryDefectCodeInfo(ModelRsp<DefectCodeView> DefectCodeView);
+        
+
+        #endregion
+
+
+
     }
 }

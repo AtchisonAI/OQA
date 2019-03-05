@@ -114,6 +114,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controls\WaferSur.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WaferSur.Designer.cs">
+      <DependentUpon>WaferSur.cs</DependentUpon>
+    </Compile>
     <Compile Include="OQASrv.cs" />
     <Compile Include="GlobalConstant.cs" />
     <Compile Include="CommonFunction.cs" />
@@ -126,10 +132,11 @@
     <EmbeddedResource Include="BaseForms\BaseForm1.resx">
       <DependentUpon>BaseForm1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WaferSur.resx">
+      <DependentUpon>WaferSur.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>

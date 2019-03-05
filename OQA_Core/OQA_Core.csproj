@@ -150,11 +150,15 @@
     <None Include="Connected Services\OQAService\item4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\OQAService\item5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\OQAService\OQAService.wsdl" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpPercentView.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpSumView.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.Emp.datasource" />
     <None Include="Properties\DataSources\WCFModels.Message.DemoView.datasource" />
+    <None Include="Properties\DataSources\WCFModels.OQA.DefectCodeView.datasource" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\OQAService\" />

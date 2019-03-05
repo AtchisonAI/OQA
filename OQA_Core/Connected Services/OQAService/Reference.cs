@@ -48,6 +48,12 @@ namespace OQA_Core.OQAService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOQAContract/UpdateDemoInfo", ReplyAction="http://tempuri.org/IOQAContract/UpdateDemoInfoResponse")]
         System.Threading.Tasks.Task<WCFModels.Message.ModelRsp<WCFModels.Message.DemoView>> UpdateDemoInfoAsync(WCFModels.Message.UpdateModelReq<WCFModels.Message.DemoView> updateReq);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOQAContract/QueryDefectCodeInfo", ReplyAction="http://tempuri.org/IOQAContract/QueryDefectCodeInfoResponse")]
+        WCFModels.Message.ModelRsp<WCFModels.OQA.DefectCodeView> QueryDefectCodeInfo(WCFModels.Message.ModelRsp<WCFModels.OQA.DefectCodeView> DefectCodeView);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOQAContract/QueryDefectCodeInfo", ReplyAction="http://tempuri.org/IOQAContract/QueryDefectCodeInfoResponse")]
+        System.Threading.Tasks.Task<WCFModels.Message.ModelRsp<WCFModels.OQA.DefectCodeView>> QueryDefectCodeInfoAsync(WCFModels.Message.ModelRsp<WCFModels.OQA.DefectCodeView> DefectCodeView);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -115,6 +121,14 @@ namespace OQA_Core.OQAService {
         
         public System.Threading.Tasks.Task<WCFModels.Message.ModelRsp<WCFModels.Message.DemoView>> UpdateDemoInfoAsync(WCFModels.Message.UpdateModelReq<WCFModels.Message.DemoView> updateReq) {
             return base.Channel.UpdateDemoInfoAsync(updateReq);
+        }
+        
+        public WCFModels.Message.ModelRsp<WCFModels.OQA.DefectCodeView> QueryDefectCodeInfo(WCFModels.Message.ModelRsp<WCFModels.OQA.DefectCodeView> DefectCodeView) {
+            return base.Channel.QueryDefectCodeInfo(DefectCodeView);
+        }
+        
+        public System.Threading.Tasks.Task<WCFModels.Message.ModelRsp<WCFModels.OQA.DefectCodeView>> QueryDefectCodeInfoAsync(WCFModels.Message.ModelRsp<WCFModels.OQA.DefectCodeView> DefectCodeView) {
+            return base.Channel.QueryDefectCodeInfoAsync(DefectCodeView);
         }
     }
 }

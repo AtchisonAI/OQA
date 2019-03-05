@@ -29,6 +29,7 @@
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="fa3c7288-009b-4bf5-a6c2-020ba6cbb5ea" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/OQAService/?xsd=xsd1" />
     <MetadataFile FileName="OQAService.wsdl" MetadataType="Wsdl" ID="0e3b7561-a244-49bb-b8a3-ada15c7b6059" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/OQAService/?wsdl" />
     <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="dc1a415b-b7d8-42d9-818c-1b3768a81c13" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/OQAService/?xsd=xsd2" />
+    <MetadataFile FileName="item5.xsd" MetadataType="Schema" ID="079e9327-4f0e-4a23-9d1e-a87d05277027" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/OQAService/?xsd=xsd5" />
     <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="103e352e-ee77-4b8b-9834-de01c53a4835" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/OQAService/?xsd=xsd0" />
     <MetadataFile FileName="item.disco" MetadataType="Disco" ID="185357bd-64f2-4d24-beff-327d9a194323" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/OQAService/?disco" />
   </Metadata>

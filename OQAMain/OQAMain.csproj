@@ -34,9 +34,6 @@
     <Reference Include="DemoCommon">
       <HintPath>..\Syncfusion.Tools.4.6\DemoCommon.dll</HintPath>
     </Reference>
-    <Reference Include="OQA_Core">
-      <HintPath>..\Components\OQA_Core.dll</HintPath>
-    </Reference>
     <Reference Include="Syncfusion.BulletGraph.Windows">
       <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.BulletGraph.Windows.dll</HintPath>
     </Reference>
@@ -451,7 +448,16 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\OQAService\OQAService.csproj">
+      <Project>{93084370-FF48-4E22-943B-5A9359311041}</Project>
+      <Name>OQAService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OQA_Core\OQA_Core.csproj">
+      <Project>{6734161e-7d2d-485f-a48c-d0dfea600583}</Project>
+      <Name>OQA_Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetPath)" "$(ProjectDir)..\Components\" /d/r/y</PostBuildEvent>

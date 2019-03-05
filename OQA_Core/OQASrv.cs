@@ -1,13 +1,13 @@
-﻿using OQA_Core.OQAService;
-using Utils;
+﻿using OQAService.Contract;
+using WcfClientCore.WcfSrv;
 
 namespace OQA_Core
 {
-    public class OQASrv
+    public class OQASrv : WcfSrv
     {
-        public static OQAContractClient CallServer()
+        public static IOQAContract CallServer()
         {
-            return SingletonT<OQAContractClient>.Instance;
+            return GetSrvClient<IOQAContract>("OQASrv");
         }
     }
 }

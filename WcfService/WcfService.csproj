@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Congfig\App.config" />
+    <None Include="Congfig\log4net.config" />
     <None Include="Congfig\packages.config" />
   </ItemGroup>
   <ItemGroup>

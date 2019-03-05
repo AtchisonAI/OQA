@@ -43,16 +43,16 @@ namespace WcfClient
             this.System_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Authority_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ShortCut_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Config_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.defectCodeSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oQA检验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OQAInspect_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lotInspectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aOIInspectionInputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcoInspectionInputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mircoInspectionInputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.defectSendPNDNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.defectLotResultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oQA发货ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OQAShip_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.foupChangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lotPackageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lotTransferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +68,7 @@ namespace WcfClient
             this.Active_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.Date_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.Time_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
+            this.Logout_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dockingManager)).BeginInit();
             this.Emp_panel.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -145,9 +146,9 @@ namespace WcfClient
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.System_ToolStripMenuItem,
-            this.配置ToolStripMenuItem,
-            this.oQA检验ToolStripMenuItem,
-            this.oQA发货ToolStripMenuItem,
+            this.Config_ToolStripMenuItem,
+            this.OQAInspect_ToolStripMenuItem,
+            this.OQAShip_ToolStripMenuItem,
             this.Rep_ToolStripMenuItem,
             this.Emp_ToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
@@ -160,8 +161,9 @@ namespace WcfClient
             // System_ToolStripMenuItem
             // 
             this.System_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Authority_ToolStripMenuItem,
-            this.ShortCut_ToolStripMenuItem});
+            this.Logout_ToolStripMenuItem,
+            this.ShortCut_ToolStripMenuItem,
+            this.Authority_ToolStripMenuItem});
             this.System_ToolStripMenuItem.Name = "System_ToolStripMenuItem";
             this.System_ToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
             this.System_ToolStripMenuItem.Text = "系统";
@@ -169,44 +171,44 @@ namespace WcfClient
             // Authority_ToolStripMenuItem
             // 
             this.Authority_ToolStripMenuItem.Name = "Authority_ToolStripMenuItem";
-            this.Authority_ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.Authority_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.Authority_ToolStripMenuItem.Text = "权限控制";
             this.Authority_ToolStripMenuItem.Click += new System.EventHandler(this.Authority_ToolStripMenuItem_Click);
             // 
             // ShortCut_ToolStripMenuItem
             // 
             this.ShortCut_ToolStripMenuItem.Name = "ShortCut_ToolStripMenuItem";
-            this.ShortCut_ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.ShortCut_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.ShortCut_ToolStripMenuItem.Text = "快捷菜单";
             this.ShortCut_ToolStripMenuItem.Click += new System.EventHandler(this.ShortCut_ToolStripMenuItem_Click);
             // 
-            // 配置ToolStripMenuItem
+            // Config_ToolStripMenuItem
             // 
-            this.配置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Config_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.defectCodeSetToolStripMenuItem});
-            this.配置ToolStripMenuItem.Name = "配置ToolStripMenuItem";
-            this.配置ToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
-            this.配置ToolStripMenuItem.Text = "配置";
+            this.Config_ToolStripMenuItem.Name = "Config_ToolStripMenuItem";
+            this.Config_ToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
+            this.Config_ToolStripMenuItem.Text = "配置";
             // 
             // defectCodeSetToolStripMenuItem
             // 
             this.defectCodeSetToolStripMenuItem.Name = "defectCodeSetToolStripMenuItem";
-            this.defectCodeSetToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.defectCodeSetToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.defectCodeSetToolStripMenuItem.Text = "Defect Code Set";
             this.defectCodeSetToolStripMenuItem.Click += new System.EventHandler(this.defectCodeSetToolStripMenuItem_Click);
             // 
-            // oQA检验ToolStripMenuItem
+            // OQAInspect_ToolStripMenuItem
             // 
-            this.oQA检验ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OQAInspect_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lotInspectToolStripMenuItem,
             this.aOIInspectionInputToolStripMenuItem,
             this.marcoInspectionInputToolStripMenuItem,
             this.mircoInspectionInputToolStripMenuItem,
             this.defectSendPNDNToolStripMenuItem,
             this.defectLotResultToolStripMenuItem});
-            this.oQA检验ToolStripMenuItem.Name = "oQA检验ToolStripMenuItem";
-            this.oQA检验ToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
-            this.oQA检验ToolStripMenuItem.Text = "OQA检验";
+            this.OQAInspect_ToolStripMenuItem.Name = "OQAInspect_ToolStripMenuItem";
+            this.OQAInspect_ToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
+            this.OQAInspect_ToolStripMenuItem.Text = "OQA检验";
             // 
             // lotInspectToolStripMenuItem
             // 
@@ -250,18 +252,18 @@ namespace WcfClient
             this.defectLotResultToolStripMenuItem.Text = "Defect Lot Result";
             this.defectLotResultToolStripMenuItem.Click += new System.EventHandler(this.defectLotResultToolStripMenuItem_Click);
             // 
-            // oQA发货ToolStripMenuItem
+            // OQAShip_ToolStripMenuItem
             // 
-            this.oQA发货ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OQAShip_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.foupChangeToolStripMenuItem,
             this.lotPackageToolStripMenuItem,
             this.lotTransferToolStripMenuItem,
             this.packageLabelPrintToolStripMenuItem,
             this.waferInspactionRecordPrintToolStripMenuItem,
             this.iOQAShipListPrintToolStripMenuItem});
-            this.oQA发货ToolStripMenuItem.Name = "oQA发货ToolStripMenuItem";
-            this.oQA发货ToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
-            this.oQA发货ToolStripMenuItem.Text = "OQA发货";
+            this.OQAShip_ToolStripMenuItem.Name = "OQAShip_ToolStripMenuItem";
+            this.OQAShip_ToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
+            this.OQAShip_ToolStripMenuItem.Text = "OQA发货";
             // 
             // foupChangeToolStripMenuItem
             // 
@@ -321,6 +323,7 @@ namespace WcfClient
             // 
             // tabbedGroupedMDIManager
             // 
+
             this.tabbedGroupedMDIManager.AttachedTo = this;
             this.tabbedGroupedMDIManager.CloseButtonBackColor = System.Drawing.Color.White;
             this.tabbedGroupedMDIManager.CloseButtonToolTip = "";
@@ -377,14 +380,14 @@ namespace WcfClient
             // 
             this.Active_statusBarAdvPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Active_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(642, 24);
+            this.Active_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(636, 24);
             this.Active_statusBarAdvPanel.Border3DStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.Active_statusBarAdvPanel.HAlign = Syncfusion.Windows.Forms.Tools.HorzFlowAlign.Justify;
             this.Active_statusBarAdvPanel.Location = new System.Drawing.Point(356, 2);
             this.Active_statusBarAdvPanel.Margin = new System.Windows.Forms.Padding(0);
             this.Active_statusBarAdvPanel.Name = "Active_statusBarAdvPanel";
             this.Active_statusBarAdvPanel.PreferredSize = new System.Drawing.Size(432, 24);
-            this.Active_statusBarAdvPanel.Size = new System.Drawing.Size(642, 24);
+            this.Active_statusBarAdvPanel.Size = new System.Drawing.Size(636, 24);
             this.Active_statusBarAdvPanel.TabIndex = 3;
             this.Active_statusBarAdvPanel.Text = null;
             // 
@@ -395,7 +398,7 @@ namespace WcfClient
             this.Date_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(177, 24);
             this.Date_statusBarAdvPanel.Border3DStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.Date_statusBarAdvPanel.HAlign = Syncfusion.Windows.Forms.Tools.HorzFlowAlign.Right;
-            this.Date_statusBarAdvPanel.Location = new System.Drawing.Point(1000, 2);
+            this.Date_statusBarAdvPanel.Location = new System.Drawing.Point(994, 2);
             this.Date_statusBarAdvPanel.Margin = new System.Windows.Forms.Padding(0);
             this.Date_statusBarAdvPanel.Name = "Date_statusBarAdvPanel";
             this.Date_statusBarAdvPanel.PanelType = Syncfusion.Windows.Forms.Tools.StatusBarAdvPanelType.ShortDate;
@@ -410,13 +413,20 @@ namespace WcfClient
             this.Time_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(177, 24);
             this.Time_statusBarAdvPanel.Border3DStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.Time_statusBarAdvPanel.HAlign = Syncfusion.Windows.Forms.Tools.HorzFlowAlign.Right;
-            this.Time_statusBarAdvPanel.Location = new System.Drawing.Point(1179, 2);
+            this.Time_statusBarAdvPanel.Location = new System.Drawing.Point(1173, 2);
             this.Time_statusBarAdvPanel.Margin = new System.Windows.Forms.Padding(0);
             this.Time_statusBarAdvPanel.Name = "Time_statusBarAdvPanel";
             this.Time_statusBarAdvPanel.PanelType = Syncfusion.Windows.Forms.Tools.StatusBarAdvPanelType.LongTime24Format;
             this.Time_statusBarAdvPanel.Size = new System.Drawing.Size(177, 24);
             this.Time_statusBarAdvPanel.TabIndex = 0;
             this.Time_statusBarAdvPanel.Text = null;
+            // 
+            // Logout_ToolStripMenuItem
+            // 
+            this.Logout_ToolStripMenuItem.Name = "Logout_ToolStripMenuItem";
+            this.Logout_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.Logout_ToolStripMenuItem.Text = "登出系统";
+            this.Logout_ToolStripMenuItem.Click += new System.EventHandler(this.Logout_ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -468,21 +478,22 @@ namespace WcfClient
         private Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel Time_statusBarAdvPanel;
         private ToolStripMenuItem Authority_ToolStripMenuItem;
         private ToolStripMenuItem ShortCut_ToolStripMenuItem;
-        private ToolStripMenuItem 配置ToolStripMenuItem;
+        private ToolStripMenuItem Config_ToolStripMenuItem;
         private ToolStripMenuItem defectCodeSetToolStripMenuItem;
-        private ToolStripMenuItem oQA检验ToolStripMenuItem;
+        private ToolStripMenuItem OQAInspect_ToolStripMenuItem;
         private ToolStripMenuItem lotInspectToolStripMenuItem;
         private ToolStripMenuItem aOIInspectionInputToolStripMenuItem;
         private ToolStripMenuItem marcoInspectionInputToolStripMenuItem;
         private ToolStripMenuItem mircoInspectionInputToolStripMenuItem;
         private ToolStripMenuItem defectSendPNDNToolStripMenuItem;
         private ToolStripMenuItem defectLotResultToolStripMenuItem;
-        private ToolStripMenuItem oQA发货ToolStripMenuItem;
+        private ToolStripMenuItem OQAShip_ToolStripMenuItem;
         private ToolStripMenuItem foupChangeToolStripMenuItem;
         private ToolStripMenuItem lotPackageToolStripMenuItem;
         private ToolStripMenuItem lotTransferToolStripMenuItem;
         private ToolStripMenuItem packageLabelPrintToolStripMenuItem;
         private ToolStripMenuItem waferInspactionRecordPrintToolStripMenuItem;
         private ToolStripMenuItem iOQAShipListPrintToolStripMenuItem;
+        private ToolStripMenuItem Logout_ToolStripMenuItem;
     }
 }

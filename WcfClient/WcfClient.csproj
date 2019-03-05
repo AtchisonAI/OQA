@@ -160,6 +160,11 @@
     <EmbeddedResource Include="Forms\ShortcutForm.resx">
       <DependentUpon>ShortcutForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Config\app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Config\log4net.config" />
+    <None Include="Config\server.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpPercentView.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpSumView.datasource" />
@@ -184,6 +189,10 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OQAService\OQAService.csproj">
+      <Project>{93084370-ff48-4e22-943b-5a9359311041}</Project>
+      <Name>OQAService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OQA_Core\OQA_Core.csproj">
       <Project>{6734161e-7d2d-485f-a48c-d0dfea600583}</Project>
       <Name>OQA_Core</Name>

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using WCFModels.OQA;
 
 namespace WaferSf
 {
@@ -183,6 +184,39 @@ namespace WaferSf
             selectPanel.Controls.Clear();
         }
 
+
+        public void showWaferPanel(string areaId, string code)
+        {//单个方格显示
+            try
+            {
+                int i = int.Parse(areaId);
+                foreach (Control control in tableLayoutPanel1.Controls)
+                {
+                    if ((control is Panel) && control.Name.Split('_')[1].Equals(areaId))
+                    {
+                        defectCode[i] = code;
+                        Panel p = control as Panel;
+                        p.Refresh();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        public void showWafer(List<ISPWAFDFT> valueList)
+        {//数据显示
+            if (null != valueList && valueList.Count > 0)
+            {
+                foreach (var child in valueList)
+                {
+                    showWaferPanel(child.AreaId.ToString(), child.DefectCode);
+                }
+            }
+        }
         #endregion
 
         #region

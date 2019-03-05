@@ -1,17 +1,24 @@
 ﻿using System.Collections.Generic;
-using Utils;
+using System.ServiceModel;
 using WcfClientCore.Utils.Authority;
-using WcfClientCore.WcfService;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
+using WcfService.Contract;
 
 namespace WcfClientCore.WcfSrv
 {
-    public static class Srv
+    public class WcfSrv
     {
-        public static WcfContractClient Client()
+        public static IWcfContract WcfClient()
         {
-            return SingletonT<WcfContractClient>.Instance;
+            return GetSrvClient<IWcfContract>("WcfSrv");
+        }
+
+        public static T GetSrvClient<T>(string configName)
+        {
+            ChannelFactory<T> channelFactory = new ChannelFactory<T>(configName);
+            T proxy = channelFactory.CreateChannel();
+            return proxy;
         }
 
         public static bool Login(UserProfile userProfile)
@@ -21,7 +28,7 @@ namespace WcfClientCore.WcfSrv
                 userProfile = userProfile
             };
 
-            var rsp = Client().Login(loginReq);
+            var rsp = WcfClient().Login(loginReq);
             if (rsp._success)
             {
                 //获取control&&user accessstring
@@ -35,7 +42,7 @@ namespace WcfClientCore.WcfSrv
         public static ModelListRsp<ControlAccessString> QueryControlAccessString()
         {
             QueryReq req = new QueryReq();
-            return Client().QueryControlAccessString(req);
+            return WcfClient().QueryControlAccessString(req);
         }
 
         public static ModelRsp<ControlAccessString> UpdateControlAccessString(ControlAccessString dbModel, OperateType type)
@@ -46,7 +53,7 @@ namespace WcfClientCore.WcfSrv
                 opreateType = type
             };
 
-            return Client().UpdateControlAccessString(updateReq);
+            return WcfClient().UpdateControlAccessString(updateReq);
         }
 
         private static void LoadUserAccessString(IList<string> userAccessList)

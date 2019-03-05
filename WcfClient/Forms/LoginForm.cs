@@ -27,7 +27,7 @@ namespace WcfClient
             }
             else
             {
-                if (Srv.Login(new UserProfile(userName, passwd, "OQA:")))
+                if (WcfSrv.Login(new UserProfile(userName, passwd, "OQA:")))
                 {
                     log.Info("登陆成功 "+"User: "+userName );
                     DialogResult = DialogResult.OK;
@@ -47,8 +47,8 @@ namespace WcfClient
 
         private void cancleBtn_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
-            Close();
+            //DialogResult = DialogResult.Cancel;
+            Application.Exit();
         }
 
         private void userNameTbx_KeyPress(object sender, KeyPressEventArgs e)

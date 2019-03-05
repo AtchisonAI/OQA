@@ -2,6 +2,7 @@
 using OQA_Core;
 using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace OQAMain
 {
@@ -23,13 +24,58 @@ namespace OQAMain
 
 
         #region " Variable Definition "
-        //private bool b_load_flag  ;
+        private Boolean frontFlag = true;//正面
 
         #endregion
 
 
         #region " Function Definition "
+        private void frontButton_Click(object sender, EventArgs e)
+        {
+            frontFlag = true;
+            this.frontButton.BackColor = Color.Green;
+            this.backButton.BackColor = Color.Gray;
+            waferSurF.Visible = true;
+            waferSurF.Enabled = true;
+            waferSurB.Enabled = false;
+            waferSurB.Visible = false;
+        }
 
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            frontFlag = false;
+            this.backButton.BackColor = Color.Green;
+            this.frontButton.BackColor = Color.Gray;
+            waferSurB.Enabled = true;
+            waferSurB.Visible = true;
+            waferSurF.Visible = false;
+            waferSurF.Enabled = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            waferSurF.clearPanel();
+            waferSurB.clearPanel();
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                radioButton1.Checked = true;
+                groupBoxThree.Visible = false;
+                groupBoxThree.Enabled = false;
+            }
+        }
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton2.Checked)
+            {
+                radioButton2.Checked = true;
+                groupBoxThree.Visible = true;
+                groupBoxThree.Enabled = true;
+            }
+        }
         #region " 事务前数据检查 "
         private bool CheckCondition(string FuncName)
         {
@@ -153,6 +199,12 @@ namespace OQAMain
             }
         }
 
-
+        private void FrmMircoInput_Load(object sender, EventArgs e)
+        {
+            waferSurB.Enabled = false;
+            waferSurB.Visible = false;
+            this.frontButton.BackColor = Color.Green;
+            this.backButton.BackColor = Color.Gray;
+        }
     }
 }

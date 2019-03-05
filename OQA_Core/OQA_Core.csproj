@@ -109,10 +109,11 @@
     <Compile Include="BaseForms\BaseForm1.Designer.cs">
       <DependentUpon>BaseForm1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\OQAService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <Compile Include="Controls\WaferSur.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WaferSur.Designer.cs">
+      <DependentUpon>WaferSur.cs</DependentUpon>
     </Compile>
     <Compile Include="OQASrv.cs" />
     <Compile Include="GlobalConstant.cs" />
@@ -126,57 +127,25 @@
     <EmbeddedResource Include="BaseForms\BaseForm1.resx">
       <DependentUpon>BaseForm1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WaferSur.resx">
+      <DependentUpon>WaferSur.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
+    <ProjectReference Include="..\OQAService\OQAService.csproj">
+      <Project>{93084370-ff48-4e22-943b-5a9359311041}</Project>
+      <Name>OQAService</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\OQAService\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\OQAService\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\OQAService\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\OQAService\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\OQAService\item4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\OQAService\item5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\OQAService\OQAService.wsdl" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpPercentView.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpSumView.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.Emp.datasource" />
     <None Include="Properties\DataSources\WCFModels.Message.DemoView.datasource" />
-    <None Include="Properties\DataSources\WCFModels.OQA.DefectCodeView.datasource" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\OQAService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\OQAService\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\OQAService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\OQAService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\OQAService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

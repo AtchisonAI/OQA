@@ -26,22 +26,25 @@ namespace WcfClientCore.Utils.Authority
                         ToolStripItem toolStripItem = (ToolStripItem)fi.GetValue(obj);
                         if (toolStripItem != null && !IsAceessed(fieldPrefix + fi.Name))
                             toolStripItem.Enabled = false;
+                        else
+                            toolStripItem.Enabled = true;
                         break;
 
                     case "Button":
                         Button toolButtonItem = (Button)fi.GetValue(obj);
                         if (toolButtonItem != null && !IsAceessed(fieldPrefix + fi.Name))
                             toolButtonItem.Enabled = false;
+                        else
+                            toolButtonItem.Enabled = true;
                         break;
                     case "DockingManager":
                         DockingManager dockItem = (DockingManager)fi.GetValue(obj);
                         foreach (Control q in dockItem.ControlsArray)
                         {
                             if(q != null && !IsAceessed(fieldPrefix + q.Name))
-                            {
-                                dockItem.SetEnableDocking(q, false);
-                                q.Visible = false;
-                            }
+                                dockItem.SetDockVisibility(q, false);
+                            else
+                                dockItem.SetDockVisibility(q, true);
                         }
                         break;
                     case "TreeView":

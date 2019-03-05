@@ -2,6 +2,7 @@
 using OQA_Core;
 using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace OQAMain
 {
@@ -23,12 +24,34 @@ namespace OQAMain
 
 
         #region " Variable Definition "
-        //private bool b_load_flag  ;
+        private Boolean frontFlag = true;//正面
 
         #endregion
 
 
         #region " Function Definition "
+        private void frontButton_Click(object sender, EventArgs e)
+        {
+            frontFlag = true;
+            this.frontButton.BackColor = Color.Green;
+            this.backButton.BackColor = Color.Gray;
+            waferSurF.Enabled = true;
+            waferSurB.Enabled = false;
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            frontFlag = false;
+            this.backButton.BackColor = Color.Green;
+            this.frontButton.BackColor = Color.Gray;
+            waferSurB.Enabled = true;
+            waferSurF.Enabled = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            waferSurF.clearPanel();
+        }
 
         #region " 事务前数据检查 "
         private bool CheckCondition(string FuncName)
@@ -153,6 +176,11 @@ namespace OQAMain
             }
         }
 
-
+        private void FrmMarcoInput_Load(object sender, EventArgs e)
+        {
+            waferSurB.Enabled = false;
+            this.frontButton.BackColor = Color.Green;
+            this.backButton.BackColor = Color.Gray;
+        }
     }
 }

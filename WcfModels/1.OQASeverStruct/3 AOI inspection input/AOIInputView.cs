@@ -48,6 +48,7 @@ namespace WCFModels.OQA
         public string DefectDesc { get; set; }
         [DataMember]
         public string Cmt { get; set; }
+        [DataMember]
         public List<ISPWAFDFT> ISPWAFDFT_list { get; set; }
 
         [DataMember]
@@ -58,5 +59,34 @@ namespace WCFModels.OQA
         public string ImageName { get; set; }
         [DataMember]
         public string ImageType { get; set; }
+    }
+
+    public class AOIShowView : BaseRsp
+    {
+
+        //服务传入执行动作,事务标记必须输入
+        [DataMember]
+        public char c_proc_step { get; set; }
+        [DataMember]
+        public char c_tran_flag { get; set; }
+        //服务传入参数
+        [DataMember]
+        public string in_isp_type { get; set; }
+        [DataMember]
+        public string in_isp_code { get; set; }
+        //服务传出数据结构
+        //服务传出结果在BaseRsq:_success  _ErrorMsg
+
+        [DataMember]
+        public ISPWAFITM ISPWAFITM { get; set; }
+        // public ModelListRsp<ISPWAFITM> ISPWAFITM_list { get; set; }
+        [DataMember]
+       // public ModelListRsp<ISPWAFDFT> ISPWAFDFT_list { get; set; }
+         public List<ISPWAFDFT> ISPWAFDFT_list { get; set; }
+        [DataMember]
+      //  public ModelListRsp<ISPIMGDEF> ISPIMGDEF_list { get; set; }
+         public List<ISPIMGDEF> ISPIMGDEF_list { get; set; }
+
+
     }
 }

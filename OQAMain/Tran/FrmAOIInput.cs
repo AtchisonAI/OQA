@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using System.Drawing;
 using WCFModels.OQA;
 using System.Collections.Generic;
+using WCFModels.Message;
+using OQAService;
 
 namespace OQAMain
 {
@@ -190,6 +192,17 @@ namespace OQAMain
             //List<ISPWAFDFT> list = new List<ISPWAFDFT>();
             //list.Add(iSPWAFDFT);
             //waferSurF.showWafer(list);
+        }
+        private void pageInfoShow()
+        {
+            AOIShowView view = new AOIShowView();
+            view.ISPWAFITM.LotId = "1";
+            view.ISPWAFITM.SlotId = "1";
+            view.ISPWAFITM.WaferId = "1";
+            view.ISPWAFITM.SideType = "F";
+            view.ISPWAFITM.InspectType = "A";
+
+            QueryAOIInfo(view);
         }
     }
 }

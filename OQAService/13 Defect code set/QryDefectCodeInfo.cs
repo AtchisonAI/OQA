@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using WCFModels;
-using WCFModels.MESDB.FWTST1;
+using Utils;
 using WCFModels.Message;
 using WCFModels.OQA;
 
@@ -56,19 +56,19 @@ namespace OQAService.Services
                             PageQueryReq.ItemsPerPage = 200;
                             if (In_node.model.in_isp_type.Trim().Equals("") == false)
                             {
-                                AddCondition(PageQueryReq, "Inspect_type", In_node.model.in_isp_type.Trim(), LogicCondition.AndAlso);
+                                AddCondition(PageQueryReq, GetParaName< ISPDFTDEF >(p=>p.InspectType), In_node.model.in_isp_type.Trim(), LogicCondition.AndAlso,CompareType.Equal);
                             }
                             if (In_node.model.in_isp_code.Trim().Equals("") == false)
                             {
-                                AddCondition(PageQueryReq, "Defect_code", In_node.model.in_isp_code.Trim(), LogicCondition.AndAlso);
+                                AddCondition(PageQueryReq, GetParaName<ISPDFTDEF>(p => p.DefectCode), In_node.model.in_isp_code.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
                                                         
-                            AddSortCondition(PageQueryReq, "Inspect_type", SortType.ASC);
+                            AddSortCondition(PageQueryReq, GetParaName < ISPDFTDEF > (p=>p.InspectType), SortType.ASC);
                          
 
                             var data = PageQuery<ISPDFTDEF>(PageQueryReq);
 
-                            Out_node.model.ISPDFTDEF_list = IListToList<ISPDFTDEF>(data.models);
+                            Out_node.model.ISPDFTDEF_list = data.models;
 
                             break;
 
@@ -111,14 +111,5 @@ namespace OQAService.Services
                 return Out_node;
             }
         }
-
-
-        public List<T> IListToList<T>(IList<T> list)
-        {
-            T[] array = new T[list.Count];
-            list.CopyTo(array, 0);
-            return new List<T>(array);
-        }
     }
-
 }

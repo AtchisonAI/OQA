@@ -7,7 +7,7 @@ namespace WcfService
 {
     public static class LambdaHelper
     {
-        public static Expression<Func<T, bool>> LambdaBuilder<T>(IList<QueryCondition> qesList)
+        public static Expression<Func<T, bool>> LambdaBuilder<T>(List<QueryCondition> qesList)
         {
             Assert(qesList.Count > 0);
             var typeObject = Expression.Parameter(typeof(T), "x");
@@ -79,6 +79,12 @@ namespace WcfService
             MemberExpression body = Expression.Property(param, paramName);
             //3.根据参数和表达式体构造一个lambda表达式
             return Expression.Lambda<Func<T, object>>(body, param);
+        }
+
+        //从lamba表达式中获取类的参数名
+        public static string GetParaName<T>(Expression<Func<T, object>> exp)
+        {
+            return ((MemberExpression)exp.Body).Member.Name;
         }
     }
 }

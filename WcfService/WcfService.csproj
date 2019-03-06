@@ -93,9 +93,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Congfig\App.config" />
-    <None Include="Congfig\log4net.config" />
-    <None Include="Congfig\packages.config" />
+    <None Include="Config\App.config" />
+    <None Include="Config\log4net.config" />
+    <None Include="Config\packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WCFModels\WcfModels.csproj">

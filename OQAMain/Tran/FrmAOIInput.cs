@@ -3,6 +3,8 @@ using OQA_Core;
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using WCFModels.OQA;
+using System.Collections.Generic;
 
 namespace OQAMain
 {
@@ -182,6 +184,12 @@ namespace OQAMain
             waferSurB.Enabled = false;
             this.frontButton.BackColor = Color.Green;
             this.backButton.BackColor = Color.Gray;
+            //ISPWAFDFT iSPWAFDFT = new ISPWAFDFT();
+            //iSPWAFDFT.AreaId = 1;
+            //iSPWAFDFT.DefectCode = "A";
+            //List<ISPWAFDFT> list = new List<ISPWAFDFT>();
+            //list.Add(iSPWAFDFT);
+            //waferSurF.showWafer(list);
         }
     }
 }

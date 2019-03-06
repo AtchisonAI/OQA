@@ -54,26 +54,32 @@
             this.backButton = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.waferSurB = new WaferSf.WaferSur();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(668, 6);
+            this.btnClose.Location = new System.Drawing.Point(704, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(480, 6);
+            this.btnCreate.Location = new System.Drawing.Point(516, 6);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(574, 6);
+            this.btnEdite.Location = new System.Drawing.Point(610, 6);
             // 
             // pnlMenu
             // 
-            this.pnlMenu.Location = new System.Drawing.Point(0, 706);
+            this.pnlMenu.Location = new System.Drawing.Point(0, 781);
             this.pnlMenu.Size = new System.Drawing.Size(768, 40);
             // 
             // groupBox3
@@ -95,7 +101,7 @@
             this.groupBox3.Controls.Add(this.textBox6);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(15, 436);
+            this.groupBox3.Location = new System.Drawing.Point(12, 531);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(721, 225);
             this.groupBox3.TabIndex = 35;
@@ -275,7 +281,7 @@
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.waferSurB);
             this.groupBox1.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.groupBox1.Location = new System.Drawing.Point(15, 32);
+            this.groupBox1.Location = new System.Drawing.Point(12, 138);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(721, 398);
             this.groupBox1.TabIndex = 34;
@@ -349,11 +355,62 @@
             this.waferSurB.Size = new System.Drawing.Size(210, 210);
             this.waferSurB.TabIndex = 28;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Location = new System.Drawing.Point(12, 38);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(721, 94);
+            this.groupBox2.TabIndex = 36;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "AOI inspection simple MAP";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(411, 50);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 4;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.label15.Location = new System.Drawing.Point(81, 57);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(49, 14);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "Lot ID";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(157, 56);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 21);
+            this.textBox7.TabIndex = 3;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.label16.Location = new System.Drawing.Point(348, 56);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(35, 14);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "Slot";
+            // 
             // FrmAOIInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 746);
+            this.ClientSize = new System.Drawing.Size(768, 821);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmAOIInput";
@@ -361,11 +418,14 @@
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox3, 0);
+            this.Controls.SetChildIndex(this.groupBox2, 0);
             this.pnlMenu.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -398,5 +458,10 @@
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Label label14;
         private WaferSf.WaferSur waferSurB;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label16;
     }
 }

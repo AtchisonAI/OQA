@@ -28,7 +28,7 @@ namespace WCFModels.Message
         }
 
         [DataMember]
-        public IList<QueryCondition> queryConditionList { get; set; }
+        public List<QueryCondition> queryConditionList { get; set; }
     }
 
     [DataContract]
@@ -42,7 +42,7 @@ namespace WCFModels.Message
         }
 
         [DataMember]
-        public IList<SortCondition> sortCondittionList { get; set; }
+        public List<SortCondition> sortCondittionList { get; set; }
 
         [DataMember]
         public int ItemsPerPage { get; set; }
@@ -64,24 +64,6 @@ namespace WCFModels.Message
     }
 
     [DataContract]
-    //public class UpdateModelReq<T> : UpdateReq where T : IModelingObject, new()
-    //{
-    //    [DataMember]
-    //    public T Model { get; set; }
-    //}
-
-    //[DataContract]
-    //public class UpdateModelListReq<T> : UpdateReq where T : IModelingObject, new()
-    //{
-    //    [DataMember]
-    //    public IList<T> Models { get; set; }
-
-    //    public UpdateModelListReq() : base()
-    //    {
-    //        Models = new List<T>();
-    //    }
-    //}
-
     public class UpdateModelReq<T> : UpdateReq
     {
         [DataMember]
@@ -92,7 +74,7 @@ namespace WCFModels.Message
     public class UpdateModelListReq<T> : UpdateReq
     {
         [DataMember]
-        public IList<T> models { get; set; }
+        public List<T> models { get; set; }
 
         public UpdateModelListReq() : base()
         {
@@ -152,7 +134,7 @@ namespace WCFModels.Message
     public class PageModelRsp<T> : PageRsp
     {
         [DataMember]
-        public IList<T> models { get; set; }
+        public List<T> models { get; set; }
 
         public PageModelRsp()
         {
@@ -164,7 +146,7 @@ namespace WCFModels.Message
     public class ModelListRsp<T> : BaseRsp
     {
         [DataMember]
-        public IList<T> models { get; set; }
+        public List<T> models { get; set; }
 
         public ModelListRsp()
         {

@@ -56,12 +56,12 @@ namespace WcfClientCore.WcfSrv
             return WcfClient().UpdateControlAccessString(updateReq);
         }
 
-        private static void LoadUserAccessString(IList<string> userAccessList)
+        private static void LoadUserAccessString(List<string> userAccessList)
         {
             AuthorityControl.LoadUserAccessString(userAccessList);
         }
 
-        private static void LoadControlAccessString(IList<ControlAccessString> controlAccessList)
+        private static void LoadControlAccessString(List<ControlAccessString> controlAccessList)
         {
             Dictionary<string, string> controlAccesstring = new Dictionary<string, string>();
 

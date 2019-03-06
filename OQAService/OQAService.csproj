@@ -55,6 +55,13 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="WcfService">
+      <HintPath>..\Components\WcfService.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="13 Defect code set\CreateDefectCodeInfo.cs" />
@@ -73,10 +80,6 @@
     <ProjectReference Include="..\WCFModels\WcfModels.csproj">
       <Project>{479849CD-3F79-4B29-ACD0-ADCED9DC3A6E}</Project>
       <Name>WcfModels</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WcfService\WcfService.csproj">
-      <Project>{a19b87ee-049d-4600-845c-f33b22dcec8b}</Project>
-      <Name>WcfService</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -171,7 +171,6 @@ namespace WcfClient
 
         private void Logout_ToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            Refresh();
             LoginForm lgFrom = new LoginForm();
             lgFrom.StartPosition = FormStartPosition.CenterScreen;
             lgFrom.ShowDialog();

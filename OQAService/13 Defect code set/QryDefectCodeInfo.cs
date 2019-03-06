@@ -28,14 +28,14 @@ namespace OQAService.Services
 
                 //验证系统级别输入参数
 
-                if (In_node.model.c_proc_step.Equals("") == true)
+                if (In_node.model.C_PROC_STEP.Equals("") == true)
                 {
                     Out_node._success = false;
                     Out_node._ErrorMsg = "C_PROC_STEP is null!";
                     return Out_node;
 
                 }
-                if (In_node.model.c_tran_flag.Equals("") == true)
+                if (In_node.model.C_TRAN_FLAG.Equals("") == true)
                 {
                     Out_node._success = false;
                     Out_node._ErrorMsg = "C_TRAN_FLAG is null!";
@@ -43,10 +43,10 @@ namespace OQAService.Services
 
                 }
 
-                if (In_node.model.c_proc_step == GlobalConstant.TRAN_VIEW)
+                if (In_node.model.C_PROC_STEP == GlobalConstant.TRAN_VIEW)
                 {
                     //业务逻辑选择
-                    switch (In_node.model.c_tran_flag)
+                    switch (In_node.model.C_TRAN_FLAG)
                     {
                         case '1':
                             //验证业务级输入参数
@@ -54,13 +54,13 @@ namespace OQAService.Services
 
                             PageQueryReq.CurrentPage = 1;
                             PageQueryReq.ItemsPerPage = 200;
-                            if (In_node.model.in_isp_type.Trim().Equals("") == false)
+                            if (In_node.model.IN_ISP_TYPE.Trim().Equals("") == false)
                             {
-                                AddCondition(PageQueryReq, GetParaName< ISPDFTDEF >(p=>p.InspectType), In_node.model.in_isp_type.Trim(), LogicCondition.AndAlso,CompareType.Equal);
+                                AddCondition(PageQueryReq, GetParaName< ISPDFTDEF >(p=>p.InspectType), In_node.model.IN_ISP_TYPE.Trim(), LogicCondition.AndAlso,CompareType.Equal);
                             }
-                            if (In_node.model.in_isp_code.Trim().Equals("") == false)
+                            if (In_node.model.IN_ISP_CODE.Trim().Equals("") == false)
                             {
-                                AddCondition(PageQueryReq, GetParaName<ISPDFTDEF>(p => p.DefectCode), In_node.model.in_isp_code.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                                AddCondition(PageQueryReq, GetParaName<ISPDFTDEF>(p => p.DefectCode), In_node.model.IN_ISP_CODE.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
                                                         
                             AddSortCondition(PageQueryReq, GetParaName < ISPDFTDEF > (p=>p.InspectType), SortType.ASC);

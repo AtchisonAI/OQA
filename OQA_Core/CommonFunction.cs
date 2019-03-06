@@ -356,6 +356,33 @@ namespace OQA_Core
             }
             return b_valid_flag;
         }
+
+
+        public static void InitListView(ListView MyListView,bool GridLines)
+        {
+            MyListView.Items.Clear();
+            MyListView.View = System.Windows.Forms.View.Details;
+            MyListView.FullRowSelect = true;
+            MyListView.HideSelection = false;
+            MyListView.GridLines = GridLines;
+            //if (MPGV.gIMdiForm != null && MPGV.gIMdiForm.GetSmallIconList() != null)
+            //{
+            //    if (MyListView.SmallImageList == null)
+            //    {
+            //        MyListView.SmallImageList = MPGV.gIMdiForm.GetSmallIconList();
+            //        MyListView.SmallImageList.Tag = "LOADED";
+            //    }
+            //    else if (MPCF.Trim(MyListView.SmallImageList.Tag) != "LOADED")
+            //    {
+            //        MyListView.SmallImageList = MPGV.gIMdiForm.GetSmallIconList();
+            //        MyListView.SmallImageList.Tag = "LOADED";
+            //    }
+            //}
+            //else
+            //{
+            //    MyListView.SmallImageList = null;
+            //}
+        }
     }
     #endregion
 }

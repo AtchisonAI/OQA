@@ -4,6 +4,7 @@ using System;
 using System.Windows.Forms;
 using WCFModels.Message;
 using WCFModels.OQA;
+using System.Collections.Generic;
 
 namespace OQAMain
 {
@@ -107,13 +108,35 @@ namespace OQAMain
         private bool QueryDefectCodeInfo(char c_proc_step, char c_tran_flag)
         {
             ModelRsp<DefectCodeView> in_node = new ModelRsp<DefectCodeView>();
+            DefectCodeView in_data = new DefectCodeView();
 
-            in_node.model.c_proc_step = c_proc_step;
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            
+            in_node.model = in_data;
 
-            in_node.model.c_tran_flag = c_tran_flag;
+            var out_data = OQASrv.CallServer().QueryDefectCodeInfo(in_node);
 
-            var data = OQASrv.CallServer().QueryDefectCodeInfo(in_node);
+            if (out_data._success == true)
+            {
+                ComFunc.InitListView(LstIspCode, true);
+                for (int i = 0; i < out_data.model.ISPDFTDEF_list.Count; i++)
+                {
+                    ListViewItem list_item = new ListViewItem();
+                    ISPDFTDEF list = out_data.model.ISPDFTDEF_list[i];
+                    list_item.SubItems.Add(list.InspectType);
+                    list_item.SubItems.Add(list.DefectCode);
+                    list_item.SubItems.Add(list.DftDesc);
+                    LstIspCode.Items.Add(list_item);
+                }
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+            }
 
+            //LstIspCode.Items.Add(ListView(data.model.ISPDFTDEF_list));
+            //data.model.ISPDFTDEF_list;
             //LstIspCode.d
 
             return true;

@@ -11,14 +11,58 @@ namespace WCFModels.OQA
 
         //服务传入执行动作,事务标记必须输入
         [DataMember]
-        public char c_proc_step { get; set; }
+        public char C_PROC_STEP
+        {
+            get
+            {
+                return c_proc_step;
+            }
+            set
+            {
+                c_proc_step = value;
+            }
+        }
+        private char c_proc_step;
+
         [DataMember]
-        public char c_tran_flag { get; set; }
+        public char C_TRAN_FLAG
+        {
+            get
+            {
+                return c_tran_flag;
+            }
+            set
+            {
+                c_tran_flag = value;
+            }
+        }
+
+        private char c_tran_flag;
         //服务传入参数
         [DataMember]
-        public string in_isp_type { get; set; }
+        public string IN_ISP_TYPE {
+            get
+            {
+                return in_isp_type;
+            }
+            set
+            {
+                in_isp_type = value;
+            }
+        }
+        private string in_isp_type;
         [DataMember]
-        public string in_isp_code { get; set; }
+        public string IN_ISP_CODE {
+            get
+            {
+                return in_isp_code;
+            }
+            set
+            {
+                in_isp_code = value;
+            }
+        }
+        private string in_isp_code;
         //服务传出数据结构
         [DataMember]
         public List<ISPDFTDEF> ISPDFTDEF_list { get; set; }

@@ -35,12 +35,15 @@
             this.rbnNoFilter = new System.Windows.Forms.RadioButton();
             this.rbnFilter = new System.Windows.Forms.RadioButton();
             this.grpDefectCode = new System.Windows.Forms.GroupBox();
-            this.labIspType = new System.Windows.Forms.Label();
-            this.txtIspType = new System.Windows.Forms.TextBox();
-            this.txtDefectCode = new System.Windows.Forms.TextBox();
-            this.labDefectCode = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.labDefectDesc = new System.Windows.Forms.Label();
+            this.txtDefectCode = new System.Windows.Forms.TextBox();
+            this.labDefectCode = new System.Windows.Forms.Label();
+            this.txtIspType = new System.Windows.Forms.TextBox();
+            this.labIspType = new System.Windows.Forms.Label();
+            this.InspectType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DefectCode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DefectDesc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlMenu.SuspendLayout();
             this.grpIspType.SuspendLayout();
             this.grpDefectCode.SuspendLayout();
@@ -65,11 +68,16 @@
             this.LstIspCode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.LstIspCode.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.InspectType,
+            this.DefectCode,
+            this.DefectDesc});
             this.LstIspCode.Location = new System.Drawing.Point(9, 67);
             this.LstIspCode.Name = "LstIspCode";
             this.LstIspCode.Size = new System.Drawing.Size(180, 450);
             this.LstIspCode.TabIndex = 1;
             this.LstIspCode.UseCompatibleStateImageBehavior = false;
+            this.LstIspCode.View = System.Windows.Forms.View.Details;
             // 
             // grpIspType
             // 
@@ -140,22 +148,22 @@
             this.grpDefectCode.TabStop = false;
             this.grpDefectCode.Text = "Defect Code Information";
             // 
-            // labIspType
+            // textBox1
             // 
-            this.labIspType.AutoSize = true;
-            this.labIspType.Location = new System.Drawing.Point(13, 46);
-            this.labIspType.Name = "labIspType";
-            this.labIspType.Size = new System.Drawing.Size(77, 12);
-            this.labIspType.TabIndex = 0;
-            this.labIspType.Text = "Inspect Type";
+            this.textBox1.Location = new System.Drawing.Point(135, 91);
+            this.textBox1.MaxLength = 50;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(150, 21);
+            this.textBox1.TabIndex = 5;
             // 
-            // txtIspType
+            // labDefectDesc
             // 
-            this.txtIspType.Location = new System.Drawing.Point(135, 42);
-            this.txtIspType.MaxLength = 1;
-            this.txtIspType.Name = "txtIspType";
-            this.txtIspType.Size = new System.Drawing.Size(100, 21);
-            this.txtIspType.TabIndex = 1;
+            this.labDefectDesc.AutoSize = true;
+            this.labDefectDesc.Location = new System.Drawing.Point(13, 95);
+            this.labDefectDesc.Name = "labDefectDesc";
+            this.labDefectDesc.Size = new System.Drawing.Size(113, 12);
+            this.labDefectDesc.TabIndex = 4;
+            this.labDefectDesc.Text = "Defect Description";
             // 
             // txtDefectCode
             // 
@@ -174,22 +182,35 @@
             this.labDefectCode.TabIndex = 2;
             this.labDefectCode.Text = "Defect Code";
             // 
-            // textBox1
+            // txtIspType
             // 
-            this.textBox1.Location = new System.Drawing.Point(135, 91);
-            this.textBox1.MaxLength = 50;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 21);
-            this.textBox1.TabIndex = 5;
+            this.txtIspType.Location = new System.Drawing.Point(135, 42);
+            this.txtIspType.MaxLength = 1;
+            this.txtIspType.Name = "txtIspType";
+            this.txtIspType.Size = new System.Drawing.Size(100, 21);
+            this.txtIspType.TabIndex = 1;
             // 
-            // labDefectDesc
+            // labIspType
             // 
-            this.labDefectDesc.AutoSize = true;
-            this.labDefectDesc.Location = new System.Drawing.Point(13, 95);
-            this.labDefectDesc.Name = "labDefectDesc";
-            this.labDefectDesc.Size = new System.Drawing.Size(113, 12);
-            this.labDefectDesc.TabIndex = 4;
-            this.labDefectDesc.Text = "Defect Description";
+            this.labIspType.AutoSize = true;
+            this.labIspType.Location = new System.Drawing.Point(13, 46);
+            this.labIspType.Name = "labIspType";
+            this.labIspType.Size = new System.Drawing.Size(77, 12);
+            this.labIspType.TabIndex = 0;
+            this.labIspType.Text = "Inspect Type";
+            // 
+            // InspectType
+            // 
+            this.InspectType.Text = "Inspect Type";
+            // 
+            // DefectCode
+            // 
+            this.DefectCode.Text = "Defect Code";
+            // 
+            // DefectDesc
+            // 
+            this.DefectDesc.Text = "Defect Desc";
+            this.DefectDesc.Width = 100;
             // 
             // FrmDefectCodeSet
             // 
@@ -227,5 +248,8 @@
         private System.Windows.Forms.Label labDefectCode;
         private System.Windows.Forms.TextBox txtIspType;
         private System.Windows.Forms.Label labIspType;
+        private System.Windows.Forms.ColumnHeader InspectType;
+        private System.Windows.Forms.ColumnHeader DefectCode;
+        private System.Windows.Forms.ColumnHeader DefectDesc;
     }
 }

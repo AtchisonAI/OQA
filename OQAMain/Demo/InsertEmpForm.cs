@@ -56,7 +56,7 @@ namespace OQAMain
             UpdateModelReq<DemoView> updateReq = new UpdateModelReq<DemoView>();
             updateReq.model = dv;
             updateReq.opreateType = OperateType.Insert;
-
+            
             OQASrv.CallServer().UpdateDemoInfo(updateReq);
 
             Close();

@@ -19,7 +19,7 @@ namespace WCFModels.OQA
         [DataMember]
         [Column("DFT_DESC")] public string DftDesc { get; set; }
         [DataMember]
-        [Column("TRANS_SEQ")] public decimal TransSeq { get; set; }
+        [VersionColumn("TRANS_SEQ", VersionColumnType.Number)] public decimal TransSeq { get; set; }
         [DataMember]
         [Column("CREATE_TIME")] public string CreateTime { get; set; }
         [DataMember]

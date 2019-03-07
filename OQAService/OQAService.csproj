@@ -46,6 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NPoco, Version=3.9.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\NPoco.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -55,12 +59,23 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="WcfService">
+    <Reference Include="Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="WCFModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\WCFModels.dll</HintPath>
+    </Reference>
+    <Reference Include="WcfService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WcfService.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="13 Defect code set\CreateDefectCodeInfo.cs" />
     <Compile Include="13 Defect code set\QryDefectCodeInfo.cs" />
+    <Compile Include="3 AOI inspection input\QryAOIInfo.cs" />
     <Compile Include="Emp\QueryEmpInfo.cs" />
     <Compile Include="Emp\EmpService.cs" />
     <Compile Include="GlobalConstant.cs" />
@@ -83,7 +98,6 @@
     <Folder Include="11 Wafer Insection Record Print\" />
     <Folder Include="12 IOQA Ship List Print\" />
     <Folder Include="2 Defect Lot result\" />
-    <Folder Include="3 AOI inspection input\" />
     <Folder Include="4 Marco inspection input\" />
     <Folder Include="5 Mirco inspection input\" />
     <Folder Include="6 Defect send %28PNDN%29\" />

@@ -64,5 +64,27 @@ namespace Utils
         {
             await Task.Run(action);
         }
+
+        public static void InitialObj(object dest, object sorcue)
+        {
+            FieldInfo[] destFieldInfo = dest.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
+            FieldInfo[] sourceFieldInfo = sorcue.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
+
+            foreach (FieldInfo sourceFiled in sourceFieldInfo)
+            {
+                var value = sourceFiled.GetValue(sorcue);
+                if (null != value)
+                {
+                    foreach (FieldInfo destFiled in destFieldInfo)
+                    {
+                        if(destFiled.Name == sourceFiled.Name)
+                        {
+                            destFiled.SetValue(dest, value);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

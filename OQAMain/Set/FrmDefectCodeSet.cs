@@ -4,6 +4,7 @@ using System;
 using System.Windows.Forms;
 using WCFModels.Message;
 using WCFModels.OQA;
+using System.Collections.Generic;
 
 namespace OQAMain
 {
@@ -20,14 +21,14 @@ namespace OQAMain
 
         #region " Constant Definition "
         //private bool b_load_flag = false;
-
+        private string s_Isp_Type;
+        private string s_Defect_Code;
+        private decimal TransSeq;
         #endregion
 
 
         #region " Variable Definition "
         //private bool b_load_flag  ;
-        private string s_ISP_Type = " ";
-        private string s_Defect_Code = " ";
         //private string s_Defect_Desc = " ";
         #endregion
 
@@ -107,17 +108,78 @@ namespace OQAMain
         private bool QueryDefectCodeInfo(char c_proc_step, char c_tran_flag)
         {
             ModelRsp<DefectCodeView> in_node = new ModelRsp<DefectCodeView>();
+            DefectCodeView in_data = new DefectCodeView();
 
-            in_node.model.c_proc_step = c_proc_step;
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            
+            in_node.model = in_data;
 
-            in_node.model.c_tran_flag = c_tran_flag;
+            var out_data = OQASrv.OQAClient.QueryDefectCodeInfo(in_node);
 
-            var data = OQASrv.CallServer().QueryDefectCodeInfo(in_node);
+            if (out_data._success == true)
+            {
+                         
 
-            //LstIspCode.d
+                ComFunc.InitListView(LstIspCode, true);
+                txtCount.Text = out_data.model.ISPDFTDEF_list.Count.ToString();
 
-            return true;
+                for (int i = 0; i < out_data.model.ISPDFTDEF_list.Count; i++)
+                {
+
+                    ListViewItem list_item = new ListViewItem();
+                    ISPDFTDEF list = out_data.model.ISPDFTDEF_list[i];
+                    list_item.SubItems.Add(" ");
+                    list_item.SubItems.Add(list.InspectType);
+                    list_item.SubItems.Add(list.DefectCode);
+                    list_item.SubItems.Add(list.DftDesc);
+                    LstIspCode.Items.Add(list_item);
+                    TransSeq = list.TransSeq; //修改数据使用
+                }
+                MessageBox.Show(out_data._MsgCode);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+
+
         }
+
+        private bool SaveIspCodeInfo(char c_proc_step, char c_tran_flag,string type,string code,string code_desc)
+        {
+            ModelRsp<DefectCodeSave> in_node = new ModelRsp<DefectCodeSave>();
+            DefectCodeSave in_data = new DefectCodeSave();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.D_TRANSSEQ = TransSeq; //事务控制
+            in_data.IN_ISP_CODE = code;
+            in_data.IN_CODE_DESC = code_desc;
+            in_data.IN_ISP_TYPE = type;
+            
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.OQAClient.CreateDefectCodeInfo(in_node);
+
+            if (out_data._success == true)
+            {
+                MessageBox.Show(out_data._MsgCode);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+
+        }
+
+
+
 
         #endregion
 
@@ -152,36 +214,32 @@ namespace OQAMain
         {
             try
             {
-                //检查数据
+                //检查控件
                 if (CheckCondition("CREATE") == false) return;
-
-                if (ComFunc.Trim(s_ISP_Type) != "" && (ComFunc.Trim(s_Defect_Code) != ""))
+                //传入参数收集
+                char cTranFlag  ;
+                if (ComFunc.Trim(s_Isp_Type) != "" && (ComFunc.Trim(s_Defect_Code) != ""))
                 {
-                    //GlobConst.TRAN_UPDATE
+                    cTranFlag = GlobConst.TRAN_UPDATE;
                 }
                 else
                 {
-                    //GlobConst.TRAN_CREATE
+                    cTranFlag = GlobConst.TRAN_CREATE;
                 }
-                //调用事务服务
-                // if (UpdateBoxShipment(GlobConst.TRAN_CREATE) == false) return;
 
-                //控件重定义
-                //if (MPCF.Trim(txtBox_LotID.Text) != "")
-                //{
-                //控件初始化
-                //ComFunc.ClearList(lisOperLotList);
-                //ComFunc.ClearList(spdBox_SubTask);
-                ////MPCF.ClearList(spdOrderID);
-                //ComFunc.FieldClear(spdOrderID);
-                //ComFunc.ClearList(spdBox_LayoutID_MarkID);
-                //ComFunc.FieldClear(pnlTask);
-                //重新查询
-                //View_Lot_List("2");
-                //ViewSubLotListExt();
-                //ViewLotBoxListExt('2');
-                //View_Order_list(txtBox_LotID.Text);
-                //}
+                // if (SaveIspCodeInfo(GlobConst.TRAN_UPDATE, '1') == false) return;
+                
+                string s_isp_code      = ComFunc.Trim(txtDefectCode.Text);
+                string s_isp_code_desc = ComFunc.Trim(txtDefectDesc.Text);
+                string s_isp_type      = ComFunc.Trim(txtIspType.Text   );
+
+
+                //调用事务服务
+                if (SaveIspCodeInfo(cTranFlag, '1', s_isp_type, s_isp_code, s_isp_code_desc) == false) return;
+
+                ComFunc.FieldClear(grpDefectCode);
+                if (QueryDefectCodeInfo(GlobConst.TRAN_VIEW, '1') == false) return;
+
             }
             catch (System.Exception ex)
             {
@@ -229,27 +287,33 @@ namespace OQAMain
                 //调用事务服务
                 if (QueryDefectCodeInfo(GlobConst.TRAN_VIEW,'1') == false) return;
 
-                //控件重定义
-                //if (MPCF.Trim(txtBox_LotID.Text) != "")
-                //{
-                //控件初始化
-                //ComFunc.ClearList(lisOperLotList);
-                //ComFunc.ClearList(spdBox_SubTask);
-                ////MPCF.ClearList(spdOrderID);
-                //ComFunc.FieldClear(spdOrderID);
-                //ComFunc.ClearList(spdBox_LayoutID_MarkID);
-                //ComFunc.FieldClear(pnlTask);
-                //重新查询
-                //View_Lot_List("2");
-                //ViewSubLotListExt();
-                //ViewLotBoxListExt('2');
-                //View_Order_list(txtBox_LotID.Text);
-                //}
             }
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+
+        private void LstIspCode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (LstIspCode.SelectedItems.Count > 0)
+            {
+                s_Isp_Type = LstIspCode.SelectedItems[0].Text;
+                s_Defect_Code = LstIspCode.SelectedItems[0].SubItems[1].Text;
+
+                txtIspType.Text = s_Isp_Type;
+                txtDefectCode.Text = s_Defect_Code;
+                txtDefectDesc.Text = LstIspCode.SelectedItems[0].SubItems[2].Text;
+
+            }
+            else
+            {
+                s_Isp_Type = null;
+                s_Defect_Code = null;
+                ComFunc.FieldClear(grpDefectCode);
+            }
+        }
+
+
     }
 }

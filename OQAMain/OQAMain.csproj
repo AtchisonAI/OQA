@@ -38,6 +38,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\OQAService.dll</HintPath>
     </Reference>
+    <Reference Include="OQA_Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\OQA_Core.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.BulletGraph.Windows">
       <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.BulletGraph.Windows.dll</HintPath>
     </Reference>
@@ -288,7 +292,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WcfClientCore.dll</HintPath>
     </Reference>
-    <Reference Include="WCFModels">
+    <Reference Include="WCFModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WCFModels.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -391,6 +396,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Print\PKGLabel.rdlc" />
+    <EmbeddedResource Include="Print\WaferAppearanceInspectionRecord.rdlc" />
     <EmbeddedResource Include="Tran\FrmDefectLotResult.resx">
       <DependentUpon>FrmDefectLotResult.cs</DependentUpon>
     </EmbeddedResource>
@@ -451,12 +458,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OQA_Core\OQA_Core.csproj">
-      <Project>{6734161e-7d2d-485f-a48c-d0dfea600583}</Project>
-      <Name>OQA_Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

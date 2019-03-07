@@ -41,10 +41,10 @@ namespace OQAService.Services
 
                 }
 
-                if (Qry_in.model.C_PROC_STEP == GlobalConstant.TRAN_VIEW)
+                if (Qry_in.model.C_TRAN_FLAG == GlobalConstant.TRAN_VIEW)
                 {
                     //业务逻辑选择
-                    switch (Qry_in.model.C_TRAN_FLAG)
+                    switch (Qry_in.model.C_PROC_STEP)
                     {
                         case '1':
                             //验证业务级输入参数
@@ -69,9 +69,25 @@ namespace OQAService.Services
                                 AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.SideType), Qry_in.model.ISPWAFITM.SideType.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
                             AddSortCondition(PageQueryReq, "InspectType", SortType.ASC);
-                            Qry_out.model.ISPWAFITM = PageQuery<ISPWAFITM>(PageQueryReq).models[0];
-                            Qry_out.model.ISPWAFDFT_list = Query<ISPWAFDFT>(PageQueryReq).models;
-                            Qry_out.model.ISPIMGDEF_list = Query<ISPIMGDEF>(PageQueryReq).models;
+                            PageModelRsp<ISPWAFITM>  wafModel  = PageQuery<ISPWAFITM>(PageQueryReq);
+                            if(null != wafModel)
+                            {
+                                if(null != wafModel.models && wafModel.models.Count > 0)
+                                {
+                                    Qry_out.model.ISPWAFITM = wafModel.models[0];
+                                }
+                                
+                            }
+                            ModelListRsp<ISPWAFDFT> detModel = Query<ISPWAFDFT>(PageQueryReq);
+                            if (null != detModel)
+                            {
+                                Qry_out.model.ISPWAFDFT_list = detModel.models;
+                            }
+                            ModelListRsp<ISPIMGDEF> imgModel = Query<ISPIMGDEF>(PageQueryReq);
+                            if (null != imgModel)
+                            {
+                                Qry_out.model.ISPIMGDEF_list = imgModel.models;
+                            }
 
                             break;
                         case '2':

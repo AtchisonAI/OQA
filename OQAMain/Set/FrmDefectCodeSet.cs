@@ -129,7 +129,8 @@ namespace OQAMain
 
                     ListViewItem list_item = new ListViewItem();
                     ISPDFTDEF list = out_data.model.ISPDFTDEF_list[i];
-                    list_item.SubItems.Add(" ");
+                    // list_item.SubItems.Add(" ");
+                    list_item.Text = list.InspectType;
                     list_item.SubItems.Add(list.InspectType);
                     list_item.SubItems.Add(list.DefectCode);
                     list_item.SubItems.Add(list.DftDesc);

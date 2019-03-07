@@ -114,24 +114,37 @@ namespace OQAService.Services
                                 return Out_node;
                             }
 
-                            //输入数据表主键
+                            ////输入数据表主键
                             T_ISPDFTDEF.InspectType = In_node.model.IN_ISP_TYPE;
                             T_ISPDFTDEF.DefectCode = In_node.model.IN_ISP_CODE;
-                            //查询原始数据
-                            var ori = db.SingleById<ISPDFTDEF>(T_ISPDFTDEF);
-                            //验证事务一致
-                            if (ori.TransSeq != In_node.model.D_TRANSSEQ)
-                            {
-                                Out_node._success = false;
-                                Out_node._ErrorMsg = "Defect Code has changed !";
-                                return Out_node;
-                            }
-                            //放入修改数据
-                            var snapshot = db.StartSnapshot<ISPDFTDEF>(ori);
+                            T_ISPDFTDEF.TransSeq = In_node.model.D_TRANSSEQ;
                             T_ISPDFTDEF.DftDesc = In_node.model.IN_CODE_DESC;
 
+                            Do_Save.operateType = OperateType.Update;
+                            Do_Save.models.Add(T_ISPDFTDEF);
+                            BeginTrans();
                             //执行
-                            db.Update(ori, snapshot.UpdatedColumns());
+                            UpdateModels(Do_Save, Do_message, true);
+                            EndTrans();
+
+                            ////输入数据表主键
+                            //T_ISPDFTDEF.InspectType = In_node.model.IN_ISP_TYPE;
+                            //T_ISPDFTDEF.DefectCode = In_node.model.IN_ISP_CODE;
+                            ////查询原始数据
+                            //var ori = db.SingleById<ISPDFTDEF>(T_ISPDFTDEF);
+                            ////验证事务一致
+                            //if (ori.TransSeq != In_node.model.D_TRANSSEQ)
+                            //{
+                            //    Out_node._success = false;
+                            //    Out_node._ErrorMsg = "Defect Code has changed !";
+                            //    return Out_node;
+                            //}
+                            ////放入修改数据
+                            //var snapshot = db.StartSnapshot<ISPDFTDEF>(ori);
+                            //T_ISPDFTDEF.DftDesc = In_node.model.IN_CODE_DESC;
+
+                            ////执行
+                            //db.Update(ori, snapshot.UpdatedColumns());
 
   
 

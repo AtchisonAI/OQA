@@ -27,7 +27,8 @@ namespace WcfClient
             }
             else
             {
-                if (WcfSrv.Login(new UserProfile(userName, passwd, "OQA:")))
+                var res = WcfSrv.Login(new UserProfile(userName, passwd, "OQA:"));
+                if (res._success)
                 {
                     log.Info("登陆成功 "+"User: "+userName );
                     DialogResult = DialogResult.OK;
@@ -35,7 +36,7 @@ namespace WcfClient
                 }
                 else
                 {
-                    MessageBox.Show("登陆失败！账户密码错误!");
+                    MessageBox.Show(res._ErrorMsg);
                 }
             }
         }

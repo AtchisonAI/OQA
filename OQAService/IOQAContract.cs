@@ -35,6 +35,14 @@ namespace OQAService.Contract
 
         #endregion
 
+        #region AOI
+        [OperationContract]
+        ModelRsp<AOIShowView> QueryAOIInfo(ModelRsp<AOIShowView> queryReq);
+        //AOIInputView
+        [OperationContract]
+        ModelRsp<AOIShowView> CreateOrUpdateAOI(UpdateModelReq<AOIShowView> updateReq, ModelRsp<AOIShowView> outMsg);
+        #endregion
+
 
 
     }

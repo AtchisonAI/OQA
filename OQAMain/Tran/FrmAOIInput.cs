@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using WCFModels.OQA;
 using System.Collections.Generic;
+using WCFModels.Message;
 
 namespace OQAMain
 {
@@ -62,6 +63,7 @@ namespace OQAMain
             switch (ComFunc.Trim(FuncName))
             {
                 case "CREATE":
+                    return true;
 
                     //            if (ComFunc.CheckValue(ComFunc.Trim(txtLotID.Text), 1) == false)
                     //            {
@@ -129,7 +131,7 @@ namespace OQAMain
                 {
                     case "1":
                         //Initialize
-                        ComFunc.FieldClear(this);                        
+                        ComFunc.FieldClear(this);
                         break;
                 }
             }
@@ -171,6 +173,14 @@ namespace OQAMain
                 //ViewLotBoxListExt('2');
                 //View_Order_list(txtBox_LotID.Text);
                 //}
+                UpdateModelReq<AOIShowView> updateReq = new UpdateModelReq<AOIShowView>();
+                this.getUpdateModel(updateReq);
+
+                //ModelRsp<AOIShowView> result = OQASrv.CallServer().CreateOrUpdateAOI(updateReq);
+                //if (!result._success)
+                //{
+                //    MessageBox.Show("更新失败");
+                //}
             }
             catch (System.Exception ex)
             {
@@ -178,18 +188,135 @@ namespace OQAMain
             }
         }
 
+        private void getUpdateModel(UpdateModelReq<AOIShowView> updateReq)
+        {
+            try
+            {
+                AOIShowView model = new AOIShowView();
+                ISPWAFITM iSPWAFITM = new ISPWAFITM();
+                ISPIMGDEF iSPIMGDEF = new ISPIMGDEF();
+                List<ISPWAFDFT> sftList = new List<ISPWAFDFT>();
+                List<ISPIMGDEF> imgList = new List<ISPIMGDEF>();
+                String[] codeList = new string[25];
+                String side = "F";
+                if (frontFlag)
+                {
+                    codeList = waferSurF.defectCode;
+                }
+                else
+                {
+                    codeList = waferSurB.defectCode;
+                    side = "B";
+                }
+                //wafer
+                iSPWAFITM.LotId = textBox7.Text;
+                iSPWAFITM.SlotId = comboBox1.Text;
+                iSPWAFITM.WaferId = "1";//mock
+                iSPWAFITM.InspectType = "A";
+                iSPWAFITM.SideType = side;
+                iSPWAFITM.Magnification = textBox1.Text.TrimEnd('X');
+                iSPWAFITM.DieQty = int.Parse(textBox3.Text);
+                iSPWAFITM.DefectRate = int.Parse(textBox5.Text.TrimEnd('%'));
+                iSPWAFITM.ReviewUser = textBox6.Text;
+                iSPWAFITM.DefectDesc = richTextBox1.Text;
+                iSPWAFITM.Cmt = richTextBox2.Text;
+                //img
+                iSPIMGDEF.SlotId = iSPWAFITM.SlotId;
+                iSPIMGDEF.LotId = iSPWAFITM.LotId;
+                iSPIMGDEF.WaferId = iSPWAFITM.WaferId;
+                iSPIMGDEF.SideType = iSPWAFITM.SideType;
+                iSPIMGDEF.InspectType = iSPWAFITM.InspectType;
+                iSPIMGDEF.TransSeq = 2;
+                iSPIMGDEF.ImagePath = textBox3.Text;
+                imgList.Add(iSPIMGDEF);
+                //dft
+
+
+                for (int i = 0; i < 24; i++)
+                {
+                    if (null != codeList[i] && !codeList[i].Equals(""))
+                    {
+                        ISPWAFDFT iSPWAFDFT = new ISPWAFDFT();
+                        iSPWAFDFT.LotId = iSPWAFITM.LotId;
+                        iSPWAFDFT.SlotId = iSPWAFITM.SlotId;
+                        iSPWAFDFT.WaferId = iSPWAFITM.WaferId;
+                        iSPWAFDFT.SideType = iSPWAFITM.SideType;
+                        iSPWAFDFT.InspectType = iSPWAFITM.InspectType;
+                        iSPWAFDFT.TransSeq = 2;
+                        iSPWAFDFT.DefectCode = codeList[i];
+                        iSPWAFDFT.AreaId = i;
+                        sftList.Add(iSPWAFDFT);
+                    }
+                }
+
+                model.C_PROC_STEP ='1';
+                model.C_TRAN_FLAG =GlobConst.TRAN_UPDATE;
+                model.ISPWAFITM = iSPWAFITM;
+                model.ISPIMGDEF_list = imgList;
+                model.ISPWAFDFT_list = sftList;
+                updateReq.model = model;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+        }
+
         private void FrmAOIInput_Load(object sender, EventArgs e)
         {
-            waferSurF.box = this.textBox2;
-            waferSurB.Enabled = false;
-            this.frontButton.BackColor = Color.Green;
-            this.backButton.BackColor = Color.Gray;
-            //ISPWAFDFT iSPWAFDFT = new ISPWAFDFT();
-            //iSPWAFDFT.AreaId = 1;
-            //iSPWAFDFT.DefectCode = "A";
-            //List<ISPWAFDFT> list = new List<ISPWAFDFT>();
-            //list.Add(iSPWAFDFT);
-            //waferSurF.showWafer(list);
+            this.pageInfoShow();
+        }
+        private void pageInfoShow()
+        {
+            try
+            {
+                ModelRsp<AOIShowView> view = new ModelRsp<AOIShowView>();
+                AOIShowView model = new AOIShowView();
+                model.C_PROC_STEP = '1';
+                model.C_TRAN_FLAG =GlobConst.TRAN_VIEW;
+                ISPWAFITM ISPWAFITM = new ISPWAFITM();
+                ISPWAFITM.LotId = "1";
+                ISPWAFITM.SlotId = "1";
+                ISPWAFITM.WaferId = "1";
+                ISPWAFITM.SideType = "F";
+                ISPWAFITM.InspectType = "A";
+                model.ISPWAFITM = ISPWAFITM;
+                view.model = model;
+                textBox7.Text = view.model.ISPWAFITM.LotId;
+                comboBox1.Text = view.model.ISPWAFITM.SlotId;
+                comboBox1.Items.AddRange(new string[] { comboBox1.Text });
+                ModelRsp<AOIShowView> qryResult = OQASrv.OQAClient.QueryAOIInfo(view);
+
+                textBox1.Text = qryResult.model.ISPWAFITM.Magnification+"X";
+                textBox3.Text = qryResult.model.ISPWAFITM.DieQty.ToString();
+                textBox3.Text = qryResult.model.ISPIMGDEF_list[0].ImagePath;//mock value
+                textBox5.Text = qryResult.model.ISPWAFITM.DefectRate+"%";
+                textBox6.Text = qryResult.model.ISPWAFITM.ReviewUser;
+                richTextBox1.Text = qryResult.model.ISPWAFITM.DefectDesc;
+                richTextBox2.Text = qryResult.model.ISPWAFITM.Cmt;
+                waferSurF.box = this.textBox2;
+                waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
+
+                if (ISPWAFITM.SideType != "F")
+                {//显示正反面判断
+                    waferSurF.Enabled = false;
+                    this.backButton.BackColor = Color.Green;
+                    this.frontButton.BackColor = Color.Gray;
+                }
+                else
+                {
+                    waferSurB.Enabled = false;
+                    this.frontButton.BackColor = Color.Green;
+                    this.backButton.BackColor = Color.Gray;
+                }
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
         }
     }
 }

@@ -115,7 +115,7 @@ namespace OQAMain
             
             in_node.model = in_data;
 
-            var out_data = OQASrv.CallServer().QueryDefectCodeInfo(in_node);
+            var out_data = OQASrv.OQAClient.QueryDefectCodeInfo(in_node);
 
             if (out_data._success == true)
             {

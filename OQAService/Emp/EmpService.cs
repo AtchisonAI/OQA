@@ -26,7 +26,7 @@ namespace OQAService.Services
             ModelListRsp<Emp> empUpdateRsp = new ModelListRsp<Emp>();
 
             BeginTrans();
-            UpdateModelingObjects(updateReq, empUpdateRsp, true);
+            UpdateModels(updateReq, empUpdateRsp, true);
             EndTrans();
             
             return empUpdateRsp;
@@ -40,17 +40,17 @@ namespace OQAService.Services
             UpdateModelListReq<Emp> req = new UpdateModelListReq<Emp>()
             {
                 models = updateReq.model.empList,
-                opreateType = updateReq.opreateType
+                operateType = updateReq.operateType
             };
 
-            UpdateModelObjects(req);
+            UpdateModels(req);
 
             UpdateModelListReq<RmsUser> rmsReq = new UpdateModelListReq<RmsUser>()
             {
                 models = updateReq.model.rmsList,
-                opreateType = updateReq.opreateType
+                operateType = updateReq.operateType
             };
-            UpdateModelObjects(rmsReq);
+            UpdateModels(rmsReq);
 
             EndTrans();
             return rsp;

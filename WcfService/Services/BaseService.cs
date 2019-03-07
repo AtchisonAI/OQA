@@ -361,7 +361,7 @@ namespace WcfService
             return rsp;
         }
 
-        private IList<T> QueryIml<T>(QueryReq req)
+        private List<T> QueryIml<T>(QueryReq req)
         {
             if (req.queryConditionList != null && req.queryConditionList.Count > 0)
             {
@@ -408,6 +408,41 @@ namespace WcfService
                 }
             }
             return provider.ToPage(req.CurrentPage, req.ItemsPerPage);
+        }
+
+        public static string GetParaName<T>(System.Linq.Expressions.Expression<Func<T, object>> exp)
+        {
+            return LambdaHelper.GetParaName(exp);
+        }
+
+        /// <summary>
+        /// 查询条件添加.
+        /// </summary>
+        /// <param name="PageQueryReq">分页结构</param>
+        /// <param name="colName">字段名称</param>
+        /// <param name="Value">字段内容</param>
+        /// <param name="LogicType">条件逻辑</param>
+        public static void AddCondition(QueryReq queryReq, string colName, string Value, LogicCondition LogicType,CompareType compare)
+        {
+            QueryCondition queryCon = new QueryCondition()
+            {
+                paramName = colName,
+                compareType = compare,
+                conditionType = LogicType,
+                value = Value
+            };
+            queryReq.queryConditionList.Add(queryCon);
+        }
+        public static void AddSortCondition(PageQueryReq PageQueryReq, string colName, SortType SortType)
+        {
+            SortCondition sortCon = new SortCondition()
+            {
+                paramName = colName,
+                sortType = SortType
+            };
+
+            PageQueryReq.sortCondittionList.Add(sortCon);
+
         }
     }
 }

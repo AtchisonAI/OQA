@@ -8,7 +8,7 @@ namespace WcfClientCore.Utils.Chart
 {
     public static class ChartExt
     {
-        public static void AddSeries<T>(this ChartControl chartControl, string SeriesName, IList<T> SeriesDataList, ChartSeriesType seriesChartType,bool isPrimary) where T : CBaseView
+        public static void AddSeries<T>(this ChartControl chartControl, string SeriesName, List<T> SeriesDataList, ChartSeriesType seriesChartType,bool isPrimary) where T : CBaseView
         {
             ChartSeries empSumSeries = new ChartSeries(SeriesName);
             empSumSeries.Type = seriesChartType;

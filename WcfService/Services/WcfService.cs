@@ -35,25 +35,9 @@ namespace WcfService.Services
             {
                 //登陆成功，查询相应的access string
                 BeginTrans();
-                QueryCondition condition0 = new QueryCondition()
-                {
-                    compareType = CompareType.Equal,
-                    conditionType = LogicCondition.AndAlso,
-                    paramName = "userName",
-                    value = loginReq.userProfile.userId
-                };
-
-                QueryCondition condition1 = new QueryCondition()
-                {
-                    compareType = CompareType.Include,
-                    conditionType = LogicCondition.AndAlso,
-                    paramName = "accessName",
-                    value = loginReq.userProfile.systemPrefix
-                };
-
                 QueryReq req = new QueryReq();
-                req.queryConditionList.Add(condition0);
-                req.queryConditionList.Add(condition1);
+                AddCondition(req, GetParaName<CUserAccessStringView>(q => q.userName), loginReq.userProfile.userId, LogicCondition.AndAlso, CompareType.Equal);
+                AddCondition(req, GetParaName<CUserAccessStringView>(q => q.accessName), loginReq.userProfile.systemPrefix,  LogicCondition.AndAlso, CompareType.Include);
 
                 var res = Query<CUserAccessStringView>(req);
                 foreach (CUserAccessStringView q in res.models)

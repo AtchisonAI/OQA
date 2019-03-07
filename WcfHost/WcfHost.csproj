@@ -47,7 +47,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OQAService">
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="OQAService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\OQAService.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -62,9 +67,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WcfService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WcfService\bin\Debug\WcfService.dll</HintPath>
+    <Reference Include="WcfService">
+      <HintPath>..\Components\WcfService.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -73,7 +77,8 @@
     <Compile Include="ServiceManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Config\App.config" />
+    <None Include="Config\log4net.config" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

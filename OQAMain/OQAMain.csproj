@@ -288,7 +288,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WcfClientCore.dll</HintPath>
     </Reference>
-    <Reference Include="WCFModels">
+    <Reference Include="WCFModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WCFModels.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -391,6 +392,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Print\PKGLabel.rdlc" />
+    <EmbeddedResource Include="Print\WaferAppearanceInspectionRecord.rdlc" />
     <EmbeddedResource Include="Tran\FrmDefectLotResult.resx">
       <DependentUpon>FrmDefectLotResult.cs</DependentUpon>
     </EmbeddedResource>

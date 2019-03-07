@@ -8,7 +8,7 @@ namespace WcfClientCore.Utils.Authority
 {
     public static class AuthorityControl
     {
-        private static IList<string> accessStringList = new List<string>();
+        private static List<string> accessStringList = new List<string>();
         private static Dictionary<string, string> controlAccesstring = new Dictionary<string, string>();
         private static UserProfile userProfile;
 
@@ -85,7 +85,7 @@ namespace WcfClientCore.Utils.Authority
             return true;
         }
 
-        public static void LoadUserAccessString(IList<string> accessList)
+        public static void LoadUserAccessString(List<string> accessList)
         {
             accessStringList = accessList;
         }

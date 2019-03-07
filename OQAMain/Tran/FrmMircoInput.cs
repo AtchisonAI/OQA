@@ -3,6 +3,9 @@ using OQA_Core;
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using WCFModels.OQA;
+using System.Collections.Generic;
+using WCFModels.Message;
 
 namespace OQAMain
 {
@@ -25,7 +28,6 @@ namespace OQAMain
 
         #region " Variable Definition "
         private Boolean frontFlag = true;//正面
-
         #endregion
 
 
@@ -60,18 +62,18 @@ namespace OQAMain
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton1.Checked)
+            if (radioNine.Checked)
             {
-                radioButton1.Checked = true;
+                radioNine.Checked = true;
                 groupBoxThree.Visible = false;
                 groupBoxThree.Enabled = false;
             }
         }
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton2.Checked)
+            if (radioThr.Checked)
             {
-                radioButton2.Checked = true;
+                radioThr.Checked = true;
                 groupBoxThree.Visible = true;
                 groupBoxThree.Enabled = true;
             }
@@ -150,7 +152,7 @@ namespace OQAMain
                 {
                     case "1":
                         //Initialize
-                        ComFunc.FieldClear(this);                        
+                        ComFunc.FieldClear(this);
                         break;
                 }
             }
@@ -201,10 +203,151 @@ namespace OQAMain
 
         private void FrmMircoInput_Load(object sender, EventArgs e)
         {
+            radioNine.Checked = true;
+            this.checkAllOk();
+            this.pageInfoShow();
             waferSurB.Enabled = false;
             waferSurB.Visible = false;
             this.frontButton.BackColor = Color.Green;
             this.backButton.BackColor = Color.Gray;
         }
+
+        #region show function
+        private void pageInfoShow()
+        {
+            string lotId = "1";
+            string slotId = "1";
+            string sideType = "F";
+            try
+            {
+                ModelRsp<AOIShowView> view = new ModelRsp<AOIShowView>();
+                AOIShowView model = new AOIShowView();
+                model.C_PROC_STEP = '1';
+                model.C_TRAN_FLAG = GlobConst.TRAN_VIEW;
+                ISPWAFITM ISPWAFITM = new ISPWAFITM();
+                ISPWAFITM.LotId = lotId;
+                ISPWAFITM.SlotId = slotId;
+                ISPWAFITM.WaferId = "1";
+                ISPWAFITM.SideType = sideType;
+                ISPWAFITM.InspectType = "A";
+                model.ISPWAFITM = ISPWAFITM;
+                view.model = model;
+                lotTextBox.Text = view.model.ISPWAFITM.LotId;
+                slotComboBox.Text = view.model.ISPWAFITM.SlotId;
+                slotComboBox.Items.AddRange(new string[] { slotComboBox.Text });
+                ModelRsp<AOIShowView> qryResult = OQASrv.CallServer().QueryAOIInfo(view);
+                if (null != qryResult.model)
+                {
+                    if (null != qryResult.model.ISPWAFITM)
+                    {
+                        MagnificationTextBox.Text = qryResult.model.ISPWAFITM.Magnification;
+                        qtyTextBox.Text = qryResult.model.ISPWAFITM.DieQty.ToString();
+                        rateTextBox.Text = qryResult.model.ISPWAFITM.DefectRate.ToString();
+                        decRichTextBox.Text = qryResult.model.ISPWAFITM.DefectDesc;
+                        cmtRichTextBox.Text = qryResult.model.ISPWAFITM.Cmt;
+                    }
+                    if (null != qryResult.model.ISPIMGDEF_list && qryResult.model.ISPIMGDEF_list.Count > 0)
+                    {
+                        //imageTextBox.Text = qryResult.model.ISPIMGDEF_list[0].ImagePath;//mock value
+                    }
+                }
+
+                waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);//显示wafer表格
+                if (null != qryResult.model.ISPWAFDFT_list && qryResult.model.ISPWAFDFT_list.Count > 0)
+                {
+                    foreach (var child in qryResult.model.ISPWAFDFT_list)
+                    {
+                        showDefectCheck(child.AreaId.ToString(), child.DefectCode);
+                    }
+
+                }
+
+                if (ISPWAFITM.SideType != "F")
+                {//显示正反面判断
+                    waferSurF.Enabled = false;
+                    this.backButton.BackColor = Color.Green;
+                    this.frontButton.BackColor = Color.Gray;
+                }
+                else
+                {
+                    waferSurB.Enabled = false;
+                    this.frontButton.BackColor = Color.Green;
+                    this.backButton.BackColor = Color.Gray;
+                }
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+        }
+
+        public void showDefectCheck(string id, string code)
+        {
+            foreach (Control control in groupBoxNine.Controls)
+            {
+                if (control is CheckBox)
+                {
+                    CheckBox c = control as CheckBox;
+                    if (control.Name.Split('_')[1].Equals(id))
+                    {
+
+                        if (null != code && !code.Equals(""))
+                        {
+                            if (control.Name.Split('_')[0].Equals("ngBox"))
+                            {
+                                c.Checked = true;
+                            }
+                            if (control.Name.Split('_')[0].Equals("okBox"))
+                            {
+                                c.Checked = false;
+                            }
+                        }
+                    }
+                }
+            }
+            if (radioThr.Checked)
+            {
+                foreach (Control control in groupBoxThree.Controls)
+                {
+                    if (control is CheckBox)
+                    {
+                        CheckBox c = control as CheckBox;
+                        if (control.Name.Split('_')[1].Equals(id))
+                        {
+
+                            if (null != code && !code.Equals(""))
+                            {
+                                if (control.Name.Split('_')[0].Equals("ngBox"))
+                                {
+                                    c.Checked = true;
+                                }
+                                if (control.Name.Split('_')[0].Equals("okBox"))
+                                {
+                                    c.Checked = false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public void checkAllOk()
+        {
+            foreach (Control control in groupBoxNine.Controls)
+            {
+                if (control is CheckBox)
+                {
+                    CheckBox c = control as CheckBox;
+                    if (control.Name.Split('_')[0].Equals("okBox"))
+                    {
+                        c.Checked = true;
+                    }
+                }
+            }
+        }
+        #endregion
     }
 }

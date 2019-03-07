@@ -28,8 +28,16 @@ namespace OQAService.Contract
         #region  Defect code set
         [OperationContract]
         ModelRsp<DefectCodeView> QueryDefectCodeInfo(ModelRsp<DefectCodeView> DefectCodeView);
-        
 
+
+        #endregion
+
+        #region AOI
+        [OperationContract]
+        ModelRsp<AOIShowView> QueryAOIInfo(ModelRsp<AOIShowView> queryReq);
+        //AOIInputView
+        [OperationContract]
+        ModelRsp<AOIShowView> CreateOrUpdateAOI(UpdateModelReq<AOIShowView> updateReq, ModelRsp<AOIShowView> outMsg);
         #endregion
 
 

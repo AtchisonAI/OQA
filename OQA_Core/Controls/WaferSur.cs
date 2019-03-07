@@ -25,7 +25,7 @@ namespace WaferSf
         Regex regExp = new Regex(@"^[A-Za-z]+(,[A-Za-z])*$");//可能带逗号的字符串
         String newText;//ccbox新选的值
         public Panel selectPanel;//当前操作的panel
-        string[] defectCode = new string[25];
+        public string[] defectCode = new string[25];
         public string textValue = "";
         public System.Windows.Forms.TextBox box;
         #endregion
@@ -216,6 +216,7 @@ namespace WaferSf
                     showWaferPanel(child.AreaId.ToString(), child.DefectCode);
                 }
             }
+            this.getDefectCodeValue();
         }
         #endregion
 

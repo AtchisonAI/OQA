@@ -56,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1.OQASeverStruct\13 Defect code set\DefectCodeSave.cs" />
     <Compile Include="1.OQASeverStruct\13 Defect code set\DefectCodeView.cs" />
     <Compile Include="1.OQASeverStruct\3 AOI inspection input\AOIInputView.cs" />
     <Compile Include="1.OQASeverStruct\4 Marco inspection input\MacroView.cs" />

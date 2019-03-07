@@ -46,6 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NPoco, Version=3.9.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\NPoco.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -69,6 +73,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="13 Defect code set\CreateDefectCodeInfo.cs" />
     <Compile Include="13 Defect code set\QryDefectCodeInfo.cs" />
     <Compile Include="3 AOI inspection input\QryAOIInfo.cs" />
     <Compile Include="Emp\QueryEmpInfo.cs" />

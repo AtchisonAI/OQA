@@ -55,9 +55,9 @@ namespace OQAMain
             //       UpdateEmp(emp, OpreateType.Insert)
             UpdateModelReq<DemoView> updateReq = new UpdateModelReq<DemoView>();
             updateReq.model = dv;
-            updateReq.opreateType = OperateType.Insert;
+            updateReq.operateType = OperateType.Insert;
 
-            OQASrv.CallServer().UpdateDemoInfo(updateReq);
+            OQASrv.OQAClient.UpdateDemoInfo(updateReq);
 
             Close();
             
@@ -73,9 +73,9 @@ namespace OQAMain
         {
             UpdateModelListReq<Emp> updateReq = new UpdateModelListReq<Emp>();
             updateReq.models.Add(empInfo);
-            updateReq.opreateType = operate;
+            updateReq.operateType = operate;
 
-            return OQASrv.CallServer().UpdateEmpInfo(updateReq);
+            return OQASrv.OQAClient.UpdateEmpInfo(updateReq);
         }
     }
 }

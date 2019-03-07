@@ -49,9 +49,13 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="WCFModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Components\Utils.dll</HintPath>
+      <HintPath>..\Components\WCFModels.dll</HintPath>
+    </Reference>
+    <Reference Include="WcfService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\WcfService.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -70,16 +74,6 @@
     <EmbeddedResource Include="Form\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WCFModels\WcfModels.csproj">
-      <Project>{479849CD-3F79-4B29-ACD0-ADCED9DC3A6E}</Project>
-      <Name>WcfModels</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WcfService\WcfService.csproj">
-      <Project>{A19B87EE-049D-4600-845C-F33B22DCEC8B}</Project>
-      <Name>WcfService</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

@@ -14,8 +14,8 @@ namespace WcfService.Services
         public ModelListRsp<string> Login(LoginReq loginReq)
         {
             ModelListRsp<string> loginRes = new ModelListRsp<string>();
-            //首先使用tibco 验证登陆
 
+            //首先使用tibco 验证登陆
             MessageService.Initialize();
 
             QRYUSERRULE qryUserRule = new QRYUSERRULE();
@@ -48,7 +48,11 @@ namespace WcfService.Services
                 loginRes._success = true;
 
                 EndTrans();
+            } else
+            {
+                loginRes._ErrorMsg = "账号密码验证失败，请重新输入";
             }
+    
             return loginRes;
         }
 
@@ -70,6 +74,44 @@ namespace WcfService.Services
             return rsp;
         }
 
+        public void Demo()
+        {
+
+            string sql = @" SELECT lot.lottype,
+        lot.currentsite area,
+        lot.productname productid,
+        lot.appid LOTID,
+        ws.stagename,
+        ws.handle stepseq,
+        ws.stepname,
+        ws.trackinlocation eqid, 
+        lot.priority pri,
+        ws.currentqty qty,
+        max(hr.holdtime) over(partition by lot.appid) maxholdtime,
+        hr.userid holduser,
+        he.dept_code holdmodule,
+        to_date(substr(hr.holdtime, 0, 15), 'yyyymmdd hh24miss') holdtime,
+        hr.reason holdcode,
+        hr.reasondescription holdcomment,
+        r.userid     releaseuser,
+        re.dept_code releaseusermodule,
+        r.holdtime   releasetime, 
+        hr.holdtime holdtimestring
+   FROM fwwipstep ws
+   left join fwlot lot on ws.lotobject = lot.sysid
+   LEFT JOIN FWWIPSTEPHISTORY HS ON HS.WIPSTEPREF = WS.SYSID
+   left join fwwiptransaction hd on hd.wipstepref = hs.sysid
+                                and (hd.sysid like '00003106.%' or
+                                    hd.sysid like '00000e2b.%')
+   left join fwholdrelease hr on hd.holdrelease = hr.sysid
+   left join fwholdrelease r on hr.holdsysid = r.holdsysid
+                            and hr.sysid != r.sysid
+   left join emp he on hd.userid = he.id
+   left join emp re on r.userid = re.id
+  where lot.processingstatus = 'Hold'";
+
+            var res1 = QueryRawSql(sql);
+        }
         #endregion
     }
 }

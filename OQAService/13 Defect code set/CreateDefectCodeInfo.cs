@@ -161,13 +161,13 @@ namespace OQAService.Services
 
                 if (Do_message._success == true)
                 {
-                    Out_node.model._success = true;
+                    Out_node._success = true;
                     Out_node._MsgCode = "Program Success.";
                 }
                 else
                 {
-                    Out_node.model._success = false;
-                    Out_node.model._ErrorMsg = Do_message._ErrorMsg;
+                    Out_node._success = false;
+                    Out_node._ErrorMsg = Do_message._ErrorMsg;
                 }
 
                 return Out_node;

@@ -26,14 +26,14 @@ namespace OQAService.Services
                 Qry_out.model = new AOIShowView();
 
                 //验证系统级别输入参数
-                if (Qry_in.model.c_proc_step.Equals("") == true)
+                if (Qry_in.model.C_PROC_STEP.Equals("") == true)
                 {
                     Qry_out._success = false;
                     Qry_out._ErrorMsg = "C_PROC_STEP is null!";
                     return Qry_out;
 
                 }
-                if (Qry_in.model.c_tran_flag.Equals("") == true)
+                if (Qry_in.model.C_TRAN_FLAG.Equals("") == true)
                 {
                     Qry_out._success = false;
                     Qry_out._ErrorMsg = "C_TRAN_FLAG is null!";
@@ -41,37 +41,37 @@ namespace OQAService.Services
 
                 }
 
-                if (Qry_in.model.c_proc_step == GlobalConstant.TRAN_VIEW)
+                if (Qry_in.model.C_PROC_STEP == GlobalConstant.TRAN_VIEW)
                 {
                     //业务逻辑选择
-                    switch (Qry_in.model.c_tran_flag)
+                    switch (Qry_in.model.C_TRAN_FLAG)
                     {
                         case '1':
                             //验证业务级输入参数
                             if (!Qry_in.model.ISPWAFITM.LotId.Trim().Equals(""))
                             {
-                                AddCondition(PageQueryReq, "LotId", Qry_in.model.ISPWAFITM.LotId.Trim(), LogicCondition.AndAlso);
+                                AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.LotId), Qry_in.model.ISPWAFITM.LotId.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
                             if (!Qry_in.model.ISPWAFITM.SlotId.Trim().Equals(""))
                             {
-                                AddCondition(PageQueryReq, "SlotId", Qry_in.model.ISPWAFITM.SlotId.Trim(), LogicCondition.AndAlso);
+                                AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.SlotId), Qry_in.model.ISPWAFITM.SlotId.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
                             if (!Qry_in.model.ISPWAFITM.WaferId.Trim().Equals(""))
                             {
-                                AddCondition(PageQueryReq, "WaferId", Qry_in.model.ISPWAFITM.WaferId.Trim(), LogicCondition.AndAlso);
+                                AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.WaferId), Qry_in.model.ISPWAFITM.WaferId.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
                             if (!Qry_in.model.ISPWAFITM.InspectType.Trim().Equals(""))
                             {
-                                AddCondition(PageQueryReq, "InspectType", Qry_in.model.ISPWAFITM.InspectType.Trim(), LogicCondition.AndAlso);
+                                AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.InspectType), Qry_in.model.ISPWAFITM.InspectType.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
                             if (!Qry_in.model.ISPWAFITM.SideType.Trim().Equals(""))
                             {
-                                AddCondition(PageQueryReq, "SideType", Qry_in.model.ISPWAFITM.SideType.Trim(), LogicCondition.AndAlso);
+                                AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.SideType), Qry_in.model.ISPWAFITM.SideType.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
                             AddSortCondition(PageQueryReq, "InspectType", SortType.ASC);
-                            Qry_out.model.ISPWAFITM = IListToList<ISPWAFITM>(PageQuery<ISPWAFITM>(PageQueryReq).models)[0];
-                            Qry_out.model.ISPWAFDFT_list = IListToList<ISPWAFDFT>(Query<ISPWAFDFT>(PageQueryReq).models);
-                            Qry_out.model.ISPIMGDEF_list = IListToList<ISPIMGDEF>(Query<ISPIMGDEF>(PageQueryReq).models);
+                            Qry_out.model.ISPWAFITM = PageQuery<ISPWAFITM>(PageQueryReq).models[0];
+                            Qry_out.model.ISPWAFDFT_list = Query<ISPWAFDFT>(PageQueryReq).models;
+                            Qry_out.model.ISPIMGDEF_list = Query<ISPIMGDEF>(PageQueryReq).models;
 
                             break;
                         case '2':

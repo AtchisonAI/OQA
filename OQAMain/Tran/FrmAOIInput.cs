@@ -217,7 +217,7 @@ namespace OQAMain
                 lotTextBox.Text = view.model.ISPWAFITM.LotId;
                 slotComboBox.Text = view.model.ISPWAFITM.SlotId;
                 slotComboBox.Items.AddRange(new string[] { slotComboBox.Text });
-                ModelRsp<AOIShowView> qryResult = OQASrv.CallServer().QueryAOIInfo(view);
+                ModelRsp<AOIShowView> qryResult = OQASrv.OQAClient.QueryAOIInfo(view);
                 if (null != qryResult.model)
                 {
                     if (null != qryResult.model.ISPWAFITM)

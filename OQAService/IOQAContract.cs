@@ -26,9 +26,12 @@ namespace OQAService.Contract
         #endregion
 
         #region  Defect code set
+        //关于Defect Code Set 的查询服务
         [OperationContract]
         ModelRsp<DefectCodeView> QueryDefectCodeInfo(ModelRsp<DefectCodeView> DefectCodeView);
-
+        //Defect Code Set 的数据保存修改服务
+        [OperationContract]
+        ModelRsp<DefectCodeSave> CreateDefectCodeInfo(ModelRsp<DefectCodeSave> DefectCode);
 
         #endregion
 

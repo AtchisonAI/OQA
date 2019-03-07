@@ -46,6 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NPoco, Version=3.9.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\NPoco.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -59,11 +63,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\Utils.dll</HintPath>
     </Reference>
-    <Reference Include="WcfService">
+    <Reference Include="WCFModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\WCFModels.dll</HintPath>
+    </Reference>
+    <Reference Include="WcfService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WcfService.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="13 Defect code set\CreateDefectCodeInfo.cs" />
     <Compile Include="13 Defect code set\QryDefectCodeInfo.cs" />
     <Compile Include="3 AOI inspection input\QryAOIInfo.cs" />
     <Compile Include="Emp\QueryEmpInfo.cs" />
@@ -75,12 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WCFModels\WcfModels.csproj">
-      <Project>{479849CD-3F79-4B29-ACD0-ADCED9DC3A6E}</Project>
-      <Name>WcfModels</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="1 Lot inspect\" />

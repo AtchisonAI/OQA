@@ -106,7 +106,7 @@ namespace WcfClient.Forms
             };
 
             queryReq.sortCondittionList.Add(sortCon);
-            return WcfSrv.WcfClient().PageQueryControlAccessString(queryReq);
+            return WcfSrv.WcfClient.PageQueryControlAccessString(queryReq);
         }
     }
 }

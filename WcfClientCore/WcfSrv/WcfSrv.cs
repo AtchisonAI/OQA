@@ -9,10 +9,7 @@ namespace WcfClientCore.WcfSrv
 {
     public class WcfSrv
     {
-        public static IWcfContract WcfClient()
-        {
-            return GetSrvClient<IWcfContract>("WcfSrv");
-        }
+        public static readonly IWcfContract WcfClient = GetSrvClient<IWcfContract>("WcfSrv");
 
         public static T GetSrvClient<T>(string configName)
         {
@@ -21,14 +18,14 @@ namespace WcfClientCore.WcfSrv
             return proxy;
         }
 
-        public static bool Login(UserProfile userProfile)
+        public static ModelListRsp<string> Login(UserProfile userProfile)
         {
             LoginReq loginReq = new LoginReq()
             {
                 userProfile = userProfile
             };
 
-            var rsp = WcfClient().Login(loginReq);
+            var rsp = WcfClient.Login(loginReq);
             if (rsp._success)
             {
                 //获取control&&user accessstring
@@ -36,13 +33,13 @@ namespace WcfClientCore.WcfSrv
                 LoadControlAccessString(QueryControlAccessString().models);
                 LoadUserProfile(userProfile);
             }
-            return rsp._success;
+            return rsp;
         }
 
         public static ModelListRsp<ControlAccessString> QueryControlAccessString()
         {
             QueryReq req = new QueryReq();
-            return WcfClient().QueryControlAccessString(req);
+            return WcfClient.QueryControlAccessString(req);
         }
 
         public static ModelRsp<ControlAccessString> UpdateControlAccessString(ControlAccessString dbModel, OperateType type)
@@ -50,10 +47,10 @@ namespace WcfClientCore.WcfSrv
             UpdateModelReq<ControlAccessString> updateReq = new UpdateModelReq<ControlAccessString>()
             {
                 model = dbModel,
-                opreateType = type
+                operateType = type
             };
 
-            return WcfClient().UpdateControlAccessString(updateReq);
+            return WcfClient.UpdateControlAccessString(updateReq);
         }
 
         private static void LoadUserAccessString(List<string> userAccessList)

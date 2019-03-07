@@ -83,6 +83,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\Utils.dll</HintPath>
     </Reference>
+    <Reference Include="WCFModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\WCFModels.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contract\IWcfContract.cs" />
@@ -91,17 +95,12 @@
     <Compile Include="Util\MyDB.cs" />
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\VersionContrl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Config\App.config" />
     <None Include="Config\log4net.config" />
     <None Include="Config\packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WCFModels\WcfModels.csproj">
-      <Project>{479849cd-3f79-4b29-acd0-adced9dc3a6e}</Project>
-      <Name>WcfModels</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

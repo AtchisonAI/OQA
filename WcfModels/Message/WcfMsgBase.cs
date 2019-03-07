@@ -92,12 +92,12 @@ namespace WCFModels.Message
     {
         public UpdateReq(MsgSite msgSite) : base(msgSite)
         {
-
+            partialUpdate = true;
         }
 
         public UpdateReq() : base()
         {
-
+            partialUpdate = true;
         }
 
         [DataMember]
@@ -106,10 +106,12 @@ namespace WCFModels.Message
         [DataMember]
         public string userId { get; set; }
 
+        [DataMember]
+        public bool partialUpdate { get; set; }
     }
 
     [DataContract]
-    public class UpdateModelReq<T> : UpdateReq
+    public class UpdateModelReq<T> : UpdateReq where T:new()
     {
         public UpdateModelReq(MsgSite msgSite) : base(msgSite)
         {
@@ -117,7 +119,7 @@ namespace WCFModels.Message
         }
         public UpdateModelReq() : base()
         {
-
+            model = new T();
         }
         [DataMember]
         public T model { get; set; }
@@ -182,8 +184,12 @@ namespace WCFModels.Message
     }
 
     [DataContract]
-    public class ModelRsp<T> : BaseRsp
+    public class ModelRsp<T> : BaseRsp where T:new()
     {
+        public ModelRsp()
+        {
+            model = new T();
+        }
         [DataMember]
         public T model { get; set; }
     }

@@ -71,15 +71,15 @@ namespace OQAService.Services
                             T_ISPDFTDEF.TransSeq = 0;
                             T_ISPDFTDEF.UpdateTime = " ";
                             T_ISPDFTDEF.UpdateUserId = " ";
-                            T_ISPDFTDEF.CreateTime = "";
-                            T_ISPDFTDEF.CreateUserId = "";
+                            T_ISPDFTDEF.CreateTime = " ";
+                            T_ISPDFTDEF.CreateUserId = " ";
 
                             //调用数据库操作
-                            Do_Save.opreateType = OperateType.Insert;
+                            Do_Save.operateType = OperateType.Insert;
                             Do_Save.models.Add(T_ISPDFTDEF) ;
                             BeginTrans();
                             //执行
-                            UpdateModelingObjects(Do_Save, Do_message, true);
+                            UpdateModels(Do_Save, Do_message, true);
                             EndTrans();
 
                             break;

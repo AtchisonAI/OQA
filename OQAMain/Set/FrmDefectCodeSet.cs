@@ -129,12 +129,12 @@ namespace OQAMain
 
                     ListViewItem list_item = new ListViewItem();
                     ISPDFTDEF list = out_data.model.ISPDFTDEF_list[i];
+                    list_item.SubItems.Add(" ");
                     list_item.SubItems.Add(list.InspectType);
                     list_item.SubItems.Add(list.DefectCode);
                     list_item.SubItems.Add(list.DftDesc);
                     LstIspCode.Items.Add(list_item);
                     TransSeq = list.TransSeq; //修改数据使用
-
                 }
                 MessageBox.Show(out_data._MsgCode);
                 return true;
@@ -163,7 +163,7 @@ namespace OQAMain
 
             in_node.model = in_data;
 
-            var out_data = OQASrv.CallServer().CreateDefectCodeInfo(in_node);
+            var out_data = OQASrv.OQAClient.CreateDefectCodeInfo(in_node);
 
             if (out_data._success == true)
             {
@@ -235,7 +235,7 @@ namespace OQAMain
 
 
                 //调用事务服务
-                if (SaveIspCodeInfo(GlobConst.TRAN_UPDATE, '1', s_isp_type, s_isp_code, s_isp_code_desc) == false) return;
+                if (SaveIspCodeInfo(cTranFlag, '1', s_isp_type, s_isp_code, s_isp_code_desc) == false) return;
 
                 ComFunc.FieldClear(grpDefectCode);
                 if (QueryDefectCodeInfo(GlobConst.TRAN_VIEW, '1') == false) return;

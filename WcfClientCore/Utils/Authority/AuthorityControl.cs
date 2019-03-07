@@ -66,21 +66,6 @@ namespace WcfClientCore.Utils.Authority
             }
         }
 
-        public static void InitialObj(object sorcue,object dest)
-        {
-            //FieldInfo[] destFieldInfo = dest.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
-            //FieldInfo[] sourceFieldInfo = dest.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
-
-            //foreach (FieldInfo fi in sourceFieldInfo)
-            //{
-            //    var value = fi.GetValue(sorcue);
-            //    if (null != value)
-            //    {
-            //        destFieldInfo.
-            //    }
-            //}
-        }
-
         public static bool IsAceessControl(string toolId)
         {
             return controlAccesstring.ContainsKey(toolId);

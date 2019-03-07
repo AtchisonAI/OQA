@@ -24,7 +24,6 @@ namespace OQAMain
 
         private void search_btn_Click(object sender, System.EventArgs e)
         {
-            int i = 0;
             var res = PageQueryEmp(1, System.Convert.ToInt32(page_sfComboBox.Text));
             emp_sfDataGrid.DataSource = res.models;
             emp_sfDataPager.Enabled = true;

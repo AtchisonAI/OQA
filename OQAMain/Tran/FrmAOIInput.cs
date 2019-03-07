@@ -286,7 +286,7 @@ namespace OQAMain
                 textBox7.Text = view.model.ISPWAFITM.LotId;
                 comboBox1.Text = view.model.ISPWAFITM.SlotId;
                 comboBox1.Items.AddRange(new string[] { comboBox1.Text });
-                ModelRsp<AOIShowView> qryResult = OQASrv.CallServer().QueryAOIInfo(view);
+                ModelRsp<AOIShowView> qryResult = OQASrv.OQAClient.QueryAOIInfo(view);
 
                 textBox1.Text = qryResult.model.ISPWAFITM.Magnification+"X";
                 textBox3.Text = qryResult.model.ISPWAFITM.DieQty.ToString();

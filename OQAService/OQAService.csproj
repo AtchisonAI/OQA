@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="13 Defect code set\QryDefectCodeInfo.cs" />
+    <Compile Include="3 AOI inspection input\QryAOIInfo.cs" />
     <Compile Include="Emp\QueryEmpInfo.cs" />
     <Compile Include="Emp\EmpService.cs" />
     <Compile Include="GlobalConstant.cs" />
@@ -87,7 +88,6 @@
     <Folder Include="11 Wafer Insection Record Print\" />
     <Folder Include="12 IOQA Ship List Print\" />
     <Folder Include="2 Defect Lot result\" />
-    <Folder Include="3 AOI inspection input\" />
     <Folder Include="4 Marco inspection input\" />
     <Folder Include="5 Mirco inspection input\" />
     <Folder Include="6 Defect send %28PNDN%29\" />

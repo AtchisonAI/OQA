@@ -176,11 +176,11 @@ namespace OQAMain
                 UpdateModelReq<AOIShowView> updateReq = new UpdateModelReq<AOIShowView>();
                 this.getUpdateModel(updateReq);
 
-                ModelRsp<AOIShowView> result = OQASrv.CallServer().CreateOrUpdateAOI(updateReq);
-                if (!result._success)
-                {
-                    MessageBox.Show("更新失败");
-                }
+                //ModelRsp<AOIShowView> result = OQASrv.CallServer().CreateOrUpdateAOI(updateReq);
+                //if (!result._success)
+                //{
+                //    MessageBox.Show("更新失败");
+                //}
             }
             catch (System.Exception ex)
             {
@@ -249,8 +249,8 @@ namespace OQAMain
                     }
                 }
 
-                model.c_proc_step = '1';
-                model.c_tran_flag = 'U';
+                model.C_PROC_STEP ='1';
+                model.C_TRAN_FLAG =GlobConst.TRAN_UPDATE;
                 model.ISPWAFITM = iSPWAFITM;
                 model.ISPIMGDEF_list = imgList;
                 model.ISPWAFDFT_list = sftList;
@@ -273,8 +273,8 @@ namespace OQAMain
             {
                 ModelRsp<AOIShowView> view = new ModelRsp<AOIShowView>();
                 AOIShowView model = new AOIShowView();
-                model.c_proc_step = 'Q';
-                model.c_tran_flag = '1';
+                model.C_PROC_STEP = '1';
+                model.C_TRAN_FLAG =GlobConst.TRAN_VIEW;
                 ISPWAFITM ISPWAFITM = new ISPWAFITM();
                 ISPWAFITM.LotId = "1";
                 ISPWAFITM.SlotId = "1";

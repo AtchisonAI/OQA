@@ -31,44 +31,47 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OQAService">
+      <HintPath>..\Components\OQAService.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.Chart.Base">
-      <HintPath>..\..\Syncfusion.Tools.4.6\Syncfusion.Chart.Base.dll</HintPath>
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Chart.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Chart.Windows">
-      <HintPath>..\..\Syncfusion.Tools.4.6\Syncfusion.Chart.Windows.dll</HintPath>
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Chart.Windows.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Core.WinForms">
-      <HintPath>..\..\Syncfusion.Tools.4.6\Syncfusion.Core.WinForms.dll</HintPath>
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Core.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Data.WinForms">
-      <HintPath>..\..\Syncfusion.Tools.4.6\Syncfusion.Data.WinForms.dll</HintPath>
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Data.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Diagram.Base">
-      <HintPath>..\..\Syncfusion.Tools.4.6\Syncfusion.Diagram.Base.dll</HintPath>
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Diagram.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Diagram.Windows">
-      <HintPath>..\..\Syncfusion.Tools.4.6\Syncfusion.Diagram.Windows.dll</HintPath>
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Diagram.Windows.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Edit.Windows">
-      <HintPath>..\..\Syncfusion.Tools.4.6\Syncfusion.Edit.Windows.dll</HintPath>
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Edit.Windows.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.GridCommon.WinForms">
-      <HintPath>..\..\Syncfusion.Tools.4.6\Syncfusion.GridCommon.WinForms.dll</HintPath>
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.GridCommon.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfDataGrid.WinForms">
-      <HintPath>..\..\Syncfusion.Tools.4.6\Syncfusion.SfDataGrid.WinForms.dll</HintPath>
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.SfDataGrid.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfInput.WinForms">
-      <HintPath>..\..\Syncfusion.Tools.4.6\Syncfusion.SfInput.WinForms.dll</HintPath>
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.SfInput.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfListView.WinForms">
-      <HintPath>..\..\Syncfusion.Tools.4.6\Syncfusion.SfListView.WinForms.dll</HintPath>
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.SfListView.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Shared.Base">
-      <HintPath>..\..\Syncfusion.Tools.4.6\Syncfusion.Shared.Base.dll</HintPath>
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Shared.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Tools.Windows">
-      <HintPath>..\..\Syncfusion.Tools.4.6\Syncfusion.Tools.Windows.dll</HintPath>
+    <Reference Include="Syncfusion.Tools.Base">
+      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Tools.Base.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -130,12 +133,6 @@
     <EmbeddedResource Include="Controls\WaferSur.resx">
       <DependentUpon>WaferSur.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OQAService\OQAService.csproj">
-      <Project>{93084370-ff48-4e22-943b-5a9359311041}</Project>
-      <Name>OQAService</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

@@ -92,6 +92,23 @@ namespace OQAMain
 
         }
 
+
+        //private bool QuerySlotidInfo(char c_proc_step, char c_tran_flag)
+        //{
+        //    ModelRsp<FoupChange> in_node = new ModelRsp<FoupChange>();
+
+        //    in_node.model.c_proc_step = c_proc_step;
+
+        //    in_node.model.c_tran_flag = c_tran_flag;
+        //    var data = OQASrv.CallServer().QuerySlotidInfo(in_node);
+
+        //    //LstIspCode.d
+
+        //    return true;
+        //}
+
+        //#endregion
+
         #endregion
 
         #region "控件初始化 "        
@@ -119,17 +136,41 @@ namespace OQAMain
 
         #endregion
 
+        private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)13)
+            {
+                if (ComFunc.Trim(txtLotid.Text) != "")
+                {
+                    btnCheck.PerformClick();
+                }
+            }
+        }
 
 
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void btnCheck_Click(object sender , EventArgs e)
         {
             try
             {
+
+                for(int i =1; i < 26; i++)
+                {
+                    if (i<26)
+                    {
+                        dataGridView1.SelectedRows[0].Cells[i].Value = "OK";
+                    }
+                    else
+                    {
+                        dataGridView1.SelectedRows[0].Cells[i].Value = "/";
+                    }
+                }
+
+
                 //检查数据
                 if (CheckCondition("CREATE") == false) return;
                 //调用事务服务
                 // if (UpdateBoxShipment(GlobConst.TRAN_CREATE) == false) return;
-
+                
                 //控件重定义
                 //if (MPCF.Trim(txtBox_LotID.Text) != "")
                 //{
@@ -152,7 +193,6 @@ namespace OQAMain
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-
-
+        
     }
 }

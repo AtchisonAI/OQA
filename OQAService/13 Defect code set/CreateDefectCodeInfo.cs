@@ -1,4 +1,5 @@
-﻿using OQAService.Contract;
+﻿using NPoco;
+using OQAService.Contract;
 using System;
 using System.Collections.Generic;
 using WCFModels;
@@ -15,14 +16,15 @@ namespace OQAService.Services
             try
             {
                 //定义服务过程中使用的结构
-                UpdateModelListReq<ISPDFTDEF> Do_Save = new UpdateModelListReq<ISPDFTDEF>();
-                ModelListRsp<ISPDFTDEF> Do_message = new ModelListRsp<ISPDFTDEF>();
-                ISPDFTDEF T_ISPDFTDEF = new ISPDFTDEF();
+                ModelRsp<DefectCodeSave> In_node = new ModelRsp<DefectCodeSave>();         //定义服务传入系统数据结构
+                ModelRsp<DefectCodeSave> Out_node = new ModelRsp<DefectCodeSave>();        //定义服务传出系统数据结构
+                //DefectCodeSave Out_list = new DefectCodeSave();                          //定义服务传出业务数据结构
 
-                ModelRsp<DefectCodeSave> In_node = new ModelRsp<DefectCodeSave>();
-                ModelRsp<DefectCodeSave> Out_node = new ModelRsp<DefectCodeSave>();
-                DefectCodeSave Out_list = new DefectCodeSave();
+                UpdateModelListReq<ISPDFTDEF> Do_Save = new UpdateModelListReq<ISPDFTDEF>();//定义数据库操作新增动作传入结构
+                ModelListRsp<ISPDFTDEF> Do_message = new ModelListRsp<ISPDFTDEF>();         //定义数据库操作新增动作输出结构
+                ISPDFTDEF T_ISPDFTDEF = new ISPDFTDEF(); //定义临时表结构
 
+                //传入数据赋值
                 In_node.model = DefectCode.model;
 
                 //验证系统级别输入参数
@@ -66,12 +68,17 @@ namespace OQAService.Services
                             T_ISPDFTDEF.InspectType = In_node.model.IN_ISP_TYPE;
                             T_ISPDFTDEF.DefectCode = In_node.model.IN_ISP_CODE;
                             T_ISPDFTDEF.DftDesc = In_node.model.IN_CODE_DESC;
-
+                            T_ISPDFTDEF.TransSeq = 0;
+                            T_ISPDFTDEF.UpdateTime = " ";
+                            T_ISPDFTDEF.UpdateUserId = " ";
+                            T_ISPDFTDEF.CreateTime = "";
+                            T_ISPDFTDEF.CreateUserId = "";
 
                             //调用数据库操作
                             Do_Save.opreateType = OperateType.Insert;
                             Do_Save.models.Add(T_ISPDFTDEF) ;
                             BeginTrans();
+                            //执行
                             UpdateModelingObjects(Do_Save, Do_message, true);
                             EndTrans();
 
@@ -106,18 +113,27 @@ namespace OQAService.Services
                                 Out_node._ErrorMsg = "IN_ISP_TYPE is null!";
                                 return Out_node;
                             }
-                            //传入数据赋值
+
+                            //输入数据表主键
                             T_ISPDFTDEF.InspectType = In_node.model.IN_ISP_TYPE;
                             T_ISPDFTDEF.DefectCode = In_node.model.IN_ISP_CODE;
+                            //查询原始数据
+                            var ori = db.SingleById<ISPDFTDEF>(T_ISPDFTDEF);
+                            //验证事务一致
+                            if (ori.TransSeq != In_node.model.D_TRANSSEQ)
+                            {
+                                Out_node._success = false;
+                                Out_node._ErrorMsg = "Defect Code has changed !";
+                                return Out_node;
+                            }
+                            //放入修改数据
+                            var snapshot = db.StartSnapshot<ISPDFTDEF>(ori);
                             T_ISPDFTDEF.DftDesc = In_node.model.IN_CODE_DESC;
 
+                            //执行
+                            db.Update(ori, snapshot.UpdatedColumns());
 
-                            //调用数据库操作
-                            Do_Save.opreateType = OperateType.Update;
-                            Do_Save.models.Add(T_ISPDFTDEF);
-                            BeginTrans();
-                            UpdateModelingObjects(Do_Save, Do_message, true);
-                            EndTrans();
+  
 
                             break;
 

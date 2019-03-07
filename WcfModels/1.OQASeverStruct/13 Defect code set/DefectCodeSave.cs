@@ -38,6 +38,21 @@ namespace WCFModels.OQA
         }
 
         private char c_tran_flag;
+        [DataMember]
+        public decimal D_TRANSSEQ
+        {
+            get
+            {
+                return d_transseq;
+            }
+            set
+            {
+                d_transseq = value;
+            }
+        }
+
+        private decimal d_transseq;
+        
         //服务传入参数
         [DataMember]
         public string IN_ISP_TYPE {

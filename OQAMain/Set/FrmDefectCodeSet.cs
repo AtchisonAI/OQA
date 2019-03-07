@@ -23,6 +23,7 @@ namespace OQAMain
         //private bool b_load_flag = false;
         private string s_Isp_Type;
         private string s_Defect_Code;
+        private decimal TransSeq;
         #endregion
 
 
@@ -125,12 +126,15 @@ namespace OQAMain
 
                 for (int i = 0; i < out_data.model.ISPDFTDEF_list.Count; i++)
                 {
+
                     ListViewItem list_item = new ListViewItem();
                     ISPDFTDEF list = out_data.model.ISPDFTDEF_list[i];
                     list_item.SubItems.Add(list.InspectType);
                     list_item.SubItems.Add(list.DefectCode);
                     list_item.SubItems.Add(list.DftDesc);
                     LstIspCode.Items.Add(list_item);
+                    TransSeq = list.TransSeq; //修改数据使用
+
                 }
                 MessageBox.Show(out_data._MsgCode);
                 return true;
@@ -151,9 +155,11 @@ namespace OQAMain
 
             in_data.C_PROC_STEP = c_proc_step;
             in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.D_TRANSSEQ = TransSeq; //事务控制
             in_data.IN_ISP_CODE = code;
             in_data.IN_CODE_DESC = code_desc;
             in_data.IN_ISP_TYPE = type;
+            
 
             in_node.model = in_data;
 

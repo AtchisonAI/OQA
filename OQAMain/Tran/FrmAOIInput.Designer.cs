@@ -67,16 +67,15 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(740, 6);
+            this.btnClose.Location = new System.Drawing.Point(704, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(552, 6);
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.btnCreate.Location = new System.Drawing.Point(516, 6);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(646, 6);
+            this.btnEdite.Location = new System.Drawing.Point(610, 6);
             // 
             // pnlMenu
             // 
@@ -371,7 +370,7 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(411, 50);
             this.comboBox1.Name = "comboBox1";

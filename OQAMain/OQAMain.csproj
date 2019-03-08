@@ -53,7 +53,7 @@
       <HintPath>..\Syncfusion.Tools.4.6\DemoCommon.dll</HintPath>
     </Reference>
     <Reference Include="HiDM.LabelPrinting.Common">
-      <HintPath>..\..\..\MES\LabelPrinting\LabelPrinting\bin\Debug\HiDM.LabelPrinting.Common.dll</HintPath>
+      <HintPath>..\Components\HiDM.LabelPrinting.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

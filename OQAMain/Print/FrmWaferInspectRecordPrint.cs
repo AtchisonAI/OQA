@@ -240,7 +240,7 @@ namespace OQAMain
 
             in_node.model = in_data;
 
-            var out_data = OQASrv.CallServer().QueryWaferInspectionRecordInfo(in_node);
+            var out_data = OQASrv.Call.QueryWaferInspectionRecordInfo(in_node);
             var DataTableCount = out_data.model.ISPWAFDFT_list.Count;
             if (out_data._success == true)
             {

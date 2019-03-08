@@ -85,7 +85,7 @@ namespace OQAMain
             
             in_node.model = in_data;
 
-            var out_data = OQASrv.OQAClient.QueryDefectCodeInfo(in_node);
+            var out_data = OQASrv.Call.QueryDefectCodeInfo(in_node);
 
             if (out_data._success == true)
             {
@@ -132,7 +132,7 @@ namespace OQAMain
 
             in_node.model = in_data;
 
-            var out_data = OQASrv.OQAClient.CreateDefectCodeInfo(in_node);
+            var out_data = OQASrv.Call.CreateDefectCodeInfo(in_node);
 
             if (out_data._success == true)
             {

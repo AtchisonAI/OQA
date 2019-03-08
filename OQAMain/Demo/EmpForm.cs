@@ -85,7 +85,7 @@ namespace OQAMain
         private PageModelRsp<Emp> PageQueryEmp(int index,int pageSize)
         {
             QueryEmpReq queryEmpReq = AllocateQueryEmpReq(index, pageSize);
-              return OQASrv.OQAClient.QueryEmpInfo(queryEmpReq);
+              return OQASrv.Call.QueryEmpInfo(queryEmpReq);
             
         }
 
@@ -170,7 +170,7 @@ namespace OQAMain
             updateReq.models.Add(empInfo);
             updateReq.operateType = operate;
 
-            var res = OQASrv.OQAClient.UpdateEmpInfo(updateReq);
+            var res = OQASrv.Call.UpdateEmpInfo(updateReq);
         }
 
         private void insert_sfButton_Click(object sender, EventArgs e)
@@ -220,8 +220,8 @@ namespace OQAMain
         private void DrawChart()
         {
             QueryReq queryReq = new QueryReq();
-            var percentRes = OQASrv.OQAClient.QueryEmpPercent(queryReq).models;
-            var sumRes = OQASrv.OQAClient.QueryEmpSum(queryReq).models;
+            var percentRes = OQASrv.Call.QueryEmpPercent(queryReq).models;
+            var sumRes = OQASrv.Call.QueryEmpSum(queryReq).models;
 
             if (empChartControl.Visible == false)
             {

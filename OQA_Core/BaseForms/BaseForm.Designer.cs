@@ -30,16 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OQABaseForm));
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.lblSucessMsg = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnEdite = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlMenu.Controls.Add(this.lblSucessMsg);
             this.pnlMenu.Controls.Add(this.btnRefresh);
             this.pnlMenu.Controls.Add(this.btnCreate);
             this.pnlMenu.Controls.Add(this.btnEdite);
@@ -49,6 +51,25 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(750, 40);
             this.pnlMenu.TabIndex = 0;
+            // 
+            // lblSucessMsg
+            // 
+            this.lblSucessMsg.AutoSize = true;
+            this.lblSucessMsg.Location = new System.Drawing.Point(50, 14);
+            this.lblSucessMsg.Name = "lblSucessMsg";
+            this.lblSucessMsg.Size = new System.Drawing.Size(107, 12);
+            this.lblSucessMsg.TabIndex = 6;
+            this.lblSucessMsg.Text = "                 ";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnRefresh.Location = new System.Drawing.Point(5, 8);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(24, 24);
+            this.btnRefresh.TabIndex = 5;
             // 
             // btnCreate
             // 
@@ -87,16 +108,6 @@
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnRefresh.Location = new System.Drawing.Point(5, 8);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(24, 24);
-            this.btnRefresh.TabIndex = 5;
-            // 
             // OQABaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -108,6 +119,7 @@
             this.MinimumSize = new System.Drawing.Size(750, 580);
             this.Name = "OQABaseForm";
             this.pnlMenu.ResumeLayout(false);
+            this.pnlMenu.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -118,5 +130,6 @@
         protected System.Windows.Forms.Button btnEdite;
         protected System.Windows.Forms.Panel pnlMenu;
         protected System.Windows.Forms.Button btnRefresh;
+        protected System.Windows.Forms.Label lblSucessMsg;
     }
 }

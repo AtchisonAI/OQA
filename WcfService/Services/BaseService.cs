@@ -52,7 +52,7 @@ namespace WcfService
                 db.DatabaseType == DatabaseType.OracleManaged)
             {
                 //有错误
-                sql = "select strftime('%Y%m%d%H%M%S','now','localtime') as sysdate";
+                sql = "select TO_CHAR(sysdate,'YYYYMMDDHH24MISS') from dual";
             }
             else
             {
@@ -68,10 +68,10 @@ namespace WcfService
             return db.Fetch<object[]>(sql);
         }
 
-        public int UpdateRawSql(string sql)
-        {
-            return db.Execute(sql);
-        }
+        //public int UpdateRawSql(string sql)
+        //{
+        //    return db.Execute(sql);
+        //}
 
         #endregion
 

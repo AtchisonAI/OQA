@@ -38,6 +38,8 @@ namespace OQAMain
             frontFlag = true;
             this.frontButton.BackColor = Color.Green;
             this.backButton.BackColor = Color.Gray;
+            waferSurF.box = this.defectTextBox;
+            waferSurF.getDefectCodeValue();
             waferSurF.Enabled = true;
             waferSurB.Enabled = false;
         }
@@ -47,6 +49,8 @@ namespace OQAMain
             frontFlag = false;
             this.backButton.BackColor = Color.Green;
             this.frontButton.BackColor = Color.Gray;
+            waferSurB.box = this.defectTextBox;
+            waferSurB.getDefectCodeValue();
             waferSurB.Enabled = true;
             waferSurF.Enabled = false;
         }
@@ -154,33 +158,16 @@ namespace OQAMain
             {
                 //检查数据
                 if (CheckCondition("CREATE") == false) return;
-                //调用事务服务
-                // if (UpdateBoxShipment(GlobConst.TRAN_CREATE) == false) return;
-
-                //控件重定义
-                //if (MPCF.Trim(txtBox_LotID.Text) != "")
-                //{
-                //控件初始化
-                //ComFunc.ClearList(lisOperLotList);
-                //ComFunc.ClearList(spdBox_SubTask);
-                ////MPCF.ClearList(spdOrderID);
-                //ComFunc.FieldClear(spdOrderID);
-                //ComFunc.ClearList(spdBox_LayoutID_MarkID);
-                //ComFunc.FieldClear(pnlTask);
-                //重新查询
-                //View_Lot_List("2");
-                //ViewSubLotListExt();
-                //ViewLotBoxListExt('2');
-                //View_Order_list(txtBox_LotID.Text);
-                //}
                 UpdateModelReq<AOIShowView> updateReq = new UpdateModelReq<AOIShowView>();
                 this.getUpdateModel(updateReq);
-                OQASrv.OQAClient.CreateOrUpdateAOI(updateReq);
-                //ModelRsp<AOIShowView> result = OQASrv.CallServer().CreateOrUpdateAOI(updateReq);
-                //if (!result._success)
-                //{
-                //    MessageBox.Show("更新失败");
-                //}
+                ModelRsp<AOIShowView>  rspInfo = OQASrv.OQAClient.CreateOrUpdateAOI(updateReq);
+                if (!rspInfo._success)
+                {
+                    MessageBox.Show("操作失败");
+                }
+                else
+                {
+                }
             }
             catch (System.Exception ex)
             {
@@ -235,23 +222,24 @@ namespace OQAMain
                     }
                 }
 
-                if (ISPWAFITM.SideType != "F")
+                if (!ISPWAFITM.SideType.Equals("F"))
                 {//显示正反面判断
+                    //反面
                     waferSurF.Enabled = false;
                     waferSurB.Enabled = true;
                     this.backButton.BackColor = Color.Green;
                     this.frontButton.BackColor = Color.Gray;
-                    waferSurF.box = this.defectTextBox;
-                    waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
+                    waferSurB.box = this.defectTextBox;
+                    waferSurB.showWafer(qryResult.model.ISPWAFDFT_list);
                 }
                 else
-                {
+                {//正面
                     waferSurB.Enabled = false;
                     waferSurF.Enabled = true;
                     this.frontButton.BackColor = Color.Green;
                     this.backButton.BackColor = Color.Gray;
-                    waferSurB.box = this.defectTextBox;
-                    waferSurB.showWafer(qryResult.model.ISPWAFDFT_list);
+                    waferSurF.box = this.defectTextBox;
+                    waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
                 }
 
             }
@@ -302,7 +290,8 @@ namespace OQAMain
                 iSPIMGDEF.SideType = iSPWAFITM.SideType;
                 iSPIMGDEF.InspectType = iSPWAFITM.InspectType;
                 iSPIMGDEF.TransSeq = 2;
-                iSPIMGDEF.ImagePath = qtyTextBox.Text;
+                iSPIMGDEF.AreaId = 0;
+                iSPIMGDEF.ImagePath = imageTextBox.Text;
                 iSPIMGDEF.ImageId = "1";
                 iSPIMGDEF.ImageName = "name";
                 iSPIMGDEF.ImageType = "type";
@@ -314,16 +303,20 @@ namespace OQAMain
                 {
                     if (null != codeList[i] && !codeList[i].Equals(""))
                     {
-                        ISPWAFDFT iSPWAFDFT = new ISPWAFDFT();
-                        iSPWAFDFT.LotId = iSPWAFITM.LotId;
-                        iSPWAFDFT.SlotId = iSPWAFITM.SlotId;
-                        iSPWAFDFT.WaferId = iSPWAFITM.WaferId;
-                        iSPWAFDFT.SideType = iSPWAFITM.SideType;
-                        iSPWAFDFT.InspectType = iSPWAFITM.InspectType;
-                        iSPWAFDFT.TransSeq = 2;
-                        iSPWAFDFT.DefectCode = codeList[i];
-                        iSPWAFDFT.AreaId = i+1;
-                        sftList.Add(iSPWAFDFT);
+                        string[] code = codeList[i].Split(',');
+                        foreach(string defect in code)
+                        {
+                            ISPWAFDFT iSPWAFDFT = new ISPWAFDFT();
+                            iSPWAFDFT.LotId = iSPWAFITM.LotId;
+                            iSPWAFDFT.SlotId = iSPWAFITM.SlotId;
+                            iSPWAFDFT.WaferId = iSPWAFITM.WaferId;
+                            iSPWAFDFT.SideType = iSPWAFITM.SideType;
+                            iSPWAFDFT.InspectType = iSPWAFITM.InspectType;
+                            iSPWAFDFT.TransSeq = 2;
+                            iSPWAFDFT.DefectCode = defect;
+                            iSPWAFDFT.AreaId = i + 1;
+                            sftList.Add(iSPWAFDFT);
+                        }
                     }
                 }
 

@@ -57,11 +57,17 @@ namespace OQAMain
             updateReq.model = dv;
             updateReq.operateType = OperateType.Insert;
 
-            OQASrv.OQAClient.UpdateDemoInfo(updateReq);
-
-            Close();
-            
-            MessageBox.Show("添加成功");
+            try
+            {
+                var res = OQASrv.OQAClient.UpdateDemoInfo(updateReq);
+                MessageBox.Show(res.ToString());
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+           
+            Close();         
         }
 
         private void cancle_Click(object sender, EventArgs e)
@@ -74,8 +80,9 @@ namespace OQAMain
             UpdateModelListReq<Emp> updateReq = new UpdateModelListReq<Emp>();
             updateReq.models.Add(empInfo);
             updateReq.operateType = operate;
-
             return OQASrv.OQAClient.UpdateEmpInfo(updateReq);
+
+
         }
     }
 }

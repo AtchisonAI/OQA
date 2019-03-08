@@ -1,4 +1,5 @@
 ﻿using OQAService.Contract;
+using System.ServiceModel;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 
@@ -10,7 +11,5 @@ namespace OQAService.Services
         {
             return PageQuery<Emp>(queryEmpReq);
         }
-
     }
-
 }

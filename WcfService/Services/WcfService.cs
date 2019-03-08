@@ -1,5 +1,6 @@
 ﻿using HiDM.FactoryWorks.Messages;
 using HiDM.FactoryWorks.TibcoRV;
+using System.ServiceModel;
 using WCFModels;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
@@ -34,7 +35,6 @@ namespace WcfService.Services
             if (reply.IsSuccess)
             {
                 //登陆成功，查询相应的access string
-                BeginTrans();
                 QueryReq req = new QueryReq();
                 AddCondition(req, GetParaName<CUserAccessStringView>(q => q.userName), loginReq.userProfile.userId, LogicCondition.AndAlso, CompareType.Equal);
                 AddCondition(req, GetParaName<CUserAccessStringView>(q => q.accessName), loginReq.userProfile.systemPrefix,  LogicCondition.AndAlso, CompareType.Include);
@@ -46,11 +46,9 @@ namespace WcfService.Services
                 }
 
                 loginRes._success = true;
-
-                EndTrans();
             } else
             {
-                loginRes._ErrorMsg = "账号密码验证失败，请重新输入";
+                loginRes._ErrorMsg = "OQA:账号密码验证失败，请重新输入";
             }
     
             return loginRes;
@@ -66,6 +64,8 @@ namespace WcfService.Services
             return PageQuery<ControlAccessString>(pageQueryReq);
         }
 
+        [OperationBehavior(TransactionAutoComplete = true, TransactionScopeRequired = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         public ModelRsp<ControlAccessString> UpdateControlAccessString(UpdateModelReq<ControlAccessString> updateReq)
         {
             ModelRsp<ControlAccessString> rsp = new ModelRsp<ControlAccessString>();

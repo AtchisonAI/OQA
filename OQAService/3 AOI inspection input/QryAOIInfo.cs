@@ -69,14 +69,14 @@ namespace OQAService.Services
                                 AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.SideType), Qry_in.model.ISPWAFITM.SideType.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
                             AddSortCondition(PageQueryReq, "InspectType", SortType.ASC);
-                            PageModelRsp<ISPWAFITM>  wafModel  = PageQuery<ISPWAFITM>(PageQueryReq);
-                            if(null != wafModel)
+                            PageModelRsp<ISPWAFITM> wafModel = PageQuery<ISPWAFITM>(PageQueryReq);
+                            if (null != wafModel)
                             {
-                                if(null != wafModel.models && wafModel.models.Count > 0)
+                                if (null != wafModel.models && wafModel.models.Count > 0)
                                 {
                                     Qry_out.model.ISPWAFITM = wafModel.models[0];
                                 }
-                                
+
                             }
                             ModelListRsp<ISPWAFDFT> detModel = Query<ISPWAFDFT>(PageQueryReq);
                             if (null != detModel)
@@ -113,87 +113,7 @@ namespace OQAService.Services
             }
 
         }
-
-        public ModelRsp<AOIShowView> CreateOrUpdateAOI(UpdateModelReq<AOIShowView> updateReq, ModelRsp<AOIShowView> out_Msg)
-        {
-            //ModelRsp<AOIShowView> out_Msg = new ModelRsp<AOIShowView>();
-            //try
-            //{
-            //    //验证系统级别输入参数
-            //    if (updateReq.model.c_proc_step.Equals("") == true)
-            //    {
-            //        out_Msg._success = false;
-            //        out_Msg._ErrorMsg = "C_PROC_STEP is null!";
-            //        return out_Msg;
-
-            //    }
-            //    if (updateReq.model.c_tran_flag.Equals("") == true)
-            //    {
-            //        out_Msg._success = false;
-            //        out_Msg._ErrorMsg = "C_TRAN_FLAG is null!";
-            //        return out_Msg;
-
-            //    }
-
-            //    if (updateReq.model.c_proc_step == GlobalConstant.TRAN_UPDATE)
-            //    {
-            //        //业务逻辑选择
-            //        switch (updateReq.model.c_tran_flag)
-            //        {
-            //            case '1':
-            //                BeginTrans();
-            //                UpdateModelReq<ISPWAFITM> WAFITM = new UpdateModelReq<ISPWAFITM>()
-            //                {
-            //                    model = updateReq.model.ISPWAFITM,
-            //                    opreateType = updateReq.opreateType
-            //                };
-            //                ModelRsp<ISPWAFITM> out_Msg1 = new ModelRsp<ISPWAFITM>();
-            //                UpdateModel<ISPWAFITM>(WAFITM, out_Msg1,true);
-
-            //                UpdateModelListReq<ISPWAFDFT> WAFDFT = new UpdateModelListReq<ISPWAFDFT>()
-            //                {
-            //                    models = updateReq.model.ISPWAFDFT_list,
-            //                    opreateType = updateReq.opreateType
-            //                };
-            //                ModelListRsp<ISPWAFITM> out_Msg2 = new ModelListRsp<ISPWAFITM>();
-            //                UpdateModelingObjects(WAFDFT, out_Msg2,true);
-
-            //                UpdateModelListReq<ISPIMGDEF> IMGDEF = new UpdateModelListReq<ISPIMGDEF>()
-            //                {
-            //                    models = updateReq.model.ISPIMGDEF_list,
-            //                    opreateType = updateReq.opreateType
-            //                };
-            //                ModelListRsp<ISPWAFITM> out_Msg3 = new ModelListRsp<ISPWAFITM>();
-            //                UpdateModelingObjects(IMGDEF, out_Msg3,true);
-
-            //                EndTrans();
-            //                break;
-            //            case '2':
-            //                // TODO
-            //                break;
-            //            case '3':
-            //                // TODO
-
-            //                break;
-            //        }
-            //    }
-
-            //    out_Msg._success = true;
-            //    out_Msg._MsgCode = "Program Success.";
-            //    return out_Msg;
-            //}
-            //catch (Exception e)
-            //{
-
-            //    out_Msg._success = false;
-            //    out_Msg._ErrorMsg = "C_TRAN_FLAG is null!";
-            //    return out_Msg;
-            //}
-
-            return null;
-        }
-
-
+        
 
     }
 

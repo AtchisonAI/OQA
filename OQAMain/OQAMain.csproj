@@ -34,8 +34,28 @@
     <Reference Include="DemoCommon">
       <HintPath>..\Syncfusion.Tools.4.6\DemoCommon.dll</HintPath>
     </Reference>
-    <Reference Include="OQAService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="HiDM.LabelPrinting.Common">
+      <HintPath>..\..\..\MES\LabelPrinting\LabelPrinting\bin\Debug\HiDM.LabelPrinting.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\MES\LabelPrinting\HiDM.LabelPrinting.Common\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design">
+      <HintPath>..\..\..\MES\LabelPrinting\HiDM.LabelPrinting.Common\bin\Debug\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\MES\LabelPrinting\HiDM.LabelPrinting.Common\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms">
+      <HintPath>..\..\..\MES\LabelPrinting\HiDM.LabelPrinting.Common\bin\Debug\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="OQAService">
       <HintPath>..\Components\OQAService.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.BulletGraph.Windows">
@@ -294,6 +314,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Print\FrmWaferInspectRecord_sub.cs" />
     <Compile Include="Tran\FrmDefectLotResult.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -392,7 +413,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Print\PKGLabel.rdlc" />
+    <EmbeddedResource Include="Print\FrmWaferInspectRecord.rdlc" />
+    <EmbeddedResource Include="Print\FrmPackageLabelPrint.rdlc" />
+    <EmbeddedResource Include="Print\FrmWaferInspectRecord_sub.rdlc" />
     <EmbeddedResource Include="Print\WaferAppearanceInspectionRecord.rdlc" />
     <EmbeddedResource Include="Tran\FrmDefectLotResult.resx">
       <DependentUpon>FrmDefectLotResult.cs</DependentUpon>
@@ -445,6 +468,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\FrmWaferInspectRecordPrint.datasource" />
+    <None Include="Properties\DataSources\OQAMain.Print.FrmWaferInspectRecord_sub.datasource" />
+    <None Include="Properties\DataSources\OQAMain.Print.WaferInspectRecord_sub.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpPercentView.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpSumView.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.ControlAccessString.datasource" />

@@ -32,6 +32,12 @@ namespace OQA_Core
         {
             return FieldClear(ctrl, ExceptCtl1, null, null, null, null, false);
         }
+
+        public static bool CheckValue(string v1, int v2)
+        {
+            throw new NotImplementedException();
+        }
+
         public static bool FieldClear(object ctrl, object ExceptCtl1, bool bItemsClear)
         {
             return FieldClear(ctrl, ExceptCtl1, null, null, null, null, bItemsClear);

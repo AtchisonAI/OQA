@@ -2,6 +2,12 @@
 using OQA_Core;
 using System;
 using System.Windows.Forms;
+using WCFModels.OQA;
+using WCFModels.Message;
+using Microsoft.Reporting.WinForms;
+using System.Linq;
+using OQAMain.Print;
+using System.Collections.Generic;
 
 namespace OQAMain
 {
@@ -24,7 +30,7 @@ namespace OQAMain
 
         #region " Variable Definition "
         //private bool b_load_flag  ;
-
+        private string lotid;
         #endregion
 
 
@@ -36,45 +42,16 @@ namespace OQAMain
 
             switch (ComFunc.Trim(FuncName))
             {
-                case "CREATE":
+                case "Print":
 
-                    //            if (ComFunc.CheckValue(ComFunc.Trim(txtLotID.Text), 1) == false)
-                    //            {
-                    //                MessageBox.Show("必填内容输入为空！");
-                    //                txtLotID.Focus();
-                    //                return false;
-                    //            }
+                    if (ComFunc.CheckValue(txtLotID, 1) == false)
+                    {
+                        MessageBox.Show("必填内容输入为空！");
+                        txtLotID.Focus();
+                        return false;
+                    }
 
-                    //            if ( ComFunc.CheckValue(ComFunc.Trim(txtNewQty1.Text), 1) == false)
-                    //            {
-                    //                if (MPCF.CheckValue(txtNewQty1, 2) == false)
-                    //                {
-                    //                    tabTran.SelectedTab = tbpGeneral;
-                    //                    txtNewQty1.Focus();
-                    //                    return false;
-                    //                }
-                    //            }
 
-                    //            if (ComFunc.Trim(cdvToFlow.Text) != "" && ComFunc.Trim(cdvToOperation.Text) == "")
-                    //            {
-                    //                MessageBox.Show("……");
-                    //                tabTran.SelectedTab = tbpGeneral;
-                    //                cdvToOperation.Focus();
-                    //                return false;
-                    //            }
-
-                    //            if (LOT.GetDouble("QTY_1") > 0 || LOT.GetDouble("QTY_2") > 0 || LOT.GetDouble("QTY_3") > 0)
-                    //            {
-                    //                if (cdvResID.Items.Count > 0)
-                    //                {
-                    //                    if (MPCF.CheckValue(cdvResID, 1) == false)
-                    //                    {
-                    //                        tabTran.SelectedTab = tbpGeneral;
-                    //                        cdvResID.Focus();
-                    //                        return false;
-                    //                    }
-                    //                }
-                    //            }
 
                     break;
 
@@ -125,32 +102,160 @@ namespace OQAMain
         {
             try
             {
-                //检查数据
-                if (CheckCondition("CREATE") == false) return;
-                //调用事务服务
-                // if (UpdateBoxShipment(GlobConst.TRAN_CREATE) == false) return;
 
-                //控件重定义
-                //if (MPCF.Trim(txtBox_LotID.Text) != "")
-                //{
-                //控件初始化
-                //ComFunc.ClearList(lisOperLotList);
-                //ComFunc.ClearList(spdBox_SubTask);
-                ////MPCF.ClearList(spdOrderID);
-                //ComFunc.FieldClear(spdOrderID);
-                //ComFunc.ClearList(spdBox_LayoutID_MarkID);
-                //ComFunc.FieldClear(pnlTask);
-                //重新查询
-                //View_Lot_List("2");
-                //ViewSubLotListExt();
-                //ViewLotBoxListExt('2');
-                //View_Order_list(txtBox_LotID.Text);
-                //}
-            }
+                
+                //检查数据
+                if (CheckCondition("Print") == false) return;
+
+                lotid = txtLotID.Text.Trim();
+
+                if (QueryWaferInspectRecordInfo(GlobConst.TRAN_VIEW, '1', lotid) == false)
+                    return;
+                else
+                {
+                    this.reportViewer1.RefreshReport();
+                }
+                    //调用事务服务
+                    // if (UpdateBoxShipment(GlobConst.TRAN_CREATE) == false) return;
+
+                    //控件重定义
+                    //if (MPCF.Trim(txtBox_LotID.Text) != "")
+                    //{
+                    //控件初始化
+                    //ComFunc.ClearList(lisOperLotList);
+                    //ComFunc.ClearList(spdBox_SubTask);
+                    ////MPCF.ClearList(spdOrderID);
+                    //ComFunc.FieldClear(spdOrderID);
+                    //ComFunc.ClearList(spdBox_LayoutID_MarkID);
+                    //ComFunc.FieldClear(pnlTask);
+                    //重新查询
+                    //View_Lot_List("2");
+                    //ViewSubLotListExt();
+                    //ViewLotBoxListExt('2');
+                    //View_Order_list(txtBox_LotID.Text);
+                    //}
+                }
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+
+        private void FrmWaferInspectRecordPrint_Load(object sender, EventArgs e)
+        {
+
+            //this.reportViewer1.RefreshReport();
+            reportViewer1.LocalReport.SubreportProcessing += LocalReport_SubreportProcessing;
+        }
+
+
+        private void LocalReport_SubreportProcessing(object sender, SubreportProcessingEventArgs e)
+        {
+            if (e.Parameters != null && e.Parameters.Count(p => p.Name == "ReportSeq") == 1)
+            {
+                var waferSeq = int.Parse(e.Parameters["ReportSeq"].Values[0]);
+                e.DataSources.Clear();
+                var slotID = Math.Ceiling((decimal)waferSeq / 2);
+                var side = waferSeq % 2 ==1?"F":"B";
+                var waferdefectcode = new List<WaferInspectRecord_sub>();
+
+                if(lstISPWAFDFT.Count(p=>decimal.Parse(p.SlotId)==slotID && p.SideType ==side) > 0)
+                {
+                    var currentSlotISPWAFDFT = lstISPWAFDFT.Where(p => decimal.Parse(p.SlotId) == slotID && p.SideType == side);
+
+                    for (int idx = 1; idx <= 25; idx++)
+                    {
+                        string defectCod1 = string.Empty;
+                        string defectCod2 = string.Empty;
+                        string defectCod3 = string.Empty;
+                        string defectCod4 = string.Empty;
+                        string defectCod5 = string.Empty;
+                        
+                        if(currentSlotISPWAFDFT.Count(p=>p.AreaId == idx) >0)
+                        {
+                            defectCod1 = currentSlotISPWAFDFT.Where(p => p.AreaId == idx).First().DefectCode;
+                        }
+                        idx++;
+                        if (currentSlotISPWAFDFT.Count(p => p.AreaId == idx) > 0)
+                        {
+                            defectCod2 = currentSlotISPWAFDFT.Where(p => p.AreaId == idx).First().DefectCode;
+                        }
+                        idx++;
+                        if (currentSlotISPWAFDFT.Count(p => p.AreaId == idx) > 0)
+                        {
+                            defectCod3 = currentSlotISPWAFDFT.Where(p => p.AreaId == idx).First().DefectCode;
+                        }
+
+                        idx++;
+                        if (currentSlotISPWAFDFT.Count(p => p.AreaId == idx) > 0)
+                        {
+                            defectCod4 = currentSlotISPWAFDFT.Where(p => p.AreaId == idx).First().DefectCode;
+                        }
+                        idx++;
+                        if (currentSlotISPWAFDFT.Count(p => p.AreaId == idx) > 0)
+                        {
+                            defectCod5 = currentSlotISPWAFDFT.Where(p => p.AreaId == idx).First().DefectCode;
+                        }
+
+                        var waferInspectRecord_sub = new WaferInspectRecord_sub(defectCod1, defectCod2, defectCod3, defectCod4, defectCod5);
+
+                        waferdefectcode.Add(waferInspectRecord_sub);
+
+                    }
+
+                }
+                else
+                {
+                    for (int idx = 1; idx <= 5; idx++)
+                    {
+                        string defectCod1 = string.Empty;
+                        string defectCod2 = string.Empty;
+                        string defectCod3 = string.Empty;
+                        string defectCod4 = string.Empty;
+                        string defectCod5 = string.Empty;
+
+                       
+                        var waferInspectRecord_sub = new WaferInspectRecord_sub(defectCod1, defectCod2, defectCod3, defectCod4, defectCod5);
+
+                        waferdefectcode.Add(waferInspectRecord_sub);
+
+                    }
+                }
+                e.DataSources.Add(new ReportDataSource("DataSet1", waferdefectcode));
+            }
+
+            
+        }
+
+        private List<ISPWAFDFT> lstISPWAFDFT;
+
+        private bool QueryWaferInspectRecordInfo(char c_proc_step, char c_tran_flag,string in_lotid)
+        {
+            ModelRsp<WaferInspectRecordView> in_node = new ModelRsp<WaferInspectRecordView>();
+            WaferInspectRecordView in_data = new WaferInspectRecordView();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.IN_LOTID = in_lotid;
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.CallServer().QueryWaferInspectionRecordInfo(in_node);
+            var DataTableCount = out_data.model.ISPWAFDFT_list.Count;
+            if (out_data._success == true)
+            {
+                lstISPWAFDFT = out_data.model.ISPWAFDFT_list;
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+            }
+
+            //LstIspCode.Items.Add(ListView(data.model.ISPDFTDEF_list));
+            //data.model.ISPDFTDEF_list;
+            //LstIspCode.d
+
+            return true;
         }
 
 

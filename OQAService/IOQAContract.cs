@@ -28,11 +28,16 @@ namespace OQAService.Contract
         #region  Defect code set
         [OperationContract]
         ModelRsp<DefectCodeView> QueryDefectCodeInfo(ModelRsp<DefectCodeView> DefectCodeView);
-        
+
 
         #endregion
 
+        #region  Wafer Inspection Record Print set
+        [OperationContract]
+        ModelRsp<WaferInspectRecordView> QueryWaferInspectionRecordInfo(ModelRsp<WaferInspectRecordView> WaferInspectRecordView);
 
+
+        #endregion
 
     }
 }

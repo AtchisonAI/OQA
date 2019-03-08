@@ -22,7 +22,7 @@ namespace OQAService.Services
                 UpdateModelListReq<ISPDFTDEF> Do_Save = new UpdateModelListReq<ISPDFTDEF>();//定义数据库操作新增动作传入结构
                 ModelListRsp<ISPDFTDEF> Do_message = new ModelListRsp<ISPDFTDEF>();         //定义数据库操作新增动作输出结构
                 ISPDFTDEF T_ISPDFTDEF = new ISPDFTDEF(); //定义临时表结构
-
+                updateReq.partialUpdate = true;//部分更新
                 //验证系统级别输入参数
                 if (updateReq.model.C_PROC_STEP.Equals("") == true)
                 {
@@ -51,7 +51,7 @@ namespace OQAService.Services
                     if (null != qryOut.model.ISPWAFITM)
                     {
                         operateTypeItm = OperateType.Update;
-                        updateReq.model.ISPWAFITM.TransSeq = qryOut.model.ISPWAFITM.TransSeq + 1;
+                        updateReq.model.ISPWAFITM.TransSeq = qryOut.model.ISPWAFITM.TransSeq;
                     }
                     else
                     {
@@ -67,7 +67,7 @@ namespace OQAService.Services
                             {
                                 if(imgReq.SlotId.Equals(imgQry.SlotId) && imgReq.AreaId == imgQry.AreaId)
                                 {
-                                    imgReq.TransSeq = imgQry.TransSeq + 1;
+                                    imgReq.TransSeq = imgQry.TransSeq;
                                 }
                             }
                         }
@@ -91,7 +91,7 @@ namespace OQAService.Services
                             {
                                 if (detReq.SlotId.Equals(detQry.SlotId) && detReq.AreaId == detQry.AreaId)
                                 {
-                                    detReq.TransSeq = detQry.TransSeq + 1;
+                                    detReq.TransSeq = detQry.TransSeq;
                                 }
                             }
                         }
@@ -112,28 +112,31 @@ namespace OQAService.Services
                 switch (updateReq.model.C_PROC_STEP)
                 {
                     case '1':
-                        BeginTrans();
+                        
+                        //ModelRsp<ISPWAFITM> wafitmInfo = new ModelRsp<ISPWAFITM>();
                         UpdateModelReq<ISPWAFITM> wafitm = new UpdateModelReq<ISPWAFITM>()
                         {
                             model = updateReq.model.ISPWAFITM,
                             operateType = operateTypeItm
                         };
-                        UpdateModel(wafitm);
-
+                       
+                        //ModelListRsp<ISPWAFDFT> wafdetInfo = new ModelListRsp<ISPWAFDFT>();
                         UpdateModelListReq<ISPWAFDFT> wafdet = new UpdateModelListReq<ISPWAFDFT>()
                         {
                             models = updateReq.model.ISPWAFDFT_list,
                             operateType = operateTypeDft
                         };
-                        UpdateModels<ISPWAFDFT>(wafdet);
-
+                        
+                        // ModelListRsp<ISPIMGDEF> imgdefInfo = new ModelListRsp<ISPIMGDEF>();
                         UpdateModelListReq<ISPIMGDEF> imgdef = new UpdateModelListReq<ISPIMGDEF>()
                         {
                             models = updateReq.model.ISPIMGDEF_list,
                             operateType = operateTypeImg
                         };
+                        BeginTrans();
+                        UpdateModel(wafitm);
                         UpdateModels<ISPIMGDEF>(imgdef);
-
+                        UpdateModels<ISPWAFDFT>(wafdet);
                         EndTrans();
                         break;
                     case '2':

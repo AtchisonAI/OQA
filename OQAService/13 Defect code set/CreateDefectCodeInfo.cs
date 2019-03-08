@@ -75,11 +75,11 @@ namespace OQAService.Services
                             T_ISPDFTDEF.CreateUserId = "";
 
                             //调用数据库操作
-                            Do_Save.opreateType = OperateType.Insert;
+                           // Do_Save.opreateType = OperateType.Insert;
                             Do_Save.models.Add(T_ISPDFTDEF) ;
                             BeginTrans();
                             //执行
-                            UpdateModelingObjects(Do_Save, Do_message, true);
+                          //  UpdateModelingObjects(Do_Save, Do_message, true);
                             EndTrans();
 
                             break;

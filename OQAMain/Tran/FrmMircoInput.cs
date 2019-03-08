@@ -37,10 +37,12 @@ namespace OQAMain
             frontFlag = true;
             this.frontButton.BackColor = Color.Green;
             this.backButton.BackColor = Color.Gray;
+            waferSurF.groupNode = this.groupBoxSelect;
             waferSurF.Visible = true;
             waferSurF.Enabled = true;
             waferSurB.Enabled = false;
             waferSurB.Visible = false;
+            checkBoxChange();
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -48,10 +50,12 @@ namespace OQAMain
             frontFlag = false;
             this.backButton.BackColor = Color.Green;
             this.frontButton.BackColor = Color.Gray;
+            waferSurB.groupNode = this.groupBoxSelect;
             waferSurB.Enabled = true;
             waferSurB.Visible = true;
             waferSurF.Visible = false;
             waferSurF.Enabled = false;
+            checkBoxChange();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,8 +69,7 @@ namespace OQAMain
             if (radioNine.Checked)
             {
                 radioNine.Checked = true;
-                groupBoxThree.Visible = false;
-                groupBoxThree.Enabled = false;
+                hideNode(false);
             }
         }
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -74,8 +77,7 @@ namespace OQAMain
             if (radioThr.Checked)
             {
                 radioThr.Checked = true;
-                groupBoxThree.Visible = true;
-                groupBoxThree.Enabled = true;
+                hideNode(true);
             }
         }
         #region " 事务前数据检查 "
@@ -164,6 +166,24 @@ namespace OQAMain
         }
         #endregion
 
+        private void hideNode(Boolean flag)
+        {
+            label21.Visible = flag;
+            okBox_12.Visible = flag;
+            ngBox_12.Visible = flag;
+            label22.Visible = flag;
+            okBox_8.Visible = flag;
+            ngBox_8.Visible = flag;
+            label23.Visible = flag;
+            okBox_14.Visible = flag;
+            ngBox_14.Visible = flag;
+            textBox15.Visible = flag;
+            textBox16.Visible = flag;
+            textBox17.Visible = flag;
+            button12.Visible = flag;
+            button13.Visible = flag;
+            button14.Visible = flag;
+        }
 
         #endregion
 
@@ -204,7 +224,6 @@ namespace OQAMain
         private void FrmMircoInput_Load(object sender, EventArgs e)
         {
             radioNine.Checked = true;
-            this.checkAllOk();
             this.pageInfoShow();
             waferSurB.Enabled = false;
             waferSurB.Visible = false;
@@ -218,6 +237,7 @@ namespace OQAMain
             string lotId = "1";
             string slotId = "1";
             string sideType = "F";
+            this.checkAllOk();
             try
             {
                 ModelRsp<AOIShowView> view = new ModelRsp<AOIShowView>();
@@ -235,7 +255,7 @@ namespace OQAMain
                 lotTextBox.Text = view.model.ISPWAFITM.LotId;
                 slotComboBox.Text = view.model.ISPWAFITM.SlotId;
                 slotComboBox.Items.AddRange(new string[] { slotComboBox.Text });
-                ModelRsp<AOIShowView> qryResult = OQASrv.CallServer().QueryAOIInfo(view);
+                ModelRsp<AOIShowView> qryResult = OQASrv.OQAClient.QueryAOIInfo(view);
                 if (null != qryResult.model)
                 {
                     if (null != qryResult.model.ISPWAFITM)
@@ -261,16 +281,19 @@ namespace OQAMain
                     }
 
                 }
+               
 
                 if (ISPWAFITM.SideType != "F")
                 {//显示正反面判断
                     waferSurF.Enabled = false;
+                    waferSurF.groupNode = this.groupBoxSelect;
                     this.backButton.BackColor = Color.Green;
                     this.frontButton.BackColor = Color.Gray;
                 }
                 else
                 {
                     waferSurB.Enabled = false;
+                    waferSurB.groupNode = this.groupBoxSelect;
                     this.frontButton.BackColor = Color.Green;
                     this.backButton.BackColor = Color.Gray;
                 }
@@ -283,60 +306,30 @@ namespace OQAMain
 
         }
 
-        public void showDefectCheck(string id, string code)
+        public void showDefectCheck(string i, string code)
         {
-            foreach (Control control in groupBoxNine.Controls)
-            {
-                if (control is CheckBox)
-                {
-                    CheckBox c = control as CheckBox;
-                    if (control.Name.Split('_')[1].Equals(id))
-                    {
+            string nameNg = "ngBox_" + i;
+            string nameOk = "okBox_" + i;
+            Control[] ctrlsNg = groupBoxSelect.Controls.Find(nameNg, true);
+            Control[] ctrlsOk = groupBoxSelect.Controls.Find(nameOk, true);
+            CheckBox cekNg = (CheckBox)ctrlsNg[0];
+            CheckBox cekOk = (CheckBox)ctrlsOk[0];
 
-                        if (null != code && !code.Equals(""))
-                        {
-                            if (control.Name.Split('_')[0].Equals("ngBox"))
-                            {
-                                c.Checked = true;
-                            }
-                            if (control.Name.Split('_')[0].Equals("okBox"))
-                            {
-                                c.Checked = false;
-                            }
-                        }
-                    }
-                }
+            if (null != code && !code.Equals(""))
+            {
+                cekNg.Checked = true;
+                cekOk.Checked = false;
             }
-            if (radioThr.Checked)
+            else
             {
-                foreach (Control control in groupBoxThree.Controls)
-                {
-                    if (control is CheckBox)
-                    {
-                        CheckBox c = control as CheckBox;
-                        if (control.Name.Split('_')[1].Equals(id))
-                        {
-
-                            if (null != code && !code.Equals(""))
-                            {
-                                if (control.Name.Split('_')[0].Equals("ngBox"))
-                                {
-                                    c.Checked = true;
-                                }
-                                if (control.Name.Split('_')[0].Equals("okBox"))
-                                {
-                                    c.Checked = false;
-                                }
-                            }
-                        }
-                    }
-                }
+                cekNg.Checked = false;
+                cekOk.Checked = true;
             }
         }
 
         public void checkAllOk()
         {
-            foreach (Control control in groupBoxNine.Controls)
+            foreach (Control control in groupBoxSelect.Controls)
             {
                 if (control is CheckBox)
                 {
@@ -347,6 +340,41 @@ namespace OQAMain
                     }
                 }
             }
+
+        }
+
+        public void checkBoxChange()
+        {
+            string[] codeList = new string[25];
+            if (frontFlag)
+            {
+                codeList = waferSurF.defectCode;
+            }
+            else
+            {
+                codeList = waferSurB.defectCode;
+            }
+            for (int i = 0; i < 24; i++)
+            {
+                i += 1;
+                //showDefectCheck(i.ToString(), codeList[i]);
+                foreach (Control control in groupBoxSelect.Controls)
+                {
+                    if (control is CheckBox)
+                    {
+                        if (control.Name.Split('_')[1].Equals(i.ToString()))
+                        {
+
+                        }
+                            CheckBox c = control as CheckBox;
+                        if (control.Name.Split('_')[0].Equals("okBox"))
+                        {
+                            c.Checked = true;
+                        }
+                    }
+                }
+            }
+           
         }
         #endregion
     }

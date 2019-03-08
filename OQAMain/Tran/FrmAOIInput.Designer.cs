@@ -69,16 +69,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(794, 6);
+            this.btnClose.Location = new System.Drawing.Point(812, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(606, 6);
+            this.btnCreate.Location = new System.Drawing.Point(624, 6);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(700, 6);
+            this.btnEdite.Location = new System.Drawing.Point(718, 6);
             // 
             // pnlMenu
             // 
@@ -115,7 +115,8 @@
             // labelPer
             // 
             this.labelPer.AutoSize = true;
-            this.labelPer.Location = new System.Drawing.Point(464, 82);
+            this.labelPer.BackColor = System.Drawing.Color.Transparent;
+            this.labelPer.Location = new System.Drawing.Point(437, 85);
             this.labelPer.Name = "labelPer";
             this.labelPer.Size = new System.Drawing.Size(11, 12);
             this.labelPer.TabIndex = 19;
@@ -124,7 +125,8 @@
             // labelX
             // 
             this.labelX.AutoSize = true;
-            this.labelX.Location = new System.Drawing.Point(237, 40);
+            this.labelX.BackColor = System.Drawing.Color.Transparent;
+            this.labelX.Location = new System.Drawing.Point(213, 39);
             this.labelX.Name = "labelX";
             this.labelX.Size = new System.Drawing.Size(11, 12);
             this.labelX.TabIndex = 18;
@@ -290,9 +292,9 @@
             this.label4.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label4.Location = new System.Drawing.Point(481, 37);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 14);
+            this.label4.Size = new System.Drawing.Size(105, 14);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Suffer die Q\'ty";
+            this.label4.Text = "Suffer die Qty";
             // 
             // groupBox1
             // 

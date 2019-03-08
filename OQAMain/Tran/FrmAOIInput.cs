@@ -217,7 +217,7 @@ namespace OQAMain
                 lotTextBox.Text = view.model.ISPWAFITM.LotId;
                 slotComboBox.Text = view.model.ISPWAFITM.SlotId;
                 slotComboBox.Items.AddRange(new string[] { slotComboBox.Text });
-                ModelRsp<AOIShowView> qryResult = OQASrv.CallServer().QueryAOIInfo(view);
+                ModelRsp<AOIShowView> qryResult = OQASrv.OQAClient.QueryAOIInfo(view);
                 if (null != qryResult.model)
                 {
                     if (null != qryResult.model.ISPWAFITM)
@@ -234,21 +234,22 @@ namespace OQAMain
                         imageTextBox.Text = qryResult.model.ISPIMGDEF_list[0].ImagePath;//mock value
                     }
                 }
-
-                waferSurF.box = this.defectTextBox;
-                waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
-
+                
                 if (ISPWAFITM.SideType != "F")
                 {//显示正反面判断
                     waferSurF.Enabled = false;
                     this.backButton.BackColor = Color.Green;
                     this.frontButton.BackColor = Color.Gray;
+                    waferSurF.box = this.defectTextBox;
+                    waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
                 }
                 else
                 {
                     waferSurB.Enabled = false;
                     this.frontButton.BackColor = Color.Green;
                     this.backButton.BackColor = Color.Gray;
+                    waferSurB.box = this.defectTextBox;
+                    waferSurB.showWafer(qryResult.model.ISPWAFDFT_list);
                 }
 
             }

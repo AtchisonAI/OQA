@@ -6,59 +6,215 @@ using NPoco;
 
 namespace WCFModels.OQA
 {
+
     [DataContract]
-    [TableName("INITEDCDATA")]
+    [TableName("PKGSHPDAT")]
+    [PrimaryKey("SHIP_ID,LOT_ID", AutoIncrement = false)]
     [ExplicitColumns]
-    public partial class INITEDCDATA
+    public partial class PKGSHPDAT
     {
         [DataMember]
-        [Column("IDX")] public string Idx { get; set; }
+        [Column("SHIP_ID")] public string ShipId { get; set; }
         [DataMember]
-        [Column("NAME")] public string Name { get; set; }
+        [Column("LOT_ID")] public string LotId { get; set; }
         [DataMember]
-        [Column("ALIAS")] public string Alias { get; set; }
+        [Column("QTY")] public string Qty { get; set; }
         [DataMember]
-        [Column("RULETYPE")] public string Ruletype { get; set; }
+        [Column("PART_ID")] public string PartId { get; set; }
         [DataMember]
-        [Column("CATEGORY")] public string Category { get; set; }
+        [Column("INSPECT_RESULT")] public string InspectResult { get; set; }
         [DataMember]
-        [Column("NUMBEROFABNORMALPOINTS")] public decimal Numberofabnormalpoints { get; set; }
+        [Column("CMF_1")] public string Cmf1 { get; set; }
         [DataMember]
-        [Column("NUMBEROFTARGETPOINTS")] public decimal Numberoftargetpoints { get; set; }
+        [Column("CMF_2")] public string Cmf2 { get; set; }
         [DataMember]
-        [Column("SIGMA")] public string Sigma { get; set; }
+        [Column("CMF_3")] public string Cmf3 { get; set; }
         [DataMember]
-        [Column("RULEOPERATOR")] public string Ruleoperator { get; set; }
+        [Column("CMF_4")] public string Cmf4 { get; set; }
         [DataMember]
-        [Column("FIRSTRULE")] public string Firstrule { get; set; }
+        [Column("CMF_5")] public string Cmf5 { get; set; }
         [DataMember]
-        [Column("SECONDRULE")] public string Secondrule { get; set; }
+        [Column("CMF_6")] public string Cmf6 { get; set; }
         [DataMember]
-        [Column("ISINCLUDEEQUAL")] public string Isincludeequal { get; set; }
+        [Column("CMF_7")] public string Cmf7 { get; set; }
         [DataMember]
-        [Column("RULEDESCRIPTION")] public string Ruledescription { get; set; }
+        [Column("CMF_8")] public string Cmf8 { get; set; }
         [DataMember]
-        [Column("DESCRIPTION")] public string Description { get; set; }
+        [Column("CMF_9")] public string Cmf9 { get; set; }
         [DataMember]
-        [Column("OWNER")] public string Owner { get; set; }
+        [Column("CMF_10")] public string Cmf10 { get; set; }
         [DataMember]
-        [Column("LASTUPDATEUSER")] public string Lastupdateuser { get; set; }
+        [VersionColumn("TRANS_SEQ", VersionColumnType.Number)] public decimal TransSeq { get; set; }
+        [DataMember]
+        [Column("CREATE_TIME")] public string CreateTime { get; set; }
+        [DataMember]
+        [Column("CREATE_USER_ID")] public string CreateUserId { get; set; }
+        [DataMember]
+        [Column("UPDATE_TIME")] public string UpdateTime { get; set; }
+        [DataMember]
+        [Column("UPDATE_USER_ID")] public string UpdateUserId { get; set; }
+    }
+    [DataContract]
+    [TableName("PKGSHPSTS")]
+    [PrimaryKey("SHIP_ID", AutoIncrement = false)]
+    [ExplicitColumns]
+    public partial class PKGSHPSTS
+    {
+        [DataMember]
+        [Column("SHIP_ID")] public string ShipId { get; set; }
+        [DataMember]
+        [Column("PART_ID")] public string PartId { get; set; }
+        [DataMember]
+        [Column("CREATER")] public string Creater { get; set; }
+        [DataMember]
+        [Column("QTY")] public string Qty { get; set; }
+        [DataMember]
+        [Column("SHIP_DATE")] public string ShipDate { get; set; }
+        [DataMember]
+        [Column("CMF_1")] public string Cmf1 { get; set; }
+        [DataMember]
+        [Column("CMF_2")] public string Cmf2 { get; set; }
+        [DataMember]
+        [Column("CMF_3")] public string Cmf3 { get; set; }
+        [DataMember]
+        [Column("CMF_4")] public string Cmf4 { get; set; }
+        [DataMember]
+        [Column("CMF_5")] public string Cmf5 { get; set; }
+        [DataMember]
+        [Column("CMF_6")] public string Cmf6 { get; set; }
+        [DataMember]
+        [Column("CMF_7")] public string Cmf7 { get; set; }
+        [DataMember]
+        [Column("CMF_8")] public string Cmf8 { get; set; }
+        [DataMember]
+        [Column("CMF_9")] public string Cmf9 { get; set; }
+        [DataMember]
+        [Column("CMF_10")] public string Cmf10 { get; set; }
+        [DataMember]
+        [VersionColumn("TRANS_SEQ", VersionColumnType.Number)] public decimal TransSeq { get; set; }
+        [DataMember]
+        [Column("CREATE_TIME")] public string CreateTime { get; set; }
+        [DataMember]
+        [Column("CREATE_USER_ID")] public string CreateUserId { get; set; }
+        [DataMember]
+        [Column("UPDATE_TIME")] public string UpdateTime { get; set; }
+        [DataMember]
+        [Column("UPDATE_USER_ID")] public string UpdateUserId { get; set; }
+    }
+    [DataContract]
+    [TableName("PKGSLTDEF")]
+    [PrimaryKey("LOT_ID,SLOT_ID,WAFER_ID", AutoIncrement = false)]
+    [ExplicitColumns]
+    public partial class PKGSLTDEF
+    {
+        [DataMember]
+        [Column("LOT_ID")] public string LotId { get; set; }
+        [DataMember]
+        [Column("SLOT_ID")] public string SlotId { get; set; }
+        [DataMember]
+        [Column("WAFER_ID")] public string WaferId { get; set; }
+        [DataMember]
+        [Column("CMF_1")] public string Cmf1 { get; set; }
+        [DataMember]
+        [Column("CMF_2")] public string Cmf2 { get; set; }
+        [DataMember]
+        [Column("CMF_3")] public string Cmf3 { get; set; }
+        [DataMember]
+        [Column("CMF_4")] public string Cmf4 { get; set; }
+        [DataMember]
+        [Column("CMF_5")] public string Cmf5 { get; set; }
+        [DataMember]
+        [Column("CMF_6")] public string Cmf6 { get; set; }
+        [DataMember]
+        [Column("CMF_7")] public string Cmf7 { get; set; }
+        [DataMember]
+        [Column("CMF_8")] public string Cmf8 { get; set; }
+        [DataMember]
+        [Column("CMF_9")] public string Cmf9 { get; set; }
+        [DataMember]
+        [Column("CMF_10")] public string Cmf10 { get; set; }
+        [DataMember]
+        [VersionColumn("TRANS_SEQ", VersionColumnType.Number)] public decimal TransSeq { get; set; }
+        [DataMember]
+        [Column("CREATE_TIME")] public string CreateTime { get; set; }
+        [DataMember]
+        [Column("CREATE_USER_ID")] public string CreateUserId { get; set; }
+        [DataMember]
+        [Column("UPDATE_TIME")] public string UpdateTime { get; set; }
+        [DataMember]
+        [Column("UPDATE_USER_ID")] public string UpdateUserId { get; set; }
     }
 
     [DataContract]
-    [TableName("INVENTORY")]
+    [TableName("OUT_PNDN")]
+    [PrimaryKey("PNDN_NO,LOT_ID", AutoIncrement = false)]
     [ExplicitColumns]
-    public partial class INVENTORY
+    public partial class OUT_PNDN
     {
         [DataMember]
-        [Column("ITEM")] public string Item { get; set; }
+        [Column("PNDN_NO")] public string PndnNo { get; set; }
         [DataMember]
-        [Column("ITE")] public string Ite { get; set; }
+        [Column("LOT_ID")] public string LotId { get; set; }
         [DataMember]
-        [Column("ROOM")] public string Room { get; set; }
+        [Column("DEPT")] public string Dept { get; set; }
         [DataMember]
-        [Column("REMARKS")] public string Remarks { get; set; }
+        [Column("INSPECT_TYPE")] public string InspectType { get; set; }
+        [DataMember]
+        [Column("DEFECT_CODE")] public string DefectCode { get; set; }
+        [DataMember]
+        [Column("WAFER_ID")] public string WaferId { get; set; }
+        [DataMember]
+        [Column("SPEC")] public string Spec { get; set; }
+        [DataMember]
+        [Column("REMARK")] public string Remark { get; set; }
+        [DataMember]
+        [Column("PART_ID")] public string PartId { get; set; }
+        [DataMember]
+        [Column("QTY")] public decimal Qty { get; set; }
+        [DataMember]
+        [Column("STEP_ID")] public string StepId { get; set; }
+        [DataMember]
+        [Column("STEP_NAME")] public string StepName { get; set; }
+        [DataMember]
+        [Column("HOLD_CODE")] public string HoldCode { get; set; }
+        [DataMember]
+        [Column("HOLD_COMMENT")] public string HoldComment { get; set; }
+        [DataMember]
+        [Column("USER_ID")] public string UserId { get; set; }
+        [DataMember]
+        [Column("SUPERVISOR_ID")] public string SupervisorId { get; set; }
+        [DataMember]
+        [Column("CMF_1")] public string Cmf1 { get; set; }
+        [DataMember]
+        [Column("CMF_2")] public string Cmf2 { get; set; }
+        [DataMember]
+        [Column("CMF_3")] public string Cmf3 { get; set; }
+        [DataMember]
+        [Column("CMF_4")] public string Cmf4 { get; set; }
+        [DataMember]
+        [Column("CMF_5")] public string Cmf5 { get; set; }
+        [DataMember]
+        [Column("CMF_6")] public string Cmf6 { get; set; }
+        [DataMember]
+        [Column("CMF_7")] public string Cmf7 { get; set; }
+        [DataMember]
+        [Column("CMF_8")] public string Cmf8 { get; set; }
+        [DataMember]
+        [Column("CMF_9")] public string Cmf9 { get; set; }
+        [DataMember]
+        [Column("CMF_10")] public string Cmf10 { get; set; }
+        [DataMember]
+        [VersionColumn("TRANS_SEQ", VersionColumnType.Number)] public decimal TransSeq { get; set; }
+        [DataMember]
+        [Column("CREATE_TIME")] public string CreateTime { get; set; }
+        [DataMember]
+        [Column("CREATE_USER_ID")] public string CreateUserId { get; set; }
+        [DataMember]
+        [Column("UPDATE_TIME")] public string UpdateTime { get; set; }
+        [DataMember]
+        [Column("UPDATE_USER_ID")] public string UpdateUserId { get; set; }
     }
+
 
     [DataContract]
     [TableName("ISPAREDEF")]

@@ -59,7 +59,7 @@ namespace OQAMain
 
             try
             {
-                var res = OQASrv.OQAClient.UpdateDemoInfo(updateReq);
+                var res = OQASrv.Call.UpdateDemoInfo(updateReq);
                 MessageBox.Show(res.ToString());
             }
             catch (Exception exception)
@@ -80,7 +80,7 @@ namespace OQAMain
             UpdateModelListReq<Emp> updateReq = new UpdateModelListReq<Emp>();
             updateReq.models.Add(empInfo);
             updateReq.operateType = operate;
-            return OQASrv.OQAClient.UpdateEmpInfo(updateReq);
+            return OQASrv.Call.UpdateEmpInfo(updateReq);
 
 
         }

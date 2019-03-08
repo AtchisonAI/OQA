@@ -55,6 +55,9 @@
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="NPoco">
+      <HintPath>..\Components\NPoco.dll</HintPath>
+    </Reference>
     <Reference Include="OQAMain">
       <HintPath>..\Components\OQAMain.dll</HintPath>
     </Reference>
@@ -192,10 +195,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OQAService\OQAService.csproj">
-      <Project>{93084370-ff48-4e22-943b-5a9359311041}</Project>
-      <Name>OQAService</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OQA_Core\OQA_Core.csproj">
       <Project>{6734161e-7d2d-485f-a48c-d0dfea600583}</Project>
       <Name>OQA_Core</Name>

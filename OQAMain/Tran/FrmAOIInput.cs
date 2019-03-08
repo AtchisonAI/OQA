@@ -175,7 +175,7 @@ namespace OQAMain
                 //}
                 UpdateModelReq<AOIShowView> updateReq = new UpdateModelReq<AOIShowView>();
                 this.getUpdateModel(updateReq);
-                OQASrv.OQAClient.CreateOrUpdateAOI(updateReq);
+                OQASrv.Call.CreateOrUpdateAOI(updateReq);
                 //ModelRsp<AOIShowView> result = OQASrv.CallServer().CreateOrUpdateAOI(updateReq);
                 //if (!result._success)
                 //{
@@ -217,7 +217,7 @@ namespace OQAMain
                 lotTextBox.Text = view.model.ISPWAFITM.LotId;
                 slotComboBox.Text = view.model.ISPWAFITM.SlotId;
                 slotComboBox.Items.AddRange(new string[] { slotComboBox.Text });
-                ModelRsp<AOIShowView> qryResult = OQASrv.OQAClient.QueryAOIInfo(view);
+                ModelRsp<AOIShowView> qryResult = OQASrv.Call.QueryAOIInfo(view);
                 if (null != qryResult.model)
                 {
                     if (null != qryResult.model.ISPWAFITM)

@@ -6,7 +6,7 @@ using WCFModels.Message;
 namespace WCFModels.OQA
 {
     [DataContract]
-    public class DefectCodeView: BaseRsp
+    public class LotSlotidView: BaseRsp
     {
 
         //服务传入执行动作,事务标记必须输入
@@ -24,9 +24,9 @@ namespace WCFModels.OQA
         }
         private char c_proc_step;
 
-        public DefectCodeView()
+        public LotSlotidView()
         {
-            ISPDFTDEF_list = new List<ISPDFTDEF>();
+            PKGSLTDEF_list = new List<PKGSLTDEF>();
         }
 
         [DataMember]
@@ -45,32 +45,22 @@ namespace WCFModels.OQA
         private char c_tran_flag;
         //服务传入参数
         [DataMember]
-        public string IN_ISP_TYPE {
+        public string IN_LOT_ID {
             get
             {
-                return in_isp_type;
+                return in_lot_id;
             }
             set
             {
-                in_isp_type = value;
+                in_lot_id = value;
             }
         }
-        private string in_isp_type;
-        [DataMember]
-        public string IN_ISP_CODE {
-            get
-            {
-                return in_isp_code;
-            }
-            set
-            {
-                in_isp_code = value;
-            }
-        }
-        private string in_isp_code;
+        private string in_lot_id;
+        
+       
         //服务传出数据结构
         [DataMember]
-        public List<ISPDFTDEF> ISPDFTDEF_list { get; set; }
+        public List<PKGSLTDEF> PKGSLTDEF_list { get; set; }
         //服务传出结果在BaseRsq:_success  _ErrorMsg
 
 

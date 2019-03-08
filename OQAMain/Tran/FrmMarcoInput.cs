@@ -3,6 +3,9 @@ using OQA_Core;
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using WCFModels.OQA;
+using System.Collections.Generic;
+using WCFModels.Message;
 
 namespace OQAMain
 {
@@ -47,6 +50,8 @@ namespace OQAMain
             waferSurB.Enabled = true;
             waferSurF.Enabled = false;
         }
+
+  
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -178,9 +183,74 @@ namespace OQAMain
 
         private void FrmMarcoInput_Load(object sender, EventArgs e)
         {
+            this.pageInfoShow();
             waferSurB.Enabled = false;
             this.frontButton.BackColor = Color.Green;
             this.backButton.BackColor = Color.Gray;
         }
+
+        #region show function
+        private void pageInfoShow()
+        {
+            string lotId = "1";
+            string slotId = "1";
+            string sideType = "F";
+            try
+            {
+                ModelRsp<AOIShowView> view = new ModelRsp<AOIShowView>();
+                AOIShowView model = new AOIShowView();
+                model.C_PROC_STEP = '1';
+                model.C_TRAN_FLAG = GlobConst.TRAN_VIEW;
+                ISPWAFITM ISPWAFITM = new ISPWAFITM();
+                ISPWAFITM.LotId = lotId;
+                ISPWAFITM.SlotId = slotId;
+                ISPWAFITM.WaferId = "1";
+                ISPWAFITM.SideType = sideType;
+                ISPWAFITM.InspectType = "A";
+                model.ISPWAFITM = ISPWAFITM;
+                view.model = model;
+                lotTextBox.Text = view.model.ISPWAFITM.LotId;
+                slotComboBox.Text = view.model.ISPWAFITM.SlotId;
+                slotComboBox.Items.AddRange(new string[] { slotComboBox.Text });
+                ModelRsp<AOIShowView> qryResult = OQASrv.Call.QueryAOIInfo(view);
+                if (null != qryResult.model)
+                {
+                    if (null != qryResult.model.ISPWAFITM)
+                    {
+                        decRichTextBox.Text = qryResult.model.ISPWAFITM.DefectDesc;
+                        cmtRichTextBox.Text = qryResult.model.ISPWAFITM.Cmt;
+                    }
+                    if (null != qryResult.model.ISPIMGDEF_list && qryResult.model.ISPIMGDEF_list.Count > 0)
+                    {
+                        imageTextBox.Text = qryResult.model.ISPIMGDEF_list[0].ImagePath;//mock value
+                    }
+                }
+                
+                waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
+
+                if (ISPWAFITM.SideType != "F")
+                {//显示正反面判断
+                    waferSurF.Enabled = false;
+                    this.backButton.BackColor = Color.Green;
+                    this.frontButton.BackColor = Color.Gray;
+                }
+                else
+                {
+                    waferSurB.Enabled = false;
+                    this.frontButton.BackColor = Color.Green;
+                    this.backButton.BackColor = Color.Gray;
+                }
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+        }
+        
+
+        #endregion
+
     }
 }

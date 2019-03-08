@@ -1,4 +1,6 @@
 ﻿using OQAService.Contract;
+using System;
+using System.ServiceModel;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 
@@ -6,11 +8,6 @@ namespace OQAService.Services
 {
     public partial class OQAService : OQABaseService, IOQAContract
     {
-        //public PageModelRsp<Emp> QueryEmpInfo(QueryEmpReq queryEmpReq)
-        //{
-        //    return PageQuery<Emp>(queryEmpReq);
-        //}
-
         public ModelListRsp<CEmpPercentView> QueryEmpPercent(QueryReq queryReq)
         {
             return Query<CEmpPercentView>(queryReq);
@@ -21,40 +18,39 @@ namespace OQAService.Services
             return Query<CEmpSumView>(queryReq);
         }
 
+        [OperationBehavior(TransactionAutoComplete = true, TransactionScopeRequired = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         public ModelListRsp<Emp> UpdateEmpInfo(UpdateModelListReq<Emp> updateReq)
         {
             ModelListRsp<Emp> empUpdateRsp = new ModelListRsp<Emp>();
 
-            BeginTrans();
-            UpdateModelingObjects(updateReq, empUpdateRsp, true);
-            EndTrans();
-
+            UpdateModels(updateReq, empUpdateRsp, true);
+            
             return empUpdateRsp;
         }
 
+        [OperationBehavior(TransactionAutoComplete = true, TransactionScopeRequired = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         public ModelRsp<DemoView> UpdateDemoInfo(UpdateModelReq<DemoView> updateReq)
         {
             ModelRsp<DemoView> rsp = new ModelRsp<DemoView>();
 
-            BeginTrans();
             UpdateModelListReq<Emp> req = new UpdateModelListReq<Emp>()
             {
                 models = updateReq.model.empList,
-                opreateType = updateReq.opreateType
+                operateType = updateReq.operateType
             };
 
-            UpdateModelObjects(req);
+            UpdateEmpInfo(req);
 
             UpdateModelListReq<RmsUser> rmsReq = new UpdateModelListReq<RmsUser>()
             {
                 models = updateReq.model.rmsList,
-                opreateType = updateReq.opreateType
+                operateType = updateReq.operateType
             };
-            UpdateModelObjects(rmsReq);
+            UpdateModels(rmsReq);
 
-            EndTrans();
             return rsp;
         }
-
     }
 }

@@ -29,21 +29,23 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.labelPer = new System.Windows.Forms.Label();
+            this.labelX = new System.Windows.Forms.Label();
+            this.rateTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.imageTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.cmtRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.qtyTextBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.MagnificationTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.defectTextBox = new System.Windows.Forms.TextBox();
+            this.decRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.ReviewTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -55,9 +57,9 @@
             this.label14 = new System.Windows.Forms.Label();
             this.waferSurB = new WaferSf.WaferSur();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.slotComboBox = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.lotTextBox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -67,15 +69,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(704, 6);
+            this.btnClose.Location = new System.Drawing.Point(812, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(516, 6);
+            this.btnCreate.Location = new System.Drawing.Point(624, 6);
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(610, 6);
+            this.btnEdite.Location = new System.Drawing.Point(718, 6);
             // 
             // pnlMenu
             // 
@@ -84,21 +87,23 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.labelPer);
+            this.groupBox3.Controls.Add(this.labelX);
+            this.groupBox3.Controls.Add(this.rateTextBox);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.imageTextBox);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.richTextBox2);
-            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.cmtRichTextBox);
+            this.groupBox3.Controls.Add(this.qtyTextBox);
             this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.MagnificationTextBox);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.richTextBox1);
+            this.groupBox3.Controls.Add(this.defectTextBox);
+            this.groupBox3.Controls.Add(this.decRichTextBox);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.textBox6);
+            this.groupBox3.Controls.Add(this.ReviewTextBox);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Location = new System.Drawing.Point(12, 531);
@@ -107,14 +112,34 @@
             this.groupBox3.TabIndex = 35;
             this.groupBox3.TabStop = false;
             // 
-            // textBox5
+            // labelPer
             // 
-            this.textBox5.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.textBox5.Location = new System.Drawing.Point(358, 77);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 13;
+            this.labelPer.AutoSize = true;
+            this.labelPer.BackColor = System.Drawing.Color.Transparent;
+            this.labelPer.Location = new System.Drawing.Point(437, 85);
+            this.labelPer.Name = "labelPer";
+            this.labelPer.Size = new System.Drawing.Size(11, 12);
+            this.labelPer.TabIndex = 19;
+            this.labelPer.Text = "%";
+            // 
+            // labelX
+            // 
+            this.labelX.AutoSize = true;
+            this.labelX.BackColor = System.Drawing.Color.Transparent;
+            this.labelX.Location = new System.Drawing.Point(213, 39);
+            this.labelX.Name = "labelX";
+            this.labelX.Size = new System.Drawing.Size(11, 12);
+            this.labelX.TabIndex = 18;
+            this.labelX.Text = "X";
+            // 
+            // rateTextBox
+            // 
+            this.rateTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.rateTextBox.Location = new System.Drawing.Point(358, 80);
+            this.rateTextBox.Multiline = true;
+            this.rateTextBox.Name = "rateTextBox";
+            this.rateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.rateTextBox.TabIndex = 13;
             // 
             // label6
             // 
@@ -126,14 +151,14 @@
             this.label6.TabIndex = 6;
             this.label6.Text = "Defect rate";
             // 
-            // textBox4
+            // imageTextBox
             // 
-            this.textBox4.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.textBox4.Location = new System.Drawing.Point(133, 80);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 12;
+            this.imageTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.imageTextBox.Location = new System.Drawing.Point(133, 80);
+            this.imageTextBox.Multiline = true;
+            this.imageTextBox.Name = "imageTextBox";
+            this.imageTextBox.Size = new System.Drawing.Size(100, 20);
+            this.imageTextBox.TabIndex = 12;
             // 
             // label7
             // 
@@ -155,23 +180,23 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Magnification";
             // 
-            // richTextBox2
+            // cmtRichTextBox
             // 
-            this.richTextBox2.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.richTextBox2.Location = new System.Drawing.Point(133, 172);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(569, 29);
-            this.richTextBox2.TabIndex = 16;
-            this.richTextBox2.Text = "";
+            this.cmtRichTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.cmtRichTextBox.Location = new System.Drawing.Point(133, 172);
+            this.cmtRichTextBox.Name = "cmtRichTextBox";
+            this.cmtRichTextBox.Size = new System.Drawing.Size(569, 29);
+            this.cmtRichTextBox.TabIndex = 16;
+            this.cmtRichTextBox.Text = "";
             // 
-            // textBox3
+            // qtyTextBox
             // 
-            this.textBox3.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.textBox3.Location = new System.Drawing.Point(602, 40);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 11;
+            this.qtyTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.qtyTextBox.Location = new System.Drawing.Point(602, 37);
+            this.qtyTextBox.Multiline = true;
+            this.qtyTextBox.Name = "qtyTextBox";
+            this.qtyTextBox.Size = new System.Drawing.Size(100, 20);
+            this.qtyTextBox.TabIndex = 11;
             // 
             // button1
             // 
@@ -184,14 +209,14 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // MagnificationTextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.textBox1.Location = new System.Drawing.Point(133, 37);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
+            this.MagnificationTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.MagnificationTextBox.Location = new System.Drawing.Point(133, 37);
+            this.MagnificationTextBox.Multiline = true;
+            this.MagnificationTextBox.Name = "MagnificationTextBox";
+            this.MagnificationTextBox.Size = new System.Drawing.Size(100, 20);
+            this.MagnificationTextBox.TabIndex = 2;
             // 
             // label8
             // 
@@ -203,24 +228,24 @@
             this.label8.TabIndex = 8;
             this.label8.Text = "Description";
             // 
-            // textBox2
+            // defectTextBox
             // 
-            this.textBox2.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.textBox2.ForeColor = System.Drawing.Color.Blue;
-            this.textBox2.Location = new System.Drawing.Point(358, 37);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 10;
+            this.defectTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.defectTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.defectTextBox.Location = new System.Drawing.Point(358, 37);
+            this.defectTextBox.Multiline = true;
+            this.defectTextBox.Name = "defectTextBox";
+            this.defectTextBox.Size = new System.Drawing.Size(100, 20);
+            this.defectTextBox.TabIndex = 10;
             // 
-            // richTextBox1
+            // decRichTextBox
             // 
-            this.richTextBox1.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.richTextBox1.Location = new System.Drawing.Point(133, 119);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(569, 29);
-            this.richTextBox1.TabIndex = 15;
-            this.richTextBox1.Text = "";
+            this.decRichTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.decRichTextBox.Location = new System.Drawing.Point(133, 119);
+            this.decRichTextBox.Name = "decRichTextBox";
+            this.decRichTextBox.Size = new System.Drawing.Size(569, 29);
+            this.decRichTextBox.TabIndex = 15;
+            this.decRichTextBox.Text = "";
             // 
             // label3
             // 
@@ -242,14 +267,14 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "Defect image";
             // 
-            // textBox6
+            // ReviewTextBox
             // 
-            this.textBox6.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.textBox6.Location = new System.Drawing.Point(602, 77);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 14;
+            this.ReviewTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.ReviewTextBox.Location = new System.Drawing.Point(602, 80);
+            this.ReviewTextBox.Multiline = true;
+            this.ReviewTextBox.Name = "ReviewTextBox";
+            this.ReviewTextBox.Size = new System.Drawing.Size(100, 20);
+            this.ReviewTextBox.TabIndex = 14;
             // 
             // label9
             // 
@@ -267,9 +292,9 @@
             this.label4.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label4.Location = new System.Drawing.Point(481, 37);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 14);
+            this.label4.Size = new System.Drawing.Size(105, 14);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Suffer die Q\'ty";
+            this.label4.Text = "Suffer die Qty";
             // 
             // groupBox1
             // 
@@ -357,9 +382,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.slotComboBox);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.lotTextBox);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Location = new System.Drawing.Point(12, 38);
             this.groupBox2.Name = "groupBox2";
@@ -368,14 +393,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "AOI inspection simple MAP";
             // 
-            // comboBox1
+            // slotComboBox
             // 
-            this.comboBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(411, 50);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 4;
+            this.slotComboBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.slotComboBox.FormattingEnabled = true;
+            this.slotComboBox.Location = new System.Drawing.Point(411, 56);
+            this.slotComboBox.Name = "slotComboBox";
+            this.slotComboBox.Size = new System.Drawing.Size(121, 22);
+            this.slotComboBox.TabIndex = 4;
             // 
             // label15
             // 
@@ -387,13 +412,14 @@
             this.label15.TabIndex = 1;
             this.label15.Text = "Lot ID";
             // 
-            // textBox7
+            // lotTextBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(157, 56);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 21);
-            this.textBox7.TabIndex = 3;
+            this.lotTextBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lotTextBox.Location = new System.Drawing.Point(157, 56);
+            this.lotTextBox.Multiline = true;
+            this.lotTextBox.Name = "lotTextBox";
+            this.lotTextBox.Size = new System.Drawing.Size(100, 21);
+            this.lotTextBox.TabIndex = 3;
             // 
             // label16
             // 
@@ -433,21 +459,21 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox rateTextBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox imageTextBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.RichTextBox cmtRichTextBox;
+        private System.Windows.Forms.TextBox qtyTextBox;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox MagnificationTextBox;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.TextBox defectTextBox;
+        private System.Windows.Forms.RichTextBox decRichTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox ReviewTextBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -459,9 +485,11 @@
         private System.Windows.Forms.Label label14;
         private WaferSf.WaferSur waferSurB;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox slotComboBox;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox lotTextBox;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label labelPer;
+        private System.Windows.Forms.Label labelX;
     }
 }

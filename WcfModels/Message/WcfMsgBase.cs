@@ -11,11 +11,34 @@ namespace WCFModels.Message
         Delete //删除表中记录
     }
 
+    public enum MsgSite
+    {
+        CLIENT,
+        SERVER
+    }
+
     #region 请求消息
     [DataContract]
     public class BaseReq
     {
+        public BaseReq()
+        {
+            msgFrom = MsgSite.CLIENT;
+        }
 
+        public BaseReq(MsgSite msgSite)
+        {
+            msgFrom = msgSite;
+        }
+
+        //client升级需要改动相应的版本号，并在服务端增加与服务器版本的对应关系（路径WcfService/Util/VersionCtrl）
+        //server端升版不需要改动该版本号，只需在服务端增加与服务器版本的对应关系（路径WcfService/Util/VersionCtrl）
+ //       [DataMember]
+        public string clientActiveVer = "1.0.1";
+
+
+        [DataMember]
+        public MsgSite msgFrom { get; set; }
     }
 
     #region 查询请求
@@ -23,6 +46,11 @@ namespace WCFModels.Message
     public class QueryReq : BaseReq
     {
         public QueryReq() : base()
+        {
+            queryConditionList = new List<QueryCondition>();
+        }
+
+        public QueryReq(MsgSite msgSite):base(msgSite)
         {
             queryConditionList = new List<QueryCondition>();
         }
@@ -35,6 +63,13 @@ namespace WCFModels.Message
     public class PageQueryReq : QueryReq
     {
         public PageQueryReq ():base()
+        {
+            ItemsPerPage = 20;
+            CurrentPage = 1;
+            sortCondittionList = new List<SortCondition>();
+        }
+
+        public PageQueryReq(MsgSite msgSite) : base(msgSite)
         {
             ItemsPerPage = 20;
             CurrentPage = 1;
@@ -55,17 +90,37 @@ namespace WCFModels.Message
     [DataContract]
     public class UpdateReq: BaseReq
     {
+        public UpdateReq(MsgSite msgSite) : base(msgSite)
+        {
+            partialUpdate = true;
+        }
+
+        public UpdateReq() : base()
+        {
+            partialUpdate = true;
+        }
+
         [DataMember]
-        public OperateType opreateType { get; set; }
+        public OperateType operateType { get; set; }
 
         [DataMember]
         public string userId { get; set; }
 
+        [DataMember]
+        public bool partialUpdate { get; set; }
     }
 
     [DataContract]
-    public class UpdateModelReq<T> : UpdateReq
+    public class UpdateModelReq<T> : UpdateReq where T:new()
     {
+        public UpdateModelReq(MsgSite msgSite) : base(msgSite)
+        {
+
+        }
+        public UpdateModelReq() : base()
+        {
+            model = new T();
+        }
         [DataMember]
         public T model { get; set; }
     }
@@ -77,6 +132,11 @@ namespace WCFModels.Message
         public List<T> models { get; set; }
 
         public UpdateModelListReq() : base()
+        {
+            models = new List<T>();
+        }
+
+        public UpdateModelListReq(MsgSite msgSite) : base(msgSite)
         {
             models = new List<T>();
         }
@@ -124,8 +184,12 @@ namespace WCFModels.Message
     }
 
     [DataContract]
-    public class ModelRsp<T> : BaseRsp
+    public class ModelRsp<T> : BaseRsp where T:new()
     {
+        public ModelRsp()
+        {
+            model = new T();
+        }
         [DataMember]
         public T model { get; set; }
     }

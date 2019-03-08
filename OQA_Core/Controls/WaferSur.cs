@@ -25,9 +25,10 @@ namespace WaferSf
         Regex regExp = new Regex(@"^[A-Za-z]+(,[A-Za-z])*$");//可能带逗号的字符串
         String newText;//ccbox新选的值
         public Panel selectPanel;//当前操作的panel
-        string[] defectCode = new string[25];
+        public string[] defectCode = new string[25];
         public string textValue = "";
         public System.Windows.Forms.TextBox box;
+        public System.Windows.Forms.GroupBox groupNode;
         #endregion
 
         public WaferSur()
@@ -175,9 +176,63 @@ namespace WaferSf
             {
                 box.Text = textValue;
             }
-
+            //
+            if (null != groupNode)
+            {
+                if (null != defectCode[i] && !defectCode[i].Equals(""))
+                {
+                    //string nameNg = "ngBox_" + i;
+                    //string nameOk = "ngBox_" + i;
+                    //Control[] ctrlsNg = groupNode.Controls.Find(nameNg.Trim(), true);
+                    //Control[] ctrlsOk = groupNode.Controls.Find(nameOk.Trim(), true);
+                    //CheckBox cekNg = (CheckBox)ctrlsNg[0];
+                    //CheckBox cekOk = (CheckBox)ctrlsOk[0];
+                    //cekNg.Checked = true;
+                    //cekOk.Checked = false;
+                    foreach (Control control in groupNode.Controls)
+                    {
+                        if (control is CheckBox)
+                        {
+                            CheckBox c = control as CheckBox;
+                            i += 1;
+                            if (control.Name.Split('_')[1].Equals(i.ToString()))
+                            {
+                                if (control.Name.Split('_')[0].Equals("okBox"))
+                                {
+                                    c.Checked = false;
+                                }
+                                else
+                                {
+                                    c.Checked = true;
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Control control in groupNode.Controls)
+                    {
+                        if (control is CheckBox)
+                        {
+                            CheckBox c = control as CheckBox;
+                            i += 1;
+                            if (control.Name.Split('_')[1].Equals(i.ToString()))
+                            {
+                                if (control.Name.Split('_')[0].Equals("okBox"))
+                                {
+                                    c.Checked = true;
+                                }
+                                else
+                                {
+                                    c.Checked = false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-
 
         private void panel_MouseLeave(object sender, EventArgs e)
         {
@@ -216,6 +271,7 @@ namespace WaferSf
                     showWaferPanel(child.AreaId.ToString(), child.DefectCode);
                 }
             }
+            this.getDefectCodeValue();
         }
         #endregion
 
@@ -503,6 +559,8 @@ namespace WaferSf
 
         #endregion
 
+        #region "变量监控"
 
+        #endregion
     }
 }

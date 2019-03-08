@@ -6,7 +6,7 @@ using WCFModels.Message;
 namespace WCFModels.OQA
 {
     [DataContract]
-    public class DefectCodeView: BaseRsp
+    public class DefectCodeSave : BaseRsp
     {
 
         //服务传入执行动作,事务标记必须输入
@@ -24,11 +24,6 @@ namespace WCFModels.OQA
         }
         private char c_proc_step;
 
-        public DefectCodeView()
-        {
-            ISPDFTDEF_list = new List<ISPDFTDEF>();
-        }
-
         [DataMember]
         public char C_TRAN_FLAG
         {
@@ -43,6 +38,21 @@ namespace WCFModels.OQA
         }
 
         private char c_tran_flag;
+        [DataMember]
+        public decimal D_TRANSSEQ
+        {
+            get
+            {
+                return d_transseq;
+            }
+            set
+            {
+                d_transseq = value;
+            }
+        }
+
+        private decimal d_transseq;
+        
         //服务传入参数
         [DataMember]
         public string IN_ISP_TYPE {
@@ -68,22 +78,20 @@ namespace WCFModels.OQA
             }
         }
         private string in_isp_code;
-        //服务传出数据结构
         [DataMember]
-        public List<ISPDFTDEF> ISPDFTDEF_list { get; set; }
-        //服务传出结果在BaseRsq:_success  _ErrorMsg
+        public string IN_CODE_DESC
+        {
+            get
+            {
+                return in_code_desc;
+            }
+            set
+            {
+                in_code_desc = value;
+            }
+        }
+        private string in_code_desc;
 
 
-        //public DefectCodeView()
-        //{
-        //    rmsList = new List<RmsUser>();
-        //}
-        //    string s_isp_type ;
-
-        //   // rmsList = new List<RmsUser>();
-        //
-
-        //[DataMember]
-        //public List<RmsUser> rmsList { get; set; }
     }
 }

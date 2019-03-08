@@ -129,7 +129,6 @@ namespace OQAMain
             in_data.IN_ISP_CODE = code;
             in_data.IN_CODE_DESC = code_desc;
             in_data.IN_ISP_TYPE = type;
-            
 
             in_node.model = in_data;
 

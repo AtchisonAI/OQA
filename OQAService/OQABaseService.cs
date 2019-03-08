@@ -1,5 +1,6 @@
 ﻿using NPoco;
 using WcfService;
+
 using System;
 
 namespace OQAService.Services
@@ -20,11 +21,12 @@ namespace OQAService.Services
         //    return db;
         //}
 
-        //public string GetTime()
-        //{
-        //    string src = (new DataTime()).ToString();
-        //    string result = src.tostring("yyyyMMddHHmmssfff");
-        //    return result;
-        //}
+        public string GetSysTime()
+        {
+            DateTime.Now.ToShortTimeString();
+            DateTime dt = DateTime.Now;
+            string result = string.Format("{0:yyyyMMddHHmmss}", dt);
+            return result;
+        }
     }
 }

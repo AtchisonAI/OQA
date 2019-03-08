@@ -68,10 +68,10 @@ namespace OQAService.Services
                             T_ISPDFTDEF.InspectType = In_node.model.IN_ISP_TYPE;
                             T_ISPDFTDEF.DefectCode = In_node.model.IN_ISP_CODE;
                             T_ISPDFTDEF.DftDesc = In_node.model.IN_CODE_DESC;
-                            T_ISPDFTDEF.TransSeq = 0;
+                            //T_ISPDFTDEF.TransSeq = 0;
                             T_ISPDFTDEF.UpdateTime = " ";
                             T_ISPDFTDEF.UpdateUserId = " ";
-                            T_ISPDFTDEF.CreateTime = " ";
+                            T_ISPDFTDEF.CreateTime = GetSysTime();
                             T_ISPDFTDEF.CreateUserId = " ";
 
                             //调用数据库操作
@@ -119,6 +119,8 @@ namespace OQAService.Services
                             T_ISPDFTDEF.DefectCode = In_node.model.IN_ISP_CODE;
                             T_ISPDFTDEF.TransSeq = In_node.model.D_TRANSSEQ;
                             T_ISPDFTDEF.DftDesc = In_node.model.IN_CODE_DESC;
+                            T_ISPDFTDEF.UpdateTime = GetSysTime();
+                            T_ISPDFTDEF.UpdateUserId = " ";
 
                             Do_Save.operateType = OperateType.Update;
                             Do_Save.models.Add(T_ISPDFTDEF);

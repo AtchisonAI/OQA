@@ -54,37 +54,23 @@ namespace OQAService.Services
 
                             PageQueryReq.CurrentPage = 1;
                             PageQueryReq.ItemsPerPage = 200;
-                            if (In_node.model.IN_ISP_TYPE.Trim().Equals("") == false)
+                            if (In_node.model.IN_LOT_ID.Trim().Equals("") == false)
                             {
-                                AddCondition(PageQueryReq, GetParaName< ISPDFTDEF >(p=>p.InspectType), In_node.model.IN_ISP_TYPE.Trim(), LogicCondition.AndAlso,CompareType.Equal);
+                                AddCondition(PageQueryReq, GetParaName<PKGSLTDEF>(p=>p.LotId), In_node.model.IN_LOT_ID.Trim(), LogicCondition.AndAlso,CompareType.Equal);
                             }
-                            if (In_node.model.IN_ISP_CODE.Trim().Equals("") == false)
-                            {
-                                AddCondition(PageQueryReq, GetParaName<ISPDFTDEF>(p => p.DefectCode), In_node.model.IN_ISP_CODE.Trim(), LogicCondition.AndAlso, CompareType.Equal);
-                            }
+                           
                                                         
-                            AddSortCondition(PageQueryReq, GetParaName < ISPDFTDEF > (p=>p.InspectType), SortType.ASC);
+                            AddSortCondition(PageQueryReq, GetParaName <PKGSLTDEF> (p=>p.LotId), SortType.ASC);
                             
-                            var data = PageQuery<ISPDFTDEF>(PageQueryReq);
+                            var data = PageQuery<PKGSLTDEF>(PageQueryReq);
 
-                            Out_node.model.ISPDFTDEF_list = data.models;
+                            Out_node.model.PKGSLTDEF_list = data.models;
 
                             break;
 
                         case '2':
 
-                            //if (In_node.model.in_isp_code.Trim().Equals("") == true)
-                            //{
-                            //    Out_node._success = false;
-                            //    Out_node._ErrorMsg = "IN_ISP_CODE is null!";
-                            //    return Out_node;
-                            //}
-                            //if (In_node.model.in_isp_type.Trim().Equals("") == true)
-                            //{
-                            //    Out_node._success = false;
-                            //    Out_node._ErrorMsg = "IN_ISP_TYPE is null!";
-                            //    return Out_node;
-                            //}
+                            
                             // TODO
 
                             break;

@@ -95,6 +95,7 @@
     <Compile Include="13 Defect code set\QryDefectCodeInfo.cs" />
     <Compile Include="3 AOI inspection input\CreateOrUpdateAOIInfo.cs" />
     <Compile Include="3 AOI inspection input\QryAOIInfo.cs" />
+    <Compile Include="7 FOUP change\QryLotSlotidInfo.cs" />
     <Compile Include="Emp\QueryEmpInfo.cs" />
     <Compile Include="Emp\EmpService.cs" />
     <Compile Include="GlobalConstant.cs" />
@@ -120,7 +121,6 @@
     <Folder Include="4 Marco inspection input\" />
     <Folder Include="5 Mirco inspection input\" />
     <Folder Include="6 Defect send %28PNDN%29\" />
-    <Folder Include="7 FOUP change\" />
     <Folder Include="8 Lot package\" />
     <Folder Include="9 Lot Transfer\" />
   </ItemGroup>

@@ -35,10 +35,6 @@
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="NPoco, Version=3.9.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WcfService\bin\Debug\NPoco.dll</HintPath>
-    </Reference>
     <Reference Include="OQAMain">
       <HintPath>..\Components\OQAMain.dll</HintPath>
     </Reference>
@@ -48,35 +44,11 @@
     <Reference Include="Syncfusion.Chart.Base, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
       <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Chart.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Chart.Windows, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Chart.Windows.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Core.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+    <Reference Include="Syncfusion.Core.WinForms">
       <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Core.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Data.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
-      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Data.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Diagram.Base, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
-      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Diagram.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Diagram.Windows, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Diagram.Windows.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Edit.Windows, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Edit.Windows.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.GridCommon.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
-      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.GridCommon.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfDataGrid.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.SfDataGrid.WinForms">
       <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.SfDataGrid.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfInput.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
-      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.SfInput.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfListView.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
-      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.SfListView.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Shared.Base, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
       <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Shared.Base.dll</HintPath>
@@ -113,8 +85,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WCFModels.dll</HintPath>
     </Reference>
-    <Reference Include="WcfService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="WcfService">
       <HintPath>..\Components\WcfService.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -204,6 +175,10 @@
     <ProjectReference Include="..\OQAService\OQAService.csproj">
       <Project>{93084370-ff48-4e22-943b-5a9359311041}</Project>
       <Name>OQAService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OQA_Core\OQA_Core.csproj">
+      <Project>{6734161e-7d2d-485f-a48c-d0dfea600583}</Project>
+      <Name>OQA_Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -88,6 +88,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WCFModels\WcfModels.csproj">
+      <Project>{479849CD-3F79-4B29-ACD0-ADCED9DC3A6E}</Project>
+      <Name>WcfModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="1 Lot inspect\" />
     <Folder Include="10 Package Label Print\" />
     <Folder Include="11 Wafer Insection Record Print\" />

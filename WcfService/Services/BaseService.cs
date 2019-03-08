@@ -4,6 +4,7 @@ using NPoco.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Utils;
 using WCFModels;
 using WCFModels.Message;
 
@@ -105,7 +106,7 @@ namespace WcfService
         /// <param name="inMsg">需要更新的建模对象</param>
         public void UpdateTrackModel<T>(UpdateModelReq<T> updateReq) where T : ITrackModelObject, new()
         {
-            UpdateTrackModelImp(updateReq.model, updateReq.operateType, updateReq.userId);
+            UpdateTrackModelImp(updateReq.model, updateReq.operateType, updateReq.userId,updateReq.partialUpdate);
         }
 
         /// <summary>
@@ -125,7 +126,6 @@ namespace WcfService
                 outMsg.models = inMsg.models;
             else
             {
-                outMsg.models = new List<T>();
                 foreach (var model in inMsg.models)
                     outMsg.models.Add(db.SingleOrDefaultById<T>(model));
             }
@@ -141,11 +141,11 @@ namespace WcfService
         {
             foreach(T model in updateReq.models)
             {
-                UpdateTrackModelImp(model, updateReq.operateType, updateReq.userId);
+                UpdateTrackModelImp(model, updateReq.operateType, updateReq.userId, updateReq.partialUpdate);
             }
         }
 
-        private void UpdateTrackModelImp<T>(T model, OperateType operateType,string userId) where T : ITrackModelObject, new()
+        private void UpdateTrackModelImp<T>(T model, OperateType operateType,string userId,bool partialUpdate) where T : ITrackModelObject, new()
         {
             var sysdate = GetSystemDateTime();
             switch (operateType)
@@ -158,21 +158,18 @@ namespace WcfService
                     break;
 
                 case OperateType.Update:
-                    var oldModel = db.SingleOrDefaultById<T>(model);
-                    if (oldModel == null)
-                    {
-                        model.UpdateTime = sysdate;
-                        model.UpdateUserId = userId;
+                    model.UpdateTime = sysdate;
+                    model.UpdateUserId = userId;
 
-                        db.Insert(model);
+                    if (partialUpdate)
+                    {
+                        var oldModel = db.SingleOrDefaultById<T>(model);
+                        var sanpShot = db.StartSnapshot(oldModel);
+                        ObjectEx.InitialObj(oldModel, model);
+                        db.Update(oldModel, sanpShot.UpdatedColumns());
                     }
                     else
                     {
-                        model.CreateTime = oldModel.CreateTime;
-                        model.CreateUserId = oldModel.CreateUserId;
-                        model.UpdateTime = sysdate;
-                        model.UpdateUserId = userId;
-
                         db.Update(model);
                     }
                     break;
@@ -193,7 +190,7 @@ namespace WcfService
         /// <param name="inMsg">需要更新的建模对象</param>
         /// <param name="outMsg">返回的建模对象</param>
         /// <param name="refreshModel">是否从数据库刷新建模对象</param>
-        public void UpdateModel<T>(UpdateModelReq<T> inMsg, ModelRsp<T> outMsg, bool refreshModel = false)
+        public void UpdateModel<T>(UpdateModelReq<T> inMsg, ModelRsp<T> outMsg, bool refreshModel = false) where T : new()
         {
             UpdateModel(inMsg);
 
@@ -211,9 +208,9 @@ namespace WcfService
         /// </summary>
         /// <typeparam name="T">db建模对象类型</typeparam>
         /// <param name="inMsg">需要更新的建模对象</param>
-        public void UpdateModel<T>(UpdateModelReq<T> updateReq)
+        public void UpdateModel<T>(UpdateModelReq<T> updateReq) where T : new()
         {
-            UpdateModelImp(updateReq.model, updateReq.operateType);
+            UpdateModelImp(updateReq.model, updateReq.operateType, updateReq.partialUpdate);
         }
 
         /// <summary>
@@ -232,7 +229,6 @@ namespace WcfService
                 outMsg.models = inMsg.models;
             else
             {
-                outMsg.models = new List<T>();
                 foreach (var model in inMsg.models)
                     outMsg.models.Add(db.SingleOrDefaultById<T>(model));
             }
@@ -247,11 +243,11 @@ namespace WcfService
         {
             foreach(var model in updateReq.models)
             {
-                UpdateModelImp(model, updateReq.operateType);
+                UpdateModelImp(model, updateReq.operateType, updateReq.partialUpdate);
             }
         }
 
-        private void UpdateModelImp<T>(T model, OperateType operateType)
+        private void UpdateModelImp<T>(T model, OperateType operateType,bool partialUpdate)
         {
             switch (operateType)
             {
@@ -260,12 +256,13 @@ namespace WcfService
                     break;
 
                 case OperateType.Update:
-                    var oldModel = db.SingleOrDefaultById<T>(model);
-                    if (oldModel == null)
+                    if(partialUpdate)
                     {
-                        db.Insert(model);
-                    }
-                    else
+                        var oldModel = db.SingleOrDefaultById<T>(model);
+                        var sanpShot = db.StartSnapshot(oldModel);
+                        ObjectEx.InitialObj(oldModel, model);
+                        db.Update(oldModel, sanpShot.UpdatedColumns());
+                    } else
                     {
                         db.Update(model);
                     }

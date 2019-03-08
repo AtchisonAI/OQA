@@ -46,6 +46,7 @@
             this.txtIspType = new System.Windows.Forms.TextBox();
             this.labIspType = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
+            this.transeq = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlMenu.SuspendLayout();
             this.grpIspType.SuspendLayout();
             this.grpDefectCode.SuspendLayout();
@@ -65,6 +66,10 @@
             this.btnEdite.Location = new System.Drawing.Point(544, 6);
             this.btnEdite.Visible = false;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // LstIspCode
             // 
             this.LstIspCode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -73,7 +78,8 @@
             this.LstIspCode.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.InspectType,
             this.DefectCode,
-            this.DefectDesc});
+            this.DefectDesc,
+            this.transeq});
             this.LstIspCode.Location = new System.Drawing.Point(9, 63);
             this.LstIspCode.Name = "LstIspCode";
             this.LstIspCode.Size = new System.Drawing.Size(180, 450);
@@ -235,6 +241,11 @@
             this.splitter1.TabIndex = 6;
             this.splitter1.TabStop = false;
             // 
+            // transeq
+            // 
+            this.transeq.Text = "transeq";
+            this.transeq.Width = 0;
+            // 
             // FrmDefectCodeSet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -244,12 +255,13 @@
             this.Controls.Add(this.grpDefectCode);
             this.Controls.Add(this.grpIspType);
             this.Name = "FrmDefectCodeSet";
-            this.Text = "test";
+            this.Text = "Defect Code Set";
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.grpIspType, 0);
             this.Controls.SetChildIndex(this.grpDefectCode, 0);
             this.Controls.SetChildIndex(this.splitter1, 0);
             this.pnlMenu.ResumeLayout(false);
+            this.pnlMenu.PerformLayout();
             this.grpIspType.ResumeLayout(false);
             this.grpIspType.PerformLayout();
             this.grpDefectCode.ResumeLayout(false);
@@ -278,5 +290,6 @@
         private System.Windows.Forms.ColumnHeader DefectDesc;
         protected System.Windows.Forms.TextBox txtCount;
         private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.ColumnHeader transeq;
     }
 }

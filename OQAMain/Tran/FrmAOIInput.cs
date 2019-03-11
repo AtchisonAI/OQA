@@ -160,7 +160,7 @@ namespace OQAMain
                 if (CheckCondition("CREATE") == false) return;
                 UpdateModelReq<AOIShowView> updateReq = new UpdateModelReq<AOIShowView>();
                 this.getUpdateModel(updateReq);
-                ModelRsp<AOIShowView>  rspInfo = OQASrv.OQAClient.CreateOrUpdateAOI(updateReq);
+                ModelRsp<AOIShowView>  rspInfo = OQASrv.Call.CreateOrUpdateAOI(updateReq);
                 if (!rspInfo._success)
                 {
                     MessageBox.Show("操作失败");
@@ -204,7 +204,7 @@ namespace OQAMain
                 lotTextBox.Text = view.model.ISPWAFITM.LotId;
                 slotComboBox.Text = view.model.ISPWAFITM.SlotId;
                 slotComboBox.Items.AddRange(new string[] { slotComboBox.Text });
-                ModelRsp<AOIShowView> qryResult = OQASrv.OQAClient.QueryAOIInfo(view);
+                ModelRsp<AOIShowView> qryResult = OQASrv.Call.QueryAOIInfo(view);
                 if (null != qryResult.model)
                 {
                     if (null != qryResult.model.ISPWAFITM)

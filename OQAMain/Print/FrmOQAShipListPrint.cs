@@ -36,6 +36,7 @@ namespace OQAMain
        // private bool b_load_flag  ;
         private bool Have_flag = false;
         private string ship_no;
+        private string shipID;
         #endregion
 
 
@@ -163,7 +164,7 @@ namespace OQAMain
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-        private string shipID;
+        
         //public FrmOQAShipListPrint(string shipID)
         //{
         //    InitializeComponent();
@@ -308,8 +309,8 @@ namespace OQAMain
                 // if (CheckCondition("TypeView") == false) return;
 
                 //调用事务服务
-                //ship_no = txtShipNo.Text.Trim();
-                ship_no = "12453";
+                  ship_no = txtShipNo.Text.Trim();
+               // ship_no = "12453";
                 if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', ship_no) == false) return;
 
             }

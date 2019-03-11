@@ -81,8 +81,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\Utils.dll</HintPath>
     </Reference>
-    <Reference Include="WCFModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="WCFModels">
       <HintPath>..\Components\WCFModels.dll</HintPath>
     </Reference>
     <Reference Include="WcfService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -91,6 +90,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="11 Wafer Insection Record Print\QueryLotInfo.cs" />
     <Compile Include="12 IOQA Ship List Print\QryPKGShipInfo.cs" />
     <Compile Include="13 Defect code set\CreateDefectCodeInfo.cs" />
     <Compile Include="11 Wafer Insection Record Print\QueryWaferInspectionRecordInfo.cs" />

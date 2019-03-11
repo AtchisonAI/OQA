@@ -348,7 +348,7 @@
       <HintPath>..\Components\WcfService.dll</HintPath>
     </Reference>
     <Reference Include="Zen.Barcode.Core">
-      <HintPath>C:\Users\E100341\Desktop\OQA\transferForm\packages\Zen.Barcode.Rendering.Framework.3.1.10729.1\lib\Zen.Barcode.Core.dll</HintPath>
+      <HintPath>..\Components\Zen.Barcode.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

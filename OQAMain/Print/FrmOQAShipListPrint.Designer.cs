@@ -29,28 +29,31 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtShipNo = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lisship = new System.Windows.Forms.ListView();
+            this.Lot_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Qty = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Part_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Inspection_Result = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(646, 11);
-            this.btnClose.Text = "Ptint";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Location = new System.Drawing.Point(644, 7);
+            this.btnClose.Visible = false;
             // 
             // btnCreate
             // 
@@ -61,7 +64,17 @@
             // 
             this.btnEdite.Location = new System.Drawing.Point(541, 10);
             this.btnEdite.Text = "Export";
-            this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
+            this.btnEdite.Visible = false;
+            // 
+            // pnlMenu
+            // 
+            this.pnlMenu.Controls.Add(this.btnPrint);
+            this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.btnRefresh, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.lblSucessMsg, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.btnPrint, 0);
             // 
             // btnRefresh
             // 
@@ -69,8 +82,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtShipNo);
             this.groupBox1.Controls.Add(this.panel1);
-            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(26, 8);
             this.groupBox1.Name = "groupBox1";
@@ -78,6 +91,13 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "已生成的交接单";
+            // 
+            // txtShipNo
+            // 
+            this.txtShipNo.Location = new System.Drawing.Point(68, 29);
+            this.txtShipNo.Name = "txtShipNo";
+            this.txtShipNo.Size = new System.Drawing.Size(158, 21);
+            this.txtShipNo.TabIndex = 3;
             // 
             // panel1
             // 
@@ -97,13 +117,6 @@
             this.dataGridView3.Size = new System.Drawing.Size(227, 150);
             this.dataGridView3.TabIndex = 0;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(77, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(137, 21);
-            this.textBox1.TabIndex = 1;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -115,7 +128,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Controls.Add(this.lisship);
             this.groupBox2.Location = new System.Drawing.Point(272, 8);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(465, 170);
@@ -123,16 +136,35 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "发货批次信息";
             // 
-            // dataGridView1
+            // lisship
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 17);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(459, 150);
-            this.dataGridView1.TabIndex = 0;
+            this.lisship.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Lot_ID,
+            this.Qty,
+            this.Part_ID,
+            this.Inspection_Result});
+            this.lisship.Location = new System.Drawing.Point(17, 19);
+            this.lisship.Name = "lisship";
+            this.lisship.Size = new System.Drawing.Size(433, 150);
+            this.lisship.TabIndex = 0;
+            this.lisship.UseCompatibleStateImageBehavior = false;
+            this.lisship.View = System.Windows.Forms.View.Details;
+            // 
+            // Lot_ID
+            // 
+            this.Lot_ID.Text = "Lot_ID";
+            // 
+            // Qty
+            // 
+            this.Qty.Text = "Qty";
+            // 
+            // Part_ID
+            // 
+            this.Part_ID.Text = "Part_ID";
+            // 
+            // Inspection_Result
+            // 
+            this.Inspection_Result.Text = "Inspection_Result";
             // 
             // groupBox3
             // 
@@ -154,6 +186,16 @@
             this.reportViewer2.Size = new System.Drawing.Size(464, 325);
             this.reportViewer2.TabIndex = 5;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(647, 9);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 23);
+            this.btnPrint.TabIndex = 7;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click_1);
+            // 
             // FrmOQAShipListPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -169,12 +211,12 @@
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.pnlMenu.ResumeLayout(false);
+            this.pnlMenu.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -185,11 +227,16 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox3;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
+        private System.Windows.Forms.ListView lisship;
+        private System.Windows.Forms.TextBox txtShipNo;
+        private System.Windows.Forms.ColumnHeader Lot_ID;
+        private System.Windows.Forms.ColumnHeader Qty;
+        private System.Windows.Forms.ColumnHeader Part_ID;
+        private System.Windows.Forms.ColumnHeader Inspection_Result;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

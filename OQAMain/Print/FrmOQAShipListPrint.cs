@@ -10,6 +10,8 @@ using Zen.Barcode;
 using System.Drawing;
 using transferForm;
 using System.Data;
+using WCFModels.Message;
+using WCFModels.OQA;
 
 namespace OQAMain
 {
@@ -31,8 +33,9 @@ namespace OQAMain
 
 
         #region " Variable Definition "
-        //private bool b_load_flag  ;
-
+       // private bool b_load_flag  ;
+        private bool Have_flag = false;
+        private string ship_no;
         #endregion
 
 
@@ -161,15 +164,15 @@ namespace OQAMain
             }
         }
         private string shipID;
-        public FrmOQAShipListPrint(string shipID)
-        {
-            InitializeComponent();
-            this.shipID = shipID;
-        }
+        //public FrmOQAShipListPrint(string shipID)
+        //{
+        //    InitializeComponent();
+        //  //  this.shipID = shipID;
+        //}
         private void FrmOQAShipListPrint_Load(object sender, EventArgs e)
         {
 
-            textBox1.Text = shipID;
+     //       txtShipNo.Text = shipID;
             InitReportViewer("FrmOQAShipListPrint.rdlc");
             //DataTable dtMaster = getShipMasterData(shipID);
             //DataTable dtDetails = getOraclePKGSHPDAT(shipID);
@@ -190,10 +193,6 @@ namespace OQAMain
             reportViewer2.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
             reportViewer2.LocalReport.ReportPath = Path.Combine(rptName);
             reportViewer2.RefreshReport();
-        }
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-
         }
         //private DataTable getOraclePKGSHPDAT(string shipID)
         //{
@@ -255,9 +254,69 @@ namespace OQAMain
 
         }
 
-        private void btnEdite_Click(object sender, EventArgs e)
+
+        private bool QueryPKGSHPInfo(char c_proc_step, char c_tran_flag,string in_ship_no)
         {
-            this.Close();
+            ModelRsp<PKGShipView> in_node = new ModelRsp<PKGShipView>();
+            PKGShipView in_data = new PKGShipView();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.IN_SHIP_NO = in_ship_no;
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.QryPKGShipInfo(in_node);
+
+            if (out_data._success == true)
+            {
+
+
+                ComFunc.InitListView(lisship, true);
+          //      txtCount.Text = out_data.model.PKGSHPDAT_list.Count.ToString();
+
+                for (int i = 0; i < out_data.model.PKGSHPDAT_list.Count; i++)
+                {
+
+                    ListViewItem list_item = new ListViewItem();
+                    PKGSHPDAT list = out_data.model.PKGSHPDAT_list[i];
+                    list_item.Text = list.LotId;
+                    list_item.SubItems.Add(list.Qty);
+                    list_item.SubItems.Add(list.PartId);
+                    list_item.SubItems.Add(list.InspectResult);//修改数据使用
+                    lisship.Items.Add(list_item);
+                   
+
+                }
+                lblSucessMsg.Text = out_data._MsgCode;
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+
+
+        }
+
+        private void btnPrint_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                //检查数据
+                // if (CheckCondition("TypeView") == false) return;
+
+                //调用事务服务
+                //ship_no = txtShipNo.Text.Trim();
+                ship_no = "12453";
+                if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', ship_no) == false) return;
+
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
     }
 }

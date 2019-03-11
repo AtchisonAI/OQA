@@ -52,6 +52,9 @@
     <Reference Include="DemoCommon">
       <HintPath>..\Syncfusion.Tools.4.6\DemoCommon.dll</HintPath>
     </Reference>
+    <Reference Include="FSLib.Extension">
+      <HintPath>C:\Users\E100341\Desktop\OQA\LabelPrinting\HiDM.LabelPrinting.Common\bin\Debug\FSLib.Extension.dll</HintPath>
+    </Reference>
     <Reference Include="HiDM.LabelPrinting.Common">
       <HintPath>..\Components\HiDM.LabelPrinting.Common.dll</HintPath>
     </Reference>
@@ -344,9 +347,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WcfService.dll</HintPath>
     </Reference>
+    <Reference Include="Zen.Barcode.Core">
+      <HintPath>C:\Users\E100341\Desktop\OQA\transferForm\packages\Zen.Barcode.Rendering.Framework.3.1.10729.1\lib\Zen.Barcode.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Print\FrmOQAShipListPrintData.cs" />
     <Compile Include="Print\FrmWaferInspectRecord_sub.cs" />
+    <Compile Include="Print\ImageToBytes.cs" />
     <Compile Include="Tran\FrmDefectLotResult.cs">
       <SubType>Form</SubType>
     </Compile>

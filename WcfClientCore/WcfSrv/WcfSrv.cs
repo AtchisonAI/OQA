@@ -53,12 +53,12 @@ namespace WcfClientCore.WcfSrv
             return WcfClient.UpdateControlAccessString(updateReq);
         }
 
-        private static void LoadUserAccessString(List<string> userAccessList)
+        public static void LoadUserAccessString(List<string> userAccessList)
         {
             AuthorityControl.LoadUserAccessString(userAccessList);
         }
 
-        private static void LoadControlAccessString(List<ControlAccessString> controlAccessList)
+        public static void LoadControlAccessString(List<ControlAccessString> controlAccessList)
         {
             Dictionary<string, string> controlAccesstring = new Dictionary<string, string>();
 
@@ -70,9 +70,14 @@ namespace WcfClientCore.WcfSrv
             AuthorityControl.LoadControlAccessString(controlAccesstring);
         }
 
-        private static void LoadUserProfile(UserProfile userProfile)
+        public static void LoadUserProfile(UserProfile userProfile)
         {
             AuthorityControl.LoadUserProfile(userProfile);
+        }
+
+        public static UserProfile GetUserProfile()
+        {
+            return AuthorityControl.GetUserProfile();
         }
     }
 }

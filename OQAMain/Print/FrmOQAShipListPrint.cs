@@ -2,6 +2,16 @@
 using OQA_Core;
 using System;
 using System.Windows.Forms;
+using Microsoft.Reporting.WinForms;
+using System.Collections.Generic;
+using System.IO;
+using OQAMain.Print;
+using Zen.Barcode;
+using System.Drawing;
+using transferForm;
+using System.Data;
+using WCFModels.Message;
+using WCFModels.OQA;
 
 namespace OQAMain
 {
@@ -23,8 +33,10 @@ namespace OQAMain
 
 
         #region " Variable Definition "
-        //private bool b_load_flag  ;
-
+       // private bool b_load_flag  ;
+        private bool Have_flag = false;
+        private string ship_no;
+        private string shipID;
         #endregion
 
 
@@ -152,7 +164,160 @@ namespace OQAMain
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+        
+        //public FrmOQAShipListPrint(string shipID)
+        //{
+        //    InitializeComponent();
+        //  //  this.shipID = shipID;
+        //}
+        private void FrmOQAShipListPrint_Load(object sender, EventArgs e)
+        {
+
+     //       txtShipNo.Text = shipID;
+            InitReportViewer("FrmOQAShipListPrint.rdlc");
+            //DataTable dtMaster = getShipMasterData(shipID);
+            //DataTable dtDetails = getOraclePKGSHPDAT(shipID);
+
+            //this.dataGridView1.DataSource = dtDetails;
+            //this.dataGridView1.AllowUserToAddRows = false;
+
+            //this.reportViewer2.LocalReport.DataSources.Clear();
+            //var dataSourceList = GenerateLabelDatasource(dtDetails);
+            //var dataSource = new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", dataSourceList);
+            //this.reportViewer2.LocalReport.DataSources.Add(dataSource);
+            //this.reportViewer2.LocalReport.SetParameters(GenerateLableParamters(dtMaster));
+            this.reportViewer2.RefreshReport();
+        }
+        public void InitReportViewer(string rptName)
+        {
+            reportViewer2.Reset();
+            reportViewer2.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
+            reportViewer2.LocalReport.ReportPath = Path.Combine(rptName);
+            reportViewer2.RefreshReport();
+        }
+        //private DataTable getOraclePKGSHPDAT(string shipID)
+        //{
+        //    var sql = string.Format("SELECT A.LOT_ID,A.QTY,A.PART_ID,A.INSPECT_RESULT FROM PKGSHPDAT A WHERE SHIP_ID = '{0}'", shipID); ;
+        //    DataTable dataTable = OracleHelp.GetDataTable(sql);
+
+        //    return dataTable;
+        //}
+
+        //private DataTable getShipMasterData(string shipID)
+        //{
+        //    var sql = string.Format("SELECT A.PART_ID,A.QTY,A.SHIP_DATE FROM PKGSHPSTS A WHERE SHIP_ID = '{0}'", shipID); ;
+        //    DataTable dataTable = OracleHelp.GetDataTable(sql);
+
+        //    return dataTable;
+        //}
+
+        //打印表头内容
+        public List<ReportParameter> GenerateLableParamters(System.Data.DataTable dtMaster)
+        {
+            string PartID1 = dtMaster.Rows[0]["PART_ID"].ToString();
+            string Qtysys1 = dtMaster.Rows[0]["QTY"].ToString();
+            string Datesys1 = dtMaster.Rows[0]["SHIP_DATE"].ToString();
+            string codePackedDate = GenerateBarCodeByZen(shipID);
+
+            List<ReportParameter> lstParam = new List<ReportParameter>();
+            lstParam.Add(new ReportParameter("ParameterPartID", PartID1));
+            lstParam.Add(new ReportParameter("ParamWaferQty", Qtysys1));
+            lstParam.Add(new ReportParameter("ParamDate", Datesys1));
+
+           lstParam.Add(new ReportParameter("ParameterBarcode", codePackedDate));
+            return lstParam;
+        }
+       
+        //内容打印
+        public List<FrmOQAShipListPrintData> GenerateLabelDatasource(DataTable dtDetails)
+        {
+            List<FrmOQAShipListPrintData> result = new List<FrmOQAShipListPrintData>();
+            int index = 0;
+            foreach (DataRow row in dtDetails.Rows)
+            {
+                index++;
+                string lotID = row["LOT_ID"].ToString();
+                string qty = row["QTY"].ToString();
+                string inspResult = row["INSPECT_RESULT"].ToString();
+
+                result.Add(new FrmOQAShipListPrintData() { No = index.ToString(), LotID = lotID, LotQty = qty, InspectionRequest = inspResult });
+
+            }
+
+            return result;
+        }
+        //二维码转化
+        private string GenerateBarCodeByZen(string codeContent)
+        {
+            CodeQrBarcodeDraw qrcode = BarcodeDrawFactory.CodeQr;
+            Image img = qrcode.Draw(codeContent, qrcode.GetDefaultMetrics(40));
+            return img.ImageToBytes().ToBase64();
+
+        }
 
 
+        private bool QueryPKGSHPInfo(char c_proc_step, char c_tran_flag,string in_ship_no)
+        {
+            ModelRsp<PKGShipView> in_node = new ModelRsp<PKGShipView>();
+            PKGShipView in_data = new PKGShipView();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.IN_SHIP_NO = in_ship_no;
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.QryPKGShipInfo(in_node);
+
+            if (out_data._success == true)
+            {
+
+
+                ComFunc.InitListView(lisship, true);
+          //      txtCount.Text = out_data.model.PKGSHPDAT_list.Count.ToString();
+
+                for (int i = 0; i < out_data.model.PKGSHPDAT_list.Count; i++)
+                {
+
+                    ListViewItem list_item = new ListViewItem();
+                    PKGSHPDAT list = out_data.model.PKGSHPDAT_list[i];
+                    list_item.Text = list.LotId;
+                    list_item.SubItems.Add(list.Qty);
+                    list_item.SubItems.Add(list.PartId);
+                    list_item.SubItems.Add(list.InspectResult);//修改数据使用
+                    lisship.Items.Add(list_item);
+                   
+
+                }
+                lblSucessMsg.Text = out_data._MsgCode;
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+
+
+        }
+
+        private void btnPrint_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                //检查数据
+                // if (CheckCondition("TypeView") == false) return;
+
+                //调用事务服务
+                  ship_no = txtShipNo.Text.Trim();
+               // ship_no = "12453";
+                if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', ship_no) == false) return;
+
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
     }
 }

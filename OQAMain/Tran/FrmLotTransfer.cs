@@ -120,7 +120,7 @@ namespace OQAMain
         #endregion
 
 
-
+        public static string srtNum;
         private void btnCreate_Click(object sender, EventArgs e)
         {
             try
@@ -153,6 +153,32 @@ namespace OQAMain
             }
         }
 
+        private void FrmLotTransfer_Load(object sender, EventArgs e)
+        {
 
+            
+        }
+
+        private void btnCreate_Click_1(object sender, EventArgs e)
+        {
+            //
+            FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint();
+            MessageBox.Show("交接单号");
+            formshiplistprint.ShowDialog();
+        }
+        public string GetSerialNum()
+        {
+
+            srtNum = DateTime.Now.ToString("yyyyMMddHHmm");
+            Random ra = new Random();
+            string a = srtNum += (" ");  //空格
+            srtNum += ra.Next(100000, 999999);  //六位随机数
+            return srtNum;
+
+        }
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -54,9 +54,13 @@ namespace OQAService.Contract
         //关于Foup Change 的查询服务
         [OperationContract]
         ModelRsp<LotSlotidView> QryLotSlotidInfo(ModelRsp<LotSlotidView> LotSlotidView);
-        
+
         #endregion
 
 
+        #region  IOQA Ship List Print
+        [OperationContract]
+        ModelRsp<PKGShipView> QryPKGShipInfo(ModelRsp<PKGShipView> PKGShipView);
+        #endregion
     }
 }

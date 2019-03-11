@@ -4,10 +4,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfModels", "WcfModels\WcfModels.csproj", "{479849CD-3F79-4B29-ACD0-ADCED9DC3A6E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{93084370-FF48-4E22-943B-5A9359311041} = {93084370-FF48-4E22-943B-5A9359311041}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfHost", "WcfHost\WcfHost.csproj", "{C2F9C329-024C-497E-9308-15457A3E947E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{93084370-FF48-4E22-943B-5A9359311041} = {93084370-FF48-4E22-943B-5A9359311041}
+		{479849CD-3F79-4B29-ACD0-ADCED9DC3A6E} = {479849CD-3F79-4B29-ACD0-ADCED9DC3A6E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OQAService", "OQAService\OQAService.csproj", "{93084370-FF48-4E22-943B-5A9359311041}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService", "WcfService\WcfService.csproj", "{A19B87EE-049D-4600-845C-F33B22DCEC8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +36,10 @@ Global
 		{93084370-FF48-4E22-943B-5A9359311041}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93084370-FF48-4E22-943B-5A9359311041}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93084370-FF48-4E22-943B-5A9359311041}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A19B87EE-049D-4600-845C-F33B22DCEC8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A19B87EE-049D-4600-845C-F33B22DCEC8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A19B87EE-049D-4600-845C-F33B22DCEC8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A19B87EE-049D-4600-845C-F33B22DCEC8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

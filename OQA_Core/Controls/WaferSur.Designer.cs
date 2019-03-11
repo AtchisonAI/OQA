@@ -373,7 +373,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panelF_1;
         private System.Windows.Forms.Panel panelF_2;
         private System.Windows.Forms.Panel panelF_3;
         private System.Windows.Forms.Panel panelF_4;
@@ -398,5 +397,6 @@
         private System.Windows.Forms.Panel panelF_8;
         private System.Windows.Forms.Panel panelF_17;
         private System.Windows.Forms.Panel panelF_20;
+        public System.Windows.Forms.Panel panelF_1;
     }
 }

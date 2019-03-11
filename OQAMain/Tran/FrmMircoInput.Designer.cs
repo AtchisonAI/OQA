@@ -29,55 +29,55 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.radioThr = new System.Windows.Forms.RadioButton();
+            this.radioNine = new System.Windows.Forms.RadioButton();
+            this.slotComboBox = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.lotTextBox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.qtyTextBox = new System.Windows.Forms.TextBox();
+            this.rateTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelQty = new System.Windows.Forms.Label();
+            this.MagnificationTextBox = new System.Windows.Forms.TextBox();
+            this.cmtRichTextBox = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.decRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBoxThree = new System.Windows.Forms.GroupBox();
+            this.groupBoxSelect = new System.Windows.Forms.GroupBox();
             this.ngBox_14 = new System.Windows.Forms.CheckBox();
+            this.ngBox_18 = new System.Windows.Forms.CheckBox();
             this.okBox_14 = new System.Windows.Forms.CheckBox();
+            this.okBox_18 = new System.Windows.Forms.CheckBox();
             this.ngBox_8 = new System.Windows.Forms.CheckBox();
             this.okBox_8 = new System.Windows.Forms.CheckBox();
-            this.ngBox_12 = new System.Windows.Forms.CheckBox();
-            this.okBox_12 = new System.Windows.Forms.CheckBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.button14 = new System.Windows.Forms.Button();
-            this.label23 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.button12 = new System.Windows.Forms.Button();
-            this.label21 = new System.Windows.Forms.Label();
-            this.groupBoxNine = new System.Windows.Forms.GroupBox();
-            this.ngBox_18 = new System.Windows.Forms.CheckBox();
-            this.okBox_18 = new System.Windows.Forms.CheckBox();
             this.ngBox_19 = new System.Windows.Forms.CheckBox();
+            this.ngBox_12 = new System.Windows.Forms.CheckBox();
             this.okBox_19 = new System.Windows.Forms.CheckBox();
+            this.okBox_12 = new System.Windows.Forms.CheckBox();
             this.ngBox_9 = new System.Windows.Forms.CheckBox();
+            this.textBox17 = new System.Windows.Forms.TextBox();
             this.okBox_9 = new System.Windows.Forms.CheckBox();
+            this.button14 = new System.Windows.Forms.Button();
             this.ngBox_7 = new System.Windows.Forms.CheckBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.okBox_7 = new System.Windows.Forms.CheckBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
             this.ngBox_17 = new System.Windows.Forms.CheckBox();
+            this.button13 = new System.Windows.Forms.Button();
             this.okBox_17 = new System.Windows.Forms.CheckBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.ngBox_23 = new System.Windows.Forms.CheckBox();
+            this.textBox15 = new System.Windows.Forms.TextBox();
             this.okBox_23 = new System.Windows.Forms.CheckBox();
+            this.button12 = new System.Windows.Forms.Button();
             this.ngBox_3 = new System.Windows.Forms.CheckBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.okBox_3 = new System.Windows.Forms.CheckBox();
             this.ngBox_15 = new System.Windows.Forms.CheckBox();
             this.okBox_15 = new System.Windows.Forms.CheckBox();
@@ -126,21 +126,20 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBoxThree.SuspendLayout();
-            this.groupBoxNine.SuspendLayout();
+            this.groupBoxSelect.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(701, 6);
+            this.btnClose.Location = new System.Drawing.Point(803, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(513, 6);
+            this.btnCreate.Location = new System.Drawing.Point(615, 6);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(607, 6);
+            this.btnEdite.Location = new System.Drawing.Point(709, 6);
             // 
             // pnlMenu
             // 
@@ -149,11 +148,11 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.radioThr);
+            this.groupBox2.Controls.Add(this.radioNine);
+            this.groupBox2.Controls.Add(this.slotComboBox);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.lotTextBox);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Location = new System.Drawing.Point(24, 37);
             this.groupBox2.Name = "groupBox2";
@@ -162,38 +161,38 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Micro inspection simple MAP";
             // 
-            // radioButton2
+            // radioThr
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(562, 67);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(71, 16);
-            this.radioButton2.TabIndex = 7;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "13点检测";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.radioThr.AutoSize = true;
+            this.radioThr.Location = new System.Drawing.Point(562, 67);
+            this.radioThr.Name = "radioThr";
+            this.radioThr.Size = new System.Drawing.Size(71, 16);
+            this.radioThr.TabIndex = 7;
+            this.radioThr.TabStop = true;
+            this.radioThr.Text = "13点检测";
+            this.radioThr.UseVisualStyleBackColor = true;
+            this.radioThr.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // radioButton1
+            // radioNine
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(562, 30);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(65, 16);
-            this.radioButton1.TabIndex = 6;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "9点检测";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioNine.AutoSize = true;
+            this.radioNine.Location = new System.Drawing.Point(562, 30);
+            this.radioNine.Name = "radioNine";
+            this.radioNine.Size = new System.Drawing.Size(65, 16);
+            this.radioNine.TabIndex = 6;
+            this.radioNine.TabStop = true;
+            this.radioNine.Text = "9点检测";
+            this.radioNine.UseVisualStyleBackColor = true;
+            this.radioNine.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // comboBox1
+            // slotComboBox
             // 
-            this.comboBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(277, 46);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 4;
+            this.slotComboBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.slotComboBox.FormattingEnabled = true;
+            this.slotComboBox.Location = new System.Drawing.Point(277, 49);
+            this.slotComboBox.Name = "slotComboBox";
+            this.slotComboBox.Size = new System.Drawing.Size(121, 22);
+            this.slotComboBox.TabIndex = 4;
             // 
             // label15
             // 
@@ -205,13 +204,14 @@
             this.label15.TabIndex = 1;
             this.label15.Text = "Lot ID";
             // 
-            // textBox7
+            // lotTextBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(99, 49);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 21);
-            this.textBox7.TabIndex = 3;
+            this.lotTextBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lotTextBox.Location = new System.Drawing.Point(99, 49);
+            this.lotTextBox.Multiline = true;
+            this.lotTextBox.Name = "lotTextBox";
+            this.lotTextBox.Size = new System.Drawing.Size(100, 21);
+            this.lotTextBox.TabIndex = 3;
             // 
             // label16
             // 
@@ -225,15 +225,16 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox3);
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.richTextBox2);
+            this.groupBox3.Controls.Add(this.qtyTextBox);
+            this.groupBox3.Controls.Add(this.rateTextBox);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.labelQty);
+            this.groupBox3.Controls.Add(this.MagnificationTextBox);
+            this.groupBox3.Controls.Add(this.cmtRichTextBox);
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.richTextBox1);
+            this.groupBox3.Controls.Add(this.decRichTextBox);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Location = new System.Drawing.Point(24, 530);
@@ -242,67 +243,77 @@
             this.groupBox3.TabIndex = 41;
             this.groupBox3.TabStop = false;
             // 
-            // textBox3
+            // label4
             // 
-            this.textBox3.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.textBox3.Location = new System.Drawing.Point(608, 22);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(103, 20);
-            this.textBox3.TabIndex = 21;
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Location = new System.Drawing.Point(442, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(11, 12);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "%";
             // 
-            // textBox2
+            // qtyTextBox
             // 
-            this.textBox2.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.textBox2.ForeColor = System.Drawing.Color.Blue;
-            this.textBox2.Location = new System.Drawing.Point(377, 23);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 20;
+            this.qtyTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.qtyTextBox.Location = new System.Drawing.Point(608, 23);
+            this.qtyTextBox.Multiline = true;
+            this.qtyTextBox.Name = "qtyTextBox";
+            this.qtyTextBox.Size = new System.Drawing.Size(103, 20);
+            this.qtyTextBox.TabIndex = 21;
+            // 
+            // rateTextBox
+            // 
+            this.rateTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.rateTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.rateTextBox.Location = new System.Drawing.Point(364, 23);
+            this.rateTextBox.Multiline = true;
+            this.rateTextBox.Name = "rateTextBox";
+            this.rateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.rateTextBox.TabIndex = 20;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.label3.Location = new System.Drawing.Point(287, 26);
+            this.label3.Location = new System.Drawing.Point(274, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 14);
             this.label3.TabIndex = 18;
             this.label3.Text = "Defect rate";
             // 
-            // label4
+            // labelQty
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.label4.Location = new System.Drawing.Point(490, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 14);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Suffer die Q\'ty";
+            this.labelQty.AutoSize = true;
+            this.labelQty.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.labelQty.Location = new System.Drawing.Point(490, 26);
+            this.labelQty.Name = "labelQty";
+            this.labelQty.Size = new System.Drawing.Size(105, 14);
+            this.labelQty.TabIndex = 19;
+            this.labelQty.Text = "Suffer die Qty";
             // 
-            // textBox4
+            // MagnificationTextBox
             // 
-            this.textBox4.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.textBox4.Location = new System.Drawing.Point(142, 23);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(90, 20);
-            this.textBox4.TabIndex = 12;
+            this.MagnificationTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.MagnificationTextBox.Location = new System.Drawing.Point(142, 23);
+            this.MagnificationTextBox.Multiline = true;
+            this.MagnificationTextBox.Name = "MagnificationTextBox";
+            this.MagnificationTextBox.Size = new System.Drawing.Size(90, 20);
+            this.MagnificationTextBox.TabIndex = 12;
             // 
-            // richTextBox2
+            // cmtRichTextBox
             // 
-            this.richTextBox2.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.richTextBox2.Location = new System.Drawing.Point(142, 115);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(569, 29);
-            this.richTextBox2.TabIndex = 16;
-            this.richTextBox2.Text = "";
+            this.cmtRichTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.cmtRichTextBox.Location = new System.Drawing.Point(142, 115);
+            this.cmtRichTextBox.Name = "cmtRichTextBox";
+            this.cmtRichTextBox.Size = new System.Drawing.Size(569, 29);
+            this.cmtRichTextBox.TabIndex = 16;
+            this.cmtRichTextBox.Text = "";
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Aharoni", 5.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.button1.Location = new System.Drawing.Point(248, 20);
+            this.button1.Location = new System.Drawing.Point(238, 23);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(23, 23);
             this.button1.TabIndex = 17;
@@ -320,14 +331,14 @@
             this.label8.TabIndex = 8;
             this.label8.Text = "Description";
             // 
-            // richTextBox1
+            // decRichTextBox
             // 
-            this.richTextBox1.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.richTextBox1.Location = new System.Drawing.Point(142, 62);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(569, 29);
-            this.richTextBox1.TabIndex = 15;
-            this.richTextBox1.Text = "";
+            this.decRichTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.decRichTextBox.Location = new System.Drawing.Point(142, 62);
+            this.decRichTextBox.Name = "decRichTextBox";
+            this.decRichTextBox.Size = new System.Drawing.Size(569, 29);
+            this.decRichTextBox.TabIndex = 15;
+            this.decRichTextBox.Text = "";
             // 
             // label5
             // 
@@ -351,8 +362,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.groupBoxThree);
-            this.groupBox1.Controls.Add(this.groupBoxNine);
+            this.groupBox1.Controls.Add(this.groupBoxSelect);
             this.groupBox1.Controls.Add(this.waferSurB);
             this.groupBox1.Controls.Add(this.backButton);
             this.groupBox1.Controls.Add(this.label13);
@@ -367,53 +377,128 @@
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             // 
-            // groupBoxThree
+            // groupBoxSelect
             // 
-            this.groupBoxThree.Controls.Add(this.ngBox_14);
-            this.groupBoxThree.Controls.Add(this.okBox_14);
-            this.groupBoxThree.Controls.Add(this.ngBox_8);
-            this.groupBoxThree.Controls.Add(this.okBox_8);
-            this.groupBoxThree.Controls.Add(this.ngBox_12);
-            this.groupBoxThree.Controls.Add(this.okBox_12);
-            this.groupBoxThree.Controls.Add(this.textBox17);
-            this.groupBoxThree.Controls.Add(this.button14);
-            this.groupBoxThree.Controls.Add(this.label23);
-            this.groupBoxThree.Controls.Add(this.textBox16);
-            this.groupBoxThree.Controls.Add(this.button13);
-            this.groupBoxThree.Controls.Add(this.label22);
-            this.groupBoxThree.Controls.Add(this.textBox15);
-            this.groupBoxThree.Controls.Add(this.button12);
-            this.groupBoxThree.Controls.Add(this.label21);
-            this.groupBoxThree.Location = new System.Drawing.Point(382, 283);
-            this.groupBoxThree.Name = "groupBoxThree";
-            this.groupBoxThree.Size = new System.Drawing.Size(333, 106);
-            this.groupBoxThree.TabIndex = 40;
-            this.groupBoxThree.TabStop = false;
+            this.groupBoxSelect.Controls.Add(this.ngBox_14);
+            this.groupBoxSelect.Controls.Add(this.ngBox_18);
+            this.groupBoxSelect.Controls.Add(this.okBox_14);
+            this.groupBoxSelect.Controls.Add(this.okBox_18);
+            this.groupBoxSelect.Controls.Add(this.ngBox_8);
+            this.groupBoxSelect.Controls.Add(this.okBox_8);
+            this.groupBoxSelect.Controls.Add(this.ngBox_19);
+            this.groupBoxSelect.Controls.Add(this.ngBox_12);
+            this.groupBoxSelect.Controls.Add(this.okBox_19);
+            this.groupBoxSelect.Controls.Add(this.okBox_12);
+            this.groupBoxSelect.Controls.Add(this.ngBox_9);
+            this.groupBoxSelect.Controls.Add(this.textBox17);
+            this.groupBoxSelect.Controls.Add(this.okBox_9);
+            this.groupBoxSelect.Controls.Add(this.button14);
+            this.groupBoxSelect.Controls.Add(this.ngBox_7);
+            this.groupBoxSelect.Controls.Add(this.label23);
+            this.groupBoxSelect.Controls.Add(this.okBox_7);
+            this.groupBoxSelect.Controls.Add(this.textBox16);
+            this.groupBoxSelect.Controls.Add(this.ngBox_17);
+            this.groupBoxSelect.Controls.Add(this.button13);
+            this.groupBoxSelect.Controls.Add(this.okBox_17);
+            this.groupBoxSelect.Controls.Add(this.label22);
+            this.groupBoxSelect.Controls.Add(this.ngBox_23);
+            this.groupBoxSelect.Controls.Add(this.textBox15);
+            this.groupBoxSelect.Controls.Add(this.okBox_23);
+            this.groupBoxSelect.Controls.Add(this.button12);
+            this.groupBoxSelect.Controls.Add(this.ngBox_3);
+            this.groupBoxSelect.Controls.Add(this.label21);
+            this.groupBoxSelect.Controls.Add(this.okBox_3);
+            this.groupBoxSelect.Controls.Add(this.ngBox_15);
+            this.groupBoxSelect.Controls.Add(this.okBox_15);
+            this.groupBoxSelect.Controls.Add(this.ngBox_13);
+            this.groupBoxSelect.Controls.Add(this.okBox_13);
+            this.groupBoxSelect.Controls.Add(this.ngBox_11);
+            this.groupBoxSelect.Controls.Add(this.okBox_11);
+            this.groupBoxSelect.Controls.Add(this.textBox14);
+            this.groupBoxSelect.Controls.Add(this.button11);
+            this.groupBoxSelect.Controls.Add(this.label20);
+            this.groupBoxSelect.Controls.Add(this.textBox13);
+            this.groupBoxSelect.Controls.Add(this.button10);
+            this.groupBoxSelect.Controls.Add(this.label19);
+            this.groupBoxSelect.Controls.Add(this.textBox12);
+            this.groupBoxSelect.Controls.Add(this.button9);
+            this.groupBoxSelect.Controls.Add(this.label18);
+            this.groupBoxSelect.Controls.Add(this.textBox11);
+            this.groupBoxSelect.Controls.Add(this.button8);
+            this.groupBoxSelect.Controls.Add(this.label17);
+            this.groupBoxSelect.Controls.Add(this.textBox10);
+            this.groupBoxSelect.Controls.Add(this.button7);
+            this.groupBoxSelect.Controls.Add(this.label11);
+            this.groupBoxSelect.Controls.Add(this.textBox9);
+            this.groupBoxSelect.Controls.Add(this.button6);
+            this.groupBoxSelect.Controls.Add(this.label10);
+            this.groupBoxSelect.Controls.Add(this.textBox8);
+            this.groupBoxSelect.Controls.Add(this.button5);
+            this.groupBoxSelect.Controls.Add(this.label7);
+            this.groupBoxSelect.Controls.Add(this.textBox6);
+            this.groupBoxSelect.Controls.Add(this.button4);
+            this.groupBoxSelect.Controls.Add(this.label6);
+            this.groupBoxSelect.Controls.Add(this.textBox5);
+            this.groupBoxSelect.Controls.Add(this.button3);
+            this.groupBoxSelect.Controls.Add(this.label2);
+            this.groupBoxSelect.Controls.Add(this.textBox1);
+            this.groupBoxSelect.Controls.Add(this.button2);
+            this.groupBoxSelect.Controls.Add(this.label1);
+            this.groupBoxSelect.Location = new System.Drawing.Point(382, 11);
+            this.groupBoxSelect.Name = "groupBoxSelect";
+            this.groupBoxSelect.Size = new System.Drawing.Size(333, 360);
+            this.groupBoxSelect.TabIndex = 39;
+            this.groupBoxSelect.TabStop = false;
             // 
             // ngBox_14
             // 
             this.ngBox_14.AutoSize = true;
-            this.ngBox_14.Location = new System.Drawing.Point(140, 74);
+            this.ngBox_14.Enabled = false;
+            this.ngBox_14.Location = new System.Drawing.Point(140, 324);
             this.ngBox_14.Name = "ngBox_14";
             this.ngBox_14.Size = new System.Drawing.Size(36, 16);
             this.ngBox_14.TabIndex = 202;
             this.ngBox_14.Text = "NG";
             this.ngBox_14.UseVisualStyleBackColor = true;
             // 
+            // ngBox_18
+            // 
+            this.ngBox_18.AutoSize = true;
+            this.ngBox_18.Enabled = false;
+            this.ngBox_18.Location = new System.Drawing.Point(140, 249);
+            this.ngBox_18.Name = "ngBox_18";
+            this.ngBox_18.Size = new System.Drawing.Size(36, 16);
+            this.ngBox_18.TabIndex = 181;
+            this.ngBox_18.Text = "NG";
+            this.ngBox_18.UseVisualStyleBackColor = true;
+            // 
             // okBox_14
             // 
             this.okBox_14.AutoSize = true;
-            this.okBox_14.Location = new System.Drawing.Point(98, 74);
+            this.okBox_14.Enabled = false;
+            this.okBox_14.Location = new System.Drawing.Point(98, 324);
             this.okBox_14.Name = "okBox_14";
             this.okBox_14.Size = new System.Drawing.Size(36, 16);
             this.okBox_14.TabIndex = 201;
             this.okBox_14.Text = "OK";
             this.okBox_14.UseVisualStyleBackColor = true;
             // 
+            // okBox_18
+            // 
+            this.okBox_18.AutoSize = true;
+            this.okBox_18.Enabled = false;
+            this.okBox_18.Location = new System.Drawing.Point(98, 249);
+            this.okBox_18.Name = "okBox_18";
+            this.okBox_18.Size = new System.Drawing.Size(36, 16);
+            this.okBox_18.TabIndex = 180;
+            this.okBox_18.Text = "OK";
+            this.okBox_18.UseVisualStyleBackColor = true;
+            // 
             // ngBox_8
             // 
             this.ngBox_8.AutoSize = true;
-            this.ngBox_8.Location = new System.Drawing.Point(140, 45);
+            this.ngBox_8.Enabled = false;
+            this.ngBox_8.Location = new System.Drawing.Point(140, 299);
             this.ngBox_8.Name = "ngBox_8";
             this.ngBox_8.Size = new System.Drawing.Size(36, 16);
             this.ngBox_8.TabIndex = 200;
@@ -423,309 +508,246 @@
             // okBox_8
             // 
             this.okBox_8.AutoSize = true;
-            this.okBox_8.Location = new System.Drawing.Point(98, 45);
+            this.okBox_8.Enabled = false;
+            this.okBox_8.Location = new System.Drawing.Point(98, 299);
             this.okBox_8.Name = "okBox_8";
             this.okBox_8.Size = new System.Drawing.Size(36, 16);
             this.okBox_8.TabIndex = 199;
             this.okBox_8.Text = "OK";
             this.okBox_8.UseVisualStyleBackColor = true;
             // 
-            // ngBox_12
-            // 
-            this.ngBox_12.AutoSize = true;
-            this.ngBox_12.Location = new System.Drawing.Point(140, 19);
-            this.ngBox_12.Name = "ngBox_12";
-            this.ngBox_12.Size = new System.Drawing.Size(36, 16);
-            this.ngBox_12.TabIndex = 198;
-            this.ngBox_12.Text = "NG";
-            this.ngBox_12.UseVisualStyleBackColor = true;
-            // 
-            // okBox_12
-            // 
-            this.okBox_12.AutoSize = true;
-            this.okBox_12.Location = new System.Drawing.Point(98, 19);
-            this.okBox_12.Name = "okBox_12";
-            this.okBox_12.Size = new System.Drawing.Size(36, 16);
-            this.okBox_12.TabIndex = 197;
-            this.okBox_12.Text = "OK";
-            this.okBox_12.UseVisualStyleBackColor = true;
-            // 
-            // textBox17
-            // 
-            this.textBox17.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.textBox17.Location = new System.Drawing.Point(185, 74);
-            this.textBox17.Multiline = true;
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(90, 20);
-            this.textBox17.TabIndex = 195;
-            // 
-            // button14
-            // 
-            this.button14.Font = new System.Drawing.Font("Aharoni", 5.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.button14.Location = new System.Drawing.Point(291, 71);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(23, 23);
-            this.button14.TabIndex = 196;
-            this.button14.Text = "...";
-            this.button14.UseVisualStyleBackColor = true;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(33, 76);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(59, 12);
-            this.label23.TabIndex = 194;
-            this.label23.Text = "13区(14):";
-            // 
-            // textBox16
-            // 
-            this.textBox16.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.textBox16.Location = new System.Drawing.Point(185, 45);
-            this.textBox16.Multiline = true;
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(90, 20);
-            this.textBox16.TabIndex = 192;
-            // 
-            // button13
-            // 
-            this.button13.Font = new System.Drawing.Font("Aharoni", 5.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.button13.Location = new System.Drawing.Point(291, 42);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(23, 23);
-            this.button13.TabIndex = 193;
-            this.button13.Text = "...";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(33, 47);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(59, 12);
-            this.label22.TabIndex = 191;
-            this.label22.Text = "12区(8) :";
-            // 
-            // textBox15
-            // 
-            this.textBox15.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.textBox15.Location = new System.Drawing.Point(185, 18);
-            this.textBox15.Multiline = true;
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(90, 20);
-            this.textBox15.TabIndex = 189;
-            // 
-            // button12
-            // 
-            this.button12.Font = new System.Drawing.Font("Aharoni", 5.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.button12.Location = new System.Drawing.Point(291, 15);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(23, 23);
-            this.button12.TabIndex = 190;
-            this.button12.Text = "...";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(33, 20);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(59, 12);
-            this.label21.TabIndex = 188;
-            this.label21.Text = "11区(12):";
-            // 
-            // groupBoxNine
-            // 
-            this.groupBoxNine.Controls.Add(this.ngBox_18);
-            this.groupBoxNine.Controls.Add(this.okBox_18);
-            this.groupBoxNine.Controls.Add(this.ngBox_19);
-            this.groupBoxNine.Controls.Add(this.okBox_19);
-            this.groupBoxNine.Controls.Add(this.ngBox_9);
-            this.groupBoxNine.Controls.Add(this.okBox_9);
-            this.groupBoxNine.Controls.Add(this.ngBox_7);
-            this.groupBoxNine.Controls.Add(this.okBox_7);
-            this.groupBoxNine.Controls.Add(this.ngBox_17);
-            this.groupBoxNine.Controls.Add(this.okBox_17);
-            this.groupBoxNine.Controls.Add(this.ngBox_23);
-            this.groupBoxNine.Controls.Add(this.okBox_23);
-            this.groupBoxNine.Controls.Add(this.ngBox_3);
-            this.groupBoxNine.Controls.Add(this.okBox_3);
-            this.groupBoxNine.Controls.Add(this.ngBox_15);
-            this.groupBoxNine.Controls.Add(this.okBox_15);
-            this.groupBoxNine.Controls.Add(this.ngBox_13);
-            this.groupBoxNine.Controls.Add(this.okBox_13);
-            this.groupBoxNine.Controls.Add(this.ngBox_11);
-            this.groupBoxNine.Controls.Add(this.okBox_11);
-            this.groupBoxNine.Controls.Add(this.textBox14);
-            this.groupBoxNine.Controls.Add(this.button11);
-            this.groupBoxNine.Controls.Add(this.label20);
-            this.groupBoxNine.Controls.Add(this.textBox13);
-            this.groupBoxNine.Controls.Add(this.button10);
-            this.groupBoxNine.Controls.Add(this.label19);
-            this.groupBoxNine.Controls.Add(this.textBox12);
-            this.groupBoxNine.Controls.Add(this.button9);
-            this.groupBoxNine.Controls.Add(this.label18);
-            this.groupBoxNine.Controls.Add(this.textBox11);
-            this.groupBoxNine.Controls.Add(this.button8);
-            this.groupBoxNine.Controls.Add(this.label17);
-            this.groupBoxNine.Controls.Add(this.textBox10);
-            this.groupBoxNine.Controls.Add(this.button7);
-            this.groupBoxNine.Controls.Add(this.label11);
-            this.groupBoxNine.Controls.Add(this.textBox9);
-            this.groupBoxNine.Controls.Add(this.button6);
-            this.groupBoxNine.Controls.Add(this.label10);
-            this.groupBoxNine.Controls.Add(this.textBox8);
-            this.groupBoxNine.Controls.Add(this.button5);
-            this.groupBoxNine.Controls.Add(this.label7);
-            this.groupBoxNine.Controls.Add(this.textBox6);
-            this.groupBoxNine.Controls.Add(this.button4);
-            this.groupBoxNine.Controls.Add(this.label6);
-            this.groupBoxNine.Controls.Add(this.textBox5);
-            this.groupBoxNine.Controls.Add(this.button3);
-            this.groupBoxNine.Controls.Add(this.label2);
-            this.groupBoxNine.Controls.Add(this.textBox1);
-            this.groupBoxNine.Controls.Add(this.button2);
-            this.groupBoxNine.Controls.Add(this.label1);
-            this.groupBoxNine.Location = new System.Drawing.Point(382, 11);
-            this.groupBoxNine.Name = "groupBoxNine";
-            this.groupBoxNine.Size = new System.Drawing.Size(333, 295);
-            this.groupBoxNine.TabIndex = 39;
-            this.groupBoxNine.TabStop = false;
-            // 
-            // ngBox_18
-            // 
-            this.ngBox_18.AutoSize = true;
-            this.ngBox_18.Location = new System.Drawing.Point(140, 256);
-            this.ngBox_18.Name = "ngBox_18";
-            this.ngBox_18.Size = new System.Drawing.Size(36, 16);
-            this.ngBox_18.TabIndex = 181;
-            this.ngBox_18.Text = "NG";
-            this.ngBox_18.UseVisualStyleBackColor = true;
-            // 
-            // okBox_18
-            // 
-            this.okBox_18.AutoSize = true;
-            this.okBox_18.Location = new System.Drawing.Point(98, 256);
-            this.okBox_18.Name = "okBox_18";
-            this.okBox_18.Size = new System.Drawing.Size(36, 16);
-            this.okBox_18.TabIndex = 180;
-            this.okBox_18.Text = "OK";
-            this.okBox_18.UseVisualStyleBackColor = true;
-            // 
             // ngBox_19
             // 
             this.ngBox_19.AutoSize = true;
-            this.ngBox_19.Location = new System.Drawing.Point(140, 230);
+            this.ngBox_19.Enabled = false;
+            this.ngBox_19.Location = new System.Drawing.Point(140, 224);
             this.ngBox_19.Name = "ngBox_19";
             this.ngBox_19.Size = new System.Drawing.Size(36, 16);
             this.ngBox_19.TabIndex = 179;
             this.ngBox_19.Text = "NG";
             this.ngBox_19.UseVisualStyleBackColor = true;
             // 
+            // ngBox_12
+            // 
+            this.ngBox_12.AutoSize = true;
+            this.ngBox_12.Enabled = false;
+            this.ngBox_12.Location = new System.Drawing.Point(140, 274);
+            this.ngBox_12.Name = "ngBox_12";
+            this.ngBox_12.Size = new System.Drawing.Size(36, 16);
+            this.ngBox_12.TabIndex = 198;
+            this.ngBox_12.Text = "NG";
+            this.ngBox_12.UseVisualStyleBackColor = true;
+            // 
             // okBox_19
             // 
             this.okBox_19.AutoSize = true;
-            this.okBox_19.Location = new System.Drawing.Point(98, 230);
+            this.okBox_19.Enabled = false;
+            this.okBox_19.Location = new System.Drawing.Point(98, 224);
             this.okBox_19.Name = "okBox_19";
             this.okBox_19.Size = new System.Drawing.Size(36, 16);
             this.okBox_19.TabIndex = 178;
             this.okBox_19.Text = "OK";
             this.okBox_19.UseVisualStyleBackColor = true;
             // 
+            // okBox_12
+            // 
+            this.okBox_12.AutoSize = true;
+            this.okBox_12.Enabled = false;
+            this.okBox_12.Location = new System.Drawing.Point(98, 274);
+            this.okBox_12.Name = "okBox_12";
+            this.okBox_12.Size = new System.Drawing.Size(36, 16);
+            this.okBox_12.TabIndex = 197;
+            this.okBox_12.Text = "OK";
+            this.okBox_12.UseVisualStyleBackColor = true;
+            // 
             // ngBox_9
             // 
             this.ngBox_9.AutoSize = true;
-            this.ngBox_9.Location = new System.Drawing.Point(140, 202);
+            this.ngBox_9.Enabled = false;
+            this.ngBox_9.Location = new System.Drawing.Point(140, 199);
             this.ngBox_9.Name = "ngBox_9";
             this.ngBox_9.Size = new System.Drawing.Size(36, 16);
             this.ngBox_9.TabIndex = 177;
             this.ngBox_9.Text = "NG";
             this.ngBox_9.UseVisualStyleBackColor = true;
             // 
+            // textBox17
+            // 
+            this.textBox17.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.textBox17.Location = new System.Drawing.Point(185, 331);
+            this.textBox17.Multiline = true;
+            this.textBox17.Name = "textBox17";
+            this.textBox17.Size = new System.Drawing.Size(90, 20);
+            this.textBox17.TabIndex = 195;
+            // 
             // okBox_9
             // 
             this.okBox_9.AutoSize = true;
-            this.okBox_9.Location = new System.Drawing.Point(98, 202);
+            this.okBox_9.Enabled = false;
+            this.okBox_9.Location = new System.Drawing.Point(98, 199);
             this.okBox_9.Name = "okBox_9";
             this.okBox_9.Size = new System.Drawing.Size(36, 16);
             this.okBox_9.TabIndex = 176;
             this.okBox_9.Text = "OK";
             this.okBox_9.UseVisualStyleBackColor = true;
             // 
+            // button14
+            // 
+            this.button14.Font = new System.Drawing.Font("Aharoni", 5.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.button14.Location = new System.Drawing.Point(291, 328);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(23, 23);
+            this.button14.TabIndex = 196;
+            this.button14.Text = "...";
+            this.button14.UseVisualStyleBackColor = true;
+            // 
             // ngBox_7
             // 
             this.ngBox_7.AutoSize = true;
-            this.ngBox_7.Location = new System.Drawing.Point(140, 177);
+            this.ngBox_7.Enabled = false;
+            this.ngBox_7.Location = new System.Drawing.Point(140, 174);
             this.ngBox_7.Name = "ngBox_7";
             this.ngBox_7.Size = new System.Drawing.Size(36, 16);
             this.ngBox_7.TabIndex = 175;
             this.ngBox_7.Text = "NG";
             this.ngBox_7.UseVisualStyleBackColor = true;
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(33, 324);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(59, 12);
+            this.label23.TabIndex = 194;
+            this.label23.Text = "13区(14):";
+            // 
             // okBox_7
             // 
             this.okBox_7.AutoSize = true;
-            this.okBox_7.Location = new System.Drawing.Point(98, 177);
+            this.okBox_7.Enabled = false;
+            this.okBox_7.Location = new System.Drawing.Point(98, 174);
             this.okBox_7.Name = "okBox_7";
             this.okBox_7.Size = new System.Drawing.Size(36, 16);
             this.okBox_7.TabIndex = 174;
             this.okBox_7.Text = "OK";
             this.okBox_7.UseVisualStyleBackColor = true;
             // 
+            // textBox16
+            // 
+            this.textBox16.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.textBox16.Location = new System.Drawing.Point(185, 302);
+            this.textBox16.Multiline = true;
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new System.Drawing.Size(90, 20);
+            this.textBox16.TabIndex = 192;
+            // 
             // ngBox_17
             // 
             this.ngBox_17.AutoSize = true;
-            this.ngBox_17.Location = new System.Drawing.Point(140, 155);
+            this.ngBox_17.Enabled = false;
+            this.ngBox_17.Location = new System.Drawing.Point(140, 149);
             this.ngBox_17.Name = "ngBox_17";
             this.ngBox_17.Size = new System.Drawing.Size(36, 16);
             this.ngBox_17.TabIndex = 173;
             this.ngBox_17.Text = "NG";
             this.ngBox_17.UseVisualStyleBackColor = true;
             // 
+            // button13
+            // 
+            this.button13.Font = new System.Drawing.Font("Aharoni", 5.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.button13.Location = new System.Drawing.Point(291, 299);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(23, 23);
+            this.button13.TabIndex = 193;
+            this.button13.Text = "...";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
             // okBox_17
             // 
             this.okBox_17.AutoSize = true;
-            this.okBox_17.Location = new System.Drawing.Point(98, 155);
+            this.okBox_17.Enabled = false;
+            this.okBox_17.Location = new System.Drawing.Point(98, 149);
             this.okBox_17.Name = "okBox_17";
             this.okBox_17.Size = new System.Drawing.Size(36, 16);
             this.okBox_17.TabIndex = 172;
             this.okBox_17.Text = "OK";
             this.okBox_17.UseVisualStyleBackColor = true;
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(33, 299);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(59, 12);
+            this.label22.TabIndex = 191;
+            this.label22.Text = "12区(8) :";
+            // 
             // ngBox_23
             // 
             this.ngBox_23.AutoSize = true;
-            this.ngBox_23.Location = new System.Drawing.Point(140, 126);
+            this.ngBox_23.Enabled = false;
+            this.ngBox_23.Location = new System.Drawing.Point(140, 124);
             this.ngBox_23.Name = "ngBox_23";
             this.ngBox_23.Size = new System.Drawing.Size(36, 16);
             this.ngBox_23.TabIndex = 171;
             this.ngBox_23.Text = "NG";
             this.ngBox_23.UseVisualStyleBackColor = true;
             // 
+            // textBox15
+            // 
+            this.textBox15.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.textBox15.Location = new System.Drawing.Point(185, 275);
+            this.textBox15.Multiline = true;
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(90, 20);
+            this.textBox15.TabIndex = 189;
+            // 
             // okBox_23
             // 
             this.okBox_23.AutoSize = true;
-            this.okBox_23.Location = new System.Drawing.Point(98, 126);
+            this.okBox_23.Enabled = false;
+            this.okBox_23.Location = new System.Drawing.Point(98, 124);
             this.okBox_23.Name = "okBox_23";
             this.okBox_23.Size = new System.Drawing.Size(36, 16);
             this.okBox_23.TabIndex = 170;
             this.okBox_23.Text = "OK";
             this.okBox_23.UseVisualStyleBackColor = true;
             // 
+            // button12
+            // 
+            this.button12.Font = new System.Drawing.Font("Aharoni", 5.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.button12.Location = new System.Drawing.Point(291, 272);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(23, 23);
+            this.button12.TabIndex = 190;
+            this.button12.Text = "...";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
             // ngBox_3
             // 
             this.ngBox_3.AutoSize = true;
-            this.ngBox_3.Location = new System.Drawing.Point(140, 100);
+            this.ngBox_3.Enabled = false;
+            this.ngBox_3.Location = new System.Drawing.Point(140, 99);
             this.ngBox_3.Name = "ngBox_3";
             this.ngBox_3.Size = new System.Drawing.Size(36, 16);
             this.ngBox_3.TabIndex = 169;
             this.ngBox_3.Text = "NG";
             this.ngBox_3.UseVisualStyleBackColor = true;
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(33, 274);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(59, 12);
+            this.label21.TabIndex = 188;
+            this.label21.Text = "11区(12):";
+            // 
             // okBox_3
             // 
             this.okBox_3.AutoSize = true;
-            this.okBox_3.Location = new System.Drawing.Point(98, 100);
+            this.okBox_3.Enabled = false;
+            this.okBox_3.Location = new System.Drawing.Point(98, 99);
             this.okBox_3.Name = "okBox_3";
             this.okBox_3.Size = new System.Drawing.Size(36, 16);
             this.okBox_3.TabIndex = 168;
@@ -735,7 +757,8 @@
             // ngBox_15
             // 
             this.ngBox_15.AutoSize = true;
-            this.ngBox_15.Location = new System.Drawing.Point(140, 73);
+            this.ngBox_15.Enabled = false;
+            this.ngBox_15.Location = new System.Drawing.Point(140, 74);
             this.ngBox_15.Name = "ngBox_15";
             this.ngBox_15.Size = new System.Drawing.Size(36, 16);
             this.ngBox_15.TabIndex = 167;
@@ -745,7 +768,8 @@
             // okBox_15
             // 
             this.okBox_15.AutoSize = true;
-            this.okBox_15.Location = new System.Drawing.Point(98, 73);
+            this.okBox_15.Enabled = false;
+            this.okBox_15.Location = new System.Drawing.Point(98, 74);
             this.okBox_15.Name = "okBox_15";
             this.okBox_15.Size = new System.Drawing.Size(36, 16);
             this.okBox_15.TabIndex = 166;
@@ -755,7 +779,8 @@
             // ngBox_13
             // 
             this.ngBox_13.AutoSize = true;
-            this.ngBox_13.Location = new System.Drawing.Point(140, 48);
+            this.ngBox_13.Enabled = false;
+            this.ngBox_13.Location = new System.Drawing.Point(140, 49);
             this.ngBox_13.Name = "ngBox_13";
             this.ngBox_13.Size = new System.Drawing.Size(36, 16);
             this.ngBox_13.TabIndex = 165;
@@ -765,7 +790,8 @@
             // okBox_13
             // 
             this.okBox_13.AutoSize = true;
-            this.okBox_13.Location = new System.Drawing.Point(98, 48);
+            this.okBox_13.Enabled = false;
+            this.okBox_13.Location = new System.Drawing.Point(98, 49);
             this.okBox_13.Name = "okBox_13";
             this.okBox_13.Size = new System.Drawing.Size(36, 16);
             this.okBox_13.TabIndex = 164;
@@ -775,6 +801,7 @@
             // ngBox_11
             // 
             this.ngBox_11.AutoSize = true;
+            this.ngBox_11.Enabled = false;
             this.ngBox_11.Location = new System.Drawing.Point(140, 24);
             this.ngBox_11.Name = "ngBox_11";
             this.ngBox_11.Size = new System.Drawing.Size(36, 16);
@@ -785,6 +812,7 @@
             // okBox_11
             // 
             this.okBox_11.AutoSize = true;
+            this.okBox_11.Enabled = false;
             this.okBox_11.Location = new System.Drawing.Point(98, 24);
             this.okBox_11.Name = "okBox_11";
             this.okBox_11.Size = new System.Drawing.Size(36, 16);
@@ -814,7 +842,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(33, 257);
+            this.label20.Location = new System.Drawing.Point(33, 249);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(59, 12);
             this.label20.TabIndex = 144;
@@ -842,7 +870,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(33, 231);
+            this.label19.Location = new System.Drawing.Point(33, 224);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(59, 12);
             this.label19.TabIndex = 139;
@@ -870,7 +898,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(33, 205);
+            this.label18.Location = new System.Drawing.Point(33, 199);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(59, 12);
             this.label18.TabIndex = 134;
@@ -898,7 +926,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(33, 179);
+            this.label17.Location = new System.Drawing.Point(33, 174);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(59, 12);
             this.label17.TabIndex = 129;
@@ -926,7 +954,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(33, 153);
+            this.label11.Location = new System.Drawing.Point(33, 149);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(59, 12);
             this.label11.TabIndex = 124;
@@ -954,7 +982,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(33, 127);
+            this.label10.Location = new System.Drawing.Point(33, 124);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(59, 12);
             this.label10.TabIndex = 119;
@@ -982,7 +1010,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(33, 101);
+            this.label7.Location = new System.Drawing.Point(33, 99);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 12);
             this.label7.TabIndex = 114;
@@ -1010,7 +1038,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 75);
+            this.label6.Location = new System.Drawing.Point(33, 74);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 12);
             this.label6.TabIndex = 109;
@@ -1161,10 +1189,8 @@
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBoxThree.ResumeLayout(false);
-            this.groupBoxThree.PerformLayout();
-            this.groupBoxNine.ResumeLayout(false);
-            this.groupBoxNine.PerformLayout();
+            this.groupBoxSelect.ResumeLayout(false);
+            this.groupBoxSelect.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1172,26 +1198,25 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.RadioButton radioThr;
+        private System.Windows.Forms.RadioButton radioNine;
+        private System.Windows.Forms.ComboBox slotComboBox;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox lotTextBox;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox qtyTextBox;
+        private System.Windows.Forms.TextBox rateTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.Label labelQty;
+        private System.Windows.Forms.TextBox MagnificationTextBox;
+        private System.Windows.Forms.RichTextBox cmtRichTextBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox decRichTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBoxThree;
         private System.Windows.Forms.CheckBox ngBox_14;
         private System.Windows.Forms.CheckBox okBox_14;
         private System.Windows.Forms.CheckBox ngBox_8;
@@ -1207,7 +1232,7 @@
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.GroupBox groupBoxNine;
+        private System.Windows.Forms.GroupBox groupBoxSelect;
         private System.Windows.Forms.CheckBox ngBox_18;
         private System.Windows.Forms.CheckBox okBox_18;
         private System.Windows.Forms.CheckBox ngBox_19;
@@ -1265,5 +1290,6 @@
         private System.Windows.Forms.Label label12;
         private WaferSf.WaferSur waferSurF;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label4;
     }
 }

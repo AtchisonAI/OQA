@@ -24,6 +24,11 @@ namespace WCFModels.OQA
         }
         private char c_proc_step;
 
+        public DefectCodeView()
+        {
+            ISPDFTDEF_list = new List<ISPDFTDEF>();
+        }
+
         [DataMember]
         public char C_TRAN_FLAG
         {

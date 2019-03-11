@@ -30,13 +30,61 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DemoCommon">
       <HintPath>..\Syncfusion.Tools.4.6\DemoCommon.dll</HintPath>
     </Reference>
-    <Reference Include="OQAService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="HiDM.LabelPrinting.Common">
+      <HintPath>..\Components\HiDM.LabelPrinting.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="OQAService">
       <HintPath>..\Components\OQAService.dll</HintPath>
+    </Reference>
+    <Reference Include="OQA_Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\OQA_Core.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.BulletGraph.Windows">
       <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.BulletGraph.Windows.dll</HintPath>
@@ -292,8 +340,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WCFModels.dll</HintPath>
     </Reference>
+    <Reference Include="WcfService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\WcfService.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Print\FrmWaferInspectRecord_sub.cs" />
     <Compile Include="Tran\FrmDefectLotResult.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -392,7 +445,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Print\PKGLabel.rdlc" />
+    <EmbeddedResource Include="Print\FrmWaferInspectRecord.rdlc" />
+    <EmbeddedResource Include="Print\FrmPackageLabelPrint.rdlc" />
+    <EmbeddedResource Include="Print\FrmWaferInspectRecord_sub.rdlc" />
     <EmbeddedResource Include="Print\WaferAppearanceInspectionRecord.rdlc" />
     <EmbeddedResource Include="Tran\FrmDefectLotResult.resx">
       <DependentUpon>FrmDefectLotResult.cs</DependentUpon>
@@ -445,6 +500,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\FrmWaferInspectRecordPrint.datasource" />
+    <None Include="Properties\DataSources\OQAMain.Print.FrmWaferInspectRecord_sub.datasource" />
+    <None Include="Properties\DataSources\OQAMain.Print.WaferInspectRecord_sub.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpPercentView.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpSumView.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.ControlAccessString.datasource" />
@@ -454,12 +513,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OQA_Core\OQA_Core.csproj">
-      <Project>{6734161e-7d2d-485f-a48c-d0dfea600583}</Project>
-      <Name>OQA_Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

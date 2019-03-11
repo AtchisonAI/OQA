@@ -2,6 +2,9 @@
 using OQA_Core;
 using System;
 using System.Windows.Forms;
+using System.IO;
+using Microsoft.Reporting.WinForms;
+using System.Linq;
 
 namespace OQAMain
 {
@@ -146,6 +149,37 @@ namespace OQAMain
                 //ViewLotBoxListExt('2');
                 //View_Order_list(txtBox_LotID.Text);
                 //}
+
+             //   if (this.Lotid.Text !="") {
+             //       string SLotid = this.Lotid.Text.Trim();
+
+                    //sqlStr= select listagg(t.slot_id, ',') within
+                    //                    group(
+                    //                    order by slot_id, slot_id) as slot_id, 
+                    // count(t.lot_id), 
+                    // t.lot_id, 
+                    //s.part_id, 
+                    //s.part_desc, 
+                    //s.rec_user, 
+                    //s.customer_id, 
+                    //s.cust_lot_id,
+                    //s.cust_part_id, 
+                    //s.orignal_country
+                    //from pkgsltdef t, isplotsts s
+                    //where t.lot_id = s.lot_id and t.lotid=:SLotid
+                    //group by t.lot_id,
+                    //        s.part_id,
+                    //       s.part_desc,
+                    //      s.rec_user,
+                    //     s.customer_id,
+                    //    s.cust_lot_id,
+                    //   s.cust_part_id,
+                    //  s.orignal_country
+
+                //    this.reportViewer1.LocalReport.SetParameters(GenerateLabelParameters(help.GetDataTable(sqlStr, param)));
+                    this.reportViewer1.RefreshReport();
+              //  }
+
             }
             catch (System.Exception ex)
             {
@@ -153,6 +187,68 @@ namespace OQAMain
             }
         }
 
+        private void FrmPackageLabelPrint_Load(object sender, EventArgs e)
+        {
+            InitReportViewer("OQAMain.Print.FrmPackageLabelPrint.rdlc");
+            this.reportViewer1.RefreshReport();
+            
+        }
 
+        public void InitReportViewer(string rptName)
+        {
+            reportViewer1.Reset();
+            reportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
+            //reportViewer1.LocalReport.ReportPath = Path.Combine(rptName);
+
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = rptName;
+        //    this.reportViewer1.LocalReport.SubreportProcessing += LocalReport_SubreportProcessing;
+            reportViewer1.RefreshReport();
+        }
+
+      //  private void LocalReport_SubreportProcessing(object sender, SubreportProcessingEventArgs e)
+     //   {
+    //       if(e.Parameters!=null && e.Parameters.Count(p=>p.Name == "ReportSeq") == 1)
+     //       {
+         //       e
+    //        }
+
+   //     }
+
+        //public List<ReportParameter> GenerateLabelParameters(System.Data.DataTable dtResult)
+        //{
+        //    string SlotID = dtResult.Rows[0]["SLOT_ID"].ToString();
+        //    string Lotid = dtResult.Rows[0]["LOT_ID"].ToString();
+        //    string Partid = dtResult.Rows[0]["PART_ID"].ToString();
+        //    string Partname = dtResult.Rows[0]["PART_DESC"].ToString();
+        //    string Recuser = dtResult.Rows[0]["REC_USER"].ToString();
+        //    string Customerid = dtResult.Rows[0]["CUSTOMER_ID"].ToString();
+        //    string Customerlotid = dtResult.Rows[0]["CUST_LOT_ID"].ToString();
+        //    string Customerpartid = dtResult.Rows[0]["CUST_PART_ID"].ToString();
+        //    string OrignalCountry = dtResult.Rows[0]["ORIGNAL_COUNTRY"].ToString();
+        //    string Qty = dtResult.Rows[0]["QTY"].ToString();
+
+        //    string codePartname = Partname.ToBarcode39().ImageToBytes().ToString();
+        //    string codePartid = Partid.ToBarcode39().ImageToBytes().ToString();
+        //    string codeQty = Qty.ToBarcode39().ImageToBytes().ToString();
+        //    string codeLotid = Lotid.ToBarcode39().ImageToBytes().ToString();
+        //    List<ReportParameter> lstParam = new List<ReportParameter>();
+        //    lstParam.Add(new ReportParameter("paramPartName", Partname));
+        //    lstParam.Add(new ReportParameter("paramPartNO2", Partid));
+        //    lstParam.Add(new ReportParameter("paramCustomerId", Customerid));
+        //    lstParam.Add(new ReportParameter("paramLotId", Lotid));
+        //    lstParam.Add(new ReportParameter("paramSlot", SlotID));
+        //    lstParam.Add(new ReportParameter("paramQuantity", Qty));
+        //    lstParam.Add(new ReportParameter("paramCustLotid", Customerlotid));
+        //    lstParam.Add(new ReportParameter("paramOrignalCountry", OrignalCountry));
+
+        //    lstParam.Add(new ReportParameter("paramCustPartid", Customerpartid));
+        //    lstParam.Add(new ReportParameter("paramQAstamp", Recuser));
+        //    lstParam.Add(new ReportParameter("barcodePartName", codePartname));
+        //    lstParam.Add(new ReportParameter("barcodePartNO", codePartid));
+        //    lstParam.Add(new ReportParameter("barcodeLotid", codeLotid));
+        //    lstParam.Add(new ReportParameter("barcodeQuantity", codeQty));
+
+        //    return lstParam;
+        //}
     }
 }

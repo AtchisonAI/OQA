@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.slotComboBox = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.lotTextBox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.imageTextBox = new System.Windows.Forms.TextBox();
+            this.cmtRichTextBox = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.decRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -57,15 +57,15 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(677, 6);
+            this.btnClose.Location = new System.Drawing.Point(731, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(489, 6);
+            this.btnCreate.Location = new System.Drawing.Point(543, 6);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(583, 6);
+            this.btnEdite.Location = new System.Drawing.Point(637, 6);
             // 
             // pnlMenu
             // 
@@ -74,9 +74,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.slotComboBox);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.textBox7);
+            this.groupBox2.Controls.Add(this.lotTextBox);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Location = new System.Drawing.Point(24, 45);
             this.groupBox2.Name = "groupBox2";
@@ -85,14 +85,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Macro inspection simple MAP";
             // 
-            // comboBox1
+            // slotComboBox
             // 
-            this.comboBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(411, 50);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 4;
+            this.slotComboBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.slotComboBox.FormattingEnabled = true;
+            this.slotComboBox.Location = new System.Drawing.Point(411, 56);
+            this.slotComboBox.Name = "slotComboBox";
+            this.slotComboBox.Size = new System.Drawing.Size(121, 22);
+            this.slotComboBox.TabIndex = 4;
             // 
             // label15
             // 
@@ -104,13 +104,14 @@
             this.label15.TabIndex = 1;
             this.label15.Text = "Lot ID";
             // 
-            // textBox7
+            // lotTextBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(157, 56);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 21);
-            this.textBox7.TabIndex = 3;
+            this.lotTextBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lotTextBox.Location = new System.Drawing.Point(157, 56);
+            this.lotTextBox.Multiline = true;
+            this.lotTextBox.Name = "lotTextBox";
+            this.lotTextBox.Size = new System.Drawing.Size(100, 21);
+            this.lotTextBox.TabIndex = 3;
             // 
             // label16
             // 
@@ -124,11 +125,11 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.richTextBox2);
+            this.groupBox3.Controls.Add(this.imageTextBox);
+            this.groupBox3.Controls.Add(this.cmtRichTextBox);
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.richTextBox1);
+            this.groupBox3.Controls.Add(this.decRichTextBox);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Location = new System.Drawing.Point(24, 538);
@@ -137,23 +138,23 @@
             this.groupBox3.TabIndex = 38;
             this.groupBox3.TabStop = false;
             // 
-            // textBox4
+            // imageTextBox
             // 
-            this.textBox4.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.textBox4.Location = new System.Drawing.Point(142, 23);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 12;
+            this.imageTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.imageTextBox.Location = new System.Drawing.Point(142, 23);
+            this.imageTextBox.Multiline = true;
+            this.imageTextBox.Name = "imageTextBox";
+            this.imageTextBox.Size = new System.Drawing.Size(100, 20);
+            this.imageTextBox.TabIndex = 12;
             // 
-            // richTextBox2
+            // cmtRichTextBox
             // 
-            this.richTextBox2.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.richTextBox2.Location = new System.Drawing.Point(142, 115);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(569, 29);
-            this.richTextBox2.TabIndex = 16;
-            this.richTextBox2.Text = "";
+            this.cmtRichTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.cmtRichTextBox.Location = new System.Drawing.Point(142, 115);
+            this.cmtRichTextBox.Name = "cmtRichTextBox";
+            this.cmtRichTextBox.Size = new System.Drawing.Size(569, 29);
+            this.cmtRichTextBox.TabIndex = 16;
+            this.cmtRichTextBox.Text = "";
             // 
             // button1
             // 
@@ -176,14 +177,14 @@
             this.label8.TabIndex = 8;
             this.label8.Text = "Description";
             // 
-            // richTextBox1
+            // decRichTextBox
             // 
-            this.richTextBox1.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.richTextBox1.Location = new System.Drawing.Point(142, 62);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(569, 29);
-            this.richTextBox1.TabIndex = 15;
-            this.richTextBox1.Text = "";
+            this.decRichTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.decRichTextBox.Location = new System.Drawing.Point(142, 62);
+            this.decRichTextBox.Name = "decRichTextBox";
+            this.decRichTextBox.Size = new System.Drawing.Size(569, 29);
+            this.decRichTextBox.TabIndex = 15;
+            this.decRichTextBox.Text = "";
             // 
             // label5
             // 
@@ -317,16 +318,16 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox slotComboBox;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox lotTextBox;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.TextBox imageTextBox;
+        private System.Windows.Forms.RichTextBox cmtRichTextBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox decRichTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox1;

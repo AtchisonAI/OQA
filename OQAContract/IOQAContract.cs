@@ -59,7 +59,7 @@ namespace OQAContract
         ModelRsp<LotSlotidView> QryLotIspStsInfo(ModelRsp<LotSlotidView> LotSlotidView);
         #endregion
 
-        #region  Package Info
+        #region  IOQA Ship List Print
         [OperationContract]
         ModelRsp<PKGShipView> QryPKGShipInfo(ModelRsp<PKGShipView> PKGShip);
 
@@ -69,9 +69,9 @@ namespace OQAContract
         [OperationContract]
         ModelRsp<ImageSave> SaveImageInfo(ModelRsp<ImageSave> ImageSave);
 
-         #endregion
+        #endregion
 
-
+       
 
         #region  WaferInspectRecord
         ModelRsp<WaferInspectRecordView> QueryLotInfo(ModelRsp<WaferInspectRecordView> LOTView);

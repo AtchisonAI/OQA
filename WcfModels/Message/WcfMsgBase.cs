@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using Utils;
 
 namespace WCFModels.Message
 {
@@ -106,7 +105,11 @@ namespace WCFModels.Message
     {
         public BaseRsp()
         {
-            this.InitProperties();
+            __ByPass = false;
+            _MsgCode = " ";
+            _ErrorMsg = " ";
+            _StackTrace = " ";
+            _success = false;
         }
 
         [DataMember]

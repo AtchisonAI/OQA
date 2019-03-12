@@ -6,8 +6,8 @@ using WCFModels;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 using OQA_Core;
-using Syncfusion.Windows.Forms.Chart;
 using WcfClientCore.Utils.Chart;
+using Syncfusion.Windows.Forms.Chart;
 
 namespace OQAMain
 {

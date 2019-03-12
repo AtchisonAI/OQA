@@ -25,7 +25,7 @@ namespace WCFModels.OQA
 
         public LotSlotidView()
         {
-            PKGSLTDEF_list = new List<PKGSLTDEF>();
+            OQA_CHKMESSLOTID_list = new List<OQA_CHKMESSLOTID>();
         }
 
         [DataMember]
@@ -65,7 +65,7 @@ namespace WCFModels.OQA
         public List<ISPWAFST> ISPWAFST_list { get; set; }
 
         [DataMember]
-        public List<PKGSLTDEF> PKGSLTDEF_list { get; set; }
+        public List<OQA_CHKMESSLOTID> OQA_CHKMESSLOTID_list { get; set; }
         //服务传出结果在BaseRsq:_success  _ErrorMsg
 
 

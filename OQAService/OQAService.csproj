@@ -68,6 +68,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\NPoco.dll</HintPath>
     </Reference>
+    <Reference Include="OQAContract">
+      <HintPath>..\Components\OQAContract.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -84,8 +87,7 @@
     <Reference Include="WCFModels">
       <HintPath>..\Components\WCFModels.dll</HintPath>
     </Reference>
-    <Reference Include="WcfService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="WcfService">
       <HintPath>..\Components\WcfService.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -97,11 +99,12 @@
     <Compile Include="13 Defect code set\QryDefectCodeInfo.cs" />
     <Compile Include="3 AOI inspection input\CreateOrUpdateAOIInfo.cs" />
     <Compile Include="3 AOI inspection input\QryAOIInfo.cs" />
-    <Compile Include="7 FOUP change\QryLotSlotidInfo.cs" />
+    <Compile Include="7 FOUP change\QryLotIspStsInfo.cs" />
+    <Compile Include="7 FOUP change\QryLotMesSlotidInfo.cs" />
+    <Compile Include="7 FOUP change\QryLotIspSlotidInfo.cs" />
     <Compile Include="Emp\QueryEmpInfo.cs" />
     <Compile Include="Emp\EmpService.cs" />
     <Compile Include="GlobalConstant.cs" />
-    <Compile Include="IOQAContract.cs" />
     <Compile Include="OQABaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

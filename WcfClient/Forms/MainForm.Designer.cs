@@ -439,7 +439,7 @@ namespace WcfClient
             this.IsMdiContainer = true;
             this.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "MainFrame";
             this.Load += new System.EventHandler(this.MainForm_Load);

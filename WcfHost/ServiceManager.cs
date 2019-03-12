@@ -5,6 +5,7 @@ using System.ServiceModel.Configuration;
 using System.Reflection;
 using System.Configuration;
 using WcfService;
+using WcfInspector;
 
 namespace WcfHost
 {
@@ -15,6 +16,12 @@ namespace WcfHost
         private static void OpenHost(Type t)
         {
             ServiceHost host = new ServiceHost(t);
+
+            //foreach (var endpont in host.Description.Endpoints)
+            //{
+            //    endpont.Behaviors.Add(new InspectorEndPointBehavior());
+            //}
+
             host.Open();
             hosts.Add(host);
         }

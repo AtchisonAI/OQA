@@ -35,7 +35,6 @@ namespace OQAService.Contract
 
         #endregion
 
-
         #region AOI
         [OperationContract]
         ModelRsp<AOIShowView> QueryAOIInfo(ModelRsp<AOIShowView> queryReq);
@@ -44,24 +43,18 @@ namespace OQAService.Contract
         ModelRsp<AOIShowView> CreateOrUpdateAOI(UpdateModelReq<AOIShowView> updateReq);
         #endregion
 
-        #region  Wafer Inspection Record Print set
-        [OperationContract]
-        ModelRsp<WaferInspectRecordView> QueryWaferInspectionRecordInfo(ModelRsp<WaferInspectRecordView> WaferInspectRecordView);
-        [OperationContract]
-        ModelRsp<WaferInspectRecordView> QueryLotInfo(ModelRsp<WaferInspectRecordView> QueryLotInfoView);
-        #endregion
 
         #region  Foup Change
         //关于Foup Change 的查询服务
         [OperationContract]
-        ModelRsp<LotSlotidView> QryLotSlotidInfo(ModelRsp<LotSlotidView> LotSlotidView);
-
-        #endregion
-
-
-        #region  IOQA Ship List Print
+        ModelRsp<LotSlotidView> QryLotIspSlotidInfo(ModelRsp<LotSlotidView> LotSlotidView);
         [OperationContract]
-        ModelRsp<PKGShipView> QryPKGShipInfo(ModelRsp<PKGShipView> PKGShipView);
+        ModelRsp<LotSlotidView> QryLotMesSlotidInfo(ModelRsp<LotSlotidView> LotSlotidView);
+        [OperationContract]
+        ModelRsp<LotSlotidView> QryLotIspStsInfo(ModelRsp<LotSlotidView> LotSlotidView);
+
         #endregion
+
+
     }
 }

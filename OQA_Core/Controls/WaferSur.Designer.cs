@@ -364,8 +364,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "WaferSur";
-            this.Load += new System.EventHandler(this.WaferSur_Load);
             this.Size = new System.Drawing.Size(206, 207);
+            this.Load += new System.EventHandler(this.WaferSur_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -383,9 +383,7 @@
         private System.Windows.Forms.Panel panelF_9;
         private System.Windows.Forms.Panel panelF_10;
         private System.Windows.Forms.Panel panelF_11;
-        private System.Windows.Forms.Panel panelF_12;
         private System.Windows.Forms.Panel panelF_13;
-        private System.Windows.Forms.Panel panelF_14;
         private System.Windows.Forms.Panel panelF_15;
         private System.Windows.Forms.Panel panelF_16;
         private System.Windows.Forms.Panel panelF_18;
@@ -395,9 +393,11 @@
         private System.Windows.Forms.Panel panelF_23;
         private System.Windows.Forms.Panel panelF_24;
         private System.Windows.Forms.Panel panelF_25;
-        private System.Windows.Forms.Panel panelF_8;
         private System.Windows.Forms.Panel panelF_17;
         private System.Windows.Forms.Panel panelF_20;
-        public System.Windows.Forms.Panel panelF_1;
+        public System.Windows.Forms.Panel panelF_12;
+        public System.Windows.Forms.Panel panelF_14;
+        public System.Windows.Forms.Panel panelF_8;
+        private System.Windows.Forms.Panel panelF_1;
     }
 }

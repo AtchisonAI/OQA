@@ -137,6 +137,9 @@ namespace OQAMain
             button12.Visible = flag;
             button13.Visible = flag;
             button14.Visible = flag;
+            waferSurF.panelF_8.Enabled = flag;
+            waferSurF.panelF_12.Enabled = flag;
+            waferSurF.panelF_14.Enabled = flag;
         }
 
         public void checkAllOk()
@@ -210,6 +213,7 @@ namespace OQAMain
         {
             radioNine.Checked = true;
             checkAllOk();
+            waferSurF.nodeMode = true;
             waferSurF.qtyBox = this.qtyTextBox;
             waferSurF.rateBox = this.rateTextBox;
             waferSurF.groupNode = this.groupBoxSelect;

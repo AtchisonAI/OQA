@@ -31,7 +31,7 @@ namespace WaferSf
         public System.Windows.Forms.TextBox qtyBox;
         public System.Windows.Forms.TextBox rateBox;
         public System.Windows.Forms.GroupBox groupNode;
-        public string nodeMode = "";
+        public Boolean nodeMode =false;
         #endregion
 
         public WaferSur()
@@ -41,24 +41,23 @@ namespace WaferSf
 
         private void WaferSur_Load(object sender, EventArgs e)
         {
-            string[] nineList = { "11", "13", "15", "3", "23", "17", "7", "9", "19", "18" };
-            string[] thirList = { "11", "13", "15", "3", "23", "17", "7", "9", "19", "18", "12", "8", "14" };
-           
-                foreach(Control control in tableLayoutPanel1.Controls)
+            if (nodeMode)
+            {
+                string[] nineList = { "11", "13", "15", "3", "23", "17", "7", "9", "19", "18" };
+
+                foreach (Control control in tableLayoutPanel1.Controls)
                 {
-                    if(control is Panel)
+                    if (control is Panel)
                     {
                         Panel p = control as Panel;
-                        if (nodeMode.Equals("nine") && !nineList.Contains(p.Name.Split('_')[1]))
-                        {
-                            p.Enabled = false;
-                        }else if (nodeMode.Equals("thir") && !thirList.Contains(p.Name.Split('_')[1]))
+                        if (!nineList.Contains(p.Name.Split('_')[1]))
                         {
                             p.Enabled = false;
                         }
-                        
+
                     }
                 }
+            }
         }
         #region " Function Definition "
         private void drawPanel(PaintEventArgs e, Panel panelNum)

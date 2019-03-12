@@ -65,12 +65,12 @@
                   <Width>0.6cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.60029cm</Width>
+                  <Width>0.6cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.4cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -82,7 +82,7 @@
                                 <TextRun>
                                   <Value>=Fields!Defect01.Value</Value>
                                   <Style>
-                                    <FontSize>6pt</FontSize>
+                                    <FontSize>5pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -108,7 +108,6 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Defect02">
-                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -116,7 +115,7 @@
                                 <TextRun>
                                   <Value>=Fields!Defect02.Value</Value>
                                   <Style>
-                                    <FontSize>6pt</FontSize>
+                                    <FontSize>5pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -142,7 +141,6 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Defect03">
-                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -150,7 +148,7 @@
                                 <TextRun>
                                   <Value>=Fields!Defect03.Value</Value>
                                   <Style>
-                                    <FontSize>6pt</FontSize>
+                                    <FontSize>5pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -183,7 +181,7 @@
                                 <TextRun>
                                   <Value>=Fields!Defect04.Value</Value>
                                   <Style>
-                                    <FontSize>6pt</FontSize>
+                                    <FontSize>5pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -209,7 +207,6 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Defect05">
-                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -217,7 +214,7 @@
                                 <TextRun>
                                   <Value>=Fields!Defect05.Value</Value>
                                   <Style>
-                                    <FontSize>6pt</FontSize>
+                                    <FontSize>5pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -261,8 +258,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Height>0.6cm</Height>
-            <Width>3.00029cm</Width>
+            <Height>0.4cm</Height>
+            <Width>3cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -270,17 +267,17 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>0.26747in</Height>
+        <Height>0.4cm</Height>
         <Style />
       </Body>
-      <Width>1.20043in</Width>
+      <Width>3cm</Width>
       <Page>
-        <PageHeight>29.7cm</PageHeight>
-        <PageWidth>21cm</PageWidth>
-        <LeftMargin>2cm</LeftMargin>
-        <RightMargin>2cm</RightMargin>
-        <TopMargin>2cm</TopMargin>
-        <BottomMargin>2cm</BottomMargin>
+        <PageHeight>2cm</PageHeight>
+        <PageWidth>3cm</PageWidth>
+        <LeftMargin>0cm</LeftMargin>
+        <RightMargin>0cm</RightMargin>
+        <TopMargin>0cm</TopMargin>
+        <BottomMargin>0cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style />
       </Page>
@@ -307,6 +304,14 @@
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="wafer">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>b81d3624-477d-4516-8a8a-3e77dd51b625</rd:ReportID>
 </Report>

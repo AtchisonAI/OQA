@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 
 namespace WCFModels.OQA

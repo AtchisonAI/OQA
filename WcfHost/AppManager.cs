@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Deployment.Application;
+using System.Reflection;
 using WcfInspector;
 
 namespace WcfHost
@@ -11,7 +8,16 @@ namespace WcfHost
     {
         public static void InitApp()
         {
-            VersionContrl.serverVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            try
+            {
+                //用onceclick安装后获取的发布版本
+                VersionContrl.serverVersion = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
+            }
+            catch
+            {
+                //调试状态下获取的是程序集版本
+                VersionContrl.serverVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
         }
     }
 }

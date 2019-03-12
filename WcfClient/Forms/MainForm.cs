@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using WcfClient.Forms;
 using WcfClientCore.Form;
 using WcfClientCore.Utils.Authority;
+using WcfInspector;
 
 namespace WcfClient
 {
@@ -27,6 +28,7 @@ namespace WcfClient
             SetSytemStatusBar(AuthorityControl.GetUserProfile().systemPrefix.Trim(':'));
             SetUserStatusBar(AuthorityControl.GetUserProfile().userId);
             SetActiveStatusBar(Text);
+            SetVersionStatusBar(VersionContrl.clientVersion);
         }
 
         private void Emp_ToolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -175,6 +177,11 @@ namespace WcfClient
         private void SetSytemStatusBar(string systemPrefixText)
         {
             System_statusBarAdvPanel.Text = "System:" + systemPrefixText;
+        }
+
+        private void SetVersionStatusBar(string version)
+        {
+            Version_statusBarAdvPanel.Text = "Version:" +version;
         }
 
         private void Logout_ToolStripMenuItem_Click(object sender, System.EventArgs e)

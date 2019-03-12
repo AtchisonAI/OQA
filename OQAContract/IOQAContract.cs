@@ -53,8 +53,25 @@ namespace OQAService.Contract
         [OperationContract]
         ModelRsp<LotSlotidView> QryLotIspStsInfo(ModelRsp<LotSlotidView> LotSlotidView);
 
+
+
+        #endregion
+
+        
+        
+        #region  Package Info
+
+        ModelRsp<PKGShipView> QryPKGShipInfo(ModelRsp<PKGShipView> PKGShip);
+
         #endregion
 
 
+        #region  WaferInspectRecord
+        ModelRsp<WaferInspectRecordView> QueryLotInfo(ModelRsp<WaferInspectRecordView> LOTView);
+
+        ModelRsp<WaferInspectRecordView> QueryWaferInspectionRecordInfo(
+            ModelRsp<WaferInspectRecordView> WaferInspectRecord);
+
+        #endregion
     }
 }

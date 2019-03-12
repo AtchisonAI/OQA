@@ -80,9 +80,9 @@ namespace OQAMain
             var out_data = OQASrv.Call.QryLotIspStsInfo(in_node);
             if (out_data._success == true)
             {
-                if (out_data.model.ISPLOTST_list.Count > 0)
+                if (out_data.model.ISPLOTSTS_list.Count > 0)
                 {
-                    if (out_data.model.ISPLOTST_list.Count(p => p.Status == "已检验") == 0)
+                    if (out_data.model.ISPLOTSTS_list.Count(p => p.Status == "已检验") == 0)
                     {
                         MessageBox.Show("LOT当前不符合Foup Change状态!!");
                     }

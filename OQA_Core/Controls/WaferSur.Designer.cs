@@ -364,6 +364,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "WaferSur";
+            this.Load += new System.EventHandler(this.WaferSur_Load);
             this.Size = new System.Drawing.Size(206, 207);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

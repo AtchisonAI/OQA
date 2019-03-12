@@ -120,7 +120,9 @@ namespace OQAMain
 
         private void FrmAOIInput_Load(object sender, EventArgs e)
         {
-            waferSurF.box = this.defectTextBox;
+            waferSurF.codeBox = this.defectTextBox;
+            waferSurF.qtyBox = this.qtyTextBox;
+            waferSurF.rateBox = this.rateTextBox;
             this.pageInfoShow();
         }
 

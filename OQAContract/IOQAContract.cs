@@ -74,13 +74,13 @@ namespace OQAContract
 
         #endregion
 
-       
+
 
         #region  WaferInspectRecord
+        [OperationContract]
         ModelRsp<WaferInspectRecordView> QueryLotInfo(ModelRsp<WaferInspectRecordView> LOTView);
-
-        ModelRsp<WaferInspectRecordView> QueryWaferInspectionRecordInfo(
-            ModelRsp<WaferInspectRecordView> WaferInspectRecord);
+        [OperationContract]
+        ModelRsp<WaferInspectRecordView> QueryWaferInspectionRecordInfo(ModelRsp<WaferInspectRecordView> WaferInspectRecord);
 
         #endregion
     }

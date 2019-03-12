@@ -23,7 +23,11 @@ namespace OQAService.Services
                 ModelRsp<AOIShowView> Qry_out = new ModelRsp<AOIShowView>();
                 Qry_in.model = queryInfoReq.model;
                 Qry_out.model = new AOIShowView();
-
+                Boolean flag = true;
+                if (!Qry_in.model.QryAllFlag)
+                {
+                    flag = false;
+                }
                 //验证系统级别输入参数
                 if (Qry_in.model.C_PROC_STEP.Equals("") == true)
                 {
@@ -47,47 +51,46 @@ namespace OQAService.Services
                     {
                         case '1':
                             //验证业务级输入参数
-                            if (!Qry_in.model.ISPWAFITM.LotId.Trim().Equals(""))
+                            if (null != Qry_in.model.ISPWAFITM_list[0].LotId &&!Qry_in.model.ISPWAFITM_list[0].LotId.Trim().Equals(""))
                             {
-                                AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.LotId), Qry_in.model.ISPWAFITM.LotId.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                                AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.LotId), Qry_in.model.ISPWAFITM_list[0].LotId.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
-                            if (!Qry_in.model.ISPWAFITM.SlotId.Trim().Equals(""))
+                            if (null!=Qry_in.model.ISPWAFITM_list[0].SlotId &&  !Qry_in.model.ISPWAFITM_list[0].SlotId.Trim().Equals(""))
                             {
-                                AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.SlotId), Qry_in.model.ISPWAFITM.SlotId.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                                AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.SlotId), Qry_in.model.ISPWAFITM_list[0].SlotId.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
-                            if (!Qry_in.model.ISPWAFITM.WaferId.Trim().Equals(""))
+                            if (null != Qry_in.model.ISPWAFITM_list[0].WaferId && !Qry_in.model.ISPWAFITM_list[0].WaferId.Trim().Equals(""))
                             {
-                                AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.WaferId), Qry_in.model.ISPWAFITM.WaferId.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                                AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.WaferId), Qry_in.model.ISPWAFITM_list[0].WaferId.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
-                            if (!Qry_in.model.ISPWAFITM.InspectType.Trim().Equals(""))
+                            if (null != Qry_in.model.ISPWAFITM_list[0].InspectType && !Qry_in.model.ISPWAFITM_list[0].InspectType.Trim().Equals(""))
                             {
-                                AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.InspectType), Qry_in.model.ISPWAFITM.InspectType.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                                AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.InspectType), Qry_in.model.ISPWAFITM_list[0].InspectType.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
-                            if (!Qry_in.model.ISPWAFITM.SideType.Trim().Equals(""))
+                            if (null != Qry_in.model.ISPWAFITM_list[0].SideType && !Qry_in.model.ISPWAFITM_list[0].SideType.Trim().Equals(""))
                             {
-                                AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.SideType), Qry_in.model.ISPWAFITM.SideType.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                                AddCondition(PageQueryReq, GetParaName<ISPWAFITM>(p => p.SideType), Qry_in.model.ISPWAFITM_list[0].SideType.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
-                            AddSortCondition(PageQueryReq, "InspectType", SortType.ASC);
-                            PageModelRsp<ISPWAFITM> wafModel = PageQuery<ISPWAFITM>(PageQueryReq);
+                            AddSortCondition(PageQueryReq, "SlotId", SortType.ASC);
+                            ModelListRsp<ISPWAFITM> wafModel = Query<ISPWAFITM>(PageQueryReq);
                             if (null != wafModel)
                             {
-                                if (null != wafModel.models && wafModel.models.Count > 0)
+                                    Qry_out.model.ISPWAFITM_list = wafModel.models;
+                            }
+                            if (flag)
+                            {
+                                ModelListRsp<ISPWAFDFT> detModel = Query<ISPWAFDFT>(PageQueryReq);
+                                if (null != detModel)
                                 {
-                                    Qry_out.model.ISPWAFITM = wafModel.models[0];
+                                    Qry_out.model.ISPWAFDFT_list = detModel.models;
                                 }
-
+                                ModelListRsp<ISPIMGDEF> imgModel = Query<ISPIMGDEF>(PageQueryReq);
+                                if (null != imgModel)
+                                {
+                                    Qry_out.model.ISPIMGDEF_list = imgModel.models;
+                                }
                             }
-                            ModelListRsp<ISPWAFDFT> detModel = Query<ISPWAFDFT>(PageQueryReq);
-                            if (null != detModel)
-                            {
-                                Qry_out.model.ISPWAFDFT_list = detModel.models;
-                            }
-                            ModelListRsp<ISPIMGDEF> imgModel = Query<ISPIMGDEF>(PageQueryReq);
-                            if (null != imgModel)
-                            {
-                                Qry_out.model.ISPIMGDEF_list = imgModel.models;
-                            }
-
+                           
                             break;
                         case '2':
                             // TODO

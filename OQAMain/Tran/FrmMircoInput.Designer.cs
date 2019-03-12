@@ -115,8 +115,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.waferSurB = new WaferSf.WaferSur();
-            this.backButton = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.frontButton = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
@@ -131,15 +129,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(803, 6);
+            this.btnClose.Location = new System.Drawing.Point(632, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(615, 6);
+            this.btnCreate.Location = new System.Drawing.Point(441, 6);
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(709, 6);
+            this.btnEdite.Location = new System.Drawing.Point(538, 6);
             // 
             // pnlMenu
             // 
@@ -193,6 +192,7 @@
             this.slotComboBox.Name = "slotComboBox";
             this.slotComboBox.Size = new System.Drawing.Size(121, 22);
             this.slotComboBox.TabIndex = 4;
+            this.slotComboBox.SelectedIndexChanged += new System.EventHandler(this.slotComboBox_SelectedIndexChanged);
             // 
             // label15
             // 
@@ -300,6 +300,7 @@
             this.MagnificationTextBox.Name = "MagnificationTextBox";
             this.MagnificationTextBox.Size = new System.Drawing.Size(90, 20);
             this.MagnificationTextBox.TabIndex = 12;
+            this.MagnificationTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MagnificationTextBox_KeyPress);
             // 
             // cmtRichTextBox
             // 
@@ -363,8 +364,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.groupBoxSelect);
-            this.groupBox1.Controls.Add(this.waferSurB);
-            this.groupBox1.Controls.Add(this.backButton);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.frontButton);
             this.groupBox1.Controls.Add(this.label12);
@@ -1100,25 +1099,6 @@
             this.label1.TabIndex = 99;
             this.label1.Text = "1区(11) :";
             // 
-            // waferSurB
-            // 
-            this.waferSurB.Location = new System.Drawing.Point(93, 70);
-            this.waferSurB.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.waferSurB.Name = "waferSurB";
-            this.waferSurB.Size = new System.Drawing.Size(210, 210);
-            this.waferSurB.TabIndex = 38;
-            // 
-            // backButton
-            // 
-            this.backButton.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.backButton.Location = new System.Drawing.Point(197, 289);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(123, 23);
-            this.backButton.TabIndex = 37;
-            this.backButton.Text = "Back side";
-            this.backButton.UseVisualStyleBackColor = true;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -1132,13 +1112,12 @@
             // frontButton
             // 
             this.frontButton.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.frontButton.Location = new System.Drawing.Point(65, 289);
+            this.frontButton.Location = new System.Drawing.Point(138, 289);
             this.frontButton.Name = "frontButton";
             this.frontButton.Size = new System.Drawing.Size(123, 23);
             this.frontButton.TabIndex = 31;
             this.frontButton.Text = "Front side";
             this.frontButton.UseVisualStyleBackColor = true;
-            this.frontButton.Click += new System.EventHandler(this.frontButton_Click);
             // 
             // label12
             // 
@@ -1183,6 +1162,7 @@
             this.Controls.SetChildIndex(this.groupBox3, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.pnlMenu.ResumeLayout(false);
+            this.pnlMenu.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -1283,8 +1263,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
-        private WaferSf.WaferSur waferSurB;
-        private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button frontButton;
         private System.Windows.Forms.Label label12;

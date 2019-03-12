@@ -442,7 +442,7 @@ namespace WCFModels.OQA
     [TableName("ISPLOTSTS")]
     [PrimaryKey("LOT_ID,FOUP_ID",AutoIncrement = false)]
     [ExplicitColumns]
-    public partial class ISPLOTST
+    public partial class ISPLOTSTS
     {
         [DataMember]
         [Column("LOT_ID")] public string LotId { get; set; }
@@ -524,7 +524,7 @@ namespace WCFModels.OQA
 
     [DataContract]
     [TableName("ISPWAFDFT")]
-    [PrimaryKey("LOT_ID,SLOT_ID,WAFER_ID,SIDE_TYPE,INSPECT_TYPE,AREA_ID",AutoIncrement = false)]
+    [PrimaryKey("LOT_ID,SLOT_ID,WAFER_ID,SIDE_TYPE,INSPECT_TYPE,AREA_ID,DEFECT_CODE", AutoIncrement = false)]
     [ExplicitColumns]
     public partial class ISPWAFDFT
     {

@@ -47,7 +47,8 @@ namespace OQAContract
         #region  Wafer Inspection Record Print set
         [OperationContract]
         ModelRsp<WaferInspectRecordView> QueryWaferInspectionRecordInfo(ModelRsp<WaferInspectRecordView> WaferInspectRecordView);
-
+        [OperationContract]
+        ModelRsp<WaferInspectRecordView> QueryLotInfo(ModelRsp<WaferInspectRecordView> QueryLotInfoView);
         #endregion
 
         #region  Foup Change

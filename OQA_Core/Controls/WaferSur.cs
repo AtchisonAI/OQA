@@ -272,8 +272,11 @@ namespace WaferSf
 
         public void showWafer(List<ISPWAFDFT> valueList)
         {//数据显示
+            clearPanel();
+            defectCode = new string[25];
             if (null != valueList && valueList.Count > 0)
             {
+                
                 foreach (var child in valueList)
                 {
                     showWaferPanel(child.AreaId.ToString(), child.DefectCode);

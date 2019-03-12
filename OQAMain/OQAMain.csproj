@@ -236,7 +236,6 @@
     <EmbeddedResource Include="Print\FrmWaferInspectRecord.rdlc" />
     <EmbeddedResource Include="Print\FrmPackageLabelPrint.rdlc" />
     <EmbeddedResource Include="Print\FrmWaferInspectRecord_sub.rdlc" />
-    <EmbeddedResource Include="Print\WaferAppearanceInspectionRecord.rdlc" />
     <EmbeddedResource Include="Tran\FrmDefectLotResult.resx">
       <DependentUpon>FrmDefectLotResult.cs</DependentUpon>
     </EmbeddedResource>

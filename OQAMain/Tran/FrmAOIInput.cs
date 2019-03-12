@@ -30,12 +30,13 @@ namespace OQAMain
         #region " Variable Definition "
         private string lotId = "";
         private string sideType = "";
+        private string slotId = "";
         #endregion
 
 
         #region " Function Definition "
-     
-        
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             waferSurF.clearPanel();
@@ -103,12 +104,10 @@ namespace OQAMain
                 UpdateModelReq<AOIShowView> updateReq = new UpdateModelReq<AOIShowView>();
                 this.getUpdateModel(updateReq);
                 ModelRsp<AOIShowView> rspInfo = OQASrv.Call.CreateOrUpdateAOI(updateReq);
+                refreshPage();
                 if (!rspInfo._success)
                 {
                     MessageBox.Show(rspInfo._ErrorMsg);
-                }
-                else
-                {
                 }
             }
             catch (System.Exception ex)
@@ -117,7 +116,12 @@ namespace OQAMain
             }
         }
 
-
+        private void refreshPage()
+        {
+            ComFunc.ClearBoxValue(groupBox3);
+            waferSurF.clearPanel();
+            queryPageInfo(lotId, slotId, sideType);
+        }
         private void FrmAOIInput_Load(object sender, EventArgs e)
         {
             waferSurF.codeBox = this.defectTextBox;
@@ -130,7 +134,7 @@ namespace OQAMain
         private void pageInfoShow()
         {
              lotId = "1";
-            string slotId = "1";
+             slotId = "1";
              sideType = "F";
 
             try
@@ -296,7 +300,7 @@ namespace OQAMain
                     }
                     else
                     {
-                        OQA_Core.ComFunc.ClearBoxValue(groupBox3);
+                        //ComFunc.ClearBoxValue(groupBox3);
                     }
                     //if (null != qryResult.model.ISPIMGDEF_list && qryResult.model.ISPIMGDEF_list.Count > 0)
                     //{
@@ -306,7 +310,7 @@ namespace OQAMain
                 }
                 else
                 {
-                    OQA_Core.ComFunc.ClearBoxValue(groupBox3);
+                    //ComFunc.ClearBoxValue(groupBox3);
                 }
                 
                   waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);

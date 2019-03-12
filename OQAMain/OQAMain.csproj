@@ -232,6 +232,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Print\FrmOQAShipListPrint.rdlc" />
     <EmbeddedResource Include="Print\FrmWaferInspectRecord.rdlc" />
     <EmbeddedResource Include="Print\FrmPackageLabelPrint.rdlc" />
     <EmbeddedResource Include="Print\FrmWaferInspectRecord_sub.rdlc" />

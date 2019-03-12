@@ -1,5 +1,5 @@
-﻿using System;
-using OQAService.Contract;
+﻿using OQAContract;
+using System;
 using WCFModels.Message;
 using WCFModels.OQA;
 

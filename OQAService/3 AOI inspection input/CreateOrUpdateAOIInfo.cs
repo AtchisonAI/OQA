@@ -2,7 +2,8 @@
 using WCFModels.Message;
 using WCFModels.OQA;
 using System.ServiceModel;
-using OQAService.Contract;
+using OQAContract;
+using WCFModels.MESDB.FWTST1;
 
 namespace OQAService.Services
 {
@@ -201,6 +202,94 @@ namespace OQAService.Services
 
         }
 
+        ModelRsp<DefectCodeSave> IOQAContract.CreateDefectCodeInfo(ModelRsp<DefectCodeSave> DefectCode)
+        {
+            throw new NotImplementedException();
+        }
 
+        ModelRsp<AOIShowView> IOQAContract.CreateOrUpdateAOI(UpdateModelReq<AOIShowView> updateReq)
+        {
+            throw new NotImplementedException();
+        }
+
+        ModelRsp<LotSlotidView> IOQAContract.QryLotIspSlotidInfo(ModelRsp<LotSlotidView> LotSlotidView)
+        {
+            throw new NotImplementedException();
+        }
+
+        ModelRsp<LotSlotidView> IOQAContract.QryLotIspStsInfo(ModelRsp<LotSlotidView> LotSlotidView)
+        {
+            throw new NotImplementedException();
+        }
+
+        ModelRsp<LotSlotidView> IOQAContract.QryLotMesSlotidInfo(ModelRsp<LotSlotidView> LotSlotidView)
+        {
+            throw new NotImplementedException();
+        }
+
+        ModelRsp<LotSlotidView> IOQAContract.QryLotSlotidInfo(ModelRsp<LotSlotidView> LotSlotidView)
+        {
+            throw new NotImplementedException();
+        }
+
+        ModelRsp<PKGShipView> IOQAContract.QryPKGShipInfo(ModelRsp<PKGShipView> PKGShip)
+        {
+            throw new NotImplementedException();
+        }
+
+        ModelRsp<AOIShowView> IOQAContract.QueryAOIInfo(ModelRsp<AOIShowView> queryReq)
+        {
+            throw new NotImplementedException();
+        }
+
+        ModelRsp<DefectCodeView> IOQAContract.QueryDefectCodeInfo(ModelRsp<DefectCodeView> DefectCodeView)
+        {
+            throw new NotImplementedException();
+        }
+
+        PageModelRsp<Emp> IOQAContract.QueryEmpInfo(QueryEmpReq queryEmpReq)
+        {
+            throw new NotImplementedException();
+        }
+
+        ModelListRsp<CEmpPercentView> IOQAContract.QueryEmpPercent(QueryReq queryReq)
+        {
+            throw new NotImplementedException();
+        }
+
+        ModelListRsp<CEmpSumView> IOQAContract.QueryEmpSum(QueryReq queryReq)
+        {
+            throw new NotImplementedException();
+        }
+
+        ModelRsp<WaferInspectRecordView> IOQAContract.QueryLotInfo(ModelRsp<WaferInspectRecordView> LOTView)
+        {
+            throw new NotImplementedException();
+        }
+
+        ModelRsp<LotIDListView> IOQAContract.QueryLotList(ModelRsp<LotIDListView> PKGShip)
+        {
+            throw new NotImplementedException();
+        }
+
+        ModelRsp<WaferInspectRecordView> IOQAContract.QueryWaferInspectionRecordInfo(ModelRsp<WaferInspectRecordView> WaferInspectRecord)
+        {
+            throw new NotImplementedException();
+        }
+
+        ModelRsp<ImageSave> IOQAContract.SaveImageInfo(ModelRsp<ImageSave> ImageSave)
+        {
+            throw new NotImplementedException();
+        }
+
+        ModelRsp<DemoView> IOQAContract.UpdateDemoInfo(UpdateModelReq<DemoView> updateReq)
+        {
+            throw new NotImplementedException();
+        }
+
+        ModelListRsp<Emp> IOQAContract.UpdateEmpInfo(UpdateModelListReq<Emp> updateReq)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

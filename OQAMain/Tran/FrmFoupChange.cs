@@ -1,11 +1,9 @@
-﻿using Syncfusion.Windows.Forms;
-using OQA_Core;
+﻿using OQA_Core;
 using System;
 using System.Windows.Forms;
 using WCFModels.Message;
 using WCFModels.OQA;
 using System.Linq;
-using Syncfusion.XPS;
 using System.Collections.Generic;
 using System.Drawing;
 

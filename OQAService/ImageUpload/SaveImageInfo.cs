@@ -1,5 +1,5 @@
 ﻿using NPoco;
-using OQAService.Contract;
+using OQAContract;
 using System;
 using System.Collections.Generic;
 using System.ServiceModel;

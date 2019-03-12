@@ -1,4 +1,4 @@
-﻿using OQAService.Contract;
+﻿using OQAContract;
 using WcfClientCore.WcfSrv;
 
 namespace OQA_Core

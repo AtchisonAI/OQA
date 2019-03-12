@@ -3,7 +3,7 @@ using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 using WCFModels.OQA;
 
-namespace OQAService.Contract
+namespace OQAContract
 {
     [ServiceContract]
     public interface IOQAContract

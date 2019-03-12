@@ -139,27 +139,6 @@ namespace OQAMain
             button14.Visible = flag;
         }
 
-        public void showDefectCheck(string i, string code)
-        {
-            string nameNg = "ngBox_" + i;
-            string nameOk = "okBox_" + i;
-            Control[] ctrlsNg = groupBoxSelect.Controls.Find(nameNg, true);
-            Control[] ctrlsOk = groupBoxSelect.Controls.Find(nameOk, true);
-            CheckBox cekNg = (CheckBox)ctrlsNg[0];
-            CheckBox cekOk = (CheckBox)ctrlsOk[0];
-
-            if (null != code && !code.Equals(""))
-            {
-                cekNg.Checked = true;
-                cekOk.Checked = false;
-            }
-            else
-            {
-                cekNg.Checked = false;
-                cekOk.Checked = true;
-            }
-        }
-
         public void checkAllOk()
         {
             foreach (Control control in groupBoxSelect.Controls)
@@ -176,32 +155,6 @@ namespace OQAMain
 
         }
 
-        public void checkBoxChange()
-        {
-            string[] codeList = new string[25];
-            codeList = waferSurF.defectCode;
-            for (int i = 0; i < 24; i++)
-            {
-                i += 1;
-                //showDefectCheck(i.ToString(), codeList[i]);
-                foreach (Control control in groupBoxSelect.Controls)
-                {
-                    if (control is CheckBox)
-                    {
-                        if (control.Name.Split('_')[1].Equals(i.ToString()))
-                        {
-
-                        }
-                        CheckBox c = control as CheckBox;
-                        if (control.Name.Split('_')[0].Equals("okBox"))
-                        {
-                            c.Checked = true;
-                        }
-                    }
-                }
-            }
-
-        }
 
         #endregion
 
@@ -224,9 +177,9 @@ namespace OQAMain
         }
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioThr.Checked)
+            if (radioThir.Checked)
             {
-                radioThr.Checked = true;
+                radioThir.Checked = true;
                 hideNode(true);
             }
         }
@@ -256,6 +209,10 @@ namespace OQAMain
         private void FrmMircoInput_Load(object sender, EventArgs e)
         {
             radioNine.Checked = true;
+            checkAllOk();
+            waferSurF.qtyBox = this.qtyTextBox;
+            waferSurF.rateBox = this.rateTextBox;
+            waferSurF.groupNode = this.groupBoxSelect;
             this.pageInfoShow();
         }
 

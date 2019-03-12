@@ -24,7 +24,7 @@ namespace WCFModels.OQA
         }
         private char c_proc_step;
 
-        public PKGShipView()
+        public LotIDListView()
         {
             ISPLOTST_list = new List<ISPLOTST>();
         }
@@ -45,20 +45,20 @@ namespace WCFModels.OQA
         private char c_tran_flag;
         //服务传入参数
         [DataMember]
-        public string IN_SHIP_NO {
-            get
-            {
-                return in_ship_no;
-            }
-            set
-            {
-                in_ship_no = value;
-            }
-        }
-        private string in_ship_no;
+        //public string IN_SHIP_NO {
+        //    get
+        //    {
+        //        return in_ship_no;
+        //    }
+        //    set
+        //    {
+        //        in_ship_no = value;
+        //    }
+        //}
+        //private string in_ship_no;
        
         //服务传出数据结构
-        [DataMember]
+        //[DataMember]
         public List<ISPLOTST> ISPLOTST_list { get; set; }
         //服务传出结果在BaseRsq:_success  _ErrorMsg
     }

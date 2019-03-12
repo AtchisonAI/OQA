@@ -62,5 +62,10 @@ namespace OQAService.Contract
         [OperationContract]
         ModelRsp<PKGShipView> QryPKGShipInfo(ModelRsp<PKGShipView> PKGShipView);
         #endregion
+
+        #region  IOQA LOT transfer
+        [OperationContract]
+        ModelRsp<LotIDListView> QueryLotList(ModelRsp<LotIDListView> LotIDListView);
+        #endregion
     }
 }

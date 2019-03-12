@@ -82,6 +82,7 @@
     <Compile Include="1.OQASeverStruct\4 Marco inspection input\MacroView.cs" />
     <Compile Include="1.OQASeverStruct\5 Mirco inspection input\MicroView.cs" />
     <Compile Include="1.OQASeverStruct\7 FOUP change\LotSlotidView.cs" />
+    <Compile Include="1.OQASeverStruct\9 Lot Transfer\LotIDListView.cs" />
     <Compile Include="2.OQATableStruct\OQADB.cs" />
     <Compile Include="MESDB\FWTST1\Table\FWTST1_Table.cs" />
     <Compile Include="MESDB\FWTST1\View\FWTST1_View.cs" />
@@ -106,7 +107,6 @@
     <Folder Include="1.OQASeverStruct\2 Defect Lot result\" />
     <Folder Include="1.OQASeverStruct\6 Defect send %28PNDN%29\" />
     <Folder Include="1.OQASeverStruct\8 Lot package\" />
-    <Folder Include="1.OQASeverStruct\9 Lot Transfer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

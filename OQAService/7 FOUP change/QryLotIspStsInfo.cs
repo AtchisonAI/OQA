@@ -1,6 +1,6 @@
-﻿using System;
+﻿using OQAService.Contract;
+using System;
 using System.Collections.Generic;
-using OQAService.Contract;
 using WCFModels;
 using WCFModels.Message;
 using WCFModels.OQA;
@@ -10,7 +10,7 @@ namespace OQAService.Services
 {
     public partial class OQAService : OQABaseService, IOQAContract
     {
-        public ModelRsp<PKGShipView> QryPKGShipInfo(ModelRsp<PKGShipView> PKGShip)
+        public ModelRsp<LotSlotidView> QryLotIspStsInfo(ModelRsp<LotSlotidView> LotIspStsInfo)
         {
             try
             {
@@ -21,11 +21,13 @@ namespace OQAService.Services
                     sortCondittionList = new List<SortCondition>()
                 };
 
-                ModelRsp<PKGShipView> In_node = new ModelRsp<PKGShipView>();
-                ModelRsp<PKGShipView> Out_node = new ModelRsp<PKGShipView>();
-                WaferInspectRecordView out_list = new WaferInspectRecordView();
+                ModelRsp<LotSlotidView> In_node = new ModelRsp<LotSlotidView>();
+                ModelRsp<LotSlotidView> Out_node = new ModelRsp<LotSlotidView>();
 
-                In_node.model = PKGShip.model;
+                In_node.model = LotIspStsInfo.model;
+
+              
+
 
                 //验证系统级别输入参数
 
@@ -55,44 +57,41 @@ namespace OQAService.Services
 
                             PageQueryReq.CurrentPage = 1;
                             PageQueryReq.ItemsPerPage = 200;
-                            if (In_node.model.IN_SHIP_NO.Trim().Equals("") == false)
-                            {
-                                AddCondition(PageQueryReq, GetParaName<PKGSHPDAT>(p=>p.ShipId), In_node.model.IN_SHIP_NO.Trim(), LogicCondition.AndAlso,CompareType.Equal);
-                            }
                            
-                                                        
-                            AddSortCondition(PageQueryReq, GetParaName <PKGSHPDAT> (p=>p.ShipId), SortType.ASC);
+                            if (In_node.model.IN_LOT_ID.Trim().Equals("") == false)
+                            {
+                               
+                                AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), In_node.model.IN_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                            }
+                            AddSortCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);
+                            var data = PageQuery<ISPLOTSTS>(PageQueryReq);
                             
-                            var data = PageQuery<PKGSHPDAT>(PageQueryReq);
+                            Out_node.model.ISPLOTSTS_list = data.models;
 
-                            Out_node.model.PKGSHPDAT_list = data.models;
+                           
+                            //验证来料状态
+                            if (Out_node.model.ISPLOTSTS_list.Count > 0) 
+                            {
+                                foreach (var temp in Out_node.model.ISPLOTSTS_list)
+                                {
+
+                                    if (temp.Status != "已检验")
+                                    {
+
+                                    }
+                                }
+                            }
+                            
 
                             break;
 
                         case '2':
-
-                            //if (In_node.model.in_isp_code.Trim().Equals("") == true)
-                            //{
-                            //    Out_node._success = false;
-                            //    Out_node._ErrorMsg = "IN_ISP_CODE is null!";
-                            //    return Out_node;
-                            //}
-                            //if (In_node.model.in_isp_type.Trim().Equals("") == true)
-                            //{
-                            //    Out_node._success = false;
-                            //    Out_node._ErrorMsg = "IN_ISP_TYPE is null!";
-                            //    return Out_node;
-                            //}
                             // TODO
-
                             break;
                         case '3':
                             // TODO
-
                             break;
-
                     }
-                    
                 }
 
                 Out_node._success = true;
@@ -101,7 +100,7 @@ namespace OQAService.Services
             }
             catch (Exception ex)
             {
-                ModelRsp<PKGShipView> Out_node = new ModelRsp<PKGShipView>();
+                ModelRsp<LotSlotidView> Out_node = new ModelRsp<LotSlotidView>();
                 Out_node._success = false;
                 Out_node._ErrorMsg = ex.Message.ToString();
 

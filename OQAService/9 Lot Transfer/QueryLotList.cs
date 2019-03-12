@@ -1,4 +1,4 @@
-﻿using OQAContract;
+﻿using OQAService.Contract;
 using System;
 using System.Collections.Generic;
 using WCFModels;
@@ -10,7 +10,7 @@ namespace OQAService.Services
 {
     public partial class OQAService : OQABaseService, IOQAContract
     {
-        public ModelRsp<LotSlotidView> QryLotSlotidInfo(ModelRsp<LotSlotidView> LotSlotid)
+        public ModelRsp<LotIDListView> QueryLotList(ModelRsp<LotIDListView> PKGShip)
         {
             try
             {
@@ -21,10 +21,11 @@ namespace OQAService.Services
                     sortCondittionList = new List<SortCondition>()
                 };
 
-                ModelRsp<LotSlotidView> In_node = new ModelRsp<LotSlotidView>();
-                ModelRsp<LotSlotidView> Out_node = new ModelRsp<LotSlotidView>();
+                ModelRsp<LotIDListView> In_node = new ModelRsp<LotIDListView>();
+                ModelRsp<LotIDListView> Out_node = new ModelRsp<LotIDListView>();
+                WaferInspectRecordView out_list = new WaferInspectRecordView();
 
-                In_node.model = LotSlotid.model;
+                In_node.model = PKGShip.model;
 
                 //验证系统级别输入参数
 
@@ -54,23 +55,34 @@ namespace OQAService.Services
 
                             PageQueryReq.CurrentPage = 1;
                             PageQueryReq.ItemsPerPage = 200;
-                            if (In_node.model.IN_LOT_ID.Trim().Equals("") == false)
-                            {
-                                AddCondition(PageQueryReq, GetParaName<PKGSLTDEF>(p=>p.LotId), In_node.model.IN_LOT_ID.Trim(), LogicCondition.AndAlso,CompareType.Equal);
-                            }
+                            //if (In_node.model.IN_SHIP_NO.Trim().Equals("") == false)
+                            //{
+                                AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p=>p.LotId), null, LogicCondition.AndAlso,CompareType.NotEqual);
+                           // }
                            
                                                         
-                            AddSortCondition(PageQueryReq, GetParaName <PKGSLTDEF> (p=>p.LotId), SortType.ASC);
+                            AddSortCondition(PageQueryReq, GetParaName <ISPLOTSTS> (p=>p.LotId), SortType.ASC);
                             
-                            var data = PageQuery<PKGSLTDEF>(PageQueryReq);
+                            var data = PageQuery<ISPLOTSTS>(PageQueryReq);
 
-                            Out_node.model.PKGSLTDEF_list = data.models;
+                            Out_node.model.ISPLOTST_list = data.models;
 
                             break;
 
                         case '2':
 
-                            
+                            //if (In_node.model.in_isp_code.Trim().Equals("") == true)
+                            //{
+                            //    Out_node._success = false;
+                            //    Out_node._ErrorMsg = "IN_ISP_CODE is null!";
+                            //    return Out_node;
+                            //}
+                            //if (In_node.model.in_isp_type.Trim().Equals("") == true)
+                            //{
+                            //    Out_node._success = false;
+                            //    Out_node._ErrorMsg = "IN_ISP_TYPE is null!";
+                            //    return Out_node;
+                            //}
                             // TODO
 
                             break;
@@ -89,7 +101,7 @@ namespace OQAService.Services
             }
             catch (Exception ex)
             {
-                ModelRsp<LotSlotidView> Out_node = new ModelRsp<LotSlotidView>();
+                ModelRsp<LotIDListView> Out_node = new ModelRsp<LotIDListView>();
                 Out_node._success = false;
                 Out_node._ErrorMsg = ex.Message.ToString();
 

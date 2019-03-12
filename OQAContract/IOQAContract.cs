@@ -3,7 +3,7 @@ using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 using WCFModels.OQA;
 
-namespace OQAContract
+namespace OQAService.Contract
 {
     [ServiceContract]
     public interface IOQAContract
@@ -35,7 +35,6 @@ namespace OQAContract
 
         #endregion
 
-
         #region AOI
         [OperationContract]
         ModelRsp<AOIShowView> QueryAOIInfo(ModelRsp<AOIShowView> queryReq);
@@ -44,24 +43,50 @@ namespace OQAContract
         ModelRsp<AOIShowView> CreateOrUpdateAOI(UpdateModelReq<AOIShowView> updateReq);
         #endregion
 
-        #region  Wafer Inspection Record Print set
+
+        #region  Foup Change
+        //关于Foup Change 的查询服务
         [OperationContract]
-        ModelRsp<WaferInspectRecordView> QueryWaferInspectionRecordInfo(ModelRsp<WaferInspectRecordView> WaferInspectRecordView);
+        ModelRsp<LotSlotidView> QryLotIspSlotidInfo(ModelRsp<LotSlotidView> LotSlotidView);
         [OperationContract]
-        ModelRsp<WaferInspectRecordView> QueryLotInfo(ModelRsp<WaferInspectRecordView> QueryLotInfoView);
+        ModelRsp<LotSlotidView> QryLotMesSlotidInfo(ModelRsp<LotSlotidView> LotSlotidView);
+        [OperationContract]
+        ModelRsp<LotSlotidView> QryLotIspStsInfo(ModelRsp<LotSlotidView> LotSlotidView);
+
+        #endregion
+
+        #region  Lot Transfer
+
+        ModelRsp<LotIDListView> QueryLotList(ModelRsp<LotIDListView> PKGShip);
+
         #endregion
 
         #region  Foup Change
         //关于Foup Change 的查询服务
         [OperationContract]
         ModelRsp<LotSlotidView> QryLotSlotidInfo(ModelRsp<LotSlotidView> LotSlotidView);
+        #endregion
+
+        #region  Package Info
+
+        ModelRsp<PKGShipView> QryPKGShipInfo(ModelRsp<PKGShipView> PKGShip);
 
         #endregion
 
-
-        #region  IOQA Ship List Print
+        #region  Image Save
         [OperationContract]
-        ModelRsp<PKGShipView> QryPKGShipInfo(ModelRsp<PKGShipView> PKGShipView);
+        ModelRsp<ImageSave> SaveImageInfo(ModelRsp<ImageSave> ImageSave);
+
+         #endregion
+
+
+
+        #region  WaferInspectRecord
+        ModelRsp<WaferInspectRecordView> QueryLotInfo(ModelRsp<WaferInspectRecordView> LOTView);
+
+        ModelRsp<WaferInspectRecordView> QueryWaferInspectionRecordInfo(
+            ModelRsp<WaferInspectRecordView> WaferInspectRecord);
+
         #endregion
     }
 }

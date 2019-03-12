@@ -2,7 +2,7 @@
 using WCFModels.Message;
 using WCFModels.OQA;
 using System.ServiceModel;
-using OQAContract;
+using OQAService.Contract;
 
 namespace OQAService.Services
 {

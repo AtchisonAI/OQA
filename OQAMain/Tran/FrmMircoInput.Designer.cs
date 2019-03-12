@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioThr = new System.Windows.Forms.RadioButton();
+            this.radioThir = new System.Windows.Forms.RadioButton();
             this.radioNine = new System.Windows.Forms.RadioButton();
             this.slotComboBox = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -129,16 +129,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(632, 6);
+            this.btnClose.Location = new System.Drawing.Point(649, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(441, 6);
+            this.btnCreate.Location = new System.Drawing.Point(458, 6);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(538, 6);
+            this.btnEdite.Location = new System.Drawing.Point(555, 6);
             // 
             // pnlMenu
             // 
@@ -147,7 +147,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioThr);
+            this.groupBox2.Controls.Add(this.radioThir);
             this.groupBox2.Controls.Add(this.radioNine);
             this.groupBox2.Controls.Add(this.slotComboBox);
             this.groupBox2.Controls.Add(this.label15);
@@ -160,17 +160,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Micro inspection simple MAP";
             // 
-            // radioThr
+            // radioThir
             // 
-            this.radioThr.AutoSize = true;
-            this.radioThr.Location = new System.Drawing.Point(562, 67);
-            this.radioThr.Name = "radioThr";
-            this.radioThr.Size = new System.Drawing.Size(71, 16);
-            this.radioThr.TabIndex = 7;
-            this.radioThr.TabStop = true;
-            this.radioThr.Text = "13点检测";
-            this.radioThr.UseVisualStyleBackColor = true;
-            this.radioThr.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.radioThir.AutoSize = true;
+            this.radioThir.Location = new System.Drawing.Point(562, 67);
+            this.radioThir.Name = "radioThir";
+            this.radioThir.Size = new System.Drawing.Size(71, 16);
+            this.radioThir.TabIndex = 7;
+            this.radioThir.TabStop = true;
+            this.radioThir.Text = "13点检测";
+            this.radioThir.UseVisualStyleBackColor = true;
+            this.radioThir.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioNine
             // 
@@ -255,6 +255,7 @@
             // 
             // qtyTextBox
             // 
+            this.qtyTextBox.Enabled = false;
             this.qtyTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
             this.qtyTextBox.Location = new System.Drawing.Point(608, 23);
             this.qtyTextBox.Multiline = true;
@@ -264,6 +265,7 @@
             // 
             // rateTextBox
             // 
+            this.rateTextBox.Enabled = false;
             this.rateTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
             this.rateTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.rateTextBox.Location = new System.Drawing.Point(364, 23);
@@ -1178,7 +1180,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioThr;
+        private System.Windows.Forms.RadioButton radioThir;
         private System.Windows.Forms.RadioButton radioNine;
         private System.Windows.Forms.ComboBox slotComboBox;
         private System.Windows.Forms.Label label15;

@@ -67,16 +67,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(626, 8);
+            this.btnClose.Location = new System.Drawing.Point(644, 8);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(438, 8);
+            this.btnCreate.Location = new System.Drawing.Point(456, 8);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(532, 8);
+            this.btnEdite.Location = new System.Drawing.Point(550, 8);
             // 
             // pnlMenu
             // 
@@ -132,6 +132,7 @@
             // 
             // rateTextBox
             // 
+            this.rateTextBox.Enabled = false;
             this.rateTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
             this.rateTextBox.Location = new System.Drawing.Point(358, 80);
             this.rateTextBox.Multiline = true;
@@ -189,6 +190,7 @@
             // 
             // qtyTextBox
             // 
+            this.qtyTextBox.Enabled = false;
             this.qtyTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
             this.qtyTextBox.Location = new System.Drawing.Point(602, 37);
             this.qtyTextBox.Multiline = true;

@@ -27,8 +27,11 @@ namespace WaferSf
         public Panel selectPanel;//当前操作的panel
         public string[] defectCode = new string[25];
         public string textValue = "";
-        public System.Windows.Forms.TextBox box;
+        public System.Windows.Forms.TextBox codeBox;
+        public System.Windows.Forms.TextBox qtyBox;
+        public System.Windows.Forms.TextBox rateBox;
         public System.Windows.Forms.GroupBox groupNode;
+        public Boolean nodeMode =false;
         #endregion
 
         public WaferSur()
@@ -36,6 +39,26 @@ namespace WaferSf
             InitializeComponent();
         }
 
+        private void WaferSur_Load(object sender, EventArgs e)
+        {
+            if (nodeMode)
+            {
+                string[] nineList = { "11", "13", "15", "3", "23", "17", "7", "9", "19", "18" };
+
+                foreach (Control control in tableLayoutPanel1.Controls)
+                {
+                    if (control is Panel)
+                    {
+                        Panel p = control as Panel;
+                        if (!nineList.Contains(p.Name.Split('_')[1]))
+                        {
+                            p.Enabled = false;
+                        }
+
+                    }
+                }
+            }
+        }
         #region " Function Definition "
         private void drawPanel(PaintEventArgs e, Panel panelNum)
         {//绘表格
@@ -172,66 +195,64 @@ namespace WaferSf
         {//动态获取defectCode文本框值
             string temp = string.Join("", defectCode).Replace(",", "");
             textValue = string.Join(",", temp.Distinct()).Trim(',');
-            if (null != box)
+            float qty = 0;
+            if (null != codeBox)
             {
-                box.Text = textValue;
+                codeBox.Text = textValue;
             }
-            //
-            //if (null != groupNode)
-            //{
-            //    if (null != defectCode[i] && !defectCode[i].Equals(""))
-            //    {
-            //        //string nameNg = "ngBox_" + i;
-            //        //string nameOk = "ngBox_" + i;
-            //        //Control[] ctrlsNg = groupNode.Controls.Find(nameNg.Trim(), true);
-            //        //Control[] ctrlsOk = groupNode.Controls.Find(nameOk.Trim(), true);
-            //        //CheckBox cekNg = (CheckBox)ctrlsNg[0];
-            //        //CheckBox cekOk = (CheckBox)ctrlsOk[0];
-            //        //cekNg.Checked = true;
-            //        //cekOk.Checked = false;
-            //        foreach (Control control in groupNode.Controls)
-            //        {
-            //            if (control is CheckBox)
-            //            {
-            //                CheckBox c = control as CheckBox;
-            //                i += 1;
-            //                if (control.Name.Split('_')[1].Equals(i.ToString()))
-            //                {
-            //                    if (control.Name.Split('_')[0].Equals("okBox"))
-            //                    {
-            //                        c.Checked = false;
-            //                    }
-            //                    else
-            //                    {
-            //                        c.Checked = true;
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }
-            //    else
-            //    {
-            //        foreach (Control control in groupNode.Controls)
-            //        {
-            //            if (control is CheckBox)
-            //            {
-            //                CheckBox c = control as CheckBox;
-            //                i += 1;
-            //                if (control.Name.Split('_')[1].Equals(i.ToString()))
-            //                {
-            //                    if (control.Name.Split('_')[0].Equals("okBox"))
-            //                    {
-            //                        c.Checked = true;
-            //                    }
-            //                    else
-            //                    {
-            //                        c.Checked = false;
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
+            foreach (string code in defectCode)
+            {
+                if (null != code)
+                {
+                    qty += 1;
+                }
+            }
+            if (null != qtyBox)
+            {
+                qtyBox.Text = qty.ToString();
+            }
+            if (null != rateBox)
+            {
+                Decimal rate = Convert.ToDecimal(qty / 25f);
+                rateBox.Text = Math.Round(rate, 2).ToString();
+            }
+
+            if (null != groupNode)
+            {
+                for (int j = 0; j < 25; j++)
+                {
+                    CheckBox ok = new CheckBox();
+                    CheckBox ng = new CheckBox();
+                    foreach (Control control in groupNode.Controls)
+                    {
+                        if (control is CheckBox)
+                        {
+                            if (control.Name.Split('_')[1].Equals((j + 1).ToString()))
+                            {
+                                if (control.Name.Split('_')[0].Equals("okBox"))
+                                {
+                                    ok = control as CheckBox;
+                                }
+                                else if (control.Name.Split('_')[0].Equals("ngBox"))
+                                {
+                                    ng = control as CheckBox;
+                                }
+                            }
+                        }
+                    }
+
+                    if (null != defectCode[j] && !defectCode[j].Equals(""))
+                    {
+                        ng.Checked = true;
+                        ok.Checked = false;
+                    }
+                    else
+                    {
+                        ok.Checked = true;
+                        ng.Checked = false;
+                    }
+                }
+            }
         }
 
         private void panel_MouseLeave(object sender, EventArgs e)
@@ -249,15 +270,15 @@ namespace WaferSf
                 {
                     if ((control is Panel) && control.Name.Split('_')[1].Equals(areaId))
                     {
-                        if(null != defectCode[i-1] && !defectCode[i-1].Equals(""))
+                        if (null != defectCode[i - 1] && !defectCode[i - 1].Equals(""))
                         {
-                            defectCode[i-1] = defectCode[i-1]+","+code;
+                            defectCode[i - 1] = defectCode[i - 1] + "," + code;
                         }
                         else
                         {
-                            defectCode[i-1] = code;
+                            defectCode[i - 1] = code;
                         }
-                            
+
                         Panel p = control as Panel;
                         p.Refresh();
                     }
@@ -276,7 +297,7 @@ namespace WaferSf
             defectCode = new string[25];
             if (null != valueList && valueList.Count > 0)
             {
-                
+
                 foreach (var child in valueList)
                 {
                     showWaferPanel(child.AreaId.ToString(), child.DefectCode);
@@ -570,8 +591,6 @@ namespace WaferSf
 
         #endregion
 
-        #region "变量监控"
 
-        #endregion
     }
 }

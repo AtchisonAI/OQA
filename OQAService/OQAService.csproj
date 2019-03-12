@@ -64,8 +64,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="NPoco, Version=3.9.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="NPoco">
       <HintPath>..\Components\NPoco.dll</HintPath>
     </Reference>
     <Reference Include="OQAContract">
@@ -75,6 +74,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
@@ -84,7 +84,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\Utils.dll</HintPath>
     </Reference>
-    <Reference Include="WCFModels">
+    <Reference Include="WCFModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WCFModels.dll</HintPath>
     </Reference>
     <Reference Include="WcfService">
@@ -92,6 +93,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImageUpload\SaveImageInfo.cs" />
     <Compile Include="11 Wafer Insection Record Print\QueryLotInfo.cs" />
     <Compile Include="12 IOQA Ship List Print\QryPKGShipInfo.cs" />
     <Compile Include="13 Defect code set\CreateDefectCodeInfo.cs" />
@@ -99,7 +101,10 @@
     <Compile Include="13 Defect code set\QryDefectCodeInfo.cs" />
     <Compile Include="3 AOI inspection input\CreateOrUpdateAOIInfo.cs" />
     <Compile Include="3 AOI inspection input\QryAOIInfo.cs" />
-    <Compile Include="7 FOUP change\QryLotSlotidInfo.cs" />
+    <Compile Include="7 FOUP change\QryLotIspStsInfo.cs" />
+    <Compile Include="7 FOUP change\QryLotMesSlotidInfo.cs" />
+    <Compile Include="7 FOUP change\QryLotIspSlotidInfo.cs" />
+    <Compile Include="9 Lot Transfer\QueryLotList.cs" />
     <Compile Include="Emp\QueryEmpInfo.cs" />
     <Compile Include="Emp\EmpService.cs" />
     <Compile Include="GlobalConstant.cs" />
@@ -123,7 +128,6 @@
     <Folder Include="5 Mirco inspection input\" />
     <Folder Include="6 Defect send %28PNDN%29\" />
     <Folder Include="8 Lot package\" />
-    <Folder Include="9 Lot Transfer\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

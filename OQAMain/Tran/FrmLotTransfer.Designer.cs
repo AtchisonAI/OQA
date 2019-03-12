@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.LotIDList = new System.Windows.Forms.CheckedListBox();
+            this.Select_All = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -52,7 +53,6 @@
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(617, 11);
-            this.btnClose.Text = "Cancel";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
@@ -73,7 +73,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.LotIDList);
+            this.groupBox1.Controls.Add(this.Select_All);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -84,15 +85,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "待发料批次清单";
             // 
-            // checkBox1
+            // LotIDList
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(26, 89);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(48, 16);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "全选";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.LotIDList.FormattingEnabled = true;
+            this.LotIDList.Location = new System.Drawing.Point(6, 111);
+            this.LotIDList.Name = "LotIDList";
+            this.LotIDList.Size = new System.Drawing.Size(160, 388);
+            this.LotIDList.TabIndex = 7;
+            // 
+            // Select_All
+            // 
+            this.Select_All.AutoSize = true;
+            this.Select_All.Location = new System.Drawing.Point(26, 89);
+            this.Select_All.Name = "Select_All";
+            this.Select_All.Size = new System.Drawing.Size(48, 16);
+            this.Select_All.TabIndex = 6;
+            this.Select_All.Text = "全选";
+            this.Select_All.UseVisualStyleBackColor = true;
+            this.Select_All.CheckedChanged += new System.EventHandler(this.Select_All_CheckedChanged);
             // 
             // textBox1
             // 
@@ -230,6 +240,7 @@
             this.Controls.SetChildIndex(this.splitter1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.pnlMenu.ResumeLayout(false);
+            this.pnlMenu.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -253,8 +264,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox Select_All;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckedListBox LotIDList;
     }
 }

@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
+using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 
 namespace WCFModels.OQA
 {
     [DataContract]
-    public class LotSlotidView: BaseRsp
+    public class LotIDListView : BaseRsp
     {
 
         //服务传入执行动作,事务标记必须输入
@@ -23,9 +24,9 @@ namespace WCFModels.OQA
         }
         private char c_proc_step;
 
-        public LotSlotidView()
+        public PKGShipView()
         {
-            PKGSLTDEF_list = new List<PKGSLTDEF>();
+            ISPLOTST_list = new List<ISPLOTST>();
         }
 
         [DataMember]
@@ -44,41 +45,21 @@ namespace WCFModels.OQA
         private char c_tran_flag;
         //服务传入参数
         [DataMember]
-        public string IN_LOT_ID {
+        public string IN_SHIP_NO {
             get
             {
-                return in_lot_id;
+                return in_ship_no;
             }
             set
             {
-                in_lot_id = value;
+                in_ship_no = value;
             }
         }
-        private string in_lot_id;
-
-
+        private string in_ship_no;
+       
         //服务传出数据结构
         [DataMember]
-        public List<ISPLOTSTS> ISPLOTSTS_list { get; set; }
-
-        [DataMember]
-        public List<ISPWAFST> ISPWAFST_list { get; set; }
-
-        [DataMember]
-        public List<PKGSLTDEF> PKGSLTDEF_list { get; set; }
+        public List<ISPLOTST> ISPLOTST_list { get; set; }
         //服务传出结果在BaseRsq:_success  _ErrorMsg
-
-
-        //public DefectCodeView()
-        //{
-        //    rmsList = new List<RmsUser>();
-        //}
-        //    string s_isp_type ;
-
-        //   // rmsList = new List<RmsUser>();
-        //
-
-        //[DataMember]
-        //public List<RmsUser> rmsList { get; set; }
     }
 }

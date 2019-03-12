@@ -18,11 +18,12 @@ namespace TransferPic
         /// 从服务端下载图片到本地 （上传和下载都是拷贝的过程）
         /// </summary>
         /// <returns></returns>
-        public Stream GetPic()
-        {
-            MemoryStream ms = new MemoryStream();
-            PicSource.Position = 0;//指明从第0位开始拷贝
-            PicSource.CopyTo(ms);//服务端将客户端的Stream复制一份
+        public Stream GetPic(string sPath)
+        {           
+           MemoryStream ms = new MemoryStream();
+            FileStream fs = new FileStream(sPath, FileMode.Open, FileAccess.Read);//创建一个文件，并把文件放在文件流里边；
+            fs.Position = 0;//指明从第0位开始拷贝
+            fs.CopyTo(ms);
             ms.Position = 0;//注意如果缺少该条代码接收端将无法显示上传图片
             return ms;//然后在返回客户端；
 
@@ -53,8 +54,8 @@ namespace TransferPic
             tn.Save(picPath, System.Drawing.Imaging.ImageFormat.Jpeg);
 
             return picPath;
-
-           // File.Copy(picID, Application.StartupPath + "\\Image\\" + id + ".jpg");
+            //..//OQA_Pic/20190311104054.jpeg
+            // File.Copy(picID, Application.StartupPath + "\\Image\\" + id + ".jpg");
 
         }
 

@@ -26,7 +26,7 @@ namespace WCFModels.OQA
 
         public LotIDListView()
         {
-            ISPLOTST_list = new List<ISPLOTST>();
+            ISPLOTST_list = new List<ISPLOTSTS>();
         }
 
         [DataMember]
@@ -59,7 +59,7 @@ namespace WCFModels.OQA
        
         //服务传出数据结构
         //[DataMember]
-        public List<ISPLOTST> ISPLOTST_list { get; set; }
+        public List<ISPLOTSTS> ISPLOTST_list { get; set; }
         //服务传出结果在BaseRsq:_success  _ErrorMsg
     }
 }

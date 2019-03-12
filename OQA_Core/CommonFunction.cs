@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace OQA_Core
 {
@@ -32,6 +33,12 @@ namespace OQA_Core
         {
             return FieldClear(ctrl, ExceptCtl1, null, null, null, null, false);
         }
+
+        public static bool CheckValue(string v1, int v2)
+        {
+            throw new NotImplementedException();
+        }
+
         public static bool FieldClear(object ctrl, object ExceptCtl1, bool bItemsClear)
         {
             return FieldClear(ctrl, ExceptCtl1, null, null, null, null, bItemsClear);
@@ -382,6 +389,26 @@ namespace OQA_Core
             //{
             //    MyListView.SmallImageList = null;
             //}
+        }
+
+        public static void ClearBoxValue(Control parentCon)
+        {
+            foreach (Control control in parentCon.Controls)
+            {
+                if (control is TextBox || control is RichTextBox)
+                {
+                    control.Text = "";
+                }
+            }
+        }
+
+        //文本框输入控制
+        public static void CheckKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != 8 && !Char.IsDigit(e.KeyChar))//除退格以外的非数字输入
+            {//如果不是输入数字就不让输入
+                e.Handled = true;
+            }
         }
     }
     #endregion

@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfHost", "WcfHost\WcfHost.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OQAService", "OQAService\OQAService.csproj", "{93084370-FF48-4E22-943B-5A9359311041}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService", "WcfService\WcfService.csproj", "{A19B87EE-049D-4600-845C-F33B22DCEC8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OQAContract", "OQAContract\OQAContract.csproj", "{6015867A-2443-4E72-9F82-7BB8496F2CE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +37,10 @@ Global
 		{93084370-FF48-4E22-943B-5A9359311041}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93084370-FF48-4E22-943B-5A9359311041}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93084370-FF48-4E22-943B-5A9359311041}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A19B87EE-049D-4600-845C-F33B22DCEC8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A19B87EE-049D-4600-845C-F33B22DCEC8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A19B87EE-049D-4600-845C-F33B22DCEC8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A19B87EE-049D-4600-845C-F33B22DCEC8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6015867A-2443-4E72-9F82-7BB8496F2CE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6015867A-2443-4E72-9F82-7BB8496F2CE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6015867A-2443-4E72-9F82-7BB8496F2CE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6015867A-2443-4E72-9F82-7BB8496F2CE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

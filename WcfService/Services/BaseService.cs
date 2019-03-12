@@ -52,7 +52,7 @@ namespace WcfService
                 db.DatabaseType == DatabaseType.OracleManaged)
             {
                 //有错误
-                sql = "select strftime('%Y%m%d%H%M%S','now','localtime') as sysdate";
+                sql = "select TO_CHAR(sysdate,'YYYYMMDDHH24MISS') from dual";
             }
             else
             {
@@ -68,10 +68,10 @@ namespace WcfService
             return db.Fetch<object[]>(sql);
         }
 
-        public int UpdateRawSql(string sql)
-        {
-            return db.Execute(sql);
-        }
+        //public int UpdateRawSql(string sql)
+        //{
+        //    return db.Execute(sql);
+        //}
 
         #endregion
 
@@ -392,26 +392,6 @@ namespace WcfService
             };
 
             PageQueryReq.sortCondittionList.Add(sortCon);
-        }
-
-        public bool VersionCompare(BaseReq req,BaseRsp rsp)
-        {
-            if(req.msgFrom == MsgSite.CLIENT &&!VersionContrl.MatchVersion(req.clientActiveVer))
-            {
-                string allowCliVerion = "";
-                foreach(string s in VersionContrl.allowCVersionList)
-                {
-                    allowCliVerion += s;
-                    allowCliVerion += ',';
-                }
-                allowCliVerion = allowCliVerion.TrimEnd(',');
-
-                rsp._success = false;
-                rsp._ErrorMsg = "客户端版本号与服务端版本号不兼容，请将客户端版本号升级至"+ allowCliVerion;
-                return false;
-            }
-
-            return true;
         }
     }
 }

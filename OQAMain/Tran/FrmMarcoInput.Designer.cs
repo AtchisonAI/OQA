@@ -46,9 +46,7 @@
             this.frontButton = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.waferSurF = new WaferSf.WaferSur();
-            this.backButton = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.waferSurB = new WaferSf.WaferSur();
             this.pnlMenu.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -57,15 +55,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(731, 6);
+            this.btnClose.Location = new System.Drawing.Point(657, 8);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(543, 6);
+            this.btnCreate.Location = new System.Drawing.Point(469, 8);
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(637, 6);
+            this.btnEdite.Location = new System.Drawing.Point(563, 8);
             // 
             // pnlMenu
             // 
@@ -93,6 +92,7 @@
             this.slotComboBox.Name = "slotComboBox";
             this.slotComboBox.Size = new System.Drawing.Size(121, 22);
             this.slotComboBox.TabIndex = 4;
+            this.slotComboBox.SelectedIndexChanged += new System.EventHandler(this.slotComboBox_SelectedIndexChanged);
             // 
             // label15
             // 
@@ -212,9 +212,7 @@
             this.groupBox1.Controls.Add(this.frontButton);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.waferSurF);
-            this.groupBox1.Controls.Add(this.backButton);
             this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.waferSurB);
             this.groupBox1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.groupBox1.Location = new System.Drawing.Point(24, 134);
             this.groupBox1.Name = "groupBox1";
@@ -235,13 +233,12 @@
             // frontButton
             // 
             this.frontButton.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.frontButton.Location = new System.Drawing.Point(134, 289);
+            this.frontButton.Location = new System.Drawing.Point(260, 289);
             this.frontButton.Name = "frontButton";
             this.frontButton.Size = new System.Drawing.Size(123, 23);
             this.frontButton.TabIndex = 31;
             this.frontButton.Text = "Front side";
             this.frontButton.UseVisualStyleBackColor = true;
-            this.frontButton.Click += new System.EventHandler(this.frontButton_Click);
             // 
             // label12
             // 
@@ -255,22 +252,11 @@
             // 
             // waferSurF
             // 
-            this.waferSurF.Location = new System.Drawing.Point(93, 70);
+            this.waferSurF.Location = new System.Drawing.Point(216, 70);
             this.waferSurF.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.waferSurF.Name = "waferSurF";
             this.waferSurF.Size = new System.Drawing.Size(210, 210);
             this.waferSurF.TabIndex = 27;
-            // 
-            // backButton
-            // 
-            this.backButton.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.backButton.Location = new System.Drawing.Point(471, 289);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(123, 23);
-            this.backButton.TabIndex = 29;
-            this.backButton.Text = "Back side";
-            this.backButton.UseVisualStyleBackColor = true;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // label14
             // 
@@ -281,14 +267,6 @@
             this.label14.Size = new System.Drawing.Size(439, 20);
             this.label14.TabIndex = 26;
             this.label14.Text = "Pls mark the defect with below special code";
-            // 
-            // waferSurB
-            // 
-            this.waferSurB.Location = new System.Drawing.Point(433, 70);
-            this.waferSurB.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.waferSurB.Name = "waferSurB";
-            this.waferSurB.Size = new System.Drawing.Size(210, 210);
-            this.waferSurB.TabIndex = 28;
             // 
             // FrmMarcoInput
             // 
@@ -305,6 +283,7 @@
             this.Controls.SetChildIndex(this.groupBox3, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.pnlMenu.ResumeLayout(false);
+            this.pnlMenu.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -335,8 +314,6 @@
         private System.Windows.Forms.Button frontButton;
         private System.Windows.Forms.Label label12;
         private WaferSf.WaferSur waferSurF;
-        private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Label label14;
-        private WaferSf.WaferSur waferSurB;
     }
 }

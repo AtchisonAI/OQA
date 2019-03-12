@@ -72,8 +72,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\Utils.dll</HintPath>
     </Reference>
+    <Reference Include="WCFModels">
+      <HintPath>..\Components\WCFModels.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1.OQASeverStruct\11 Wafer Insection Record Print\WaferInspectionRecordView.cs" />
+    <Compile Include="1.OQASeverStruct\12 IOQA Ship List Print\PKGShipView.cs" />
     <Compile Include="1.OQASeverStruct\13 Defect code set\DefectCodeSave.cs" />
     <Compile Include="1.OQASeverStruct\13 Defect code set\DefectCodeView.cs" />
     <Compile Include="1.OQASeverStruct\3 AOI inspection input\AOIInputView.cs" />
@@ -101,8 +106,6 @@
   <ItemGroup>
     <Folder Include="1.OQASeverStruct\1 Lot inspect\" />
     <Folder Include="1.OQASeverStruct\10 Package Label Print\" />
-    <Folder Include="1.OQASeverStruct\11 Wafer Insection Record Print\" />
-    <Folder Include="1.OQASeverStruct\12 IOQA Ship List Print\" />
     <Folder Include="1.OQASeverStruct\2 Defect Lot result\" />
     <Folder Include="1.OQASeverStruct\6 Defect send %28PNDN%29\" />
     <Folder Include="1.OQASeverStruct\8 Lot package\" />

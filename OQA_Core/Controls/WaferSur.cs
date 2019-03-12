@@ -177,61 +177,61 @@ namespace WaferSf
                 box.Text = textValue;
             }
             //
-            if (null != groupNode)
-            {
-                if (null != defectCode[i] && !defectCode[i].Equals(""))
-                {
-                    //string nameNg = "ngBox_" + i;
-                    //string nameOk = "ngBox_" + i;
-                    //Control[] ctrlsNg = groupNode.Controls.Find(nameNg.Trim(), true);
-                    //Control[] ctrlsOk = groupNode.Controls.Find(nameOk.Trim(), true);
-                    //CheckBox cekNg = (CheckBox)ctrlsNg[0];
-                    //CheckBox cekOk = (CheckBox)ctrlsOk[0];
-                    //cekNg.Checked = true;
-                    //cekOk.Checked = false;
-                    foreach (Control control in groupNode.Controls)
-                    {
-                        if (control is CheckBox)
-                        {
-                            CheckBox c = control as CheckBox;
-                            i += 1;
-                            if (control.Name.Split('_')[1].Equals(i.ToString()))
-                            {
-                                if (control.Name.Split('_')[0].Equals("okBox"))
-                                {
-                                    c.Checked = false;
-                                }
-                                else
-                                {
-                                    c.Checked = true;
-                                }
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (Control control in groupNode.Controls)
-                    {
-                        if (control is CheckBox)
-                        {
-                            CheckBox c = control as CheckBox;
-                            i += 1;
-                            if (control.Name.Split('_')[1].Equals(i.ToString()))
-                            {
-                                if (control.Name.Split('_')[0].Equals("okBox"))
-                                {
-                                    c.Checked = true;
-                                }
-                                else
-                                {
-                                    c.Checked = false;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            //if (null != groupNode)
+            //{
+            //    if (null != defectCode[i] && !defectCode[i].Equals(""))
+            //    {
+            //        //string nameNg = "ngBox_" + i;
+            //        //string nameOk = "ngBox_" + i;
+            //        //Control[] ctrlsNg = groupNode.Controls.Find(nameNg.Trim(), true);
+            //        //Control[] ctrlsOk = groupNode.Controls.Find(nameOk.Trim(), true);
+            //        //CheckBox cekNg = (CheckBox)ctrlsNg[0];
+            //        //CheckBox cekOk = (CheckBox)ctrlsOk[0];
+            //        //cekNg.Checked = true;
+            //        //cekOk.Checked = false;
+            //        foreach (Control control in groupNode.Controls)
+            //        {
+            //            if (control is CheckBox)
+            //            {
+            //                CheckBox c = control as CheckBox;
+            //                i += 1;
+            //                if (control.Name.Split('_')[1].Equals(i.ToString()))
+            //                {
+            //                    if (control.Name.Split('_')[0].Equals("okBox"))
+            //                    {
+            //                        c.Checked = false;
+            //                    }
+            //                    else
+            //                    {
+            //                        c.Checked = true;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        foreach (Control control in groupNode.Controls)
+            //        {
+            //            if (control is CheckBox)
+            //            {
+            //                CheckBox c = control as CheckBox;
+            //                i += 1;
+            //                if (control.Name.Split('_')[1].Equals(i.ToString()))
+            //                {
+            //                    if (control.Name.Split('_')[0].Equals("okBox"))
+            //                    {
+            //                        c.Checked = true;
+            //                    }
+            //                    else
+            //                    {
+            //                        c.Checked = false;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         private void panel_MouseLeave(object sender, EventArgs e)
@@ -249,7 +249,15 @@ namespace WaferSf
                 {
                     if ((control is Panel) && control.Name.Split('_')[1].Equals(areaId))
                     {
-                        defectCode[i] = code;
+                        if(null != defectCode[i-1] && !defectCode[i-1].Equals(""))
+                        {
+                            defectCode[i-1] = defectCode[i-1]+","+code;
+                        }
+                        else
+                        {
+                            defectCode[i-1] = code;
+                        }
+                            
                         Panel p = control as Panel;
                         p.Refresh();
                     }
@@ -264,8 +272,11 @@ namespace WaferSf
 
         public void showWafer(List<ISPWAFDFT> valueList)
         {//数据显示
+            clearPanel();
+            defectCode = new string[25];
             if (null != valueList && valueList.Count > 0)
             {
+                
                 foreach (var child in valueList)
                 {
                     showWaferPanel(child.AreaId.ToString(), child.DefectCode);

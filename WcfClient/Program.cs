@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
+
 namespace WcfClient
 {
     static class Program
@@ -13,13 +14,9 @@ namespace WcfClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MainForm());
 
-            LoginForm lgFrom = new LoginForm();
-            lgFrom.StartPosition = FormStartPosition.CenterScreen;
-            lgFrom.ShowDialog();
-
-            if (lgFrom.DialogResult == DialogResult.OK)
+            AppManager.InitApp();
+            if (AppManager.Login())
             {
                 Application.Run(new MainForm());
             }

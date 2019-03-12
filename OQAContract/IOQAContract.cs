@@ -63,6 +63,9 @@ namespace OQAContract
         [OperationContract]
         ModelRsp<PKGShipView> QryPKGShipInfo(ModelRsp<PKGShipView> PKGShip);
 
+        [OperationContract]
+        ModelRsp<PKGShipView> QryPKGShipSummaryInfo(ModelRsp<PKGShipView> PKGShipSummary);
+
         #endregion
 
         #region  Image Save

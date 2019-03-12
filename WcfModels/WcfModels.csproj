@@ -72,6 +72,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\Utils.dll</HintPath>
     </Reference>
+    <Reference Include="WCFModels">
+      <HintPath>..\Components\WCFModels.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="1.OQASeverStruct\11 Wafer Insection Record Print\WaferInspectionRecordView.cs" />

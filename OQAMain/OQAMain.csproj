@@ -118,6 +118,7 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
     <Reference Include="WcfClientCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WcfClientCore.dll</HintPath>
@@ -131,6 +132,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Demo\EmpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Demo\EmpForm.Designer.cs">
+      <DependentUpon>EmpForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Print\FrmOQAShipListPrintData.cs" />
     <Compile Include="Print\FrmWaferInspectRecord_sub.cs" />
     <Compile Include="Print\ImageToBytes.cs" />
@@ -223,15 +230,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Demo\EmpForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Demo\EmpForm.Designer.cs">
-      <DependentUpon>EmpForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Demo\EmpForm.resx">
+      <DependentUpon>EmpForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Print\FrmOQAShipListPrint.rdlc" />
     <EmbeddedResource Include="Print\FrmWaferInspectRecord.rdlc" />
     <EmbeddedResource Include="Print\FrmPackageLabelPrint.rdlc" />
@@ -275,9 +279,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tran\FrmLotInspect.resx">
       <DependentUpon>FrmLotInspect.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Demo\EmpForm.resx">
-      <DependentUpon>EmpForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Demo\InsertEmpForm.resx">
       <DependentUpon>InsertEmpForm.cs</DependentUpon>

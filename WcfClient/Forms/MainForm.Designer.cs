@@ -64,23 +64,23 @@ namespace WcfClient
             this.Emp_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabbedGroupedMDIManager = new Syncfusion.Windows.Forms.Tools.TabbedGroupedMDIManager();
             this.statusBarAdv = new Syncfusion.Windows.Forms.Tools.StatusBarAdv();
+            this.System_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.Version_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.Emp_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.Active_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.Date_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.Time_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
-            this.System_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dockingManager)).BeginInit();
             this.Emp_panel.SuspendLayout();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statusBarAdv)).BeginInit();
             this.statusBarAdv.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.System_statusBarAdvPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Version_statusBarAdvPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Emp_statusBarAdvPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Active_statusBarAdvPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Date_statusBarAdvPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Time_statusBarAdvPanel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.System_statusBarAdvPanel)).BeginInit();
             this.SuspendLayout();
             // 
             // dockingManager
@@ -361,6 +361,18 @@ namespace WcfClient
             this.statusBarAdv.Spacing = new System.Drawing.Size(2, 2);
             this.statusBarAdv.TabIndex = 15;
             // 
+            // System_statusBarAdvPanel
+            // 
+            this.System_statusBarAdvPanel.Alignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.System_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(210, 24);
+            this.System_statusBarAdvPanel.Border3DStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.System_statusBarAdvPanel.Location = new System.Drawing.Point(0, 2);
+            this.System_statusBarAdvPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.System_statusBarAdvPanel.Name = "System_statusBarAdvPanel";
+            this.System_statusBarAdvPanel.Size = new System.Drawing.Size(210, 24);
+            this.System_statusBarAdvPanel.TabIndex = 6;
+            this.System_statusBarAdvPanel.Text = null;
+            // 
             // Version_statusBarAdvPanel
             // 
             this.Version_statusBarAdvPanel.Alignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -430,17 +442,6 @@ namespace WcfClient
             this.Time_statusBarAdvPanel.TabIndex = 0;
             this.Time_statusBarAdvPanel.Text = null;
             // 
-            // System_statusBarAdvPanel
-            // 
-            this.System_statusBarAdvPanel.Alignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.System_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(210, 24);
-            this.System_statusBarAdvPanel.Border3DStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.System_statusBarAdvPanel.Location = new System.Drawing.Point(0, 2);
-            this.System_statusBarAdvPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.System_statusBarAdvPanel.Name = "System_statusBarAdvPanel";
-            this.System_statusBarAdvPanel.Size = new System.Drawing.Size(210, 24);
-            this.System_statusBarAdvPanel.TabIndex = 6;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -463,12 +464,12 @@ namespace WcfClient
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statusBarAdv)).EndInit();
             this.statusBarAdv.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.System_statusBarAdvPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Version_statusBarAdvPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Emp_statusBarAdvPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Active_statusBarAdvPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Date_statusBarAdvPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Time_statusBarAdvPanel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.System_statusBarAdvPanel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -442,7 +442,7 @@ namespace WCFModels.OQA
     [TableName("ISPLOTSTS")]
     [PrimaryKey("LOT_ID,FOUP_ID",AutoIncrement = false)]
     [ExplicitColumns]
-    public partial class ISPLOTST
+    public partial class ISPLOTSTS
     {
         [DataMember]
         [Column("LOT_ID")] public string LotId { get; set; }

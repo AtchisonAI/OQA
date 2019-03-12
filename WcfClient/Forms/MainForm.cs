@@ -120,7 +120,7 @@ namespace WcfClient
             FrmMircoInput frm = On_MenuItemClickImpl<FrmMircoInput>();
         }
 
-        private T On_MenuItemClickImpl<T>() where T : Form, new()
+        private T On_MenuItemClickImpl<T>() where T : BaseForm, new()
         {
             T frm = ActiveTabHost<T>();
             if(null == frm)
@@ -130,7 +130,7 @@ namespace WcfClient
             return frm;
         }
 
-        private T ActiveTabHost<T>() where T : Form, new()
+        private T ActiveTabHost<T>() where T : BaseForm, new()
         {
             Form[] childs = tabbedGroupedMDIManager.MdiChildren;
             foreach (Form q in childs)
@@ -145,15 +145,23 @@ namespace WcfClient
             return null;
         }
 
-        private T GenerateNewForm<T>() where T:Form, new()
+        private T GenerateNewForm<T>() where T : BaseForm, new()
         {
             T Frm = new T();
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
             dockingManager.SetDockLabel(Frm, Frm.Text);
+            Frm.FormClosed += new FormClosedEventHandler(this.ChildFormClosed);
             Frm.Show();
             SetActiveStatusBar(Frm.Text);
             return Frm;
+        }
+
+        private void ChildFormClosed(object sender, System.EventArgs e)
+        {
+            BaseForm form = sender as BaseForm;
+            dockingManager.SetAsMDIChild(form, false);
+            dockingManager.SetEnableDocking(form, false);
         }
 
         private void SetActiveStatusBar(string text)

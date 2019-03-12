@@ -23,26 +23,33 @@ namespace pic_up
 
         private void btnBrowser_Click(object sender, EventArgs e)
         {
-            string fileName = "";//定义一个字段用于获取上传的文件名；
-            OpenFileDialog openFileDialog = new OpenFileDialog();//创建一个OpenFileDialog对象专门用于打开文件
-            openFileDialog.Filter = ".jpeg|";//*.jpg;*.jpeg;*.png;*.gif
-            if (openFileDialog.ShowDialog() == DialogResult.OK)//打开的文件对话框如果选择了OK按钮（确定），则为真，执行大括号中的内容
-            {           
-                fileName = openFileDialog.FileName;
-                string fileEx = fileName.Substring(fileName.LastIndexOf(".") + 1);//从.开始截至最后得到图片格式
-                if (fileEx == "jpg"|| fileEx == "jpeg" || fileEx == "bmp" || fileEx == "gif")
+            try
+            {
+                string fileName = "";//定义一个字段用于获取上传的文件名；
+                OpenFileDialog openFileDialog = new OpenFileDialog();//创建一个OpenFileDialog对象专门用于打开文件
+                openFileDialog.Filter = ".jpeg|*.jpg;*.jpeg;*.png;*.gif;*.png";//*.jpg;*.jpeg;*.png;*.gif
+                if (openFileDialog.ShowDialog() == DialogResult.OK)//打开的文件对话框如果选择了OK按钮（确定），则为真，执行大括号中的内容
                 {
-                    txtPicName.Text = fileName;//在textBox中显示文件名
-                    pictureBox1.Load(fileName);//使该图片在客户端pictuBox中显示
+                    fileName = openFileDialog.FileName;
+                    string fileEx = fileName.Substring(fileName.LastIndexOf(".") + 1);//从.开始截至最后得到图片格式
+                    if (fileEx == "jpg" || fileEx == "jpeg" || fileEx == "bmp" || fileEx == "gif" || fileEx == "png")
+                    {
+                        txtPicName.Text = fileName;//在textBox中显示文件名
+                        pictureBox1.Load(fileName);//使该图片在客户端pictuBox中显示
+                    }
+                    else
+                    {
+                        MessageBox.Show("请选择正确的图片格式！");
+                    }
+
                 }
                 else
-                {
-                    MessageBox.Show("请选择正确的图片格式！");
-                }
-
+                    return;//未选中文件则返回；
             }
-            else
-                return;//未选中文件则返回；
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
         private void btnUpload_Click(object sender, EventArgs e)

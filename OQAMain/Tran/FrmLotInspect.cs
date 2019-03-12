@@ -118,13 +118,14 @@ namespace OQAMain
 
 
         #endregion
-
+        
 
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
             try
             {
+              
                 //检查数据
                 if (CheckCondition("CREATE") == false) return;
                 //调用事务服务
@@ -153,6 +154,16 @@ namespace OQAMain
             }
         }
 
+        private void imageUpload1_btnUploadClicked(object sender, EventArgs e)
+        {
 
+            imageUpload1.UpLoadFlag = 1;
+            ImageUpload.ImageUpload.ByLot item = new ImageUpload.ImageUpload.ByLot();
+            item.LotID = "2";
+            item.ImageType = "ISP";
+            //item.TranSeq = 0;
+            //item.ImageId = "test";
+            imageUpload1.UpLoadByLot.Add(item);
+        }
     }
 }

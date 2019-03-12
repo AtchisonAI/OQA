@@ -41,9 +41,10 @@
             // 
             // txtPicName
             // 
-            this.txtPicName.Location = new System.Drawing.Point(45, 37);
+            this.txtPicName.Location = new System.Drawing.Point(22, 18);
+            this.txtPicName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPicName.Name = "txtPicName";
-            this.txtPicName.Size = new System.Drawing.Size(396, 35);
+            this.txtPicName.Size = new System.Drawing.Size(200, 21);
             this.txtPicName.TabIndex = 0;
             // 
             // panel1
@@ -53,15 +54,17 @@
             this.panel1.Controls.Add(this.txtPicName);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 100);
+            this.panel1.Size = new System.Drawing.Size(400, 50);
             this.panel1.TabIndex = 1;
             // 
             // btnUpload
             // 
-            this.btnUpload.Location = new System.Drawing.Point(590, 35);
+            this.btnUpload.Location = new System.Drawing.Point(295, 18);
+            this.btnUpload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(88, 35);
+            this.btnUpload.Size = new System.Drawing.Size(44, 18);
             this.btnUpload.TabIndex = 2;
             this.btnUpload.Text = "上传";
             this.btnUpload.UseVisualStyleBackColor = true;
@@ -69,9 +72,10 @@
             // 
             // btnBrowser
             // 
-            this.btnBrowser.Location = new System.Drawing.Point(466, 37);
+            this.btnBrowser.Location = new System.Drawing.Point(233, 18);
+            this.btnBrowser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBrowser.Name = "btnBrowser";
-            this.btnBrowser.Size = new System.Drawing.Size(88, 35);
+            this.btnBrowser.Size = new System.Drawing.Size(44, 18);
             this.btnBrowser.TabIndex = 1;
             this.btnBrowser.Text = "浏览...";
             this.btnBrowser.UseVisualStyleBackColor = true;
@@ -81,27 +85,31 @@
             // 
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 100);
+            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 350);
+            this.panel2.Size = new System.Drawing.Size(400, 175);
             this.panel2.TabIndex = 2;
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(800, 350);
+            this.pictureBox1.Size = new System.Drawing.Size(400, 175);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(400, 225);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);

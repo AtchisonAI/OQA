@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +17,29 @@ namespace OQA_Core
     /// </summary>
     public class ComFunc
     {
+
+        /// <summary>
+
+        /// 将图片数据转换为Base64字符串
+
+        /// </summary>
+
+        /// <param name="sender"></param>
+
+        /// <param name="e"></param>
+        public static  string ImageToBase64(MemoryStream img)
+
+        {
+
+            byte[] bytes = img.GetBuffer();
+
+            string base64 = Convert.ToBase64String(bytes);
+
+            return base64;
+
+        }
+
+
         /// <summary>
         /// 初始化控件.
         /// </summary>
@@ -391,4 +417,8 @@ namespace OQA_Core
         }
     }
     #endregion
+
+
+
+  
 }

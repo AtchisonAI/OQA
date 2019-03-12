@@ -10,7 +10,7 @@ namespace OQAService.Services
 {
     public partial class OQAService : OQABaseService, IOQAContract
     {
-        public ModelRsp<LotSlotidView> QryLotSlotidInfo(ModelRsp<LotSlotidView> LotSlotid)
+        public ModelRsp<LotSlotidView> QryLotIspStsInfo(ModelRsp<LotSlotidView> LotIspStsInfo)
         {
             try
             {
@@ -24,7 +24,10 @@ namespace OQAService.Services
                 ModelRsp<LotSlotidView> In_node = new ModelRsp<LotSlotidView>();
                 ModelRsp<LotSlotidView> Out_node = new ModelRsp<LotSlotidView>();
 
-                In_node.model = LotSlotid.model;
+                In_node.model = LotIspStsInfo.model;
+
+              
+
 
                 //验证系统级别输入参数
 
@@ -54,33 +57,41 @@ namespace OQAService.Services
 
                             PageQueryReq.CurrentPage = 1;
                             PageQueryReq.ItemsPerPage = 200;
+                           
                             if (In_node.model.IN_LOT_ID.Trim().Equals("") == false)
                             {
-                                AddCondition(PageQueryReq, GetParaName<PKGSLTDEF>(p=>p.LotId), In_node.model.IN_LOT_ID.Trim(), LogicCondition.AndAlso,CompareType.Equal);
+                               
+                                AddCondition(PageQueryReq, GetParaName<ISPLOTST>(p => p.LotId), In_node.model.IN_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
-                           
-                                                        
-                            AddSortCondition(PageQueryReq, GetParaName <PKGSLTDEF> (p=>p.LotId), SortType.ASC);
+                            AddSortCondition(PageQueryReq, GetParaName<ISPLOTST>(p => p.LotId), SortType.ASC);
+                            var data = PageQuery<ISPLOTST>(PageQueryReq);
                             
-                            var data = PageQuery<PKGSLTDEF>(PageQueryReq);
+                            Out_node.model.ISPLOTST_list = data.models;
 
-                            Out_node.model.PKGSLTDEF_list = data.models;
+                           
+                            //验证来料状态
+                            if (Out_node.model.ISPLOTST_list.Count > 0) 
+                            {
+                                foreach (var temp in Out_node.model.ISPLOTST_list)
+                                {
+
+                                    if (temp.Status != "已检验")
+                                    {
+
+                                    }
+                                }
+                            }
+                            
 
                             break;
 
                         case '2':
-
-                            
                             // TODO
-
                             break;
                         case '3':
                             // TODO
-
                             break;
-
                     }
-                    
                 }
 
                 Out_node._success = true;

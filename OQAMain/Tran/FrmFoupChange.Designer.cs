@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grpLotInfo = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnCheck = new System.Windows.Forms.Button();
             this.txtLotid = new System.Windows.Forms.TextBox();
             this.labLotid = new System.Windows.Forms.Label();
@@ -78,6 +80,7 @@
             // pnlMenu
             // 
             this.pnlMenu.Controls.Add(this.btnPrint);
+            this.pnlMenu.Controls.SetChildIndex(this.lblSucessMsg, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
@@ -86,6 +89,7 @@
             // 
             // grpLotInfo
             // 
+            this.grpLotInfo.Controls.Add(this.label1);
             this.grpLotInfo.Controls.Add(this.btnCheck);
             this.grpLotInfo.Controls.Add(this.txtLotid);
             this.grpLotInfo.Controls.Add(this.labLotid);
@@ -97,9 +101,19 @@
             this.grpLotInfo.TabStop = false;
             this.grpLotInfo.Text = "Lot Information";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(179, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(11, 12);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "*";
+            // 
             // btnCheck
             // 
-            this.btnCheck.Location = new System.Drawing.Point(196, 14);
+            this.btnCheck.Location = new System.Drawing.Point(200, 13);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(75, 23);
             this.btnCheck.TabIndex = 2;
@@ -138,6 +152,15 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Slotid,
@@ -169,6 +192,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 17);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(744, 470);
             this.dataGridView1.TabIndex = 0;
@@ -178,131 +202,157 @@
             this.Slotid.HeaderText = "Slot";
             this.Slotid.Name = "Slotid";
             this.Slotid.ReadOnly = true;
+            this.Slotid.Width = 54;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "01";
             this.Column1.Name = "Column1";
+            this.Column1.Width = 42;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "02";
             this.Column2.Name = "Column2";
+            this.Column2.Width = 42;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "03";
             this.Column3.Name = "Column3";
+            this.Column3.Width = 42;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "04";
             this.Column4.Name = "Column4";
+            this.Column4.Width = 42;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "05";
             this.Column5.Name = "Column5";
+            this.Column5.Width = 42;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "06";
             this.Column6.Name = "Column6";
+            this.Column6.Width = 42;
             // 
             // Column7
             // 
             this.Column7.HeaderText = "07";
             this.Column7.Name = "Column7";
+            this.Column7.Width = 42;
             // 
             // Column8
             // 
             this.Column8.HeaderText = "08";
             this.Column8.Name = "Column8";
+            this.Column8.Width = 42;
             // 
             // Column9
             // 
             this.Column9.HeaderText = "09";
             this.Column9.Name = "Column9";
+            this.Column9.Width = 42;
             // 
             // Column10
             // 
             this.Column10.HeaderText = "10";
             this.Column10.Name = "Column10";
+            this.Column10.Width = 42;
             // 
             // Column11
             // 
             this.Column11.HeaderText = "11";
             this.Column11.Name = "Column11";
+            this.Column11.Width = 42;
             // 
             // Column12
             // 
             this.Column12.HeaderText = "12";
             this.Column12.Name = "Column12";
+            this.Column12.Width = 42;
             // 
             // Column13
             // 
             this.Column13.HeaderText = "13";
             this.Column13.Name = "Column13";
+            this.Column13.Width = 42;
             // 
             // Column14
             // 
             this.Column14.HeaderText = "14";
             this.Column14.Name = "Column14";
+            this.Column14.Width = 42;
             // 
             // Column15
             // 
             this.Column15.HeaderText = "15";
             this.Column15.Name = "Column15";
+            this.Column15.Width = 42;
             // 
             // Column16
             // 
             this.Column16.HeaderText = "16";
             this.Column16.Name = "Column16";
+            this.Column16.Width = 42;
             // 
             // Column17
             // 
             this.Column17.HeaderText = "17";
             this.Column17.Name = "Column17";
+            this.Column17.Width = 42;
             // 
             // Column18
             // 
             this.Column18.HeaderText = "18";
             this.Column18.Name = "Column18";
+            this.Column18.Width = 42;
             // 
             // Column19
             // 
             this.Column19.HeaderText = "19";
             this.Column19.Name = "Column19";
+            this.Column19.Width = 42;
             // 
             // Column20
             // 
             this.Column20.HeaderText = "20";
             this.Column20.Name = "Column20";
+            this.Column20.Width = 42;
             // 
             // Column21
             // 
             this.Column21.HeaderText = "21";
             this.Column21.Name = "Column21";
+            this.Column21.Width = 42;
             // 
             // Column22
             // 
             this.Column22.HeaderText = "22";
             this.Column22.Name = "Column22";
+            this.Column22.Width = 42;
             // 
             // Column23
             // 
             this.Column23.HeaderText = "23";
             this.Column23.Name = "Column23";
+            this.Column23.Width = 42;
             // 
             // Column24
             // 
             this.Column24.HeaderText = "24";
             this.Column24.Name = "Column24";
+            this.Column24.Width = 42;
             // 
             // Column25
             // 
             this.Column25.HeaderText = "25";
             this.Column25.Name = "Column25";
+            this.Column25.Width = 42;
             // 
             // btnPrint
             // 
@@ -326,6 +376,7 @@
             this.Controls.SetChildIndex(this.grpLotInfo, 0);
             this.Controls.SetChildIndex(this.grpFoupChange, 0);
             this.pnlMenu.ResumeLayout(false);
+            this.pnlMenu.PerformLayout();
             this.grpLotInfo.ResumeLayout(false);
             this.grpLotInfo.PerformLayout();
             this.grpFoupChange.ResumeLayout(false);
@@ -369,5 +420,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Label label1;
     }
 }

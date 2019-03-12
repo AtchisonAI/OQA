@@ -47,8 +47,12 @@ namespace OQAService.Contract
         #region  Foup Change
         //关于Foup Change 的查询服务
         [OperationContract]
-        ModelRsp<LotSlotidView> QryLotSlotidInfo(ModelRsp<LotSlotidView> LotSlotidView);
-        
+        ModelRsp<LotSlotidView> QryLotIspSlotidInfo(ModelRsp<LotSlotidView> LotSlotidView);
+        [OperationContract]
+        ModelRsp<LotSlotidView> QryLotMesSlotidInfo(ModelRsp<LotSlotidView> LotSlotidView);
+        [OperationContract]
+        ModelRsp<LotSlotidView> QryLotIspStsInfo(ModelRsp<LotSlotidView> LotSlotidView);
+
         #endregion
 
 

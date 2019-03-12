@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace OQA_Core
 {
@@ -14,6 +18,29 @@ namespace OQA_Core
     /// </summary>
     public class ComFunc
     {
+
+        /// <summary>
+
+        /// 将图片数据转换为Base64字符串
+
+        /// </summary>
+
+        /// <param name="sender"></param>
+
+        /// <param name="e"></param>
+        public static  string ImageToBase64(MemoryStream img)
+
+        {
+
+            byte[] bytes = img.GetBuffer();
+
+            string base64 = Convert.ToBase64String(bytes);
+
+            return base64;
+
+        }
+
+
         /// <summary>
         /// 初始化控件.
         /// </summary>
@@ -389,6 +416,30 @@ namespace OQA_Core
             //    MyListView.SmallImageList = null;
             //}
         }
+
+        public static void ClearBoxValue(Control parentCon)
+        {
+            foreach (Control control in parentCon.Controls)
+            {
+                if (control is TextBox || control is RichTextBox)
+                {
+                    control.Text = "";
+                }
+            }
+        }
+
+        //文本框输入控制
+        public static void CheckKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != 8 && !Char.IsDigit(e.KeyChar))//除退格以外的非数字输入
+            {//如果不是输入数字就不让输入
+                e.Handled = true;
+            }
+        }
     }
     #endregion
+
+
+
+  
 }

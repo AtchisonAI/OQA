@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 
 namespace WCFModels.OQA
@@ -56,9 +55,15 @@ namespace WCFModels.OQA
             }
         }
         private string in_lot_id;
-        
-       
+
+
         //服务传出数据结构
+        [DataMember]
+        public List<ISPLOTSTS> ISPLOTSTS_list { get; set; }
+
+        [DataMember]
+        public List<ISPWAFST> ISPWAFST_list { get; set; }
+
         [DataMember]
         public List<PKGSLTDEF> PKGSLTDEF_list { get; set; }
         //服务传出结果在BaseRsq:_success  _ErrorMsg

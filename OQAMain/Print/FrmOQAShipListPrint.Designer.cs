@@ -53,7 +53,6 @@
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(644, 7);
-            this.btnClose.Visible = false;
             // 
             // btnCreate
             // 
@@ -188,7 +187,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(647, 9);
+            this.btnPrint.Location = new System.Drawing.Point(351, 12);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 23);
             this.btnPrint.TabIndex = 7;

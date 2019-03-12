@@ -13,7 +13,7 @@ namespace TransferPic
     public interface ITransferPicService
     {
         [OperationContract]//操作契约
-        Stream GetPic();
+        Stream GetPic(string sPath);
         [OperationContract]
         string SendPic(Stream transferPic);
 

@@ -9,10 +9,11 @@ namespace WcfHost
         {
             try
             {
+                AppManager.InitApp();
                 ServiceManager.StartAllServices();
             }
             catch (Exception ex) {
-                Console.WriteLine("Service Start failed!");
+                Console.WriteLine(ex.Message);
                 return;
             }
 

@@ -11,6 +11,28 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>D:\OQAPublish\Client\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Background</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://localhost:8080/Client/</InstallUrl>
+    <ProductName>OQA出货系统</ProductName>
+    <PublisherName>SMFG</PublisherName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>index.htm</WebPage>
+    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,17 +73,27 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>E09B71DAF1F329C3E68EDB153E24A91D99D054D2</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>WcfClient_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="NPoco">
-      <HintPath>..\Components\NPoco.dll</HintPath>
-    </Reference>
     <Reference Include="OQAMain">
       <HintPath>..\Components\OQAMain.dll</HintPath>
     </Reference>
-    <Reference Include="OQA_Core">
+    <Reference Include="OQA_Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\OQA_Core.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Chart.Base, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
@@ -76,43 +108,36 @@
     <Reference Include="Syncfusion.Shared.Base, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
       <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Shared.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Tools.Windows, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
-      <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Tools.Windows.dll</HintPath>
+    <Reference Include="Syncfusion.Tools.Windows, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\Syncfusion.Tools.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Components\Utils.dll</HintPath>
-    </Reference>
     <Reference Include="WcfClientCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WcfClientCore.dll</HintPath>
+    </Reference>
+    <Reference Include="WcfContract">
+      <HintPath>..\Components\WcfContract.dll</HintPath>
+    </Reference>
+    <Reference Include="WcfInspector, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\WcfInspector.dll</HintPath>
     </Reference>
     <Reference Include="WCFModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WCFModels.dll</HintPath>
     </Reference>
-    <Reference Include="WcfService">
-      <HintPath>..\Components\WcfService.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppManager.cs" />
     <Compile Include="Forms\ControlAuthorityForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,7 +195,9 @@
       <DependentUpon>ShortcutForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Config\log4net.config" />
-    <None Include="Config\server.config" />
+    <None Include="Config\server.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpPercentView.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpSumView.datasource" />
@@ -189,7 +216,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Config\App.config" />
+    <None Include="Config\App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -199,6 +228,18 @@
       <Project>{6734161e-7d2d-485f-a48c-d0dfea600583}</Project>
       <Name>OQA_Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

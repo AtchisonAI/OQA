@@ -176,7 +176,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Remark</Value>
+                                  <Value>Inspection Result:</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -208,7 +208,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Reult</Value>
+                                  <Value>Remark</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -420,7 +420,7 @@
             <DataSetName>DataSet1</DataSetName>
             <Top>0.22712cm</Top>
             <Height>1.45076cm</Height>
-            <Width>19.38607cm</Width>
+            <Width>19.38608cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>

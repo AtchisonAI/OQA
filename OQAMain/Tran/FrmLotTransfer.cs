@@ -27,7 +27,7 @@ namespace OQAMain
         #region " Variable Definition "
         //private bool b_load_flag  ;
         private bool Have_flag = false;
-        private string ship_no;
+        //private string ship_no;
 
         #endregion
 
@@ -204,9 +204,10 @@ namespace OQAMain
 
             if (out_data._success == true)
             {
-              //  ComFunc.(LotIDList, true);
+                 //ComFunc.(LotIDList, true);
                 //      txtCount.Text = out_data.model.PKGSHPDAT_list.Count.ToString();
 
+                
                 for (int i = 0; i < out_data.model.ISPLOTST_list.Count; i++)
                 {
                     ListViewItem list_item = new ListViewItem();

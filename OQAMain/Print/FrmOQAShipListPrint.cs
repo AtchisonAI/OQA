@@ -36,7 +36,7 @@ namespace OQAMain
        // private bool b_load_flag  ;
         private bool Have_flag = false;
         private string ship_no;
-        private string shipID;
+        //private string shipID;
         #endregion
 
 
@@ -165,28 +165,12 @@ namespace OQAMain
             }
         }
         
-        //public FrmOQAShipListPrint(string shipID)
-        //{
-        //    InitializeComponent();
-        //  //  this.shipID = shipID;
-        //}
         private void FrmOQAShipListPrint_Load(object sender, EventArgs e)
         {
 
-     //       txtShipNo.Text = shipID;
-            //InitReportViewer("FrmOQAShipListPrint.rdlc");
-          
-            //this.reportViewer2.RefreshReport();
+   
         }
-        public void InitReportViewer(string rptName)
-        {
-            //reportViewer2.Reset();
-            //reportViewer2.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
-            //reportViewer2.LocalReport.ReportPath = Path.Combine(rptName);
-            //reportViewer2.RefreshReport();
-        }
-
-      
+         
         //二维码转化
         private string GenerateBarCodeByZen(string codeContent)
         {
@@ -262,11 +246,12 @@ namespace OQAMain
                 string Partid = lstShip[0].PartId.ToString();
                 string Shipdate = lstShip[0].ShipDate;
                 string Qty = lstShip[0].Qty.ToString();
+                string codePackedDate = GenerateBarCodeByZen(lstShip[0].ShipId.ToString());
 
                 lstParam.Add(new ReportParameter("ParameterPartID", Partid));
                 lstParam.Add(new ReportParameter("ParamWaferQty", Qty));
                 lstParam.Add(new ReportParameter("ParamDate", Shipdate));
-
+                lstParam.Add(new ReportParameter("ParameterBarcode", codePackedDate));
             }
             else
             {
@@ -274,19 +259,21 @@ namespace OQAMain
                 lstParam.Add(new ReportParameter("ParameterPartID", string.Empty));
                 lstParam.Add(new ReportParameter("ParamWaferQty", string.Empty));
                 lstParam.Add(new ReportParameter("ParamDate", string.Empty));
+                lstParam.Add(new ReportParameter("barcodeImage", string.Empty));
             }
             return lstParam;
         }
+        //绑定DATASET1
         public List<FrmOQAShipListPrintData> GenerateLabelDatasource()
         {
             List<FrmOQAShipListPrintData> result = new List<FrmOQAShipListPrintData>();
 
             for (int index = 0; index < lstShipList.Count; index++) {
                 int No = index+1;
-                string Partid = lstShipList[index].LotId.ToString();
+                string Lotid = lstShipList[index].LotId.ToString();
                 string Qty = lstShipList[index].Qty;
                 string InspectResult = lstShipList[index].InspectResult;
-                result.Add(new FrmOQAShipListPrintData() { No = index.ToString(), LotID = Partid, LotQty = Qty, InspectionRequest = InspectResult, Remark="" });
+                result.Add(new FrmOQAShipListPrintData() { No = index.ToString(), LotID = Lotid, LotQty = Qty, InspectionRequest = InspectResult, Remark="" });
             }
 
             return result;
@@ -310,5 +297,6 @@ namespace OQAMain
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+       
     }
 }

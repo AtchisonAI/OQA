@@ -1,9 +1,5 @@
-﻿using NPoco;
+﻿using System;
 using OQAService.Contract;
-using System;
-using System.Collections.Generic;
-using WCFModels;
-using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 using WCFModels.OQA;
 

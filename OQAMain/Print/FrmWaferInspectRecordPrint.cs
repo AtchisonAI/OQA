@@ -113,6 +113,7 @@ namespace OQAMain
                     return;
                 else
                 {
+                    this.reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", new List<WaferInspectRecord_sub>()));
                     this.reportViewer1.RefreshReport();
                 }
                     //调用事务服务
@@ -145,7 +146,29 @@ namespace OQAMain
         {
 
             //this.reportViewer1.RefreshReport();
+           
             reportViewer1.LocalReport.SubreportProcessing += LocalReport_SubreportProcessing;
+        }
+
+
+        public List<ReportParameter> GenerateLabelParameters()
+        {
+            List<ReportParameter> lstParam = new List<ReportParameter>();
+
+            if (lstLot.Count > 0)
+            {
+                string lotID = lstLot[0].LotId;
+                string Partid = lstLot[0].PartId.ToString();
+                string Qty = lstLot[0].Qty.ToString();
+                string Stime = lstLot[0].UpdateTime.ToString();
+
+                lstParam.Add(new ReportParameter("paramLotID", lotID));
+                lstParam.Add(new ReportParameter("paramPartID", Partid));
+                lstParam.Add(new ReportParameter("paramQTY", Qty));
+                lstParam.Add(new ReportParameter("paramDate", Stime));
+            }
+
+            return lstParam;
         }
 
 
@@ -159,7 +182,10 @@ namespace OQAMain
                 var side = waferSeq % 2 ==1?"F":"B";
                 var waferdefectcode = new List<WaferInspectRecord_sub>();
 
-                if(lstISPWAFDFT.Count(p=>decimal.Parse(p.SlotId)==slotID && p.SideType ==side) > 0)
+            
+                
+
+                    if (lstISPWAFDFT.Count(p=>decimal.Parse(p.SlotId)==slotID && p.SideType ==side) > 0)
                 {
                     var currentSlotISPWAFDFT = lstISPWAFDFT.Where(p => decimal.Parse(p.SlotId) == slotID && p.SideType == side);
 
@@ -173,28 +199,28 @@ namespace OQAMain
                         
                         if(currentSlotISPWAFDFT.Count(p=>p.AreaId == idx) >0)
                         {
-                            defectCod1 = currentSlotISPWAFDFT.Where(p => p.AreaId == idx).First().DefectCode;
+                            defectCod1 = string.Join(",",currentSlotISPWAFDFT.Where(p => p.AreaId == idx).Select< ISPWAFDFT,string>(p=>p.DefectCode));
                         }
                         idx++;
                         if (currentSlotISPWAFDFT.Count(p => p.AreaId == idx) > 0)
                         {
-                            defectCod2 = currentSlotISPWAFDFT.Where(p => p.AreaId == idx).First().DefectCode;
+                            defectCod2 = string.Join(",", currentSlotISPWAFDFT.Where(p => p.AreaId == idx).Select<ISPWAFDFT, string>(p => p.DefectCode));
                         }
                         idx++;
                         if (currentSlotISPWAFDFT.Count(p => p.AreaId == idx) > 0)
                         {
-                            defectCod3 = currentSlotISPWAFDFT.Where(p => p.AreaId == idx).First().DefectCode;
+                            defectCod3 = string.Join(",", currentSlotISPWAFDFT.Where(p => p.AreaId == idx).Select<ISPWAFDFT, string>(p => p.DefectCode));
                         }
 
                         idx++;
                         if (currentSlotISPWAFDFT.Count(p => p.AreaId == idx) > 0)
                         {
-                            defectCod4 = currentSlotISPWAFDFT.Where(p => p.AreaId == idx).First().DefectCode;
+                            defectCod4 = string.Join(",", currentSlotISPWAFDFT.Where(p => p.AreaId == idx).Select<ISPWAFDFT, string>(p => p.DefectCode));
                         }
                         idx++;
                         if (currentSlotISPWAFDFT.Count(p => p.AreaId == idx) > 0)
                         {
-                            defectCod5 = currentSlotISPWAFDFT.Where(p => p.AreaId == idx).First().DefectCode;
+                            defectCod5 = string.Join(",", currentSlotISPWAFDFT.Where(p => p.AreaId == idx).Select<ISPWAFDFT, string>(p => p.DefectCode));
                         }
 
                         var waferInspectRecord_sub = new WaferInspectRecord_sub(defectCod1, defectCod2, defectCod3, defectCod4, defectCod5);
@@ -228,9 +254,13 @@ namespace OQAMain
         }
 
         private List<ISPWAFDFT> lstISPWAFDFT;
+        private List<ISPLOTSTS> lstLot;
 
         private bool QueryWaferInspectRecordInfo(char c_proc_step, char c_tran_flag,string in_lotid)
         {
+
+           
+
             ModelRsp<WaferInspectRecordView> in_node = new ModelRsp<WaferInspectRecordView>();
             WaferInspectRecordView in_data = new WaferInspectRecordView();
 
@@ -241,10 +271,14 @@ namespace OQAMain
             in_node.model = in_data;
 
             var out_data = OQASrv.Call.QueryWaferInspectionRecordInfo(in_node);
-            var DataTableCount = out_data.model.ISPWAFDFT_list.Count;
+            var out_data_lot = OQASrv.Call.QueryLotInfo(in_node);
+         //   var DataTableCount = out_data.model.ISPWAFDFT_list.Count;
             if (out_data._success == true)
             {
                 lstISPWAFDFT = out_data.model.ISPWAFDFT_list;
+                lstLot = out_data_lot.model.LOT_list;
+
+                this.reportViewer1.LocalReport.SetParameters(GenerateLabelParameters());
             }
             else
             {

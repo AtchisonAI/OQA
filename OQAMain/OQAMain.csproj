@@ -52,6 +52,9 @@
     <Reference Include="DemoCommon">
       <HintPath>..\Syncfusion.Tools.4.6\DemoCommon.dll</HintPath>
     </Reference>
+    <Reference Include="FSLib.Extension">
+      <HintPath>..\Components\FSLib.Extension.dll</HintPath>
+    </Reference>
     <Reference Include="HiDM.LabelPrinting.Common">
       <HintPath>..\Components\HiDM.LabelPrinting.Common.dll</HintPath>
     </Reference>
@@ -79,8 +82,8 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
-    <Reference Include="OQAService">
-      <HintPath>..\Components\OQAService.dll</HintPath>
+    <Reference Include="OQAContract">
+      <HintPath>..\Components\OQAContract.dll</HintPath>
     </Reference>
     <Reference Include="OQA_Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -329,9 +332,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Utils">
-      <HintPath>..\Components\Utils.dll</HintPath>
-    </Reference>
     <Reference Include="WcfClientCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WcfClientCore.dll</HintPath>
@@ -340,13 +340,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WCFModels.dll</HintPath>
     </Reference>
-    <Reference Include="WcfService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Components\WcfService.dll</HintPath>
+    <Reference Include="Zen.Barcode.Core">
+      <HintPath>..\Components\Zen.Barcode.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Print\FrmOQAShipListPrintData.cs" />
     <Compile Include="Print\FrmWaferInspectRecord_sub.cs" />
+    <Compile Include="Print\ImageToBytes.cs" />
     <Compile Include="Tran\FrmDefectLotResult.cs">
       <SubType>Form</SubType>
     </Compile>

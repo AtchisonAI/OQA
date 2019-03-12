@@ -71,10 +71,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WCFModels.dll</HintPath>
     </Reference>
-    <Reference Include="WcfService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Components\WcfService.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form\BaseForm.cs">
@@ -106,6 +102,12 @@
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.ControlAccessString.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.Emp.datasource" />
     <None Include="Properties\DataSources\WCFModels.Message.DemoView.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WcfContract\WcfContract.csproj">
+      <Project>{7D056C01-8045-4557-9842-0A137F2C3F68}</Project>
+      <Name>WcfContract</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

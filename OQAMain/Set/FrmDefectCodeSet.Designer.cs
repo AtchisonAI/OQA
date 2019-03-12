@@ -32,6 +32,7 @@
             this.InspectType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DefectCode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DefectDesc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.transeq = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.grpIspType = new System.Windows.Forms.GroupBox();
             this.txtCount = new System.Windows.Forms.TextBox();
             this.txtFilter = new System.Windows.Forms.TextBox();
@@ -46,7 +47,6 @@
             this.txtIspType = new System.Windows.Forms.TextBox();
             this.labIspType = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.transeq = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlMenu.SuspendLayout();
             this.grpIspType.SuspendLayout();
             this.grpDefectCode.SuspendLayout();
@@ -102,6 +102,11 @@
             // 
             this.DefectDesc.Text = "Defect Desc";
             this.DefectDesc.Width = 200;
+            // 
+            // transeq
+            // 
+            this.transeq.Text = "transeq";
+            this.transeq.Width = 0;
             // 
             // grpIspType
             // 
@@ -240,11 +245,6 @@
             this.splitter1.Size = new System.Drawing.Size(3, 540);
             this.splitter1.TabIndex = 6;
             this.splitter1.TabStop = false;
-            // 
-            // transeq
-            // 
-            this.transeq.Text = "transeq";
-            this.transeq.Width = 0;
             // 
             // FrmDefectCodeSet
             // 

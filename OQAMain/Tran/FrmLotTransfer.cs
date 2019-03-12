@@ -2,6 +2,8 @@
 using OQA_Core;
 using System;
 using System.Windows.Forms;
+using WCFModels.OQA;
+using WCFModels.Message;
 
 namespace OQAMain
 {
@@ -24,6 +26,8 @@ namespace OQAMain
 
         #region " Variable Definition "
         //private bool b_load_flag  ;
+        private bool Have_flag = false;
+        private string ship_no;
 
         #endregion
 
@@ -120,7 +124,7 @@ namespace OQAMain
         #endregion
 
 
-
+        public static string srtNum;
         private void btnCreate_Click(object sender, EventArgs e)
         {
             try
@@ -153,6 +157,91 @@ namespace OQAMain
             }
         }
 
+        private void FrmLotTransfer_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (QueryLotIDList(GlobConst.TRAN_VIEW, '1') == false) return;
+             }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+         }
+
+        private void btnCreate_Click_1(object sender, EventArgs e)
+        {
+            FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint();
+            MessageBox.Show("交接单号");
+            formshiplistprint.ShowDialog();
+        }
+        public string GetSerialNum()
+        {
+
+            srtNum = DateTime.Now.ToString("yyyyMMddHHmm");
+            Random ra = new Random();
+            string a = srtNum += (" ");  //空格
+            srtNum += ra.Next(100000, 999999);  //六位随机数
+            return srtNum;
+
+        }
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool QueryLotIDList(char c_proc_step, char c_tran_flag)
+        {
+            ModelRsp<LotIDListView> in_node = new ModelRsp<LotIDListView>();
+            LotIDListView in_data = new LotIDListView();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.QueryLotList(in_node);
+
+            if (out_data._success == true)
+            {
+              //  ComFunc.(LotIDList, true);
+                //      txtCount.Text = out_data.model.PKGSHPDAT_list.Count.ToString();
+
+                for (int i = 0; i < out_data.model.ISPLOTST_list.Count; i++)
+                {
+                    ListViewItem list_item = new ListViewItem();
+                    ISPLOTSTS list = out_data.model.ISPLOTST_list[i];
+                    list_item.Text = list.LotId;
+                    LotIDList.Items.Add(list_item);
+                }
+                lblSucessMsg.Text = out_data._MsgCode;
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+        }
+
+        //全选
+        private void Select_All_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Select_All.Checked)
+            {
+                for (int i = 0; i < LotIDList.Items.Count; i++)
+                {
+                    LotIDList.SetItemChecked(i, true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < LotIDList.Items.Count; i++)
+                {
+                    LotIDList.SetItemChecked(i, false);
+                }
+            }
+        }
 
     }
 }

@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
 using WcfClientCore.Utils.Authority;
+using WcfContract;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
-using WcfService.Contract;
 
 namespace WcfClientCore.WcfSrv
 {
     public class WcfSrv
     {
         public static readonly IWcfContract WcfClient = GetSrvClient<IWcfContract>("WcfSrv");
-
+        
         public static T GetSrvClient<T>(string configName)
         {
             ChannelFactory<T> channelFactory = new ChannelFactory<T>(configName);
@@ -24,6 +24,7 @@ namespace WcfClientCore.WcfSrv
             {
                 userProfile = userProfile
             };
+
 
             var rsp = WcfClient.Login(loginReq);
             if (rsp._success)

@@ -1,6 +1,6 @@
-﻿using OQAService.Contract;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using OQAService.Contract;
 using WCFModels;
 using WCFModels.Message;
 using WCFModels.OQA;

@@ -27,16 +27,22 @@ namespace WcfClient
             }
             else
             {
-                var res = WcfSrv.Login(new UserProfile(userName, passwd, "OQA:"));
-                if (res._success)
+                try
                 {
-                    log.Info("登陆成功 "+"User: "+userName );
-                    DialogResult = DialogResult.OK;
-                    Close();
-                }
-                else
+                    var res = WcfSrv.Login(new UserProfile(userName, passwd, "OQA:"));
+                    if (res._success)
+                    {
+                        log.Info("登陆成功 " + "User: " + userName);
+                        DialogResult = DialogResult.OK;
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show(res._ErrorMsg);
+                    }
+                } catch (Exception e)
                 {
-                    MessageBox.Show(res._ErrorMsg);
+                    MessageBox.Show(e.Message);
                 }
             }
         }

@@ -9,6 +9,7 @@ namespace WcfHost
         {
             try
             {
+                AppManager.InitApp();
                 ServiceManager.StartAllServices();
             }
             catch (Exception ex) {

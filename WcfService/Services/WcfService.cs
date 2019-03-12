@@ -1,10 +1,10 @@
 ﻿using HiDM.FactoryWorks.Messages;
 using HiDM.FactoryWorks.TibcoRV;
 using System.ServiceModel;
+using WcfContract;
 using WCFModels;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
-using WcfService.Contract;
 
 namespace WcfService.Services
 {

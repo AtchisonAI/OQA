@@ -393,25 +393,5 @@ namespace WcfService
 
             PageQueryReq.sortCondittionList.Add(sortCon);
         }
-
-        public bool VersionCompare(BaseReq req,BaseRsp rsp)
-        {
-            if(req.msgFrom == MsgSite.CLIENT &&!VersionContrl.MatchVersion(req.clientActiveVer))
-            {
-                string allowCliVerion = "";
-                foreach(string s in VersionContrl.allowCVersionList)
-                {
-                    allowCliVerion += s;
-                    allowCliVerion += ',';
-                }
-                allowCliVerion = allowCliVerion.TrimEnd(',');
-
-                rsp._success = false;
-                rsp._ErrorMsg = "客户端版本号与服务端版本号不兼容，请将客户端版本号升级至"+ allowCliVerion;
-                return false;
-            }
-
-            return true;
-        }
     }
 }

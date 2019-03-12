@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A19B87EE-049D-4600-845C-F33B22DCEC8B}</ProjectGuid>
+    <ProjectGuid>{6015867A-2443-4E72-9F82-7BB8496F2CE2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WcfService</RootNamespace>
-    <AssemblyName>WcfService</AssemblyName>
+    <RootNamespace>OQAContract</RootNamespace>
+    <AssemblyName>OQAContract</AssemblyName>
     <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -19,7 +19,7 @@
     <XsdCodeGenReuseTypesFlag>True</XsdCodeGenReuseTypesFlag>
     <XsdCodeGenReuseTypesMode>All</XsdCodeGenReuseTypesMode>
     <XsdCodeGenReferences />
-    <XsdCodeGenNamespaceMappings>%2a, WcfService.ContractTypes</XsdCodeGenNamespaceMappings>
+    <XsdCodeGenNamespaceMappings>%2a, OQAContract.ContractTypes</XsdCodeGenNamespaceMappings>
     <XsdCodeGenCollectionTypes>System.Array%3bSystem.Collections.Generic.Dictionary`2</XsdCodeGenCollectionTypes>
     <XsdCodeGenExcludedTypes />
     <XsdCodeGenImportXmlTypes>True</XsdCodeGenImportXmlTypes>
@@ -35,7 +35,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -45,83 +44,27 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FSLib.Extension">
-      <HintPath>..\Components\FSLib.Extension.dll</HintPath>
-    </Reference>
-    <Reference Include="HiDM.FactoryWorks.Common">
-      <HintPath>..\Components\HiDM.FactoryWorks.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="HiDM.FactoryWorks.Messages">
-      <HintPath>..\Components\HiDM.FactoryWorks.Messages.dll</HintPath>
-    </Reference>
-    <Reference Include="HiDM.FactoryWorks.TibcoRV">
-      <HintPath>..\Components\HiDM.FactoryWorks.TibcoRV.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="NPoco, Version=3.9.4.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Components\NPoco.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="TIBCO.Rendezvous">
-      <HintPath>..\Components\TIBCO.Rendezvous.dll</HintPath>
-    </Reference>
-    <Reference Include="Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Components\Utils.dll</HintPath>
-    </Reference>
-    <Reference Include="WCFModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Components\WCFModels.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\WcfService.cs" />
-    <Compile Include="Util\LambdaHelper.cs" />
-    <Compile Include="Util\MyDB.cs" />
-    <Compile Include="Services\BaseService.cs" />
+    <Compile Include="IOQAContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Config\App.config" />
-    <None Include="Config\log4net.config" />
-    <None Include="Config\packages.config" />
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WcfContract\WcfContract.csproj">
-      <Project>{7D056C01-8045-4557-9842-0A137F2C3F68}</Project>
-      <Name>WcfContract</Name>
+    <ProjectReference Include="..\WCFModels\WcfModels.csproj">
+      <Project>{479849CD-3F79-4B29-ACD0-ADCED9DC3A6E}</Project>
+      <Name>WcfModels</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -141,7 +84,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "$(ProjectDir)..\Components\" /d/r/y</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetPath)" "$(SolutionDir)Components\" /d/r/y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

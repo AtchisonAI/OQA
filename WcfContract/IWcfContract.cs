@@ -2,7 +2,7 @@
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 
-namespace WcfService.Contract
+namespace WcfContract
 {
     [ServiceContract]
     public interface IWcfContract

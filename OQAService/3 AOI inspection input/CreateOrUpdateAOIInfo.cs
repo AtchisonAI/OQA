@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using WCFModels;
-using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 using WCFModels.OQA;
-using OQAService.Contract;
 using System.ServiceModel;
+using OQAContract;
 
 namespace OQAService.Services
 {

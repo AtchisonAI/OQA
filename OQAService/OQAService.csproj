@@ -67,7 +67,8 @@
     <Reference Include="NPoco">
       <HintPath>..\Components\NPoco.dll</HintPath>
     </Reference>
-    <Reference Include="OQAContract">
+    <Reference Include="OQAContract, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\OQAContract.dll</HintPath>
     </Reference>
     <Reference Include="System" />

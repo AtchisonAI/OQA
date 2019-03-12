@@ -210,7 +210,7 @@ namespace OQAMain
                 for (int i = 0; i < out_data.model.ISPLOTST_list.Count; i++)
                 {
                     ListViewItem list_item = new ListViewItem();
-                    ISPLOTST list = out_data.model.ISPLOTST_list[i];
+                    ISPLOTSTS list = out_data.model.ISPLOTST_list[i];
                     list_item.Text = list.LotId;
                     LotIDList.Items.Add(list_item);
                 }

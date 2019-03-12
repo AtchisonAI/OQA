@@ -53,17 +53,22 @@ namespace OQAService.Contract
         [OperationContract]
         ModelRsp<LotSlotidView> QryLotIspStsInfo(ModelRsp<LotSlotidView> LotSlotidView);
 
+        #endregion
 
+        #region  Lot Transfer
+
+        ModelRsp<LotIDListView> QueryLotList(ModelRsp<LotIDListView> PKGShip);
 
         #endregion
 
-        
-        
+
         #region  Package Info
 
         ModelRsp<PKGShipView> QryPKGShipInfo(ModelRsp<PKGShipView> PKGShip);
 
         #endregion
+
+
 
 
         #region  WaferInspectRecord

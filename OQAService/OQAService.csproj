@@ -102,6 +102,7 @@
     <Compile Include="7 FOUP change\QryLotIspStsInfo.cs" />
     <Compile Include="7 FOUP change\QryLotMesSlotidInfo.cs" />
     <Compile Include="7 FOUP change\QryLotIspSlotidInfo.cs" />
+    <Compile Include="9 Lot Transfer\QueryLotList.cs" />
     <Compile Include="Emp\QueryEmpInfo.cs" />
     <Compile Include="Emp\EmpService.cs" />
     <Compile Include="GlobalConstant.cs" />
@@ -125,7 +126,6 @@
     <Folder Include="5 Mirco inspection input\" />
     <Folder Include="6 Defect send %28PNDN%29\" />
     <Folder Include="8 Lot package\" />
-    <Folder Include="9 Lot Transfer\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

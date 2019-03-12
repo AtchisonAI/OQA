@@ -57,13 +57,13 @@ namespace OQAService.Services
                             PageQueryReq.ItemsPerPage = 200;
                             //if (In_node.model.IN_SHIP_NO.Trim().Equals("") == false)
                             //{
-                                AddCondition(PageQueryReq, GetParaName<ISPLOTST>(p=>p.LotId), null, LogicCondition.AndAlso,CompareType.NotEqual);
+                                AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p=>p.LotId), null, LogicCondition.AndAlso,CompareType.NotEqual);
                            // }
                            
                                                         
-                            AddSortCondition(PageQueryReq, GetParaName <ISPLOTST> (p=>p.LotId), SortType.ASC);
+                            AddSortCondition(PageQueryReq, GetParaName <ISPLOTSTS> (p=>p.LotId), SortType.ASC);
                             
-                            var data = PageQuery<ISPLOTST>(PageQueryReq);
+                            var data = PageQuery<ISPLOTSTS>(PageQueryReq);
 
                             Out_node.model.ISPLOTST_list = data.models;
 

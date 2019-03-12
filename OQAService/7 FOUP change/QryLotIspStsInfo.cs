@@ -61,18 +61,18 @@ namespace OQAService.Services
                             if (In_node.model.IN_LOT_ID.Trim().Equals("") == false)
                             {
                                
-                                AddCondition(PageQueryReq, GetParaName<ISPLOTST>(p => p.LotId), In_node.model.IN_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                                AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), In_node.model.IN_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
-                            AddSortCondition(PageQueryReq, GetParaName<ISPLOTST>(p => p.LotId), SortType.ASC);
-                            var data = PageQuery<ISPLOTST>(PageQueryReq);
+                            AddSortCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);
+                            var data = PageQuery<ISPLOTSTS>(PageQueryReq);
                             
-                            Out_node.model.ISPLOTST_list = data.models;
+                            Out_node.model.ISPLOTSTS_list = data.models;
 
                            
                             //验证来料状态
-                            if (Out_node.model.ISPLOTST_list.Count > 0) 
+                            if (Out_node.model.ISPLOTSTS_list.Count > 0) 
                             {
-                                foreach (var temp in Out_node.model.ISPLOTST_list)
+                                foreach (var temp in Out_node.model.ISPLOTSTS_list)
                                 {
 
                                     if (temp.Status != "已检验")

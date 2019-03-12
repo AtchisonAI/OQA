@@ -1,5 +1,4 @@
-﻿using NPoco;
-using WcfService;
+﻿using WcfService;
 
 using System;
 

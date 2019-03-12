@@ -60,7 +60,7 @@ namespace WCFModels.OQA
 
         //服务传出数据结构
         [DataMember]
-        public List<ISPLOTST> ISPLOTST_list { get; set; }
+        public List<ISPLOTSTS> ISPLOTSTS_list { get; set; }
 
         [DataMember]
         public List<ISPWAFST> ISPWAFST_list { get; set; }

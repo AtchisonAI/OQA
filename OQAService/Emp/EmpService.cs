@@ -1,5 +1,5 @@
-﻿using OQAContract;
-using System.ServiceModel;
+﻿using System.ServiceModel;
+using OQAService.Contract;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 

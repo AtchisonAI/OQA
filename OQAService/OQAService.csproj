@@ -64,8 +64,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="NPoco, Version=3.9.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="NPoco">
       <HintPath>..\Components\NPoco.dll</HintPath>
     </Reference>
     <Reference Include="OQAContract">
@@ -84,7 +83,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\Utils.dll</HintPath>
     </Reference>
-    <Reference Include="WCFModels">
+    <Reference Include="WCFModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WCFModels.dll</HintPath>
     </Reference>
     <Reference Include="WcfService">

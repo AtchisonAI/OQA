@@ -44,8 +44,10 @@ namespace OQAContract
         #endregion
 
         #region  Lot Transfer
-
+        [OperationContract]
         ModelRsp<LotIDListView> QueryLotList(ModelRsp<LotIDListView> PKGShip);
+        [OperationContract]
+        ModelRsp<QueryLotDetailView> QueryLotDetail(ModelRsp<QueryLotDetailView> PKGShip);
 
         #endregion
 
@@ -63,6 +65,9 @@ namespace OQAContract
         [OperationContract]
         ModelRsp<PKGShipView> QryPKGShipInfo(ModelRsp<PKGShipView> PKGShip);
 
+        [OperationContract]
+        ModelRsp<PKGShipView> QryPKGShipSummaryInfo(ModelRsp<PKGShipView> PKGShipSummary);
+
         #endregion
 
         #region  Image Save
@@ -71,7 +76,10 @@ namespace OQAContract
 
         #endregion
 
-
+        #region  Lot Inspect View
+        [OperationContract]
+        ModelRsp<IspMesLot> QryMesLotInfo(ModelRsp<IspMesLot> DefectCode);
+        #endregion
 
         #region  WaferInspectRecord
         [OperationContract]

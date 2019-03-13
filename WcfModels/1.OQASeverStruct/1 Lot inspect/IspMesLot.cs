@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Runtime.Serialization;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
@@ -6,7 +7,7 @@ using WCFModels.Message;
 namespace WCFModels.OQA
 {
     [DataContract]
-    public class PKGShipView: BaseRsp
+    public class IspMesLot : BaseRsp
     {
 
         //服务传入执行动作,事务标记必须输入
@@ -24,11 +25,6 @@ namespace WCFModels.OQA
         }
         private char c_proc_step;
 
-        public PKGShipView()
-        {
-            PKGSHPDAT_list = new List<PKGSHPDAT>();
-        }
-
         [DataMember]
         public char C_TRAN_FLAG
         {
@@ -43,30 +39,50 @@ namespace WCFModels.OQA
         }
 
         private char c_tran_flag;
+
+
         //服务传入参数
+
         [DataMember]
-        public string IN_SHIP_NO {
+        public string C_LOT_ID
+        {
             get
             {
-                return in_ship_no;
+                return c_lot_id;
             }
             set
             {
-                in_ship_no = value;
+                c_lot_id = value;
             }
         }
-        private string in_ship_no;
+
+        private string c_lot_id;
 
 
-
-        //服务传出数据结构
         [DataMember]
-        public List<PKGSHPDAT> PKGSHPDAT_list { get; set; }
+        public string C_FOUP_ID
+        {
+            get
+            {
+                return c_foup_id;
+            }
+            set
+            {
+                c_foup_id = value;
+            }
+        }
 
-        //服务传出数据结构
+        private string c_foup_id;
+        public IspMesLot()
+        {
+            OQAMESLOT_LIST = new List<OqaMeslot>();
+            OQAMESWAFER_LIST = new List<OqaMeswafer>();
+        }
         [DataMember]
-        public List<PKGSHPSTS> PKGSHP_list { get; set; }
+        public List<OqaMeslot> OQAMESLOT_LIST { get; set; }           
+        
+        [DataMember]
+        public List<OqaMeswafer> OQAMESWAFER_LIST { get; set; }
 
-        //服务传出结果在BaseRsq:_success  _ErrorMsg
     }
 }

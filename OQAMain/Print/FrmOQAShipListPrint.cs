@@ -36,7 +36,7 @@ namespace OQAMain
        // private bool b_load_flag  ;
         private bool Have_flag = false;
         private string ship_no;
-        private string shipID;
+        //private string shipID;
         #endregion
 
 
@@ -165,87 +165,12 @@ namespace OQAMain
             }
         }
         
-        //public FrmOQAShipListPrint(string shipID)
-        //{
-        //    InitializeComponent();
-        //  //  this.shipID = shipID;
-        //}
         private void FrmOQAShipListPrint_Load(object sender, EventArgs e)
         {
 
-     //       txtShipNo.Text = shipID;
-            InitReportViewer("FrmOQAShipListPrint.rdlc");
-            //DataTable dtMaster = getShipMasterData(shipID);
-            //DataTable dtDetails = getOraclePKGSHPDAT(shipID);
-
-            //this.dataGridView1.DataSource = dtDetails;
-            //this.dataGridView1.AllowUserToAddRows = false;
-
-            //this.reportViewer2.LocalReport.DataSources.Clear();
-            //var dataSourceList = GenerateLabelDatasource(dtDetails);
-            //var dataSource = new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", dataSourceList);
-            //this.reportViewer2.LocalReport.DataSources.Add(dataSource);
-            //this.reportViewer2.LocalReport.SetParameters(GenerateLableParamters(dtMaster));
-            this.reportViewer2.RefreshReport();
+   
         }
-        public void InitReportViewer(string rptName)
-        {
-            reportViewer2.Reset();
-            reportViewer2.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
-            reportViewer2.LocalReport.ReportPath = Path.Combine(rptName);
-            reportViewer2.RefreshReport();
-        }
-        //private DataTable getOraclePKGSHPDAT(string shipID)
-        //{
-        //    var sql = string.Format("SELECT A.LOT_ID,A.QTY,A.PART_ID,A.INSPECT_RESULT FROM PKGSHPDAT A WHERE SHIP_ID = '{0}'", shipID); ;
-        //    DataTable dataTable = OracleHelp.GetDataTable(sql);
-
-        //    return dataTable;
-        //}
-
-        //private DataTable getShipMasterData(string shipID)
-        //{
-        //    var sql = string.Format("SELECT A.PART_ID,A.QTY,A.SHIP_DATE FROM PKGSHPSTS A WHERE SHIP_ID = '{0}'", shipID); ;
-        //    DataTable dataTable = OracleHelp.GetDataTable(sql);
-
-        //    return dataTable;
-        //}
-
-        //打印表头内容
-        public List<ReportParameter> GenerateLableParamters(System.Data.DataTable dtMaster)
-        {
-            string PartID1 = dtMaster.Rows[0]["PART_ID"].ToString();
-            string Qtysys1 = dtMaster.Rows[0]["QTY"].ToString();
-            string Datesys1 = dtMaster.Rows[0]["SHIP_DATE"].ToString();
-            string codePackedDate = GenerateBarCodeByZen(shipID);
-
-            List<ReportParameter> lstParam = new List<ReportParameter>();
-            lstParam.Add(new ReportParameter("ParameterPartID", PartID1));
-            lstParam.Add(new ReportParameter("ParamWaferQty", Qtysys1));
-            lstParam.Add(new ReportParameter("ParamDate", Datesys1));
-
-           lstParam.Add(new ReportParameter("ParameterBarcode", codePackedDate));
-            return lstParam;
-        }
-       
-        //内容打印
-        public List<FrmOQAShipListPrintData> GenerateLabelDatasource(DataTable dtDetails)
-        {
-            List<FrmOQAShipListPrintData> result = new List<FrmOQAShipListPrintData>();
-            int index = 0;
-            foreach (DataRow row in dtDetails.Rows)
-            {
-                index++;
-                string lotID = row["LOT_ID"].ToString();
-                string qty = row["QTY"].ToString();
-                string inspResult = row["INSPECT_RESULT"].ToString();
-
-                result.Add(new FrmOQAShipListPrintData() { No = index.ToString(), LotID = lotID, LotQty = qty, InspectionRequest = inspResult });
-
-            }
-
-            return result;
-        }
+         
         //二维码转化
         private string GenerateBarCodeByZen(string codeContent)
         {
@@ -255,7 +180,8 @@ namespace OQAMain
 
         }
 
-
+        private List<PKGSHPSTS> lstShip;
+        private List<PKGSHPDAT> lstShipList;
         private bool QueryPKGSHPInfo(char c_proc_step, char c_tran_flag,string in_ship_no)
         {
             ModelRsp<PKGShipView> in_node = new ModelRsp<PKGShipView>();
@@ -268,14 +194,23 @@ namespace OQAMain
             in_node.model = in_data;
 
             var out_data = OQASrv.Call.QryPKGShipInfo(in_node);
+            var out_data_ship = OQASrv.Call.QryPKGShipSummaryInfo(in_node);
 
             if (out_data._success == true)
             {
+                lstShip = out_data_ship.model.PKGSHP_list;
+                lstShipList = out_data.model.PKGSHPDAT_list;
+
+                this.reportViewer2.LocalReport.SetParameters(GenerateLabelParameters());
+                this.reportViewer2.LocalReport.DataSources.Clear();
+                var dataSource = new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", GenerateLabelDatasource());
+                this.reportViewer2.LocalReport.DataSources.Add(dataSource);
 
 
+                reportViewer2.RefreshReport();
                 ComFunc.InitListView(lisship, true);
           //      txtCount.Text = out_data.model.PKGSHPDAT_list.Count.ToString();
-
+                  
                 for (int i = 0; i < out_data.model.PKGSHPDAT_list.Count; i++)
                 {
 
@@ -301,6 +236,49 @@ namespace OQAMain
 
         }
 
+        //表头打印
+        public List<ReportParameter> GenerateLabelParameters()
+        {
+            List<ReportParameter> lstParam = new List<ReportParameter>();
+
+            if (lstShip.Count > 0)
+            {
+                string Partid = lstShip[0].PartId.ToString();
+                string Shipdate = lstShip[0].ShipDate;
+                string Qty = lstShip[0].Qty.ToString();
+                string codePackedDate = GenerateBarCodeByZen(lstShip[0].ShipId.ToString());
+
+                lstParam.Add(new ReportParameter("ParameterPartID", Partid));
+                lstParam.Add(new ReportParameter("ParamWaferQty", Qty));
+                lstParam.Add(new ReportParameter("ParamDate", Shipdate));
+                lstParam.Add(new ReportParameter("ParameterBarcode", codePackedDate));
+            }
+            else
+            {
+
+                lstParam.Add(new ReportParameter("ParameterPartID", string.Empty));
+                lstParam.Add(new ReportParameter("ParamWaferQty", string.Empty));
+                lstParam.Add(new ReportParameter("ParamDate", string.Empty));
+                lstParam.Add(new ReportParameter("barcodeImage", string.Empty));
+            }
+            return lstParam;
+        }
+        //绑定DATASET1
+        public List<FrmOQAShipListPrintData> GenerateLabelDatasource()
+        {
+            List<FrmOQAShipListPrintData> result = new List<FrmOQAShipListPrintData>();
+
+            for (int index = 0; index < lstShipList.Count; index++) {
+                int No = index+1;
+                string Lotid = lstShipList[index].LotId.ToString();
+                string Qty = lstShipList[index].Qty;
+                string InspectResult = lstShipList[index].InspectResult;
+                result.Add(new FrmOQAShipListPrintData() { No = index.ToString(), LotID = Lotid, LotQty = Qty, InspectionRequest = InspectResult, Remark="" });
+            }
+
+            return result;
+        }
+
         private void btnPrint_Click_1(object sender, EventArgs e)
         {
             try
@@ -319,5 +297,6 @@ namespace OQAMain
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+       
     }
 }

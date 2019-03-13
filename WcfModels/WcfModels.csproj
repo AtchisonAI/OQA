@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="1.OQASeverStruct\10 Package Label Print\PKGLabelPrintView.cs" />
+    <Compile Include="1.OQASeverStruct\1 Lot inspect\IspMesLot.cs" />
     <Compile Include="1.OQASeverStruct\11 Wafer Insection Record Print\WaferInspectionRecordView.cs" />
     <Compile Include="1.OQASeverStruct\1 Lot inspect\ImageSave.cs" />
     <Compile Include="1.OQASeverStruct\12 IOQA Ship List Print\PKGShipView.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="1.OQASeverStruct\4 Marco inspection input\MacroView.cs" />
     <Compile Include="1.OQASeverStruct\5 Mirco inspection input\MicroView.cs" />
     <Compile Include="1.OQASeverStruct\7 FOUP change\LotSlotidView.cs" />
+    <Compile Include="1.OQASeverStruct\9 Lot Transfer\QueryLotDetailView.cs" />
     <Compile Include="1.OQASeverStruct\9 Lot Transfer\LotIDListView.cs" />
     <Compile Include="2.OQATableStruct\OQADB.cs" />
     <Compile Include="MESDB\FWTST1\Table\FWTST1_Table.cs" />

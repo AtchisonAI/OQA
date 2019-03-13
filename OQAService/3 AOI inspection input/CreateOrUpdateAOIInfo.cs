@@ -3,6 +3,10 @@ using WCFModels.Message;
 using WCFModels.OQA;
 using System.ServiceModel;
 using OQAContract;
+using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 namespace OQAService.Services
 {
@@ -46,7 +50,7 @@ namespace OQAService.Services
 
                         if (null != qryOut.model)
                         {   //update ISPWAFITM
-                            if (null != qryOut.model.ISPWAFITM_list && qryOut.model.ISPWAFITM_list.Count>0)
+                            if (null != qryOut.model.ISPWAFITM_list && qryOut.model.ISPWAFITM_list.Count > 0)
                             {
                                 updateReq.model.ISPWAFITM_list[0].TransSeq = qryOut.model.ISPWAFITM_list[0].TransSeq;
                                 UpdateModelReq<ISPWAFITM> wafitm = new UpdateModelReq<ISPWAFITM>()
@@ -118,37 +122,69 @@ namespace OQAService.Services
 
                             //}
                             //save or update ISPWAFDFT
+                            
                             if (null != updateReq.model.ISPWAFDFT_list && updateReq.model.ISPWAFDFT_list.Count > 0)
                             {
                                 if (null != qryOut.model.ISPWAFDFT_list && qryOut.model.ISPWAFDFT_list.Count > 0)
                                 {
-
+                                    List<ISPWAFDFT> copyQryList = new List<ISPWAFDFT>();
+                                    foreach(ISPWAFDFT qry in  qryOut.model.ISPWAFDFT_list){
+                                        copyQryList.Add(qry);
+                                    }
                                     foreach (ISPWAFDFT detReq in updateReq.model.ISPWAFDFT_list)
                                     {
                                         detReq.TransSeq = 0;
                                         OperateType operateTypeDft = OperateType.Insert;
-                                        foreach (ISPWAFDFT detQry in qryOut.model.ISPWAFDFT_list)
+                                        for(int i = 0; i < qryOut.model.ISPWAFDFT_list.Count; i++)
                                         {
-                                            if (detReq.SlotId.Equals(detQry.SlotId) && detReq.AreaId == detQry.AreaId
-                                            && detReq.DefectCode.Equals(detQry.DefectCode))
+                                            if (detReq.SlotId.Equals(qryOut.model.ISPWAFDFT_list[i].SlotId) 
+                                                && detReq.AreaId == qryOut.model.ISPWAFDFT_list[i].AreaId
+                                            && detReq.DefectCode.Equals(qryOut.model.ISPWAFDFT_list[i].DefectCode))
                                             {
-                                                detReq.TransSeq = detQry.TransSeq;
+                                                detReq.TransSeq = qryOut.model.ISPWAFDFT_list[i].TransSeq;
                                                 operateTypeDft = OperateType.Update;
+                                                //移除更新的数据
+                                                copyQryList.Remove(qryOut.model.ISPWAFDFT_list[i]);
                                             }
+                                            
                                         }
-                                     
-                                            UpdateModelReq<ISPWAFDFT> wafdet = new UpdateModelReq<ISPWAFDFT>()
-                                            {
-                                                model = detReq,
-                                                operateType = operateTypeDft
-                                            };
-                                            ModelRsp<ISPWAFDFT> backInfo = new ModelRsp<ISPWAFDFT>();//定义数据库操作新增动作传入结构
-                                            UpdateModel(wafdet, backInfo, true);
-                                            if (!backInfo._success)
-                                            {
-                                                out_Msg._success = false;
-                                                out_Msg._ErrorMsg = out_Msg._ErrorMsg + "  " + backInfo._ErrorMsg;
-                                            }
+                                        //foreach (ISPWAFDFT detQry in qryOut.model.ISPWAFDFT_list)
+                                        //{
+                                        //    if (detReq.SlotId.Equals(detQry.SlotId) && detReq.AreaId == detQry.AreaId
+                                        //    && detReq.DefectCode.Equals(detQry.DefectCode))
+                                        //    {
+                                        //        detReq.TransSeq = detQry.TransSeq;
+                                        //        operateTypeDft = OperateType.Update;
+                                        //    }
+                                        //    //移除更新的数据
+                                        //    copyQryList.Remove(detQry);
+                                        //}
+                                        
+                                        UpdateModelReq<ISPWAFDFT> wafdet = new UpdateModelReq<ISPWAFDFT>()
+                                        {
+                                            model = detReq,
+                                            operateType = operateTypeDft
+                                        };
+                                        ModelRsp<ISPWAFDFT> backInfo = new ModelRsp<ISPWAFDFT>();//定义数据库操作新增动作传入结构
+                                        UpdateModel(wafdet, backInfo, true);
+                                        if (!backInfo._success)
+                                        {
+                                            out_Msg._success = false;
+                                            out_Msg._ErrorMsg = out_Msg._ErrorMsg + "  " + backInfo._ErrorMsg;
+                                        }
+                                    }
+                                    //delete
+                                    UpdateModelListReq<ISPWAFDFT> deleteList = new UpdateModelListReq<ISPWAFDFT>()
+                                    {
+                                        models = copyQryList,
+                                        operateType = OperateType.Delete
+                                    };
+                                    ModelListRsp<ISPWAFDFT> deleteBackInfo = new ModelListRsp<ISPWAFDFT>();//定义数据库操作新增动作传入结构
+                                    UpdateModels(deleteList, deleteBackInfo, true);
+                                    if (!deleteBackInfo._success)
+                                    {
+                                        out_Msg._success = false;
+                                        out_Msg._ErrorMsg = out_Msg._ErrorMsg + "  " + deleteBackInfo._ErrorMsg;
                                     }
                                 }
                                 else
@@ -171,6 +207,40 @@ namespace OQAService.Services
                                     }
                                 }
 
+                            }
+                            else
+                            {//请求为空列表时detete旧数据
+                                if (null != qryOut.model.ISPWAFDFT_list && qryOut.model.ISPWAFDFT_list.Count > 0)
+                                {
+                                    UpdateModelListReq<ISPWAFDFT> wafdet = new UpdateModelListReq<ISPWAFDFT>()
+                                    {
+                                        models = qryOut.model.ISPWAFDFT_list,
+                                        operateType = OperateType.Delete
+                                    };
+                                    ModelListRsp<ISPWAFDFT> backInfo = new ModelListRsp<ISPWAFDFT>();//定义数据库操作新增动作传入结构
+                                    UpdateModels(wafdet, backInfo, true);
+                                    if (!backInfo._success)
+                                    {
+                                        out_Msg._success = false;
+                                        out_Msg._ErrorMsg = out_Msg._ErrorMsg + "  " + backInfo._ErrorMsg;
+                                    }
+
+                                    //foreach (ISPWAFDFT qry in qryOut.model.ISPWAFDFT_list)
+                                    //{
+                                    //    UpdateModelReq<ISPWAFDFT> wafdet = new UpdateModelReq<ISPWAFDFT>()
+                                    //    {
+                                    //        model = qry,
+                                    //        operateType = OperateType.Delete
+                                    //    };
+                                    //    ModelRsp<ISPWAFDFT> backInfo = new ModelRsp<ISPWAFDFT>();//定义数据库操作新增动作传入结构
+                                    //    UpdateModel(wafdet, backInfo, true);
+                                    //    if (!backInfo._success)
+                                    //    {
+                                    //        out_Msg._success = false;
+                                    //        out_Msg._ErrorMsg = out_Msg._ErrorMsg + "  " + backInfo._ErrorMsg;
+                                    //    }
+                                    //}
+                                }
                             }
 
                         }
@@ -200,5 +270,7 @@ namespace OQAService.Services
             }
 
         }
+
+        
     }
 }

@@ -34,9 +34,8 @@
             this.lotTextBox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.imageTextBox = new System.Windows.Forms.TextBox();
+            this.imageUpload1 = new ImageUpload.ImageUpload();
             this.cmtRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.decRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -55,24 +54,27 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(657, 8);
+            this.btnClose.Location = new System.Drawing.Point(657, 7);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(469, 8);
+            this.btnCreate.Location = new System.Drawing.Point(446, 8);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(563, 8);
+            this.btnEdite.Location = new System.Drawing.Point(550, 8);
             // 
             // pnlMenu
             // 
+            this.pnlMenu.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlMenu.Dock = System.Windows.Forms.DockStyle.None;
             this.pnlMenu.Location = new System.Drawing.Point(0, 736);
-            this.pnlMenu.Size = new System.Drawing.Size(777, 40);
+            this.pnlMenu.Size = new System.Drawing.Size(806, 40);
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox2.Controls.Add(this.slotComboBox);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.lotTextBox);
@@ -125,9 +127,9 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.imageTextBox);
+            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox3.Controls.Add(this.imageUpload1);
             this.groupBox3.Controls.Add(this.cmtRichTextBox);
-            this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.decRichTextBox);
             this.groupBox3.Controls.Add(this.label5);
@@ -138,14 +140,14 @@
             this.groupBox3.TabIndex = 38;
             this.groupBox3.TabStop = false;
             // 
-            // imageTextBox
+            // imageUpload1
             // 
-            this.imageTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.imageTextBox.Location = new System.Drawing.Point(142, 23);
-            this.imageTextBox.Multiline = true;
-            this.imageTextBox.Name = "imageTextBox";
-            this.imageTextBox.Size = new System.Drawing.Size(100, 20);
-            this.imageTextBox.TabIndex = 12;
+            this.imageUpload1.Location = new System.Drawing.Point(142, 20);
+            this.imageUpload1.Name = "imageUpload1";
+            this.imageUpload1.PicStream = null;
+            this.imageUpload1.Size = new System.Drawing.Size(283, 31);
+            this.imageUpload1.TabIndex = 17;
+            this.imageUpload1.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload1_btnUploadClicked);
             // 
             // cmtRichTextBox
             // 
@@ -155,17 +157,6 @@
             this.cmtRichTextBox.Size = new System.Drawing.Size(569, 29);
             this.cmtRichTextBox.TabIndex = 16;
             this.cmtRichTextBox.Text = "";
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Aharoni", 5.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.button1.Location = new System.Drawing.Point(248, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(23, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label8
             // 
@@ -208,6 +199,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.frontButton);
             this.groupBox1.Controls.Add(this.label12);
@@ -272,11 +264,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(777, 776);
+            this.ClientSize = new System.Drawing.Size(806, 776);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmMarcoInput";
+            this.Text = "MarcoInput";
             this.Load += new System.EventHandler(this.FrmMarcoInput_Load);
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
@@ -302,9 +295,7 @@
         private System.Windows.Forms.TextBox lotTextBox;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox imageTextBox;
         private System.Windows.Forms.RichTextBox cmtRichTextBox;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.RichTextBox decRichTextBox;
         private System.Windows.Forms.Label label5;
@@ -315,5 +306,6 @@
         private System.Windows.Forms.Label label12;
         private WaferSf.WaferSur waferSurF;
         private System.Windows.Forms.Label label14;
+        private ImageUpload.ImageUpload imageUpload1;
     }
 }

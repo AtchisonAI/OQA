@@ -311,7 +311,7 @@ namespace ImageUpload
                         item.InspectType = UpLoadByArea[0].Inspect_Type;
                         item.SideType = UpLoadByArea[0].Side_Type;
                         item.AreaId = UpLoadByArea[0].Area_ID;
-                        item.ImageType = UpLoadBySide[0].ImageType;
+                        item.ImageType = UpLoadByArea[0].ImageType;
                         in_data.ISPIMGDEF_List.Add(item);
                     }
                     else

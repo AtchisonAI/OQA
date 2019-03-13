@@ -29,6 +29,8 @@ namespace OQAMain
         #region " Variable Definition "
         private string lotId = "";
         private string sideType = "";
+        private string slotId = "";
+        private ISPIMGDEF imgInfo = new ISPIMGDEF();
         #endregion
 
 
@@ -100,12 +102,15 @@ namespace OQAMain
                 UpdateModelReq<AOIShowView> updateReq = new UpdateModelReq<AOIShowView>();
                 this.getUpdateModel(updateReq);
                 ModelRsp<AOIShowView> rspInfo = OQASrv.Call.CreateOrUpdateAOI(updateReq);
+                refreshPage();
                 if (!rspInfo._success)
                 {
                     MessageBox.Show(rspInfo._ErrorMsg);
                 }
                 else
                 {
+                    
+                    lblSucessMsg.Text = rspInfo._MsgCode;
                 }
             }
             catch (System.Exception ex)
@@ -120,10 +125,17 @@ namespace OQAMain
         }
 
         #region show function
+        private void refreshPage()
+        {
+            ComFunc.ClearBoxValue(groupBox3);
+            waferSurF.clearPanel();
+            slotComboBox.Text = slotId;
+            queryPageInfo(lotId, slotId, sideType);
+        }
         private void pageInfoShow()
         {
             lotId = "1";
-            string slotId = "1";
+             slotId = "1";
             sideType = "F";
 
             try
@@ -182,35 +194,20 @@ namespace OQAMain
             {
                 AOIShowView model = new AOIShowView();
                 ISPWAFITM iSPWAFITM = new ISPWAFITM();
-                ISPIMGDEF iSPIMGDEF = new ISPIMGDEF();
                 List<ISPWAFDFT> sftList = new List<ISPWAFDFT>();
-                List<ISPIMGDEF> imgList = new List<ISPIMGDEF>();
                 String[] codeList = new string[25];
                 codeList = waferSurF.defectCode;
 
                 //wafer
                 iSPWAFITM.LotId = lotId;
-                iSPWAFITM.SlotId = slotComboBox.Text;
+                iSPWAFITM.SlotId = slotId;
                 iSPWAFITM.WaferId = "1";//mock
                 iSPWAFITM.InspectType = "A";
                 iSPWAFITM.SideType = sideType;
                 iSPWAFITM.DefectDesc = decRichTextBox.Text;
                 iSPWAFITM.Cmt = cmtRichTextBox.Text;
                 iSPWAFITM.IsInspect = "Y";
-                //img
-                //iSPIMGDEF.SlotId = iSPWAFITM.SlotId;
-                //iSPIMGDEF.LotId = iSPWAFITM.LotId;
-                //iSPIMGDEF.WaferId = iSPWAFITM.WaferId;
-                //iSPIMGDEF.SideType = iSPWAFITM.SideType;
-                //iSPIMGDEF.InspectType = iSPWAFITM.InspectType;
-                //iSPIMGDEF.TransSeq = 2;
-                //iSPIMGDEF.AreaId = 0;
-                //iSPIMGDEF.ImagePath = imageTextBox.Text;
-                //iSPIMGDEF.ImageId = "1";
-                //iSPIMGDEF.ImageName = "name";
-                //iSPIMGDEF.ImageType = "type";
-                //imgList.Add(iSPIMGDEF);
-                //dft
+                
 
 
                 for (int i = 0; i < 24; i++)
@@ -237,7 +234,7 @@ namespace OQAMain
                 model.C_TRAN_FLAG = GlobConst.TRAN_CREATE;
                 model.ISPWAFITM_list = new List<ISPWAFITM>();
                 model.ISPWAFITM_list.Add(iSPWAFITM);
-                model.ISPIMGDEF_list = imgList;
+              //  model.ISPIMGDEF_list = imgList;
                 model.ISPWAFDFT_list = sftList;
                 updateReq.model = model;
             }
@@ -279,19 +276,12 @@ namespace OQAMain
                         cmtRichTextBox.Text = qryResult.model.ISPWAFITM_list[0].Cmt;
 
                     }
-                    else
-                    {
-                        OQA_Core.ComFunc.ClearBoxValue(groupBox3);
-                    }
-                    //if (null != qryResult.model.ISPIMGDEF_list && qryResult.model.ISPIMGDEF_list.Count > 0)
-                    //{
-                    //    //  imageTextBox.Text = qryResult.model.ISPIMGDEF_list[0].ImagePath;//mock value
-                    //}
 
-                }
-                else
-                {
-                    OQA_Core.ComFunc.ClearBoxValue(groupBox3);
+                    if (null != qryResult.model.ISPIMGDEF_list && qryResult.model.ISPIMGDEF_list.Count > 0)
+                    {
+                        imgInfo = qryResult.model.ISPIMGDEF_list[0];
+                    }
+
                 }
 
                 waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
@@ -306,11 +296,30 @@ namespace OQAMain
 
         private void slotComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string slotId = (sender as ComboBox).Text;
+            slotId = (sender as ComboBox).Text;
             //查询数据
             queryPageInfo(lotId, slotId, sideType);
         }
 
-      
+     
+
+        private void imageUpload1_btnUploadClicked(object sender, EventArgs e)
+        {
+            imageUpload1.UpLoadFlag = 3;//by side
+            ImageUpload.ImageUpload.BySide item = new ImageUpload.ImageUpload.BySide();
+            item.LotID = lotId;
+            item.Slot_ID = slotId;
+            item.Side_Type = sideType;
+            item.Wafer_ID = "1";
+            item.Inspect_Type = "A";//mock
+            item.ImageType = "ISP";
+            if (null != imgInfo)
+            {
+                item.TranSeq = imgInfo.TransSeq;
+                item.ImageId = imgInfo.ImageId;
+            }
+
+            imageUpload1.UpLoadBySide.Add(item);
+        }
     }
 }

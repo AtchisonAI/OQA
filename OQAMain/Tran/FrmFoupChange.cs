@@ -145,9 +145,9 @@ namespace OQAMain
 
 
 
-        private bool QryLotMesSlotidInfo(char c_proc_step, char c_tran_flag, out List<PKGSLTDEF> lsPkgsltdefs)
+        private bool QryLotMesSlotidInfo(char c_proc_step, char c_tran_flag, out List<OQA_CHKMESSLOTID> lsOqaChkmesslotids)
         {
-            lsPkgsltdefs = null;
+            lsOqaChkmesslotids = null;
             ModelRsp<LotSlotidView> in_node = new ModelRsp<LotSlotidView>();
             LotSlotidView in_data = new LotSlotidView();
 
@@ -161,9 +161,9 @@ namespace OQAMain
 
             if (out_data._success == true)
             {
-              
 
-                lsPkgsltdefs = out_data.model.PKGSLTDEF_list;
+
+                lsOqaChkmesslotids = out_data.model.OQA_CHKMESSLOTID_list;
                 //ListViewItem list_item = new ListViewItem();
                 //list_item.Text = list.SlotId;
                 //list_item.SubItems.Add(list.TransSeq.ToString());//修改数据使用
@@ -227,12 +227,12 @@ namespace OQAMain
                 if (CheckCondition("CHECK") == false) return;
 
                 List<ISPWAFST> lsIspwafsts = null;
-                List<PKGSLTDEF> lsPkgsltdefs = null;
+                List<OQA_CHKMESSLOTID> lsOqaChkmesslotids = null;
 
                 //调用事务服务
                 if (QryLotIspStsInfo(GlobConst.TRAN_VIEW, '1') == false) return;
                 if (QryLotIspSlotidInfo(GlobConst.TRAN_VIEW, '1',out lsIspwafsts) == false) return;
-                if (QryLotMesSlotidInfo(GlobConst.TRAN_VIEW, '1',out lsPkgsltdefs) == false) return;
+                if (QryLotMesSlotidInfo(GlobConst.TRAN_VIEW, '1',out lsOqaChkmesslotids) == false) return;
 
 
                 for (int i = 1; i < 26; i++)
@@ -247,7 +247,7 @@ namespace OQAMain
 
                     bool isInMES = false;
 
-                    if (lsPkgsltdefs.Count(p => p.SlotId == i.ToString().PadLeft(3, '0')) > 0)
+                    if (lsOqaChkmesslotids.Count(p => p.SlotId == i.ToString().PadLeft(3, '0')) > 0)
                     {
                         isInMES = true;
                     }

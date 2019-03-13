@@ -59,14 +59,14 @@ namespace OQAService.Services
                             PageQueryReq.ItemsPerPage = 200;
                             if (In_node.model.IN_LOT_ID.Trim().Equals("") == false)
                             {
-                                AddCondition(PageQueryReq, GetParaName<PKGSLTDEF>(p => p.LotId), In_node.model.IN_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                                AddCondition(PageQueryReq, GetParaName<OQA_CHKMESSLOTID>(p => p.LotId), In_node.model.IN_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
 
                             }
-                            AddSortCondition(PageQueryReq, GetParaName<PKGSLTDEF>(p => p.LotId), SortType.ASC);
+                            AddSortCondition(PageQueryReq, GetParaName<OQA_CHKMESSLOTID>(p => p.LotId), SortType.ASC);
 
-                            var data = PageQuery<PKGSLTDEF>(PageQueryReq);
+                            var data = PageQuery<OQA_CHKMESSLOTID>(PageQueryReq);
 
-                            Out_node.model.PKGSLTDEF_list = data.models;
+                            Out_node.model.OQA_CHKMESSLOTID_list = data.models;
 
 
                             break;

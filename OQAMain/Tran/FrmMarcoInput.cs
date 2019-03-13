@@ -30,6 +30,7 @@ namespace OQAMain
         private string lotId = "";
         private string sideType = "";
         private string slotId = "";
+        private string waferId = "";
         private ISPIMGDEF imgInfo = new ISPIMGDEF();
         #endregion
 
@@ -137,7 +138,7 @@ namespace OQAMain
             lotId = "1";
              slotId = "1";
             sideType = "F";
-
+            waferId = "1";
             try
             {
                 if (sideType.Equals("F"))
@@ -201,8 +202,8 @@ namespace OQAMain
                 //wafer
                 iSPWAFITM.LotId = lotId;
                 iSPWAFITM.SlotId = slotId;
-                iSPWAFITM.WaferId = "1";//mock
-                iSPWAFITM.InspectType = "A";
+                iSPWAFITM.WaferId = waferId;//mock
+                iSPWAFITM.InspectType = InspectType.MA;
                 iSPWAFITM.SideType = sideType;
                 iSPWAFITM.DefectDesc = decRichTextBox.Text;
                 iSPWAFITM.Cmt = cmtRichTextBox.Text;
@@ -222,7 +223,7 @@ namespace OQAMain
                             iSPWAFDFT.SlotId = iSPWAFITM.SlotId;
                             iSPWAFDFT.WaferId = iSPWAFITM.WaferId;
                             iSPWAFDFT.SideType = iSPWAFITM.SideType;
-                            iSPWAFDFT.InspectType = iSPWAFITM.InspectType;
+                            iSPWAFDFT.InspectType = InspectType.MA;
                             iSPWAFDFT.DefectCode = defect;
                             iSPWAFDFT.AreaId = i + 1;
                             sftList.Add(iSPWAFDFT);
@@ -234,7 +235,6 @@ namespace OQAMain
                 model.C_TRAN_FLAG = GlobConst.TRAN_CREATE;
                 model.ISPWAFITM_list = new List<ISPWAFITM>();
                 model.ISPWAFITM_list.Add(iSPWAFITM);
-              //  model.ISPIMGDEF_list = imgList;
                 model.ISPWAFDFT_list = sftList;
                 updateReq.model = model;
             }
@@ -253,12 +253,12 @@ namespace OQAMain
                 ISPWAFITM ISPWAFITM = new ISPWAFITM();
                 ISPWAFITM.LotId = lotId;
                 ISPWAFITM.SlotId = slotId;
-                ISPWAFITM.WaferId = "1";
+                ISPWAFITM.WaferId = waferId;
                 if (null != sideType)
                 {
                     ISPWAFITM.SideType = sideType;
                 }
-                ISPWAFITM.InspectType = "A";//Micro Type
+                ISPWAFITM.InspectType = InspectType.MA;
                 AOIShowView model = new AOIShowView();
                 model.ISPWAFITM_list = new List<ISPWAFITM>();
                 model.ISPWAFITM_list.Add(ISPWAFITM);

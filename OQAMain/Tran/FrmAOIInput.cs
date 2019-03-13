@@ -30,6 +30,7 @@ namespace OQAMain
         private string lotId = "";
         private string sideType = "";
         private string slotId = "";
+        private string waferId = "";
         private ISPIMGDEF imgInfo = new ISPIMGDEF();
         #endregion
 
@@ -94,7 +95,7 @@ namespace OQAMain
              lotId = "1";
              slotId = "1";
              sideType = "F";
-
+            waferId = "1";
             try
             {
                 if (sideType.Equals("F"))
@@ -151,17 +152,15 @@ namespace OQAMain
             {
                 AOIShowView model = new AOIShowView();
                 ISPWAFITM iSPWAFITM = new ISPWAFITM();
-                //ISPIMGDEF iSPIMGDEF = new ISPIMGDEF();
                 List<ISPWAFDFT> sftList = new List<ISPWAFDFT>();
-             //   List<ISPIMGDEF> imgList = new List<ISPIMGDEF>();
                 String[] codeList = new string[25];
                 codeList = waferSurF.defectCode;
               
                 //wafer
                 iSPWAFITM.LotId = lotId;
                 iSPWAFITM.SlotId = slotComboBox.Text;
-                iSPWAFITM.WaferId = "1";//mock
-                iSPWAFITM.InspectType = "A";
+                iSPWAFITM.WaferId = waferId;//mock
+                iSPWAFITM.InspectType = InspectType.AOI;
                 iSPWAFITM.SideType = sideType;
                 iSPWAFITM.Magnification = MagnificationTextBox.Text;
                 iSPWAFITM.DieQty = int.Parse(qtyTextBox.Text);
@@ -170,21 +169,7 @@ namespace OQAMain
                 iSPWAFITM.DefectDesc = decRichTextBox.Text;
                 iSPWAFITM.Cmt = cmtRichTextBox.Text;
                 iSPWAFITM.IsInspect = "Y";
-                //img
-                //iSPIMGDEF.SlotId = iSPWAFITM.SlotId;
-                //iSPIMGDEF.LotId = iSPWAFITM.LotId;
-                //iSPIMGDEF.WaferId = iSPWAFITM.WaferId;
-                //iSPIMGDEF.SideType = iSPWAFITM.SideType;
-                //iSPIMGDEF.InspectType = iSPWAFITM.InspectType;
-                //iSPIMGDEF.TransSeq = 2;
-                //iSPIMGDEF.AreaId = 0;
-                //iSPIMGDEF.ImagePath = imageTextBox.Text;
-                //iSPIMGDEF.ImageId = "1";
-                //iSPIMGDEF.ImageName = "name";
-                //iSPIMGDEF.ImageType = "type";
-                //imgList.Add(iSPIMGDEF);
-                //dft
-
+             
 
                 for (int i = 0; i < 24; i++)
                 {
@@ -198,7 +183,7 @@ namespace OQAMain
                             iSPWAFDFT.SlotId = iSPWAFITM.SlotId;
                             iSPWAFDFT.WaferId = iSPWAFITM.WaferId;
                             iSPWAFDFT.SideType = iSPWAFITM.SideType;
-                            iSPWAFDFT.InspectType = iSPWAFITM.InspectType;
+                            iSPWAFDFT.InspectType = InspectType.AOI;
                             iSPWAFDFT.DefectCode = defect;
                             iSPWAFDFT.AreaId = i + 1;
                             sftList.Add(iSPWAFDFT);
@@ -210,7 +195,6 @@ namespace OQAMain
                 model.C_TRAN_FLAG = GlobConst.TRAN_CREATE;
                 model.ISPWAFITM_list = new List<ISPWAFITM>();
                 model.ISPWAFITM_list.Add(iSPWAFITM);
-               // model.ISPIMGDEF_list = imgList;
                 model.ISPWAFDFT_list = sftList;
                 updateReq.model = model;
             }
@@ -229,12 +213,12 @@ namespace OQAMain
                 ISPWAFITM ISPWAFITM = new ISPWAFITM();
                 ISPWAFITM.LotId = lotId;
                 ISPWAFITM.SlotId = slotId;
-                ISPWAFITM.WaferId = "1";
+                ISPWAFITM.WaferId = waferId;
                 if (null != sideType)
                 {
                     ISPWAFITM.SideType = sideType;
                 }
-                ISPWAFITM.InspectType = "A";//Micro Type
+                ISPWAFITM.InspectType = InspectType.AOI;
                 AOIShowView model = new AOIShowView();
                 model.ISPWAFITM_list = new List<ISPWAFITM>();
                 model.ISPWAFITM_list.Add(ISPWAFITM);

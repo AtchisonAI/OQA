@@ -31,4 +31,17 @@ namespace OQA_Core
 
     }
 
+
+    public sealed class InspectType
+    {
+        public const string AOI = "O";
+        public const string MA = "A";
+        public const string MI = "I";
+    }
+
+    public sealed class SideType
+    {
+        public const string Front = "F";
+        public const string Back = "B";
+    }
 }

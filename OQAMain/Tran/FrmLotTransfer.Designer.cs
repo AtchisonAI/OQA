@@ -44,6 +44,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.listship = new System.Windows.Forms.ListView();
+            this.Lot_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Qty = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Part_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Inspection_Result = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -223,11 +228,43 @@
             this.dataGridView1.Size = new System.Drawing.Size(750, 580);
             this.dataGridView1.TabIndex = 4;
             // 
+            // listship
+            // 
+            this.listship.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Lot_ID,
+            this.Qty,
+            this.Part_ID,
+            this.Inspection_Result});
+            this.listship.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listship.Location = new System.Drawing.Point(231, 116);
+            this.listship.Name = "listship";
+            this.listship.Size = new System.Drawing.Size(519, 424);
+            this.listship.TabIndex = 5;
+            this.listship.UseCompatibleStateImageBehavior = false;
+            this.listship.View = System.Windows.Forms.View.Details;
+            // 
+            // Lot_ID
+            // 
+            this.Lot_ID.Text = "Lot_ID";
+            // 
+            // Qty
+            // 
+            this.Qty.Text = "Qty";
+            // 
+            // Part_ID
+            // 
+            this.Part_ID.Text = "Part_ID";
+            // 
+            // Inspection_Result
+            // 
+            this.Inspection_Result.Text = "Inspection_Result";
+            // 
             // FrmLotTransfer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 580);
+            this.Controls.Add(this.listship);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.groupBox1);
@@ -239,6 +276,7 @@
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.splitter1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.listship, 0);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -268,5 +306,10 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckedListBox LotIDList;
+        private System.Windows.Forms.ListView listship;
+        private System.Windows.Forms.ColumnHeader Lot_ID;
+        private System.Windows.Forms.ColumnHeader Qty;
+        private System.Windows.Forms.ColumnHeader Part_ID;
+        private System.Windows.Forms.ColumnHeader Inspection_Result;
     }
 }

@@ -87,7 +87,7 @@
     </Reference>
     <Reference Include="WCFModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Components\WCFModels.dll</HintPath>
+      <HintPath>..\WcfModels\bin\Debug\WCFModels.dll</HintPath>
     </Reference>
     <Reference Include="WcfService">
       <HintPath>..\Components\WcfService.dll</HintPath>

@@ -759,5 +759,15 @@ namespace WCFModels.OQA
         [Column("PNDN_NO")] public string PndnNo { get; set; }
     }
 
+    public partial class OQA_CHKMESSLOTID
+    {
+        [DataMember]
+        [Column("LOT_ID")] public string LotId { get; set; }
+        [DataMember]
+        [Column("SLOT_ID")] public string SlotId { get; set; }
+        [DataMember]
+        [Column("WAFER_ID")] public string WaferId { get; set; }
+    }
+
 }
 

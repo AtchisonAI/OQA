@@ -18,13 +18,12 @@ namespace OQAMain
 
         #region " Constant Definition "
         //private bool b_load_flag = false;
-
+        private bool b_update = false;
         #endregion
 
 
         #region " Variable Definition "
         //private bool b_load_flag  ;
-
         #endregion
 
 
@@ -104,7 +103,7 @@ namespace OQAMain
                 {
                     case "1":
                         //Initialize
-                        ComFunc.FieldClear(this);                        
+                        ComFunc.FieldClear(this);
                         break;
                 }
             }
@@ -115,6 +114,20 @@ namespace OQAMain
             }
         }
         #endregion
+
+        private void lotId_textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (ComFunc.CheckEnterKey(e) || ComFunc.CheckTabKey(e))
+            {
+                //查询当前输入的lot 是否为foup changed状态
+                QueryLotInfo(lotId_textBox.Text.Trim());
+            }
+        }
+
+        private void QueryLotInfo(string lotId)
+        {
+
+        }
 
 
         #endregion
@@ -153,6 +166,14 @@ namespace OQAMain
             }
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void btnEdite_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

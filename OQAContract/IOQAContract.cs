@@ -76,7 +76,10 @@ namespace OQAContract
 
         #endregion
 
-
+        #region  Lot Inspect View
+        [OperationContract]
+        ModelRsp<IspMesLot> QryMesLotInfo(ModelRsp<IspMesLot> DefectCode);
+        #endregion
 
         #region  WaferInspectRecord
         [OperationContract]

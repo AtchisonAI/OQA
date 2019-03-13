@@ -46,6 +46,8 @@ namespace OQAContract
         #region  Lot Transfer
         [OperationContract]
         ModelRsp<LotIDListView> QueryLotList(ModelRsp<LotIDListView> PKGShip);
+        [OperationContract]
+        ModelRsp<QueryLotDetailView> QueryLotDetail(ModelRsp<QueryLotDetailView> PKGShip);
 
         #endregion
 

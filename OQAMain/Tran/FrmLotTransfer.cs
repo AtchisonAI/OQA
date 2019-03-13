@@ -4,6 +4,7 @@ using System;
 using System.Windows.Forms;
 using WCFModels.OQA;
 using WCFModels.Message;
+using System.Collections.Generic;
 
 namespace OQAMain
 {
@@ -27,7 +28,8 @@ namespace OQAMain
         #region " Variable Definition "
         //private bool b_load_flag  ;
         private bool Have_flag = false;
-        //private string ship_no;
+        private string MasterLot;
+        
 
         #endregion
 
@@ -156,18 +158,43 @@ namespace OQAMain
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+        private void LstIspCode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < LotIDList.Items.Count; i++)
+            {
+                Have_flag = true;
+                MessageBox.Show(i.ToString());
+                MasterLot = LotIDList.GetItemText(LotIDList.Items[i]);
+            }
 
+
+        }
         private void FrmLotTransfer_Load(object sender, EventArgs e)
         {
             try
             {
                 if (QueryLotIDList(GlobConst.TRAN_VIEW, '1') == false) return;
-             }
+
+                if (Querylotinfo(GlobConst.TRAN_VIEW, '1', MasterLot) == false) return;
+            }
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-         }
+
+            //try
+            //{
+                
+            //   // ship_no = txtShipNo.Text.Trim();
+            //    // ship_no = "12453";
+            //    if (Querylotinfo(GlobConst.TRAN_VIEW, '1', MasterLot) == false) return;
+
+            //}
+            //catch (System.Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message.ToString());
+            //}
+        }
 
         private void btnCreate_Click_1(object sender, EventArgs e)
         {
@@ -243,6 +270,53 @@ namespace OQAMain
                 }
             }
         }
+        private List<PKGSHPDAT> LOTlist;
+       
+        private bool Querylotinfo(char c_proc_step, char c_tran_flag, string in_masterlot_no)
+        {
+            ModelRsp<QueryLotDetailView> in_node = new ModelRsp<QueryLotDetailView>();
+            QueryLotDetailView in_data = new QueryLotDetailView();
 
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.IN_MASTERLOT_NO= in_masterlot_no;
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.QueryLotDetail(in_node);
+            //var out_data_ship = OQASrv.Call.QryPKGShipSummaryInfo(in_node);
+
+            if (out_data._success == true)
+            {
+                //lstShip = out_data_ship.model.PKGSHP_list;
+                LOTlist = out_data.model.PKGSHPDAT_list;
+
+               // ComFunc.InitListView(LOTlist, true);
+                //      txtCount.Text = out_data.model.PKGSHPDAT_list.Count.ToString();
+
+                for (int i = 0; i < out_data.model.PKGSHPDAT_list.Count; i++)
+                {
+
+                    ListViewItem list_item = new ListViewItem();
+                    PKGSHPDAT list = out_data.model.PKGSHPDAT_list[i];
+                    list_item.Text = list.LotId;
+                    list_item.SubItems.Add(list.Qty);
+                    list_item.SubItems.Add(list.PartId);
+                    list_item.SubItems.Add(list.InspectResult);//修改数据使用
+                    listship.Items.Add(list_item);
+
+
+                }
+                lblSucessMsg.Text = out_data._MsgCode;
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+
+
+        }
     }
 }

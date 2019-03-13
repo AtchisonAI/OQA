@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Lotid = new System.Windows.Forms.TextBox();
+            this.txtLotID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -40,17 +40,18 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(789, 8);
+            this.btnClose.Location = new System.Drawing.Point(839, 8);
             this.btnClose.Visible = false;
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(601, 8);
+            this.btnCreate.Location = new System.Drawing.Point(651, 8);
             this.btnCreate.Text = "Print";
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(695, 7);
+            this.btnEdite.Location = new System.Drawing.Point(745, 7);
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
@@ -63,7 +64,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.Lotid);
+            this.groupBox1.Controls.Add(this.txtLotID);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(30, 31);
             this.groupBox1.Name = "groupBox1";
@@ -72,12 +73,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "PackageLabelPrint";
             // 
-            // Lotid
+            // txtLotID
             // 
-            this.Lotid.Location = new System.Drawing.Point(143, 38);
-            this.Lotid.Name = "Lotid";
-            this.Lotid.Size = new System.Drawing.Size(218, 21);
-            this.Lotid.TabIndex = 1;
+            this.txtLotID.Location = new System.Drawing.Point(143, 38);
+            this.txtLotID.Name = "txtLotID";
+            this.txtLotID.Size = new System.Drawing.Size(218, 21);
+            this.txtLotID.TabIndex = 1;
+            this.txtLotID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtLotPress_check);
             // 
             // label1
             // 
@@ -106,7 +108,7 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "OQAMain.Print.FrmWaferInspectRecord.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "OQAMain.Print.FrmPackageLabelPrint.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(3, 17);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
@@ -127,6 +129,7 @@
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.pnlMenu.ResumeLayout(false);
+            this.pnlMenu.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -137,7 +140,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox Lotid;
+        private System.Windows.Forms.TextBox txtLotID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;

@@ -5,6 +5,9 @@ using System.Windows.Forms;
 using System.IO;
 using Microsoft.Reporting.WinForms;
 using System.Linq;
+using WCFModels.Message;
+using WCFModels.OQA;
+using HiDM.LabelPrinting.Common.Extension;
 
 namespace OQAMain
 {
@@ -27,7 +30,21 @@ namespace OQAMain
 
         #region " Variable Definition "
         //private bool b_load_flag  ;
-
+        private string lotid;
+        private enum PKG_LIST
+        {
+            slot_id = 0,
+            qty,
+            lot_id,
+            part_id,
+            part_desc,
+            rec_user,
+            customer_id,
+            cust_lot_id,
+            cust_part_id,
+            orignal_country,                 //8  
+            qa_stamp
+        }
         #endregion
 
 
@@ -107,7 +124,7 @@ namespace OQAMain
                 {
                     case "1":
                         //Initialize
-                        ComFunc.FieldClear(this);                        
+                        ComFunc.FieldClear(this);
                         break;
                 }
             }
@@ -130,55 +147,11 @@ namespace OQAMain
             {
                 //检查数据
                 if (CheckCondition("CREATE") == false) return;
-                //调用事务服务
-                // if (UpdateBoxShipment(GlobConst.TRAN_CREATE) == false) return;
+                lotid = txtLotID.Text.Trim();
+                this.reportViewer1.LocalReport.DataSources.Clear();
+                if (QueryPKGLabelInfo(GlobConst.TRAN_VIEW, '1', lotid) == false)
+                    return;
 
-                //控件重定义
-                //if (MPCF.Trim(txtBox_LotID.Text) != "")
-                //{
-                //控件初始化
-                //ComFunc.ClearList(lisOperLotList);
-                //ComFunc.ClearList(spdBox_SubTask);
-                ////MPCF.ClearList(spdOrderID);
-                //ComFunc.FieldClear(spdOrderID);
-                //ComFunc.ClearList(spdBox_LayoutID_MarkID);
-                //ComFunc.FieldClear(pnlTask);
-                //重新查询
-                //View_Lot_List("2");
-                //ViewSubLotListExt();
-                //ViewLotBoxListExt('2');
-                //View_Order_list(txtBox_LotID.Text);
-                //}
-
-             //   if (this.Lotid.Text !="") {
-             //       string SLotid = this.Lotid.Text.Trim();
-
-                    //sqlStr= select listagg(t.slot_id, ',') within
-                    //                    group(
-                    //                    order by slot_id, slot_id) as slot_id, 
-                    // count(t.lot_id), 
-                    // t.lot_id, 
-                    //s.part_id, 
-                    //s.part_desc, 
-                    //s.rec_user, 
-                    //s.customer_id, 
-                    //s.cust_lot_id,
-                    //s.cust_part_id, 
-                    //s.orignal_country
-                    //from pkgsltdef t, isplotsts s
-                    //where t.lot_id = s.lot_id and t.lotid=:SLotid
-                    //group by t.lot_id,
-                    //        s.part_id,
-                    //       s.part_desc,
-                    //      s.rec_user,
-                    //     s.customer_id,
-                    //    s.cust_lot_id,
-                    //   s.cust_part_id,
-                    //  s.orignal_country
-
-                //    this.reportViewer1.LocalReport.SetParameters(GenerateLabelParameters(help.GetDataTable(sqlStr, param)));
-                    this.reportViewer1.RefreshReport();
-              //  }
 
             }
             catch (System.Exception ex)
@@ -189,66 +162,82 @@ namespace OQAMain
 
         private void FrmPackageLabelPrint_Load(object sender, EventArgs e)
         {
-            InitReportViewer("OQAMain.Print.FrmPackageLabelPrint.rdlc");
-            this.reportViewer1.RefreshReport();
-            
+
         }
 
-        public void InitReportViewer(string rptName)
+        private bool QueryPKGLabelInfo(char c_proc_step, char c_tran_flag, string in_lotid)
         {
-            reportViewer1.Reset();
-            reportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
-            //reportViewer1.LocalReport.ReportPath = Path.Combine(rptName);
 
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = rptName;
-        //    this.reportViewer1.LocalReport.SubreportProcessing += LocalReport_SubreportProcessing;
-            reportViewer1.RefreshReport();
+
+
+            ModelRsp<PKGLabelPrintView> in_node = new ModelRsp<PKGLabelPrintView>();
+            PKGLabelPrintView in_data = new PKGLabelPrintView();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.IN_LOTID = in_lotid;
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.QueryPKGLabelInfo(in_node);
+            
+            if (out_data._success == true)
+            {
+                if (out_data.model.PKGLabel_list.Count() > 0)
+                {
+                    this.reportViewer1.LocalReport.DataSources.Clear();
+                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramSlot", out_data.model.PKGLabel_list[0][(int)PKG_LIST.slot_id].ToString()));
+                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramCustomerId", out_data.model.PKGLabel_list[0][(int)PKG_LIST.customer_id].ToString()));
+                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramCustLotid", out_data.model.PKGLabel_list[0][(int)PKG_LIST.cust_lot_id].ToString()));
+                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramCustPartid", out_data.model.PKGLabel_list[0][(int)PKG_LIST.cust_part_id].ToString()));
+                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramLotId", out_data.model.PKGLabel_list[0][(int)PKG_LIST.lot_id].ToString()));
+                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramOrignalCountry", out_data.model.PKGLabel_list[0][(int)PKG_LIST.orignal_country].ToString()));
+                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramPartName", out_data.model.PKGLabel_list[0][(int)PKG_LIST.part_desc].ToString()));
+                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramPartNo", out_data.model.PKGLabel_list[0][(int)PKG_LIST.part_id].ToString()));
+                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramQAstamp", out_data.model.PKGLabel_list[0][(int)PKG_LIST.qa_stamp].ToString()));
+                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramQuantity", out_data.model.PKGLabel_list[0][(int)PKG_LIST.qty].ToString()));
+
+
+                    string PartNOBarcode = out_data.model.PKGLabel_list[0][(int)PKG_LIST.part_id].ToString().ToBarcode39().ImageToBytes().ToBase64();
+                    string LotIdBarcode = out_data.model.PKGLabel_list[0][(int)PKG_LIST.lot_id].ToString().ToBarcode39().ImageToBytes().ToBase64();
+                    string QuantityBarcode = out_data.model.PKGLabel_list[0][(int)PKG_LIST.qty].ToString().ToBarcode39().ImageToBytes().ToBase64();
+                    string PartNameBarcode = out_data.model.PKGLabel_list[0][(int)PKG_LIST.part_desc].ToString().ToBarcode39().ImageToBytes().ToBase64();
+
+                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramPartNOBarcode", PartNOBarcode));
+                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramLotIdBarcode", LotIdBarcode));
+                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramQuantityBarcode", QuantityBarcode));
+                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramPartNameBarcode", PartNameBarcode)); 
+                }
+                else {
+                    MessageBox.Show("输入的lotid有问题！");
+
+                }
+                this.reportViewer1.RefreshReport();
+
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+            }
+
+            //LstIspCode.Items.Add(ListView(data.model.ISPDFTDEF_list));
+            //data.model.ISPDFTDEF_list;
+            //LstIspCode.d
+
+            return true;
         }
 
-      //  private void LocalReport_SubreportProcessing(object sender, SubreportProcessingEventArgs e)
-     //   {
-    //       if(e.Parameters!=null && e.Parameters.Count(p=>p.Name == "ReportSeq") == 1)
-     //       {
-         //       e
-    //        }
+        private void TxtLotPress_check(object sender, KeyPressEventArgs e)
+        {
 
-   //     }
+            if (e.KeyChar == (Char)13)
+            {
+                if (ComFunc.Trim(txtLotID.Text) != "")
+                {
+                    btnCreate.PerformClick();
+                }
+            }
+        }
 
-        //public List<ReportParameter> GenerateLabelParameters(System.Data.DataTable dtResult)
-        //{
-        //    string SlotID = dtResult.Rows[0]["SLOT_ID"].ToString();
-        //    string Lotid = dtResult.Rows[0]["LOT_ID"].ToString();
-        //    string Partid = dtResult.Rows[0]["PART_ID"].ToString();
-        //    string Partname = dtResult.Rows[0]["PART_DESC"].ToString();
-        //    string Recuser = dtResult.Rows[0]["REC_USER"].ToString();
-        //    string Customerid = dtResult.Rows[0]["CUSTOMER_ID"].ToString();
-        //    string Customerlotid = dtResult.Rows[0]["CUST_LOT_ID"].ToString();
-        //    string Customerpartid = dtResult.Rows[0]["CUST_PART_ID"].ToString();
-        //    string OrignalCountry = dtResult.Rows[0]["ORIGNAL_COUNTRY"].ToString();
-        //    string Qty = dtResult.Rows[0]["QTY"].ToString();
-
-        //    string codePartname = Partname.ToBarcode39().ImageToBytes().ToString();
-        //    string codePartid = Partid.ToBarcode39().ImageToBytes().ToString();
-        //    string codeQty = Qty.ToBarcode39().ImageToBytes().ToString();
-        //    string codeLotid = Lotid.ToBarcode39().ImageToBytes().ToString();
-        //    List<ReportParameter> lstParam = new List<ReportParameter>();
-        //    lstParam.Add(new ReportParameter("paramPartName", Partname));
-        //    lstParam.Add(new ReportParameter("paramPartNO2", Partid));
-        //    lstParam.Add(new ReportParameter("paramCustomerId", Customerid));
-        //    lstParam.Add(new ReportParameter("paramLotId", Lotid));
-        //    lstParam.Add(new ReportParameter("paramSlot", SlotID));
-        //    lstParam.Add(new ReportParameter("paramQuantity", Qty));
-        //    lstParam.Add(new ReportParameter("paramCustLotid", Customerlotid));
-        //    lstParam.Add(new ReportParameter("paramOrignalCountry", OrignalCountry));
-
-        //    lstParam.Add(new ReportParameter("paramCustPartid", Customerpartid));
-        //    lstParam.Add(new ReportParameter("paramQAstamp", Recuser));
-        //    lstParam.Add(new ReportParameter("barcodePartName", codePartname));
-        //    lstParam.Add(new ReportParameter("barcodePartNO", codePartid));
-        //    lstParam.Add(new ReportParameter("barcodeLotid", codeLotid));
-        //    lstParam.Add(new ReportParameter("barcodeQuantity", codeQty));
-
-        //    return lstParam;
-        //}
     }
 }

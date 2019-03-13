@@ -2,6 +2,8 @@
 using OQA_Core;
 using System;
 using System.Windows.Forms;
+using WCFModels.Message;
+using WCFModels.OQA;
 
 namespace OQAMain
 {
@@ -24,7 +26,11 @@ namespace OQAMain
 
         #region " Variable Definition "
         //private bool b_load_flag  ;
-
+        private decimal d_lotdieqty;
+        private string s_vendorname;
+        private string s_vendorlotno;
+        private string s_orderno;
+        private string s_sentime;
         #endregion
 
 
@@ -36,14 +42,21 @@ namespace OQAMain
 
             switch (ComFunc.Trim(FuncName))
             {
-                case "CREATE":
+                case "VIEW":
 
-                    //            if (ComFunc.CheckValue(ComFunc.Trim(txtLotID.Text), 1) == false)
-                    //            {
-                    //                MessageBox.Show("必填内容输入为空！");
-                    //                txtLotID.Focus();
-                    //                return false;
-                    //            }
+                    //if (ComFunc.CheckValue(txtFoupID, 1) == false)
+                    //{
+                    //    MessageBox.Show("必填内容输入为空！");
+                    //    txtFoupID.Focus();
+                    //    return false;
+                    //}
+
+                    if (ComFunc.CheckValue(txtLotFilter, 1) == false)
+                    {
+                        MessageBox.Show("必填内容输入为空！");
+                        txtLotID.Focus();
+                        return false;
+                    }
 
                     //            if ( ComFunc.CheckValue(ComFunc.Trim(txtNewQty1.Text), 1) == false)
                     //            {
@@ -116,9 +129,47 @@ namespace OQAMain
         }
         #endregion
 
+        private bool QueryMesLotInfo(char c_proc_step, char c_tran_flag)
+        {
+            ModelRsp<IspMesLot> in_node = new ModelRsp<IspMesLot>();
+            IspMesLot in_data = new IspMesLot();
 
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.C_LOT_ID = txtLotFilter.Text.Trim();
+            in_data.C_FOUP_ID = TxtFoupFilter.Text.Trim();
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.QryMesLotInfo(in_node);
+
+            if (out_data._success == true)
+            {                    
+                    OqaMeslot list = out_data.model.OQAMESLOT_LIST[0];
+                    txtLotID.Text = list.Lotid;
+                    txtFoupID.Text = list.Foupid;
+                    txtPartID.Text = list.Partid;
+                    txtLotQty.Text = list.Qty.ToString();
+                    d_lotdieqty = list.Dieqty;
+                    txtLotType.Text = list.Lottype;
+                s_vendorname = list.Vendorname;
+                s_vendorlotno = list.Vendorlotno;
+                s_orderno = list.Orderno;
+                s_sentime = list.Sentime;
+                 
+
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+
+
+        }
         #endregion
-        
+
 
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -157,13 +208,30 @@ namespace OQAMain
         private void imageUpload1_btnUploadClicked(object sender, EventArgs e)
         {
 
-            imageUpload1.UpLoadFlag = 1;
+            imageUpload1.UpLoadFlag = UpLoadFlag.ByLot;
             ImageUpload.ImageUpload.ByLot item = new ImageUpload.ImageUpload.ByLot();
             item.LotID = "2";
-            item.ImageType = "ISP";
+            item.ImageType = ImageTtpe.ISP;
             //item.TranSeq = 0;
             //item.ImageId = "test";
             imageUpload1.UpLoadByLot.Add(item);
+        }
+
+        private void btnFilterView_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //检查数据
+                 if (CheckCondition("VIEW") == false) return;
+
+                //调用事务服务
+                if (QueryMesLotInfo(GlobConst.TRAN_VIEW, '1') == false) return;
+
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
     }
 }

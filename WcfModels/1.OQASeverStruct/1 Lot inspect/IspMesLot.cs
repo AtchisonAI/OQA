@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Runtime.Serialization;
+using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 
 namespace WCFModels.OQA
 {
     [DataContract]
-    public class LotSlotidView: BaseRsp
+    public class IspMesLot : BaseRsp
     {
 
         //服务传入执行动作,事务标记必须输入
@@ -23,11 +25,6 @@ namespace WCFModels.OQA
         }
         private char c_proc_step;
 
-        public LotSlotidView()
-        {
-            OQA_CHKMESSLOTID_list = new List<OQA_CHKMESSLOTID>();
-        }
-
         [DataMember]
         public char C_TRAN_FLAG
         {
@@ -42,43 +39,50 @@ namespace WCFModels.OQA
         }
 
         private char c_tran_flag;
+
+
         //服务传入参数
+
         [DataMember]
-        public string IN_LOT_ID {
+        public string C_LOT_ID
+        {
             get
             {
-                return in_lot_id;
+                return c_lot_id;
             }
             set
             {
-                in_lot_id = value;
+                c_lot_id = value;
             }
         }
-        private string in_lot_id;
 
+        private string c_lot_id;
 
-        //服务传出数据结构
-        [DataMember]
-        public List<ISPLOTSTS> ISPLOTSTS_list { get; set; }
 
         [DataMember]
-        public List<ISPWAFST> ISPWAFST_list { get; set; }
+        public string C_FOUP_ID
+        {
+            get
+            {
+                return c_foup_id;
+            }
+            set
+            {
+                c_foup_id = value;
+            }
+        }
 
+        private string c_foup_id;
+        public IspMesLot()
+        {
+            OQAMESLOT_LIST = new List<OqaMeslot>();
+            OQAMESWAFER_LIST = new List<OqaMeswafer>();
+        }
         [DataMember]
-        public List<OQA_CHKMESSLOTID> OQA_CHKMESSLOTID_list { get; set; }
-        //服务传出结果在BaseRsq:_success  _ErrorMsg
+        public List<OqaMeslot> OQAMESLOT_LIST { get; set; }           
+        
+        [DataMember]
+        public List<OqaMeswafer> OQAMESWAFER_LIST { get; set; }
 
-
-        //public DefectCodeView()
-        //{
-        //    rmsList = new List<RmsUser>();
-        //}
-        //    string s_isp_type ;
-
-        //   // rmsList = new List<RmsUser>();
-        //
-
-        //[DataMember]
-        //public List<RmsUser> rmsList { get; set; }
     }
 }

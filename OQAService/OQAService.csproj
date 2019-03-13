@@ -94,6 +94,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1 Lot inspect\QryMesLotInfo.cs" />
     <Compile Include="ImageUpload\SaveImageInfo.cs" />
     <Compile Include="11 Wafer Insection Record Print\QueryLotInfo.cs" />
     <Compile Include="12 IOQA Ship List Print\QryPKGShipInfo.cs" />
@@ -122,7 +123,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="1 Lot inspect\" />
     <Folder Include="10 Package Label Print\" />
     <Folder Include="2 Defect Lot result\" />
     <Folder Include="4 Marco inspection input\" />

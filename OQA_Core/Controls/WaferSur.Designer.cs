@@ -375,29 +375,29 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panelF_2;
-        private System.Windows.Forms.Panel panelF_3;
         private System.Windows.Forms.Panel panelF_4;
         private System.Windows.Forms.Panel panelF_5;
         private System.Windows.Forms.Panel panelF_6;
-        private System.Windows.Forms.Panel panelF_7;
-        private System.Windows.Forms.Panel panelF_9;
         private System.Windows.Forms.Panel panelF_10;
-        private System.Windows.Forms.Panel panelF_11;
-        private System.Windows.Forms.Panel panelF_13;
-        private System.Windows.Forms.Panel panelF_15;
         private System.Windows.Forms.Panel panelF_16;
-        private System.Windows.Forms.Panel panelF_18;
-        private System.Windows.Forms.Panel panelF_19;
         private System.Windows.Forms.Panel panelF_21;
         private System.Windows.Forms.Panel panelF_22;
-        private System.Windows.Forms.Panel panelF_23;
         private System.Windows.Forms.Panel panelF_24;
         private System.Windows.Forms.Panel panelF_25;
-        private System.Windows.Forms.Panel panelF_17;
         private System.Windows.Forms.Panel panelF_20;
         public System.Windows.Forms.Panel panelF_12;
         public System.Windows.Forms.Panel panelF_14;
         public System.Windows.Forms.Panel panelF_8;
         private System.Windows.Forms.Panel panelF_1;
+        public System.Windows.Forms.Panel panelF_3;
+        public System.Windows.Forms.Panel panelF_7;
+        public System.Windows.Forms.Panel panelF_9;
+        public System.Windows.Forms.Panel panelF_11;
+        public System.Windows.Forms.Panel panelF_13;
+        public System.Windows.Forms.Panel panelF_15;
+        public System.Windows.Forms.Panel panelF_18;
+        public System.Windows.Forms.Panel panelF_19;
+        public System.Windows.Forms.Panel panelF_23;
+        public System.Windows.Forms.Panel panelF_17;
     }
 }

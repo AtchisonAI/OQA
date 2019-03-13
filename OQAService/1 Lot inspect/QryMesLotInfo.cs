@@ -10,7 +10,7 @@ namespace OQAService.Services
 {
     public partial class OQAService : OQABaseService, IOQAContract
     {
-        public ModelRsp<LotSlotidView> QryLotMesSlotidInfo(ModelRsp<LotSlotidView> LotMesSlotidInfo)
+        public ModelRsp<IspMesLot> QryMesLotInfo(ModelRsp<IspMesLot> DefectCode)
         {
             try
             {
@@ -21,13 +21,10 @@ namespace OQAService.Services
                     sortCondittionList = new List<SortCondition>()
                 };
 
-                ModelRsp<LotSlotidView> In_node = new ModelRsp<LotSlotidView>();
-                ModelRsp<LotSlotidView> Out_node = new ModelRsp<LotSlotidView>();
+                ModelRsp<IspMesLot> In_node = new ModelRsp<IspMesLot>();
+                ModelRsp<IspMesLot> Out_node = new ModelRsp<IspMesLot>();
 
-                In_node.model = LotMesSlotidInfo.model;
-
-              
-
+                In_node.model = DefectCode.model;
 
                 //验证系统级别输入参数
 
@@ -57,27 +54,47 @@ namespace OQAService.Services
 
                             PageQueryReq.CurrentPage = 1;
                             PageQueryReq.ItemsPerPage = 200;
-                            if (In_node.model.IN_LOT_ID.Trim().Equals("") == false)
+                            if (In_node.model.C_LOT_ID.Trim().Equals("") == false)
                             {
-                                AddCondition(PageQueryReq, GetParaName<OQA_CHKMESSLOTID>(p => p.LotId), In_node.model.IN_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
-
+                                AddCondition(PageQueryReq, GetParaName<OqaMeslot>(p=>p.Lotid), In_node.model.C_LOT_ID.Trim(), LogicCondition.AndAlso,CompareType.Equal);
                             }
-                            AddSortCondition(PageQueryReq, GetParaName<OQA_CHKMESSLOTID>(p => p.LotId), SortType.ASC);
+                            if (In_node.model.C_FOUP_ID.Trim().Equals("") == false)
+                            {
+                                AddCondition(PageQueryReq, GetParaName<OqaMeslot>(p => p.Foupid), In_node.model.C_FOUP_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                            }
+                                                        
+                            AddSortCondition(PageQueryReq, GetParaName <OqaMeslot> (p=>p.Lotid), SortType.ASC);
+                            
+                            var data = PageQuery<OqaMeslot>(PageQueryReq);
 
-                            var data = PageQuery<OQA_CHKMESSLOTID>(PageQueryReq);
-
-                            Out_node.model.OQA_CHKMESSLOTID_list = data.models;
-
+                            Out_node.model.OQAMESLOT_LIST = data.models;
 
                             break;
 
                         case '2':
+
+                            //if (In_node.model.in_isp_code.Trim().Equals("") == true)
+                            //{
+                            //    Out_node._success = false;
+                            //    Out_node._ErrorMsg = "IN_ISP_CODE is null!";
+                            //    return Out_node;
+                            //}
+                            //if (In_node.model.in_isp_type.Trim().Equals("") == true)
+                            //{
+                            //    Out_node._success = false;
+                            //    Out_node._ErrorMsg = "IN_ISP_TYPE is null!";
+                            //    return Out_node;
+                            //}
                             // TODO
+
                             break;
                         case '3':
                             // TODO
+
                             break;
+
                     }
+                    
                 }
 
                 Out_node._success = true;
@@ -86,7 +103,7 @@ namespace OQAService.Services
             }
             catch (Exception ex)
             {
-                ModelRsp<LotSlotidView> Out_node = new ModelRsp<LotSlotidView>();
+                ModelRsp<IspMesLot> Out_node = new ModelRsp<IspMesLot>();
                 Out_node._success = false;
                 Out_node._ErrorMsg = ex.Message.ToString();
 

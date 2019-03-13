@@ -39,7 +39,7 @@ namespace WaferSf
             InitializeComponent();
         }
 
-        private void WaferSur_Load(object sender, EventArgs e)
+        public void WaferSur_Load(object sender, EventArgs e)
         {
             if (nodeMode)
             {
@@ -82,7 +82,12 @@ namespace WaferSf
                 }
 
                 SizeF sizeF = g.MeasureString(code, new Font("微软雅黑", 10));
-                g.DrawString(code, new Font("微软雅黑", 10, FontStyle.Regular),
+                Font codeStyle = new Font("微软雅黑", 10, FontStyle.Regular);
+                if (panelNum.Enabled && nodeMode)
+                {
+                    codeStyle = new Font("微软雅黑", 10, FontStyle.Bold);
+                }
+                g.DrawString(code, codeStyle,
                     new SolidBrush(col), new PointF((panelNum.Width - sizeF.Width) / 2, (panelNum.Height - sizeF.Height) / 2));
                 g.Dispose();
             }
@@ -98,6 +103,7 @@ namespace WaferSf
         {
             defectCode = new string[25];
             this.getDefectCodeValue();
+            newText = null;
             try
             {
                 foreach (var control in this.tableLayoutPanel1.Controls)

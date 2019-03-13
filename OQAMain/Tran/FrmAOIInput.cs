@@ -22,7 +22,6 @@ namespace OQAMain
 
 
         #region " Constant Definition "
-        //private bool b_load_flag = false;
 
         #endregion
 
@@ -31,6 +30,7 @@ namespace OQAMain
         private string lotId = "";
         private string sideType = "";
         private string slotId = "";
+        private ISPIMGDEF imgInfo = new ISPIMGDEF();
         #endregion
 
 
@@ -42,53 +42,6 @@ namespace OQAMain
             waferSurF.clearPanel();
         }
 
-        #region " 事务前数据检查 "
-        private bool CheckCondition(string FuncName)
-        {
-
-            switch (ComFunc.Trim(FuncName))
-            {
-                case "CREATE":
-                    return true;
-                    break;
-
-                case "UPDATE":
-                    // TODO
-
-                    break;
-                case "DELETE":
-                    // TODO
-                    break;
-
-            }
-
-            return true;
-
-        }
-
-        #endregion
-
-        #region "控件初始化 "        
-        private void ClearData(string ProcStep)
-        {
-
-            try
-            {
-                switch (ProcStep)
-                {
-                    case "1":
-                        //Initialize
-                        ComFunc.FieldClear(this);
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }
-        #endregion
 
 
         #endregion
@@ -109,6 +62,10 @@ namespace OQAMain
                 {
                     MessageBox.Show(rspInfo._ErrorMsg);
                 }
+                else
+                {
+                    lblSucessMsg.Text = rspInfo._MsgCode;
+                }
             }
             catch (System.Exception ex)
             {
@@ -120,6 +77,7 @@ namespace OQAMain
         {
             ComFunc.ClearBoxValue(groupBox3);
             waferSurF.clearPanel();
+            slotComboBox.Text = slotId;
             queryPageInfo(lotId, slotId, sideType);
         }
         private void FrmAOIInput_Load(object sender, EventArgs e)
@@ -193,9 +151,9 @@ namespace OQAMain
             {
                 AOIShowView model = new AOIShowView();
                 ISPWAFITM iSPWAFITM = new ISPWAFITM();
-                ISPIMGDEF iSPIMGDEF = new ISPIMGDEF();
+                //ISPIMGDEF iSPIMGDEF = new ISPIMGDEF();
                 List<ISPWAFDFT> sftList = new List<ISPWAFDFT>();
-                List<ISPIMGDEF> imgList = new List<ISPIMGDEF>();
+             //   List<ISPIMGDEF> imgList = new List<ISPIMGDEF>();
                 String[] codeList = new string[25];
                 codeList = waferSurF.defectCode;
               
@@ -207,7 +165,7 @@ namespace OQAMain
                 iSPWAFITM.SideType = sideType;
                 iSPWAFITM.Magnification = MagnificationTextBox.Text;
                 iSPWAFITM.DieQty = int.Parse(qtyTextBox.Text);
-                iSPWAFITM.DefectRate = int.Parse(rateTextBox.Text);
+                iSPWAFITM.DefectRate = decimal.Parse(rateTextBox.Text);
                 iSPWAFITM.ReviewUser = ReviewTextBox.Text;
                 iSPWAFITM.DefectDesc = decRichTextBox.Text;
                 iSPWAFITM.Cmt = cmtRichTextBox.Text;
@@ -252,7 +210,7 @@ namespace OQAMain
                 model.C_TRAN_FLAG = GlobConst.TRAN_CREATE;
                 model.ISPWAFITM_list = new List<ISPWAFITM>();
                 model.ISPWAFITM_list.Add(iSPWAFITM);
-                model.ISPIMGDEF_list = imgList;
+               // model.ISPIMGDEF_list = imgList;
                 model.ISPWAFDFT_list = sftList;
                 updateReq.model = model;
             }
@@ -298,22 +256,14 @@ namespace OQAMain
                         rateTextBox.Text = qryResult.model.ISPWAFITM_list[0].DefectRate.ToString();
                        
                     }
-                    else
+                    if (null != qryResult.model.ISPIMGDEF_list && qryResult.model.ISPIMGDEF_list.Count > 0)
                     {
-                        //ComFunc.ClearBoxValue(groupBox3);
+                        imgInfo = qryResult.model.ISPIMGDEF_list[0];
                     }
-                    //if (null != qryResult.model.ISPIMGDEF_list && qryResult.model.ISPIMGDEF_list.Count > 0)
-                    //{
-                    //    //  imageTextBox.Text = qryResult.model.ISPIMGDEF_list[0].ImagePath;//mock value
-                    //}
 
                 }
-                else
-                {
-                    //ComFunc.ClearBoxValue(groupBox3);
-                }
-                
-                  waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
+
+                waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
 
             }
             catch (Exception e)
@@ -325,15 +275,38 @@ namespace OQAMain
 
         private void slotComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string slotId = (sender as ComboBox).Text;
+             slotId = (sender as ComboBox).Text;
             //查询数据
             queryPageInfo(lotId, slotId, sideType);
         }
 
         private void MagnificationTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            OQA_Core.ComFunc.CheckKeyPress(sender, e);
+            ComFunc.CheckKeyPress(sender, e);
         }
 
+        private void savePicture()
+        {
+            //imageUpload1.UpLoadBySide
+        }
+
+        private void imageUpload1_btnUploadClicked(object sender, EventArgs e)
+        {
+            imageUpload1.UpLoadFlag = 3;//by side
+            ImageUpload.ImageUpload.BySide item = new ImageUpload.ImageUpload.BySide();
+            item.LotID = lotId;
+            item.Slot_ID = slotId;
+            item.Side_Type = sideType;
+            item.Wafer_ID = "1";
+            item.Inspect_Type = "A";//mock
+            item.ImageType = "ISP";
+            if(null != imgInfo)
+            {
+                item.TranSeq = imgInfo.TransSeq;
+                item.ImageId = imgInfo.ImageId;
+            }
+
+            imageUpload1.UpLoadBySide.Add(item);
+        }
     }
 }

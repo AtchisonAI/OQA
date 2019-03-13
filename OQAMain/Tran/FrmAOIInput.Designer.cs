@@ -388,6 +388,7 @@
             // 
             // lotTextBox
             // 
+            this.lotTextBox.Enabled = false;
             this.lotTextBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lotTextBox.Location = new System.Drawing.Point(157, 56);
             this.lotTextBox.Multiline = true;

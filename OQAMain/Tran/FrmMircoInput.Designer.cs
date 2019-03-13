@@ -43,7 +43,6 @@
             this.labelQty = new System.Windows.Forms.Label();
             this.MagnificationTextBox = new System.Windows.Forms.TextBox();
             this.cmtRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.decRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -107,6 +106,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.waferSurF = new WaferSf.WaferSur();
             this.label14 = new System.Windows.Forms.Label();
+            this.labelX = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -196,6 +196,7 @@
             // 
             // lotTextBox
             // 
+            this.lotTextBox.Enabled = false;
             this.lotTextBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lotTextBox.Location = new System.Drawing.Point(99, 49);
             this.lotTextBox.Multiline = true;
@@ -216,6 +217,7 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox3.Controls.Add(this.labelX);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.qtyTextBox);
             this.groupBox3.Controls.Add(this.rateTextBox);
@@ -223,7 +225,6 @@
             this.groupBox3.Controls.Add(this.labelQty);
             this.groupBox3.Controls.Add(this.MagnificationTextBox);
             this.groupBox3.Controls.Add(this.cmtRichTextBox);
-            this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.decRichTextBox);
             this.groupBox3.Controls.Add(this.label5);
@@ -303,17 +304,6 @@
             this.cmtRichTextBox.Size = new System.Drawing.Size(680, 29);
             this.cmtRichTextBox.TabIndex = 16;
             this.cmtRichTextBox.Text = "";
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Aharoni", 5.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.button1.Location = new System.Drawing.Point(238, 23);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(23, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label8
             // 
@@ -998,6 +988,16 @@
             this.label14.TabIndex = 26;
             this.label14.Text = "Pls mark the defect with below special code";
             // 
+            // labelX
+            // 
+            this.labelX.AutoSize = true;
+            this.labelX.BackColor = System.Drawing.Color.Transparent;
+            this.labelX.Location = new System.Drawing.Point(211, 28);
+            this.labelX.Name = "labelX";
+            this.labelX.Size = new System.Drawing.Size(11, 12);
+            this.labelX.TabIndex = 23;
+            this.labelX.Text = "X";
+            // 
             // FrmMircoInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1043,7 +1043,6 @@
         private System.Windows.Forms.Label labelQty;
         private System.Windows.Forms.TextBox MagnificationTextBox;
         private System.Windows.Forms.RichTextBox cmtRichTextBox;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.RichTextBox decRichTextBox;
         private System.Windows.Forms.Label label5;
@@ -1108,5 +1107,6 @@
         private ImageUpload.ImageUpload imageUpload_3;
         private ImageUpload.ImageUpload imageUpload_15;
         private ImageUpload.ImageUpload imageUpload_13;
+        private System.Windows.Forms.Label labelX;
     }
 }

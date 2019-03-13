@@ -684,5 +684,80 @@ namespace WCFModels.OQA
         [Column("UPDATE_USER_ID")] public string UpdateUserId { get; set; }
     }
 
+    [DataContract]
+    [TableName("OQA_MESLOT")]
+    [ExplicitColumns]
+    public partial class OqaMeslot
+    {
+        [DataMember]
+        [Column("LOTID")] public string Lotid { get; set; }
+        [DataMember]
+        [Column("FOUPID")] public string Foupid { get; set; }
+        [DataMember]
+        [Column("PARTID")] public string Partid { get; set; }
+        [DataMember]
+        [Column("QTY")] public decimal Qty { get; set; }
+        [DataMember]
+        [Column("DIEQTY")] public decimal Dieqty { get; set; }
+        [DataMember]
+        [Column("STAGE")] public string Stage { get; set; }
+        [DataMember]
+        [Column("LOTTYPE")] public string Lottype { get; set; }
+        [DataMember]
+        [Column("VENDORNAME")] public string Vendorname { get; set; }
+        [DataMember]
+        [Column("VENDORLOTNO")] public string Vendorlotno { get; set; }
+        [DataMember]
+        [Column("ORDERNO")] public string Orderno { get; set; }
+        [DataMember]
+        [Column("SENTIME")] public string Sentime { get; set; }
+        [DataMember]
+        [Column("SENDUSER")] public string Senduser { get; set; }
+        [DataMember]
+        [Column("RECTIME")] public string Rectime { get; set; }
+        [DataMember]
+        [Column("RECUSER")] public string Recuser { get; set; }
+        [DataMember]
+        [Column("RECFLAG")] public decimal Recflag { get; set; }
+    }
+
+    [DataContract]
+    [TableName("OQA_MESWAFER")]
+    [ExplicitColumns]
+    public partial class OqaMeswafer
+    {
+        [DataMember]
+        [Column("LOTID")] public string Lotid { get; set; }
+        [DataMember]
+        [Column("FOUPID")] public string Foupid { get; set; }
+        [DataMember]
+        [Column("COMPONENTID")] public string Componentid { get; set; }
+        [DataMember]
+        [Column("SLOTID")] public string Slotid { get; set; }
+        [DataMember]
+        [Column("WAFERID")] public string Waferid { get; set; }
+        [DataMember]
+        [Column("SENTIME")] public string Sentime { get; set; }
+        [DataMember]
+        [Column("SENDUSER")] public string Senduser { get; set; }
+        [DataMember]
+        [Column("RECTIME")] public string Rectime { get; set; }
+        [DataMember]
+        [Column("RECUSER")] public string Recuser { get; set; }
+        [DataMember]
+        [Column("RECFLAG")] public decimal Recflag { get; set; }
+    }
+
+    [DataContract]
+    [TableName("CHK_PNDN")]
+    [ExplicitColumns]
+    public partial class ChkPndn
+    {
+        [DataMember]
+        [Column("LOTID")] public string Lotid { get; set; }
+        [DataMember]
+        [Column("PNDN_NO")] public string PndnNo { get; set; }
+    }
+
 }
 

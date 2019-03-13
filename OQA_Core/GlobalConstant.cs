@@ -13,4 +13,22 @@ namespace OQA_Core
         public const char TRAN_UPDATE = 'U';
         public const char TRAN_VIEW = 'Q';
     }
+
+    public sealed class UpLoadFlag
+    {
+        public const int ByLot = 1;
+        public const int ByWafer = 2;
+        public const int BySide = 3;
+        public const int ByPoint = 4;
+    }
+
+    public sealed class ImageTtpe
+    {
+        /// <summary>
+        /// 同一级上传图片分类 LOT OQA 收料外观图片类型
+        /// </summary>
+        public const string ISP = "ISP";
+
+    }
+
 }

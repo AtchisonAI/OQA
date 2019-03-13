@@ -69,9 +69,12 @@ namespace OQAContract
         [OperationContract]
         ModelRsp<ImageSave> SaveImageInfo(ModelRsp<ImageSave> ImageSave);
 
-         #endregion
+        #endregion
 
-
+        #region  Lot Inspect View
+        [OperationContract]
+        ModelRsp<IspMesLot> QryMesLotInfo(ModelRsp<IspMesLot> DefectCode);
+        #endregion
 
         #region  WaferInspectRecord
         ModelRsp<WaferInspectRecordView> QueryLotInfo(ModelRsp<WaferInspectRecordView> LOTView);

@@ -149,6 +149,7 @@
             this.btnFilterView.Size = new System.Drawing.Size(36, 20);
             this.btnFilterView.TabIndex = 7;
             this.btnFilterView.Text = "View";
+            this.btnFilterView.Click += new System.EventHandler(this.btnFilterView_Click);
             // 
             // LstRcvLot
             // 
@@ -502,7 +503,7 @@
             // 
             // imageUpload1
             // 
-            this.imageUpload1.Location = new System.Drawing.Point(278, 126);
+            this.imageUpload1.Location = new System.Drawing.Point(268, 126);
             this.imageUpload1.Name = "imageUpload1";
             this.imageUpload1.PicStream = null;
             this.imageUpload1.Size = new System.Drawing.Size(283, 31);

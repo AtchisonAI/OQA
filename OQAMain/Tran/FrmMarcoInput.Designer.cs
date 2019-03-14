@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButtonB = new System.Windows.Forms.RadioButton();
+            this.radioButtonF = new System.Windows.Forms.RadioButton();
             this.slotComboBox = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.lotTextBox = new System.Windows.Forms.TextBox();
@@ -72,9 +74,15 @@
             this.pnlMenu.Location = new System.Drawing.Point(0, 736);
             this.pnlMenu.Size = new System.Drawing.Size(806, 40);
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox2.Controls.Add(this.radioButtonB);
+            this.groupBox2.Controls.Add(this.radioButtonF);
             this.groupBox2.Controls.Add(this.slotComboBox);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.lotTextBox);
@@ -86,11 +94,34 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Macro inspection simple MAP";
             // 
+            // radioButtonB
+            // 
+            this.radioButtonB.AutoSize = true;
+            this.radioButtonB.Location = new System.Drawing.Point(639, 56);
+            this.radioButtonB.Name = "radioButtonB";
+            this.radioButtonB.Size = new System.Drawing.Size(71, 16);
+            this.radioButtonB.TabIndex = 8;
+            this.radioButtonB.TabStop = true;
+            this.radioButtonB.Text = "BackSide";
+            this.radioButtonB.UseVisualStyleBackColor = true;
+            this.radioButtonB.CheckedChanged += new System.EventHandler(this.radioButtonB_CheckedChanged);
+            // 
+            // radioButtonF
+            // 
+            this.radioButtonF.AutoSize = true;
+            this.radioButtonF.Location = new System.Drawing.Point(526, 56);
+            this.radioButtonF.Name = "radioButtonF";
+            this.radioButtonF.Size = new System.Drawing.Size(77, 16);
+            this.radioButtonF.TabIndex = 7;
+            this.radioButtonF.TabStop = true;
+            this.radioButtonF.Text = "FrontSide";
+            this.radioButtonF.UseVisualStyleBackColor = true;
+            // 
             // slotComboBox
             // 
             this.slotComboBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.slotComboBox.FormattingEnabled = true;
-            this.slotComboBox.Location = new System.Drawing.Point(411, 56);
+            this.slotComboBox.Location = new System.Drawing.Point(357, 57);
             this.slotComboBox.Name = "slotComboBox";
             this.slotComboBox.Size = new System.Drawing.Size(121, 22);
             this.slotComboBox.TabIndex = 4;
@@ -108,19 +139,19 @@
             // 
             // lotTextBox
             // 
-            this.lotTextBox.Enabled = false;
             this.lotTextBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lotTextBox.Location = new System.Drawing.Point(157, 56);
             this.lotTextBox.Multiline = true;
             this.lotTextBox.Name = "lotTextBox";
             this.lotTextBox.Size = new System.Drawing.Size(100, 21);
             this.lotTextBox.TabIndex = 3;
+            this.lotTextBox.TextChanged += new System.EventHandler(this.lotTextBox_TextChanged);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.label16.Location = new System.Drawing.Point(348, 56);
+            this.label16.Location = new System.Drawing.Point(294, 57);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(35, 14);
             this.label16.TabIndex = 2;
@@ -308,5 +339,7 @@
         private WaferSf.WaferSur waferSurF;
         private System.Windows.Forms.Label label14;
         private ImageUpload.ImageUpload imageUpload1;
+        private System.Windows.Forms.RadioButton radioButtonB;
+        private System.Windows.Forms.RadioButton radioButtonF;
     }
 }

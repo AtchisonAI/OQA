@@ -35,12 +35,14 @@ namespace OQAContract
 
         #endregion
 
-        #region AOI
+        #region AOI & MA & MI
         [OperationContract]
         ModelRsp<AOIShowView> QueryAOIInfo(ModelRsp<AOIShowView> queryReq);
         //AOIInputView
         [OperationContract]
         ModelRsp<AOIShowView> CreateOrUpdateAOI(UpdateModelReq<AOIShowView> updateReq);
+        [OperationContract]
+        ModelRsp<LotstsInfoView> QuerySlotstsInfo(ModelRsp<LotstsInfoView> queryInfoReq);
         #endregion
 
         #region  Lot Transfer

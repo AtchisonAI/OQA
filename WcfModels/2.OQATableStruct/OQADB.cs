@@ -440,7 +440,7 @@ namespace WCFModels.OQA
 
     [DataContract]
     [TableName("ISPLOTSTS")]
-    [PrimaryKey("LOT_ID,FOUP_ID",AutoIncrement = false)]
+    [PrimaryKey("LOT_ID",AutoIncrement = false)]
     [ExplicitColumns]
     public partial class ISPLOTSTS
     {

@@ -16,6 +16,13 @@ namespace OQAMain
             InitializeComponent();
         }
 
+        public FrmDefectCodeSet(string jjname)
+        {
+            InitializeComponent();
+            //this.name = jjname;
+            this.txtDefectDesc.Text = jjname;
+        }
+
         #endregion
 
 
@@ -29,6 +36,10 @@ namespace OQAMain
         private bool Have_flag = false;
         //private bool b_load_flag  ;
         //private string s_Defect_Desc = " ";
+
+        //e100835
+        private string name = "";
+
         #endregion
 
 

@@ -57,6 +57,10 @@ namespace OQAContract
         ModelRsp<LotSlotidView> QryLotMesSlotidInfo(ModelRsp<LotSlotidView> LotSlotidView);
         [OperationContract]
         ModelRsp<LotSlotidView> QryLotIspStsInfo(ModelRsp<LotSlotidView> LotSlotidView);
+        [OperationContract]
+        ModelRsp<LotSlotidSave> IstLotSltInfo(ModelRsp<LotSlotidSave> LotSlotidSave);
+        [OperationContract]
+        ModelRsp<LotSlotidView> UptLotIspStsInfo(ModelRsp<LotSlotidView> UptLotIspStsInfo);
         #endregion
 
         #region  IOQA Ship List Print

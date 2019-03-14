@@ -94,6 +94,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="7 FOUP change\IstLotSltInfo.cs" />
+    <Compile Include="7 FOUP change\UptLotIspStsInfo.cs" />
     <Compile Include="ImageUpload\SaveImageInfo.cs" />
     <Compile Include="11 Wafer Insection Record Print\QueryLotInfo.cs" />
     <Compile Include="12 IOQA Ship List Print\QryPKGShipInfo.cs" />

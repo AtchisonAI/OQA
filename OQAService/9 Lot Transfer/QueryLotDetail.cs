@@ -23,8 +23,8 @@ namespace OQAService.Services
 
                 ModelRsp<QueryLotDetailView> In_node = new ModelRsp<QueryLotDetailView>();
                 ModelRsp<QueryLotDetailView> Out_node = new ModelRsp<QueryLotDetailView>();
-                WaferInspectRecordView out_list = new WaferInspectRecordView();
-
+                QueryLotDetailView out_list = new QueryLotDetailView();
+                
                 In_node.model = PKGShip.model;
 
                 //验证系统级别输入参数
@@ -43,49 +43,57 @@ namespace OQAService.Services
                     return Out_node;
 
                 }
-
+                
                 if (In_node.model.C_PROC_STEP == GlobalConstant.TRAN_VIEW)
                 {
                     //业务逻辑选择
                     switch (In_node.model.C_TRAN_FLAG)
-                    {
+                    { 
                         case '1':
                             //验证业务级输入参数
 
+
+                            List<object[]> data = new List<object[]>();
 
                             PageQueryReq.CurrentPage = 1;
                             PageQueryReq.ItemsPerPage = 200;
                             if (In_node.model.IN_MASTERLOT_NO.Trim().Equals("") == false)
                             {
-                            AddCondition(PageQueryReq, GetParaName<PKGSHPDAT>(p => p.LotId), In_node.model.IN_MASTERLOT_NO.Trim(), LogicCondition.AndAlso,CompareType.Equal);
-                           }
-                           
-                                                        
-                            AddSortCondition(PageQueryReq, GetParaName <PKGSHPDAT> (p=>p.LotId), SortType.ASC);
+                                //AddCondition(PageQueryReq, GetParaName<PKGSHPDAT>(p => p.LotId), In_node.model.IN_MASTERLOT_NO.Trim(), LogicCondition.AndAlso,CompareType.Include);
+                                string sql = string.Format(@"select LOT_ID,QTY,PART_ID,INSPECT_RESULT from isplotsts WHERE LOT_ID IN ({0})", In_node.model.IN_MASTERLOT_NO.Trim());
+                                data = QueryRawSql(sql);
+                            }
                             
-                            var data = PageQuery<PKGSHPDAT>(PageQueryReq);
+                            out_list.PKGSHPDAT_list = data;
+                            Out_node.model = out_list;
+                            //   AddSortCondition(PageQueryReq, GetParaName <PKGSHPDAT> (p=>p.LotId), SortType.ASC);
 
-                            Out_node.model.PKGSHPDAT_list = data.models;
-
+                            //   var data = PageQuery<PKGSHPDAT>(PageQueryReq);
+                            //   out_list.PKGSHPDAT_list = data.models;
+                            //    Out_node.model = out_list;
                             break;
 
                         case '2':
+                            //List<object[]> dataS = new List<object[]>();
 
-                            //if (In_node.model.in_isp_code.Trim().Equals("") == true)
+                            //PageQueryReq.CurrentPage = 1;
+                            //PageQueryReq.ItemsPerPage = 200;
+                            //if (In_node.model.IN_MASTERLOT_NO.Trim().Equals("") == false)
                             //{
-                            //    Out_node._success = false;
-                            //    Out_node._ErrorMsg = "IN_ISP_CODE is null!";
-                            //    return Out_node;
+                            //    //AddCondition(PageQueryReq, GetParaName<PKGSHPDAT>(p => p.LotId), In_node.model.IN_MASTERLOT_NO.Trim(), LogicCondition.AndAlso,CompareType.Include);
+                            //    string sql = string.Format(@"select COUNT(DISTINCT PART_ID)  from isplotsts WHERE LOT_ID IN ({0})", In_node.model.IN_MASTERLOT_NO.Trim());
+                            //    dataS = QueryRawSql(sql);
                             //}
-                            //if (In_node.model.in_isp_type.Trim().Equals("") == true)
-                            //{
-                            //    Out_node._success = false;
-                            //    Out_node._ErrorMsg = "IN_ISP_TYPE is null!";
-                            //    return Out_node;
-                            //}
-                            // TODO
 
+                            //out_list.PKGSHPDAT_list = dataS;
+                            //Out_node.model = out_list;
+                            ////   AddSortCondition(PageQueryReq, GetParaName <PKGSHPDAT> (p=>p.LotId), SortType.ASC);
+
+                            ////   var data = PageQuery<PKGSHPDAT>(PageQueryReq);
+                            ////   out_list.PKGSHPDAT_list = data.models;
+                            ////    Out_node.model = out_list;
                             break;
+
                         case '3':
                             // TODO
 

@@ -95,6 +95,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="1 Lot inspect\QryMesLotInfo.cs" />
+    <Compile Include="8 Lot package\UpdateLotSts.cs" />
+    <Compile Include="8 Lot package\QueryLotPackageInfo.cs" />
     <Compile Include="ImageUpload\SaveImageInfo.cs" />
     <Compile Include="11 Wafer Insection Record Print\QueryLotInfo.cs" />
     <Compile Include="12 IOQA Ship List Print\QryPKGShipInfo.cs" />
@@ -128,7 +130,6 @@
     <Folder Include="4 Marco inspection input\" />
     <Folder Include="5 Mirco inspection input\" />
     <Folder Include="6 Defect send %28PNDN%29\" />
-    <Folder Include="8 Lot package\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

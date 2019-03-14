@@ -266,7 +266,7 @@ namespace WCFModels.OQA
 
     [DataContract]
     [TableName("ISPIMGDEF")]
-    [PrimaryKey("LOT_ID,SLOT_ID,WAFER_ID,SIDE_TYPE,INSPECT_TYPE,AREA_ID",AutoIncrement = false)]
+    [PrimaryKey("LOT_ID,SLOT_ID,WAFER_ID,SIDE_TYPE,INSPECT_TYPE,AREA_ID,IMAGE_TYPE", AutoIncrement = false)]
     [ExplicitColumns]
     public partial class ISPIMGDEF
     {
@@ -440,7 +440,7 @@ namespace WCFModels.OQA
 
     [DataContract]
     [TableName("ISPLOTSTS")]
-    [PrimaryKey("LOT_ID,FOUP_ID",AutoIncrement = false)]
+    [PrimaryKey("LOT_ID",AutoIncrement = false)]
     [ExplicitColumns]
     public partial class ISPLOTSTS
     {

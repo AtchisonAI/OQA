@@ -306,7 +306,7 @@ namespace OQAMain
                 item.ImageId = imgInfo.ImageId;
             }
 
-            imageUpload1.UpLoadBySide.Add(item);
+            imageUpload1.UpLoadBySide = item;
         }
     }
 }

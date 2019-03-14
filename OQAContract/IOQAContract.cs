@@ -83,5 +83,14 @@ namespace OQAContract
         ModelRsp<WaferInspectRecordView> QueryWaferInspectionRecordInfo(ModelRsp<WaferInspectRecordView> WaferInspectRecord);
 
         #endregion
+
+        #region Lot Package
+        [OperationContract]
+        ModelRsp<LotPackageView> QueryLotPackageInfo(LotPackageInput input);
+        [OperationContract]
+        ModelRsp<ISPLOTSTS> UpdateLotSts(UpdateModelReq<ISPLOTSTS> input);
+        [OperationContract]
+        BaseRsp DeletePackageImg(DeletePackageImgReq input);
+        #endregion
     }
 }

@@ -211,10 +211,10 @@ namespace OQAMain
             imageUpload1.UpLoadFlag = UpLoadFlag.ByLot;
             ImageUpload.ImageUpload.ByLot item = new ImageUpload.ImageUpload.ByLot();
             item.LotID = "2";
-            item.ImageType = ImageTtpe.ISP;
+            item.ImageType = ImageType.ISP;
             //item.TranSeq = 0;
             //item.ImageId = "test";
-            imageUpload1.UpLoadByLot.Add(item);
+            imageUpload1.UpLoadByLot = item;
         }
 
         private void btnFilterView_Click(object sender, EventArgs e)

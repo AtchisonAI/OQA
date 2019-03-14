@@ -165,11 +165,11 @@
     <Compile Include="Tran\FrmMircoInput.Designer.cs">
       <DependentUpon>FrmMircoInput.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tran\FrmDefectSend.cs">
+    <Compile Include="Tran\FrmSendPndn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tran\FrmDefectSend.Designer.cs">
-      <DependentUpon>FrmDefectSend.cs</DependentUpon>
+    <Compile Include="Tran\FrmSendPndn.Designer.cs">
+      <DependentUpon>FrmSendPndn.cs</DependentUpon>
     </Compile>
     <Compile Include="Tran\FrmFoupChange.cs">
       <SubType>Form</SubType>
@@ -252,8 +252,8 @@
     <EmbeddedResource Include="Tran\FrmMircoInput.resx">
       <DependentUpon>FrmMircoInput.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tran\FrmDefectSend.resx">
-      <DependentUpon>FrmDefectSend.cs</DependentUpon>
+    <EmbeddedResource Include="Tran\FrmSendPndn.resx">
+      <DependentUpon>FrmSendPndn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tran\FrmFoupChange.resx">
       <DependentUpon>FrmFoupChange.cs</DependentUpon>

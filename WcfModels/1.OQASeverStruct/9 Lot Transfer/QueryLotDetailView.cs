@@ -24,10 +24,10 @@ namespace WCFModels.OQA
         }
         private char c_proc_step;
 
-        public QueryLotDetailView()
-        {
-            PKGSHPDAT_list = new List<PKGSHPDAT>();
-        }
+       // public QueryLotDetailView()
+        //{
+         //   PKGSHPDAT_list = new List<PKGSHPDAT>();
+       // }
 
         [DataMember]
         public char C_TRAN_FLAG
@@ -60,7 +60,10 @@ namespace WCFModels.OQA
 
        // 服务传出数据结构
         [DataMember]
-        public List<PKGSHPDAT> PKGSHPDAT_list { get; set; }
+       // public List<ISPLOTSTS> PKGSHPDAT_list { get; set; }
+         public List<object[]> PKGSHPDAT_list { get; set; }
+
+
         //服务传出结果在BaseRsq:_success  _ErrorMsg
     }
 }

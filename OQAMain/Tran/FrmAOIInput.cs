@@ -282,7 +282,24 @@ namespace OQAMain
                         }
                         if (null != qryResult.model.ISPIMGDEF_list && qryResult.model.ISPIMGDEF_list.Count > 0)
                         {
-                            imgInfo = qryResult.model.ISPIMGDEF_list[0];
+                                foreach (Control control in groupBox3.Controls)
+                                {
+                                    if (control is ImageUpload.ImageUpload)
+                                    {
+                                        if (control.Name.Split('_')[1].Equals((imgInfo.AreaId).ToString()))
+                                        {
+                                            ImageUpload.ImageUpload img = control as ImageUpload.ImageUpload;
+                                            img.InitByImgInstance(imgInfo);
+                                        }
+                                    }
+                                }
+                        }
+                        else
+                        {//清除图片
+                            foreach (Control control in groupBoxSelect.Controls)
+                            {
+                                ComFunc.ClearBoxValue(groupBox3);
+                            }
                         }
                         waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
                     }

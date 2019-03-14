@@ -221,6 +221,7 @@ namespace OQAMain
             waferSurF.clearPanel();
             slotComboBox.Text = slotId;
             queryPageInfo(lotId, slotId, sideType);
+            ComFunc.ClearBoxValue(groupBoxSelect);
         }
         //页面查询及slot下拉框查询
         private void pageInfoShow()

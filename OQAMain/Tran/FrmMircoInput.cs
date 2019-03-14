@@ -27,7 +27,7 @@ namespace OQAMain
         }
 
         #endregion
-        
+
         #region Page Load
         private void FrmMircoInput_Load(object sender, EventArgs e)
         {
@@ -174,7 +174,7 @@ namespace OQAMain
             }
         }
         #endregion
-        
+
         #region Common Function
         //9点模式隐藏3个点
         private void hideNode(Boolean flag)
@@ -391,6 +391,27 @@ namespace OQAMain
                         if (null != qryResult.model.ISPIMGDEF_list && qryResult.model.ISPIMGDEF_list.Count > 0)
                         {
                             imgInfoList = qryResult.model.ISPIMGDEF_list;
+                            foreach (ISPIMGDEF imgInfo in imgInfoList)
+                            {
+                                foreach (Control control in groupBoxSelect.Controls)
+                                {
+                                    if (control is ImageUpload.ImageUpload)
+                                    {
+                                        if (control.Name.Split('_')[1].Equals((imgInfo.AreaId).ToString()))
+                                        {
+                                            ImageUpload.ImageUpload img = control as ImageUpload.ImageUpload;
+                                            img.InitByImgInstance(imgInfo);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {//清除图片
+                            foreach (Control control in groupBoxSelect.Controls)
+                            {
+                                ComFunc.ClearBoxValue(groupBoxSelect);
+                            }
                         }
                         waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
                     }
@@ -457,7 +478,7 @@ namespace OQAMain
             }
 
         }
-        
+       
         #endregion
 
         #region Upload Picture Click Function
@@ -565,10 +586,10 @@ namespace OQAMain
             imageUpload_14.UpLoadByArea = (item);
         }
         #endregion
-        
 
-      
 
-      
+
+
+
     }
 }

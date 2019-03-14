@@ -97,7 +97,7 @@ namespace OQAMain
                 item.ImageId = imgInfo.ImageId;
             }
 
-            imageUpload1.UpLoadBySide.Add(item);
+            imageUpload1.UpLoadBySide = item;
         }
         //刷新按钮
         private void btnRefresh_Click(object sender, EventArgs e)

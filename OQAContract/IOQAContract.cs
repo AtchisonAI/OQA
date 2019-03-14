@@ -98,8 +98,21 @@ namespace OQAContract
         #region  Package Label Print
         [OperationContract]
         ModelRsp<PKGLabelPrintView> QueryPKGLabelInfo(ModelRsp<PKGLabelPrintView> PKGLabelView);
-       
 
+
+        #endregion
+
+        #region lot package
+        [OperationContract]
+        ModelRsp<ISPLOTSTS> QueryLotSts(LotPackageInput input);
+        [OperationContract]
+        ModelListRsp<ISPIMGDEF> QueryPackageImg(LotPackageInput input);
+        [OperationContract]
+        ModelRsp<LotPackageView> QueryLotPackageInfo(LotPackageInput input);
+        [OperationContract]
+        ModelRsp<ISPLOTSTS> UpdateLotSts(UpdateModelReq<ISPLOTSTS> input);
+        [OperationContract]
+        BaseRsp DeletePackageImg(DeletePackageImgReq input);
         #endregion
 
     }

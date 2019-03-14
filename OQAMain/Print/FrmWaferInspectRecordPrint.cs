@@ -161,26 +161,36 @@ namespace OQAMain
         public List<ReportParameter> GenerateLabelParameters()
         {
             List<ReportParameter> lstParam = new List<ReportParameter>();
+            string lotID = String.Empty;
+            string Partid = String.Empty;
+            string Qty = String.Empty;
+            string Stime = String.Empty;
+            string uerid = String.Empty;
+            string Foupid = String.Empty;
 
             if (lstLot.Count > 0)
             {
-                string lotID = lstLot[0].LotId;
-                string Partid = lstLot[0].PartId.ToString();
-                string Qty = lstLot[0].Qty.ToString();
-                string Stime = lstLot[0].UpdateTime.ToString();
-                string uerid = lstLot[0].CreateUserId.ToString();
-                string Foupid = lstLot[0].FoupId.ToString();
-                lstParam.Add(new ReportParameter("paramLotID", lotID));
-                lstParam.Add(new ReportParameter("paramPartID", Partid));
-                lstParam.Add(new ReportParameter("paramQTY", Qty));
-                lstParam.Add(new ReportParameter("paramDate", Stime));
-                lstParam.Add(new ReportParameter("paramUserid", uerid));
-                lstParam.Add(new ReportParameter("paramFoupid", Foupid));
+                lotID = lstLot[0].LotId;
+                Partid = lstLot[0].PartId.ToString();
+                Qty = lstLot[0].Qty.ToString();
+                Stime = lstLot[0].UpdateTime.ToString();
+                uerid = lstLot[0].CreateUserId.ToString();
+                Foupid = lstLot[0].FoupId.ToString();
+
+               
             }
             else
             {
                 MessageBox.Show("不存在此lotid可打印的检验报告，请确认lotid！");
             }
+
+            lstParam.Add(new ReportParameter("paramLotID", lotID));
+            lstParam.Add(new ReportParameter("paramPartID", Partid));
+            lstParam.Add(new ReportParameter("paramQTY", Qty));
+            lstParam.Add(new ReportParameter("paramDate", Stime));
+            lstParam.Add(new ReportParameter("paramUserid", uerid));
+            lstParam.Add(new ReportParameter("paramFoupid", Foupid));
+
             return lstParam;
         }
 

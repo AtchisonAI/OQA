@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.Print = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -40,30 +41,31 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(839, 8);
+            this.btnClose.Location = new System.Drawing.Point(973, 8);
             this.btnClose.Visible = false;
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(651, 8);
-            this.btnCreate.Text = "Print";
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.btnCreate.Location = new System.Drawing.Point(461, 8);
+            this.btnCreate.Visible = false;
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(745, 7);
+            this.btnEdite.Location = new System.Drawing.Point(879, 7);
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
             // 
+            this.pnlMenu.Dock = System.Windows.Forms.DockStyle.None;
             this.pnlMenu.Location = new System.Drawing.Point(0, 560);
-            this.pnlMenu.Size = new System.Drawing.Size(800, 40);
+            this.pnlMenu.Size = new System.Drawing.Size(777, 40);
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.Print);
             this.groupBox1.Controls.Add(this.txtLotID);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(30, 31);
@@ -115,6 +117,16 @@
             this.reportViewer1.Size = new System.Drawing.Size(744, 380);
             this.reportViewer1.TabIndex = 0;
             // 
+            // Print
+            // 
+            this.Print.Location = new System.Drawing.Point(431, 34);
+            this.Print.Name = "Print";
+            this.Print.Size = new System.Drawing.Size(75, 23);
+            this.Print.TabIndex = 7;
+            this.Print.Text = "Print";
+            this.Print.UseVisualStyleBackColor = true;
+            this.Print.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // FrmPackageLabelPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -144,5 +156,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.Button Print;
     }
 }

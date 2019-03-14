@@ -56,45 +56,16 @@ namespace OQAMain
 
             switch (ComFunc.Trim(FuncName))
             {
-                case "CREATE":
+                case "Print":
 
-                    //            if (ComFunc.CheckValue(ComFunc.Trim(txtLotID.Text), 1) == false)
-                    //            {
-                    //                MessageBox.Show("必填内容输入为空！");
-                    //                txtLotID.Focus();
-                    //                return false;
-                    //            }
+                    if (ComFunc.CheckValue(txtLotID, 1) == false)
+                    {
+                        MessageBox.Show("必填内容输入为空！");
+                        txtLotID.Focus();
+                        return false;
+                    }
 
-                    //            if ( ComFunc.CheckValue(ComFunc.Trim(txtNewQty1.Text), 1) == false)
-                    //            {
-                    //                if (MPCF.CheckValue(txtNewQty1, 2) == false)
-                    //                {
-                    //                    tabTran.SelectedTab = tbpGeneral;
-                    //                    txtNewQty1.Focus();
-                    //                    return false;
-                    //                }
-                    //            }
-
-                    //            if (ComFunc.Trim(cdvToFlow.Text) != "" && ComFunc.Trim(cdvToOperation.Text) == "")
-                    //            {
-                    //                MessageBox.Show("……");
-                    //                tabTran.SelectedTab = tbpGeneral;
-                    //                cdvToOperation.Focus();
-                    //                return false;
-                    //            }
-
-                    //            if (LOT.GetDouble("QTY_1") > 0 || LOT.GetDouble("QTY_2") > 0 || LOT.GetDouble("QTY_3") > 0)
-                    //            {
-                    //                if (cdvResID.Items.Count > 0)
-                    //                {
-                    //                    if (MPCF.CheckValue(cdvResID, 1) == false)
-                    //                    {
-                    //                        tabTran.SelectedTab = tbpGeneral;
-                    //                        cdvResID.Focus();
-                    //                        return false;
-                    //                    }
-                    //                }
-                    //            }
+                   
 
                     break;
 
@@ -141,26 +112,16 @@ namespace OQAMain
 
 
 
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void btnPrint_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //检查数据
-                if (CheckCondition("CREATE") == false) return;
-                lotid = txtLotID.Text.Trim();
-                this.reportViewer1.LocalReport.DataSources.Clear();
-                if (QueryPKGLabelInfo(GlobConst.TRAN_VIEW, '1', lotid) == false)
-                    return;
-                else {
-                    
-                    this.reportViewer1.RefreshReport();
-                }
+            if (CheckCondition("Print") == false) return;
 
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
+            lotid = txtLotID.Text.Trim();
+            this.reportViewer1.LocalReport.DataSources.Clear();
+
+            if (QueryPKGLabelInfo(GlobConst.TRAN_VIEW, '1', lotid) == false)
+                return;
+        
         }
 
         private void FrmPackageLabelPrint_Load(object sender, EventArgs e)
@@ -260,9 +221,11 @@ namespace OQAMain
 
             if (e.KeyChar == (Char)13)
             {
+
                 if (ComFunc.Trim(txtLotID.Text) != "")
                 {
-                    btnCreate.PerformClick();
+
+                    Print.PerformClick();
                 }
             }
         }

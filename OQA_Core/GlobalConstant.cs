@@ -35,6 +35,19 @@ namespace OQA_Core
 
     }
 
+    public sealed class InspectType
+    {
+        public const string AOI = "AOI";
+        public const string MA = "MACRO";
+        public const string MI = "MIRCRO";
+    }
+
+    public sealed class SideType
+    {
+        public const string Front = "F";
+        public const string Back = "B";
+    }
+
     public sealed class LotSts
     {
         /// <summary>

@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 
 namespace WCFModels.OQA
 {
     [DataContract]
-    public class PKGShipView: BaseRsp
+    public class LotSlotidSave: BaseRsp
     {
 
         //服务传入执行动作,事务标记必须输入
@@ -24,9 +23,9 @@ namespace WCFModels.OQA
         }
         private char c_proc_step;
 
-        public PKGShipView()
+        public LotSlotidSave()
         {
-            PKGSHPDAT_list = new List<PKGSHPDAT>();
+            PkgsltdefList = new List<PKGSLTDEF>();
         }
 
         [DataMember]
@@ -45,28 +44,50 @@ namespace WCFModels.OQA
         private char c_tran_flag;
         //服务传入参数
         [DataMember]
-        public string IN_SHIP_NO {
+        public string IN_LOT_ID {
             get
             {
-                return in_ship_no;
+                return in_lot_id;
             }
             set
             {
-                in_ship_no = value;
+                in_lot_id = value;
             }
         }
-        private string in_ship_no;
+        private string in_lot_id;
 
+        //[DataMember]
+        //public string IN_WAFER_ID
+        //{
+        //    get
+        //    {
+        //        return in_wafer_id;
+        //    }
+        //    set
+        //    {
+        //        in_wafer_id = value;
+        //    }
+        //}
+        //private string in_wafer_id;
+
+        //[DataMember]
+        //public string IN_SLOT_ID
+        //{
+        //    get
+        //    {
+        //        return in_slot_id;
+        //    }
+        //    set
+        //    {
+        //        in_slot_id = value;
+        //    }
+        //}
+        //private string in_slot_id;
 
 
         //服务传出数据结构
         [DataMember]
-        public List<PKGSHPDAT> PKGSHPDAT_list { get; set; }
-
-        //服务传出数据结构
-        [DataMember]
-        public List<PKGSHPSTS> PKGSHP_list { get; set; }
-
-        //服务传出结果在BaseRsq:_success  _ErrorMsg
+        public List<PKGSLTDEF> PkgsltdefList { get; set; }
+       
     }
 }

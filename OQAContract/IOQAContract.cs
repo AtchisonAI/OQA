@@ -35,17 +35,21 @@ namespace OQAContract
 
         #endregion
 
-        #region AOI
+        #region AOI & MA & MI
         [OperationContract]
         ModelRsp<AOIShowView> QueryAOIInfo(ModelRsp<AOIShowView> queryReq);
         //AOIInputView
         [OperationContract]
         ModelRsp<AOIShowView> CreateOrUpdateAOI(UpdateModelReq<AOIShowView> updateReq);
+        [OperationContract]
+        ModelRsp<LotstsInfoView> QuerySlotstsInfo(ModelRsp<LotstsInfoView> queryInfoReq);
         #endregion
 
         #region  Lot Transfer
-
+        [OperationContract]
         ModelRsp<LotIDListView> QueryLotList(ModelRsp<LotIDListView> PKGShip);
+        [OperationContract]
+        ModelRsp<QueryLotDetailView> QueryLotDetail(ModelRsp<QueryLotDetailView> PKGShip);
 
         #endregion
 
@@ -57,11 +61,18 @@ namespace OQAContract
         ModelRsp<LotSlotidView> QryLotMesSlotidInfo(ModelRsp<LotSlotidView> LotSlotidView);
         [OperationContract]
         ModelRsp<LotSlotidView> QryLotIspStsInfo(ModelRsp<LotSlotidView> LotSlotidView);
+        [OperationContract]
+        ModelRsp<LotSlotidSave> IstLotSltInfo(ModelRsp<LotSlotidSave> LotSlotidSave);
+        [OperationContract]
+        ModelRsp<LotSlotidView> UptLotIspStsInfo(ModelRsp<LotSlotidView> UptLotIspStsInfo);
         #endregion
 
         #region  IOQA Ship List Print
         [OperationContract]
         ModelRsp<PKGShipView> QryPKGShipInfo(ModelRsp<PKGShipView> PKGShip);
+
+        [OperationContract]
+        ModelRsp<PKGShipView> QryPKGShipSummaryInfo(ModelRsp<PKGShipView> PKGShipSummary);
 
         #endregion
 
@@ -84,13 +95,12 @@ namespace OQAContract
 
         #endregion
 
-        #region Lot Package
+        #region  Package Label Print
         [OperationContract]
-        ModelRsp<LotPackageView> QueryLotPackageInfo(LotPackageInput input);
-        [OperationContract]
-        ModelRsp<ISPLOTSTS> UpdateLotSts(UpdateModelReq<ISPLOTSTS> input);
-        [OperationContract]
-        BaseRsp DeletePackageImg(DeletePackageImgReq input);
+        ModelRsp<PKGLabelPrintView> QueryPKGLabelInfo(ModelRsp<PKGLabelPrintView> PKGLabelView);
+       
+
         #endregion
+
     }
 }

@@ -31,10 +31,10 @@ namespace OQAMain
         #region Page Load
         private void FrmMircoInput_Load(object sender, EventArgs e)
         {
-            lotId = "1";
-            slotId = "1";
+            lotId = "ITM0150";
+            slotId = "001";
             sideType = "F";
-            waferId = "1";
+            waferId = "ITM0150.01";
             if (sideType.Equals(SideType.Front))
             {
                 radioButtonF.Checked = true;
@@ -109,6 +109,10 @@ namespace OQAMain
         private void MagnificationTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             ComFunc.CheckKeyPress(sender, e);
+            if (MagnificationTextBox.Text.Length > 6)
+            {
+                MagnificationTextBox.Text = "";
+            }
         }
         //lotId文本框TextChanged
         private void lotTextBox_TextChanged(object sender, EventArgs e)
@@ -163,9 +167,10 @@ namespace OQAMain
         //qty文本框输入控制
         private void qtyTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar != 8 && !Char.IsDigit(e.KeyChar))//除退格以外的非数字输入
-            {//如果不是输入数字就不让输入
-                e.Handled = true;
+            ComFunc.CheckKeyPress(sender, e);
+            if (qtyTextBox.Text.Length > 6)
+            {
+                qtyTextBox.Text = "";
             }
         }
         #endregion
@@ -301,7 +306,14 @@ namespace OQAMain
                 iSPWAFITM.DefectDesc = decRichTextBox.Text;
                 iSPWAFITM.Cmt = cmtRichTextBox.Text;
                 iSPWAFITM.IsInspect = "Y";
-
+                if (radioNine.Checked)
+                {
+                    iSPWAFITM.InspectPoint = "9";
+                }
+                else
+                {
+                    iSPWAFITM.InspectPoint = "13";
+                }
                 for (int i = 0; i < 24; i++)
                 {
                     if (null != codeList[i] && !codeList[i].Equals(""))
@@ -343,7 +355,7 @@ namespace OQAMain
                 ISPWAFITM ISPWAFITM = new ISPWAFITM();
                 ISPWAFITM.LotId = lotId;
                 ISPWAFITM.SlotId = slotId;
-                ISPWAFITM.WaferId = waferId;
+                //ISPWAFITM.WaferId = waferId;
                 ISPWAFITM.SideType = sideType;
                 ISPWAFITM.InspectType = InspectType.MI;
                 AOIShowView model = new AOIShowView();
@@ -366,6 +378,7 @@ namespace OQAMain
                             MagnificationTextBox.Text = qryResult.model.ISPWAFITM_list[0].Magnification;
                             rateTextBox.Text = qryResult.model.ISPWAFITM_list[0].DefectRate.ToString();
                             qtyTextBox.Text = qryResult.model.ISPWAFITM_list[0].DieQty.ToString();
+                            waferId = qryResult.model.ISPWAFITM_list[0].WaferId;
                             //slotId = qryResult.model.ISPWAFITM_list[0].SlotId;
                             //slotComboBox.Text = slotId;
                         }

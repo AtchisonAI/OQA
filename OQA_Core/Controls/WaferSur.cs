@@ -55,7 +55,7 @@ namespace WaferSf
             }
         }
         #endregion
-        
+
         #region Function Definition 
         //画单个panel
         private void drawPanel(PaintEventArgs e, Panel panelNum)
@@ -195,14 +195,14 @@ namespace WaferSf
         }
         //获取defectCode文本框的数据（外部用）
         public void getDefectCodeValue()
-        {//动态获取defectCode文本框值
+        {//动态获取defectCode文本框值、动态更改勾选框
             string temp = string.Join("", defectCode).Replace(",", "");
             textValue = string.Join(",", temp.Distinct()).Trim(',');
             if (null != codeBox)
             {
                 codeBox.Text = textValue;
             }
-            
+
 
             if (null != groupNode)
             {
@@ -226,17 +226,32 @@ namespace WaferSf
                                 }
                             }
                         }
-                    }
+                        if (control is ImageUpload.ImageUpload)
+                        {
+                            if (control.Name.Split('_')[1].Equals((j + 1).ToString()))
+                            {
+                                ImageUpload.ImageUpload img = control as ImageUpload.ImageUpload;
+                                if (null != defectCode[j] && !defectCode[j].Equals(""))
+                                {
+                                    control.Enabled = true;
+                                }
+                                else
+                                {
+                                    control.Enabled = false;
+                                }
+                            }
+                        }
 
-                    if (null != defectCode[j] && !defectCode[j].Equals(""))
-                    {
-                        ng.Checked = true;
-                        ok.Checked = false;
-                    }
-                    else
-                    {
-                        ok.Checked = true;
-                        ng.Checked = false;
+                        if (null != defectCode[j] && !defectCode[j].Equals(""))
+                        {
+                            ng.Checked = true;
+                            ok.Checked = false;
+                        }
+                        else
+                        {
+                            ok.Checked = true;
+                            ng.Checked = false;
+                        }
                     }
                 }
             }

@@ -30,10 +30,10 @@ namespace OQAMain
         #region Page Load
         private void FrmMarcoInput_Load(object sender, EventArgs e)
         {
-            lotId = "1";
-            slotId = "1";
+            lotId = "ITM0150";
+            slotId = "001";
             sideType = "F";
-            waferId = "1";
+            waferId = "ITM0150.01";
             if (sideType.Equals(SideType.Front))
             {
                 radioButtonF.Checked = true;
@@ -230,9 +230,8 @@ namespace OQAMain
                 iSPWAFITM.DefectDesc = decRichTextBox.Text;
                 iSPWAFITM.Cmt = cmtRichTextBox.Text;
                 iSPWAFITM.IsInspect = "Y";
-
-
-
+                iSPWAFITM.InspectPoint = "25";
+                
                 for (int i = 0; i < 24; i++)
                 {
                     if (null != codeList[i] && !codeList[i].Equals(""))
@@ -274,7 +273,7 @@ namespace OQAMain
                 ISPWAFITM ISPWAFITM = new ISPWAFITM();
                 ISPWAFITM.LotId = lotId;
                 ISPWAFITM.SlotId = slotId;
-                ISPWAFITM.WaferId = waferId;
+               // ISPWAFITM.WaferId = waferId;
                 if (null != sideType)
                 {
                     ISPWAFITM.SideType = sideType;
@@ -297,6 +296,7 @@ namespace OQAMain
                         {
                             decRichTextBox.Text = qryResult.model.ISPWAFITM_list[0].DefectDesc;
                             cmtRichTextBox.Text = qryResult.model.ISPWAFITM_list[0].Cmt;
+                            waferId = qryResult.model.ISPWAFITM_list[0].WaferId;
                         }
                         else
                         {

@@ -72,5 +72,49 @@ namespace pic_up
             sm.Position = 0;
             string picpath = proxy.SendPic(sm);//WCF客户端调用该方法 把客户端sm上传到服务端去
         }
+        Random random = new Random();
+        public int[] ballNumber = new int[13];
+        public bool sign = false;
+
+        public void shuangSeQiu()
+        {
+            for (int i = 0; i < 13; i++)
+            {
+                sign = false;
+               // Console.WriteLine("the current count number is " + i);
+                int randomNumber = random.Next(1, 26);
+               // Console.WriteLine("output: " + randomNumber);
+                if (i == 0)
+                {
+                    ballNumber[0] = randomNumber;
+                }
+                else
+                {
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (randomNumber == ballNumber[j])
+                        {
+                            sign = true;
+                            i--;
+                            break;
+                        }
+                    }
+                    if (!sign)
+                    {
+                        ballNumber[i] = randomNumber;
+                    }
+                }
+            }
+            for (int i = 0; i < 13; i++)
+            {
+                Console.WriteLine(ballNumber[i]);
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            shuangSeQiu();
+        }
     }
 }

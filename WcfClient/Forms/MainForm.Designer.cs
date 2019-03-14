@@ -34,7 +34,7 @@ namespace WcfClient
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             Syncfusion.Windows.Forms.Tools.CaptionButtonsCollection ccbshortcut_panel = new Syncfusion.Windows.Forms.Tools.CaptionButtonsCollection();
             Syncfusion.Windows.Forms.Tools.CaptionButtonsCollection ccbEmp_panel = new Syncfusion.Windows.Forms.Tools.CaptionButtonsCollection();
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("员工信息");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("员工信息");
             this.dockingManager = new Syncfusion.Windows.Forms.Tools.DockingManager(this.components);
             this.shortcut_panel = new System.Windows.Forms.Panel();
             this.Emp_panel = new System.Windows.Forms.Panel();
@@ -135,10 +135,10 @@ namespace WcfClient
             this.Emp_treeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Emp_treeView.Location = new System.Drawing.Point(0, 0);
             this.Emp_treeView.Name = "Emp_treeView";
-            treeNode2.Name = "Emp_Node";
-            treeNode2.Text = "员工信息";
+            treeNode1.Name = "Emp_Node";
+            treeNode1.Text = "员工信息";
             this.Emp_treeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode1});
             this.Emp_treeView.Size = new System.Drawing.Size(131, 487);
             this.Emp_treeView.TabIndex = 0;
             this.Emp_treeView.Click += new System.EventHandler(this.Emp_treeView_Click);
@@ -402,14 +402,14 @@ namespace WcfClient
             // 
             this.Active_statusBarAdvPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Active_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(229, 18);
+            this.Active_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(232, 18);
             this.Active_statusBarAdvPanel.Border3DStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.Active_statusBarAdvPanel.HAlign = Syncfusion.Windows.Forms.Tools.HorzFlowAlign.Justify;
             this.Active_statusBarAdvPanel.Location = new System.Drawing.Point(510, 2);
             this.Active_statusBarAdvPanel.Margin = new System.Windows.Forms.Padding(0);
             this.Active_statusBarAdvPanel.Name = "Active_statusBarAdvPanel";
             this.Active_statusBarAdvPanel.PreferredSize = new System.Drawing.Size(432, 24);
-            this.Active_statusBarAdvPanel.Size = new System.Drawing.Size(229, 18);
+            this.Active_statusBarAdvPanel.Size = new System.Drawing.Size(232, 18);
             this.Active_statusBarAdvPanel.TabIndex = 3;
             this.Active_statusBarAdvPanel.Text = null;
             // 
@@ -420,7 +420,7 @@ namespace WcfClient
             this.Date_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(134, 18);
             this.Date_statusBarAdvPanel.Border3DStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.Date_statusBarAdvPanel.HAlign = Syncfusion.Windows.Forms.Tools.HorzFlowAlign.Right;
-            this.Date_statusBarAdvPanel.Location = new System.Drawing.Point(741, 2);
+            this.Date_statusBarAdvPanel.Location = new System.Drawing.Point(744, 2);
             this.Date_statusBarAdvPanel.Margin = new System.Windows.Forms.Padding(0);
             this.Date_statusBarAdvPanel.Name = "Date_statusBarAdvPanel";
             this.Date_statusBarAdvPanel.PanelType = Syncfusion.Windows.Forms.Tools.StatusBarAdvPanelType.ShortDate;
@@ -435,7 +435,7 @@ namespace WcfClient
             this.Time_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(134, 18);
             this.Time_statusBarAdvPanel.Border3DStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.Time_statusBarAdvPanel.HAlign = Syncfusion.Windows.Forms.Tools.HorzFlowAlign.Right;
-            this.Time_statusBarAdvPanel.Location = new System.Drawing.Point(877, 2);
+            this.Time_statusBarAdvPanel.Location = new System.Drawing.Point(880, 2);
             this.Time_statusBarAdvPanel.Margin = new System.Windows.Forms.Padding(0);
             this.Time_statusBarAdvPanel.Name = "Time_statusBarAdvPanel";
             this.Time_statusBarAdvPanel.PanelType = Syncfusion.Windows.Forms.Tools.StatusBarAdvPanelType.LongTime24Format;

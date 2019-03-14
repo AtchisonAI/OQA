@@ -296,7 +296,7 @@ namespace OQAMain
                         }
                         else
                         {//清除图片
-                            foreach (Control control in groupBoxSelect.Controls)
+                            foreach (Control control in groupBox3.Controls)
                             {
                                 ComFunc.ClearBoxValue(groupBox3);
                             }

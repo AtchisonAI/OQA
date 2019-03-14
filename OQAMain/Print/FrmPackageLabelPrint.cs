@@ -151,7 +151,10 @@ namespace OQAMain
                 this.reportViewer1.LocalReport.DataSources.Clear();
                 if (QueryPKGLabelInfo(GlobConst.TRAN_VIEW, '1', lotid) == false)
                     return;
-
+                else {
+                    
+                    this.reportViewer1.RefreshReport();
+                }
 
             }
             catch (System.Exception ex)
@@ -183,36 +186,61 @@ namespace OQAMain
             
             if (out_data._success == true)
             {
+                //this.reportViewer1.LocalReport.DataSources.Clear();
+                string PartNOBarcode=string.Empty; ;
+                string LotIdBarcode =string.Empty;
+                string QuantityBarcode = string.Empty;
+                string PartNameBarcode = string.Empty;
+                string Slot = string.Empty;
+                string CustomerId = string.Empty;
+                string CustLotid = string.Empty;
+                string CustPartid = string.Empty;
+                string LotId = string.Empty;
+                string OrignalCountry = string.Empty;
+                string PartName = string.Empty;
+                string PartNo = string.Empty;
+                string QAstamp = string.Empty;
+                string Quantity = string.Empty;
+              
+
                 if (out_data.model.PKGLabel_list.Count() > 0)
                 {
-                    this.reportViewer1.LocalReport.DataSources.Clear();
-                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramSlot", out_data.model.PKGLabel_list[0][(int)PKG_LIST.slot_id].ToString()));
-                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramCustomerId", out_data.model.PKGLabel_list[0][(int)PKG_LIST.customer_id].ToString()));
-                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramCustLotid", out_data.model.PKGLabel_list[0][(int)PKG_LIST.cust_lot_id].ToString()));
-                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramCustPartid", out_data.model.PKGLabel_list[0][(int)PKG_LIST.cust_part_id].ToString()));
-                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramLotId", out_data.model.PKGLabel_list[0][(int)PKG_LIST.lot_id].ToString()));
-                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramOrignalCountry", out_data.model.PKGLabel_list[0][(int)PKG_LIST.orignal_country].ToString()));
-                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramPartName", out_data.model.PKGLabel_list[0][(int)PKG_LIST.part_desc].ToString()));
-                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramPartNo", out_data.model.PKGLabel_list[0][(int)PKG_LIST.part_id].ToString()));
-                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramQAstamp", out_data.model.PKGLabel_list[0][(int)PKG_LIST.qa_stamp].ToString()));
-                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramQuantity", out_data.model.PKGLabel_list[0][(int)PKG_LIST.qty].ToString()));
+                    Slot = out_data.model.PKGLabel_list[0][(int)PKG_LIST.slot_id].ToString();
+                    CustomerId = out_data.model.PKGLabel_list[0][(int)PKG_LIST.customer_id].ToString();
+                    CustLotid = out_data.model.PKGLabel_list[0][(int)PKG_LIST.cust_lot_id].ToString();
+                    CustPartid = out_data.model.PKGLabel_list[0][(int)PKG_LIST.cust_part_id].ToString();
+                    LotId = out_data.model.PKGLabel_list[0][(int)PKG_LIST.lot_id].ToString();
+                    OrignalCountry = out_data.model.PKGLabel_list[0][(int)PKG_LIST.orignal_country].ToString();
+                    PartName = out_data.model.PKGLabel_list[0][(int)PKG_LIST.part_desc].ToString();
+                    PartNo = out_data.model.PKGLabel_list[0][(int)PKG_LIST.part_id].ToString();
+                    QAstamp = out_data.model.PKGLabel_list[0][(int)PKG_LIST.qa_stamp].ToString();
+                    Quantity = out_data.model.PKGLabel_list[0][(int)PKG_LIST.qty].ToString();
 
-
-                    string PartNOBarcode = out_data.model.PKGLabel_list[0][(int)PKG_LIST.part_id].ToString().ToBarcode39().ImageToBytes().ToBase64();
-                    string LotIdBarcode = out_data.model.PKGLabel_list[0][(int)PKG_LIST.lot_id].ToString().ToBarcode39().ImageToBytes().ToBase64();
-                    string QuantityBarcode = out_data.model.PKGLabel_list[0][(int)PKG_LIST.qty].ToString().ToBarcode39().ImageToBytes().ToBase64();
-                    string PartNameBarcode = out_data.model.PKGLabel_list[0][(int)PKG_LIST.part_desc].ToString().ToBarcode39().ImageToBytes().ToBase64();
-
-                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramPartNOBarcode", PartNOBarcode));
-                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramLotIdBarcode", LotIdBarcode));
-                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramQuantityBarcode", QuantityBarcode));
-                    reportViewer1.LocalReport.SetParameters(new ReportParameter("paramPartNameBarcode", PartNameBarcode)); 
+                    PartNOBarcode = out_data.model.PKGLabel_list[0][(int)PKG_LIST.part_id].ToString().ToBarcode39().ImageToBytes().ToBase64();
+                    LotIdBarcode = out_data.model.PKGLabel_list[0][(int)PKG_LIST.lot_id].ToString().ToBarcode39().ImageToBytes().ToBase64();
+                    QuantityBarcode = out_data.model.PKGLabel_list[0][(int)PKG_LIST.qty].ToString().ToBarcode39().ImageToBytes().ToBase64();
+                    PartNameBarcode = out_data.model.PKGLabel_list[0][(int)PKG_LIST.part_desc].ToString().ToBarcode39().ImageToBytes().ToBase64();
                 }
-                else {
+                else {    
                     MessageBox.Show("输入的lotid有问题！");
-
                 }
+                reportViewer1.LocalReport.SetParameters(new ReportParameter("paramSlot", Slot));
+                reportViewer1.LocalReport.SetParameters(new ReportParameter("paramCustomerId", CustomerId));
+                reportViewer1.LocalReport.SetParameters(new ReportParameter("paramCustLotid", CustLotid));
+                reportViewer1.LocalReport.SetParameters(new ReportParameter("paramCustPartid", CustPartid));
+                reportViewer1.LocalReport.SetParameters(new ReportParameter("paramLotId", LotId));
+                reportViewer1.LocalReport.SetParameters(new ReportParameter("paramOrignalCountry", OrignalCountry));
+                reportViewer1.LocalReport.SetParameters(new ReportParameter("paramPartName", PartName));
+                reportViewer1.LocalReport.SetParameters(new ReportParameter("paramPartNo", PartNo));
+                reportViewer1.LocalReport.SetParameters(new ReportParameter("paramQAstamp", QAstamp));
+                reportViewer1.LocalReport.SetParameters(new ReportParameter("paramQuantity", Quantity));
+
+                reportViewer1.LocalReport.SetParameters(new ReportParameter("paramPartNOBarcode", PartNOBarcode));
+                reportViewer1.LocalReport.SetParameters(new ReportParameter("paramLotIdBarcode", LotIdBarcode));
+                reportViewer1.LocalReport.SetParameters(new ReportParameter("paramQuantityBarcode", QuantityBarcode));
+                reportViewer1.LocalReport.SetParameters(new ReportParameter("paramPartNameBarcode", PartNameBarcode));
                 this.reportViewer1.RefreshReport();
+
 
             }
             else

@@ -53,6 +53,9 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="WCFModels">
+      <HintPath>..\Components\WCFModels.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IOQAContract.cs" />
@@ -60,12 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WCFModels\WcfModels.csproj">
-      <Project>{479849CD-3F79-4B29-ACD0-ADCED9DC3A6E}</Project>
-      <Name>WcfModels</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

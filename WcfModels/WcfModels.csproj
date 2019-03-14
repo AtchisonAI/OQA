@@ -59,8 +59,10 @@
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1.OQASeverStruct\1 Lot inspect\ISPLotSave.cs" />
+    <Compile Include="1.OQASeverStruct\1 Lot inspect\IspLotView.cs" />
+    <Compile Include="1.OQASeverStruct\1 Lot inspect\MesLotView.cs" />
     <Compile Include="1.OQASeverStruct\10 Package Label Print\PKGLabelPrintView.cs" />
-    <Compile Include="1.OQASeverStruct\1 Lot inspect\IspMesLot.cs" />
     <Compile Include="1.OQASeverStruct\11 Wafer Insection Record Print\WaferInspectionRecordView.cs" />
     <Compile Include="1.OQASeverStruct\1 Lot inspect\ImageSave.cs" />
     <Compile Include="1.OQASeverStruct\12 IOQA Ship List Print\PKGShipView.cs" />
@@ -72,6 +74,8 @@
     <Compile Include="1.OQASeverStruct\5 Mirco inspection input\MicroView.cs" />
     <Compile Include="1.OQASeverStruct\7 FOUP change\LotSlotidSave.cs" />
     <Compile Include="1.OQASeverStruct\7 FOUP change\LotSlotidView.cs" />
+    <Compile Include="1.OQASeverStruct\8 Lot package\LotPackageInput.cs" />
+    <Compile Include="1.OQASeverStruct\8 Lot package\LotPackageView.cs" />
     <Compile Include="1.OQASeverStruct\9 Lot Transfer\LotTransferListSave.cs" />
     <Compile Include="1.OQASeverStruct\9 Lot Transfer\LotTransferSave.cs" />
     <Compile Include="1.OQASeverStruct\9 Lot Transfer\QueryLotDetailView.cs" />
@@ -97,7 +101,6 @@
   <ItemGroup>
     <Folder Include="1.OQASeverStruct\2 Defect Lot result\" />
     <Folder Include="1.OQASeverStruct\6 Defect send %28PNDN%29\" />
-    <Folder Include="1.OQASeverStruct\8 Lot package\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

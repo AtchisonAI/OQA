@@ -1,4 +1,5 @@
 ﻿using OQAMain;
+using Syncfusion.Windows.Forms.Tools;
 using System.Drawing;
 using System.Windows.Forms;
 using WcfClient.Forms;
@@ -135,13 +136,14 @@ namespace WcfClient
         private T ActiveTabHost<T>() where T : BaseForm, new()
         {
             Form[] childs = tabbedGroupedMDIManager.MdiChildren;
-            foreach (Form q in childs)
+            foreach (DockingWrapperForm q in childs)
             {
-                if (q.ActiveControl is T)
+                Form childFrm = (Form)q.ctrlChildRef;
+                if (childFrm is T)
                 {
                     tabbedGroupedMDIManager.UpdateActiveTabHost(q);
-                    SetActiveStatusBar(q.Text);
-                    return (T)q.ActiveControl;
+                    SetActiveStatusBar(childFrm.Text);
+                    return (T)childFrm;
                 }
             }
             return null;
@@ -154,8 +156,9 @@ namespace WcfClient
             dockingManager.SetAsMDIChild(Frm, true);
             dockingManager.SetDockLabel(Frm, Frm.Text);
             Frm.FormClosed += new FormClosedEventHandler(this.ChildFormClosed);
-            Frm.Show();
+            //Frm.Show();
             SetActiveStatusBar(Frm.Text);
+            
             return Frm;
         }
 

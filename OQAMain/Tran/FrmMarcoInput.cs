@@ -97,7 +97,7 @@ namespace OQAMain
                 item.ImageId = imgInfo.ImageId;
             }
 
-            imageUpload1.UpLoadBySide.Add(item);
+            imageUpload1.UpLoadBySide = item;
         }
         //刷新按钮
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -304,7 +304,24 @@ namespace OQAMain
                         }
                         if (null != qryResult.model.ISPIMGDEF_list && qryResult.model.ISPIMGDEF_list.Count > 0)
                         {
-                            imgInfo = qryResult.model.ISPIMGDEF_list[0];
+                            foreach (Control control in groupBox3.Controls)
+                            {
+                                if (control is ImageUpload.ImageUpload)
+                                {
+                                    if (control.Name.Split('_')[1].Equals((imgInfo.AreaId).ToString()))
+                                    {
+                                        ImageUpload.ImageUpload img = control as ImageUpload.ImageUpload;
+                                        img.InitByImgInstance(imgInfo);
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {//清除图片
+                            foreach (Control control in groupBox3.Controls)
+                            {
+                                ComFunc.ClearBoxValue(groupBox3);
+                            }
                         }
                         waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
 

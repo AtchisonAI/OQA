@@ -80,49 +80,49 @@
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.tableLayoutPanel);
-            this.splitContainer.Size = new System.Drawing.Size(1197, 785);
+            this.splitContainer.Size = new System.Drawing.Size(1047, 785);
             this.splitContainer.SplitterDistance = 452;
             this.splitContainer.TabIndex = 0;
             // 
             // Dept_Lable
             // 
             this.Dept_Lable.AutoSize = true;
-            this.Dept_Lable.Location = new System.Drawing.Point(280, 24);
+            this.Dept_Lable.Location = new System.Drawing.Point(245, 24);
             this.Dept_Lable.Name = "Dept_Lable";
-            this.Dept_Lable.Size = new System.Drawing.Size(45, 15);
+            this.Dept_Lable.Size = new System.Drawing.Size(34, 15);
             this.Dept_Lable.TabIndex = 7;
             this.Dept_Lable.Text = "部门:";
             // 
             // UserId_Lable
             // 
             this.UserId_Lable.AutoSize = true;
-            this.UserId_Lable.Location = new System.Drawing.Point(22, 24);
+            this.UserId_Lable.Location = new System.Drawing.Point(19, 24);
             this.UserId_Lable.Name = "UserId_Lable";
-            this.UserId_Lable.Size = new System.Drawing.Size(45, 15);
+            this.UserId_Lable.Size = new System.Drawing.Size(34, 15);
             this.UserId_Lable.TabIndex = 6;
             this.UserId_Lable.Text = "工号:";
             // 
             // dept_textBoxExt
             // 
-            this.dept_textBoxExt.Location = new System.Drawing.Point(333, 20);
+            this.dept_textBoxExt.Location = new System.Drawing.Point(291, 20);
             this.dept_textBoxExt.Name = "dept_textBoxExt";
-            this.dept_textBoxExt.Size = new System.Drawing.Size(156, 25);
-            this.dept_textBoxExt.TabIndex = 5;
+            this.dept_textBoxExt.Size = new System.Drawing.Size(137, 21);
+            this.dept_textBoxExt.TabIndex = 1;
             // 
             // empId_textBoxExt
             // 
-            this.empId_textBoxExt.Location = new System.Drawing.Point(77, 20);
+            this.empId_textBoxExt.Location = new System.Drawing.Point(67, 20);
             this.empId_textBoxExt.Name = "empId_textBoxExt";
-            this.empId_textBoxExt.Size = new System.Drawing.Size(156, 25);
-            this.empId_textBoxExt.TabIndex = 5;
+            this.empId_textBoxExt.Size = new System.Drawing.Size(137, 21);
+            this.empId_textBoxExt.TabIndex = 0;
             // 
             // pagesize_label
             // 
             this.pagesize_label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pagesize_label.AutoSize = true;
-            this.pagesize_label.Location = new System.Drawing.Point(781, 416);
+            this.pagesize_label.Location = new System.Drawing.Point(682, 416);
             this.pagesize_label.Name = "pagesize_label";
-            this.pagesize_label.Size = new System.Drawing.Size(79, 15);
+            this.pagesize_label.Size = new System.Drawing.Size(63, 15);
             this.pagesize_label.TabIndex = 4;
             this.pagesize_label.Text = "PageSize:";
             // 
@@ -137,9 +137,9 @@
             "10",
             "20",
             "50"});
-            this.page_sfComboBox.Location = new System.Drawing.Point(863, 413);
+            this.page_sfComboBox.Location = new System.Drawing.Point(754, 413);
             this.page_sfComboBox.Name = "page_sfComboBox";
-            this.page_sfComboBox.Size = new System.Drawing.Size(53, 23);
+            this.page_sfComboBox.Size = new System.Drawing.Size(47, 20);
             this.page_sfComboBox.TabIndex = 3;
             this.page_sfComboBox.Text = "20";
             this.page_sfComboBox.SelectedIndexChanged += new System.EventHandler(this.page_sfComboBox_SelectedIndexChanged);
@@ -149,10 +149,10 @@
             this.emp_sfDataPager.AccessibleName = "DataPager";
             this.emp_sfDataPager.AllowOnDemandPaging = true;
             this.emp_sfDataPager.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.emp_sfDataPager.Location = new System.Drawing.Point(366, 403);
+            this.emp_sfDataPager.Location = new System.Drawing.Point(319, 403);
             this.emp_sfDataPager.Name = "emp_sfDataPager";
             this.emp_sfDataPager.PageCount = 1;
-            this.emp_sfDataPager.Size = new System.Drawing.Size(396, 40);
+            this.emp_sfDataPager.Size = new System.Drawing.Size(346, 40);
             this.emp_sfDataPager.TabIndex = 2;
             this.emp_sfDataPager.Text = "sfDataPager1";
             this.emp_sfDataPager.PageIndexChanged += new System.EventHandler<Syncfusion.WinForms.DataPager.Events.PageIndexChangedEventArgs>(this.sfDataPager_PageIndexChanged);
@@ -160,10 +160,10 @@
             // reset_button
             // 
             this.reset_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.reset_button.Location = new System.Drawing.Point(1115, 18);
+            this.reset_button.Location = new System.Drawing.Point(975, 18);
             this.reset_button.Name = "reset_button";
-            this.reset_button.Size = new System.Drawing.Size(72, 29);
-            this.reset_button.TabIndex = 1;
+            this.reset_button.Size = new System.Drawing.Size(63, 29);
+            this.reset_button.TabIndex = 6;
             this.reset_button.Text = "重置";
             this.reset_button.UseVisualStyleBackColor = true;
             this.reset_button.Click += new System.EventHandler(this.reset_button_Click);
@@ -171,10 +171,10 @@
             // search_button
             // 
             this.search_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.search_button.Location = new System.Drawing.Point(1009, 18);
+            this.search_button.Location = new System.Drawing.Point(882, 18);
             this.search_button.Name = "search_button";
-            this.search_button.Size = new System.Drawing.Size(72, 29);
-            this.search_button.TabIndex = 1;
+            this.search_button.Size = new System.Drawing.Size(63, 29);
+            this.search_button.TabIndex = 5;
             this.search_button.Text = "搜索";
             this.search_button.UseVisualStyleBackColor = true;
             this.search_button.Click += new System.EventHandler(this.search_button_Click);
@@ -182,10 +182,10 @@
             // delete_button
             // 
             this.delete_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.delete_button.Location = new System.Drawing.Point(829, 18);
+            this.delete_button.Location = new System.Drawing.Point(724, 18);
             this.delete_button.Name = "delete_button";
-            this.delete_button.Size = new System.Drawing.Size(72, 29);
-            this.delete_button.TabIndex = 1;
+            this.delete_button.Size = new System.Drawing.Size(63, 29);
+            this.delete_button.TabIndex = 4;
             this.delete_button.Text = "删除";
             this.delete_button.UseVisualStyleBackColor = true;
             this.delete_button.Click += new System.EventHandler(this.delete_button_Click);
@@ -193,10 +193,10 @@
             // update_button
             // 
             this.update_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.update_button.Location = new System.Drawing.Point(717, 18);
+            this.update_button.Location = new System.Drawing.Point(626, 18);
             this.update_button.Name = "update_button";
-            this.update_button.Size = new System.Drawing.Size(72, 29);
-            this.update_button.TabIndex = 1;
+            this.update_button.Size = new System.Drawing.Size(63, 29);
+            this.update_button.TabIndex = 3;
             this.update_button.Text = "更新";
             this.update_button.UseVisualStyleBackColor = true;
             this.update_button.Click += new System.EventHandler(this.update_button_Click);
@@ -204,10 +204,10 @@
             // insert_button
             // 
             this.insert_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.insert_button.Location = new System.Drawing.Point(618, 18);
+            this.insert_button.Location = new System.Drawing.Point(540, 18);
             this.insert_button.Name = "insert_button";
-            this.insert_button.Size = new System.Drawing.Size(72, 29);
-            this.insert_button.TabIndex = 1;
+            this.insert_button.Size = new System.Drawing.Size(63, 29);
+            this.insert_button.TabIndex = 2;
             this.insert_button.Text = "新增";
             this.insert_button.UseVisualStyleBackColor = true;
             this.insert_button.Click += new System.EventHandler(this.insert_button_Click);
@@ -220,8 +220,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.emp_sfDataGrid.Location = new System.Drawing.Point(3, 53);
             this.emp_sfDataGrid.Name = "emp_sfDataGrid";
-            this.emp_sfDataGrid.Size = new System.Drawing.Size(1187, 346);
-            this.emp_sfDataGrid.TabIndex = 0;
+            this.emp_sfDataGrid.Size = new System.Drawing.Size(1038, 346);
+            this.emp_sfDataGrid.TabIndex = 1;
             this.emp_sfDataGrid.Text = "sfDataGrid1";
             // 
             // tableLayoutPanel
@@ -236,8 +236,8 @@
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 1;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(1193, 325);
-            this.tableLayoutPanel.TabIndex = 0;
+            this.tableLayoutPanel.Size = new System.Drawing.Size(1043, 325);
+            this.tableLayoutPanel.TabIndex = 1;
             // 
             // empChartControl
             // 
@@ -263,7 +263,7 @@
             this.empChartControl.Legend.Alignment = Syncfusion.Windows.Forms.Chart.ChartAlignment.Center;
             this.empChartControl.Legend.BackInterior = new Syncfusion.Drawing.BrushInfo(Syncfusion.Drawing.GradientStyle.Vertical, System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(209)))), ((int)(((byte)(226))))), System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(232)))), ((int)(((byte)(243))))));
             this.empChartControl.Legend.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.empChartControl.Legend.Location = new System.Drawing.Point(248, 283);
+            this.empChartControl.Legend.Location = new System.Drawing.Point(217, 283);
             this.empChartControl.Legend.Margin = new System.Windows.Forms.Padding(2);
             this.empChartControl.Legend.Orientation = Syncfusion.Windows.Forms.Chart.ChartOrientation.Horizontal;
             this.empChartControl.Legend.Position = Syncfusion.Windows.Forms.Chart.ChartDock.Bottom;
@@ -283,8 +283,8 @@
             this.empChartControl.PrimaryYAxis.LogLabelsDisplayMode = Syncfusion.Windows.Forms.Chart.LogLabelsDisplayMode.Default;
             this.empChartControl.PrimaryYAxis.Margin = true;
             this.empChartControl.PrimaryYAxis.TitleColor = System.Drawing.SystemColors.ControlText;
-            this.empChartControl.Size = new System.Drawing.Size(592, 321);
-            this.empChartControl.TabIndex = 0;
+            this.empChartControl.Size = new System.Drawing.Size(517, 321);
+            this.empChartControl.TabIndex = 1;
             this.empChartControl.Text = "员工信息";
             // 
             // 
@@ -318,10 +318,10 @@
             // 
             // 
             // 
-            this.empPieChartControl.Legend.Location = new System.Drawing.Point(472, 81);
+            this.empPieChartControl.Legend.Location = new System.Drawing.Point(409, 75);
             this.empPieChartControl.Legend.Margin = new System.Windows.Forms.Padding(2);
             this.empPieChartControl.Localize = null;
-            this.empPieChartControl.Location = new System.Drawing.Point(598, 2);
+            this.empPieChartControl.Location = new System.Drawing.Point(523, 2);
             this.empPieChartControl.Margin = new System.Windows.Forms.Padding(2);
             this.empPieChartControl.Name = "empPieChartControl";
             this.empPieChartControl.Palette = Syncfusion.Windows.Forms.Chart.ChartColorPalette.Custom;
@@ -339,7 +339,7 @@
             this.empPieChartControl.PrimaryYAxis.Margin = true;
             this.empPieChartControl.PrimaryYAxis.TickColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(158)))), ((int)(((byte)(205)))));
             this.empPieChartControl.PrimaryYAxis.TitleColor = System.Drawing.SystemColors.ControlText;
-            this.empPieChartControl.Size = new System.Drawing.Size(593, 321);
+            this.empPieChartControl.Size = new System.Drawing.Size(518, 321);
             this.empPieChartControl.TabIndex = 1;
             this.empPieChartControl.Text = "统计图";
             // 
@@ -352,9 +352,9 @@
             // 
             // EmpForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1197, 785);
+            this.ClientSize = new System.Drawing.Size(1047, 785);
             this.Controls.Add(this.splitContainer);
             this.DoubleBuffered = true;
             this.Location = new System.Drawing.Point(0, 0);

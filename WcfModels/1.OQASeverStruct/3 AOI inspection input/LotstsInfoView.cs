@@ -5,10 +5,8 @@ using WCFModels.Message;
 
 namespace WCFModels.OQA
 {
-    [DataContract]
-    public class PKGShipView: BaseRsp
+   public  class LotstsInfoView : BaseRsp
     {
-
         //服务传入执行动作,事务标记必须输入
         [DataMember]
         public char C_PROC_STEP
@@ -23,11 +21,6 @@ namespace WCFModels.OQA
             }
         }
         private char c_proc_step;
-
-        public PKGShipView()
-        {
-            PKGSHPDAT_list = new List<PKGSHPDAT>();
-        }
 
         [DataMember]
         public char C_TRAN_FLAG
@@ -45,28 +38,33 @@ namespace WCFModels.OQA
         private char c_tran_flag;
         //服务传入参数
         [DataMember]
-        public string IN_SHIP_NO {
+        public string IN_ISP_TYPE
+        {
             get
             {
-                return in_ship_no;
+                return in_isp_type;
             }
             set
             {
-                in_ship_no = value;
+                in_isp_type = value;
             }
         }
-        private string in_ship_no;
-
-
-
-        //服务传出数据结构
+        private string in_isp_type;
         [DataMember]
-        public List<PKGSHPDAT> PKGSHPDAT_list { get; set; }
+        public string IN_ISP_CODE
+        {
+            get
+            {
+                return in_isp_code;
+            }
+            set
+            {
+                in_isp_code = value;
+            }
+        }
+        private string in_isp_code;
 
-        //服务传出数据结构
         [DataMember]
-        public List<PKGSHPSTS> PKGSHP_list { get; set; }
-
-        //服务传出结果在BaseRsq:_success  _ErrorMsg
+        public ISPLOTSTS ISPLOTSTS { get; set; }
     }
 }

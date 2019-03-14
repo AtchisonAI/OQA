@@ -149,10 +149,10 @@
             this.emp_sfDataPager.AccessibleName = "DataPager";
             this.emp_sfDataPager.AllowOnDemandPaging = true;
             this.emp_sfDataPager.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.emp_sfDataPager.Location = new System.Drawing.Point(366, 407);
+            this.emp_sfDataPager.Location = new System.Drawing.Point(366, 403);
             this.emp_sfDataPager.Name = "emp_sfDataPager";
             this.emp_sfDataPager.PageCount = 1;
-            this.emp_sfDataPager.Size = new System.Drawing.Size(396, 32);
+            this.emp_sfDataPager.Size = new System.Drawing.Size(396, 40);
             this.emp_sfDataPager.TabIndex = 2;
             this.emp_sfDataPager.Text = "sfDataPager1";
             this.emp_sfDataPager.PageIndexChanged += new System.EventHandler<Syncfusion.WinForms.DataPager.Events.PageIndexChangedEventArgs>(this.sfDataPager_PageIndexChanged);
@@ -356,6 +356,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1197, 785);
             this.Controls.Add(this.splitContainer);
+            this.DoubleBuffered = true;
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "EmpForm";
             this.Text = "EmpForm";

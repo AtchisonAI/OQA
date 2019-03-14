@@ -84,9 +84,10 @@
             this.groupBox1.Controls.Add(this.txtShipNo);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(26, 8);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(243, 520);
+            this.groupBox1.Size = new System.Drawing.Size(243, 540);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "已生成的交接单";
@@ -128,9 +129,10 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lisship);
-            this.groupBox2.Location = new System.Drawing.Point(272, 8);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox2.Location = new System.Drawing.Point(243, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(465, 170);
+            this.groupBox2.Size = new System.Drawing.Size(507, 170);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "发货批次信息";
@@ -142,9 +144,10 @@
             this.Qty,
             this.Part_ID,
             this.Inspection_Result});
-            this.lisship.Location = new System.Drawing.Point(17, 19);
+            this.lisship.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lisship.Location = new System.Drawing.Point(3, 17);
             this.lisship.Name = "lisship";
-            this.lisship.Size = new System.Drawing.Size(433, 150);
+            this.lisship.Size = new System.Drawing.Size(501, 150);
             this.lisship.TabIndex = 0;
             this.lisship.UseCompatibleStateImageBehavior = false;
             this.lisship.View = System.Windows.Forms.View.Details;
@@ -168,9 +171,10 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.reportViewer2);
-            this.groupBox3.Location = new System.Drawing.Point(265, 188);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(243, 170);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(470, 345);
+            this.groupBox3.Size = new System.Drawing.Size(507, 370);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "交接单打印预览";
@@ -178,16 +182,17 @@
             // reportViewer2
             // 
             this.reportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer2.LocalReport.ReportEmbeddedResource = "transferForm.IOQA.rdlc";
+            this.reportViewer2.LocalReport.ReportEmbeddedResource = "OQAMain.Print.FrmOQAShipListPrint.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(3, 17);
             this.reportViewer2.Name = "reportViewer2";
             this.reportViewer2.ServerReport.BearerToken = null;
-            this.reportViewer2.Size = new System.Drawing.Size(464, 325);
+            this.reportViewer2.Size = new System.Drawing.Size(501, 350);
             this.reportViewer2.TabIndex = 5;
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(351, 12);
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrint.Location = new System.Drawing.Point(563, 9);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 23);
             this.btnPrint.TabIndex = 7;
@@ -200,15 +205,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 580);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Name = "FrmOQAShipListPrint";
             this.Load += new System.EventHandler(this.FrmOQAShipListPrint_Load);
             this.Controls.SetChildIndex(this.pnlMenu, 0);
-            this.Controls.SetChildIndex(this.groupBox3, 0);
-            this.Controls.SetChildIndex(this.groupBox2, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.groupBox3, 0);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
             this.groupBox1.ResumeLayout(false);

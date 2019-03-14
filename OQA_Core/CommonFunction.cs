@@ -436,6 +436,20 @@ namespace OQA_Core
                 e.Handled = true;
             }
         }
+
+        //判断是否为tab键
+        public static bool CheckTabKey(KeyPressEventArgs e)
+        {
+            e.KeyChar = Convert.ToChar(e.KeyChar.ToString().ToUpper());
+            return e.KeyChar == (char)9 ? true:false;
+        }
+
+        //判断是否为Enter键
+        public static bool CheckEnterKey(KeyPressEventArgs e)
+        {
+            e.KeyChar = Convert.ToChar(e.KeyChar.ToString().ToUpper());
+            return e.KeyChar == (char)13 ? true : false;
+        }
     }
     #endregion
 

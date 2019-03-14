@@ -14,32 +14,27 @@ namespace WaferSf
 {
     public partial class WaferSur : UserControl
     {
-
-
-        #region " Constant Definition "
-
-        int i = 0;//i个panel
-        #endregion
-
-        #region "Variable Definition "
+        #region Variable Definition 
+        int i = 0;
         Regex regExp = new Regex(@"^[A-Za-z]+(,[A-Za-z])*$");//可能带逗号的字符串
         String newText;//ccbox新选的值
         public Panel selectPanel;//当前操作的panel
         public string[] defectCode = new string[25];
         public string textValue = "";
         public System.Windows.Forms.TextBox codeBox;
-        public System.Windows.Forms.TextBox qtyBox;
-        public System.Windows.Forms.TextBox rateBox;
         public System.Windows.Forms.GroupBox groupNode;
-        public Boolean nodeMode =false;
+        public Boolean nodeMode = false;
         #endregion
 
+        #region Windows Form auto generated code 
         public WaferSur()
         {
             InitializeComponent();
         }
+        #endregion
 
-        private void WaferSur_Load(object sender, EventArgs e)
+        #region Page Load
+        public void WaferSur_Load(object sender, EventArgs e)
         {
             if (nodeMode)
             {
@@ -59,7 +54,10 @@ namespace WaferSf
                 }
             }
         }
-        #region " Function Definition "
+        #endregion
+        
+        #region Function Definition 
+        //画单个panel
         private void drawPanel(PaintEventArgs e, Panel panelNum)
         {//绘表格
             Graphics g = e.Graphics;
@@ -82,7 +80,12 @@ namespace WaferSf
                 }
 
                 SizeF sizeF = g.MeasureString(code, new Font("微软雅黑", 10));
-                g.DrawString(code, new Font("微软雅黑", 10, FontStyle.Regular),
+                Font codeStyle = new Font("微软雅黑", 10, FontStyle.Regular);
+                if (!panelNum.Enabled && nodeMode)
+                {
+                    col = Color.Gray;
+                }
+                g.DrawString(code, codeStyle,
                     new SolidBrush(col), new PointF((panelNum.Width - sizeF.Width) / 2, (panelNum.Height - sizeF.Height) / 2));
                 g.Dispose();
             }
@@ -93,11 +96,12 @@ namespace WaferSf
             }
 
         }
-
+        //清除所有panel
         public void clearPanel()
         {
             defectCode = new string[25];
             this.getDefectCodeValue();
+            newText = null;
             try
             {
                 foreach (var control in this.tableLayoutPanel1.Controls)
@@ -116,14 +120,14 @@ namespace WaferSf
             }
 
         }
-
+        //画5*5表格框
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {//画圆
             Graphics g = e.Graphics;
             Pen pen = new Pen(Color.Blue, 3);
             g.DrawEllipse(pen, tableLayoutPanel1.Location.X, tableLayoutPanel1.Location.Y, tableLayoutPanel1.Width, tableLayoutPanel1.Height);
         }
-
+        //panelDoubleClick公用方法
         private void panelDoubleClick(object sender, EventArgs e, Panel panelNum)
         {//双击小格子触发方法
             ComboBox cc = new ComboBox();
@@ -138,7 +142,7 @@ namespace WaferSf
 
 
         }
-
+        //code下拉框indexChange方法
         void cc_SelectedIndexChanged(object sender, EventArgs e)
         {
             // 下拉框获取文本，panel移除控件
@@ -189,33 +193,16 @@ namespace WaferSf
             }
 
         }
-
-
+        //获取defectCode文本框的数据（外部用）
         public void getDefectCodeValue()
         {//动态获取defectCode文本框值
             string temp = string.Join("", defectCode).Replace(",", "");
             textValue = string.Join(",", temp.Distinct()).Trim(',');
-            float qty = 0;
             if (null != codeBox)
             {
                 codeBox.Text = textValue;
             }
-            foreach (string code in defectCode)
-            {
-                if (null != code)
-                {
-                    qty += 1;
-                }
-            }
-            if (null != qtyBox)
-            {
-                qtyBox.Text = qty.ToString();
-            }
-            if (null != rateBox)
-            {
-                Decimal rate = Convert.ToDecimal(qty / 25f);
-                rateBox.Text = Math.Round(rate, 2).ToString();
-            }
+            
 
             if (null != groupNode)
             {
@@ -254,13 +241,12 @@ namespace WaferSf
                 }
             }
         }
-
+        //通过MouseLeave关闭下拉框
         private void panel_MouseLeave(object sender, EventArgs e)
         {
             selectPanel.Controls.Clear();
         }
-
-
+        //展示code
         public void showWaferPanel(string areaId, string code)
         {//单个方格显示
             try
@@ -290,7 +276,7 @@ namespace WaferSf
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-
+        //展示wafer
         public void showWafer(List<ISPWAFDFT> valueList)
         {//数据显示
             clearPanel();
@@ -307,7 +293,7 @@ namespace WaferSf
         }
         #endregion
 
-        #region
+        #region Panel DoubleClick
         private void panelF_1_DoubleClick(object sender, EventArgs e)
         {
             selectPanel = panelF_1;
@@ -459,7 +445,7 @@ namespace WaferSf
         }
         #endregion
 
-        #region  
+        #region  Panel Paint
         private void panelF_1_Paint(object sender, PaintEventArgs e)
         {
             this.drawPanel(e, panelF_1);

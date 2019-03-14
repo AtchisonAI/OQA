@@ -35,17 +35,21 @@ namespace OQAContract
 
         #endregion
 
-        #region AOI
+        #region AOI & MA & MI
         [OperationContract]
         ModelRsp<AOIShowView> QueryAOIInfo(ModelRsp<AOIShowView> queryReq);
         //AOIInputView
         [OperationContract]
         ModelRsp<AOIShowView> CreateOrUpdateAOI(UpdateModelReq<AOIShowView> updateReq);
+        [OperationContract]
+        ModelRsp<LotstsInfoView> QuerySlotstsInfo(ModelRsp<LotstsInfoView> queryInfoReq);
         #endregion
 
         #region  Lot Transfer
-
+        [OperationContract]
         ModelRsp<LotIDListView> QueryLotList(ModelRsp<LotIDListView> PKGShip);
+        [OperationContract]
+        ModelRsp<QueryLotDetailView> QueryLotDetail(ModelRsp<QueryLotDetailView> PKGShip);
 
         #endregion
 
@@ -67,6 +71,9 @@ namespace OQAContract
         [OperationContract]
         ModelRsp<PKGShipView> QryPKGShipInfo(ModelRsp<PKGShipView> PKGShip);
 
+        [OperationContract]
+        ModelRsp<PKGShipView> QryPKGShipSummaryInfo(ModelRsp<PKGShipView> PKGShipSummary);
+
         #endregion
 
         #region  Image Save
@@ -75,7 +82,10 @@ namespace OQAContract
 
         #endregion
 
-
+        #region  Lot Inspect View
+        [OperationContract]
+        ModelRsp<IspMesLot> QryMesLotInfo(ModelRsp<IspMesLot> DefectCode);
+        #endregion
 
         #region  WaferInspectRecord
         [OperationContract]
@@ -84,5 +94,13 @@ namespace OQAContract
         ModelRsp<WaferInspectRecordView> QueryWaferInspectionRecordInfo(ModelRsp<WaferInspectRecordView> WaferInspectRecord);
 
         #endregion
+
+        #region  Package Label Print
+        [OperationContract]
+        ModelRsp<PKGLabelPrintView> QueryPKGLabelInfo(ModelRsp<PKGLabelPrintView> PKGLabelView);
+       
+
+        #endregion
+
     }
 }

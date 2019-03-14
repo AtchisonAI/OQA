@@ -190,7 +190,7 @@ namespace OQAMain
 
                 }   
             }
-            if (Querylotinfo(GlobConst.TRAN_VIEW, '2', MasterLot) == false) return;
+           // if (Querylotinfo(GlobConst.TRAN_VIEW, '2', MasterLot) == false) return;
 
             if (Querylotinfo(GlobConst.TRAN_VIEW, '1', MasterLot) == false) return;
             MasterLot = string.Empty;
@@ -339,7 +339,7 @@ namespace OQAMain
 
             if (out_data._success == true)
             {
-                if (c_tran_flag == 1) { 
+               // if (c_tran_flag == 1) { 
                 ComFunc.InitListView(listship, true);
                 for (int i = 0; i < out_data.model.PKGSHPDAT_list.Count; i++)
                 {
@@ -353,7 +353,7 @@ namespace OQAMain
                     list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.PART_ID].ToString());
                     list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.INSPECT_RESULT].ToString());//修改数据使用
                     listship.Items.Add(list_item);
-                }
+                //}
                 }
                 if (c_tran_flag == 2)
                 {

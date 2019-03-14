@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grpLotInfo = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCheck = new System.Windows.Forms.Button();
             this.txtLotid = new System.Windows.Forms.TextBox();
             this.labLotid = new System.Windows.Forms.Label();
             this.grpFoupChange = new System.Windows.Forms.GroupBox();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Slotid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,7 +62,6 @@
             this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnPrint = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.grpLotInfo.SuspendLayout();
             this.grpFoupChange.SuspendLayout();
@@ -71,7 +70,8 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Visible = false;
+            this.btnCreate.Text = "Submit";
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
@@ -80,11 +80,11 @@
             // pnlMenu
             // 
             this.pnlMenu.Controls.Add(this.btnPrint);
-            this.pnlMenu.Controls.SetChildIndex(this.lblSucessMsg, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnRefresh, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.lblSucessMsg, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnPrint, 0);
             // 
             // grpLotInfo
@@ -150,20 +150,30 @@
             this.grpFoupChange.TabStop = false;
             this.grpFoupChange.Text = "Foup Change";
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrint.Location = new System.Drawing.Point(556, 7);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(88, 26);
+            this.btnPrint.TabIndex = 6;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Slotid,
             this.Column1,
             this.Column2,
             this.Column3,
@@ -196,13 +206,6 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(744, 470);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // Slotid
-            // 
-            this.Slotid.HeaderText = "Slot";
-            this.Slotid.Name = "Slotid";
-            this.Slotid.ReadOnly = true;
-            this.Slotid.Width = 54;
             // 
             // Column1
             // 
@@ -354,16 +357,6 @@
             this.Column25.Name = "Column25";
             this.Column25.Width = 42;
             // 
-            // btnPrint
-            // 
-            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrint.Location = new System.Drawing.Point(556, 7);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(88, 26);
-            this.btnPrint.TabIndex = 6;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            // 
             // FrmFoupChange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -393,7 +386,8 @@
         private System.Windows.Forms.Label labLotid;
         private System.Windows.Forms.GroupBox grpFoupChange;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Slotid;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -419,7 +413,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
-        private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.Label label1;
     }
 }

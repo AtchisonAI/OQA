@@ -5,7 +5,7 @@ using WCFModels.Message;
 namespace WCFModels.OQA
 {
     [DataContract]
-    public class LotSlotidView: BaseRsp
+    public class LotSlotidSave: BaseRsp
     {
 
         //服务传入执行动作,事务标记必须输入
@@ -23,9 +23,9 @@ namespace WCFModels.OQA
         }
         private char c_proc_step;
 
-        public LotSlotidView()
+        public LotSlotidSave()
         {
-            OQA_CHKMESSLOTID_list = new List<OQA_CHKMESSLOTID>();
+            PkgsltdefList = new List<PKGSLTDEF>();
         }
 
         [DataMember]
@@ -56,45 +56,38 @@ namespace WCFModels.OQA
         }
         private string in_lot_id;
 
+        //[DataMember]
+        //public string IN_WAFER_ID
+        //{
+        //    get
+        //    {
+        //        return in_wafer_id;
+        //    }
+        //    set
+        //    {
+        //        in_wafer_id = value;
+        //    }
+        //}
+        //private string in_wafer_id;
 
-        [DataMember]
-        public decimal D_TRANSSEQ
-        {
-            get
-            {
-                return d_transseq;
-            }
-            set
-            {
-                d_transseq = value;
-            }
-        }
-
-        private decimal d_transseq;
+        //[DataMember]
+        //public string IN_SLOT_ID
+        //{
+        //    get
+        //    {
+        //        return in_slot_id;
+        //    }
+        //    set
+        //    {
+        //        in_slot_id = value;
+        //    }
+        //}
+        //private string in_slot_id;
 
 
         //服务传出数据结构
         [DataMember]
-        public List<ISPLOTSTS> ISPLOTSTS_list { get; set; }
-
-        [DataMember]
-        public List<ISPWAFST> ISPWAFST_list { get; set; }
-
-        [DataMember]
-        public List<OQA_CHKMESSLOTID> OQA_CHKMESSLOTID_list { get; set; }
-        //服务传出结果在BaseRsq:_success  _ErrorMsg
-
-
-        //public DefectCodeView()
-        //{
-        //    rmsList = new List<RmsUser>();
-        //}
-        //    string s_isp_type ;
-
-        //   // rmsList = new List<RmsUser>();
-        //
-
-        //[DataMember]
-        //public List<RmsUser> rmsList { get; set; }
+        public List<PKGSLTDEF> PkgsltdefList { get; set; }
+       
     }
 }

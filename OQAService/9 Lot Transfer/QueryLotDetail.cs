@@ -74,24 +74,25 @@ namespace OQAService.Services
                             break;
 
                         case '2':
-                            //List<object[]> dataS = new List<object[]>();
+                            List<object[]> dataS = new List<object[]>();
 
-                            //PageQueryReq.CurrentPage = 1;
-                            //PageQueryReq.ItemsPerPage = 200;
-                            //if (In_node.model.IN_MASTERLOT_NO.Trim().Equals("") == false)
-                            //{
-                            //    //AddCondition(PageQueryReq, GetParaName<PKGSHPDAT>(p => p.LotId), In_node.model.IN_MASTERLOT_NO.Trim(), LogicCondition.AndAlso,CompareType.Include);
-                            //    string sql = string.Format(@"select COUNT(DISTINCT PART_ID)  from isplotsts WHERE LOT_ID IN ({0})", In_node.model.IN_MASTERLOT_NO.Trim());
-                            //    dataS = QueryRawSql(sql);
-                            //}
+                            PageQueryReq.CurrentPage = 1;
+                            PageQueryReq.ItemsPerPage = 200;
+                            if (In_node.model.IN_MASTERLOT_NO.Trim().Equals("") == false)
+                            {
+                                //AddCondition(PageQueryReq, GetParaName<PKGSHPDAT>(p => p.LotId), In_node.model.IN_MASTERLOT_NO.Trim(), LogicCondition.AndAlso,CompareType.Include);
+                                string sql = string.Format(@"select COUNT(DISTINCT PART_ID)  from isplotsts WHERE LOT_ID IN ({0})", In_node.model.IN_MASTERLOT_NO.Trim());
+                                dataS = QueryRawSql(sql);
+                            }
 
-                            //out_list.PKGSHPDAT_list = dataS;
-                            //Out_node.model = out_list;
-                            ////   AddSortCondition(PageQueryReq, GetParaName <PKGSHPDAT> (p=>p.LotId), SortType.ASC);
+                            out_list.PKGSHPDAT_list = dataS;
+                            Out_node.model = out_list;
 
-                            ////   var data = PageQuery<PKGSHPDAT>(PageQueryReq);
-                            ////   out_list.PKGSHPDAT_list = data.models;
-                            ////    Out_node.model = out_list;
+                            //   AddSortCondition(PageQueryReq, GetParaName <PKGSHPDAT> (p=>p.LotId), SortType.ASC);
+
+                            //   var data = PageQuery<PKGSHPDAT>(PageQueryReq);
+                            //   out_list.PKGSHPDAT_list = data.models;
+                            //    Out_node.model = out_list;
                             break;
 
                         case '3':

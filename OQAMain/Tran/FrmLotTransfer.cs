@@ -169,36 +169,7 @@ namespace OQAMain
         }
         private void LstIspCode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int m=0;
-            List<string> MasterLotList = new List<string>();
-            for (int i = 0; i < LotIDList.Items.Count; i++)
-            {
-                Have_flag = true;
-                
-                if (LotIDList.GetItemChecked(i)) {
-                    
-                    //MasterLotList.Add(LotIDList.GetItemText(LotIDList.Items[i]));
-                    if (MasterLot.Length == 0)
-                    {
-                        MasterLot = "'" + LotIDList.GetItemText(LotIDList.Items[i])+ "'";
-                    }
-                    else
-                    {
-                        MasterLot = MasterLot + ",'" + LotIDList.GetItemText(LotIDList.Items[i]) + "'";
-                    }
-                    m++;
-
-                }   
-            }
-           // if (Querylotinfo(GlobConst.TRAN_VIEW, '2', MasterLot) == false) return;
-
-            if (Querylotinfo(GlobConst.TRAN_VIEW, '1', MasterLot) == false) return;
-            MasterLot = string.Empty;
-
-            if (m != LotIDList.Items.Count) {
-                Select_All.Checked = false;
-                CancelSelectAll.Checked = false;
-            }
+            
            
 
         }
@@ -232,7 +203,7 @@ namespace OQAMain
         private void btnCreate_Click_1(object sender, EventArgs e)
         {
             FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint();
-            MessageBox.Show("交接单号");
+            MessageBox.Show("交接单号"+ srtNum);
             formshiplistprint.ShowDialog();
         }
         public string GetSerialNum()
@@ -286,42 +257,6 @@ namespace OQAMain
         }
 
         
-            private void CancelSelect_All_CheckedChanged(object sender, EventArgs e)
-        {
-            if (CancelSelectAll.Checked)
-            {
-
-                   for (int i = 0; i < LotIDList.Items.Count; i++)
-                   {
-                       LotIDList.SetItemChecked(i, false);
-                    }
-            }
-           
-            LstIspCode_SelectedIndexChanged(this, e);
-        }
-
-
-        //checklistbox全选
-        private void Select_All_CheckedChanged(object sender, EventArgs e)
-        {
-            if (Select_All.Checked)
-            {
-                for (int i = 0; i < LotIDList.Items.Count; i++)
-                {
-                    LotIDList.SetItemChecked(i, true);
-                }
-                
-            }
-            //else
-            //{
-            //    for (int i = 0; i < LotIDList.Items.Count; i++)
-            //    {
-            //        LotIDList.SetItemChecked(i, false);
-            //    }
-                
-            //}
-            LstIspCode_SelectedIndexChanged(this, e);
-        }
     
         private bool Querylotinfo(char c_proc_step, char c_tran_flag,string in_masterlot_no)
         {
@@ -335,36 +270,51 @@ namespace OQAMain
             in_node.model = in_data;
 
             var out_data = OQASrv.Call.QueryLotDetail(in_node);
+            var total_count=0;
             //var out_data_ship = OQASrv.Call.QryPKGShipSummaryInfo(in_node);
 
             if (out_data._success == true)
             {
-               // if (c_tran_flag == 1) { 
-                ComFunc.InitListView(listship, true);
-                for (int i = 0; i < out_data.model.PKGSHPDAT_list.Count; i++)
-                {
+               if (c_tran_flag == '1') { 
+                    ComFunc.InitListView(listship, true);
+                    for (int i = 0; i < out_data.model.PKGSHPDAT_list.Count; i++)
+                    {
 
-                    ListViewItem list_item = new ListViewItem();
-                  //  out_data.model.PKGLabel_list[0][(int)PKG_LIST.slot_id].ToString();
+                        ListViewItem list_item = new ListViewItem();
+                      //  out_data.model.PKGLabel_list[0][(int)PKG_LIST.slot_id].ToString();
 
-                  //  PKGSHPDAT list = out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.LOT_ID].ToString();
-                    list_item.Text = out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.LOT_ID].ToString();
-                    list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.QTY].ToString());
-                    list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.PART_ID].ToString());
-                    list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.INSPECT_RESULT].ToString());//修改数据使用
-                    listship.Items.Add(list_item);
-                //}
+                      //  PKGSHPDAT list = out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.LOT_ID].ToString();
+                        list_item.Text = out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.LOT_ID].ToString();
+                        list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.QTY].ToString());
+                        list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.PART_ID].ToString());
+                        list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.INSPECT_RESULT].ToString());//修改数据使用
+                        listship.Items.Add(list_item);
+                        total_count = total_count + Convert.ToInt32(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.QTY].ToString());
+                        txtPartID.Text = out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.PART_ID].ToString();
+                    }
+                    txtQTY.Text = total_count.ToString();
+                    txtDate.Text = DateTime.Now.ToString("yyyyMMddHHmm");
                 }
-                if (c_tran_flag == 2)
+                if (c_tran_flag == '2')
                 {
-                    if(out_data.model.PKGSHPDAT_list[0][0].ToString() != "1"){
+                    
+                    if (out_data.model.PKGSHPDAT_list.Count ==0 || out_data.model.PKGSHPDAT_list[0][0].ToString() != "1")
+                    {
                         MessageBox.Show("选择的lotid不属于同一个part！");
+
+                        //for (int i = 0; i < LotIDList.Items.Count; i++)
+                        //{
+                        //    LotIDList.SetItemChecked(i, false);
+                        //}
+                        //Select_All.Checked = false;
+                        MasterLot = string.Empty;
                         return false;
-                    };
+                    }
+                   
                 }
+
                 lblSucessMsg.Text = out_data._MsgCode;
                 return true;
-
             }
             else
             {
@@ -373,6 +323,107 @@ namespace OQAMain
             }
 
 
+        }
+
+        private void LotIDList_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            // MasterLot = string.Empty;
+            
+
+            foreach (var item in LotIDList.CheckedItems)
+            {
+                if (e.NewValue == CheckState.Unchecked && item == LotIDList.Items[e.Index])
+                {
+                    continue;
+                }
+
+                if (MasterLot.Length == 0)
+                {
+                    MasterLot = "'" + item.ToString().Trim() + "'";
+                }
+                else
+                {
+                    MasterLot = MasterLot + ",'" + item.ToString().Trim() + "'";
+                }
+
+            }
+            if (e.NewValue == CheckState.Checked)
+            {
+                if (MasterLot.Length == 0)
+                {
+                    MasterLot = "'" + LotIDList.Items[e.Index].ToString().Trim() + "'";
+                }
+                else
+                {
+                    MasterLot = MasterLot + ",'" + LotIDList.Items[e.Index].ToString().Trim() + "'";
+                }
+            }
+
+            if (string.IsNullOrWhiteSpace(MasterLot))
+            {
+                ComFunc.InitListView(listship, true);
+                txtPartID.Text = "";
+                txtQTY.Text = "";
+                return;
+            }
+
+            if (Querylotinfo(GlobConst.TRAN_VIEW, '2', MasterLot) == false)
+            {
+                LotIDList.ItemCheck -= LotIDList_ItemCheck;
+                e.NewValue = CheckState.Unchecked;
+                LotIDList.ItemCheck += LotIDList_ItemCheck;
+                return;
+            }
+           
+            if (Querylotinfo(GlobConst.TRAN_VIEW, '1', MasterLot) == false) return;
+           
+
+            MasterLot = string.Empty;
+        }
+
+        private void btnCheckAll_Click(object sender, EventArgs e)
+        {
+            
+
+
+            foreach (var item in LotIDList.Items)
+            {
+               
+                if (MasterLot.Length == 0)
+                {
+                    MasterLot = "'" + item.ToString().Trim() + "'";
+                }
+                else
+                {
+                    MasterLot = MasterLot + ",'" + item.ToString().Trim() + "'";
+                }
+
+            }
+            if (string.IsNullOrWhiteSpace(MasterLot))
+            {
+                ComFunc.InitListView(listship, true);
+                return;
+            }
+
+            if (Querylotinfo(GlobConst.TRAN_VIEW, '2', MasterLot) == false)
+            {
+                return;
+            }
+            if (Querylotinfo(GlobConst.TRAN_VIEW, '1', MasterLot) == false) return;
+
+            this.LotIDList.ItemCheck -= LotIDList_ItemCheck;
+            this.LotIDList.CheckAll();
+            this.LotIDList.ItemCheck += LotIDList_ItemCheck;
+        }
+
+        private void btnUnCheckAll_Click(object sender, EventArgs e)
+        {
+            this.LotIDList.ItemCheck -= LotIDList_ItemCheck;
+            this.LotIDList.UnCheckAll();
+            ComFunc.InitListView(listship, true);
+            txtPartID.Text = "";
+            txtQTY.Text = "";
+            this.LotIDList.ItemCheck += LotIDList_ItemCheck;
         }
     }
 }

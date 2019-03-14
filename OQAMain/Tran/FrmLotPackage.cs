@@ -42,9 +42,14 @@ namespace OQAMain
                 case "CREATE":
                 case "UPDATE":
                     // TODO
-                    if(null == lotPackageInfo)
+                    if(null == lotPackageInfo || string.IsNullOrEmpty(lotId_textBox.Text.Trim()))
                     {
                         MessageBox.Show("无Lot信息！");
+                        lotId_textBox.Focus();
+                        return false;
+                    } else if (!lotId_textBox.Text.Trim().Equals(lotPackageInfo.lotInfo.LotId))
+                    {
+                        MessageBox.Show("图片与当前lot不匹配，请重新上传图片");
                         lotId_textBox.Focus();
                         return false;
                     }
@@ -250,6 +255,7 @@ namespace OQAMain
         private void lotId_textBox_Click(object sender, EventArgs e)
         {
             lotId_textBox.Text = string.Empty;
+            lotPackageInfo = null;
             ClearImageControl();
         }
     }

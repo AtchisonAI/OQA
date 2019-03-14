@@ -19,6 +19,12 @@ namespace OQAMain
             InitializeComponent();
         }
 
+        public FrmPackageLabelPrint(string sLotId)
+        {
+            InitializeComponent();
+            this.txtLotID.Text = sLotId;
+        }
+
         #endregion
 
 

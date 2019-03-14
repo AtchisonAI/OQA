@@ -393,9 +393,9 @@ namespace OQAMain
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            FrmDefectCodeSet from = new FrmDefectCodeSet(txtLotid.Text.Trim());
+            FrmPackageLabelPrint from = new FrmPackageLabelPrint(txtLotid.Text.Trim());
             from.FormBorderStyle = FormBorderStyle.FixedDialog;
-            from.WindowState = FormWindowState.Normal;
+            from.WindowState = FormWindowState.Maximized;
             from.StartPosition = FormStartPosition.CenterParent;
             from.ShowDialog();
             //this.Hide();

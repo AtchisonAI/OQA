@@ -15,14 +15,6 @@ namespace OQAMain
         {
             InitializeComponent();
         }
-
-        public FrmDefectCodeSet(string jjname)
-        {
-            InitializeComponent();
-            //this.name = jjname;
-            this.txtDefectDesc.Text = jjname;
-        }
-
         #endregion
 
 

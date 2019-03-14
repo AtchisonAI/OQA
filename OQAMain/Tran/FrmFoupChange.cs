@@ -16,7 +16,6 @@ namespace OQAMain
         {
             InitializeComponent();
         }
-
         #endregion
 
 
@@ -250,7 +249,6 @@ namespace OQAMain
                 return false;
             }
         }
-
         #endregion
 
         #region "控件初始化 "        
@@ -275,7 +273,6 @@ namespace OQAMain
         }
         #endregion
 
-
         #endregion
 
         private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
@@ -288,7 +285,6 @@ namespace OQAMain
                 }
             }
         }
-
 
         private void btnCheck_Click(object sender , EventArgs e)
         {

@@ -90,10 +90,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1 Lot inspect\QryISPLotInfo.cs" />
     <Compile Include="7 FOUP change\IstLotSltInfo.cs" />
     <Compile Include="7 FOUP change\UptLotIspStsInfo.cs" />
     <Compile Include="10 Package Label Print\QueryPKGLabelInfo.cs" />
     <Compile Include="1 Lot inspect\QryMesLotInfo.cs" />
+    <Compile Include="1 Lot inspect\SaveISPLotInfo.cs" />
     <Compile Include="8 Lot package\UpdateLotSts.cs" />
     <Compile Include="8 Lot package\QueryLotPackageInfo.cs" />
     <Compile Include="ImageUpload\SaveImageInfo.cs" />

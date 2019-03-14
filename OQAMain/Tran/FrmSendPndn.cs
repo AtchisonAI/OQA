@@ -1,7 +1,10 @@
 ﻿using Syncfusion.Windows.Forms;
 using OQA_Core;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using WCFModels.Message;
+using WCFModels.OQA;
 
 namespace OQAMain
 {
@@ -12,19 +15,18 @@ namespace OQAMain
         {
             InitializeComponent();
         }
-
         #endregion
 
 
         #region " Constant Definition "
         //private bool b_load_flag = false;
-
+        private decimal Trans_Seq = 0;
         #endregion
 
 
         #region " Variable Definition "
         //private bool b_load_flag  ;
-
+        private List<ISPLOTSTS> _ispLotSts = new List<ISPLOTSTS>();
         #endregion
 
 
@@ -38,44 +40,21 @@ namespace OQAMain
             {
                 case "CREATE":
 
-                    //            if (ComFunc.CheckValue(ComFunc.Trim(txtLotID.Text), 1) == false)
-                    //            {
-                    //                MessageBox.Show("必填内容输入为空！");
-                    //                txtLotID.Focus();
-                    //                return false;
-                    //            }
-
-                    //            if ( ComFunc.CheckValue(ComFunc.Trim(txtNewQty1.Text), 1) == false)
-                    //            {
-                    //                if (MPCF.CheckValue(txtNewQty1, 2) == false)
-                    //                {
-                    //                    tabTran.SelectedTab = tbpGeneral;
-                    //                    txtNewQty1.Focus();
-                    //                    return false;
-                    //                }
-                    //            }
-
-                    //            if (ComFunc.Trim(cdvToFlow.Text) != "" && ComFunc.Trim(cdvToOperation.Text) == "")
-                    //            {
-                    //                MessageBox.Show("……");
-                    //                tabTran.SelectedTab = tbpGeneral;
-                    //                cdvToOperation.Focus();
-                    //                return false;
-                    //            }
-
-                    //            if (LOT.GetDouble("QTY_1") > 0 || LOT.GetDouble("QTY_2") > 0 || LOT.GetDouble("QTY_3") > 0)
-                    //            {
-                    //                if (cdvResID.Items.Count > 0)
-                    //                {
-                    //                    if (MPCF.CheckValue(cdvResID, 1) == false)
-                    //                    {
-                    //                        tabTran.SelectedTab = tbpGeneral;
-                    //                        cdvResID.Focus();
-                    //                        return false;
-                    //                    }
-                    //                }
-                    //            }
-
+                    if (ComFunc.CheckValue(txtLotId, 1) == false)
+                    {
+                        MessageBox.Show("请填写Lot ID！");
+                        return false;
+                    }
+                    if (ComFunc.CheckValue(txtHoldCode, 1) == false)
+                    {
+                        MessageBox.Show("请填写Hold Code！");
+                        return false;
+                    }
+                    if (ComFunc.CheckValue(txtHoldCmt, 1) == false)
+                    {
+                        MessageBox.Show("请填写Hold Comment！");
+                        return false;
+                    }
                     break;
 
                 case "UPDATE":
@@ -90,6 +69,36 @@ namespace OQAMain
 
             return true;
 
+        }
+
+
+
+        private bool QryLotIspStsInfo(char c_proc_step, char c_tran_flag)
+        {
+            ModelRsp<LotSlotidView> in_node = new ModelRsp<LotSlotidView>();
+            LotSlotidView in_data = new LotSlotidView();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.IN_LOT_ID = txtLotId.Text.Trim();
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.QryLotIspStsInfo(in_node);
+            _ispLotSts = out_data.model.ISPLOTSTS_list;
+
+            if (out_data._success == true)
+            {
+               
+                lblSucessMsg.Text = out_data._MsgCode;
+                return true;
+            }
+
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
         }
 
         #endregion
@@ -119,7 +128,21 @@ namespace OQAMain
 
         #endregion
 
-
+        private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)13)
+            {
+                if (ComFunc.Trim(txtLotId.Text) != "")
+                {
+                    //QryMesLotInfo
+                    if (QryLotIspStsInfo(GlobConst.TRAN_VIEW, '1') == false) return;
+                    this.txtPartId.Text = _ispLotSts[0].PartId;
+                    this.txtQty.Text = _ispLotSts[0].Qty.ToString();
+                    //this.txtStepId.Text = _ispLotSts[0].StepId;
+                    //this.txtStepName = _ispLotSts[0].StepName;
+                }
+            }
+        }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
@@ -153,6 +176,10 @@ namespace OQAMain
             }
         }
 
+        private void FrmDefectSend_Load(object sender, EventArgs e)
+        {
+
+        }
 
     }
 }

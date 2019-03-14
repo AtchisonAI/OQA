@@ -72,6 +72,8 @@
     <Compile Include="1.OQASeverStruct\5 Mirco inspection input\MicroView.cs" />
     <Compile Include="1.OQASeverStruct\7 FOUP change\LotSlotidSave.cs" />
     <Compile Include="1.OQASeverStruct\7 FOUP change\LotSlotidView.cs" />
+    <Compile Include="1.OQASeverStruct\9 Lot Transfer\LotTransferListSave.cs" />
+    <Compile Include="1.OQASeverStruct\9 Lot Transfer\LotTransferSave.cs" />
     <Compile Include="1.OQASeverStruct\9 Lot Transfer\QueryLotDetailView.cs" />
     <Compile Include="1.OQASeverStruct\9 Lot Transfer\LotIDListView.cs" />
     <Compile Include="2.OQATableStruct\OQADB.cs" />

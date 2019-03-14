@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtDate = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtCreater = new System.Windows.Forms.TextBox();
             this.txtQTY = new System.Windows.Forms.TextBox();
             this.txtPartID = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -58,18 +58,18 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1244, 14);
+            this.btnClose.Location = new System.Drawing.Point(1351, 14);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(618, 7);
+            this.btnCreate.Location = new System.Drawing.Point(454, 13);
             this.btnCreate.Text = "OK";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1045, 11);
+            this.btnEdite.Location = new System.Drawing.Point(1152, 11);
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
@@ -149,7 +149,7 @@
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.groupBox2.Controls.Add(this.txtDate);
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.txtCreater);
             this.groupBox2.Controls.Add(this.txtQTY);
             this.groupBox2.Controls.Add(this.txtPartID);
             this.groupBox2.Controls.Add(this.label5);
@@ -172,12 +172,12 @@
             this.txtDate.Size = new System.Drawing.Size(100, 21);
             this.txtDate.TabIndex = 15;
             // 
-            // textBox4
+            // txtCreater
             // 
-            this.textBox4.Location = new System.Drawing.Point(121, 72);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 21);
-            this.textBox4.TabIndex = 14;
+            this.txtCreater.Location = new System.Drawing.Point(121, 72);
+            this.txtCreater.Name = "txtCreater";
+            this.txtCreater.Size = new System.Drawing.Size(100, 21);
+            this.txtCreater.TabIndex = 14;
             // 
             // txtQTY
             // 
@@ -316,7 +316,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtDate;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtCreater;
         private System.Windows.Forms.TextBox txtQTY;
         private System.Windows.Forms.TextBox txtPartID;
         private System.Windows.Forms.Label label5;

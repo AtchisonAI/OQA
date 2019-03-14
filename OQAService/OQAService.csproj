@@ -96,6 +96,8 @@
     <Compile Include="1 Lot inspect\QryMesLotInfo.cs" />
     <Compile Include="12 IOQA Ship List Print\QryPKGShipSummaryInfo.cs" />
     <Compile Include="3 AOI inspection input\QryLotstsInfo.cs" />
+    <Compile Include="9 Lot Transfer\CreateLotTransferListInfo.cs" />
+    <Compile Include="9 Lot Transfer\CreateLotTransferInfo.cs" />
     <Compile Include="9 Lot Transfer\QueryLotDetail.cs" />
     <Compile Include="ImageUpload\SaveImageInfo.cs" />
     <Compile Include="11 Wafer Insection Record Print\QueryLotInfo.cs" />
@@ -125,8 +127,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="1 Lot inspect\" />
-    <Folder Include="10 Package Label Print\" />
     <Folder Include="2 Defect Lot result\" />
     <Folder Include="4 Marco inspection input\" />
     <Folder Include="5 Mirco inspection input\" />

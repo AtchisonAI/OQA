@@ -167,7 +167,7 @@ namespace OQAMain
         
         private void FrmOQAShipListPrint_Load(object sender, EventArgs e)
         {
-
+            txtShipNo.Text = FrmLotTransfer.srtNum.ToString();
    
         }
          

@@ -50,6 +50,12 @@ namespace OQAContract
         ModelRsp<LotIDListView> QueryLotList(ModelRsp<LotIDListView> PKGShip);
         [OperationContract]
         ModelRsp<QueryLotDetailView> QueryLotDetail(ModelRsp<QueryLotDetailView> PKGShip);
+        [OperationContract]
+        ModelRsp<LotTransferSave> CreateLotTransferInfo(ModelRsp<LotTransferSave> LotTransferSave);
+        [OperationContract]
+        ModelRsp<LotTransferListSave> CreateLotTransferListInfo(ModelRsp<LotTransferListSave> LotTransferListSave);
+
+        
 
         #endregion
 

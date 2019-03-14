@@ -29,10 +29,10 @@ namespace OQAMain
         //private bool b_load_flag  ;
         private bool Have_flag = false;
         private string MasterLot="";
-        
+
 
         #endregion
-       
+        private decimal Trans_Seq = 0;
 
         #region " Function Definition "
 
@@ -203,8 +203,40 @@ namespace OQAMain
         private void btnCreate_Click_1(object sender, EventArgs e)
         {
             FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint();
+            GetSerialNum();
             MessageBox.Show("交接单号"+ srtNum);
-            formshiplistprint.ShowDialog();
+
+            string s_PartID = ComFunc.Trim(txtPartID.Text);
+            string s_QTY = ComFunc.Trim(txtQTY.Text);
+            string s_Date = ComFunc.Trim(txtDate.Text);
+            string s_Creater = ComFunc.Trim(txtCreater.Text);
+            char cTranFlag;
+            cTranFlag = GlobConst.TRAN_CREATE;
+
+
+            //调用事务服务
+
+            if (CreateLotTransferInfo(cTranFlag, '1', s_PartID, s_Creater, s_QTY, s_Date, srtNum, Trans_Seq) == true)
+            {
+                cTranFlag = GlobConst.TRAN_UPDATE;
+                foreach (ListViewItem item in this.listship.Items)
+                    {
+                        string lotid = item.SubItems[0].Text;
+                        string qty = item.SubItems[1].Text;
+                        string partid = item.SubItems[2].Text;
+                        string isp_result = item.SubItems[3].Text;
+                        if (CreateLotTransferListInfo(cTranFlag, '1', lotid, qty, partid, isp_result, srtNum, Trans_Seq) == true)
+                        { return; }
+                    }
+
+               
+
+                    formshiplistprint.ShowDialog();
+                
+            }
+            
+
+           
         }
         public string GetSerialNum()
         {
@@ -324,6 +356,74 @@ namespace OQAMain
 
 
         }
+
+        private bool CreateLotTransferInfo(char c_proc_step, char c_tran_flag, string part_id, string Creater, string QTY,string ship_date,string ship_id, decimal TransSeq)
+        {
+            ModelRsp<LotTransferSave> in_node = new ModelRsp<LotTransferSave>();
+            LotTransferSave in_data = new LotTransferSave();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.D_TRANSSEQ = TransSeq; //事务控制
+            in_data.IN_PART_ID = part_id;
+            in_data.IN_CREATER = Creater;
+            in_data.IN_QTY = QTY;
+            in_data.IN_SHIP_DATE = ship_date;
+            in_data.IN_SHIPID = ship_id;
+
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.CreateLotTransferInfo(in_node);
+
+            if (out_data._success == true)
+            {
+                lblSucessMsg.Text = out_data._MsgCode;
+                //MessageBox.Show(out_data._MsgCode);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+
+        }
+
+       
+        private bool CreateLotTransferListInfo(char c_proc_step, char c_tran_flag, string lot_id, string QTY, string part_id, string isp_result, string ship_id, decimal TransSeq)
+        {
+            ModelRsp<LotTransferListSave> in_node = new ModelRsp<LotTransferListSave>();
+            LotTransferListSave in_data = new LotTransferListSave();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.D_TRANSSEQ = TransSeq; //事务控制
+            in_data.IN_PART_ID = part_id;
+            in_data.IN_LOTID= lot_id;
+            in_data.IN_QTY = QTY;
+            in_data.IN_ISP_RESULT= isp_result;
+            in_data.IN_SHIPID = ship_id;
+
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.CreateLotTransferListInfo(in_node);
+
+            if (out_data._success == true)
+            {
+                lblSucessMsg.Text = out_data._MsgCode;
+                //MessageBox.Show(out_data._MsgCode);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+
+        }
+
 
         private void LotIDList_ItemCheck(object sender, ItemCheckEventArgs e)
         {

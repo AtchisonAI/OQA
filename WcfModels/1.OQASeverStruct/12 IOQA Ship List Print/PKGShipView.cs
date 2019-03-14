@@ -56,10 +56,17 @@ namespace WCFModels.OQA
             }
         }
         private string in_ship_no;
-       
+
+
+
         //服务传出数据结构
         [DataMember]
         public List<PKGSHPDAT> PKGSHPDAT_list { get; set; }
+
+        //服务传出数据结构
+        [DataMember]
+        public List<PKGSHPSTS> PKGSHP_list { get; set; }
+
         //服务传出结果在BaseRsq:_success  _ErrorMsg
     }
 }

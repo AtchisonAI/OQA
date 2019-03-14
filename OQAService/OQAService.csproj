@@ -85,18 +85,19 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\Utils.dll</HintPath>
     </Reference>
-    <Reference Include="WCFModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WcfModels\bin\Debug\WCFModels.dll</HintPath>
-    </Reference>
     <Reference Include="WcfService">
       <HintPath>..\Components\WcfService.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="1 Lot inspect\QryISPLotInfo.cs" />
+    <Compile Include="7 FOUP change\IstLotSltInfo.cs" />
+    <Compile Include="7 FOUP change\UptLotIspStsInfo.cs" />
+    <Compile Include="10 Package Label Print\QueryPKGLabelInfo.cs" />
     <Compile Include="1 Lot inspect\QryMesLotInfo.cs" />
     <Compile Include="1 Lot inspect\SaveISPLotInfo.cs" />
+    <Compile Include="8 Lot package\UpdateLotSts.cs" />
+    <Compile Include="8 Lot package\QueryLotPackageInfo.cs" />
     <Compile Include="ImageUpload\SaveImageInfo.cs" />
     <Compile Include="11 Wafer Insection Record Print\QueryLotInfo.cs" />
     <Compile Include="12 IOQA Ship List Print\QryPKGShipInfo.cs" />
@@ -125,12 +126,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="1 Lot inspect\" />
     <Folder Include="10 Package Label Print\" />
     <Folder Include="2 Defect Lot result\" />
     <Folder Include="4 Marco inspection input\" />
     <Folder Include="5 Mirco inspection input\" />
     <Folder Include="6 Defect send %28PNDN%29\" />
-    <Folder Include="8 Lot package\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

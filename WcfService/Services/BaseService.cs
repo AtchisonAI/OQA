@@ -275,6 +275,10 @@ namespace WcfService
         }
         #endregion
 
+        public int DeleteByPrimaryKey<T>(object primayKeyValue)
+        {
+            return db.Delete(primayKeyValue);
+        }
 
         /// <summary>
         /// 带参数查询指定数据库表记录，需指定排序字段，最多支持两个。
@@ -308,6 +312,21 @@ namespace WcfService
             ModelListRsp<T> rsp = new ModelListRsp<T>();
             rsp.models = QueryIml<T>(req);
             rsp._success = true;
+            return rsp;
+        }
+
+        public ModelRsp<T> SingleQuery<T>(object primayKeyValue) where T:new()
+        {
+            ModelRsp<T> rsp = new ModelRsp<T>();
+            try
+            {
+                rsp.model = db.SingleById<T>(primayKeyValue);
+                rsp._success = true;
+            } catch (Exception)
+            {
+                rsp._success = false;
+            }
+
             return rsp;
         }
 

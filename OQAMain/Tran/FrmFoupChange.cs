@@ -16,7 +16,6 @@ namespace OQAMain
         {
             InitializeComponent();
         }
-
         #endregion
 
 
@@ -29,6 +28,12 @@ namespace OQAMain
         #region " Variable Definition "
         //private bool b_load_flag  ;
         private bool Have_Flag = false;
+       
+        private List<OQA_CHKMESSLOTID> _lsOqaChkmesslotids = new List<OQA_CHKMESSLOTID>();
+        private List<PKGSLTDEF> LSOQACHKMESSLOTIDS = new List<PKGSLTDEF>();
+        private List<ISPLOTSTS> _ispLotSts= new List<ISPLOTSTS>();
+
+
         #endregion
 
 
@@ -43,6 +48,10 @@ namespace OQAMain
                 case "CHECK":
                     if (ComFunc.CheckValue(txtLotid,1)==false)
                     {
+                        foreach (DataGridViewColumn column in dataGridView1.Columns)
+                        {
+                            dataGridView1.Rows[0].Cells[column.Name].Value = string.Empty;
+                        }
                         MessageBox.Show("必填内容输入为空！");
                         return false;
                     }
@@ -63,7 +72,7 @@ namespace OQAMain
             return true;
 
         }
-
+       
         private bool QryLotIspStsInfo(char c_proc_step, char c_tran_flag)
         {
             ModelRsp<LotSlotidView> in_node = new ModelRsp<LotSlotidView>();
@@ -76,11 +85,15 @@ namespace OQAMain
             in_node.model = in_data;
 
             var out_data = OQASrv.Call.QryLotIspStsInfo(in_node);
+            _ispLotSts = out_data.model.ISPLOTSTS_list;
+
             if (out_data._success == true)
             {
+                //判断Lot是否收料
                 if (out_data.model.ISPLOTSTS_list.Count > 0)
                 {
-                    if (out_data.model.ISPLOTSTS_list.Count(p => p.Status == "已检验") == 0)
+                    //判断收料Lot状态是否检验完成
+                    if (out_data.model.ISPLOTSTS_list.Count(p => p.Status == "IspOut") == 0)
                     {
                         MessageBox.Show("LOT当前不符合Foup Change状态!!");
                     }
@@ -115,14 +128,16 @@ namespace OQAMain
             in_node.model = in_data;
 
             var out_data = OQASrv.Call.QryLotIspSlotidInfo(in_node);
+            
+            
 
             if (out_data._success == true)
             {
-                dataGridView1.Rows[0].Cells[0].Value = "Match With MES";
-                for (int i = 1; i < 26; i++)
+                //dataGridView1.Rows[0].Cells[0].Value = "Match With MES";
+                for (int i = 0; i < 25; i++)
                 {
-
-                    if (out_data.model.ISPWAFST_list.Count(p => p.SlotId == i.ToString().PadLeft(3, '0')) > 0)
+                    int j = i + 1;
+                    if (out_data.model.ISPWAFST_list.Count(p => p.SlotId == j.ToString().PadLeft(3, '0')) > 0)
                     {
                         dataGridView1.Rows[0].Cells[i].Value = "OK";
                     }
@@ -142,8 +157,7 @@ namespace OQAMain
                 return false;
             }
         }
-
-
+        
 
         private bool QryLotMesSlotidInfo(char c_proc_step, char c_tran_flag, out List<OQA_CHKMESSLOTID> lsOqaChkmesslotids)
         {
@@ -179,6 +193,62 @@ namespace OQAMain
             }
         }
 
+
+        private bool IstLotSltInfo(char c_proc_step, char c_tran_flag, string c_lot_id, List<PKGSLTDEF> LSOQACHKMESSLOTIDS,decimal TransSeq)
+        {
+            ModelRsp<LotSlotidSave> in_node = new ModelRsp<LotSlotidSave>();
+            LotSlotidSave in_data = new LotSlotidSave();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            //in_data. = TransSeq; //事务控制
+            in_data.PkgsltdefList = LSOQACHKMESSLOTIDS;
+            in_data.IN_LOT_ID = c_lot_id;
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.IstLotSltInfo(in_node);
+
+            if (out_data._success == true)
+            {
+                lblSucessMsg.Text = out_data._MsgCode;
+                //MessageBox.Show(out_data._MsgCode);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+        }
+
+
+        private bool UptLotIspStsInfo(char c_proc_step, char c_tran_flag, string c_lot_id, decimal TransSeq)
+        {
+            ModelRsp<LotSlotidView> in_node = new ModelRsp<LotSlotidView>();
+            LotSlotidView in_data = new LotSlotidView();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.D_TRANSSEQ = TransSeq; //事务控制
+            in_data.IN_LOT_ID = c_lot_id;
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.UptLotIspStsInfo(in_node);
+
+            if (out_data._success == true)
+            {
+                lblSucessMsg.Text = out_data._MsgCode;
+                //MessageBox.Show(out_data._MsgCode);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+        }
         #endregion
 
         #region "控件初始化 "        
@@ -203,7 +273,6 @@ namespace OQAMain
         }
         #endregion
 
-
         #endregion
 
         private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
@@ -217,45 +286,37 @@ namespace OQAMain
             }
         }
 
-
         private void btnCheck_Click(object sender , EventArgs e)
         {
             try
             {
-
                 //检查控件
                 if (CheckCondition("CHECK") == false) return;
 
                 List<ISPWAFST> lsIspwafsts = null;
                 List<OQA_CHKMESSLOTID> lsOqaChkmesslotids = null;
-
+              
                 //调用事务服务
                 if (QryLotIspStsInfo(GlobConst.TRAN_VIEW, '1') == false) return;
                 if (QryLotIspSlotidInfo(GlobConst.TRAN_VIEW, '1',out lsIspwafsts) == false) return;
                 if (QryLotMesSlotidInfo(GlobConst.TRAN_VIEW, '1',out lsOqaChkmesslotids) == false) return;
-
-
-                for (int i = 1; i < 26; i++)
+               
+                
+                for (int i = 0; i < 25; i++)
                 {
-                    bool isInISP = false;
+                    bool isInIsp = false;
                     dataGridView1.Rows[0].Cells[i].Style.BackColor = Color.White;
-
-                    if (lsIspwafsts.Count(p => p.SlotId == i.ToString().PadLeft(3, '0')) > 0)
+                    int j = i + 1;
+                    if (lsIspwafsts.Count(p => p.SlotId == j.ToString().PadLeft(3, '0')) > 0)
                     {
-                        isInISP = true;
+                        isInIsp = true;
                     }
 
-                    bool isInMES = false;
-
-                    if (lsOqaChkmesslotids.Count(p => p.SlotId == i.ToString().PadLeft(3, '0')) > 0)
+                    bool isInMes = lsOqaChkmesslotids.Count(p => p.SlotId == j.ToString().PadLeft(3, '0')) > 0;
+                    
+                    if (isInMes)
                     {
-                        isInMES = true;
-                    }
-
-
-                    if (isInMES)
-                    {
-                        if (isInISP)
+                        if (isInIsp)
                         {
                             dataGridView1.Rows[0].Cells[i].Value = "OK";
                         }
@@ -266,7 +327,7 @@ namespace OQAMain
                     }
                     else
                     {
-                        if (isInISP)
+                        if (isInIsp)
                         {
                             dataGridView1.Rows[0].Cells[i].Value = "/";
                             dataGridView1.Rows[0].Cells[i].Style.BackColor = Color.Red;
@@ -279,6 +340,10 @@ namespace OQAMain
 
                 }
 
+                //UpdateModelListReq<PKGSLTDEF> Do_Save = new UpdateModelListReq<PKGSLTDEF>();
+                //Do_Save.models = lsPkgsltdefs;
+                string s_lot_id = ComFunc.Trim(txtLotid.Text);
+                
             }
             catch (System.Exception ex)
             {
@@ -286,6 +351,51 @@ namespace OQAMain
             }
         }
 
-       
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            //清空列表
+            LSOQACHKMESSLOTIDS.Clear();
+            
+            if (CheckCondition("CREATE") == false) return;
+                                   
+            //List<OQA_CHKMESSLOTID> lsOqaChkmesslotids = null;
+            List<PKGSLTDEF> lsPkgsltdefs = new List<PKGSLTDEF>();
+
+            if (QryLotMesSlotidInfo(GlobConst.TRAN_VIEW, '1', out _lsOqaChkmesslotids) == false) return;
+
+            for (int i = 0; i < _lsOqaChkmesslotids.Count; i++)
+            {
+                PKGSLTDEF item = new PKGSLTDEF();
+                item.LotId = _lsOqaChkmesslotids[i].LotId;
+                item.SlotId = _lsOqaChkmesslotids[i].SlotId;
+                item.WaferId = _lsOqaChkmesslotids[i].WaferId;
+
+                LSOQACHKMESSLOTIDS.Add(item);
+            }
+
+            string s_lot_id = ComFunc.Trim(txtLotid.Text);
+            if (_ispLotSts.Count > 0)
+            {
+                Trans_Seq = _ispLotSts[0].TransSeq;
+            }
+            
+
+            if (LSOQACHKMESSLOTIDS.Count > 0)
+            {
+                if (IstLotSltInfo(GlobConst.TRAN_CREATE, '1', s_lot_id, LSOQACHKMESSLOTIDS, Trans_Seq) == false) return;
+                if (UptLotIspStsInfo(GlobConst.TRAN_UPDATE, '1', s_lot_id, Trans_Seq) == false) return;
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            FrmPackageLabelPrint from = new FrmPackageLabelPrint(txtLotid.Text.Trim());
+            from.FormBorderStyle = FormBorderStyle.FixedDialog;
+            from.WindowState = FormWindowState.Maximized;
+            from.StartPosition = FormStartPosition.CenterParent;
+            from.ShowDialog();
+            //this.Hide();
+
+        }
     }
 }

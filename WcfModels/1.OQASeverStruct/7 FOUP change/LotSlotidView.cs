@@ -57,6 +57,22 @@ namespace WCFModels.OQA
         private string in_lot_id;
 
 
+        [DataMember]
+        public decimal D_TRANSSEQ
+        {
+            get
+            {
+                return d_transseq;
+            }
+            set
+            {
+                d_transseq = value;
+            }
+        }
+
+        private decimal d_transseq;
+
+
         //服务传出数据结构
         [DataMember]
         public List<ISPLOTSTS> ISPLOTSTS_list { get; set; }

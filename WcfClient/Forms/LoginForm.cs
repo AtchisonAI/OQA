@@ -70,8 +70,7 @@ namespace WcfClient
 
         private void passwdTbx_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.KeyChar = Convert.ToChar(e.KeyChar.ToString().ToUpper());
-
+            //e.KeyChar = Convert.ToChar(e.KeyChar.ToString().ToUpper());
             if (e.KeyChar == (char)13)
             {
                 Login();

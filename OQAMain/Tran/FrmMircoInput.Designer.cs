@@ -29,13 +29,17 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioThir = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.radioNine = new System.Windows.Forms.RadioButton();
+            this.radioThir = new System.Windows.Forms.RadioButton();
+            this.radioButtonB = new System.Windows.Forms.RadioButton();
+            this.radioButtonF = new System.Windows.Forms.RadioButton();
             this.slotComboBox = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.lotTextBox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labelX = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.qtyTextBox = new System.Windows.Forms.TextBox();
             this.rateTextBox = new System.Windows.Forms.TextBox();
@@ -106,9 +110,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.waferSurF = new WaferSf.WaferSur();
             this.label14 = new System.Windows.Forms.Label();
-            this.labelX = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxSelect.SuspendLayout();
@@ -134,11 +138,16 @@
             this.pnlMenu.Location = new System.Drawing.Point(0, 759);
             this.pnlMenu.Size = new System.Drawing.Size(1074, 40);
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox2.Controls.Add(this.radioThir);
-            this.groupBox2.Controls.Add(this.radioNine);
+            this.groupBox2.Controls.Add(this.panel1);
+            this.groupBox2.Controls.Add(this.radioButtonB);
+            this.groupBox2.Controls.Add(this.radioButtonF);
             this.groupBox2.Controls.Add(this.slotComboBox);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.lotTextBox);
@@ -150,10 +159,31 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Micro inspection simple MAP";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radioNine);
+            this.panel1.Controls.Add(this.radioThir);
+            this.panel1.Location = new System.Drawing.Point(719, 25);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(100, 60);
+            this.panel1.TabIndex = 10;
+            // 
+            // radioNine
+            // 
+            this.radioNine.AutoSize = true;
+            this.radioNine.Location = new System.Drawing.Point(16, 3);
+            this.radioNine.Name = "radioNine";
+            this.radioNine.Size = new System.Drawing.Size(65, 16);
+            this.radioNine.TabIndex = 6;
+            this.radioNine.TabStop = true;
+            this.radioNine.Text = "9点检测";
+            this.radioNine.UseVisualStyleBackColor = true;
+            this.radioNine.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
             // radioThir
             // 
             this.radioThir.AutoSize = true;
-            this.radioThir.Location = new System.Drawing.Point(562, 67);
+            this.radioThir.Location = new System.Drawing.Point(16, 30);
             this.radioThir.Name = "radioThir";
             this.radioThir.Size = new System.Drawing.Size(71, 16);
             this.radioThir.TabIndex = 7;
@@ -162,17 +192,28 @@
             this.radioThir.UseVisualStyleBackColor = true;
             this.radioThir.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // radioNine
+            // radioButtonB
             // 
-            this.radioNine.AutoSize = true;
-            this.radioNine.Location = new System.Drawing.Point(562, 30);
-            this.radioNine.Name = "radioNine";
-            this.radioNine.Size = new System.Drawing.Size(65, 16);
-            this.radioNine.TabIndex = 6;
-            this.radioNine.TabStop = true;
-            this.radioNine.Text = "9点检测";
-            this.radioNine.UseVisualStyleBackColor = true;
-            this.radioNine.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioButtonB.AutoSize = true;
+            this.radioButtonB.Location = new System.Drawing.Point(562, 52);
+            this.radioButtonB.Name = "radioButtonB";
+            this.radioButtonB.Size = new System.Drawing.Size(71, 16);
+            this.radioButtonB.TabIndex = 9;
+            this.radioButtonB.TabStop = true;
+            this.radioButtonB.Text = "BackSide";
+            this.radioButtonB.UseVisualStyleBackColor = true;
+            this.radioButtonB.CheckedChanged += new System.EventHandler(this.radioButtonB_CheckedChanged);
+            // 
+            // radioButtonF
+            // 
+            this.radioButtonF.AutoSize = true;
+            this.radioButtonF.Location = new System.Drawing.Point(449, 52);
+            this.radioButtonF.Name = "radioButtonF";
+            this.radioButtonF.Size = new System.Drawing.Size(77, 16);
+            this.radioButtonF.TabIndex = 8;
+            this.radioButtonF.TabStop = true;
+            this.radioButtonF.Text = "FrontSide";
+            this.radioButtonF.UseVisualStyleBackColor = true;
             // 
             // slotComboBox
             // 
@@ -196,13 +237,13 @@
             // 
             // lotTextBox
             // 
-            this.lotTextBox.Enabled = false;
             this.lotTextBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lotTextBox.Location = new System.Drawing.Point(99, 49);
             this.lotTextBox.Multiline = true;
             this.lotTextBox.Name = "lotTextBox";
             this.lotTextBox.Size = new System.Drawing.Size(100, 21);
             this.lotTextBox.TabIndex = 3;
+            this.lotTextBox.TextChanged += new System.EventHandler(this.lotTextBox_TextChanged);
             // 
             // label16
             // 
@@ -235,11 +276,21 @@
             this.groupBox3.TabIndex = 41;
             this.groupBox3.TabStop = false;
             // 
+            // labelX
+            // 
+            this.labelX.AutoSize = true;
+            this.labelX.BackColor = System.Drawing.Color.Transparent;
+            this.labelX.Location = new System.Drawing.Point(211, 28);
+            this.labelX.Name = "labelX";
+            this.labelX.Size = new System.Drawing.Size(11, 12);
+            this.labelX.TabIndex = 23;
+            this.labelX.Text = "X";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(505, 28);
+            this.label4.Location = new System.Drawing.Point(800, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(11, 12);
             this.label4.TabIndex = 22;
@@ -247,20 +298,21 @@
             // 
             // qtyTextBox
             // 
-            this.qtyTextBox.Enabled = false;
             this.qtyTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.qtyTextBox.Location = new System.Drawing.Point(711, 23);
+            this.qtyTextBox.Location = new System.Drawing.Point(440, 23);
             this.qtyTextBox.Multiline = true;
             this.qtyTextBox.Name = "qtyTextBox";
             this.qtyTextBox.Size = new System.Drawing.Size(103, 20);
             this.qtyTextBox.TabIndex = 21;
+            this.qtyTextBox.TextChanged += new System.EventHandler(this.qtyTextBox_TextChanged);
+            this.qtyTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.qtyTextBox_KeyPress);
             // 
             // rateTextBox
             // 
             this.rateTextBox.Enabled = false;
             this.rateTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
             this.rateTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.rateTextBox.Location = new System.Drawing.Point(427, 25);
+            this.rateTextBox.Location = new System.Drawing.Point(722, 22);
             this.rateTextBox.Multiline = true;
             this.rateTextBox.Name = "rateTextBox";
             this.rateTextBox.Size = new System.Drawing.Size(100, 20);
@@ -270,7 +322,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.label3.Location = new System.Drawing.Point(337, 28);
+            this.label3.Location = new System.Drawing.Point(632, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 14);
             this.label3.TabIndex = 18;
@@ -280,7 +332,7 @@
             // 
             this.labelQty.AutoSize = true;
             this.labelQty.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.labelQty.Location = new System.Drawing.Point(593, 26);
+            this.labelQty.Location = new System.Drawing.Point(322, 26);
             this.labelQty.Name = "labelQty";
             this.labelQty.Size = new System.Drawing.Size(105, 14);
             this.labelQty.TabIndex = 19;
@@ -988,16 +1040,6 @@
             this.label14.TabIndex = 26;
             this.label14.Text = "Pls mark the defect with below special code";
             // 
-            // labelX
-            // 
-            this.labelX.AutoSize = true;
-            this.labelX.BackColor = System.Drawing.Color.Transparent;
-            this.labelX.Location = new System.Drawing.Point(211, 28);
-            this.labelX.Name = "labelX";
-            this.labelX.Size = new System.Drawing.Size(11, 12);
-            this.labelX.TabIndex = 23;
-            this.labelX.Text = "X";
-            // 
             // FrmMircoInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1017,6 +1059,8 @@
             this.pnlMenu.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -1108,5 +1152,8 @@
         private ImageUpload.ImageUpload imageUpload_15;
         private ImageUpload.ImageUpload imageUpload_13;
         private System.Windows.Forms.Label labelX;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton radioButtonB;
+        private System.Windows.Forms.RadioButton radioButtonF;
     }
 }

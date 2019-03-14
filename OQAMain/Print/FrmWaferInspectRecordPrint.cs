@@ -81,7 +81,7 @@ namespace OQAMain
                 {
                     case "1":
                         //Initialize
-                        ComFunc.FieldClear(this);                        
+                        ComFunc.FieldClear(this);
                         break;
                 }
             }
@@ -103,7 +103,7 @@ namespace OQAMain
             try
             {
 
-                
+
                 //检查数据
                 if (CheckCondition("Print") == false) return;
 
@@ -116,16 +116,17 @@ namespace OQAMain
                 {
 
 
-                    for(int slotID = 1; slotID <= 25; slotID++)
+                    for (int slotID = 1; slotID <= 25; slotID++)
                     {
 
                         //check waferNo
                         string waferid = string.Empty;
                         string SlotId1 = string.Empty;
-                        SlotId1 = "paramWaferID" + slotID.ToString().PadLeft(2,'0');
-                        if (lstISPWAFDFT.Count(p => decimal.Parse(p.SlotId) == slotID) > 0)
+                        string SlotId2 = slotID < 10 ? "00" + slotID : "0" + slotID;
+                        SlotId1 = "paramWaferID" + slotID.ToString().PadLeft(2, '0');
+                        if (lstISPWAFDFT.Count(p => decimal.Parse(p.SlotId) == decimal.Parse(SlotId2)) > 0)
                         {
-                              waferid = lstISPWAFDFT.Where(p => decimal.Parse(p.SlotId) == slotID).First().WaferId.ToString();
+                            waferid = lstISPWAFDFT.Where(p => decimal.Parse(p.SlotId) == decimal.Parse(SlotId2)).First().WaferId.ToString();
                         }
                         else
                         {
@@ -140,26 +141,8 @@ namespace OQAMain
                     this.reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", new List<WaferInspectRecord_sub>()));
                     this.reportViewer1.RefreshReport();
                 }
-                    //调用事务服务
-                    // if (UpdateBoxShipment(GlobConst.TRAN_CREATE) == false) return;
 
-                    //控件重定义
-                    //if (MPCF.Trim(txtBox_LotID.Text) != "")
-                    //{
-                    //控件初始化
-                    //ComFunc.ClearList(lisOperLotList);
-                    //ComFunc.ClearList(spdBox_SubTask);
-                    ////MPCF.ClearList(spdOrderID);
-                    //ComFunc.FieldClear(spdOrderID);
-                    //ComFunc.ClearList(spdBox_LayoutID_MarkID);
-                    //ComFunc.FieldClear(pnlTask);
-                    //重新查询
-                    //View_Lot_List("2");
-                    //ViewSubLotListExt();
-                    //ViewLotBoxListExt('2');
-                    //View_Order_list(txtBox_LotID.Text);
-                    //}
-                }
+            }
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
@@ -170,7 +153,7 @@ namespace OQAMain
         {
 
             //this.reportViewer1.RefreshReport();
-           
+
             reportViewer1.LocalReport.SubreportProcessing += LocalReport_SubreportProcessing;
         }
 
@@ -178,25 +161,36 @@ namespace OQAMain
         public List<ReportParameter> GenerateLabelParameters()
         {
             List<ReportParameter> lstParam = new List<ReportParameter>();
+            string lotID = String.Empty;
+            string Partid = String.Empty;
+            string Qty = String.Empty;
+            string Stime = String.Empty;
+            string uerid = String.Empty;
+            string Foupid = String.Empty;
 
             if (lstLot.Count > 0)
             {
-                string lotID = lstLot[0].LotId;
-                string Partid = lstLot[0].PartId.ToString();
-                string Qty = lstLot[0].Qty.ToString();
-                string Stime = lstLot[0].UpdateTime.ToString();
-                string uerid = lstLot[0].CreateUserId.ToString();
-                string Foupid = lstLot[0].FoupId.ToString();
-                lstParam.Add(new ReportParameter("paramLotID", lotID));
-                lstParam.Add(new ReportParameter("paramPartID", Partid));
-                lstParam.Add(new ReportParameter("paramQTY", Qty));
-                lstParam.Add(new ReportParameter("paramDate", Stime));
-                lstParam.Add(new ReportParameter("paramUserid", uerid));
-                lstParam.Add(new ReportParameter("paramFoupid", Foupid));
+                lotID = lstLot[0].LotId;
+                Partid = lstLot[0].PartId.ToString();
+                Qty = lstLot[0].Qty.ToString();
+                Stime = lstLot[0].UpdateTime.ToString();
+                uerid = lstLot[0].CreateUserId.ToString();
+                Foupid = lstLot[0].FoupId.ToString();
+
+               
             }
-            else {
+            else
+            {
                 MessageBox.Show("不存在此lotid可打印的检验报告，请确认lotid！");
             }
+
+            lstParam.Add(new ReportParameter("paramLotID", lotID));
+            lstParam.Add(new ReportParameter("paramPartID", Partid));
+            lstParam.Add(new ReportParameter("paramQTY", Qty));
+            lstParam.Add(new ReportParameter("paramDate", Stime));
+            lstParam.Add(new ReportParameter("paramUserid", uerid));
+            lstParam.Add(new ReportParameter("paramFoupid", Foupid));
+
             return lstParam;
         }
 
@@ -208,15 +202,16 @@ namespace OQAMain
                 var waferSeq = int.Parse(e.Parameters["ReportSeq"].Values[0]);
                 e.DataSources.Clear();
                 var slotID = Math.Ceiling((decimal)waferSeq / 2);
-                var side = waferSeq % 2 ==1?"F":"B";
+                string slotID1 = slotID < 10 ? "00" + slotID : "0" + slotID;
+                var side = waferSeq % 2 == 1 ? "F" : "B";
                 var waferdefectcode = new List<WaferInspectRecord_sub>();
                 List<ReportParameter> lstParamWafer = new List<ReportParameter>();
 
 
 
-                if (lstISPWAFDFT.Count(p=>decimal.Parse(p.SlotId)==slotID && p.SideType ==side) > 0)
+                if (lstISPWAFDFT.Count(p => decimal.Parse(p.SlotId) == decimal.Parse(slotID1) && p.SideType == side) > 0)
                 {
-                    var currentSlotISPWAFDFT = lstISPWAFDFT.Where(p => decimal.Parse(p.SlotId) == slotID && p.SideType == side);
+                    var currentSlotISPWAFDFT = lstISPWAFDFT.Where(p => decimal.Parse(p.SlotId) == decimal.Parse(slotID1) && p.SideType == side);
 
                     for (int idx = 1; idx <= 25; idx++)
                     {
@@ -225,10 +220,10 @@ namespace OQAMain
                         string defectCod3 = string.Empty;
                         string defectCod4 = string.Empty;
                         string defectCod5 = string.Empty;
-                        
-                        if(currentSlotISPWAFDFT.Count(p=>p.AreaId == idx) >0)
+
+                        if (currentSlotISPWAFDFT.Count(p => p.AreaId == idx) > 0)
                         {
-                            defectCod1 = string.Join(",",currentSlotISPWAFDFT.Where(p => p.AreaId == idx).Select< ISPWAFDFT,string>(p=>p.DefectCode));
+                            defectCod1 = string.Join(",", currentSlotISPWAFDFT.Where(p => p.AreaId == idx).Select<ISPWAFDFT, string>(p => p.DefectCode));
                         }
                         idx++;
                         if (currentSlotISPWAFDFT.Count(p => p.AreaId == idx) > 0)
@@ -269,7 +264,7 @@ namespace OQAMain
                         string defectCod4 = string.Empty;
                         string defectCod5 = string.Empty;
 
-                       
+
                         var waferInspectRecord_sub = new WaferInspectRecord_sub(defectCod1, defectCod2, defectCod3, defectCod4, defectCod5);
 
                         waferdefectcode.Add(waferInspectRecord_sub);
@@ -279,16 +274,16 @@ namespace OQAMain
                 e.DataSources.Add(new ReportDataSource("DataSet1", waferdefectcode));
             }
 
-            
+
         }
 
         private List<ISPWAFDFT> lstISPWAFDFT;
         private List<ISPLOTSTS> lstLot;
 
-        private bool QueryWaferInspectRecordInfo(char c_proc_step, char c_tran_flag,string in_lotid)
+        private bool QueryWaferInspectRecordInfo(char c_proc_step, char c_tran_flag, string in_lotid)
         {
 
-           
+
 
             ModelRsp<WaferInspectRecordView> in_node = new ModelRsp<WaferInspectRecordView>();
             WaferInspectRecordView in_data = new WaferInspectRecordView();
@@ -301,7 +296,7 @@ namespace OQAMain
 
             var out_data = OQASrv.Call.QueryWaferInspectionRecordInfo(in_node);
             var out_data_lot = OQASrv.Call.QueryLotInfo(in_node);
-         //   var DataTableCount = out_data.model.ISPWAFDFT_list.Count;
+            //   var DataTableCount = out_data.model.ISPWAFDFT_list.Count;
             if (out_data._success == true)
             {
                 lstISPWAFDFT = out_data.model.ISPWAFDFT_list;
@@ -323,7 +318,7 @@ namespace OQAMain
 
         private void TxtLotPress_check(object sender, KeyPressEventArgs e)
         {
-           
+
             if (e.KeyChar == (Char)13)
             {
                 if (ComFunc.Trim(txtLotID.Text) != "")

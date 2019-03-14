@@ -36,7 +36,6 @@
             this.labLotid = new System.Windows.Forms.Label();
             this.grpFoupChange = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Slotid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,22 +68,31 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(650, 6);
+            // 
             // btnCreate
             // 
-            this.btnCreate.Visible = false;
+            this.btnCreate.Location = new System.Drawing.Point(462, 6);
+            this.btnCreate.Text = "Submit";
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
+            this.btnEdite.Location = new System.Drawing.Point(556, 6);
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
             // 
             this.pnlMenu.Controls.Add(this.btnPrint);
-            this.pnlMenu.Controls.SetChildIndex(this.lblSucessMsg, 0);
+            this.pnlMenu.Location = new System.Drawing.Point(0, 540);
+            this.pnlMenu.Size = new System.Drawing.Size(750, 40);
             this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnRefresh, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.lblSucessMsg, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnPrint, 0);
             // 
             // grpLotInfo
@@ -163,7 +171,6 @@
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Slotid,
             this.Column1,
             this.Column2,
             this.Column3,
@@ -196,13 +203,6 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(744, 470);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // Slotid
-            // 
-            this.Slotid.HeaderText = "Slot";
-            this.Slotid.Name = "Slotid";
-            this.Slotid.ReadOnly = true;
-            this.Slotid.Width = 54;
             // 
             // Column1
             // 
@@ -363,6 +363,7 @@
             this.btnPrint.TabIndex = 6;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // FrmFoupChange
             // 
@@ -393,7 +394,8 @@
         private System.Windows.Forms.Label labLotid;
         private System.Windows.Forms.GroupBox grpFoupChange;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Slotid;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -419,7 +421,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
-        private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.Label label1;
     }
 }

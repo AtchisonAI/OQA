@@ -7,21 +7,21 @@
         <ReportItems>
           <Rectangle Name="Rectangle54">
             <ReportItems>
-              <Line Name="Line1">
-                <Top>3.85763cm</Top>
-                <Left>1.76953cm</Left>
-                <Height>0cm</Height>
-                <Width>24.80309cm</Width>
+              <Line Name="Line3">
+                <Top>2.7993cm</Top>
+                <Left>0.64752cm</Left>
+                <Height>11.06293cm</Height>
+                <Width>0cm</Width>
                 <Style>
                   <Border>
                     <Style>Solid</Style>
                   </Border>
                 </Style>
               </Line>
-              <Line Name="Line2">
-                <Top>3.9399cm</Top>
-                <Left>16.12475cm</Left>
-                <Height>3.64067cm</Height>
+              <Line Name="Line15">
+                <Top>2.7993cm</Top>
+                <Left>16.92785cm</Left>
+                <Height>10.99238cm</Height>
                 <Width>0cm</Width>
                 <ZIndex>1</ZIndex>
                 <Style>
@@ -30,11 +30,11 @@
                   </Border>
                 </Style>
               </Line>
-              <Line Name="Line4">
-                <Top>5.67796cm</Top>
-                <Left>1.71873cm</Left>
+              <Line Name="Line1">
+                <Top>2.7993cm</Top>
+                <Left>0.67292cm</Left>
                 <Height>0cm</Height>
-                <Width>24.85389cm</Width>
+                <Width>16.25493cm</Width>
                 <ZIndex>2</ZIndex>
                 <Style>
                   <Border>
@@ -42,12 +42,36 @@
                   </Border>
                 </Style>
               </Line>
-              <Line Name="Line6">
-                <Top>3.92818cm</Top>
-                <Left>4.53213cm</Left>
-                <Height>10.99238cm</Height>
+              <Line Name="Line2">
+                <Top>2.7993cm</Top>
+                <Left>9.84019cm</Left>
+                <Height>3.64067cm</Height>
                 <Width>0cm</Width>
                 <ZIndex>3</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                </Style>
+              </Line>
+              <Line Name="Line4">
+                <Top>4.61963cm</Top>
+                <Left>0.67292cm</Left>
+                <Height>0cm</Height>
+                <Width>16.25493cm</Width>
+                <ZIndex>4</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                </Style>
+              </Line>
+              <Line Name="Line6">
+                <Top>2.86985cm</Top>
+                <Left>3.48632cm</Left>
+                <Height>10.99238cm</Height>
+                <Width>0cm</Width>
+                <ZIndex>5</ZIndex>
                 <Style>
                   <Border>
                     <Style>Solid</Style>
@@ -62,7 +86,6 @@
                       <TextRun>
                         <Value>Productname:</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -73,11 +96,11 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Top>4.54857cm</Top>
-                <Left>1.86972cm</Left>
+                <Top>3.49024cm</Top>
+                <Left>0.67292cm</Left>
                 <Height>0.61172cm</Height>
                 <Width>2.55658cm</Width>
-                <ZIndex>4</ZIndex>
+                <ZIndex>6</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -91,14 +114,14 @@
               </Textbox>
               <Image Name="barcodePartName">
                 <Source>Database</Source>
-                <Value>=System.Convert.FromBase64String(Parameters!parambarcodePartName.Value)</Value>
+                <Value>=System.Convert.FromBase64String(Parameters!paramPartNameBarcode.Value)</Value>
                 <MIMEType>image/jpeg</MIMEType>
                 <Sizing>Fit</Sizing>
-                <Top>4.08693cm</Top>
-                <Left>4.84858cm</Left>
+                <Top>3.0286cm</Top>
+                <Left>3.80277cm</Left>
                 <Height>0.59478cm</Height>
-                <Width>10.99679cm</Width>
-                <ZIndex>5</ZIndex>
+                <Width>5.1495cm</Width>
+                <ZIndex>7</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -113,7 +136,6 @@
                       <TextRun>
                         <Value>Date:</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -123,11 +145,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>4.57201cm</Top>
-                <Left>16.30114cm</Left>
+                <Top>3.49024cm</Top>
+                <Left>10.28116cm</Left>
                 <Height>0.61172cm</Height>
                 <Width>2.96563cm</Width>
-                <ZIndex>6</ZIndex>
+                <ZIndex>8</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -139,24 +161,12 @@
                   <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
-              <Line Name="Line3">
-                <Top>3.85763cm</Top>
-                <Left>1.69333cm</Left>
-                <Height>11.06293cm</Height>
-                <Width>0cm</Width>
-                <ZIndex>7</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>Solid</Style>
-                  </Border>
-                </Style>
-              </Line>
               <Line Name="Line5">
-                <Top>3.9399cm</Top>
-                <Left>19.61725cm</Left>
+                <Top>2.7993cm</Top>
+                <Left>13.42318cm</Left>
                 <Height>3.64067cm</Height>
                 <Width>0cm</Width>
-                <ZIndex>8</ZIndex>
+                <ZIndex>9</ZIndex>
                 <Style>
                   <Border>
                     <Style>Solid</Style>
@@ -172,7 +182,9 @@
                       <TextRun>
                         <Label>&amp;ExecutionTime</Label>
                         <Value>=Globals!ExecutionTime</Value>
-                        <Style />
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style>
@@ -181,11 +193,11 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>ExecutionTime</rd:DefaultName>
-                <Top>4.57201cm</Top>
-                <Left>20.09033cm</Left>
+                <Top>3.49024cm</Top>
+                <Left>13.59957cm</Left>
                 <Height>0.58828cm</Height>
-                <Width>6.16302cm</Width>
-                <ZIndex>9</ZIndex>
+                <Width>2.7499cm</Width>
+                <ZIndex>10</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -205,7 +217,6 @@
                       <TextRun>
                         <Value>PartID:</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -216,11 +227,11 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Top>6.43946cm</Top>
-                <Left>1.79917cm</Left>
+                <Top>5.38113cm</Top>
+                <Left>0.67292cm</Left>
                 <Height>0.61172cm</Height>
                 <Width>2.55658cm</Width>
-                <ZIndex>10</ZIndex>
+                <ZIndex>11</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -237,11 +248,11 @@
                 <Value>=System.Convert.FromBase64String(Parameters!paramPartNOBarcode.Value)</Value>
                 <MIMEType>image/jpeg</MIMEType>
                 <Sizing>Fit</Sizing>
-                <Top>5.97782cm</Top>
-                <Left>4.85846cm</Left>
+                <Top>4.91949cm</Top>
+                <Left>3.81265cm</Left>
                 <Height>0.59478cm</Height>
-                <Width>10.9615cm</Width>
-                <ZIndex>11</ZIndex>
+                <Width>5.11421cm</Width>
+                <ZIndex>12</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -256,7 +267,7 @@
                       <TextRun>
                         <Value>=Parameters!paramPartNo.Value</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
                     </TextRuns>
@@ -266,11 +277,11 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>paramPartNO</rd:DefaultName>
-                <Top>6.81602cm</Top>
-                <Left>4.85846cm</Left>
+                <Top>5.75769cm</Top>
+                <Left>3.81265cm</Left>
                 <Height>0.61172cm</Height>
-                <Width>10.9615cm</Width>
-                <ZIndex>12</ZIndex>
+                <Width>5.11421cm</Width>
+                <ZIndex>13</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -283,11 +294,11 @@
                 </Style>
               </Textbox>
               <Line Name="Line8">
-                <Top>7.56885cm</Top>
-                <Left>1.75401cm</Left>
+                <Top>6.51052cm</Top>
+                <Left>0.67292cm</Left>
                 <Height>0cm</Height>
-                <Width>24.81861cm</Width>
-                <ZIndex>13</ZIndex>
+                <Width>16.21965cm</Width>
+                <ZIndex>14</ZIndex>
                 <Style>
                   <Border>
                     <Style>Solid</Style>
@@ -302,7 +313,6 @@
                       <TextRun>
                         <Value>Customer ID:</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -313,11 +323,11 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Top>6.45118cm</Top>
-                <Left>16.30114cm</Left>
+                <Top>5.36941cm</Top>
+                <Left>10.28116cm</Left>
                 <Height>0.61172cm</Height>
                 <Width>2.94023cm</Width>
-                <ZIndex>14</ZIndex>
+                <ZIndex>15</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -330,7 +340,6 @@
                 </Style>
               </Textbox>
               <Textbox Name="paramCustomerId">
-                <CanGrow>true</CanGrow>
                 <KeepTogether>true</KeepTogether>
                 <Paragraphs>
                   <Paragraph>
@@ -338,7 +347,9 @@
                       <TextRun>
                         <Label>@paramCustomerId</Label>
                         <Value>=Parameters!paramCustomerId.Value</Value>
-                        <Style />
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style>
@@ -346,11 +357,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>6.45118cm</Top>
-                <Left>20.09033cm</Left>
+                <Top>5.36941cm</Top>
+                <Left>13.59957cm</Left>
                 <Height>0.6cm</Height>
-                <Width>6.16302cm</Width>
-                <ZIndex>15</ZIndex>
+                <Width>2.7499cm</Width>
+                <ZIndex>16</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -370,7 +381,6 @@
                       <TextRun>
                         <Value>LotID:</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -381,11 +391,11 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Top>7.91474cm</Top>
-                <Left>1.79917cm</Left>
+                <Top>6.85641cm</Top>
+                <Left>0.67292cm</Left>
                 <Height>0.61172cm</Height>
                 <Width>2.55658cm</Width>
-                <ZIndex>16</ZIndex>
+                <ZIndex>17</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -402,11 +412,11 @@
                 <Value>=System.Convert.FromBase64String(Parameters!paramLotIdBarcode.Value)</Value>
                 <MIMEType>image/jpeg</MIMEType>
                 <Sizing>Fit</Sizing>
-                <Top>7.91474cm</Top>
-                <Left>4.82317cm</Left>
+                <Top>6.85641cm</Top>
+                <Left>3.77736cm</Left>
                 <Height>0.59478cm</Height>
-                <Width>21.43018cm</Width>
-                <ZIndex>17</ZIndex>
+                <Width>12.57211cm</Width>
+                <ZIndex>18</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -421,7 +431,7 @@
                       <TextRun>
                         <Value>=Parameters!paramLotId.Value</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
                     </TextRuns>
@@ -430,11 +440,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>8.75294cm</Top>
-                <Left>4.82317cm</Left>
+                <Top>7.69461cm</Top>
+                <Left>3.77736cm</Left>
                 <Height>0.61172cm</Height>
-                <Width>21.43018cm</Width>
-                <ZIndex>18</ZIndex>
+                <Width>12.57211cm</Width>
+                <ZIndex>19</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -447,11 +457,11 @@
                 </Style>
               </Textbox>
               <Line Name="Line9">
-                <Top>9.83456cm</Top>
-                <Left>1.69333cm</Left>
+                <Top>8.77623cm</Top>
+                <Left>0.67292cm</Left>
                 <Height>0cm</Height>
-                <Width>24.87929cm</Width>
-                <ZIndex>19</ZIndex>
+                <Width>16.28033cm</Width>
+                <ZIndex>20</ZIndex>
                 <Style>
                   <Border>
                     <Style>Solid</Style>
@@ -466,7 +476,6 @@
                       <TextRun>
                         <Value>Slot:</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -477,11 +486,11 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Top>10.26954cm</Top>
-                <Left>1.79917cm</Left>
+                <Top>9.21121cm</Top>
+                <Left>0.67292cm</Left>
                 <Height>0.61172cm</Height>
                 <Width>2.55658cm</Width>
-                <ZIndex>20</ZIndex>
+                <ZIndex>21</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -502,7 +511,7 @@
                         <Label>@paramSlot</Label>
                         <Value>=Parameters!paramSlot.Value</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
                     </TextRuns>
@@ -511,11 +520,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>10.26954cm</Top>
-                <Left>4.82317cm</Left>
+                <Top>9.21121cm</Top>
+                <Left>3.77736cm</Left>
                 <Height>0.61172cm</Height>
-                <Width>21.43018cm</Width>
-                <ZIndex>21</ZIndex>
+                <Width>12.57211cm</Width>
+                <ZIndex>22</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -535,7 +544,6 @@
                       <TextRun>
                         <Value>Quantity:</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -546,11 +554,11 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Top>11.69829cm</Top>
-                <Left>1.79917cm</Left>
+                <Top>10.63996cm</Top>
+                <Left>0.67292cm</Left>
                 <Height>0.61172cm</Height>
                 <Width>2.55658cm</Width>
-                <ZIndex>22</ZIndex>
+                <ZIndex>23</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -563,11 +571,11 @@
                 </Style>
               </Textbox>
               <Line Name="Line10">
-                <Top>11.28977cm</Top>
-                <Left>1.69333cm</Left>
+                <Top>10.23144cm</Top>
+                <Left>0.67292cm</Left>
                 <Height>0cm</Height>
-                <Width>24.87929cm</Width>
-                <ZIndex>23</ZIndex>
+                <Width>16.28033cm</Width>
+                <ZIndex>24</ZIndex>
                 <Style>
                   <Border>
                     <Style>Solid</Style>
@@ -575,11 +583,11 @@
                 </Style>
               </Line>
               <Line Name="Line11">
-                <Top>12.61269cm</Top>
-                <Left>1.69333cm</Left>
+                <Top>11.55436cm</Top>
+                <Left>0.67292cm</Left>
                 <Height>0cm</Height>
-                <Width>24.87929cm</Width>
-                <ZIndex>24</ZIndex>
+                <Width>16.28033cm</Width>
+                <ZIndex>25</ZIndex>
                 <Style>
                   <Border>
                     <Style>Solid</Style>
@@ -591,11 +599,11 @@
                 <Value>=System.Convert.FromBase64String(Parameters!paramQuantityBarcode.Value)</Value>
                 <MIMEType>image/jpeg</MIMEType>
                 <Sizing>Fit</Sizing>
-                <Top>11.71523cm</Top>
-                <Left>4.78789cm</Left>
+                <Top>10.6569cm</Top>
+                <Left>3.74208cm</Left>
                 <Height>0.59478cm</Height>
-                <Width>11.03207cm</Width>
-                <ZIndex>25</ZIndex>
+                <Width>6.09811cm</Width>
+                <ZIndex>26</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -611,7 +619,7 @@
                         <Label>@paramQuantity</Label>
                         <Value>=Parameters!paramQuantity.Value</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
                     </TextRuns>
@@ -620,11 +628,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>11.71523cm</Top>
-                <Left>16.12475cm</Left>
+                <Top>10.6569cm</Top>
+                <Left>9.9813cm</Left>
                 <Height>0.61172cm</Height>
-                <Width>10.1286cm</Width>
-                <ZIndex>26</ZIndex>
+                <Width>6.36816cm</Width>
+                <ZIndex>27</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -644,7 +652,6 @@
                       <TextRun>
                         <Value>Cust LotID:</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -655,11 +662,11 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Top>12.91537cm</Top>
-                <Left>1.79916cm</Left>
+                <Top>11.85704cm</Top>
+                <Left>0.67292cm</Left>
                 <Height>0.61172cm</Height>
                 <Width>2.55658cm</Width>
-                <ZIndex>27</ZIndex>
+                <ZIndex>28</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -680,7 +687,7 @@
                         <Label>@paramCustLotid</Label>
                         <Value>=Parameters!paramCustLotid.Value</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
                     </TextRuns>
@@ -689,11 +696,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>12.91537cm</Top>
-                <Left>4.67324cm</Left>
+                <Top>11.85704cm</Top>
+                <Left>3.62743cm</Left>
                 <Height>0.61172cm</Height>
-                <Width>11.14672cm</Width>
-                <ZIndex>28</ZIndex>
+                <Width>5.32484cm</Width>
+                <ZIndex>29</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -706,11 +713,11 @@
                 </Style>
               </Textbox>
               <Line Name="Line7">
-                <Top>12.61269cm</Top>
-                <Left>16.12475cm</Left>
+                <Top>11.55436cm</Top>
+                <Left>9.84019cm</Left>
                 <Height>2.30787cm</Height>
                 <Width>0cm</Width>
-                <ZIndex>29</ZIndex>
+                <ZIndex>30</ZIndex>
                 <Style>
                   <Border>
                     <Style>Solid</Style>
@@ -718,11 +725,11 @@
                 </Style>
               </Line>
               <Line Name="Line12">
-                <Top>12.61269cm</Top>
-                <Left>19.61725cm</Left>
+                <Top>11.55436cm</Top>
+                <Left>13.42318cm</Left>
                 <Height>2.30787cm</Height>
                 <Width>0cm</Width>
-                <ZIndex>30</ZIndex>
+                <ZIndex>31</ZIndex>
                 <Style>
                   <Border>
                     <Style>Solid</Style>
@@ -737,7 +744,6 @@
                       <TextRun>
                         <Value>Orignalcountry:</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -748,11 +754,11 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Top>12.91537cm</Top>
-                <Left>16.68479cm</Left>
+                <Top>11.85704cm</Top>
+                <Left>10.28116cm</Left>
                 <Height>0.61172cm</Height>
-                <Width>2.55658cm</Width>
-                <ZIndex>31</ZIndex>
+                <Width>2.94023cm</Width>
+                <ZIndex>32</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -772,7 +778,7 @@
                       <TextRun>
                         <Value>=Parameters!paramOrignalCountry.Value</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
                     </TextRuns>
@@ -781,11 +787,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>12.91537cm</Top>
-                <Left>20.09033cm</Left>
+                <Top>11.86876cm</Top>
+                <Left>13.59957cm</Left>
                 <Height>0.61172cm</Height>
-                <Width>6.16302cm</Width>
-                <ZIndex>32</ZIndex>
+                <Width>2.7499cm</Width>
+                <ZIndex>33</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -798,11 +804,11 @@
                 </Style>
               </Textbox>
               <Line Name="Line13">
-                <Top>13.82977cm</Top>
-                <Left>1.69333cm</Left>
+                <Top>12.77144cm</Top>
+                <Left>0.67292cm</Left>
                 <Height>0cm</Height>
-                <Width>24.87929cm</Width>
-                <ZIndex>33</ZIndex>
+                <Width>16.28033cm</Width>
+                <ZIndex>34</ZIndex>
                 <Style>
                   <Border>
                     <Style>Solid</Style>
@@ -817,7 +823,6 @@
                       <TextRun>
                         <Value>QA stamp:</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -828,11 +833,11 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Top>14.00616cm</Top>
-                <Left>16.71019cm</Left>
+                <Top>12.94783cm</Top>
+                <Left>10.28116cm</Left>
                 <Height>0.61172cm</Height>
-                <Width>2.55658cm</Width>
-                <ZIndex>34</ZIndex>
+                <Width>2.94023cm</Width>
+                <ZIndex>35</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -853,7 +858,7 @@
                         <Label>@paramCustPartid</Label>
                         <Value>=Parameters!paramCustPartid.Value</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
                     </TextRuns>
@@ -862,11 +867,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>14.00616cm</Top>
-                <Left>4.69864cm</Left>
+                <Top>12.94783cm</Top>
+                <Left>3.65283cm</Left>
                 <Height>0.61172cm</Height>
-                <Width>11.14672cm</Width>
-                <ZIndex>35</ZIndex>
+                <Width>5.29944cm</Width>
+                <ZIndex>36</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -886,7 +891,6 @@
                       <TextRun>
                         <Value>Cust PartID:</Value>
                         <Style>
-                          <FontSize>8pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -897,11 +901,11 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Top>14.00616cm</Top>
-                <Left>1.82456cm</Left>
+                <Top>12.94783cm</Top>
+                <Left>0.67292cm</Left>
                 <Height>0.61172cm</Height>
                 <Width>2.55658cm</Width>
-                <ZIndex>36</ZIndex>
+                <ZIndex>37</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -914,11 +918,11 @@
                 </Style>
               </Textbox>
               <Line Name="Line14">
-                <Top>14.92056cm</Top>
-                <Left>1.71873cm</Left>
+                <Top>13.86223cm</Top>
+                <Left>0.67292cm</Left>
                 <Height>0cm</Height>
-                <Width>24.87929cm</Width>
-                <ZIndex>37</ZIndex>
+                <Width>16.25493cm</Width>
+                <ZIndex>38</ZIndex>
                 <Style>
                   <Border>
                     <Style>Solid</Style>
@@ -934,7 +938,9 @@
                       <TextRun>
                         <Label>@paramQAstamp</Label>
                         <Value>=Parameters!paramQAstamp.Value</Value>
-                        <Style />
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style>
@@ -942,11 +948,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>14.00616cm</Top>
-                <Left>20.09033cm</Left>
+                <Top>12.95955cm</Top>
+                <Left>13.59957cm</Left>
                 <Height>0.6cm</Height>
-                <Width>6.16302cm</Width>
-                <ZIndex>38</ZIndex>
+                <Width>2.7499cm</Width>
+                <ZIndex>39</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -958,42 +964,16 @@
                   <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
-              <Line Name="Line15">
-                <Top>3.85763cm</Top>
-                <Left>26.59802cm</Left>
-                <Height>10.99238cm</Height>
-                <Width>0cm</Width>
-                <ZIndex>39</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>Solid</Style>
-                  </Border>
-                </Style>
-              </Line>
-              <Image Name="Image11">
-                <Source>Embedded</Source>
-                <Value>logo</Value>
-                <Sizing>FitProportional</Sizing>
-                <Top>1.27283cm</Top>
-                <Left>1.69333cm</Left>
-                <Height>2.47896cm</Height>
-                <Width>10.7075cm</Width>
-                <ZIndex>40</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                </Style>
-              </Image>
               <Textbox Name="paramPartName">
-                <CanGrow>true</CanGrow>
                 <KeepTogether>true</KeepTogether>
                 <Paragraphs>
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
                         <Value>=Parameters!paramPartName.Value</Value>
-                        <Style />
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
                       </TextRun>
                     </TextRuns>
                     <Style>
@@ -1002,11 +982,11 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>paramPartName</rd:DefaultName>
-                <Top>4.90157cm</Top>
-                <Left>4.85846cm</Left>
+                <Top>3.84324cm</Top>
+                <Left>3.81265cm</Left>
                 <Height>0.6cm</Height>
-                <Width>10.9615cm</Width>
-                <ZIndex>41</ZIndex>
+                <Width>5.11421cm</Width>
+                <ZIndex>40</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -1018,12 +998,27 @@
                   <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
+              <Image Name="Image11">
+                <Source>Embedded</Source>
+                <Value>logo</Value>
+                <Sizing>FitProportional</Sizing>
+                <Top>0.40853cm</Top>
+                <Left>0.64752cm</Left>
+                <Height>2.21438cm</Height>
+                <Width>7.13562cm</Width>
+                <ZIndex>41</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+              </Image>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>2.09815cm</Top>
-            <Left>2.09233cm</Left>
-            <Height>19.66912cm</Height>
-            <Width>29.78784cm</Width>
+            <Top>3.15648cm</Top>
+            <Left>1.68171cm</Left>
+            <Height>14.2893cm</Height>
+            <Width>17.65924cm</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1032,15 +1027,15 @@
             </Style>
           </Rectangle>
         </ReportItems>
-        <Height>12.41667in</Height>
+        <Height>7.11459in</Height>
         <Style />
       </Body>
-      <Width>13.95833in</Width>
+      <Width>7.90621in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
-        <LeftMargin>2cm</LeftMargin>
-        <RightMargin>2cm</RightMargin>
+        <LeftMargin>0cm</LeftMargin>
+        <RightMargin>0cm</RightMargin>
         <TopMargin>2cm</TopMargin>
         <BottomMargin>2cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>
@@ -1062,12 +1057,6 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="paramCustomerId">
-      <DataType>String</DataType>
-      <Nullable>true</Nullable>
-      <AllowBlank>true</AllowBlank>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="parambarcodePartName">
       <DataType>String</DataType>
       <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
@@ -1133,6 +1122,12 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="paramPartNameBarcode">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -1153,11 +1148,6 @@
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>paramCustomerId</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>3</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>parambarcodePartName</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -1208,6 +1198,11 @@
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>3</RowIndex>
           <ParameterName>paramQAstamp</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>paramPartNameBarcode</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

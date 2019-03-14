@@ -35,12 +35,14 @@ namespace OQAContract
 
         #endregion
 
-        #region AOI
+        #region AOI & MA & MI
         [OperationContract]
         ModelRsp<AOIShowView> QueryAOIInfo(ModelRsp<AOIShowView> queryReq);
         //AOIInputView
         [OperationContract]
         ModelRsp<AOIShowView> CreateOrUpdateAOI(UpdateModelReq<AOIShowView> updateReq);
+        [OperationContract]
+        ModelRsp<LotstsInfoView> QuerySlotstsInfo(ModelRsp<LotstsInfoView> queryInfoReq);
         #endregion
 
         #region  Lot Transfer
@@ -59,6 +61,10 @@ namespace OQAContract
         ModelRsp<LotSlotidView> QryLotMesSlotidInfo(ModelRsp<LotSlotidView> LotSlotidView);
         [OperationContract]
         ModelRsp<LotSlotidView> QryLotIspStsInfo(ModelRsp<LotSlotidView> LotSlotidView);
+        [OperationContract]
+        ModelRsp<LotSlotidSave> IstLotSltInfo(ModelRsp<LotSlotidSave> LotSlotidSave);
+        [OperationContract]
+        ModelRsp<LotSlotidView> UptLotIspStsInfo(ModelRsp<LotSlotidView> UptLotIspStsInfo);
         #endregion
 
         #region  IOQA Ship List Print
@@ -88,5 +94,13 @@ namespace OQAContract
         ModelRsp<WaferInspectRecordView> QueryWaferInspectionRecordInfo(ModelRsp<WaferInspectRecordView> WaferInspectRecord);
 
         #endregion
+
+        #region  Package Label Print
+        [OperationContract]
+        ModelRsp<PKGLabelPrintView> QueryPKGLabelInfo(ModelRsp<PKGLabelPrintView> PKGLabelView);
+       
+
+        #endregion
+
     }
 }

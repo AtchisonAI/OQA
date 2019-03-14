@@ -466,7 +466,7 @@ namespace OQAMain
             ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
             uploadCommonFunc(11, item);
             imageUpload_11.UpLoadFlag = 4;//by area
-            imageUpload_11.UpLoadByArea.Add(item);
+            imageUpload_11.UpLoadByArea = item;
         }
 
         private void imageUpload_13_btnUploadClicked(object sender, EventArgs e)
@@ -474,7 +474,7 @@ namespace OQAMain
             ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
             uploadCommonFunc(13, item);
             imageUpload_13.UpLoadFlag = 4;//by area
-            imageUpload_13.UpLoadByArea.Add(item);
+            imageUpload_13.UpLoadByArea = item;
         }
 
         private void imageUpload_15_btnUploadClicked(object sender, EventArgs e)
@@ -482,7 +482,7 @@ namespace OQAMain
             ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
             uploadCommonFunc(15, item);
             imageUpload_15.UpLoadFlag = 4;//by area
-            imageUpload_15.UpLoadByArea.Add(item);
+            imageUpload_15.UpLoadByArea = item;
         }
 
         private void imageUpload_3_btnUploadClicked(object sender, EventArgs e)
@@ -490,7 +490,7 @@ namespace OQAMain
             ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
             uploadCommonFunc(3, item);
             imageUpload_3.UpLoadFlag = 4;//by area
-            imageUpload_3.UpLoadByArea.Add(item);
+            imageUpload_3.UpLoadByArea = item;
         }
 
         private void imageUpload_23_btnUploadClicked(object sender, EventArgs e)
@@ -498,7 +498,7 @@ namespace OQAMain
             ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
             uploadCommonFunc(23, item);
             imageUpload_23.UpLoadFlag = 4;//by area
-            imageUpload_23.UpLoadByArea.Add(item);
+            imageUpload_23.UpLoadByArea = item;
         }
 
         private void imageUpload_17_btnUploadClicked(object sender, EventArgs e)
@@ -506,7 +506,7 @@ namespace OQAMain
             ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
             uploadCommonFunc(17, item);
             imageUpload_17.UpLoadFlag = 4;//by area
-            imageUpload_17.UpLoadByArea.Add(item);
+            imageUpload_17.UpLoadByArea = item;
         }
 
         private void imageUpload_7_btnUploadClicked(object sender, EventArgs e)
@@ -514,7 +514,7 @@ namespace OQAMain
             ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
             uploadCommonFunc(7, item);
             imageUpload_7.UpLoadFlag = 4;//by area
-            imageUpload_7.UpLoadByArea.Add(item);
+            imageUpload_7.UpLoadByArea = (item);
         }
 
         private void imageUpload_9_btnUploadClicked(object sender, EventArgs e)
@@ -522,7 +522,7 @@ namespace OQAMain
             ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
             uploadCommonFunc(9, item);
             imageUpload_9.UpLoadFlag = 4;//by area
-            imageUpload_9.UpLoadByArea.Add(item);
+            imageUpload_9.UpLoadByArea = (item);
         }
 
         private void imageUpload_19_btnUploadClicked(object sender, EventArgs e)
@@ -530,7 +530,7 @@ namespace OQAMain
             ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
             uploadCommonFunc(19, item);
             imageUpload_19.UpLoadFlag = 4;//by area
-            imageUpload_19.UpLoadByArea.Add(item);
+            imageUpload_19.UpLoadByArea = (item);
         }
 
         private void imageUpload_18_btnUploadClicked(object sender, EventArgs e)
@@ -538,7 +538,7 @@ namespace OQAMain
             ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
             uploadCommonFunc(18, item);
             imageUpload_18.UpLoadFlag = 4;//by area
-            imageUpload_18.UpLoadByArea.Add(item);
+            imageUpload_18.UpLoadByArea = (item);
         }
 
         private void imageUpload_12_btnUploadClicked(object sender, EventArgs e)
@@ -546,7 +546,7 @@ namespace OQAMain
             ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
             uploadCommonFunc(12, item);
             imageUpload_12.UpLoadFlag = 4;//by area
-            imageUpload_12.UpLoadByArea.Add(item);
+            imageUpload_12.UpLoadByArea = (item);
         }
 
         private void imageUpload_8_btnUploadClicked(object sender, EventArgs e)
@@ -554,7 +554,7 @@ namespace OQAMain
             ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
             uploadCommonFunc(8, item);
             imageUpload_8.UpLoadFlag = 4;//by area
-            imageUpload_8.UpLoadByArea.Add(item);
+            imageUpload_8.UpLoadByArea = (item);
         }
 
         private void imageUpload_14_btnUploadClicked(object sender, EventArgs e)
@@ -562,7 +562,7 @@ namespace OQAMain
             ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
             uploadCommonFunc(14, item);
             imageUpload_14.UpLoadFlag = 4;//by area
-            imageUpload_14.UpLoadByArea.Add(item);
+            imageUpload_14.UpLoadByArea = (item);
         }
         #endregion
         

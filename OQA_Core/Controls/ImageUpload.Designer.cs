@@ -44,9 +44,9 @@
             this.panel1.Controls.Add(this.txtPicName);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(306, 32);
+            this.panel1.Size = new System.Drawing.Size(337, 32);
             this.panel1.TabIndex = 2;
             // 
             // lblSts
@@ -64,7 +64,7 @@
             this.btnUpload.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnUpload.Location = new System.Drawing.Point(240, 6);
             this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(41, 21);
+            this.btnUpload.Size = new System.Drawing.Size(63, 21);
             this.btnUpload.TabIndex = 58;
             this.btnUpload.Text = "Save";
             this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
@@ -83,8 +83,8 @@
             // txtPicName
             // 
             this.txtPicName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPicName.Location = new System.Drawing.Point(39, 8);
-            this.txtPicName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPicName.Location = new System.Drawing.Point(39, 6);
+            this.txtPicName.Margin = new System.Windows.Forms.Padding(2);
             this.txtPicName.Name = "txtPicName";
             this.txtPicName.Size = new System.Drawing.Size(164, 21);
             this.txtPicName.TabIndex = 0;
@@ -95,7 +95,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "ImageUpload";
-            this.Size = new System.Drawing.Size(306, 32);
+            this.Size = new System.Drawing.Size(337, 32);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

@@ -44,10 +44,10 @@ namespace WCFModels.OQA
         //服务传入参数
         public ImageSave()
         {
-            ISPIMGDEF_List = new List<ISPIMGDEF>();
+            IspImgeDef = new ISPIMGDEF();
         }
         [DataMember]
-        public List<ISPIMGDEF> ISPIMGDEF_List { get; set; }
+        public ISPIMGDEF IspImgeDef { get; set; }
         [DataMember]
         public string PicStreamBase64
         {

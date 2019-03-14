@@ -94,9 +94,8 @@
     <Compile Include="7 FOUP change\UptLotIspStsInfo.cs" />
     <Compile Include="10 Package Label Print\QueryPKGLabelInfo.cs" />
     <Compile Include="1 Lot inspect\QryMesLotInfo.cs" />
-    <Compile Include="12 IOQA Ship List Print\QryPKGShipSummaryInfo.cs" />
-    <Compile Include="3 AOI inspection input\QryLotstsInfo.cs" />
-    <Compile Include="9 Lot Transfer\QueryLotDetail.cs" />
+    <Compile Include="8 Lot package\UpdateLotSts.cs" />
+    <Compile Include="8 Lot package\QueryLotPackageInfo.cs" />
     <Compile Include="ImageUpload\SaveImageInfo.cs" />
     <Compile Include="11 Wafer Insection Record Print\QueryLotInfo.cs" />
     <Compile Include="12 IOQA Ship List Print\QryPKGShipInfo.cs" />
@@ -131,7 +130,6 @@
     <Folder Include="4 Marco inspection input\" />
     <Folder Include="5 Mirco inspection input\" />
     <Folder Include="6 Defect send %28PNDN%29\" />
-    <Folder Include="8 Lot package\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

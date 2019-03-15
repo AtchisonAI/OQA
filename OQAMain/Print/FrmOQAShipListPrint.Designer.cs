@@ -49,16 +49,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(482, 13);
+            this.btnClose.Location = new System.Drawing.Point(589, 13);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(648, 13);
+            this.btnCreate.Location = new System.Drawing.Point(755, 13);
             this.btnCreate.Visible = false;
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(969, 10);
+            this.btnEdite.Location = new System.Drawing.Point(1076, 10);
             this.btnEdite.Text = "Export";
             this.btnEdite.Visible = false;
             // 
@@ -100,7 +100,6 @@
             this.CheckShipID.Size = new System.Drawing.Size(120, 84);
             this.CheckShipID.TabIndex = 4;
             this.CheckShipID.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.CheckShipID_ItemCheck);
-           // this.CheckShipID.SelectedValueChanged += new System.EventHandler(this.CheckShipID_SelectedValueChanged);
             // 
             // txtShipNo
             // 

@@ -233,8 +233,11 @@ namespace OQAMain
                         return;
                     }
                 }
-                    formshiplistprint.ShowDialog();
-                
+                formshiplistprint.FormBorderStyle = FormBorderStyle.FixedDialog;
+                formshiplistprint.WindowState = FormWindowState.Maximized;
+                formshiplistprint.StartPosition = FormStartPosition.CenterParent;
+                formshiplistprint.ShowDialog();
+
             }
             
 
@@ -534,6 +537,60 @@ namespace OQAMain
             txtCreater.Text = "";
             txtDate.Text = "";
             this.LotIDList.ItemCheck += LotIDList_ItemCheck;
+        }
+
+        private void textBox1Press_check(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == (Char)13)
+            {
+
+                if (ComFunc.Trim(txtSearchLotID.Text) != "")
+                {
+                    if (SearchLotIDList(GlobConst.TRAN_VIEW, '3', txtSearchLotID.Text.Trim()) == false) return;
+                }
+            }
+        }
+
+        private bool SearchLotIDList(char c_proc_step, char c_tran_flag,string searchlotid)
+        {
+            ModelRsp<QueryLotDetailView> in_node = new ModelRsp<QueryLotDetailView>();
+            QueryLotDetailView in_data = new QueryLotDetailView();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.IN_SEARCHLOTID_NO = searchlotid;
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.QueryLotDetail(in_node);
+
+
+            if (out_data._success == true)
+            {
+                LotIDList.Items.Clear();
+                for (int i = 0; i < out_data.model.SEARCHLOTID_list.Count; i++)
+                {
+
+                    ListViewItem list_item = new ListViewItem();
+                   
+                    list_item.Text = out_data.model.SEARCHLOTID_list[i][0].ToString();
+                    LotIDList.Items.Add(list_item.Text);
+
+                    //ListViewItem list_item = new ListViewItem();
+                    //ISPLOTSTS list = out_data.model.ISPLOTST_list[i];
+                    //list_item.Text = list.LotId;
+                    //LotIDList.Items.Add(list_item.Text);
+
+
+                }
+                lblSucessMsg.Text = out_data._MsgCode;
+                return true;
+            }                                 
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
         }
     }
 }

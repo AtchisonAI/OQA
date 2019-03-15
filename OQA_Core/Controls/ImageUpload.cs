@@ -180,7 +180,7 @@ namespace ImageUpload
                     {
                         //UpLoad By Lot
                         case 1:
-                            if (!string.IsNullOrWhiteSpace(UpLoadBySide.LotID) && !string.IsNullOrWhiteSpace(UpLoadBySide.ImageType))
+                            if (!string.IsNullOrWhiteSpace(UpLoadByLot.LotID) && !string.IsNullOrWhiteSpace(UpLoadByLot.ImageType))
                             {
                                 if (UpLoadByLot.ImageId != null)
                                 {
@@ -209,8 +209,8 @@ namespace ImageUpload
                             break;
                         //UpLoad By wafer
                         case 2:
-                            if (!string.IsNullOrWhiteSpace(UpLoadBySide.LotID) && !string.IsNullOrWhiteSpace(UpLoadBySide.Slot_ID) && !string.IsNullOrWhiteSpace(UpLoadBySide.Wafer_ID)
-                                && !string.IsNullOrWhiteSpace(UpLoadBySide.ImageType))
+                            if (!string.IsNullOrWhiteSpace(UpLoadByWafer.LotID) && !string.IsNullOrWhiteSpace(UpLoadByWafer.Slot_ID) && !string.IsNullOrWhiteSpace(UpLoadByWafer.Wafer_ID)
+                                && !string.IsNullOrWhiteSpace(UpLoadByWafer.ImageType))
                             {
                                 if (UpLoadByWafer.ImageId != null)
                                 {
@@ -280,9 +280,9 @@ namespace ImageUpload
                             break;
 
                         case 4:
-                            if (!string.IsNullOrWhiteSpace(UpLoadBySide.LotID) && !string.IsNullOrWhiteSpace(UpLoadBySide.Slot_ID) && !string.IsNullOrWhiteSpace(UpLoadBySide.Wafer_ID)
-                                && !string.IsNullOrWhiteSpace(UpLoadBySide.Inspect_Type) && !string.IsNullOrWhiteSpace(UpLoadBySide.Side_Type) && UpLoadByArea.Area_ID != 0 &&
-                                !string.IsNullOrWhiteSpace(UpLoadBySide.ImageType))
+                            if (!string.IsNullOrWhiteSpace(UpLoadByArea.LotID) && !string.IsNullOrWhiteSpace(UpLoadByArea.Slot_ID) && !string.IsNullOrWhiteSpace(UpLoadByArea.Wafer_ID)
+                                && !string.IsNullOrWhiteSpace(UpLoadByArea.Inspect_Type) && !string.IsNullOrWhiteSpace(UpLoadByArea.Side_Type) && UpLoadByArea.Area_ID != 0 &&
+                                !string.IsNullOrWhiteSpace(UpLoadByArea.ImageType))
                             {
                                 if (UpLoadByArea.ImageId != null)
                                 {

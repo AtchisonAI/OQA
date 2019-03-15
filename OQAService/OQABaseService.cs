@@ -9,11 +9,11 @@ using System.Reflection;
 
 namespace OQAService.Services
 {
-    public class OQABaseService: BaseService
+    public class OQABaseService : BaseService
     {
 
-        
-        public OQABaseService():base("OQADB")
+
+        public OQABaseService() : base("OQADB")
         {
 
         }
@@ -24,7 +24,53 @@ namespace OQAService.Services
         //{
         //    return db;
         //}
-        public static void InitTable( object sorcue)
+       // private int[] ballNumber = new int[13];
+        public int[] ChooseIspWafer(int chooseCount,int RowCount)
+        {
+            int[] ballNumber = new int[chooseCount];
+            try
+            {                
+                Random random = new Random();
+                bool sign = false;
+
+                for (int i = 0; i < chooseCount; i++)
+                {
+                    sign = false;
+                    // Console.WriteLine("the current count number is " + i);
+                    int randomNumber = random.Next(1, RowCount);
+                    // Console.WriteLine("output: " + randomNumber);
+                    if (i == 0)
+                    {
+                        ballNumber[0] = randomNumber;
+                    }
+                    else
+                    {
+                        for (int j = 0; j < i; j++)
+                        {
+                            if (randomNumber == ballNumber[j])
+                            {
+                                sign = true;
+                                i--;
+                                break;
+                            }
+                        }
+                        if (!sign)
+                        {
+                            ballNumber[i] = randomNumber;
+                        }
+                    }
+                }
+
+                return ballNumber;
+                 
+            }
+            catch (Exception ex)
+            {
+                return ballNumber;
+            }
+
+        }
+            public static void InitTable( object sorcue)
         {
             FieldInfo[] sourceFieldInfo = sorcue.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
 

@@ -17,9 +17,6 @@ namespace ImageUpload
 {
     public partial class ImageUpload : UserControl
     {
-
-
-
         #region "Variable Definition "
         Regex regExp = new Regex(@"^[A-Za-z]+(,[A-Za-z])*$");//可能带逗号的字符串
         public Panel selectPanel;//当前操作的panel
@@ -27,6 +24,8 @@ namespace ImageUpload
         public string textValue = "";
         public System.Windows.Forms.TextBox box;
         public System.Windows.Forms.GroupBox groupNode;
+        private bool b_Upload = true;
+        private ISPIMGDEF item;
         #endregion
 
         public ImageUpload()
@@ -34,10 +33,7 @@ namespace ImageUpload
             InitializeComponent();
         }
         [DefaultValue(" "), Description("By Lot上传(2个属性必输)：重新上传需要TranSeq和ImageId"), Category("自定义属性")]
-        public List<ByLot> UpLoadByLot
-        {
-            get;
-        } = new List<ByLot>();
+        public ByLot UpLoadByLot{get;set;} 
         [Serializable()]
         public class ByLot
         {
@@ -48,10 +44,7 @@ namespace ImageUpload
         }
 
         [DefaultValue(" "), Description("By wafer上传(4个属性必输)：重新上传需要TranSeq和ImageId"), Category("自定义属性")]//属性窗口中的相关说明
-        public List<ByWafer> UpLoadByWafer
-        {
-            get;
-        } = new List<ByWafer>();
+        public ByWafer UpLoadByWafer{ get; set;} 
 
         [Serializable()]
         public class ByWafer
@@ -66,10 +59,7 @@ namespace ImageUpload
 
 
         [DefaultValue(" "), Description("By Side上传(6个属性必输)：重新上传需要TranSeq和ImageId"), Category("自定义属性")]//属性窗口中的相关说明
-        public List<BySide> UpLoadBySide
-        {
-            get;
-        } = new List<BySide>();
+        public BySide UpLoadBySide{get;set;} 
 
         [Serializable()]
         public class BySide
@@ -85,10 +75,7 @@ namespace ImageUpload
         }
 
         [DefaultValue(" "), Description("By Area上传(7个属性必输)：重新上传需要TranSeq和ImageId"), Category("自定义属性")]//属性窗口中的相关说明
-        public List<ByArea> UpLoadByArea
-        {
-            get;
-        } = new List<ByArea>();
+        public ByArea UpLoadByArea{   get;set;} 
 
         [Serializable()]
         public class ByArea
@@ -176,197 +163,257 @@ namespace ImageUpload
         public event BtnClickHandle btnUploadClicked;
         public void btnUpload_Click(object sender, EventArgs e)
         {
-            try
+            ModelRsp<ImageSave> in_node = new ModelRsp<ImageSave>();
+            ImageSave in_data = new ImageSave();
+            char cTranFlag;
+
+            if (b_Upload)
             {
-                if (btnUploadClicked != null)
-                    btnUploadClicked(sender, new EventArgs());//把按钮自身作为参数传递
-
-                char cTranFlag;
-                ModelRsp<ImageSave> in_node = new ModelRsp<ImageSave>();
-                ImageSave in_data = new ImageSave();
-                ISPIMGDEF item = new ISPIMGDEF();
-
-                switch (UpLoadFlag)
+                try
                 {
-                    //UpLoad By Lot
-                    case 1:
-                        if (UpLoadByLot[0].LotID != null && UpLoadByLot[0].ImageType != null)
-                        {
-                            if (UpLoadByLot[0].ImageId != null)
-                            {
-                                cTranFlag = GlobConst.TRAN_UPDATE;
-                                in_data.C_PROC_STEP = cTranFlag;
-                                in_data.C_TRAN_FLAG = '1';
+                    if (btnUploadClicked != null)
+                        btnUploadClicked(sender, new EventArgs());//把按钮自身作为参数传递
 
-                                item.ImageId = UpLoadByLot[0].ImageId;
-                                item.TransSeq = UpLoadByLot[0].TranSeq;
+                    item = new ISPIMGDEF();
+
+                    switch (UpLoadFlag)
+                    {
+                        //UpLoad By Lot
+                        case 1:
+                            if (UpLoadByLot.LotID != null && UpLoadByLot.ImageType != null)
+                            {
+                                if (UpLoadByLot.ImageId != null)
+                                {
+                                    cTranFlag = GlobConst.TRAN_UPDATE;
+                                    in_data.C_PROC_STEP = cTranFlag;
+                                    in_data.C_TRAN_FLAG = '1';
+
+                                    item.ImageId = UpLoadByLot.ImageId;
+                                    item.TransSeq = UpLoadByLot.TranSeq;
+                                }
+                                else
+                                {
+                                    cTranFlag = GlobConst.TRAN_CREATE;
+                                    in_data.C_PROC_STEP = cTranFlag;
+                                    in_data.C_TRAN_FLAG = '1';
+                                }
+                                item.LotId = UpLoadByLot.LotID;
+                                item.ImageType = UpLoadByLot.ImageType;
+                                in_data.IspImgeDef = item;
                             }
                             else
                             {
-                                cTranFlag = GlobConst.TRAN_CREATE;
-                                in_data.C_PROC_STEP = cTranFlag;
-                                in_data.C_TRAN_FLAG = '1';
+                                MessageBox.Show("请检查UpLoadByLot属性LotID与ImageType是否赋值");
+                                return;
                             }
-                            item.LotId = UpLoadByLot[0].LotID;
-                            item.ImageType = UpLoadByLot[0].ImageType;
-                            in_data.ISPIMGDEF_List.Add(item);
-                        }
-                        else
-                        {
-                            MessageBox.Show("请检查UpLoadByLot属性LotID与ImageType是否赋值");
-                            return;
-                        }
-                        break;
-                    //UpLoad By wafer
-                    case 2:
-                        if (UpLoadByWafer[0].LotID != null && UpLoadByWafer[0].Slot_ID != null && UpLoadByWafer[0].Wafer_ID != null 
-                            && UpLoadByWafer[0].ImageType != null)
-                        {
-                            if (UpLoadByWafer[0].ImageId != null)
+                            break;
+                        //UpLoad By wafer
+                        case 2:
+                            if (UpLoadByWafer.LotID != null && UpLoadByWafer.Slot_ID != null && UpLoadByWafer.Wafer_ID != null
+                                && UpLoadByWafer.ImageType != null)
                             {
-                                cTranFlag = GlobConst.TRAN_UPDATE;
-                                in_data.C_PROC_STEP = cTranFlag;
-                                in_data.C_TRAN_FLAG = '1';
+                                if (UpLoadByWafer.ImageId != null)
+                                {
+                                    cTranFlag = GlobConst.TRAN_UPDATE;
+                                    in_data.C_PROC_STEP = cTranFlag;
+                                    in_data.C_TRAN_FLAG = '1';
 
-                                item.ImageId = UpLoadByWafer[0].ImageId;
-                                item.TransSeq = UpLoadByWafer[0].TranSeq;
+                                    item.ImageId = UpLoadByWafer.ImageId;
+                                    item.TransSeq = UpLoadByWafer.TranSeq;
+                                }
+                                else
+                                {
+                                    cTranFlag = GlobConst.TRAN_CREATE;
+                                    in_data.C_PROC_STEP = cTranFlag;
+                                    in_data.C_TRAN_FLAG = '1';
+
+                                }
+
+                                item.LotId = UpLoadByWafer.LotID;
+                                item.SlotId = UpLoadByWafer.Slot_ID;
+                                item.WaferId = UpLoadByWafer.Wafer_ID;
+                                item.ImageType = UpLoadByWafer.ImageType;
+                                in_data.IspImgeDef = item;
                             }
                             else
                             {
-                                cTranFlag = GlobConst.TRAN_CREATE;
-                                in_data.C_PROC_STEP = cTranFlag;
-                                in_data.C_TRAN_FLAG = '1';
-
+                                MessageBox.Show("请检查UpLoadByWafer属性LotID,slotID,waferID与ImageType是否赋值");
+                                return;
                             }
 
-                            item.LotId = UpLoadByWafer[0].LotID;
-                            item.SlotId = UpLoadByWafer[0].Slot_ID;
-                            item.WaferId = UpLoadByWafer[0].Wafer_ID;
-                            item.ImageType = UpLoadByWafer[0].ImageType;
-                            in_data.ISPIMGDEF_List.Add(item);
-                        }
-                        else
-                        {
-                            MessageBox.Show("请检查UpLoadByWafer属性LotID,slotID,waferID与ImageType是否赋值");
-                            return;
-                        }
+                            break;
 
-                        break;
-
-                    case 3:
-                        if (UpLoadBySide[0].LotID != null && UpLoadBySide[0].Slot_ID != null && UpLoadBySide[0].Wafer_ID != null 
-                            && UpLoadBySide[0].Inspect_Type != null && UpLoadBySide[0].Side_Type != null && UpLoadBySide[0].ImageType != null)
-                        {
-                            if (UpLoadBySide[0].ImageId != null)
+                        case 3:
+                            if (UpLoadBySide.LotID != null && UpLoadBySide.Slot_ID != null && UpLoadBySide.Wafer_ID != null
+                                && UpLoadBySide.Inspect_Type != null && UpLoadBySide.Side_Type != null && UpLoadBySide.ImageType != null)
                             {
-                                cTranFlag = GlobConst.TRAN_UPDATE;
-                                in_data.C_PROC_STEP = cTranFlag;
-                                in_data.C_TRAN_FLAG = '1';
+                                if (UpLoadBySide.ImageId != null)
+                                {
+                                    cTranFlag = GlobConst.TRAN_UPDATE;
+                                    in_data.C_PROC_STEP = cTranFlag;
+                                    in_data.C_TRAN_FLAG = '1';
 
-                                item.ImageId = UpLoadBySide[0].ImageId;
-                                item.TransSeq = UpLoadBySide[0].TranSeq;
+                                    item.ImageId = UpLoadBySide.ImageId;
+                                    item.TransSeq = UpLoadBySide.TranSeq;
+                                }
+                                else
+                                {
+                                    cTranFlag = GlobConst.TRAN_CREATE;
+                                    in_data.C_PROC_STEP = cTranFlag;
+                                    in_data.C_TRAN_FLAG = '1';
+
+                                }
+                                item.LotId = UpLoadBySide.LotID;
+                                item.SlotId = UpLoadBySide.Slot_ID;
+                                item.WaferId = UpLoadBySide.Wafer_ID;
+                                item.InspectType = UpLoadBySide.Inspect_Type;
+                                item.SideType = UpLoadBySide.Side_Type;
+                                item.ImageType = UpLoadBySide.ImageType;
+                                in_data.IspImgeDef = item;
                             }
                             else
                             {
-                                cTranFlag = GlobConst.TRAN_CREATE;
-                                in_data.C_PROC_STEP = cTranFlag;
-                                in_data.C_TRAN_FLAG = '1';
-
+                                MessageBox.Show("请检查UpLoadBySide属性LotID,slotID,waferID,InspectType,SideType与ImageType是否赋值");
+                                return;
                             }
-                            item.LotId = UpLoadBySide[0].LotID;
-                            item.SlotId = UpLoadBySide[0].Slot_ID;
-                            item.WaferId = UpLoadBySide[0].Wafer_ID;
-                            item.InspectType = UpLoadBySide[0].Inspect_Type;
-                            item.SideType = UpLoadBySide[0].Side_Type;
-                            item.ImageType = UpLoadBySide[0].ImageType;
-                            in_data.ISPIMGDEF_List.Add(item);
-                        }
-                        else
-                        {
-                            MessageBox.Show("请检查UpLoadBySide属性LotID,slotID,waferID,InspectType,SideType与ImageType是否赋值");
-                            return;
-                        }
 
-                        break;
+                            break;
 
-                    case 4:
-                        if (UpLoadByArea[0].LotID != null && UpLoadByArea[0].Slot_ID != null && UpLoadByArea[0].Wafer_ID != null
-                            && UpLoadByArea[0].Inspect_Type != null && UpLoadByArea[0].Side_Type != null && UpLoadByArea[0].Area_ID != 0 && UpLoadByArea[0].ImageType != null)
-                        {
-                            if (UpLoadByArea[0].ImageId != null)
+                        case 4:
+                            if (UpLoadByArea.LotID != null && UpLoadByArea.Slot_ID != null && UpLoadByArea.Wafer_ID != null
+                                && UpLoadByArea.Inspect_Type != null && UpLoadByArea.Side_Type != null && UpLoadByArea.Area_ID != 0 && UpLoadByArea.ImageType != null)
                             {
-                                cTranFlag = GlobConst.TRAN_UPDATE;
-                                in_data.C_PROC_STEP = cTranFlag;
-                                in_data.C_TRAN_FLAG = '1';
+                                if (UpLoadByArea.ImageId != null)
+                                {
+                                    cTranFlag = GlobConst.TRAN_UPDATE;
+                                    in_data.C_PROC_STEP = cTranFlag;
+                                    in_data.C_TRAN_FLAG = '1';
 
-                                item.ImageId = UpLoadByArea[0].ImageId;
-                                item.TransSeq = UpLoadByArea[0].TranSeq;
+                                    item.ImageId = UpLoadByArea.ImageId;
+                                    item.TransSeq = UpLoadByArea.TranSeq;
+                                }
+                                else
+                                {
+                                    cTranFlag = GlobConst.TRAN_CREATE;
+                                    in_data.C_PROC_STEP = cTranFlag;
+                                    in_data.C_TRAN_FLAG = '1';
+
+                                }
+                                item.LotId = UpLoadByArea.LotID;
+                                item.SlotId = UpLoadByArea.Slot_ID;
+                                item.WaferId = UpLoadByArea.Wafer_ID;
+                                item.InspectType = UpLoadByArea.Inspect_Type;
+                                item.SideType = UpLoadByArea.Side_Type;
+                                item.AreaId = UpLoadByArea.Area_ID;
+                                item.ImageType = UpLoadByArea.ImageType;
+                                in_data.IspImgeDef = item;
                             }
                             else
                             {
-                                cTranFlag = GlobConst.TRAN_CREATE;
-                                in_data.C_PROC_STEP = cTranFlag;
-                                in_data.C_TRAN_FLAG = '1';
-
+                                MessageBox.Show("请检查UpLoadByArea属性LotID,slotID,waferID,InspectType,SideType,Area_ID与ImageType是否赋值");
+                                return;
                             }
-                            item.LotId = UpLoadByArea[0].LotID;
-                            item.SlotId = UpLoadByArea[0].Slot_ID;
-                            item.WaferId = UpLoadByArea[0].Wafer_ID;
-                            item.InspectType = UpLoadByArea[0].Inspect_Type;
-                            item.SideType = UpLoadByArea[0].Side_Type;
-                            item.AreaId = UpLoadByArea[0].Area_ID;
-                            item.ImageType = UpLoadByArea[0].ImageType;
-                            in_data.ISPIMGDEF_List.Add(item);
-                        }
-                        else
-                        {
-                            MessageBox.Show("请检查UpLoadByArea属性LotID,slotID,waferID,InspectType,SideType,Area_ID与ImageType是否赋值");
-                            return;
-                        }
 
-                        break;
+                            break;
+                    }
+
+                    //上传图片
+                    FileStream fs = new FileStream(txtPicName.Text, FileMode.Open, FileAccess.Read);
+                    MemoryStream sm = new MemoryStream();
+                    fs.Position = 0;
+                    fs.CopyTo(sm);
+                    sm.Position = 0;
+
+                    string ImageBase64 = ComFunc.ImageToBase64(sm);
+
+                    in_data.PicStreamBase64 = ImageBase64;
+                    in_node.model = in_data;
+
+                    var out_data = OQASrv.Call.SaveImageInfo(in_node);
+                    if (out_data._success == true)
+                    {
+                        lblSts.Text = "已传";
+                        btnBrowser.Enabled = false;
+                        btnUpload.Text = "Delete";
+                        b_Upload = false;
+                        item = out_data.model.IspImgeDef;
+                        //btnUpload.Enabled = false;
+                        //MessageBox.Show(out_data._MsgCode);
+                    }
+                    else
+                    {
+                        btnUpload.Enabled = true;
+                        MessageBox.Show(out_data._ErrorMsg);
+
+                    }
                 }
-
-                //上传图片
-                FileStream fs = new FileStream(txtPicName.Text, FileMode.Open, FileAccess.Read);
-                MemoryStream sm = new MemoryStream();
-                fs.Position = 0;
-                fs.CopyTo(sm);
-                sm.Position = 0;
-
-                string ImageBase64 = ComFunc.ImageToBase64(sm);
-
-                in_data.PicStreamBase64 = ImageBase64;
-                in_node.model = in_data;
-
-                var out_data = OQASrv.Call.SaveImageInfo(in_node);
-                if (out_data._success == true)
-                {
-                    lblSts.Text = "已传";
-                    btnUpload.Enabled = false;
-                    //MessageBox.Show(out_data._MsgCode);
-
-                }
-                else
+                catch (Exception ex)
                 {
                     btnUpload.Enabled = true;
-                    MessageBox.Show(out_data._ErrorMsg);
-
+                    MessageBox.Show(ex.Message);
+                    return;
                 }
-            }
-            catch (Exception ex)
+            } else
             {
-                btnUpload.Enabled = true;
-                MessageBox.Show(ex.Message);
-                return;
+                try
+                {
+                    cTranFlag = GlobConst.TRAN_DELETE;
+                    in_data.C_PROC_STEP = cTranFlag;
+                    in_data.C_TRAN_FLAG = '1';
+                    in_data.IspImgeDef = item;
+                    in_node.model = in_data;
+                    var out_data = OQASrv.Call.SaveImageInfo(in_node);
+                    if (out_data._success == true)
+                    {
+                        RefreshContrl();
+
+                        //btnUpload.Enabled = false;
+                        //MessageBox.Show(out_data._MsgCode);
+                    }
+                    else
+                    {
+                        btnUpload.Enabled = false;
+                        MessageBox.Show(out_data._ErrorMsg);
+                    }
+                } catch (Exception ex)
+                {
+                    btnUpload.Enabled = false;
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+                //delete
+
             }
-
-
         }
 
+        public void UploadBylot(string lotId,string type)
+        {
+            UpLoadByLot = new ByLot();
+            UpLoadByLot.LotID = lotId;
+            UpLoadByLot.ImageType = type;
+            UpLoadFlag = OQA_Core.UpLoadFlag.ByLot;
+        }
 
+        public void InitByImgInstance(ISPIMGDEF instance)
+        {
+            item = instance;
+            lblSts.Text = "已传";
+            btnBrowser.Enabled = false;
+            btnUpload.Text = "Delete";
+            btnUpload.Enabled = true;
+            b_Upload = false;
+            
+            txtPicName.Text = instance.ImagePath;
+        }
 
-
-
+        public void RefreshContrl ()
+        {
+            lblSts.Text = "未传";
+            btnBrowser.Enabled = true;
+            btnUpload.Text = "Save";
+            btnUpload.Enabled = false;
+            b_Upload = true;
+            txtPicName.Text = string.Empty;
+        }
     }
 }

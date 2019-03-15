@@ -58,9 +58,10 @@ namespace OQAService.Services
                             //if (In_node.model.IN_SHIP_NO.Trim().Equals("") == false)
                             //{
                                 AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p=>p.LotId), null, LogicCondition.AndAlso,CompareType.NotEqual);
-                           // }
-                           
-                                                        
+                            // }
+
+                            AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.Status), "PackageOut", LogicCondition.AndAlso, CompareType.Equal);
+
                             AddSortCondition(PageQueryReq, GetParaName <ISPLOTSTS> (p=>p.LotId), SortType.ASC);
                             
                             var data = PageQuery<ISPLOTSTS>(PageQueryReq);

@@ -20,6 +20,11 @@ namespace OQAService.Services
                     queryConditionList = new List<QueryCondition>(),
                     sortCondittionList = new List<SortCondition>()
                 };
+                PageQueryReq PageQueryReq2 = new PageQueryReq()
+                {
+                    queryConditionList = new List<QueryCondition>(),
+                    sortCondittionList = new List<SortCondition>()
+                };
 
                 ModelRsp<IspMesLot> In_node = new ModelRsp<IspMesLot>();
                 ModelRsp<IspMesLot> Out_node = new ModelRsp<IspMesLot>();
@@ -51,7 +56,7 @@ namespace OQAService.Services
                         case '1':
                             //验证业务级输入参数
 
-
+                            //MES Query
                             PageQueryReq.CurrentPage = 1;
                             PageQueryReq.ItemsPerPage = 200;
                             if (In_node.model.C_LOT_ID.Trim().Equals("") == false)
@@ -68,6 +73,23 @@ namespace OQAService.Services
                             var data = PageQuery<OqaMeslot>(PageQueryReq);
 
                             Out_node.model.OQAMESLOT_LIST = data.models;
+                            //slot Query
+                            PageQueryReq2.CurrentPage = 1;
+                            PageQueryReq2.ItemsPerPage = 200;
+                            if (In_node.model.C_LOT_ID.Trim().Equals("") == false)
+                            {
+                                AddCondition(PageQueryReq2, GetParaName<OqaMeswafer>(p => p.Lotid), In_node.model.C_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                            }
+                            if (In_node.model.C_FOUP_ID.Trim().Equals("") == false)
+                            {
+                                AddCondition(PageQueryReq2, GetParaName<OqaMeswafer>(p => p.Foupid), In_node.model.C_FOUP_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                            }
+
+                            AddSortCondition(PageQueryReq2, GetParaName<OqaMeswafer>(p => p.Lotid), SortType.ASC);
+
+                            var slotdata = PageQuery<OqaMeswafer>(PageQueryReq2);
+
+                            Out_node.model.OQAMESWAFER_LIST = slotdata.models;
 
                             break;
 

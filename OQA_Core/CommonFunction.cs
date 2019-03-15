@@ -28,7 +28,7 @@ namespace OQA_Core
         /// <param name="sender"></param>
 
         /// <param name="e"></param>
-        public static  string ImageToBase64(MemoryStream img)
+        public static string ImageToBase64(MemoryStream img)
 
         {
 
@@ -391,7 +391,7 @@ namespace OQA_Core
         }
 
 
-        public static void InitListView(ListView MyListView,bool GridLines)
+        public static void InitListView(ListView MyListView, bool GridLines)
         {
             MyListView.Items.Clear();
             MyListView.View = System.Windows.Forms.View.Details;
@@ -425,6 +425,11 @@ namespace OQA_Core
                 {
                     control.Text = "";
                 }
+                if (control is ImageUpload.ImageUpload)
+                {
+                    ImageUpload.ImageUpload img = control as ImageUpload.ImageUpload;
+                    img.RefreshContrl();
+                }
             }
         }
 
@@ -440,14 +445,12 @@ namespace OQA_Core
         //判断是否为tab键
         public static bool CheckTabKey(KeyPressEventArgs e)
         {
-            e.KeyChar = Convert.ToChar(e.KeyChar.ToString().ToUpper());
-            return e.KeyChar == (char)9 ? true:false;
+            return e.KeyChar == (char)9 ? true : false;
         }
 
         //判断是否为Enter键
         public static bool CheckEnterKey(KeyPressEventArgs e)
         {
-            e.KeyChar = Convert.ToChar(e.KeyChar.ToString().ToUpper());
             return e.KeyChar == (char)13 ? true : false;
         }
     }
@@ -455,5 +458,5 @@ namespace OQA_Core
 
 
 
-  
+
 }

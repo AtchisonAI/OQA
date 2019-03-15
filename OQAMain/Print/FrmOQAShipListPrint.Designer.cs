@@ -52,22 +52,24 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(644, 7);
+            this.btnClose.Location = new System.Drawing.Point(539, 13);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(432, 10);
+            this.btnCreate.Location = new System.Drawing.Point(445, 14);
             this.btnCreate.Visible = false;
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(541, 10);
+            this.btnEdite.Location = new System.Drawing.Point(648, 10);
             this.btnEdite.Text = "Export";
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
             // 
             this.pnlMenu.Controls.Add(this.btnPrint);
+            this.pnlMenu.Location = new System.Drawing.Point(0, 540);
+            this.pnlMenu.Size = new System.Drawing.Size(750, 40);
             this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
@@ -192,7 +194,7 @@
             // btnPrint
             // 
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrint.Location = new System.Drawing.Point(563, 9);
+            this.btnPrint.Location = new System.Drawing.Point(356, 14);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 23);
             this.btnPrint.TabIndex = 7;

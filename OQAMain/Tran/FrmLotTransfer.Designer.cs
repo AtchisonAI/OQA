@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnUnCheckAll = new System.Windows.Forms.Button();
+            this.btnCheckAll = new System.Windows.Forms.Button();
             this.LotIDList = new System.Windows.Forms.CheckedListBox();
-            this.Select_All = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtDate = new System.Windows.Forms.TextBox();
+            this.txtCreater = new System.Windows.Forms.TextBox();
+            this.txtQTY = new System.Windows.Forms.TextBox();
+            this.txtPartID = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@
             this.Qty = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Part_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Inspection_Result = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CancelSelectAll = new System.Windows.Forms.CheckBox();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -58,18 +58,18 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(923, 14);
+            this.btnClose.Location = new System.Drawing.Point(1351, 14);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(829, 11);
+            this.btnCreate.Location = new System.Drawing.Point(454, 13);
             this.btnCreate.Text = "OK";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(724, 11);
+            this.btnEdite.Location = new System.Drawing.Point(1152, 11);
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
@@ -84,9 +84,9 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.groupBox1.Controls.Add(this.CancelSelectAll);
+            this.groupBox1.Controls.Add(this.btnUnCheckAll);
+            this.groupBox1.Controls.Add(this.btnCheckAll);
             this.groupBox1.Controls.Add(this.LotIDList);
-            this.groupBox1.Controls.Add(this.Select_All);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -97,6 +97,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "待发料批次清单";
             // 
+            // btnUnCheckAll
+            // 
+            this.btnUnCheckAll.Location = new System.Drawing.Point(129, 86);
+            this.btnUnCheckAll.Name = "btnUnCheckAll";
+            this.btnUnCheckAll.Size = new System.Drawing.Size(75, 23);
+            this.btnUnCheckAll.TabIndex = 9;
+            this.btnUnCheckAll.Text = "取消全选";
+            this.btnUnCheckAll.UseVisualStyleBackColor = true;
+            this.btnUnCheckAll.Click += new System.EventHandler(this.btnUnCheckAll_Click);
+            // 
+            // btnCheckAll
+            // 
+            this.btnCheckAll.Location = new System.Drawing.Point(12, 86);
+            this.btnCheckAll.Name = "btnCheckAll";
+            this.btnCheckAll.Size = new System.Drawing.Size(75, 23);
+            this.btnCheckAll.TabIndex = 8;
+            this.btnCheckAll.Text = "全选";
+            this.btnCheckAll.UseVisualStyleBackColor = true;
+            this.btnCheckAll.Click += new System.EventHandler(this.btnCheckAll_Click);
+            // 
             // LotIDList
             // 
             this.LotIDList.CheckOnClick = true;
@@ -106,18 +126,8 @@
             this.LotIDList.Size = new System.Drawing.Size(199, 404);
             this.LotIDList.Sorted = true;
             this.LotIDList.TabIndex = 7;
+            this.LotIDList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.LotIDList_ItemCheck);
             this.LotIDList.SelectedIndexChanged += new System.EventHandler(this.LstIspCode_SelectedIndexChanged);
-            // 
-            // Select_All
-            // 
-            this.Select_All.AutoSize = true;
-            this.Select_All.Location = new System.Drawing.Point(26, 89);
-            this.Select_All.Name = "Select_All";
-            this.Select_All.Size = new System.Drawing.Size(48, 16);
-            this.Select_All.TabIndex = 6;
-            this.Select_All.Text = "全选";
-            this.Select_All.UseVisualStyleBackColor = true;
-            this.Select_All.CheckedChanged += new System.EventHandler(this.Select_All_CheckedChanged);
             // 
             // textBox1
             // 
@@ -138,10 +148,10 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.txtDate);
+            this.groupBox2.Controls.Add(this.txtCreater);
+            this.groupBox2.Controls.Add(this.txtQTY);
+            this.groupBox2.Controls.Add(this.txtPartID);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
@@ -154,33 +164,36 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "发料批次信息";
             // 
-            // textBox5
+            // txtDate
             // 
-            this.textBox5.Location = new System.Drawing.Point(387, 82);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 21);
-            this.textBox5.TabIndex = 15;
+            this.txtDate.Location = new System.Drawing.Point(387, 82);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.ReadOnly = true;
+            this.txtDate.Size = new System.Drawing.Size(100, 21);
+            this.txtDate.TabIndex = 15;
             // 
-            // textBox4
+            // txtCreater
             // 
-            this.textBox4.Location = new System.Drawing.Point(121, 72);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 21);
-            this.textBox4.TabIndex = 14;
+            this.txtCreater.Location = new System.Drawing.Point(121, 72);
+            this.txtCreater.Name = "txtCreater";
+            this.txtCreater.Size = new System.Drawing.Size(100, 21);
+            this.txtCreater.TabIndex = 14;
             // 
-            // textBox3
+            // txtQTY
             // 
-            this.textBox3.Location = new System.Drawing.Point(387, 29);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 21);
-            this.textBox3.TabIndex = 13;
+            this.txtQTY.Location = new System.Drawing.Point(387, 29);
+            this.txtQTY.Name = "txtQTY";
+            this.txtQTY.ReadOnly = true;
+            this.txtQTY.Size = new System.Drawing.Size(100, 21);
+            this.txtQTY.TabIndex = 13;
             // 
-            // textBox2
+            // txtPartID
             // 
-            this.textBox2.Location = new System.Drawing.Point(121, 30);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 21);
-            this.textBox2.TabIndex = 12;
+            this.txtPartID.Location = new System.Drawing.Point(121, 30);
+            this.txtPartID.Name = "txtPartID";
+            this.txtPartID.ReadOnly = true;
+            this.txtPartID.Size = new System.Drawing.Size(100, 21);
+            this.txtPartID.TabIndex = 12;
             // 
             // label5
             // 
@@ -269,17 +282,6 @@
             // 
             this.Inspection_Result.Text = "Inspection_Result";
             // 
-            // CancelSelectAll
-            // 
-            this.CancelSelectAll.AutoSize = true;
-            this.CancelSelectAll.Location = new System.Drawing.Point(104, 89);
-            this.CancelSelectAll.Name = "CancelSelectAll";
-            this.CancelSelectAll.Size = new System.Drawing.Size(72, 16);
-            this.CancelSelectAll.TabIndex = 8;
-            this.CancelSelectAll.Text = "取消全选";
-            this.CancelSelectAll.UseVisualStyleBackColor = true;
-            this.CancelSelectAll.Click += new System.EventHandler(this.CancelSelect_All_CheckedChanged);
-            // 
             // FrmLotTransfer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -313,17 +315,16 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtDate;
+        private System.Windows.Forms.TextBox txtCreater;
+        private System.Windows.Forms.TextBox txtQTY;
+        private System.Windows.Forms.TextBox txtPartID;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.CheckBox Select_All;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView listship;
@@ -332,6 +333,7 @@
         private System.Windows.Forms.ColumnHeader Part_ID;
         private System.Windows.Forms.ColumnHeader Inspection_Result;
         private System.Windows.Forms.CheckedListBox LotIDList;
-        private System.Windows.Forms.CheckBox CancelSelectAll;
+        private System.Windows.Forms.Button btnUnCheckAll;
+        private System.Windows.Forms.Button btnCheckAll;
     }
 }

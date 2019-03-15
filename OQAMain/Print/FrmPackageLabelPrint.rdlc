@@ -520,16 +520,16 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>9.21121cm</Top>
+                <Top>8.91734cm</Top>
                 <Left>3.77736cm</Left>
-                <Height>0.61172cm</Height>
+                <Height>1.17299cm</Height>
                 <Width>12.57211cm</Width>
                 <ZIndex>22</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <VerticalAlign>Bottom</VerticalAlign>
+                  <VerticalAlign>Middle</VerticalAlign>
                   <PaddingLeft>2pt</PaddingLeft>
                   <PaddingRight>2pt</PaddingRight>
                   <PaddingTop>2pt</PaddingTop>

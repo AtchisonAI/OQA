@@ -78,6 +78,7 @@
             // btnEdite
             // 
             this.btnEdite.Location = new System.Drawing.Point(676, 11);
+            this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
             // 

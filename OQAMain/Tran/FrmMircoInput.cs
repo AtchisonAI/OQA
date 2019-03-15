@@ -101,6 +101,11 @@ namespace OQAMain
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+        //提交
+        private void btnEdite_Click(object sender, EventArgs e)
+        {
+            btnCreate_Click(sender, e);
+        }
         //刷新按钮
         private void btnRefresh_Click(object sender, EventArgs e)
         {
@@ -383,6 +388,7 @@ namespace OQAMain
                 model.C_TRAN_FLAG = GlobConst.TRAN_VIEW;
                 ModelRsp<AOIShowView> view = new ModelRsp<AOIShowView>();
                 view.model = model;
+                imgInfoList = null;
                 ModelRsp<AOIShowView> qryResult = OQASrv.Call.QueryAOIInfo(view);
                 if (!("").Equals(slotId))
                 {
@@ -404,7 +410,6 @@ namespace OQAMain
                             ComFunc.ClearBoxValue(groupBox3);
                             waferSurF.clearPanel();
                             checkAllOk();
-                            imgInfoList = null;
                         }
                         if (null != qryResult.model.ISPIMGDEF_list && qryResult.model.ISPIMGDEF_list.Count > 0)
                         {
@@ -426,7 +431,6 @@ namespace OQAMain
                         }
                         else
                         {//清除图片
-                            imgInfoList = null;
                             foreach (Control control in groupBox3.Controls)
                             {
                                 if (control is ImageUpload.ImageUpload)
@@ -445,7 +449,6 @@ namespace OQAMain
                     ComFunc.ClearBoxValue(groupBox3);
                     waferSurF.clearPanel();
                     checkAllOk();
-                    imgInfoList = null;
                 }
 
 
@@ -478,7 +481,7 @@ namespace OQAMain
             }
         }
         //图片上传
-        private void uploadCommonFunc(decimal araeId, ImageUpload.ImageUpload.ByArea item)
+        private void uploadCommonFunc(decimal areaId, ImageUpload.ImageUpload.ByArea item)
         {
             //ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
            
@@ -487,8 +490,8 @@ namespace OQAMain
             item.Side_Type = sideType;
             item.Wafer_ID = waferId;
             item.Inspect_Type =InspectType.MI;
-            item.ImageType = "Type_"+ araeId;
-            item.Area_ID = araeId;
+            item.ImageType = "Type_"+ areaId;
+            item.Area_ID = areaId;
             if (null != imgInfoList && imgInfoList.Count > 0)
             {
                 foreach (ISPIMGDEF img in imgInfoList)
@@ -610,11 +613,11 @@ namespace OQAMain
             imageUpload_14.UpLoadFlag = 4;//by area
             imageUpload_14.UpLoadByArea = (item);
         }
+
+        
+
         #endregion
 
-
-
-
-
+      
     }
 }

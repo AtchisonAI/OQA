@@ -81,6 +81,11 @@ namespace OQAMain
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+        //提交
+        private void btnEdite_Click(object sender, EventArgs e)
+        {
+            btnCreate_Click(sender, e);
+        }
         //slotId下拉框SelectedIndexChanged
         private void slotComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -294,6 +299,7 @@ namespace OQAMain
                 model.C_TRAN_FLAG = GlobConst.TRAN_VIEW;
                 ModelRsp<AOIShowView> view = new ModelRsp<AOIShowView>();
                 view.model = model;
+                imgInfo = null;
                 ModelRsp<AOIShowView> qryResult = OQASrv.Call.QueryAOIInfo(view);
                 if (!("").Equals(slotId))
                 {
@@ -307,7 +313,6 @@ namespace OQAMain
                         }
                         else
                         {
-                            imgInfo = null;
                             ComFunc.ClearBoxValue(groupBox3);
                         }
                         if (null != qryResult.model.ISPIMGDEF_list && qryResult.model.ISPIMGDEF_list.Count > 0)
@@ -324,7 +329,6 @@ namespace OQAMain
                         }
                         else
                         {//清除图片
-                            imgInfo = null;
                             foreach (Control control in groupBox3.Controls)
                             {
                                 if (control is ImageUpload.ImageUpload)
@@ -339,7 +343,6 @@ namespace OQAMain
                     }
                     else
                     {
-                        imgInfo = null;
                         ComFunc.ClearBoxValue(groupBox3);
                     }
                 }
@@ -355,8 +358,9 @@ namespace OQAMain
                 MessageBox.Show(e.Message);
             }
         }
+
         #endregion
 
-
+       
     }
 }

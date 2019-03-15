@@ -84,6 +84,11 @@ namespace OQAMain
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+        //提交
+        private void btnEdite_Click(object sender, EventArgs e)
+        {
+            btnCreate_Click(sender, e);
+        }
         //图片保存按钮
         private void imageUpload1_btnUploadClicked(object sender, EventArgs e)
         {
@@ -267,6 +272,7 @@ namespace OQAMain
                 ModelRsp<AOIShowView> view = new ModelRsp<AOIShowView>();
                 view.model = model;
                 ModelRsp<AOIShowView> qryResult = OQASrv.Call.QueryAOIInfo(view);
+                imgInfo = null;
                 if (!("").Equals(slotId))
                 {
                     if (null != qryResult.model)
@@ -287,7 +293,6 @@ namespace OQAMain
                         else
                         {
                             ComFunc.ClearBoxValue(groupBox3);
-                            imgInfo = null;
                         }
                         if (null != qryResult.model.ISPIMGDEF_list && qryResult.model.ISPIMGDEF_list.Count > 0)
                         {
@@ -303,7 +308,6 @@ namespace OQAMain
                         }
                         else
                         {//清除图片
-                            imgInfo = null;
                             foreach (Control control in groupBox3.Controls)
                             {
                                 if (control is ImageUpload.ImageUpload)
@@ -319,7 +323,6 @@ namespace OQAMain
                     {
                         ComFunc.ClearBoxValue(groupBox3);
                         waferSurF.clearPanel();
-                        imgInfo = null;
                     }
                 }
                 else
@@ -327,10 +330,7 @@ namespace OQAMain
                     ComFunc.ClearBoxValue(groupBox3);
                     waferSurF.clearPanel();
                 }
-
-
-
-
+                
             }
             catch (Exception e)
             {
@@ -431,9 +431,10 @@ namespace OQAMain
                 }
             }
         }
+
+
         #endregion
 
-
-
+       
     }
 }

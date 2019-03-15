@@ -431,14 +431,7 @@ namespace OQAMain
                         }
                         else
                         {//清除图片
-                            foreach (Control control in groupBox3.Controls)
-                            {
-                                if (control is ImageUpload.ImageUpload)
-                                {
-                                    ImageUpload.ImageUpload img = control as ImageUpload.ImageUpload;
-                                    img.RefreshContrl();
-                                }
-                            }
+                            ComFunc.ClearBoxValue(groupBoxSelect);
                         }
                         waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
                     }
@@ -449,6 +442,7 @@ namespace OQAMain
                     ComFunc.ClearBoxValue(groupBox3);
                     waferSurF.clearPanel();
                     checkAllOk();
+                    ComFunc.ClearBoxValue(groupBoxSelect);
                 }
 
 

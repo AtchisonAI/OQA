@@ -26,7 +26,7 @@ namespace OQAMain
         }
 
         #endregion
-        
+
         #region Page Load
         private void FrmMarcoInput_Load(object sender, EventArgs e)
         {
@@ -43,6 +43,14 @@ namespace OQAMain
                 radioButtonB.Checked = true;
             }
             this.pageInfoShow();
+        }
+
+        public FrmMarcoInput(string lotIdIn, string slotIdIn, string sideTypeIn)
+        {
+            InitializeComponent();
+            lotId = lotIdIn;
+            slotId = slotIdIn;
+            sideType = sideTypeIn;
         }
         #endregion
 
@@ -83,14 +91,15 @@ namespace OQAMain
         //图片保存按钮
         private void imageUpload1_btnUploadClicked(object sender, EventArgs e)
         {
+            
             imageUpload1.UpLoadFlag = 3;//by side
             ImageUpload.ImageUpload.BySide item = new ImageUpload.ImageUpload.BySide();
             item.LotID = lotId;
             item.Slot_ID = slotId;
             item.Side_Type = sideType;
-            item.Wafer_ID = "1";
-            item.Inspect_Type = "A";//mock
-            item.ImageType = "ISP";
+            item.Wafer_ID = waferId;
+            item.Inspect_Type = InspectType.MA;//mock
+            item.ImageType = "Type_M";
             if (null != imgInfo)
             {
                 item.TranSeq = imgInfo.TransSeq;
@@ -215,9 +224,7 @@ namespace OQAMain
                 codeList = waferSurF.defectCode;
 
                 //wafer
-                
-                if (null == slotComboBox.Text || ("").Equals(slotComboBox.Text)
-                    &&null == lotTextBox.Text || ("").Equals(lotTextBox.Text))
+                if(string.IsNullOrWhiteSpace(slotComboBox.Text)|| string.IsNullOrWhiteSpace(lotTextBox.Text))
                 {
                     MessageBox.Show("请先选择lotId、slotId");
                     return;
@@ -231,7 +238,7 @@ namespace OQAMain
                 iSPWAFITM.Cmt = cmtRichTextBox.Text;
                 iSPWAFITM.IsInspect = "Y";
                 iSPWAFITM.InspectPoint = "25";
-                
+
                 for (int i = 0; i < 24; i++)
                 {
                     if (null != codeList[i] && !codeList[i].Equals(""))
@@ -273,7 +280,7 @@ namespace OQAMain
                 ISPWAFITM ISPWAFITM = new ISPWAFITM();
                 ISPWAFITM.LotId = lotId;
                 ISPWAFITM.SlotId = slotId;
-               // ISPWAFITM.WaferId = waferId;
+                // ISPWAFITM.WaferId = waferId;
                 if (null != sideType)
                 {
                     ISPWAFITM.SideType = sideType;
@@ -300,27 +307,31 @@ namespace OQAMain
                         }
                         else
                         {
+                            imgInfo = null;
                             ComFunc.ClearBoxValue(groupBox3);
                         }
                         if (null != qryResult.model.ISPIMGDEF_list && qryResult.model.ISPIMGDEF_list.Count > 0)
                         {
+                            imgInfo = qryResult.model.ISPIMGDEF_list[0];
                             foreach (Control control in groupBox3.Controls)
                             {
                                 if (control is ImageUpload.ImageUpload)
                                 {
-                                    if (control.Name.Split('_')[1].Equals((imgInfo.AreaId).ToString()))
-                                    {
-                                        ImageUpload.ImageUpload img = control as ImageUpload.ImageUpload;
-                                        img.InitByImgInstance(imgInfo);
-                                    }
+                                    ImageUpload.ImageUpload img = control as ImageUpload.ImageUpload;
+                                    img.InitByImgInstance(imgInfo);
                                 }
                             }
                         }
                         else
                         {//清除图片
+                            imgInfo = null;
                             foreach (Control control in groupBox3.Controls)
                             {
-                                ComFunc.ClearBoxValue(groupBox3);
+                                if (control is ImageUpload.ImageUpload)
+                                {
+                                    ImageUpload.ImageUpload img = control as ImageUpload.ImageUpload;
+                                    img.RefreshContrl();
+                                }
                             }
                         }
                         waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
@@ -328,6 +339,7 @@ namespace OQAMain
                     }
                     else
                     {
+                        imgInfo = null;
                         ComFunc.ClearBoxValue(groupBox3);
                     }
                 }

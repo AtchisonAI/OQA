@@ -50,6 +50,14 @@ namespace OQAMain
             waferSurF.groupNode = this.groupBoxSelect;
             this.pageInfoShow();
         }
+
+        public FrmMircoInput(string lotIdIn, string slotIdIn, string sideTypeIn)
+        {
+            InitializeComponent();
+            lotId = lotIdIn;
+            slotId = slotIdIn;
+            sideType = sideTypeIn;
+        }
         #endregion
 
         #region Button or ValueChange Function 
@@ -218,10 +226,11 @@ namespace OQAMain
         private void refreshPage()
         {
             ComFunc.ClearBoxValue(groupBox3);
+            ComFunc.ClearBoxValue(groupBoxSelect);
             waferSurF.clearPanel();
             slotComboBox.Text = slotId;
             queryPageInfo(lotId, slotId, sideType);
-            ComFunc.ClearBoxValue(groupBoxSelect);
+            
         }
         //页面查询及slot下拉框查询
         private void pageInfoShow()
@@ -290,8 +299,7 @@ namespace OQAMain
 
                 //wafer
 
-                if (null == slotComboBox.Text || ("").Equals(slotComboBox.Text)
-                     && null == lotTextBox.Text || ("").Equals(lotTextBox.Text))
+                if (string.IsNullOrWhiteSpace(slotComboBox.Text) || string.IsNullOrWhiteSpace(lotTextBox.Text))
                 {
                     MessageBox.Show("请先选择lotId、slotId");
                     return;
@@ -302,7 +310,15 @@ namespace OQAMain
                 iSPWAFITM.InspectType = InspectType.MI;
                 iSPWAFITM.SideType = sideType;
                 iSPWAFITM.Magnification = MagnificationTextBox.Text;
-                iSPWAFITM.DieQty = decimal.Parse(qtyTextBox.Text);
+                if (String.IsNullOrWhiteSpace(qtyTextBox.Text))
+                {
+                    qtyTextBox.Text = "0";
+                }
+                iSPWAFITM.DieQty = decimal.Parse(rateTextBox.Text);
+                if (String.IsNullOrWhiteSpace(rateTextBox.Text))
+                {
+                    rateTextBox.Text = "0";
+                }
                 iSPWAFITM.DefectRate = decimal.Parse(rateTextBox.Text);
                 iSPWAFITM.DefectDesc = decRichTextBox.Text;
                 iSPWAFITM.Cmt = cmtRichTextBox.Text;
@@ -388,6 +404,7 @@ namespace OQAMain
                             ComFunc.ClearBoxValue(groupBox3);
                             waferSurF.clearPanel();
                             checkAllOk();
+                            imgInfoList = null;
                         }
                         if (null != qryResult.model.ISPIMGDEF_list && qryResult.model.ISPIMGDEF_list.Count > 0)
                         {
@@ -409,9 +426,14 @@ namespace OQAMain
                         }
                         else
                         {//清除图片
-                            foreach (Control control in groupBoxSelect.Controls)
+                            imgInfoList = null;
+                            foreach (Control control in groupBox3.Controls)
                             {
-                                ComFunc.ClearBoxValue(groupBoxSelect);
+                                if (control is ImageUpload.ImageUpload)
+                                {
+                                    ImageUpload.ImageUpload img = control as ImageUpload.ImageUpload;
+                                    img.RefreshContrl();
+                                }
                             }
                         }
                         waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
@@ -423,6 +445,7 @@ namespace OQAMain
                     ComFunc.ClearBoxValue(groupBox3);
                     waferSurF.clearPanel();
                     checkAllOk();
+                    imgInfoList = null;
                 }
 
 
@@ -458,12 +481,13 @@ namespace OQAMain
         private void uploadCommonFunc(decimal araeId, ImageUpload.ImageUpload.ByArea item)
         {
             //ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
+           
             item.LotID = lotId;
             item.Slot_ID = slotId;
             item.Side_Type = sideType;
-            item.Wafer_ID = "1";
-            item.Inspect_Type = "A";//mock
-            item.ImageType = "ISP";
+            item.Wafer_ID = waferId;
+            item.Inspect_Type =InspectType.MI;
+            item.ImageType = "Type_"+ araeId;
             item.Area_ID = araeId;
             if (null != imgInfoList && imgInfoList.Count > 0)
             {

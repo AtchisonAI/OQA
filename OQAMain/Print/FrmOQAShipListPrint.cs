@@ -167,8 +167,21 @@ namespace OQAMain
         
         private void FrmOQAShipListPrint_Load(object sender, EventArgs e)
         {
-            txtShipNo.Text = FrmLotTransfer.srtNum.ToString();
-   
+            // txtShipNo.Text = FrmLotTransfer.srtNum.ToString();
+            txtShipNo.Text = "201903151307 757149";
+        if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', txtShipNo.Text) == false) return;
+
+            try
+            {
+                if (QueryShipIDList(GlobConst.TRAN_VIEW, '1') == false) return;
+
+
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
         }
          
         //二维码转化
@@ -279,7 +292,7 @@ namespace OQAMain
             return result;
         }
 
-        private void btnPrint_Click_1(object sender, EventArgs e)
+        private void btnQuery_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -297,6 +310,66 @@ namespace OQAMain
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+
+        //checkshipid单选
+        private void CheckShipID_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            txtShipNo.Text = CheckShipID.SelectedItem.ToString();
+            if (CheckShipID.CheckedItems.Count > 0)
+            {
+                for (int i = 0; i < CheckShipID.Items.Count; i++)
+                {
+                    if (i != e.Index)
+                    {
+                        CheckShipID.SetItemCheckState(i, System.Windows.Forms.CheckState.Unchecked);
+                    }
+                }
+            }
+           
+            if (string.IsNullOrWhiteSpace(txtShipNo.Text))
+            {
+                ComFunc.InitListView(lisship, true);
+                reportViewer2.RefreshReport();
+                return;
+            }
+            if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', txtShipNo.Text) == false) return;
+        }
+
+        private bool QueryShipIDList(char c_proc_step, char c_tran_flag)
+        {
+            ModelRsp<ShipIDListView> in_node = new ModelRsp<ShipIDListView>();
+            ShipIDListView in_data = new ShipIDListView();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.QueryShipIDList(in_node);
+
+            if (out_data._success == true)
+            {
+                //ComFunc.(LotIDList, true);
+                //      txtCount.Text = out_data.model.PKGSHPDAT_list.Count.ToString();
+
+
+                for (int i = 0; i < out_data.model.SHIPIDLIST_list.Count; i++)
+                {
+                    ListViewItem list_item = new ListViewItem();
+                    PKGSHPSTS list = out_data.model.SHIPIDLIST_list[i];
+                    list_item.Text = list.ShipId;
+                    CheckShipID.Items.Add(list_item.Text);
+                }
+                lblSucessMsg.Text = out_data._MsgCode;
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+        }
+
        
     }
 }

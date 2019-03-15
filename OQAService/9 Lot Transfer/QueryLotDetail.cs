@@ -60,7 +60,7 @@ namespace OQAService.Services
                             if (In_node.model.IN_MASTERLOT_NO.Trim().Equals("") == false)
                             {
                                 //AddCondition(PageQueryReq, GetParaName<PKGSHPDAT>(p => p.LotId), In_node.model.IN_MASTERLOT_NO.Trim(), LogicCondition.AndAlso,CompareType.Include);
-                                string sql = string.Format(@"select LOT_ID,QTY,PART_ID,INSPECT_RESULT from isplotsts WHERE LOT_ID IN ({0})", In_node.model.IN_MASTERLOT_NO.Trim());
+                                string sql = string.Format(@"select LOT_ID,QTY,PART_ID,INSPECT_RESULT,TRANS_SEQ from isplotsts WHERE LOT_ID IN ({0})", In_node.model.IN_MASTERLOT_NO.Trim());
                                 data = QueryRawSql(sql);
                             }
                             

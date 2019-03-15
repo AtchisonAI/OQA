@@ -130,7 +130,8 @@ namespace OQAMain
             LOT_ID = 0,
             QTY,
             PART_ID,
-            INSPECT_RESULT
+            INSPECT_RESULT,
+            TRANS_SEQ
         }
 
 
@@ -167,12 +168,7 @@ namespace OQAMain
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-        private void LstIspCode_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-           
-
-        }
+      
         private void FrmLotTransfer_Load(object sender, EventArgs e)
         {
             try
@@ -186,7 +182,7 @@ namespace OQAMain
                 MessageBox.Show(ex.Message.ToString());
             }
 
-            //try
+            //try;
             //{
                 
             //   // ship_no = txtShipNo.Text.Trim();
@@ -215,22 +211,28 @@ namespace OQAMain
 
 
             //调用事务服务
-
+            //选择lotid之后，信息插入到PKGSHPDAT
             if (CreateLotTransferInfo(cTranFlag, '1', s_PartID, s_Creater, s_QTY, s_Date, srtNum, Trans_Seq) == true)
             {
-                cTranFlag = GlobConst.TRAN_UPDATE;
+               
                 foreach (ListViewItem item in this.listship.Items)
-                    {
+                {
                         string lotid = item.SubItems[0].Text;
                         string qty = item.SubItems[1].Text;
                         string partid = item.SubItems[2].Text;
                         string isp_result = item.SubItems[3].Text;
-                        if (CreateLotTransferListInfo(cTranFlag, '1', lotid, qty, partid, isp_result, srtNum, Trans_Seq) == true)
-                        { return; }
+                        string update_trans_seq = item.SubItems[4].Text;
+                    if (CreateLotTransferListInfo(cTranFlag, '1', lotid, qty, partid, isp_result, srtNum, Trans_Seq) == true)
+                    {
+                        if (CreateLotTransferListInfo(GlobConst.TRAN_UPDATE, '1', lotid, qty, partid, isp_result, srtNum, Convert.ToDecimal(update_trans_seq)) == false)
+                        {
+                            return;
+                        }
                     }
-
-               
-
+                    else {
+                        return;
+                    }
+                }
                     formshiplistprint.ShowDialog();
                 
             }
@@ -238,6 +240,9 @@ namespace OQAMain
 
            
         }
+
+       
+
         public string GetSerialNum()
         {
 
@@ -319,7 +324,8 @@ namespace OQAMain
                         list_item.Text = out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.LOT_ID].ToString();
                         list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.QTY].ToString());
                         list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.PART_ID].ToString());
-                        list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.INSPECT_RESULT].ToString());//修改数据使用
+                        list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.INSPECT_RESULT].ToString());
+                        list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.TRANS_SEQ].ToString());
                         listship.Items.Add(list_item);
                         total_count = total_count + Convert.ToInt32(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.QTY].ToString());
                         txtPartID.Text = out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.PART_ID].ToString();
@@ -464,6 +470,8 @@ namespace OQAMain
                 ComFunc.InitListView(listship, true);
                 txtPartID.Text = "";
                 txtQTY.Text = "";
+                txtCreater.Text = "";
+                txtDate.Text = "";
                 return;
             }
 
@@ -523,6 +531,8 @@ namespace OQAMain
             ComFunc.InitListView(listship, true);
             txtPartID.Text = "";
             txtQTY.Text = "";
+            txtCreater.Text = "";
+            txtDate.Text = "";
             this.LotIDList.ItemCheck += LotIDList_ItemCheck;
         }
     }

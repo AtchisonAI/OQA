@@ -50,6 +50,7 @@
             this.Qty = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Part_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Inspection_Result = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Transeq = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -58,18 +59,18 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1351, 14);
+            this.btnClose.Location = new System.Drawing.Point(1565, 14);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(454, 13);
+            this.btnCreate.Location = new System.Drawing.Point(527, 7);
             this.btnCreate.Text = "OK";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1152, 11);
+            this.btnEdite.Location = new System.Drawing.Point(1366, 11);
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
@@ -127,11 +128,10 @@
             this.LotIDList.Sorted = true;
             this.LotIDList.TabIndex = 7;
             this.LotIDList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.LotIDList_ItemCheck);
-            this.LotIDList.SelectedIndexChanged += new System.EventHandler(this.LstIspCode_SelectedIndexChanged);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(104, 50);
+            this.textBox1.Location = new System.Drawing.Point(12, 59);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 21);
             this.textBox1.TabIndex = 5;
@@ -139,7 +139,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 56);
+            this.label1.Location = new System.Drawing.Point(14, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 4;
@@ -257,7 +257,8 @@
             this.Lot_ID,
             this.Qty,
             this.Part_ID,
-            this.Inspection_Result});
+            this.Inspection_Result,
+            this.Transeq});
             this.listship.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listship.Location = new System.Drawing.Point(231, 116);
             this.listship.Name = "listship";
@@ -281,6 +282,10 @@
             // Inspection_Result
             // 
             this.Inspection_Result.Text = "Inspection_Result";
+            // 
+            // Transeq
+            // 
+            this.Transeq.Width = 0;
             // 
             // FrmLotTransfer
             // 
@@ -335,5 +340,6 @@
         private System.Windows.Forms.CheckedListBox LotIDList;
         private System.Windows.Forms.Button btnUnCheckAll;
         private System.Windows.Forms.Button btnCheckAll;
+        private System.Windows.Forms.ColumnHeader Transeq;
     }
 }

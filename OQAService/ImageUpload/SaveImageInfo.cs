@@ -13,6 +13,7 @@ namespace OQAService.Services
 {
     public partial class OQAService : OQABaseService, IOQAContract
     {
+        private string serverUrl = "http://localhost:8082";
         [OperationBehavior(TransactionAutoComplete = true, TransactionScopeRequired = true)]
         [TransactionFlow(TransactionFlowOption.Allowed)]
         public ModelRsp<ImageSave> SaveImageInfo(ModelRsp<ImageSave> ImageSave)
@@ -61,7 +62,7 @@ namespace OQAService.Services
                         ImagePath = SavePic(In_node.model.PicStreamBase64, SysTime);
                         T_ISPIMGDEF = ImageSave.model.IspImgeDef;
                         T_ISPIMGDEF.CreateTime = SysTime;
-                        T_ISPIMGDEF.ImagePath = ImagePath;
+                        T_ISPIMGDEF.ImagePath = AppendUrl(ImagePath);
                         T_ISPIMGDEF.ImageId = SysTime;
                         //调用数据库操作
                         InitTable(T_ISPIMGDEF);
@@ -93,13 +94,13 @@ namespace OQAService.Services
                         string SysTime = GetSysTime();
                         string ImagePath;
                         //删除旧图片
-                        File.Delete(In_node.model.IspImgeDef.ImagePath);
+                        File.Delete(TrimUrl(In_node.model.IspImgeDef.ImagePath,3));
 
                         //保存图片
                         ImagePath = SavePic(In_node.model.PicStreamBase64, SysTime);
                         T_ISPIMGDEF = ImageSave.model.IspImgeDef;
                         T_ISPIMGDEF.UpdateTime = SysTime;
-                        T_ISPIMGDEF.ImagePath = ImagePath;
+                        T_ISPIMGDEF.ImagePath = AppendUrl(ImagePath);
                         T_ISPIMGDEF.ImageId = SysTime;
                         //调用数据库操作
                         //InitTable(T_ISPIMGDEF);
@@ -122,7 +123,7 @@ namespace OQAService.Services
                     case '1':
                         //验证业务级输入参数
                         //删除旧图片
-                        File.Delete(In_node.model.IspImgeDef.ImagePath);
+                        File.Delete(TrimUrl(In_node.model.IspImgeDef.ImagePath,3));
 
                         //调用数据库操作
                         //InitTable(T_ISPIMGDEF);
@@ -151,7 +152,28 @@ namespace OQAService.Services
                 }
                 return Out_node;
             }
-        }
 
+
+        private string TrimUrl(string Url,int turn)
+        {
+            int index = 0;
+            for (int i = 0;i<turn;++i)
+            {
+                index = Url.IndexOf('/'); 
+                if(-1 == index)
+                {
+                    throw new Exception("传入的图片URL格式错误");
+                }
+                Url = Url.Substring(index + 1);
+            }
+
+            return Url;
+        }
+        private string AppendUrl(string Url)
+        {
+            Url = TrimUrl(Url, 1);
+            return serverUrl+'/' + Url;
+        }
     }
+}
 

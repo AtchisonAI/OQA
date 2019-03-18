@@ -333,7 +333,7 @@ namespace ImageUpload
                     var out_data = OQASrv.Call.SaveImageInfo(in_node);
                     if (out_data._success == true)
                     {
-                        lblSts.Text = "已传";
+                        lblSts.Text = "预览";
                         btnBrowser.Enabled = false;
                         btnUpload.Text = "Delete";
                         b_Upload = false;
@@ -398,7 +398,7 @@ namespace ImageUpload
         public void InitByImgInstance(ISPIMGDEF instance)
         {
             item = instance;
-            lblSts.Text = "已传";
+            lblSts.Text = "预览";
             btnBrowser.Enabled = false;
             btnUpload.Text = "Delete";
             btnUpload.Enabled = true;
@@ -415,6 +415,22 @@ namespace ImageUpload
             btnUpload.Enabled = false;
             b_Upload = true;
             txtPicName.Text = string.Empty;
+        }
+
+        public string GetImagePath()
+        {
+            return null == item ? null : item.ImagePath;
+        }
+
+
+        //定义委托
+        public delegate void    PreViewClickHandle(object sender, EventArgs e);
+        //定义事件
+        public event PreViewClickHandle PreviewLableClicked;
+        private void lblSts_Click(object sender, EventArgs e)
+        {
+            if (null != PreviewLableClicked && lblSts.Text.Equals("预览"))
+                PreviewLableClicked(sender, e);
         }
     }
 }

@@ -198,9 +198,10 @@ namespace OQAMain
 
         private void btnCreate_Click_1(object sender, EventArgs e)
         {
-            FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint();
+            FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint(srtNum);
             GetSerialNum();
             MessageBox.Show("交接单号"+ srtNum);
+            
 
             string s_PartID = ComFunc.Trim(txtPartID.Text);
             string s_QTY = ComFunc.Trim(txtQTY.Text);
@@ -548,6 +549,10 @@ namespace OQAMain
                 if (ComFunc.Trim(txtSearchLotID.Text) != "")
                 {
                     if (SearchLotIDList(GlobConst.TRAN_VIEW, '3', txtSearchLotID.Text.Trim()) == false) return;
+                }
+                else {
+                    LotIDList.Items.Clear();
+                    if (QueryLotIDList(GlobConst.TRAN_VIEW, '1') == false) return;
                 }
             }
         }

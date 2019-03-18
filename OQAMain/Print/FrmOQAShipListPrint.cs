@@ -168,8 +168,9 @@ namespace OQAMain
         private void FrmOQAShipListPrint_Load(object sender, EventArgs e)
         {
              txtShipNo.Text = FrmLotTransfer.srtNum.ToString();
-           // txtShipNo.Text = "201903151307 757149";
-        if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', txtShipNo.Text) == false) return;
+            // txtShipNo.Text = "201903151307 757149";
+            this.reportViewer2.LocalReport.DataSources.Clear();
+            if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', txtShipNo.Text) == false) return;
 
             try
             {

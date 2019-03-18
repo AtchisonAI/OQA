@@ -476,7 +476,7 @@ namespace OQAMain
                 ComFunc.InitListView(listship, true);
                 txtPartID.Text = "";
                 txtQTY.Text = "";
-                txtCreater.Text = "";
+               // txtCreater.Text = "";
                 txtDate.Text = "";
                 return;
             }

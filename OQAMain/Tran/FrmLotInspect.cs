@@ -36,12 +36,14 @@ namespace OQAMain
         private string s_vendorlotno;
         private string s_orderno;
         private string s_sentime;
+        public decimal d_tran_seq = 0;
         private List<OqaMeslot>  list_meslot;
         private List<OqaMeswafer> list_wafer;
         private List<ISPWAFST> list_ispwafer;
         private List<ISPWAFITM> list_AOI;
         private List<ISPWAFITM> list_MAC;
         private List<ISPWAFITM> list_MIR;
+        private List<ISPLOTSTS> list_lot;
 
         #endregion
 
@@ -74,6 +76,15 @@ namespace OQAMain
                     }
 
 
+                    break;
+
+                case "UPDATE":
+                    if (ComFunc.CheckValue(txtLotID, 1) == false)
+                    {
+                        MessageBox.Show("必填内容输入为空！");
+                        txtLotID.Focus();
+                        return false;
+                    }
                     break;
 
                 case "CREATE":
@@ -144,9 +155,23 @@ namespace OQAMain
                 {
                     case "1":
                         //Initialize
-                        ComFunc.FieldClear(this);                        
+                        ComFunc.InitListView(LstRcvLot, true);
+                        ComFunc.FieldClear(this);
+                        labPndn.Visible = false;
+                        d_tran_seq = 0;
+                        break;
+                    case "2"://AFTER CREATE
+                        ComFunc.FieldClear(grpMesLot);
+                        labPndn.Visible = false;
+                        d_tran_seq = 0;
+                        break;
+                    case "3"://AFTER SELECT 
+                        ComFunc.FieldClear(grpMesLot);
+                        labPndn.Visible = false;
                         break;
                 }
+
+                
             }
             catch (Exception ex)
             {
@@ -164,15 +189,94 @@ namespace OQAMain
                 ISPLotSave in_data = new ISPLotSave();
                 in_data.C_PROC_STEP = c_proc_step;
                 in_data.C_TRAN_FLAG = c_tran_flag;
+                //string.IsNullOrWhiteSpace(ISPLotSave.model.S_USER_NAME)        
 
-                in_data.S_DEPT = ComFunc.Trim(txtDept.Text);
-                in_data.S_USER_ID = ComFunc.Trim(txtUserID.Text);
-                in_data.S_USER_NAME = ComFunc.Trim(txtName.Text);
-                in_data.S_REC_SHIFT = ComFunc.Trim(txtShift.Text);
-                in_data.S_PHONE = ComFunc.Trim(txtPhone.Text);
+                if (c_proc_step == GlobConst.TRAN_CREATE)
+                {
+                    in_data.S_USER_ID = ComFunc.Trim(txtUserID.Text);
+                    in_data.S_USER_NAME = ComFunc.Trim(txtName.Text);
+                    in_data.ISPMESLOT_List = list_meslot;
+                    in_data.ISPMESWAFER_List = list_wafer;
+                }
+                else
+                {
+                    in_data.S_LOT_ID = ComFunc.Trim(txtLotID.Text);
+                    in_data.D_TRAN_SEQ = d_tran_seq;
+                    in_data.S_USER_ID = ComFunc.Trim(AuthorityControl.GetUserProfile().userId);
+                }
 
-                in_data.ISPMESLOT_List = list_meslot;
-                in_data.ISPMESWAFER_List = list_wafer;
+                if (string.IsNullOrWhiteSpace(txtDept.Text) == false)
+                {
+                    in_data.S_DEPT = ComFunc.Trim(txtDept.Text);
+                }
+                if (string.IsNullOrWhiteSpace(txtShift.Text) == false)
+                {
+                    in_data.S_REC_SHIFT = ComFunc.Trim(txtShift.Text);
+                }
+                if (string.IsNullOrWhiteSpace(txtPhone.Text) == false)
+                {
+                    in_data.S_PHONE = ComFunc.Trim(txtPhone.Text);
+                }
+
+
+                in_node.model = in_data;
+
+                var out_data = OQASrv.Call.SaveISPLotInfo(in_node);
+                if (out_data._success == true)
+                {
+                    lblSucessMsg.Text = out_data._ErrorMsg;
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show(out_data._MsgCode);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        private bool SubmitISPLotInfo(char c_proc_step, char c_tran_flag)
+        {
+            try
+            {
+                ModelRsp<ISPLotSave> in_node = new ModelRsp<ISPLotSave>();
+                ISPLotSave in_data = new ISPLotSave();
+                in_data.C_PROC_STEP = c_proc_step;
+                in_data.C_TRAN_FLAG = c_tran_flag;
+                //string.IsNullOrWhiteSpace(ISPLotSave.model.S_USER_NAME)        
+
+                if (c_proc_step == GlobConst.TRAN_CREATE)
+                {
+                    in_data.S_USER_ID = ComFunc.Trim(txtUserID.Text);
+                    in_data.S_USER_NAME = ComFunc.Trim(txtName.Text);
+                    in_data.ISPMESLOT_List = list_meslot;
+                    in_data.ISPMESWAFER_List = list_wafer;
+                }
+                else
+                {
+                    in_data.S_LOT_ID = ComFunc.Trim(txtLotID.Text);
+                    in_data.D_TRAN_SEQ = d_tran_seq;
+                    in_data.S_USER_ID = ComFunc.Trim(AuthorityControl.GetUserProfile().userId);
+                }
+
+                if (string.IsNullOrWhiteSpace(txtDept.Text) == false)
+                {
+                    in_data.S_DEPT = ComFunc.Trim(txtDept.Text);
+                }
+                if (string.IsNullOrWhiteSpace(txtShift.Text) == false)
+                {
+                    in_data.S_REC_SHIFT = ComFunc.Trim(txtShift.Text);
+                }
+                if (string.IsNullOrWhiteSpace(txtPhone.Text) == false)
+                {
+                    in_data.S_PHONE = ComFunc.Trim(txtPhone.Text);
+                }
+
 
                 in_node.model = in_data;
 
@@ -211,7 +315,7 @@ namespace OQAMain
 
             if (out_data._success == true)
             {
-                labPndn.Enabled = true;
+                labPndn.Visible = true;
                 txtShift.Focus();
 
                 list_meslot = out_data.model.OQAMESLOT_LIST;
@@ -227,6 +331,7 @@ namespace OQAMain
                 s_sentime = list_meslot[0].Sentime;
                 txtUserID.Text = AuthorityControl.GetUserProfile().userId;
                 txtRecDate.Text = DateTime.Now.ToString("yyyyMMddhhmmss");
+                txtDept.Text = "OQA";
 
                 list_wafer = out_data.model.OQAMESWAFER_LIST;
                 int slotIndex;
@@ -248,7 +353,7 @@ namespace OQAMain
                     else
                     {
                         dgSlotID.Rows[0].Cells[i].Value = "/";
-                        dgSlotID.Rows[0].Cells[i].Style.BackColor = Color.Red;
+                        dgSlotID.Rows[0].Cells[i].Style.BackColor = Color.LightGray;
                     }
 
 
@@ -257,7 +362,7 @@ namespace OQAMain
             }
             else
             {
-                labPndn.Enabled = false;
+                labPndn.Visible = false;
                 MessageBox.Show(out_data._ErrorMsg);
                 return false;
             }
@@ -280,7 +385,24 @@ namespace OQAMain
 
             if (out_data._success == true)
             {
-                labPndn.Enabled = true;
+                DateTime DTsTART = DateTime.Now;
+
+                list_lot = out_data.model.ISPLOTSTS_LIST;
+                txtLotID.Text = list_lot[0].LotId;
+                txtFoupID.Text = list_lot[0].FoupId;
+                txtPartID.Text = list_lot[0].PartId;
+                txtLotType.Text = list_lot[0].LotType;
+                txtUserID.Text = list_lot[0].RecUser;
+                txtRecDate.Text = list_lot[0].RecDate;
+                txtName.Text = list_lot[0].RecUserName;
+                txtShift.Text = list_lot[0].RecShift;
+                txtPhone.Text = list_lot[0].Phone;
+                txtDept.Text = list_lot[0].Dept;
+                txtStage.Text = list_lot[0].Stage;
+                txtLotQty.Text = list_lot[0].Qty.ToString();
+                d_tran_seq = list_lot[0].TransSeq;
+
+                labPndn.Visible = true;
                 list_ispwafer = out_data.model.ISPWAFSTS_LIST;
                 int slotIndex;
                 for (int i = 0; i < 25; i++)
@@ -301,7 +423,7 @@ namespace OQAMain
                     else
                     {
                         dgSlotID.Rows[0].Cells[i].Value = "/";
-                        dgSlotID.Rows[0].Cells[i].Style.BackColor = Color.Red;
+                        dgSlotID.Rows[0].Cells[i].Style.BackColor = Color.LightGray;
                     }
 
 
@@ -324,6 +446,7 @@ namespace OQAMain
                     {
                         bool isInMES = false;
                         bool IsInspect = false;
+                        bool haveDefect = false;
                         slotIndex = i;
 
                         if (list_AOI.Count(p => p.SlotId == slotIndex.ToString().PadLeft(3, '0')) > 0)
@@ -336,21 +459,31 @@ namespace OQAMain
                             IsInspect = true;
                         }
 
+                        if (list_AOI.Count(p => p.SlotId == slotIndex.ToString().PadLeft(3, '0') && p.InspectResult == "N" && p.SideType == list_AOIside[j].ToString()) > 0)
+                        {
+                            haveDefect = true;
+                        }
+
                         if (isInMES)
                         {
                             DT.Cells[i].Value = "N";
                             DT.Cells[i].Style.BackColor = Color.LightBlue;
                             if (IsInspect)
                             {
-                                DT.Cells[i].Value = "Y";
+                                DT.Cells[i].Value = "Y";                                
                                 DT.Cells[i].Style.BackColor = Color.LightGreen;
+                            }
+                            if (haveDefect)
+                            {
+                                DT.Cells[i].Value = "D";
+                                DT.Cells[i].Style.BackColor = Color.Red;
                             }
 
                         }
                         else
                         {
                             DT.Cells[i].Value = "/";
-                            DT.Cells[i].Style.BackColor = Color.Red;
+                            DT.Cells[i].Style.BackColor = Color.LightGray;
                         }
 
 
@@ -377,6 +510,7 @@ namespace OQAMain
                     {
                         bool isInMES = false;
                         bool IsInspect = false;
+                        bool haveDefect = false;
                         slotIndex = i ;
 
                         if (list_MAC.Count(p => p.SlotId == slotIndex.ToString().PadLeft(3, '0')) > 0)
@@ -389,6 +523,11 @@ namespace OQAMain
                             IsInspect = true;
                         }
 
+                        if (list_MAC.Count(p => p.SlotId == slotIndex.ToString().PadLeft(3, '0') && p.InspectResult == "N" && p.SideType == list_Macside[j].ToString()) > 0)
+                        {
+                            haveDefect = true;
+                        }
+
                         if (isInMES)
                         {
                             DT.Cells[i].Value = "N";
@@ -398,12 +537,17 @@ namespace OQAMain
                                 DT.Cells[i].Value = "Y";
                                 DT.Cells[i].Style.BackColor = Color.LightGreen;
                             }
+                            if (haveDefect)
+                            {
+                                DT.Cells[i].Value = "D";
+                                DT.Cells[i].Style.BackColor = Color.Red;
+                            }
 
                         }
                         else
                         {
                             DT.Cells[i].Value = "/";
-                            DT.Cells[i].Style.BackColor = Color.Red;
+                            DT.Cells[i].Style.BackColor = Color.LightGray;
                         }
 
 
@@ -430,6 +574,7 @@ namespace OQAMain
                     {
                         bool isInMES = false;
                         bool IsInspect = false;
+                        bool haveDefect = false;
                         slotIndex = i ;
 
                         if (list_MIR.Count(p => p.SlotId == slotIndex.ToString().PadLeft(3, '0')) > 0)
@@ -442,6 +587,11 @@ namespace OQAMain
                             IsInspect = true;
                         }
 
+                        if (list_MIR.Count(p => p.SlotId == slotIndex.ToString().PadLeft(3, '0') && p.InspectResult == "N" && p.SideType == list_MIRside[j].ToString()) > 0)
+                        {
+                            haveDefect = true;
+                        }
+
                         if (isInMES)
                         {
                             DT.Cells[i].Value = "N";
@@ -451,25 +601,30 @@ namespace OQAMain
                                 DT.Cells[i].Value = "Y";
                                 DT.Cells[i].Style.BackColor = Color.LightGreen;
                             }
+                            if (haveDefect)
+                            {
+                                DT.Cells[i].Value = "D";
+                                DT.Cells[i].Style.BackColor = Color.Red;
+                            }
 
                         }
                         else
                         {
                             DT.Cells[i].Value = "/";
-                            DT.Cells[i].Style.BackColor = Color.Red;
+                            DT.Cells[i].Style.BackColor = Color.LightGray;
                         }
 
 
                     }
                 
                 }
-
+                TimeSpan TS = DateTime.Now - DTsTART;
                 lblSucessMsg.Text = out_data._MsgCode;
                 return true;
             }
             else
             {
-                labPndn.Enabled = false;
+                labPndn.Visible = false;
                 MessageBox.Show(out_data._ErrorMsg);
                 return false;
             }
@@ -493,7 +648,7 @@ namespace OQAMain
 
             if (out_data._success == true)
             {
-                labPndn.Enabled = true;
+                labPndn.Visible = true;
                 ComFunc.InitListView(LstRcvLot, true);
                 txtCount.Text = out_data.model.ISPLOTSTS_LIST.Count.ToString();
 
@@ -526,7 +681,7 @@ namespace OQAMain
             }
             else
             {
-                labPndn.Enabled = false;
+                labPndn.Visible = false;
                 MessageBox.Show(out_data._ErrorMsg);
                 return false;
             }
@@ -542,10 +697,28 @@ namespace OQAMain
             try
             {
               
-                //检查数据
-                if (CheckCondition("CREATE") == false) return;
                 //调用事务服务
-                 if (SaveISPLotInfo(GlobConst.TRAN_CREATE,'1') == false) return;
+                char proc_step;
+                if (d_tran_seq == 0)
+                {
+                    proc_step = GlobConst.TRAN_CREATE;
+                    //检查数据
+                    if (CheckCondition("CREATE") == false) return;
+
+                }
+                else
+                {
+                    proc_step = GlobConst.TRAN_UPDATE;
+                    //检查数据
+                    if (CheckCondition("UPDATE") == false) return;
+                }
+                if (SaveISPLotInfo(proc_step, '1') == false) return;
+
+                txtISPLotFilter.Text = txtLotID.Text;
+                btnISPLotFilter.PerformClick();
+
+
+                //ClearData("2");
 
                 //控件重定义
                 //if (MPCF.Trim(txtBox_LotID.Text) != "")
@@ -626,10 +799,9 @@ namespace OQAMain
         {
             if (e.KeyChar == (Char)13)
             {
-                if (ComFunc.Trim(txtPhone.Text) != "")
-                {
-                    txtPhone.Focus();
-                }
+
+                txtPhone.Focus();
+
             }
         }
 
@@ -665,6 +837,8 @@ namespace OQAMain
 
                 //调用事务服务
                 if (QueryISPWaferInfo(GlobConst.TRAN_VIEW, '2') == false) return;
+
+                ClearData("3");
             }
         }
 
@@ -680,7 +854,7 @@ namespace OQAMain
             }
         }
 
-        private void dgMacro_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgMacro_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgMacro.Rows.Count > 0)
             {
@@ -692,7 +866,7 @@ namespace OQAMain
             }
         }
 
-        private void dgMIR_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgMIR_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgMIR.Rows.Count > 0)
             {
@@ -702,6 +876,48 @@ namespace OQAMain
                 }
 
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            ClearData("1");
+        }
+
+        private void txtLotFilter_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnRefresh.PerformClick();
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)13)
+            {
+                btnCreate.PerformClick();
+            }
+        }
+
+        private void FrmLotInspect_Load(object sender, EventArgs e)
+        {
+            txtLotFilter.Focus();          
+        }
+
+        private void FrmLotInspect_Activated(object sender, EventArgs e)
+        {
+            if (ComFunc.Trim(txtISPLotFilter.Text) != "")
+            {
+                btnISPLotFilter.PerformClick();
+            }
+        }
+
+        private void btnEdite_Click(object sender, EventArgs e)
+        {
+            //检查数据
+            if (CheckCondition("UPDATE") == false) return;
+        
+                if (SubmitISPLotInfo(GlobConst.TRAN_UPDATE, '2') == false) return;
+
+                txtISPLotFilter.Text = "";
+                btnISPLotFilter.PerformClick();
         }
     }
 }

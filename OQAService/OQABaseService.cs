@@ -6,6 +6,8 @@ using System.Drawing;
 using System.ComponentModel;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Reflection;
+using WCFModels.OQA;
+using WCFModels.Message;
 
 namespace OQAService.Services
 {
@@ -77,18 +79,28 @@ namespace OQAService.Services
             foreach (FieldInfo sourceFiled in sourceFieldInfo)
             {
                 var value = sourceFiled.GetValue(sorcue);
-                if (null == value)
+
+                if (sourceFiled.FieldType == typeof(String))
                 {
-                    if (sourceFiled.FieldType == typeof(String))
+                    if (string.IsNullOrWhiteSpace(value as string))
                     {
                         sourceFiled.SetValue(sorcue, " ");
                     }
-                    else
-                    {
-                        sourceFiled.SetValue(sorcue, 0);
-                    }
 
                 }
+                else
+                {
+                    if (null == value)
+                    {
+                        if (sourceFiled.FieldType == typeof(decimal))
+                        {
+                            sourceFiled.SetValue(sorcue, 0);
+                        }
+                           
+                    }
+                }
+
+
             }
         }
 
@@ -146,5 +158,70 @@ namespace OQAService.Services
             return ms;//然后在返回客户端；
 
         }
+
+
+        public  void SaveISPLotHistory(ModelListRsp<ISPLOTSTS> IN_ISPLOTSTS,string s_time,string s_userid)
+        {
+
+            UpdateModelListReq<ISPLOTHI> ISPLOTHIS_Save = new UpdateModelListReq<ISPLOTHI>();
+            ModelListRsp<ISPLOTHI> ISPLOTHIS_message = new ModelListRsp<ISPLOTHI>();
+
+
+            foreach (ISPLOTSTS S_ISPLOTSTS in IN_ISPLOTSTS.models)
+            {
+                ISPLOTHI T_ISPLOTHIS = new ISPLOTHI(); //定义临时表结构
+                T_ISPLOTHIS.LotId = S_ISPLOTSTS.LotId;
+                T_ISPLOTHIS.FoupId = S_ISPLOTSTS.FoupId;
+                T_ISPLOTHIS.Status = S_ISPLOTSTS.Status;
+                T_ISPLOTHIS.InspectResult = S_ISPLOTSTS.InspectResult;
+                T_ISPLOTHIS.PartId = S_ISPLOTSTS.PartId;
+                T_ISPLOTHIS.PartDesc = S_ISPLOTSTS.PartDesc;
+                T_ISPLOTHIS.ProductDieQty = S_ISPLOTSTS.ProductDieQty;
+                T_ISPLOTHIS.Qty = S_ISPLOTSTS.Qty;
+                T_ISPLOTHIS.RecUser = S_ISPLOTSTS.RecUser;
+                T_ISPLOTHIS.RecUserName = S_ISPLOTSTS.RecUserName;
+                T_ISPLOTHIS.RecDate = S_ISPLOTSTS.RecDate;
+                T_ISPLOTHIS.RecShift = S_ISPLOTSTS.RecShift;
+                T_ISPLOTHIS.Phone = S_ISPLOTSTS.Phone;
+                T_ISPLOTHIS.LotType = S_ISPLOTSTS.LotType;
+                T_ISPLOTHIS.Stage = S_ISPLOTSTS.Stage;
+                T_ISPLOTHIS.Dept = S_ISPLOTSTS.Dept;
+                T_ISPLOTHIS.InspectDate = S_ISPLOTSTS.InspectDate;
+                T_ISPLOTHIS.CustomerId = S_ISPLOTSTS.CustomerId;
+                T_ISPLOTHIS.CustLotId = S_ISPLOTSTS.CustLotId;
+                T_ISPLOTHIS.CustPartId = S_ISPLOTSTS.CustPartId;
+                T_ISPLOTHIS.OrignalCountry = S_ISPLOTSTS.OrignalCountry;
+                T_ISPLOTHIS.QaId = S_ISPLOTSTS.QaId;
+                T_ISPLOTHIS.QaStamp = S_ISPLOTSTS.QaStamp;
+                T_ISPLOTHIS.Cmf1 = S_ISPLOTSTS.Cmf1;
+                T_ISPLOTHIS.Cmf2 = S_ISPLOTSTS.Cmf2;
+                T_ISPLOTHIS.Cmf3 = S_ISPLOTSTS.Cmf3;
+                T_ISPLOTHIS.Cmf4 = S_ISPLOTSTS.Cmf4;
+                T_ISPLOTHIS.Cmf5 = S_ISPLOTSTS.Cmf5;
+                T_ISPLOTHIS.Cmf6 = S_ISPLOTSTS.Cmf6;
+                T_ISPLOTHIS.Cmf7 = S_ISPLOTSTS.Cmf7;
+                T_ISPLOTHIS.Cmf8 = S_ISPLOTSTS.Cmf8;
+                T_ISPLOTHIS.Cmf9 = S_ISPLOTSTS.Cmf9;
+                T_ISPLOTHIS.Cmf10 = S_ISPLOTSTS.Cmf10;
+                T_ISPLOTHIS.TransSeq = S_ISPLOTSTS.TransSeq;
+                T_ISPLOTHIS.CreateTime = S_ISPLOTSTS.CreateTime;
+                T_ISPLOTHIS.CreateUserId = S_ISPLOTSTS.CreateUserId;
+                T_ISPLOTHIS.UpdateTime = S_ISPLOTSTS.UpdateTime;
+                T_ISPLOTHIS.UpdateUserId = S_ISPLOTSTS.UpdateUserId;
+                T_ISPLOTHIS.TranTime = s_time;
+                T_ISPLOTHIS.TranUserId = s_userid;
+
+                InitTable(T_ISPLOTHIS);
+                ISPLOTHIS_Save.models.Add(T_ISPLOTHIS);
+
+            }
+
+            //调用数据库操作
+
+            ISPLOTHIS_Save.operateType = OperateType.Insert;
+            //执行
+            UpdateModels(ISPLOTHIS_Save, ISPLOTHIS_message);
+        }
+
     }
 }

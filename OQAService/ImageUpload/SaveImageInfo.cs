@@ -13,7 +13,6 @@ namespace OQAService.Services
 {
     public partial class OQAService : OQABaseService, IOQAContract
     {
-        private string serverUrl = "http://localhost:8082";
         [OperationBehavior(TransactionAutoComplete = true, TransactionScopeRequired = true)]
         [TransactionFlow(TransactionFlowOption.Allowed)]
         public ModelRsp<ImageSave> SaveImageInfo(ModelRsp<ImageSave> ImageSave)
@@ -62,7 +61,7 @@ namespace OQAService.Services
                         ImagePath = SavePic(In_node.model.PicStreamBase64, SysTime);
                         T_ISPIMGDEF = ImageSave.model.IspImgeDef;
                         T_ISPIMGDEF.CreateTime = SysTime;
-                        T_ISPIMGDEF.ImagePath = AppendUrl(ImagePath);
+                        T_ISPIMGDEF.ImagePath = ImagePath;
                         T_ISPIMGDEF.ImageId = SysTime;
                         //调用数据库操作
                         InitTable(T_ISPIMGDEF);
@@ -100,7 +99,7 @@ namespace OQAService.Services
                         ImagePath = SavePic(In_node.model.PicStreamBase64, SysTime);
                         T_ISPIMGDEF = ImageSave.model.IspImgeDef;
                         T_ISPIMGDEF.UpdateTime = SysTime;
-                        T_ISPIMGDEF.ImagePath = AppendUrl(ImagePath);
+                        T_ISPIMGDEF.ImagePath = ImagePath;
                         T_ISPIMGDEF.ImageId = SysTime;
                         //调用数据库操作
                         //InitTable(T_ISPIMGDEF);
@@ -168,11 +167,6 @@ namespace OQAService.Services
             }
 
             return Url;
-        }
-        private string AppendUrl(string Url)
-        {
-            Url = TrimUrl(Url, 1);
-            return serverUrl+'/' + Url;
         }
     }
 }

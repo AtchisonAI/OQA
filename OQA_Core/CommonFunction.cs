@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Configuration;
 
 namespace OQA_Core
 {
@@ -18,7 +19,6 @@ namespace OQA_Core
     /// </summary>
     public class ComFunc
     {
-
         /// <summary>
 
         /// 将图片数据转换为Base64字符串
@@ -452,6 +452,27 @@ namespace OQA_Core
         public static bool CheckEnterKey(KeyPressEventArgs e)
         {
             return e.KeyChar == (char)13 ? true : false;
+        }
+
+        public static string GetPicServerPath(string path)
+        {
+            int index = path.IndexOf('/');
+            if (-1 == index)
+            {
+                throw new Exception("传入的图片路径格式错误");
+            }
+            path = path.Substring(index);
+
+            return GetKeyValue("pictureServer") + path;
+        }
+
+        public static string GetKeyValue(string key)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            if (config.AppSettings.Settings[key] == null)
+                return "";
+            else
+                return config.AppSettings.Settings[key].Value;
         }
     }
     #endregion

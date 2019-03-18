@@ -49,10 +49,12 @@
             this.waferSurF = new WaferSf.WaferSur();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.pictureView1 = new OQA_Core.Controls.PictureView();
             this.pnlMenu.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -297,12 +299,20 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.pictureView1);
             this.groupBox4.Location = new System.Drawing.Point(775, 45);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(550, 656);
             this.groupBox4.TabIndex = 40;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Preview";
+            // 
+            // pictureView1
+            // 
+            this.pictureView1.Location = new System.Drawing.Point(6, 89);
+            this.pictureView1.Name = "pictureView1";
+            this.pictureView1.Size = new System.Drawing.Size(510, 421);
+            this.pictureView1.TabIndex = 0;
             // 
             // FrmMarcoInput
             // 
@@ -329,6 +339,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -356,5 +367,6 @@
         private System.Windows.Forms.RadioButton radioButtonB;
         private System.Windows.Forms.RadioButton radioButtonF;
         private System.Windows.Forms.GroupBox groupBox4;
+        private OQA_Core.Controls.PictureView pictureView1;
     }
 }

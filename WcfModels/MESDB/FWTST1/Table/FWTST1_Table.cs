@@ -6,18 +6,6 @@ using NPoco;
 namespace WCFModels.MESDB.FWTST1
 {
     [DataContract]
-    [TableName("CONTROLACCESSSTRING")]
-    [PrimaryKey("ControlID" ,AutoIncrement = false)]
-    [ExplicitColumns]
-    public partial class ControlAccessString
-    {
-        [DataMember]
-        [Column("ControlID")] public string ControlID { get; set; }
-        [DataMember]
-        [Column("AccessString")] public string AccessString { get; set; }
-    }
-
-    [DataContract]
     [TableName("A00003174_0")]
     [ExplicitColumns]
     public partial class A000031740

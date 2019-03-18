@@ -289,14 +289,18 @@ namespace WcfService
         /// <return value>查询结果列表</return>
         public PageModelRsp<T> PageQuery<T>(PageQueryReq req)
         {
-            var res = PageQueryIml<T>(req);
-
             PageModelRsp<T> rsp = new PageModelRsp<T>();
-            rsp.TotalItems = (int)res.TotalItems;
-            rsp.TotalPage = (int)res.TotalPages;
-            rsp.models = res.Items;
-            rsp._success = true;
-
+            var res = PageQueryIml<T>(req);
+            if(null != res)
+            {
+                rsp.TotalItems = (int)res.TotalItems;
+                rsp.TotalPage = (int)res.TotalPages;
+                rsp.models = res.Items;
+                rsp._success = true;
+            } else
+            {
+                rsp._success = false;
+            }
             return rsp;
         }
 
@@ -310,8 +314,15 @@ namespace WcfService
         public ModelListRsp<T> Query<T>(QueryReq req)
         {
             ModelListRsp<T> rsp = new ModelListRsp<T>();
-            rsp.models = QueryIml<T>(req);
-            rsp._success = true;
+            var res = QueryIml<T>(req);
+            if (null!= res)
+            {
+                rsp.models = res;
+                rsp._success = true;
+            } else
+            {
+                rsp._success = false;
+            }
             return rsp;
         }
 
@@ -332,13 +343,20 @@ namespace WcfService
 
         private List<T> QueryIml<T>(QueryReq req)
         {
-            if (req.queryConditionList != null && req.queryConditionList.Count > 0)
+            try
             {
-                return db.Query<T>().Where(LambdaHelper.LambdaBuilder<T>(req.queryConditionList)).ToList();
-            }
-            else
+                if (req.queryConditionList != null && req.queryConditionList.Count > 0)
+                {
+                    return db.Query<T>().Where(LambdaHelper.LambdaBuilder<T>(req.queryConditionList)).ToList();
+                }
+                else
+                {
+                    return db.Query<T>().ToList();
+                }
+            } catch (Exception ex)
             {
-                return db.Query<T>().ToList();
+                log.Error(ex.Message);
+                return null;
             }
         }
 
@@ -376,7 +394,15 @@ namespace WcfService
                     index++;
                 }
             }
-            return provider.ToPage(req.CurrentPage, req.ItemsPerPage);
+
+            try
+            {
+                return provider.ToPage(req.CurrentPage, req.ItemsPerPage);
+            } catch (Exception e)
+            {
+                log.Error(e.Message);
+                return null;
+            }
         }
 
         public static string GetParaName<T>(System.Linq.Expressions.Expression<Func<T, object>> exp)

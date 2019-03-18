@@ -30,7 +30,7 @@
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.imageUpload1 = new ImageUpload.ImageUpload();
-            this.labelPer = new System.Windows.Forms.Label();
+            this.labelView = new System.Windows.Forms.Label();
             this.labelX = new System.Windows.Forms.Label();
             this.rateTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -60,10 +60,13 @@
             this.label15 = new System.Windows.Forms.Label();
             this.lotTextBox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.pictureView1 = new OQA_Core.Controls.PictureView();
             this.pnlMenu.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -82,9 +85,8 @@
             // 
             // pnlMenu
             // 
-            this.pnlMenu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.None;
-            this.pnlMenu.Location = new System.Drawing.Point(0, 811);
+            this.pnlMenu.Location = new System.Drawing.Point(50, 811);
             this.pnlMenu.Size = new System.Drawing.Size(1049, 40);
             // 
             // btnRefresh
@@ -93,9 +95,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox3.Controls.Add(this.imageUpload1);
-            this.groupBox3.Controls.Add(this.labelPer);
+            this.groupBox3.Controls.Add(this.labelView);
             this.groupBox3.Controls.Add(this.labelX);
             this.groupBox3.Controls.Add(this.rateTextBox);
             this.groupBox3.Controls.Add(this.label6);
@@ -112,9 +113,9 @@
             this.groupBox3.Controls.Add(this.ReviewTextBox);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(12, 531);
+            this.groupBox3.Location = new System.Drawing.Point(50, 531);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(880, 225);
+            this.groupBox3.Size = new System.Drawing.Size(950, 225);
             this.groupBox3.TabIndex = 35;
             this.groupBox3.TabStop = false;
             // 
@@ -123,23 +124,24 @@
             this.imageUpload1.Location = new System.Drawing.Point(123, 80);
             this.imageUpload1.Name = "imageUpload1";
             this.imageUpload1.PicStream = null;
-            this.imageUpload1.Size = new System.Drawing.Size(310, 31);
+            this.imageUpload1.Size = new System.Drawing.Size(370, 31);
             this.imageUpload1.TabIndex = 20;
             this.imageUpload1.UpLoadByArea = null;
             this.imageUpload1.UpLoadByLot = null;
             this.imageUpload1.UpLoadBySide = null;
             this.imageUpload1.UpLoadByWafer = null;
             this.imageUpload1.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload1_btnUploadClicked);
+            this.imageUpload1.PreviewLableClicked += new ImageUpload.ImageUpload.PreViewClickHandle(this.imageUpload1_PreviewLableClicked);
             // 
-            // labelPer
+            // labelView
             // 
-            this.labelPer.AutoSize = true;
-            this.labelPer.BackColor = System.Drawing.Color.Transparent;
-            this.labelPer.Location = new System.Drawing.Point(604, 89);
-            this.labelPer.Name = "labelPer";
-            this.labelPer.Size = new System.Drawing.Size(11, 12);
-            this.labelPer.TabIndex = 19;
-            this.labelPer.Text = "%";
+            this.labelView.AutoSize = true;
+            this.labelView.BackColor = System.Drawing.Color.Transparent;
+            this.labelView.Location = new System.Drawing.Point(881, 45);
+            this.labelView.Name = "labelView";
+            this.labelView.Size = new System.Drawing.Size(11, 12);
+            this.labelView.TabIndex = 19;
+            this.labelView.Text = "%";
             // 
             // labelX
             // 
@@ -155,7 +157,7 @@
             // 
             this.rateTextBox.Enabled = false;
             this.rateTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.rateTextBox.Location = new System.Drawing.Point(525, 84);
+            this.rateTextBox.Location = new System.Drawing.Point(802, 40);
             this.rateTextBox.Multiline = true;
             this.rateTextBox.Name = "rateTextBox";
             this.rateTextBox.Size = new System.Drawing.Size(100, 20);
@@ -165,7 +167,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.label6.Location = new System.Drawing.Point(435, 86);
+            this.label6.Location = new System.Drawing.Point(712, 42);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 14);
             this.label6.TabIndex = 6;
@@ -175,7 +177,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.label7.Location = new System.Drawing.Point(647, 82);
+            this.label7.Location = new System.Drawing.Point(712, 83);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(70, 14);
             this.label7.TabIndex = 7;
@@ -196,14 +198,14 @@
             this.cmtRichTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
             this.cmtRichTextBox.Location = new System.Drawing.Point(133, 172);
             this.cmtRichTextBox.Name = "cmtRichTextBox";
-            this.cmtRichTextBox.Size = new System.Drawing.Size(735, 29);
+            this.cmtRichTextBox.Size = new System.Drawing.Size(775, 29);
             this.cmtRichTextBox.TabIndex = 16;
             this.cmtRichTextBox.Text = "";
             // 
             // qtyTextBox
             // 
             this.qtyTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.qtyTextBox.Location = new System.Drawing.Point(768, 37);
+            this.qtyTextBox.Location = new System.Drawing.Point(584, 37);
             this.qtyTextBox.Multiline = true;
             this.qtyTextBox.Name = "qtyTextBox";
             this.qtyTextBox.Size = new System.Drawing.Size(100, 20);
@@ -236,7 +238,7 @@
             this.defectTextBox.Enabled = false;
             this.defectTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
             this.defectTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.defectTextBox.Location = new System.Drawing.Point(525, 37);
+            this.defectTextBox.Location = new System.Drawing.Point(342, 39);
             this.defectTextBox.Multiline = true;
             this.defectTextBox.Name = "defectTextBox";
             this.defectTextBox.Size = new System.Drawing.Size(100, 20);
@@ -247,7 +249,7 @@
             this.decRichTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
             this.decRichTextBox.Location = new System.Drawing.Point(133, 119);
             this.decRichTextBox.Name = "decRichTextBox";
-            this.decRichTextBox.Size = new System.Drawing.Size(735, 29);
+            this.decRichTextBox.Size = new System.Drawing.Size(775, 29);
             this.decRichTextBox.TabIndex = 15;
             this.decRichTextBox.Text = "";
             // 
@@ -255,7 +257,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.label3.Location = new System.Drawing.Point(435, 37);
+            this.label3.Location = new System.Drawing.Point(252, 39);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 14);
             this.label3.TabIndex = 3;
@@ -274,7 +276,7 @@
             // ReviewTextBox
             // 
             this.ReviewTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.ReviewTextBox.Location = new System.Drawing.Point(768, 80);
+            this.ReviewTextBox.Location = new System.Drawing.Point(802, 80);
             this.ReviewTextBox.Multiline = true;
             this.ReviewTextBox.Name = "ReviewTextBox";
             this.ReviewTextBox.Size = new System.Drawing.Size(100, 20);
@@ -294,7 +296,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.label4.Location = new System.Drawing.Point(647, 37);
+            this.label4.Location = new System.Drawing.Point(473, 39);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(105, 14);
             this.label4.TabIndex = 4;
@@ -302,16 +304,15 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.frontButton);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.waferSurF);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.groupBox1.Location = new System.Drawing.Point(12, 138);
+            this.groupBox1.Location = new System.Drawing.Point(50, 138);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(880, 398);
+            this.groupBox1.Size = new System.Drawing.Size(950, 398);
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
             // 
@@ -366,16 +367,15 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox2.Controls.Add(this.radioButtonB);
             this.groupBox2.Controls.Add(this.radioButtonF);
             this.groupBox2.Controls.Add(this.slotComboBox);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.lotTextBox);
             this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Location = new System.Drawing.Point(12, 38);
+            this.groupBox2.Location = new System.Drawing.Point(50, 48);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(880, 94);
+            this.groupBox2.Size = new System.Drawing.Size(950, 94);
             this.groupBox2.TabIndex = 36;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "AOI inspection simple MAP";
@@ -443,11 +443,29 @@
             this.label16.TabIndex = 2;
             this.label16.Text = "Slot ID";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.pictureView1);
+            this.groupBox4.Location = new System.Drawing.Point(1006, 48);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(550, 710);
+            this.groupBox4.TabIndex = 38;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Preview";
+            // 
+            // pictureView1
+            // 
+            this.pictureView1.Location = new System.Drawing.Point(6, 103);
+            this.pictureView1.Name = "pictureView1";
+            this.pictureView1.Size = new System.Drawing.Size(510, 421);
+            this.pictureView1.TabIndex = 0;
+            // 
             // FrmAOIInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1049, 851);
+            this.ClientSize = new System.Drawing.Size(1564, 851);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
@@ -458,6 +476,7 @@
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox3, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.groupBox4, 0);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -466,6 +485,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -499,10 +519,12 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox lotTextBox;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label labelPer;
+        private System.Windows.Forms.Label labelView;
         private System.Windows.Forms.Label labelX;
         private ImageUpload.ImageUpload imageUpload1;
         private System.Windows.Forms.RadioButton radioButtonB;
         private System.Windows.Forms.RadioButton radioButtonF;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private OQA_Core.Controls.PictureView pictureView1;
     }
 }

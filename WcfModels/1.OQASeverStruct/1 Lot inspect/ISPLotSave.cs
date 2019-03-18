@@ -43,6 +43,32 @@ namespace WCFModels.OQA
 
         //服务传入参数
         [DataMember]
+        public decimal D_TRAN_SEQ
+        {
+            get
+            {
+                return d_tran_seq;
+            }
+            set
+            {
+                d_tran_seq = value;
+            }
+        }
+        private decimal d_tran_seq;
+        [DataMember]
+        public string S_LOT_ID
+        {
+            get
+            {
+                return s_lot_id;
+            }
+            set
+            {
+                s_lot_id = value;
+            }
+        }
+        private string s_lot_id;
+        [DataMember]
         public string S_USER_ID
         {
             get

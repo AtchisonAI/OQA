@@ -359,8 +359,16 @@ namespace OQAMain
             }
         }
 
+
         #endregion
 
-       
+        private void imageUpload1_PreviewLableClicked(object sender, EventArgs e)
+        {
+            string path = imageUpload1.GetImagePath();
+            if (!string.IsNullOrEmpty(path))
+            {
+                pictureView1.LoadImageAsync(ComFunc.GetPicServerPath(path));
+            }
+        }
     }
 }

@@ -569,7 +569,6 @@ namespace OQAMain
 
             var out_data = OQASrv.Call.QueryLotDetail(in_node);
 
-
             if (out_data._success == true)
             {
                 LotIDList.Items.Clear();
@@ -580,13 +579,6 @@ namespace OQAMain
                    
                     list_item.Text = out_data.model.SEARCHLOTID_list[i][0].ToString();
                     LotIDList.Items.Add(list_item.Text);
-
-                    //ListViewItem list_item = new ListViewItem();
-                    //ISPLOTSTS list = out_data.model.ISPLOTST_list[i];
-                    //list_item.Text = list.LotId;
-                    //LotIDList.Items.Add(list_item.Text);
-
-
                 }
                 lblSucessMsg.Text = out_data._MsgCode;
                 return true;

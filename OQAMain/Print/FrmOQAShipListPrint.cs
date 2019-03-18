@@ -416,12 +416,6 @@ namespace OQAMain
                     list_item.Text = out_data.model.SEARCHshipID_list[i][0].ToString();
                     CheckShipID.Items.Add(list_item.Text);
 
-                    //ListViewItem list_item = new ListViewItem();
-                    //ISPLOTSTS list = out_data.model.ISPLOTST_list[i];
-                    //list_item.Text = list.LotId;
-                    //LotIDList.Items.Add(list_item.Text);
-
-
                 }
                 lblSucessMsg.Text = out_data._MsgCode;
                 return true;

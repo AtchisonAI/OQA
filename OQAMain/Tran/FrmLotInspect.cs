@@ -924,7 +924,12 @@ namespace OQAMain
             {
                 if (dgMacro.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Y")
                 {
-
+                    string s_side = dgMacro.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    FrmMarcoInput MAC = new FrmMarcoInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
+                    MAC.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    MAC.WindowState = FormWindowState.Maximized;
+                    MAC.StartPosition = FormStartPosition.CenterParent;
+                    MAC.ShowDialog();
                 }
 
             }
@@ -936,7 +941,12 @@ namespace OQAMain
             {
                 if (dgMIR.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Y")
                 {
-
+                    string s_side = dgMIR.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    FrmMircoInput MIR = new FrmMircoInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
+                    MIR.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    MIR.WindowState = FormWindowState.Maximized;
+                    MIR.StartPosition = FormStartPosition.CenterParent;
+                    MIR.ShowDialog();
                 }
 
             }

@@ -32,10 +32,10 @@ namespace OQAMain
         #region Page Load
         private void FrmAOIInput_Load(object sender, EventArgs e)
         {
-            lotId = "ITM0142.02";
-            slotId = "022";
-            sideType = "F";
-            waferId = "ITM0142.09";
+            //lotId = "ITM0142.02";
+            //slotId = "022";
+            //sideType = "F";
+            //waferId = "ITM0142.09";
             if (sideType.Equals(SideType.Front))
             {
                 radioButtonF.Checked = true;
@@ -52,6 +52,7 @@ namespace OQAMain
         {
             InitializeComponent();
             lotId = lotIdIn;
+            slotComboBox.Text = slotIdIn;
             slotId = slotIdIn;
             sideType = sideTypeIn;
         }

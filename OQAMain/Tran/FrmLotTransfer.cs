@@ -550,6 +550,10 @@ namespace OQAMain
                 {
                     if (SearchLotIDList(GlobConst.TRAN_VIEW, '3', txtSearchLotID.Text.Trim()) == false) return;
                 }
+                else {
+                    LotIDList.Items.Clear();
+                    if (QueryLotIDList(GlobConst.TRAN_VIEW, '1') == false) return;
+                }
             }
         }
 

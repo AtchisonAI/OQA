@@ -59,27 +59,36 @@
             // 
             // btnClose
             // 
+            this.btnClose.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnClose.Location = new System.Drawing.Point(657, 7);
             // 
             // btnCreate
             // 
+            this.btnCreate.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnCreate.Location = new System.Drawing.Point(446, 8);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
+            this.btnEdite.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnEdite.Location = new System.Drawing.Point(550, 8);
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
             // 
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.None;
+            this.pnlMenu.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.pnlMenu.Location = new System.Drawing.Point(50, 736);
             this.pnlMenu.Size = new System.Drawing.Size(806, 40);
             // 
             // btnRefresh
             // 
+            this.btnRefresh.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // lblSucessMsg
+            // 
+            this.lblSucessMsg.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             // 
             // groupBox2
             // 
@@ -89,6 +98,7 @@
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.lotTextBox);
             this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox2.Location = new System.Drawing.Point(50, 45);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(721, 94);
@@ -99,6 +109,7 @@
             // radioButtonB
             // 
             this.radioButtonB.AutoSize = true;
+            this.radioButtonB.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonB.Location = new System.Drawing.Point(639, 56);
             this.radioButtonB.Name = "radioButtonB";
             this.radioButtonB.Size = new System.Drawing.Size(71, 16);
@@ -111,6 +122,7 @@
             // radioButtonF
             // 
             this.radioButtonF.AutoSize = true;
+            this.radioButtonF.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonF.Location = new System.Drawing.Point(526, 56);
             this.radioButtonF.Name = "radioButtonF";
             this.radioButtonF.Size = new System.Drawing.Size(77, 16);
@@ -121,27 +133,27 @@
             // 
             // slotComboBox
             // 
-            this.slotComboBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.slotComboBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.slotComboBox.FormattingEnabled = true;
             this.slotComboBox.Location = new System.Drawing.Point(357, 57);
             this.slotComboBox.Name = "slotComboBox";
-            this.slotComboBox.Size = new System.Drawing.Size(121, 22);
+            this.slotComboBox.Size = new System.Drawing.Size(121, 20);
             this.slotComboBox.TabIndex = 4;
             this.slotComboBox.SelectedIndexChanged += new System.EventHandler(this.slotComboBox_SelectedIndexChanged);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.label15.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label15.Location = new System.Drawing.Point(81, 57);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(49, 14);
+            this.label15.Size = new System.Drawing.Size(41, 12);
             this.label15.TabIndex = 1;
             this.label15.Text = "Lot ID";
             // 
             // lotTextBox
             // 
-            this.lotTextBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lotTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lotTextBox.Location = new System.Drawing.Point(157, 56);
             this.lotTextBox.Multiline = true;
             this.lotTextBox.Name = "lotTextBox";
@@ -152,10 +164,10 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.label16.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label16.Location = new System.Drawing.Point(294, 57);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(56, 14);
+            this.label16.Size = new System.Drawing.Size(47, 12);
             this.label16.TabIndex = 2;
             this.label16.Text = "Slot ID";
             // 
@@ -167,6 +179,7 @@
             this.groupBox3.Controls.Add(this.decRichTextBox);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox3.Location = new System.Drawing.Point(50, 538);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(721, 163);
@@ -175,6 +188,7 @@
             // 
             // imageUpload1
             // 
+            this.imageUpload1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.imageUpload1.Location = new System.Drawing.Point(142, 20);
             this.imageUpload1.Name = "imageUpload1";
             this.imageUpload1.PicStream = null;
@@ -189,7 +203,7 @@
             // 
             // cmtRichTextBox
             // 
-            this.cmtRichTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.cmtRichTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmtRichTextBox.Location = new System.Drawing.Point(142, 115);
             this.cmtRichTextBox.Name = "cmtRichTextBox";
             this.cmtRichTextBox.Size = new System.Drawing.Size(569, 29);
@@ -199,16 +213,16 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.label8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label8.Location = new System.Drawing.Point(35, 71);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(84, 14);
+            this.label8.Size = new System.Drawing.Size(71, 12);
             this.label8.TabIndex = 8;
             this.label8.Text = "Description";
             // 
             // decRichTextBox
             // 
-            this.decRichTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.decRichTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.decRichTextBox.Location = new System.Drawing.Point(142, 62);
             this.decRichTextBox.Name = "decRichTextBox";
             this.decRichTextBox.Size = new System.Drawing.Size(569, 29);
@@ -218,20 +232,20 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.label5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label5.Location = new System.Drawing.Point(35, 25);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 14);
+            this.label5.Size = new System.Drawing.Size(77, 12);
             this.label5.TabIndex = 5;
             this.label5.Text = "Defect image";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.label9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label9.Location = new System.Drawing.Point(35, 124);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 14);
+            this.label9.Size = new System.Drawing.Size(47, 12);
             this.label9.TabIndex = 9;
             this.label9.Text = "Comment";
             // 
@@ -242,6 +256,7 @@
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.waferSurF);
             this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.groupBox1.Location = new System.Drawing.Point(50, 134);
             this.groupBox1.Name = "groupBox1";
@@ -252,16 +267,16 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.label13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label13.Location = new System.Drawing.Point(96, 356);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(301, 14);
+            this.label13.Size = new System.Drawing.Size(257, 12);
             this.label13.TabIndex = 23;
             this.label13.Text = "R:Residue M:Probe Mark  B: Bridge O:Others";
             // 
             // frontButton
             // 
-            this.frontButton.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.frontButton.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.frontButton.Location = new System.Drawing.Point(259, 299);
             this.frontButton.Name = "frontButton";
             this.frontButton.Size = new System.Drawing.Size(123, 23);
@@ -272,15 +287,16 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.label12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label12.Location = new System.Drawing.Point(50, 329);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(490, 14);
+            this.label12.Size = new System.Drawing.Size(419, 12);
             this.label12.TabIndex = 22;
             this.label12.Text = "A:Arching  S:Scratch  D:Discolor  F:Defocus  C:Corrosion  P:Particle ";
             // 
             // waferSurF
             // 
+            this.waferSurF.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.waferSurF.Location = new System.Drawing.Point(216, 70);
             this.waferSurF.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.waferSurF.Name = "waferSurF";
@@ -290,16 +306,17 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label14.Location = new System.Drawing.Point(151, 33);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(439, 20);
+            this.label14.Size = new System.Drawing.Size(263, 12);
             this.label14.TabIndex = 26;
             this.label14.Text = "Pls mark the defect with below special code";
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.pictureView1);
+            this.groupBox4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox4.Location = new System.Drawing.Point(775, 45);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(550, 656);
@@ -309,6 +326,7 @@
             // 
             // pictureView1
             // 
+            this.pictureView1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.pictureView1.Location = new System.Drawing.Point(6, 89);
             this.pictureView1.Name = "pictureView1";
             this.pictureView1.Size = new System.Drawing.Size(510, 421);

@@ -198,10 +198,10 @@ namespace OQAMain
 
         private void btnCreate_Click_1(object sender, EventArgs e)
         {
-            FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint(srtNum);
+           
             GetSerialNum();
             MessageBox.Show("交接单号"+ srtNum);
-            
+            FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint(srtNum);
 
             string s_PartID = ComFunc.Trim(txtPartID.Text);
             string s_QTY = ComFunc.Trim(txtQTY.Text);

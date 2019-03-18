@@ -18,6 +18,7 @@ namespace OQAMain
         private string slotId = "";
         private string waferId = "";
         private decimal? num = 0;
+        private bool jumpFlag = false;//页面跳转
         private ISPIMGDEF imgInfo = new ISPIMGDEF();
         #endregion
 
@@ -32,10 +33,7 @@ namespace OQAMain
         #region Page Load
         private void FrmAOIInput_Load(object sender, EventArgs e)
         {
-            //lotId = "ITM0142.02";
-            //slotId = "022";
-            //sideType = "F";
-            //waferId = "ITM0142.09";
+            
             if (sideType.Equals(SideType.Front))
             {
                 radioButtonF.Checked = true;
@@ -51,10 +49,16 @@ namespace OQAMain
         public FrmAOIInput(string lotIdIn,string slotIdIn,string sideTypeIn)
         {
             InitializeComponent();
-            lotId = lotIdIn;
-            slotComboBox.Text = slotIdIn;
-            slotId = slotIdIn;
-            sideType = sideTypeIn;
+            if(!string.IsNullOrWhiteSpace(lotIdIn)&& !string.IsNullOrWhiteSpace(slotIdIn) && !string.IsNullOrWhiteSpace(sideTypeIn))
+            {
+                lotId = lotIdIn;
+                slotId = slotIdIn;
+                sideType = sideTypeIn;
+                lotTextBox.Text = lotId;
+                slotComboBox.Text = slotId;
+                jumpFlag = true;
+            }
+            
         }
         #endregion
 
@@ -117,6 +121,20 @@ namespace OQAMain
         //side单选框CheckedChanged
         private void radioButtonB_CheckedChanged(object sender, EventArgs e)
         {
+            if (jumpFlag && radioButtonB.Checked)
+            {
+                if (sideType.Equals(SideType.Front))
+                {
+                    slotId = "";
+                    slotComboBox.Items.Clear();
+                }
+            }
+            else
+            {
+                slotId = "";
+                slotComboBox.Items.Clear();
+            }
+            jumpFlag = false;
             if (radioButtonB.Checked)
             {
                 sideType = SideType.Back;
@@ -125,9 +143,7 @@ namespace OQAMain
             {
                 sideType = SideType.Front;
             }
-
-            slotId = "";
-            slotComboBox.Items.Clear();
+            
             pageInfoShow();
         }
         //lotId文本框TextChanged

@@ -31,14 +31,6 @@ namespace OQAMain
         #region Page Load
         private void FrmMircoInput_Load(object sender, EventArgs e)
         {
-            if (sideType.Equals(SideType.Front))
-            {
-                radioButtonF.Checked = true;
-            }
-            else
-            {
-                radioButtonB.Checked = true;
-            }
             radioNine.Checked = true;
             checkAllOk();
             waferSurF.nodeMode = true;
@@ -53,6 +45,8 @@ namespace OQAMain
             lotId = lotIdIn;
             slotId = slotIdIn;
             sideType = sideTypeIn;
+            lotTextBox.Text = lotId;
+            slotComboBox.Text = slotId;
         }
         #endregion
 
@@ -143,21 +137,6 @@ namespace OQAMain
                 checkAllOk();
             }
         }
-        //side单选框CheckedChanged
-        private void radioButtonB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonB.Checked)
-            {
-                sideType = SideType.Back;
-            }
-            else
-            {
-                sideType = SideType.Front;
-            }
-            slotId = "";
-            slotComboBox.Items.Clear();
-            pageInfoShow();
-        }
         //qty文本框TextChanged
         private void qtyTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -238,14 +217,7 @@ namespace OQAMain
         {
             try
             {
-                if (sideType.Equals(SideType.Front))
-                {
-                    frontButton.Text = "Frontside";
-                }
-                else
-                {
-                    frontButton.Text = "Backside";
-                }
+                frontButton.Text = "Frontside";
                 lotTextBox.Text = lotId;
                 slotComboBox.Text = slotId;
                 ISPWAFITM ISPWAFITM = new ISPWAFITM();

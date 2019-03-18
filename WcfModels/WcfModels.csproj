@@ -65,6 +65,7 @@
     <Compile Include="1.OQASeverStruct\10 Package Label Print\PKGLabelPrintView.cs" />
     <Compile Include="1.OQASeverStruct\11 Wafer Insection Record Print\WaferInspectionRecordView.cs" />
     <Compile Include="1.OQASeverStruct\1 Lot inspect\ImageSave.cs" />
+    <Compile Include="1.OQASeverStruct\12 IOQA Ship List Print\ShipIDListView.cs" />
     <Compile Include="1.OQASeverStruct\12 IOQA Ship List Print\PKGShipView.cs" />
     <Compile Include="1.OQASeverStruct\13 Defect code set\DefectCodeSave.cs" />
     <Compile Include="1.OQASeverStruct\13 Defect code set\DefectCodeView.cs" />

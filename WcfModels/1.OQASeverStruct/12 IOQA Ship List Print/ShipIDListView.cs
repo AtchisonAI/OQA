@@ -6,7 +6,7 @@ using WCFModels.Message;
 namespace WCFModels.OQA
 {
     [DataContract]
-    public class QueryLotDetailView : BaseRsp
+    public class ShipIDListView : BaseRsp
     {
 
         //服务传入执行动作,事务标记必须输入
@@ -24,10 +24,10 @@ namespace WCFModels.OQA
         }
         private char c_proc_step;
 
-       // public QueryLotDetailView()
-        //{
-         //   PKGSHPDAT_list = new List<PKGSHPDAT>();
-       // }
+        public ShipIDListView()
+        {
+            SHIPIDLIST_list = new List<PKGSHPSTS>();
+        }
 
         [DataMember]
         public char C_TRAN_FLAG
@@ -45,40 +45,25 @@ namespace WCFModels.OQA
         private char c_tran_flag;
         //服务传入参数
         [DataMember]
-        public string IN_MASTERLOT_NO
+        public string IN_SEARCHSHIP_NO
         {
             get
             {
-                return in_masterlot_no;
+                return in_searchship_no;
             }
             set
             {
-                in_masterlot_no= value;
+                in_searchship_no = value;
             }
         }
-        private string in_masterlot_no;
+        private string in_searchship_no;
 
+        //服务传出数据结构
         [DataMember]
-        public string IN_SEARCHLOTID_NO
-        {
-            get
-            {
-                return in_msearchlot_no;
-            }
-            set
-            {
-                in_msearchlot_no = value;
-            }
-        }
-        private string in_msearchlot_no;
-        // 服务传出数据结构
-        [DataMember]
-       // public List<ISPLOTSTS> PKGSHPDAT_list { get; set; }
-         public List<object[]> PKGSHPDAT_list { get; set; }
-        [DataMember]
-        public List<object[]> SEARCHLOTID_list { get; set; }//select like
-
-
+        public List<PKGSHPSTS> SHIPIDLIST_list { get; set; }
         //服务传出结果在BaseRsq:_success  _ErrorMsg
+        [DataMember]
+        public List<object[]> SEARCHshipID_list { get; set; }//select like
+
     }
 }

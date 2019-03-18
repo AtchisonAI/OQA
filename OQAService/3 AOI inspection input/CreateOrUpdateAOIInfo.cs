@@ -53,6 +53,7 @@ namespace OQAService.Services
                             if (null != qryOut.model.ISPWAFITM_list && qryOut.model.ISPWAFITM_list.Count > 0)
                             {
                                 updateReq.model.ISPWAFITM_list[0].TransSeq = qryOut.model.ISPWAFITM_list[0].TransSeq;
+                                updateReq.model.ISPWAFITM_list[0].UpdateTime = GetSysTime();
                                 UpdateModelReq<ISPWAFITM> wafitm = new UpdateModelReq<ISPWAFITM>()
                                 {
                                     model = updateReq.model.ISPWAFITM_list[0],
@@ -143,8 +144,13 @@ namespace OQAService.Services
                                             {
                                                 detReq.TransSeq = qryOut.model.ISPWAFDFT_list[i].TransSeq;
                                                 operateTypeDft = OperateType.Update;
+                                                detReq.UpdateTime = GetSysTime();
                                                 //移除更新的数据
                                                 copyQryList.Remove(qryOut.model.ISPWAFDFT_list[i]);
+                                            }
+                                            else
+                                            {
+                                                detReq.CreateTime = GetSysTime();
                                             }
                                             
                                         }
@@ -192,6 +198,7 @@ namespace OQAService.Services
                                     foreach (ISPWAFDFT detReq in updateReq.model.ISPWAFDFT_list)
                                     {
                                         detReq.TransSeq = 0;
+                                        detReq.CreateTime = GetSysTime();
                                         UpdateModelReq<ISPWAFDFT> wafdet = new UpdateModelReq<ISPWAFDFT>()
                                         {
                                             model = detReq,

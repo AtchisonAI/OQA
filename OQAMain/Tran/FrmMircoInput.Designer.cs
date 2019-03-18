@@ -130,6 +130,7 @@
             // btnEdite
             // 
             this.btnEdite.Location = new System.Drawing.Point(699, 8);
+            this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
             // 
@@ -154,7 +155,7 @@
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Location = new System.Drawing.Point(24, 37);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(880, 94);
+            this.groupBox2.Size = new System.Drawing.Size(920, 94);
             this.groupBox2.TabIndex = 42;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Micro inspection simple MAP";
@@ -251,9 +252,9 @@
             this.label16.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label16.Location = new System.Drawing.Point(236, 55);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(35, 14);
+            this.label16.Size = new System.Drawing.Size(56, 14);
             this.label16.TabIndex = 2;
-            this.label16.Text = "Slot";
+            this.label16.Text = "Slot ID";
             // 
             // groupBox3
             // 
@@ -272,7 +273,7 @@
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Location = new System.Drawing.Point(24, 562);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(880, 163);
+            this.groupBox3.Size = new System.Drawing.Size(920, 163);
             this.groupBox3.TabIndex = 41;
             this.groupBox3.TabStop = false;
             // 
@@ -408,7 +409,7 @@
             this.groupBox1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.groupBox1.Location = new System.Drawing.Point(24, 126);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(880, 450);
+            this.groupBox1.Size = new System.Drawing.Size(920, 450);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             // 
@@ -468,7 +469,7 @@
             this.groupBoxSelect.Controls.Add(this.label1);
             this.groupBoxSelect.Location = new System.Drawing.Point(382, 11);
             this.groupBoxSelect.Name = "groupBoxSelect";
-            this.groupBoxSelect.Size = new System.Drawing.Size(480, 425);
+            this.groupBoxSelect.Size = new System.Drawing.Size(530, 425);
             this.groupBoxSelect.TabIndex = 39;
             this.groupBoxSelect.TabStop = false;
             // 
@@ -477,8 +478,12 @@
             this.imageUpload_14.Location = new System.Drawing.Point(182, 380);
             this.imageUpload_14.Name = "imageUpload_14";
             this.imageUpload_14.PicStream = null;
-            this.imageUpload_14.Size = new System.Drawing.Size(283, 31);
+            this.imageUpload_14.Size = new System.Drawing.Size(310, 31);
             this.imageUpload_14.TabIndex = 215;
+            this.imageUpload_14.UpLoadByArea = null;
+            this.imageUpload_14.UpLoadByLot = null;
+            this.imageUpload_14.UpLoadBySide = null;
+            this.imageUpload_14.UpLoadByWafer = null;
             this.imageUpload_14.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_14_btnUploadClicked);
             // 
             // imageUpload_8
@@ -486,8 +491,12 @@
             this.imageUpload_8.Location = new System.Drawing.Point(182, 350);
             this.imageUpload_8.Name = "imageUpload_8";
             this.imageUpload_8.PicStream = null;
-            this.imageUpload_8.Size = new System.Drawing.Size(283, 31);
+            this.imageUpload_8.Size = new System.Drawing.Size(310, 31);
             this.imageUpload_8.TabIndex = 214;
+            this.imageUpload_8.UpLoadByArea = null;
+            this.imageUpload_8.UpLoadByLot = null;
+            this.imageUpload_8.UpLoadBySide = null;
+            this.imageUpload_8.UpLoadByWafer = null;
             this.imageUpload_8.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_8_btnUploadClicked);
             // 
             // imageUpload_12
@@ -495,8 +504,12 @@
             this.imageUpload_12.Location = new System.Drawing.Point(182, 320);
             this.imageUpload_12.Name = "imageUpload_12";
             this.imageUpload_12.PicStream = null;
-            this.imageUpload_12.Size = new System.Drawing.Size(283, 31);
+            this.imageUpload_12.Size = new System.Drawing.Size(310, 31);
             this.imageUpload_12.TabIndex = 213;
+            this.imageUpload_12.UpLoadByArea = null;
+            this.imageUpload_12.UpLoadByLot = null;
+            this.imageUpload_12.UpLoadBySide = null;
+            this.imageUpload_12.UpLoadByWafer = null;
             this.imageUpload_12.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_12_btnUploadClicked);
             // 
             // imageUpload_18
@@ -504,8 +517,12 @@
             this.imageUpload_18.Location = new System.Drawing.Point(180, 290);
             this.imageUpload_18.Name = "imageUpload_18";
             this.imageUpload_18.PicStream = null;
-            this.imageUpload_18.Size = new System.Drawing.Size(283, 31);
+            this.imageUpload_18.Size = new System.Drawing.Size(310, 31);
             this.imageUpload_18.TabIndex = 212;
+            this.imageUpload_18.UpLoadByArea = null;
+            this.imageUpload_18.UpLoadByLot = null;
+            this.imageUpload_18.UpLoadBySide = null;
+            this.imageUpload_18.UpLoadByWafer = null;
             this.imageUpload_18.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_18_btnUploadClicked);
             // 
             // imageUpload_19
@@ -513,8 +530,12 @@
             this.imageUpload_19.Location = new System.Drawing.Point(180, 260);
             this.imageUpload_19.Name = "imageUpload_19";
             this.imageUpload_19.PicStream = null;
-            this.imageUpload_19.Size = new System.Drawing.Size(283, 31);
+            this.imageUpload_19.Size = new System.Drawing.Size(310, 31);
             this.imageUpload_19.TabIndex = 211;
+            this.imageUpload_19.UpLoadByArea = null;
+            this.imageUpload_19.UpLoadByLot = null;
+            this.imageUpload_19.UpLoadBySide = null;
+            this.imageUpload_19.UpLoadByWafer = null;
             this.imageUpload_19.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_19_btnUploadClicked);
             // 
             // imageUpload_9
@@ -522,8 +543,12 @@
             this.imageUpload_9.Location = new System.Drawing.Point(180, 230);
             this.imageUpload_9.Name = "imageUpload_9";
             this.imageUpload_9.PicStream = null;
-            this.imageUpload_9.Size = new System.Drawing.Size(283, 31);
+            this.imageUpload_9.Size = new System.Drawing.Size(310, 31);
             this.imageUpload_9.TabIndex = 210;
+            this.imageUpload_9.UpLoadByArea = null;
+            this.imageUpload_9.UpLoadByLot = null;
+            this.imageUpload_9.UpLoadBySide = null;
+            this.imageUpload_9.UpLoadByWafer = null;
             this.imageUpload_9.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_9_btnUploadClicked);
             // 
             // imageUpload_7
@@ -531,8 +556,12 @@
             this.imageUpload_7.Location = new System.Drawing.Point(181, 200);
             this.imageUpload_7.Name = "imageUpload_7";
             this.imageUpload_7.PicStream = null;
-            this.imageUpload_7.Size = new System.Drawing.Size(283, 31);
+            this.imageUpload_7.Size = new System.Drawing.Size(310, 31);
             this.imageUpload_7.TabIndex = 209;
+            this.imageUpload_7.UpLoadByArea = null;
+            this.imageUpload_7.UpLoadByLot = null;
+            this.imageUpload_7.UpLoadBySide = null;
+            this.imageUpload_7.UpLoadByWafer = null;
             this.imageUpload_7.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_7_btnUploadClicked);
             // 
             // imageUpload_17
@@ -540,8 +569,12 @@
             this.imageUpload_17.Location = new System.Drawing.Point(180, 170);
             this.imageUpload_17.Name = "imageUpload_17";
             this.imageUpload_17.PicStream = null;
-            this.imageUpload_17.Size = new System.Drawing.Size(283, 31);
+            this.imageUpload_17.Size = new System.Drawing.Size(310, 31);
             this.imageUpload_17.TabIndex = 208;
+            this.imageUpload_17.UpLoadByArea = null;
+            this.imageUpload_17.UpLoadByLot = null;
+            this.imageUpload_17.UpLoadBySide = null;
+            this.imageUpload_17.UpLoadByWafer = null;
             this.imageUpload_17.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_17_btnUploadClicked);
             // 
             // imageUpload_23
@@ -549,8 +582,12 @@
             this.imageUpload_23.Location = new System.Drawing.Point(181, 140);
             this.imageUpload_23.Name = "imageUpload_23";
             this.imageUpload_23.PicStream = null;
-            this.imageUpload_23.Size = new System.Drawing.Size(283, 31);
+            this.imageUpload_23.Size = new System.Drawing.Size(310, 31);
             this.imageUpload_23.TabIndex = 207;
+            this.imageUpload_23.UpLoadByArea = null;
+            this.imageUpload_23.UpLoadByLot = null;
+            this.imageUpload_23.UpLoadBySide = null;
+            this.imageUpload_23.UpLoadByWafer = null;
             this.imageUpload_23.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_23_btnUploadClicked);
             // 
             // imageUpload_3
@@ -558,8 +595,12 @@
             this.imageUpload_3.Location = new System.Drawing.Point(180, 110);
             this.imageUpload_3.Name = "imageUpload_3";
             this.imageUpload_3.PicStream = null;
-            this.imageUpload_3.Size = new System.Drawing.Size(283, 31);
+            this.imageUpload_3.Size = new System.Drawing.Size(310, 31);
             this.imageUpload_3.TabIndex = 206;
+            this.imageUpload_3.UpLoadByArea = null;
+            this.imageUpload_3.UpLoadByLot = null;
+            this.imageUpload_3.UpLoadBySide = null;
+            this.imageUpload_3.UpLoadByWafer = null;
             this.imageUpload_3.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_3_btnUploadClicked);
             // 
             // imageUpload_15
@@ -567,8 +608,12 @@
             this.imageUpload_15.Location = new System.Drawing.Point(180, 80);
             this.imageUpload_15.Name = "imageUpload_15";
             this.imageUpload_15.PicStream = null;
-            this.imageUpload_15.Size = new System.Drawing.Size(283, 31);
+            this.imageUpload_15.Size = new System.Drawing.Size(310, 31);
             this.imageUpload_15.TabIndex = 205;
+            this.imageUpload_15.UpLoadByArea = null;
+            this.imageUpload_15.UpLoadByLot = null;
+            this.imageUpload_15.UpLoadBySide = null;
+            this.imageUpload_15.UpLoadByWafer = null;
             this.imageUpload_15.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_15_btnUploadClicked);
             // 
             // imageUpload_13
@@ -576,8 +621,12 @@
             this.imageUpload_13.Location = new System.Drawing.Point(180, 50);
             this.imageUpload_13.Name = "imageUpload_13";
             this.imageUpload_13.PicStream = null;
-            this.imageUpload_13.Size = new System.Drawing.Size(283, 31);
+            this.imageUpload_13.Size = new System.Drawing.Size(310, 31);
             this.imageUpload_13.TabIndex = 204;
+            this.imageUpload_13.UpLoadByArea = null;
+            this.imageUpload_13.UpLoadByLot = null;
+            this.imageUpload_13.UpLoadBySide = null;
+            this.imageUpload_13.UpLoadByWafer = null;
             this.imageUpload_13.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_13_btnUploadClicked);
             // 
             // imageUpload_11
@@ -585,8 +634,12 @@
             this.imageUpload_11.Location = new System.Drawing.Point(180, 20);
             this.imageUpload_11.Name = "imageUpload_11";
             this.imageUpload_11.PicStream = null;
-            this.imageUpload_11.Size = new System.Drawing.Size(283, 31);
+            this.imageUpload_11.Size = new System.Drawing.Size(310, 31);
             this.imageUpload_11.TabIndex = 203;
+            this.imageUpload_11.UpLoadByArea = null;
+            this.imageUpload_11.UpLoadByLot = null;
+            this.imageUpload_11.UpLoadBySide = null;
+            this.imageUpload_11.UpLoadByWafer = null;
             this.imageUpload_11.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_11_btnUploadClicked);
             // 
             // ngBox_14
@@ -996,7 +1049,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label13.Location = new System.Drawing.Point(-3, 356);
+            this.label13.Location = new System.Drawing.Point(20, 380);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(329, 12);
             this.label13.TabIndex = 23;
@@ -1005,7 +1058,7 @@
             // frontButton
             // 
             this.frontButton.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.frontButton.Location = new System.Drawing.Point(138, 289);
+            this.frontButton.Location = new System.Drawing.Point(142, 299);
             this.frontButton.Name = "frontButton";
             this.frontButton.Size = new System.Drawing.Size(123, 23);
             this.frontButton.TabIndex = 31;
@@ -1016,7 +1069,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(6, 327);
+            this.label12.Location = new System.Drawing.Point(26, 361);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(341, 12);
             this.label12.TabIndex = 22;
@@ -1027,7 +1080,7 @@
             this.waferSurF.Location = new System.Drawing.Point(93, 70);
             this.waferSurF.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.waferSurF.Name = "waferSurF";
-            this.waferSurF.Size = new System.Drawing.Size(210, 210);
+            this.waferSurF.Size = new System.Drawing.Size(220, 220);
             this.waferSurF.TabIndex = 27;
             // 
             // label14

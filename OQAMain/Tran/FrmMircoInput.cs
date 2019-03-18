@@ -50,6 +50,14 @@ namespace OQAMain
             waferSurF.groupNode = this.groupBoxSelect;
             this.pageInfoShow();
         }
+
+        public FrmMircoInput(string lotIdIn, string slotIdIn, string sideTypeIn)
+        {
+            InitializeComponent();
+            lotId = lotIdIn;
+            slotId = slotIdIn;
+            sideType = sideTypeIn;
+        }
         #endregion
 
         #region Button or ValueChange Function 
@@ -92,6 +100,11 @@ namespace OQAMain
             {
                 MessageBox.Show(ex.Message.ToString());
             }
+        }
+        //提交
+        private void btnEdite_Click(object sender, EventArgs e)
+        {
+            btnCreate_Click(sender, e);
         }
         //刷新按钮
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -218,10 +231,11 @@ namespace OQAMain
         private void refreshPage()
         {
             ComFunc.ClearBoxValue(groupBox3);
+            ComFunc.ClearBoxValue(groupBoxSelect);
             waferSurF.clearPanel();
             slotComboBox.Text = slotId;
             queryPageInfo(lotId, slotId, sideType);
-            ComFunc.ClearBoxValue(groupBoxSelect);
+            
         }
         //页面查询及slot下拉框查询
         private void pageInfoShow()
@@ -290,8 +304,7 @@ namespace OQAMain
 
                 //wafer
 
-                if (null == slotComboBox.Text || ("").Equals(slotComboBox.Text)
-                     && null == lotTextBox.Text || ("").Equals(lotTextBox.Text))
+                if (string.IsNullOrWhiteSpace(slotComboBox.Text) || string.IsNullOrWhiteSpace(lotTextBox.Text))
                 {
                     MessageBox.Show("请先选择lotId、slotId");
                     return;
@@ -302,7 +315,15 @@ namespace OQAMain
                 iSPWAFITM.InspectType = InspectType.MI;
                 iSPWAFITM.SideType = sideType;
                 iSPWAFITM.Magnification = MagnificationTextBox.Text;
-                iSPWAFITM.DieQty = decimal.Parse(qtyTextBox.Text);
+                if (String.IsNullOrWhiteSpace(qtyTextBox.Text))
+                {
+                    qtyTextBox.Text = "0";
+                }
+                iSPWAFITM.DieQty = decimal.Parse(rateTextBox.Text);
+                if (String.IsNullOrWhiteSpace(rateTextBox.Text))
+                {
+                    rateTextBox.Text = "0";
+                }
                 iSPWAFITM.DefectRate = decimal.Parse(rateTextBox.Text);
                 iSPWAFITM.DefectDesc = decRichTextBox.Text;
                 iSPWAFITM.Cmt = cmtRichTextBox.Text;
@@ -367,6 +388,7 @@ namespace OQAMain
                 model.C_TRAN_FLAG = GlobConst.TRAN_VIEW;
                 ModelRsp<AOIShowView> view = new ModelRsp<AOIShowView>();
                 view.model = model;
+                imgInfoList = null;
                 ModelRsp<AOIShowView> qryResult = OQASrv.Call.QueryAOIInfo(view);
                 if (!("").Equals(slotId))
                 {
@@ -409,10 +431,7 @@ namespace OQAMain
                         }
                         else
                         {//清除图片
-                            foreach (Control control in groupBoxSelect.Controls)
-                            {
-                                ComFunc.ClearBoxValue(groupBoxSelect);
-                            }
+                            ComFunc.ClearBoxValue(groupBoxSelect);
                         }
                         waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
                     }
@@ -423,6 +442,7 @@ namespace OQAMain
                     ComFunc.ClearBoxValue(groupBox3);
                     waferSurF.clearPanel();
                     checkAllOk();
+                    ComFunc.ClearBoxValue(groupBoxSelect);
                 }
 
 
@@ -455,16 +475,17 @@ namespace OQAMain
             }
         }
         //图片上传
-        private void uploadCommonFunc(decimal araeId, ImageUpload.ImageUpload.ByArea item)
+        private void uploadCommonFunc(decimal areaId, ImageUpload.ImageUpload.ByArea item)
         {
             //ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
+           
             item.LotID = lotId;
             item.Slot_ID = slotId;
             item.Side_Type = sideType;
-            item.Wafer_ID = "1";
-            item.Inspect_Type = "A";//mock
-            item.ImageType = "ISP";
-            item.Area_ID = araeId;
+            item.Wafer_ID = waferId;
+            item.Inspect_Type =InspectType.MI;
+            item.ImageType = "Type_"+ areaId;
+            item.Area_ID = areaId;
             if (null != imgInfoList && imgInfoList.Count > 0)
             {
                 foreach (ISPIMGDEF img in imgInfoList)
@@ -586,11 +607,11 @@ namespace OQAMain
             imageUpload_14.UpLoadFlag = 4;//by area
             imageUpload_14.UpLoadByArea = (item);
         }
+
+        
+
         #endregion
 
-
-
-
-
+      
     }
 }

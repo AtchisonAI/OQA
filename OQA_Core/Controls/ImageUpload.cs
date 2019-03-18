@@ -180,7 +180,7 @@ namespace ImageUpload
                     {
                         //UpLoad By Lot
                         case 1:
-                            if (UpLoadByLot.LotID != null && UpLoadByLot.ImageType != null)
+                            if (!string.IsNullOrWhiteSpace(UpLoadByLot.LotID) && !string.IsNullOrWhiteSpace(UpLoadByLot.ImageType))
                             {
                                 if (UpLoadByLot.ImageId != null)
                                 {
@@ -209,8 +209,8 @@ namespace ImageUpload
                             break;
                         //UpLoad By wafer
                         case 2:
-                            if (UpLoadByWafer.LotID != null && UpLoadByWafer.Slot_ID != null && UpLoadByWafer.Wafer_ID != null
-                                && UpLoadByWafer.ImageType != null)
+                            if (!string.IsNullOrWhiteSpace(UpLoadByWafer.LotID) && !string.IsNullOrWhiteSpace(UpLoadByWafer.Slot_ID) && !string.IsNullOrWhiteSpace(UpLoadByWafer.Wafer_ID)
+                                && !string.IsNullOrWhiteSpace(UpLoadByWafer.ImageType))
                             {
                                 if (UpLoadByWafer.ImageId != null)
                                 {
@@ -244,8 +244,8 @@ namespace ImageUpload
                             break;
 
                         case 3:
-                            if (UpLoadBySide.LotID != null && UpLoadBySide.Slot_ID != null && UpLoadBySide.Wafer_ID != null
-                                && UpLoadBySide.Inspect_Type != null && UpLoadBySide.Side_Type != null && UpLoadBySide.ImageType != null)
+                            if (!string.IsNullOrWhiteSpace(UpLoadBySide.LotID)&& !string.IsNullOrWhiteSpace(UpLoadBySide.Slot_ID) && !string.IsNullOrWhiteSpace(UpLoadBySide.Wafer_ID)
+                                && !string.IsNullOrWhiteSpace(UpLoadBySide.Inspect_Type) && !string.IsNullOrWhiteSpace(UpLoadBySide.Side_Type) && !string.IsNullOrWhiteSpace(UpLoadBySide.ImageType))
                             {
                                 if (UpLoadBySide.ImageId != null)
                                 {
@@ -280,8 +280,9 @@ namespace ImageUpload
                             break;
 
                         case 4:
-                            if (UpLoadByArea.LotID != null && UpLoadByArea.Slot_ID != null && UpLoadByArea.Wafer_ID != null
-                                && UpLoadByArea.Inspect_Type != null && UpLoadByArea.Side_Type != null && UpLoadByArea.Area_ID != 0 && UpLoadByArea.ImageType != null)
+                            if (!string.IsNullOrWhiteSpace(UpLoadByArea.LotID) && !string.IsNullOrWhiteSpace(UpLoadByArea.Slot_ID) && !string.IsNullOrWhiteSpace(UpLoadByArea.Wafer_ID)
+                                && !string.IsNullOrWhiteSpace(UpLoadByArea.Inspect_Type) && !string.IsNullOrWhiteSpace(UpLoadByArea.Side_Type) && UpLoadByArea.Area_ID != 0 &&
+                                !string.IsNullOrWhiteSpace(UpLoadByArea.ImageType))
                             {
                                 if (UpLoadByArea.ImageId != null)
                                 {
@@ -332,7 +333,7 @@ namespace ImageUpload
                     var out_data = OQASrv.Call.SaveImageInfo(in_node);
                     if (out_data._success == true)
                     {
-                        lblSts.Text = "已传";
+                        lblSts.Text = "预览";
                         btnBrowser.Enabled = false;
                         btnUpload.Text = "Delete";
                         b_Upload = false;
@@ -397,7 +398,7 @@ namespace ImageUpload
         public void InitByImgInstance(ISPIMGDEF instance)
         {
             item = instance;
-            lblSts.Text = "已传";
+            lblSts.Text = "预览";
             btnBrowser.Enabled = false;
             btnUpload.Text = "Delete";
             btnUpload.Enabled = true;
@@ -414,6 +415,22 @@ namespace ImageUpload
             btnUpload.Enabled = false;
             b_Upload = true;
             txtPicName.Text = string.Empty;
+        }
+
+        public string GetImagePath()
+        {
+            return null == item ? null : item.ImagePath;
+        }
+
+
+        //定义委托
+        public delegate void    PreViewClickHandle(object sender, EventArgs e);
+        //定义事件
+        public event PreViewClickHandle PreviewLableClicked;
+        private void lblSts_Click(object sender, EventArgs e)
+        {
+            if (null != PreviewLableClicked && lblSts.Text.Equals("预览"))
+                PreviewLableClicked(sender, e);
         }
     }
 }

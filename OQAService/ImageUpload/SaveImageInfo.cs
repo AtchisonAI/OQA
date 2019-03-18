@@ -93,7 +93,7 @@ namespace OQAService.Services
                         string SysTime = GetSysTime();
                         string ImagePath;
                         //删除旧图片
-                        File.Delete(In_node.model.IspImgeDef.ImagePath);
+                        File.Delete(TrimUrl(In_node.model.IspImgeDef.ImagePath,3));
 
                         //保存图片
                         ImagePath = SavePic(In_node.model.PicStreamBase64, SysTime);
@@ -122,7 +122,7 @@ namespace OQAService.Services
                     case '1':
                         //验证业务级输入参数
                         //删除旧图片
-                        File.Delete(In_node.model.IspImgeDef.ImagePath);
+                        File.Delete(TrimUrl(In_node.model.IspImgeDef.ImagePath,3));
 
                         //调用数据库操作
                         //InitTable(T_ISPIMGDEF);
@@ -151,7 +151,23 @@ namespace OQAService.Services
                 }
                 return Out_node;
             }
-        }
 
+
+        private string TrimUrl(string Url,int turn)
+        {
+            int index = 0;
+            for (int i = 0;i<turn;++i)
+            {
+                index = Url.IndexOf('/'); 
+                if(-1 == index)
+                {
+                    throw new Exception("传入的图片URL格式错误");
+                }
+                Url = Url.Substring(index + 1);
+            }
+
+            return Url;
+        }
     }
+}
 

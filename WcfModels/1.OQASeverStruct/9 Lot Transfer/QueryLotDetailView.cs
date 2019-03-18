@@ -58,10 +58,25 @@ namespace WCFModels.OQA
         }
         private string in_masterlot_no;
 
-       // 服务传出数据结构
+        [DataMember]
+        public string IN_SEARCHLOTID_NO
+        {
+            get
+            {
+                return in_msearchlot_no;
+            }
+            set
+            {
+                in_msearchlot_no = value;
+            }
+        }
+        private string in_msearchlot_no;
+        // 服务传出数据结构
         [DataMember]
        // public List<ISPLOTSTS> PKGSHPDAT_list { get; set; }
          public List<object[]> PKGSHPDAT_list { get; set; }
+        [DataMember]
+        public List<object[]> SEARCHLOTID_list { get; set; }//select like
 
 
         //服务传出结果在BaseRsq:_success  _ErrorMsg

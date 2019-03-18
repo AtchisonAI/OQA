@@ -61,5 +61,6 @@ namespace WCFModels.OQA
         //[DataMember]
         public List<PKGSHPSTS> SHIPIDLIST_list { get; set; }
         //服务传出结果在BaseRsq:_success  _ErrorMsg
+
     }
 }

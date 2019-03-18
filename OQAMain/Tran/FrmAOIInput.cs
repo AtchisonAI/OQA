@@ -6,7 +6,7 @@ using System.Drawing;
 using WCFModels.OQA;
 using System.Collections.Generic;
 using WCFModels.Message;
-
+using OQA_Core.Controls;
 
 namespace OQAMain
 {
@@ -17,7 +17,7 @@ namespace OQAMain
         private string sideType = "";
         private string slotId = "";
         private string waferId = "";
-        private decimal num = 0;
+        private decimal? num = 0;
         private ISPIMGDEF imgInfo = new ISPIMGDEF();
         #endregion
 
@@ -32,10 +32,10 @@ namespace OQAMain
         #region Page Load
         private void FrmAOIInput_Load(object sender, EventArgs e)
         {
-            lotId = "ITM0142.02";
-            slotId = "022";
-            sideType = "F";
-            waferId = "ITM0142.09";
+            //lotId = "ITM0142.02";
+            //slotId = "022";
+            //sideType = "F";
+            //waferId = "ITM0142.09";
             if (sideType.Equals(SideType.Front))
             {
                 radioButtonF.Checked = true;
@@ -52,6 +52,7 @@ namespace OQAMain
         {
             InitializeComponent();
             lotId = lotIdIn;
+            slotComboBox.Text = slotIdIn;
             slotId = slotIdIn;
             sideType = sideTypeIn;
         }
@@ -365,7 +366,7 @@ namespace OQAMain
                 {
                     qtyTextBox.Text = "0";
                 }
-                iSPWAFITM.DieQty = decimal.Parse(rateTextBox.Text);
+                iSPWAFITM.DieQty = decimal.Parse(qtyTextBox.Text);
                 if (String.IsNullOrWhiteSpace(rateTextBox.Text))
                 {
                     rateTextBox.Text = "0";
@@ -433,8 +434,25 @@ namespace OQAMain
         }
 
 
+
+
         #endregion
 
-       
+        private void imageUpload1_PreviewLableClicked(object sender, EventArgs e)
+        {
+            //Form formView = new Form();
+            //formView.Size = new System.Drawing.Size(500, 500);
+            //formView.Location = new System.Drawing.Point(200, 200);
+            //PictureView pictureView = new PictureView();
+            string path = imageUpload1.GetImagePath();
+            if (!string.IsNullOrEmpty(path))
+            {
+                pictureView1.LoadImageAsync(ComFunc.GetPicServerPath(path));
+            }
+            //formView.Controls.Add(pictureView);
+            
+            //formView.Show();
+            
+        }
     }
 }

@@ -30,10 +30,7 @@ namespace OQAMain
         #region Page Load
         private void FrmMarcoInput_Load(object sender, EventArgs e)
         {
-            lotId = "ITM0150";
-            slotId = "001";
-            sideType = "F";
-            waferId = "ITM0150.01";
+
             if (sideType.Equals(SideType.Front))
             {
                 radioButtonF.Checked = true;
@@ -359,8 +356,16 @@ namespace OQAMain
             }
         }
 
+
         #endregion
 
-       
+        private void imageUpload1_PreviewLableClicked(object sender, EventArgs e)
+        {
+            string path = imageUpload1.GetImagePath();
+            if (!string.IsNullOrEmpty(path))
+            {
+                pictureView1.LoadImageAsync(ComFunc.GetPicServerPath(path));
+            }
+        }
     }
 }

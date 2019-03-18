@@ -110,12 +110,15 @@
             this.label12 = new System.Windows.Forms.Label();
             this.waferSurF = new WaferSf.WaferSur();
             this.label14 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.pictureView1 = new OQA_Core.Controls.PictureView();
             this.pnlMenu.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxSelect.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -134,9 +137,8 @@
             // 
             // pnlMenu
             // 
-            this.pnlMenu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.None;
-            this.pnlMenu.Location = new System.Drawing.Point(0, 759);
+            this.pnlMenu.Location = new System.Drawing.Point(50, 759);
             this.pnlMenu.Size = new System.Drawing.Size(1074, 40);
             // 
             // btnRefresh
@@ -145,7 +147,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Controls.Add(this.radioButtonB);
             this.groupBox2.Controls.Add(this.radioButtonF);
@@ -153,9 +154,9 @@
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.lotTextBox);
             this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Location = new System.Drawing.Point(24, 37);
+            this.groupBox2.Location = new System.Drawing.Point(50, 37);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(920, 94);
+            this.groupBox2.Size = new System.Drawing.Size(990, 94);
             this.groupBox2.TabIndex = 42;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Micro inspection simple MAP";
@@ -164,7 +165,7 @@
             // 
             this.panel1.Controls.Add(this.radioNine);
             this.panel1.Controls.Add(this.radioThir);
-            this.panel1.Location = new System.Drawing.Point(719, 25);
+            this.panel1.Location = new System.Drawing.Point(802, 20);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(100, 60);
             this.panel1.TabIndex = 10;
@@ -196,7 +197,7 @@
             // radioButtonB
             // 
             this.radioButtonB.AutoSize = true;
-            this.radioButtonB.Location = new System.Drawing.Point(562, 52);
+            this.radioButtonB.Location = new System.Drawing.Point(635, 48);
             this.radioButtonB.Name = "radioButtonB";
             this.radioButtonB.Size = new System.Drawing.Size(71, 16);
             this.radioButtonB.TabIndex = 9;
@@ -208,7 +209,7 @@
             // radioButtonF
             // 
             this.radioButtonF.AutoSize = true;
-            this.radioButtonF.Location = new System.Drawing.Point(449, 52);
+            this.radioButtonF.Location = new System.Drawing.Point(522, 48);
             this.radioButtonF.Name = "radioButtonF";
             this.radioButtonF.Size = new System.Drawing.Size(77, 16);
             this.radioButtonF.TabIndex = 8;
@@ -220,7 +221,7 @@
             // 
             this.slotComboBox.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.slotComboBox.FormattingEnabled = true;
-            this.slotComboBox.Location = new System.Drawing.Point(277, 49);
+            this.slotComboBox.Location = new System.Drawing.Point(316, 50);
             this.slotComboBox.Name = "slotComboBox";
             this.slotComboBox.Size = new System.Drawing.Size(121, 22);
             this.slotComboBox.TabIndex = 4;
@@ -250,7 +251,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.label16.Location = new System.Drawing.Point(236, 55);
+            this.label16.Location = new System.Drawing.Point(275, 56);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(56, 14);
             this.label16.TabIndex = 2;
@@ -258,7 +259,6 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox3.Controls.Add(this.labelX);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.qtyTextBox);
@@ -271,9 +271,9 @@
             this.groupBox3.Controls.Add(this.decRichTextBox);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Location = new System.Drawing.Point(24, 562);
+            this.groupBox3.Location = new System.Drawing.Point(50, 562);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(920, 163);
+            this.groupBox3.Size = new System.Drawing.Size(990, 163);
             this.groupBox3.TabIndex = 41;
             this.groupBox3.TabStop = false;
             // 
@@ -281,7 +281,7 @@
             // 
             this.labelX.AutoSize = true;
             this.labelX.BackColor = System.Drawing.Color.Transparent;
-            this.labelX.Location = new System.Drawing.Point(211, 28);
+            this.labelX.Location = new System.Drawing.Point(237, 26);
             this.labelX.Name = "labelX";
             this.labelX.Size = new System.Drawing.Size(11, 12);
             this.labelX.TabIndex = 23;
@@ -291,7 +291,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(800, 25);
+            this.label4.Location = new System.Drawing.Point(894, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(11, 12);
             this.label4.TabIndex = 22;
@@ -300,10 +300,10 @@
             // qtyTextBox
             // 
             this.qtyTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.qtyTextBox.Location = new System.Drawing.Point(440, 23);
+            this.qtyTextBox.Location = new System.Drawing.Point(480, 23);
             this.qtyTextBox.Multiline = true;
             this.qtyTextBox.Name = "qtyTextBox";
-            this.qtyTextBox.Size = new System.Drawing.Size(103, 20);
+            this.qtyTextBox.Size = new System.Drawing.Size(120, 20);
             this.qtyTextBox.TabIndex = 21;
             this.qtyTextBox.TextChanged += new System.EventHandler(this.qtyTextBox_TextChanged);
             this.qtyTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.qtyTextBox_KeyPress);
@@ -313,17 +313,17 @@
             this.rateTextBox.Enabled = false;
             this.rateTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
             this.rateTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.rateTextBox.Location = new System.Drawing.Point(722, 22);
+            this.rateTextBox.Location = new System.Drawing.Point(816, 23);
             this.rateTextBox.Multiline = true;
             this.rateTextBox.Name = "rateTextBox";
-            this.rateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.rateTextBox.Size = new System.Drawing.Size(120, 20);
             this.rateTextBox.TabIndex = 20;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.label3.Location = new System.Drawing.Point(632, 22);
+            this.label3.Location = new System.Drawing.Point(726, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 14);
             this.label3.TabIndex = 18;
@@ -333,7 +333,7 @@
             // 
             this.labelQty.AutoSize = true;
             this.labelQty.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.labelQty.Location = new System.Drawing.Point(322, 26);
+            this.labelQty.Location = new System.Drawing.Point(362, 26);
             this.labelQty.Name = "labelQty";
             this.labelQty.Size = new System.Drawing.Size(105, 14);
             this.labelQty.TabIndex = 19;
@@ -345,7 +345,7 @@
             this.MagnificationTextBox.Location = new System.Drawing.Point(142, 23);
             this.MagnificationTextBox.Multiline = true;
             this.MagnificationTextBox.Name = "MagnificationTextBox";
-            this.MagnificationTextBox.Size = new System.Drawing.Size(90, 20);
+            this.MagnificationTextBox.Size = new System.Drawing.Size(120, 20);
             this.MagnificationTextBox.TabIndex = 12;
             this.MagnificationTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MagnificationTextBox_KeyPress);
             // 
@@ -354,7 +354,7 @@
             this.cmtRichTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
             this.cmtRichTextBox.Location = new System.Drawing.Point(142, 115);
             this.cmtRichTextBox.Name = "cmtRichTextBox";
-            this.cmtRichTextBox.Size = new System.Drawing.Size(680, 29);
+            this.cmtRichTextBox.Size = new System.Drawing.Size(800, 29);
             this.cmtRichTextBox.TabIndex = 16;
             this.cmtRichTextBox.Text = "";
             // 
@@ -373,7 +373,7 @@
             this.decRichTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
             this.decRichTextBox.Location = new System.Drawing.Point(142, 62);
             this.decRichTextBox.Name = "decRichTextBox";
-            this.decRichTextBox.Size = new System.Drawing.Size(680, 29);
+            this.decRichTextBox.Size = new System.Drawing.Size(800, 29);
             this.decRichTextBox.TabIndex = 15;
             this.decRichTextBox.Text = "";
             // 
@@ -399,7 +399,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox1.Controls.Add(this.groupBoxSelect);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.frontButton);
@@ -407,9 +406,9 @@
             this.groupBox1.Controls.Add(this.waferSurF);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.groupBox1.Location = new System.Drawing.Point(24, 126);
+            this.groupBox1.Location = new System.Drawing.Point(50, 126);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(920, 450);
+            this.groupBox1.Size = new System.Drawing.Size(990, 450);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             // 
@@ -469,7 +468,7 @@
             this.groupBoxSelect.Controls.Add(this.label1);
             this.groupBoxSelect.Location = new System.Drawing.Point(382, 11);
             this.groupBoxSelect.Name = "groupBoxSelect";
-            this.groupBoxSelect.Size = new System.Drawing.Size(530, 425);
+            this.groupBoxSelect.Size = new System.Drawing.Size(590, 425);
             this.groupBoxSelect.TabIndex = 39;
             this.groupBoxSelect.TabStop = false;
             // 
@@ -478,169 +477,182 @@
             this.imageUpload_14.Location = new System.Drawing.Point(182, 380);
             this.imageUpload_14.Name = "imageUpload_14";
             this.imageUpload_14.PicStream = null;
-            this.imageUpload_14.Size = new System.Drawing.Size(310, 31);
+            this.imageUpload_14.Size = new System.Drawing.Size(380, 31);
             this.imageUpload_14.TabIndex = 215;
             this.imageUpload_14.UpLoadByArea = null;
             this.imageUpload_14.UpLoadByLot = null;
             this.imageUpload_14.UpLoadBySide = null;
             this.imageUpload_14.UpLoadByWafer = null;
             this.imageUpload_14.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_14_btnUploadClicked);
+            this.imageUpload_14.PreviewLableClicked += new ImageUpload.ImageUpload.PreViewClickHandle(this.imageUpload_14_PreviewLableClicked);
             // 
             // imageUpload_8
             // 
             this.imageUpload_8.Location = new System.Drawing.Point(182, 350);
             this.imageUpload_8.Name = "imageUpload_8";
             this.imageUpload_8.PicStream = null;
-            this.imageUpload_8.Size = new System.Drawing.Size(310, 31);
+            this.imageUpload_8.Size = new System.Drawing.Size(380, 31);
             this.imageUpload_8.TabIndex = 214;
             this.imageUpload_8.UpLoadByArea = null;
             this.imageUpload_8.UpLoadByLot = null;
             this.imageUpload_8.UpLoadBySide = null;
             this.imageUpload_8.UpLoadByWafer = null;
             this.imageUpload_8.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_8_btnUploadClicked);
+            this.imageUpload_8.PreviewLableClicked += new ImageUpload.ImageUpload.PreViewClickHandle(this.imageUpload_8_PreviewLableClicked);
             // 
             // imageUpload_12
             // 
             this.imageUpload_12.Location = new System.Drawing.Point(182, 320);
             this.imageUpload_12.Name = "imageUpload_12";
             this.imageUpload_12.PicStream = null;
-            this.imageUpload_12.Size = new System.Drawing.Size(310, 31);
+            this.imageUpload_12.Size = new System.Drawing.Size(380, 31);
             this.imageUpload_12.TabIndex = 213;
             this.imageUpload_12.UpLoadByArea = null;
             this.imageUpload_12.UpLoadByLot = null;
             this.imageUpload_12.UpLoadBySide = null;
             this.imageUpload_12.UpLoadByWafer = null;
             this.imageUpload_12.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_12_btnUploadClicked);
+            this.imageUpload_12.PreviewLableClicked += new ImageUpload.ImageUpload.PreViewClickHandle(this.imageUpload_12_PreviewLableClicked);
             // 
             // imageUpload_18
             // 
             this.imageUpload_18.Location = new System.Drawing.Point(180, 290);
             this.imageUpload_18.Name = "imageUpload_18";
             this.imageUpload_18.PicStream = null;
-            this.imageUpload_18.Size = new System.Drawing.Size(310, 31);
+            this.imageUpload_18.Size = new System.Drawing.Size(380, 31);
             this.imageUpload_18.TabIndex = 212;
             this.imageUpload_18.UpLoadByArea = null;
             this.imageUpload_18.UpLoadByLot = null;
             this.imageUpload_18.UpLoadBySide = null;
             this.imageUpload_18.UpLoadByWafer = null;
             this.imageUpload_18.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_18_btnUploadClicked);
+            this.imageUpload_18.PreviewLableClicked += new ImageUpload.ImageUpload.PreViewClickHandle(this.imageUpload_18_PreviewLableClicked);
             // 
             // imageUpload_19
             // 
             this.imageUpload_19.Location = new System.Drawing.Point(180, 260);
             this.imageUpload_19.Name = "imageUpload_19";
             this.imageUpload_19.PicStream = null;
-            this.imageUpload_19.Size = new System.Drawing.Size(310, 31);
+            this.imageUpload_19.Size = new System.Drawing.Size(380, 31);
             this.imageUpload_19.TabIndex = 211;
             this.imageUpload_19.UpLoadByArea = null;
             this.imageUpload_19.UpLoadByLot = null;
             this.imageUpload_19.UpLoadBySide = null;
             this.imageUpload_19.UpLoadByWafer = null;
             this.imageUpload_19.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_19_btnUploadClicked);
+            this.imageUpload_19.PreviewLableClicked += new ImageUpload.ImageUpload.PreViewClickHandle(this.imageUpload_19_PreviewLableClicked);
             // 
             // imageUpload_9
             // 
             this.imageUpload_9.Location = new System.Drawing.Point(180, 230);
             this.imageUpload_9.Name = "imageUpload_9";
             this.imageUpload_9.PicStream = null;
-            this.imageUpload_9.Size = new System.Drawing.Size(310, 31);
+            this.imageUpload_9.Size = new System.Drawing.Size(380, 31);
             this.imageUpload_9.TabIndex = 210;
             this.imageUpload_9.UpLoadByArea = null;
             this.imageUpload_9.UpLoadByLot = null;
             this.imageUpload_9.UpLoadBySide = null;
             this.imageUpload_9.UpLoadByWafer = null;
             this.imageUpload_9.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_9_btnUploadClicked);
+            this.imageUpload_9.PreviewLableClicked += new ImageUpload.ImageUpload.PreViewClickHandle(this.imageUpload_9_PreviewLableClicked);
             // 
             // imageUpload_7
             // 
             this.imageUpload_7.Location = new System.Drawing.Point(181, 200);
             this.imageUpload_7.Name = "imageUpload_7";
             this.imageUpload_7.PicStream = null;
-            this.imageUpload_7.Size = new System.Drawing.Size(310, 31);
+            this.imageUpload_7.Size = new System.Drawing.Size(380, 31);
             this.imageUpload_7.TabIndex = 209;
             this.imageUpload_7.UpLoadByArea = null;
             this.imageUpload_7.UpLoadByLot = null;
             this.imageUpload_7.UpLoadBySide = null;
             this.imageUpload_7.UpLoadByWafer = null;
             this.imageUpload_7.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_7_btnUploadClicked);
+            this.imageUpload_7.PreviewLableClicked += new ImageUpload.ImageUpload.PreViewClickHandle(this.imageUpload_7_PreviewLableClicked);
             // 
             // imageUpload_17
             // 
             this.imageUpload_17.Location = new System.Drawing.Point(180, 170);
             this.imageUpload_17.Name = "imageUpload_17";
             this.imageUpload_17.PicStream = null;
-            this.imageUpload_17.Size = new System.Drawing.Size(310, 31);
+            this.imageUpload_17.Size = new System.Drawing.Size(380, 31);
             this.imageUpload_17.TabIndex = 208;
             this.imageUpload_17.UpLoadByArea = null;
             this.imageUpload_17.UpLoadByLot = null;
             this.imageUpload_17.UpLoadBySide = null;
             this.imageUpload_17.UpLoadByWafer = null;
             this.imageUpload_17.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_17_btnUploadClicked);
+            this.imageUpload_17.PreviewLableClicked += new ImageUpload.ImageUpload.PreViewClickHandle(this.imageUpload_17_PreviewLableClicked);
             // 
             // imageUpload_23
             // 
             this.imageUpload_23.Location = new System.Drawing.Point(181, 140);
             this.imageUpload_23.Name = "imageUpload_23";
             this.imageUpload_23.PicStream = null;
-            this.imageUpload_23.Size = new System.Drawing.Size(310, 31);
+            this.imageUpload_23.Size = new System.Drawing.Size(380, 31);
             this.imageUpload_23.TabIndex = 207;
             this.imageUpload_23.UpLoadByArea = null;
             this.imageUpload_23.UpLoadByLot = null;
             this.imageUpload_23.UpLoadBySide = null;
             this.imageUpload_23.UpLoadByWafer = null;
             this.imageUpload_23.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_23_btnUploadClicked);
+            this.imageUpload_23.PreviewLableClicked += new ImageUpload.ImageUpload.PreViewClickHandle(this.imageUpload_23_PreviewLableClicked);
             // 
             // imageUpload_3
             // 
             this.imageUpload_3.Location = new System.Drawing.Point(180, 110);
             this.imageUpload_3.Name = "imageUpload_3";
             this.imageUpload_3.PicStream = null;
-            this.imageUpload_3.Size = new System.Drawing.Size(310, 31);
+            this.imageUpload_3.Size = new System.Drawing.Size(380, 31);
             this.imageUpload_3.TabIndex = 206;
             this.imageUpload_3.UpLoadByArea = null;
             this.imageUpload_3.UpLoadByLot = null;
             this.imageUpload_3.UpLoadBySide = null;
             this.imageUpload_3.UpLoadByWafer = null;
             this.imageUpload_3.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_3_btnUploadClicked);
+            this.imageUpload_3.PreviewLableClicked += new ImageUpload.ImageUpload.PreViewClickHandle(this.imageUpload_3_PreviewLableClicked);
             // 
             // imageUpload_15
             // 
             this.imageUpload_15.Location = new System.Drawing.Point(180, 80);
             this.imageUpload_15.Name = "imageUpload_15";
             this.imageUpload_15.PicStream = null;
-            this.imageUpload_15.Size = new System.Drawing.Size(310, 31);
+            this.imageUpload_15.Size = new System.Drawing.Size(380, 31);
             this.imageUpload_15.TabIndex = 205;
             this.imageUpload_15.UpLoadByArea = null;
             this.imageUpload_15.UpLoadByLot = null;
             this.imageUpload_15.UpLoadBySide = null;
             this.imageUpload_15.UpLoadByWafer = null;
             this.imageUpload_15.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_15_btnUploadClicked);
+            this.imageUpload_15.PreviewLableClicked += new ImageUpload.ImageUpload.PreViewClickHandle(this.imageUpload_15_PreviewLableClicked);
             // 
             // imageUpload_13
             // 
             this.imageUpload_13.Location = new System.Drawing.Point(180, 50);
             this.imageUpload_13.Name = "imageUpload_13";
             this.imageUpload_13.PicStream = null;
-            this.imageUpload_13.Size = new System.Drawing.Size(310, 31);
+            this.imageUpload_13.Size = new System.Drawing.Size(380, 31);
             this.imageUpload_13.TabIndex = 204;
             this.imageUpload_13.UpLoadByArea = null;
             this.imageUpload_13.UpLoadByLot = null;
             this.imageUpload_13.UpLoadBySide = null;
             this.imageUpload_13.UpLoadByWafer = null;
             this.imageUpload_13.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_13_btnUploadClicked);
+            this.imageUpload_13.PreviewLableClicked += new ImageUpload.ImageUpload.PreViewClickHandle(this.imageUpload_13_PreviewLableClicked);
             // 
             // imageUpload_11
             // 
             this.imageUpload_11.Location = new System.Drawing.Point(180, 20);
             this.imageUpload_11.Name = "imageUpload_11";
             this.imageUpload_11.PicStream = null;
-            this.imageUpload_11.Size = new System.Drawing.Size(310, 31);
+            this.imageUpload_11.Size = new System.Drawing.Size(380, 31);
             this.imageUpload_11.TabIndex = 203;
             this.imageUpload_11.UpLoadByArea = null;
             this.imageUpload_11.UpLoadByLot = null;
             this.imageUpload_11.UpLoadBySide = null;
             this.imageUpload_11.UpLoadByWafer = null;
             this.imageUpload_11.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload_11_btnUploadClicked);
+            this.imageUpload_11.PreviewLableClicked += new ImageUpload.ImageUpload.PreViewClickHandle(this.imageUpload_11_PreviewLableClicked);
             // 
             // ngBox_14
             // 
@@ -1093,11 +1105,29 @@
             this.label14.TabIndex = 26;
             this.label14.Text = "Pls mark the defect with below special code";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.pictureView1);
+            this.groupBox4.Location = new System.Drawing.Point(1050, 37);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(600, 688);
+            this.groupBox4.TabIndex = 43;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Preview";
+            // 
+            // pictureView1
+            // 
+            this.pictureView1.Location = new System.Drawing.Point(16, 104);
+            this.pictureView1.Name = "pictureView1";
+            this.pictureView1.Size = new System.Drawing.Size(510, 421);
+            this.pictureView1.TabIndex = 0;
+            // 
             // FrmMircoInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 799);
+            this.ClientSize = new System.Drawing.Size(1668, 799);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
@@ -1108,6 +1138,7 @@
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox3, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.groupBox4, 0);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1120,6 +1151,7 @@
             this.groupBox1.PerformLayout();
             this.groupBoxSelect.ResumeLayout(false);
             this.groupBoxSelect.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1208,5 +1240,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton radioButtonB;
         private System.Windows.Forms.RadioButton radioButtonF;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private OQA_Core.Controls.PictureView pictureView1;
     }
 }

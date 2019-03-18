@@ -20,6 +20,11 @@ namespace OQAService.Services
                     queryConditionList = new List<QueryCondition>(),
                     sortCondittionList = new List<SortCondition>()
                 };
+                PageQueryReq QueryPndnReq = new PageQueryReq()
+                {
+                    queryConditionList = new List<QueryCondition>(),
+                    sortCondittionList = new List<SortCondition>()
+                };
                 PageQueryReq PageQueryReq2 = new PageQueryReq()
                 {
                     queryConditionList = new List<QueryCondition>(),
@@ -55,6 +60,23 @@ namespace OQAService.Services
                     {
                         case '1':
                             //验证业务级输入参数
+                            QueryPndnReq.CurrentPage = 1;
+                            QueryPndnReq.ItemsPerPage = 200;
+
+                            AddCondition(QueryPndnReq, GetParaName<ChkPndn>(p => p.Lotid), In_node.model.C_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+
+                            AddSortCondition(QueryPndnReq, GetParaName<ChkPndn>(p => p.Lotid), SortType.ASC);
+
+                            var PndnCount = PageQuery<ChkPndn>(QueryPndnReq);
+                            //如果检验项目有缺陷，hold记录，并通知客户端去PNDN
+                            if (PndnCount.models.Count > 0)
+                            {
+                                Out_node._success = false;
+                                Out_node._ErrorMsg = "This Lot Have Pndn!";
+                                return Out_node;
+
+                            }
+                            //查询未被接收的
 
                             //MES Query
                             PageQueryReq.CurrentPage = 1;
@@ -67,29 +89,41 @@ namespace OQAService.Services
                             {
                                 AddCondition(PageQueryReq, GetParaName<OqaMeslot>(p => p.Foupid), In_node.model.C_FOUP_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
-                                                        
-                            AddSortCondition(PageQueryReq, GetParaName <OqaMeslot> (p=>p.Lotid), SortType.ASC);
-                            
+
+                            AddCondition(PageQueryReq, GetParaName<OqaMeslot>(p => p.Recflag), "0", LogicCondition.AndAlso, CompareType.Equal);
+
+                            AddSortCondition(PageQueryReq, GetParaName<OqaMeslot>(p => p.Lotid), SortType.ASC);
+
                             var data = PageQuery<OqaMeslot>(PageQueryReq);
 
                             Out_node.model.OQAMESLOT_LIST = data.models;
-                            //slot Query
-                            PageQueryReq2.CurrentPage = 1;
-                            PageQueryReq2.ItemsPerPage = 200;
-                            if (In_node.model.C_LOT_ID.Trim().Equals("") == false)
+
+                            if (data.models.Count > 0)
                             {
-                                AddCondition(PageQueryReq2, GetParaName<OqaMeswafer>(p => p.Lotid), In_node.model.C_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                                //slot Query
+                                PageQueryReq2.CurrentPage = 1;
+                                PageQueryReq2.ItemsPerPage = 200;
+                                if (In_node.model.C_LOT_ID.Trim().Equals("") == false)
+                                {
+                                    AddCondition(PageQueryReq2, GetParaName<OqaMeswafer>(p => p.Lotid), In_node.model.C_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                                }
+                                if (In_node.model.C_FOUP_ID.Trim().Equals("") == false)
+                                {
+                                    AddCondition(PageQueryReq2, GetParaName<OqaMeswafer>(p => p.Foupid), In_node.model.C_FOUP_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                                }
+
+                                AddSortCondition(PageQueryReq2, GetParaName<OqaMeswafer>(p => p.Lotid), SortType.ASC);
+
+                                var slotdata = PageQuery<OqaMeswafer>(PageQueryReq2);
+
+                                Out_node.model.OQAMESWAFER_LIST = slotdata.models;
                             }
-                            if (In_node.model.C_FOUP_ID.Trim().Equals("") == false)
+                            else
                             {
-                                AddCondition(PageQueryReq2, GetParaName<OqaMeswafer>(p => p.Foupid), In_node.model.C_FOUP_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                                Out_node._success = false;
+                                Out_node._ErrorMsg = "MES Lot Not Found!";
+                                return Out_node;
                             }
-
-                            AddSortCondition(PageQueryReq2, GetParaName<OqaMeswafer>(p => p.Lotid), SortType.ASC);
-
-                            var slotdata = PageQuery<OqaMeswafer>(PageQueryReq2);
-
-                            Out_node.model.OQAMESWAFER_LIST = slotdata.models;
 
                             break;
 

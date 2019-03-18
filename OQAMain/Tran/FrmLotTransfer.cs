@@ -198,10 +198,10 @@ namespace OQAMain
 
         private void btnCreate_Click_1(object sender, EventArgs e)
         {
-            FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint(srtNum);
+           
             GetSerialNum();
             MessageBox.Show("交接单号"+ srtNum);
-            
+            FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint(srtNum);
 
             string s_PartID = ComFunc.Trim(txtPartID.Text);
             string s_QTY = ComFunc.Trim(txtQTY.Text);
@@ -569,7 +569,6 @@ namespace OQAMain
 
             var out_data = OQASrv.Call.QueryLotDetail(in_node);
 
-
             if (out_data._success == true)
             {
                 LotIDList.Items.Clear();
@@ -580,13 +579,6 @@ namespace OQAMain
                    
                     list_item.Text = out_data.model.SEARCHLOTID_list[i][0].ToString();
                     LotIDList.Items.Add(list_item.Text);
-
-                    //ListViewItem list_item = new ListViewItem();
-                    //ISPLOTSTS list = out_data.model.ISPLOTST_list[i];
-                    //list_item.Text = list.LotId;
-                    //LotIDList.Items.Add(list_item.Text);
-
-
                 }
                 lblSucessMsg.Text = out_data._MsgCode;
                 return true;

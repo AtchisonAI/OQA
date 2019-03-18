@@ -268,7 +268,7 @@ namespace OQAMain
             string path = Fosb_imageUpload.GetImagePath();
             if (!string.IsNullOrEmpty(path))
             {
-                pictureView.LoadImageAsync(path);
+                pictureView.LoadImageAsync(ComFunc.GetPicServerPath(path));
             }
         }
 
@@ -277,7 +277,7 @@ namespace OQAMain
             string path = ShipLabel_imageUpload.GetImagePath();
             if (!string.IsNullOrEmpty(path))
             {
-                pictureView.LoadImageAsync(path);
+                pictureView.LoadImageAsync(ComFunc.GetPicServerPath(path));
             }
         }
 
@@ -286,7 +286,7 @@ namespace OQAMain
             string path = PackageType_imageUpload.GetImagePath();
             if (!string.IsNullOrEmpty(path))
             {
-                pictureView.LoadImageAsync(path);
+                pictureView.LoadImageAsync(ComFunc.GetPicServerPath(path));
             }
         }
 
@@ -295,7 +295,7 @@ namespace OQAMain
             string path = Attachment_imageUpload.GetImagePath();
             if (!string.IsNullOrEmpty(path))
             {
-                pictureView.LoadImageAsync(path);
+                pictureView.LoadImageAsync(ComFunc.GetPicServerPath(path));
             }
         }
     }

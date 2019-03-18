@@ -22,9 +22,9 @@
     class IspResult
     {
         public const string Create = "Create";
-        public const string IspOut = "Pass";
-        public const string ChangeOut = "Hold";
-        public const string PackageOut = "Pndn";
+        public const string Pass = "Pass";
+        public const string Hold = "Hold";
+        public const string Pndn = "Pndn";
     }
 
     class IspType

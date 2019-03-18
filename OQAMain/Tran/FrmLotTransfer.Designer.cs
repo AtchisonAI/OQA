@@ -59,18 +59,18 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1886, 14);
+            this.btnClose.Location = new System.Drawing.Point(1993, 14);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(450, 11);
+            this.btnCreate.Location = new System.Drawing.Point(557, 11);
             this.btnCreate.Text = "OK";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1687, 11);
+            this.btnEdite.Location = new System.Drawing.Point(1794, 11);
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
@@ -260,6 +260,7 @@
             this.Part_ID,
             this.Inspection_Result,
             this.Transeq});
+            this.listship.Cursor = System.Windows.Forms.Cursors.No;
             this.listship.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listship.Location = new System.Drawing.Point(231, 116);
             this.listship.Name = "listship";
@@ -271,18 +272,22 @@
             // Lot_ID
             // 
             this.Lot_ID.Text = "Lot_ID";
+            this.Lot_ID.Width = 125;
             // 
             // Qty
             // 
             this.Qty.Text = "Qty";
+            this.Qty.Width = 125;
             // 
             // Part_ID
             // 
             this.Part_ID.Text = "Part_ID";
+            this.Part_ID.Width = 125;
             // 
             // Inspection_Result
             // 
             this.Inspection_Result.Text = "Inspection_Result";
+            this.Inspection_Result.Width = 125;
             // 
             // Transeq
             // 

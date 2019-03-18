@@ -141,20 +141,20 @@ namespace OQAMain
         
         private void FrmOQAShipListPrint_Load(object sender, EventArgs e)
         {
-             txtShipNo.Text = FrmLotTransfer.srtNum.ToString();
+        //    if (FrmLotTransfer.srtNum.ToString() != null)
+        //    {
+        //        txtShipNo.Text = FrmLotTransfer.srtNum.ToString();
+        //    }
+            
             //// txtShipNo.Text = "201903151307 757149";
             this.reportViewer2.LocalReport.DataSources.Clear();
-            if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', txtShipNo.Text) == false) return;
-
-            try
+            if (txtShipNo.Text != "")
             {
-                if (QueryShipIDList(GlobConst.TRAN_VIEW, '1') == false) return;
-
-
+                
+                if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', txtShipNo.Text) == false) return;
             }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
+            else {
+                if (QueryShipIDList(GlobConst.TRAN_VIEW, '1') == false) return;
             }
 
         }
@@ -207,7 +207,7 @@ namespace OQAMain
                     list_item.Text = list.LotId;
                     list_item.SubItems.Add(list.Qty);
                     list_item.SubItems.Add(list.PartId);
-                    list_item.SubItems.Add(list.InspectResult);//修改数据使用
+                    list_item.SubItems.Add(list.InspectResult);
                     lisship.Items.Add(list_item);
                    
 
@@ -247,7 +247,7 @@ namespace OQAMain
                 lstParam.Add(new ReportParameter("ParameterPartID", string.Empty));
                 lstParam.Add(new ReportParameter("ParamWaferQty", string.Empty));
                 lstParam.Add(new ReportParameter("ParamDate", string.Empty));
-                lstParam.Add(new ReportParameter("barcodeImage", string.Empty));
+                lstParam.Add(new ReportParameter("ParameterBarcode", string.Empty));
             }
             return lstParam;
         }
@@ -256,12 +256,20 @@ namespace OQAMain
         {
             List<FrmOQAShipListPrintData> result = new List<FrmOQAShipListPrintData>();
 
-            for (int index = 0; index < lstShipList.Count; index++) {
-                int No = index+1;
-                string Lotid = lstShipList[index].LotId.ToString();
-                string Qty = lstShipList[index].Qty;
-                string InspectResult = lstShipList[index].InspectResult;
-                result.Add(new FrmOQAShipListPrintData() { No = index.ToString(), LotID = Lotid, LotQty = Qty, InspectionRequest = InspectResult, Remark="" });
+            if (lstShipList.Count > 0)
+            {
+
+                for (int index = 0; index < lstShipList.Count; index++)
+                {
+                    int No = index + 1;
+                    string Lotid = lstShipList[index].LotId.ToString();
+                    string Qty = lstShipList[index].Qty;
+                    string InspectResult = lstShipList[index].InspectResult;
+                    result.Add(new FrmOQAShipListPrintData() { No = No.ToString(), LotID = Lotid, LotQty = Qty, InspectionRequest = InspectResult, Remark = "" });
+                }
+            }
+            else {
+                result.Add(new FrmOQAShipListPrintData() { No = "", LotID = "", LotQty = "", InspectionRequest = "", Remark = "" });
             }
 
             return result;
@@ -305,13 +313,25 @@ namespace OQAMain
                     }
                 }
             }
-           
-            if (string.IsNullOrWhiteSpace(txtShipNo.Text))
+
+
+            if (e.NewValue == CheckState.Unchecked)
             {
                 ComFunc.InitListView(lisship, true);
+                lstShip.Clear();
+                this.reportViewer2.LocalReport.SetParameters(GenerateLabelParameters());
+                this.reportViewer2.LocalReport.DataSources.Clear();
+                lstShipList.Clear();
+                var dataSource = new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", GenerateLabelDatasource());
+                this.reportViewer2.LocalReport.DataSources.Add(dataSource);
                 reportViewer2.RefreshReport();
                 return;
             }
+
+
+
+
+         
             if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', txtShipNo.Text) == false) return;
         }
 
@@ -364,6 +384,10 @@ namespace OQAMain
                 else {
                     CheckShipID.Items.Clear();
                     if (QueryShipIDList(GlobConst.TRAN_VIEW, '1') == false) return;
+                    ComFunc.InitListView(lisship, true);
+                    // reportViewer2.RefreshReport();
+                    this.reportViewer2.LocalReport.DataSources.Clear();
+                    MessageBox.Show("需要选择打印的shipID");
                 }
             }
         }
@@ -391,12 +415,6 @@ namespace OQAMain
 
                     list_item.Text = out_data.model.SEARCHshipID_list[i][0].ToString();
                     CheckShipID.Items.Add(list_item.Text);
-
-                    //ListViewItem list_item = new ListViewItem();
-                    //ISPLOTSTS list = out_data.model.ISPLOTST_list[i];
-                    //list_item.Text = list.LotId;
-                    //LotIDList.Items.Add(list_item.Text);
-
 
                 }
                 lblSucessMsg.Text = out_data._MsgCode;

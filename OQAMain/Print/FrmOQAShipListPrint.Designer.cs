@@ -49,16 +49,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(696, 13);
+            this.btnClose.Location = new System.Drawing.Point(590, 11);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(862, 13);
+            this.btnCreate.Location = new System.Drawing.Point(969, 13);
             this.btnCreate.Visible = false;
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1183, 10);
+            this.btnEdite.Location = new System.Drawing.Point(1290, 10);
             this.btnEdite.Text = "Export";
             this.btnEdite.Visible = false;
             // 
@@ -147,18 +147,22 @@
             // Lot_ID
             // 
             this.Lot_ID.Text = "Lot_ID";
+            this.Lot_ID.Width = 125;
             // 
             // Qty
             // 
             this.Qty.Text = "Qty";
+            this.Qty.Width = 125;
             // 
             // Part_ID
             // 
             this.Part_ID.Text = "Part_ID";
+            this.Part_ID.Width = 125;
             // 
             // Inspection_Result
             // 
             this.Inspection_Result.Text = "Inspection_Result";
+            this.Inspection_Result.Width = 125;
             // 
             // groupBox3
             // 
@@ -190,6 +194,7 @@
             this.btnQuery.TabIndex = 7;
             this.btnQuery.Text = "查询";
             this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Visible = false;
             this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click_1);
             // 
             // FrmOQAShipListPrint

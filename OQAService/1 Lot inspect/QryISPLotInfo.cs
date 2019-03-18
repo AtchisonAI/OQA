@@ -83,6 +83,7 @@ namespace OQAService.Services
                             }
 
                             AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.Status), ISPStatus.Create, LogicCondition.AndAlso, CompareType.Equal);
+                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), ISPStatus.Create, LogicCondition.AndAlso, CompareType.Equal);
 
                             AddSortCondition(QueryLotReq, GetParaName <ISPLOTSTS> (p=>p.LotId), SortType.ASC);
                             
@@ -101,6 +102,19 @@ namespace OQAService.Services
                                 Out_node._ErrorMsg = "Lot ID is null!";
                                 return Out_node;
                             }
+                            //Lot Query
+                            QueryLotReq.CurrentPage = 1;
+                            QueryLotReq.ItemsPerPage = 200;
+
+                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.LotId), In_node.model.C_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.Status), ISPStatus.Create, LogicCondition.AndAlso, CompareType.Equal);
+                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), ISPStatus.Create, LogicCondition.AndAlso, CompareType.Equal);
+
+                            AddSortCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);
+
+                            var s_lot = PageQuery<ISPLOTSTS>(QueryLotReq);
+
+                            Out_node.model.ISPLOTSTS_LIST = s_lot.models;
                             //slot Query
                             QueryWaferReq.CurrentPage = 1;
                             QueryWaferReq.ItemsPerPage = 200;

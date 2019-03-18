@@ -198,6 +198,11 @@ namespace OQA_Core
                             ((NumericUpDown)control).Value = ((NumericUpDown)control).Minimum;
                         }
                     }
+                    else if (control is DataGridView)
+                    {
+                        ((DataGridView)control).Rows.Clear();
+
+                    }
                 }
             }
 

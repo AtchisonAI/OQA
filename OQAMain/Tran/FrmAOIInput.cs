@@ -17,7 +17,7 @@ namespace OQAMain
         private string sideType = "";
         private string slotId = "";
         private string waferId = "";
-        private decimal num = 0;
+        private decimal? num = 0;
         private ISPIMGDEF imgInfo = new ISPIMGDEF();
         #endregion
 

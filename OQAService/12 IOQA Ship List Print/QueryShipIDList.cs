@@ -23,7 +23,7 @@ namespace OQAService.Services
 
                 ModelRsp<ShipIDListView> In_node = new ModelRsp<ShipIDListView>();
                 ModelRsp<ShipIDListView> Out_node = new ModelRsp<ShipIDListView>();
-                WaferInspectRecordView out_list = new WaferInspectRecordView();
+                ShipIDListView out_list = new ShipIDListView();
 
                 In_node.model = ShipID.model;
 
@@ -87,8 +87,21 @@ namespace OQAService.Services
                             // TODO
 
                             break;
+
                         case '3':
-                            // TODO
+                            List<object[]> dataSearch = new List<object[]>();
+                            PageQueryReq.CurrentPage = 1;
+                            PageQueryReq.ItemsPerPage = 200;
+                            if (In_node.model.IN_SEARCHSHIP_NO.Trim().Equals("") == false)
+                            {
+                                //AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), In_node.model.IN_SEARCHLOTID_NO.Trim(), LogicCondition.AndAlso, CompareType.Include);
+                                string sql = string.Format(@"select a.ship_id from PKGSHPSTS a where  a.ship_id like ('%{0}%')", In_node.model.IN_SEARCHSHIP_NO.Trim());
+                                dataSearch = QueryRawSql(sql);
+                            }
+                            //  AddSortCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);
+
+                            out_list.SEARCHshipID_list = dataSearch;
+                            Out_node.model = out_list;
 
                             break;
 

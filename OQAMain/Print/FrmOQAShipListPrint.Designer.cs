@@ -49,16 +49,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(589, 13);
+            this.btnClose.Location = new System.Drawing.Point(696, 13);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(755, 13);
+            this.btnCreate.Location = new System.Drawing.Point(862, 13);
             this.btnCreate.Visible = false;
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1076, 10);
+            this.btnEdite.Location = new System.Drawing.Point(1183, 10);
             this.btnEdite.Text = "Export";
             this.btnEdite.Visible = false;
             // 
@@ -97,7 +97,7 @@
             this.CheckShipID.FormattingEnabled = true;
             this.CheckShipID.Location = new System.Drawing.Point(13, 90);
             this.CheckShipID.Name = "CheckShipID";
-            this.CheckShipID.Size = new System.Drawing.Size(120, 84);
+            this.CheckShipID.Size = new System.Drawing.Size(200, 388);
             this.CheckShipID.TabIndex = 4;
             this.CheckShipID.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.CheckShipID_ItemCheck);
             // 
@@ -107,6 +107,7 @@
             this.txtShipNo.Name = "txtShipNo";
             this.txtShipNo.Size = new System.Drawing.Size(158, 21);
             this.txtShipNo.TabIndex = 3;
+            this.txtShipNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1Press_check);
             // 
             // label1
             // 

@@ -141,10 +141,10 @@ namespace OQAMain
         
         private void FrmOQAShipListPrint_Load(object sender, EventArgs e)
         {
-             //txtShipNo.Text = FrmLotTransfer.srtNum.ToString();
+             txtShipNo.Text = FrmLotTransfer.srtNum.ToString();
             //// txtShipNo.Text = "201903151307 757149";
             this.reportViewer2.LocalReport.DataSources.Clear();
-            //if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', txtShipNo.Text) == false) return;
+            if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', txtShipNo.Text) == false) return;
 
             try
             {
@@ -350,6 +350,60 @@ namespace OQAMain
             }
         }
 
-       
+        //搜索shipid
+        private void textBox1Press_check(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == (Char)13)
+            {
+
+                if (ComFunc.Trim(txtShipNo.Text) != "")
+                {
+                    if (SearchShipIDList(GlobConst.TRAN_VIEW, '3', txtShipNo.Text.Trim()) == false) return;
+                }
+            }
+        }
+
+        private bool SearchShipIDList(char c_proc_step, char c_tran_flag, string searchshipid)
+        {
+            ModelRsp<ShipIDListView> in_node = new ModelRsp<ShipIDListView>();
+            ShipIDListView in_data = new ShipIDListView();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.IN_SEARCHSHIP_NO = searchshipid;
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.QueryShipIDList(in_node);
+
+
+            if (out_data._success == true)
+            {
+                CheckShipID.Items.Clear();
+                for (int i = 0; i < out_data.model.SEARCHshipID_list.Count; i++)
+                {
+
+                    ListViewItem list_item = new ListViewItem();
+
+                    list_item.Text = out_data.model.SEARCHshipID_list[i][0].ToString();
+                    CheckShipID.Items.Add(list_item.Text);
+
+                    //ListViewItem list_item = new ListViewItem();
+                    //ISPLOTSTS list = out_data.model.ISPLOTST_list[i];
+                    //list_item.Text = list.LotId;
+                    //LotIDList.Items.Add(list_item.Text);
+
+
+                }
+                lblSucessMsg.Text = out_data._MsgCode;
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+        }
+
     }
 }

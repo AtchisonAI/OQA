@@ -45,22 +45,25 @@ namespace WCFModels.OQA
         private char c_tran_flag;
         //服务传入参数
         [DataMember]
-        //public string IN_SHIP_NO {
-        //    get
-        //    {
-        //        return in_ship_no;
-        //    }
-        //    set
-        //    {
-        //        in_ship_no = value;
-        //    }
-        //}
-        //private string in_ship_no;
-       
+        public string IN_SEARCHSHIP_NO
+        {
+            get
+            {
+                return in_searchship_no;
+            }
+            set
+            {
+                in_searchship_no = value;
+            }
+        }
+        private string in_searchship_no;
+
         //服务传出数据结构
-        //[DataMember]
+        [DataMember]
         public List<PKGSHPSTS> SHIPIDLIST_list { get; set; }
         //服务传出结果在BaseRsq:_success  _ErrorMsg
+        [DataMember]
+        public List<object[]> SEARCHshipID_list { get; set; }//select like
 
     }
 }

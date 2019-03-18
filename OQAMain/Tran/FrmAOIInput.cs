@@ -433,8 +433,12 @@ namespace OQAMain
         }
 
 
+
         #endregion
 
-       
+        private void labelView_Click(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

@@ -361,6 +361,10 @@ namespace OQAMain
                 {
                     if (SearchShipIDList(GlobConst.TRAN_VIEW, '3', txtShipNo.Text.Trim()) == false) return;
                 }
+                else {
+                    CheckShipID.Items.Clear();
+                    if (QueryShipIDList(GlobConst.TRAN_VIEW, '1') == false) return;
+                }
             }
         }
 

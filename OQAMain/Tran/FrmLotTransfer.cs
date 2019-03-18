@@ -130,7 +130,8 @@ namespace OQAMain
             LOT_ID = 0,
             QTY,
             PART_ID,
-            INSPECT_RESULT
+            INSPECT_RESULT,
+            TRANS_SEQ
         }
 
 
@@ -167,12 +168,7 @@ namespace OQAMain
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-        private void LstIspCode_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-           
-
-        }
+      
         private void FrmLotTransfer_Load(object sender, EventArgs e)
         {
             try
@@ -186,7 +182,7 @@ namespace OQAMain
                 MessageBox.Show(ex.Message.ToString());
             }
 
-            //try
+            //try;
             //{
                 
             //   // ship_no = txtShipNo.Text.Trim();
@@ -202,9 +198,10 @@ namespace OQAMain
 
         private void btnCreate_Click_1(object sender, EventArgs e)
         {
-            FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint();
+            FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint(srtNum);
             GetSerialNum();
             MessageBox.Show("交接单号"+ srtNum);
+            
 
             string s_PartID = ComFunc.Trim(txtPartID.Text);
             string s_QTY = ComFunc.Trim(txtQTY.Text);
@@ -215,29 +212,41 @@ namespace OQAMain
 
 
             //调用事务服务
-
+            //选择lotid之后，信息插入到PKGSHPDAT
             if (CreateLotTransferInfo(cTranFlag, '1', s_PartID, s_Creater, s_QTY, s_Date, srtNum, Trans_Seq) == true)
             {
-                cTranFlag = GlobConst.TRAN_UPDATE;
+               
                 foreach (ListViewItem item in this.listship.Items)
-                    {
+                {
                         string lotid = item.SubItems[0].Text;
                         string qty = item.SubItems[1].Text;
                         string partid = item.SubItems[2].Text;
                         string isp_result = item.SubItems[3].Text;
-                        if (CreateLotTransferListInfo(cTranFlag, '1', lotid, qty, partid, isp_result, srtNum, Trans_Seq) == true)
-                        { return; }
+                        string update_trans_seq = item.SubItems[4].Text;
+                    if (CreateLotTransferListInfo(cTranFlag, '1', lotid, qty, partid, isp_result, srtNum, Trans_Seq) == true)
+                    {
+                        if (CreateLotTransferListInfo(GlobConst.TRAN_UPDATE, '1', lotid, qty, partid, isp_result, srtNum, Convert.ToDecimal(update_trans_seq)) == false)
+                        {
+                            return;
+                        }
                     }
+                    else {
+                        return;
+                    }
+                }
+                formshiplistprint.FormBorderStyle = FormBorderStyle.FixedDialog;
+                formshiplistprint.WindowState = FormWindowState.Maximized;
+                formshiplistprint.StartPosition = FormStartPosition.CenterParent;
+                formshiplistprint.ShowDialog();
 
-               
-
-                    formshiplistprint.ShowDialog();
-                
             }
             
 
            
         }
+
+       
+
         public string GetSerialNum()
         {
 
@@ -319,7 +328,8 @@ namespace OQAMain
                         list_item.Text = out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.LOT_ID].ToString();
                         list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.QTY].ToString());
                         list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.PART_ID].ToString());
-                        list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.INSPECT_RESULT].ToString());//修改数据使用
+                        list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.INSPECT_RESULT].ToString());
+                        list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.TRANS_SEQ].ToString());
                         listship.Items.Add(list_item);
                         total_count = total_count + Convert.ToInt32(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.QTY].ToString());
                         txtPartID.Text = out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.PART_ID].ToString();
@@ -464,6 +474,8 @@ namespace OQAMain
                 ComFunc.InitListView(listship, true);
                 txtPartID.Text = "";
                 txtQTY.Text = "";
+                txtCreater.Text = "";
+                txtDate.Text = "";
                 return;
             }
 
@@ -523,7 +535,63 @@ namespace OQAMain
             ComFunc.InitListView(listship, true);
             txtPartID.Text = "";
             txtQTY.Text = "";
+            txtCreater.Text = "";
+            txtDate.Text = "";
             this.LotIDList.ItemCheck += LotIDList_ItemCheck;
+        }
+
+        private void textBox1Press_check(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == (Char)13)
+            {
+
+                if (ComFunc.Trim(txtSearchLotID.Text) != "")
+                {
+                    if (SearchLotIDList(GlobConst.TRAN_VIEW, '3', txtSearchLotID.Text.Trim()) == false) return;
+                }
+            }
+        }
+
+        private bool SearchLotIDList(char c_proc_step, char c_tran_flag,string searchlotid)
+        {
+            ModelRsp<QueryLotDetailView> in_node = new ModelRsp<QueryLotDetailView>();
+            QueryLotDetailView in_data = new QueryLotDetailView();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.IN_SEARCHLOTID_NO = searchlotid;
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.QueryLotDetail(in_node);
+
+
+            if (out_data._success == true)
+            {
+                LotIDList.Items.Clear();
+                for (int i = 0; i < out_data.model.SEARCHLOTID_list.Count; i++)
+                {
+
+                    ListViewItem list_item = new ListViewItem();
+                   
+                    list_item.Text = out_data.model.SEARCHLOTID_list[i][0].ToString();
+                    LotIDList.Items.Add(list_item.Text);
+
+                    //ListViewItem list_item = new ListViewItem();
+                    //ISPLOTSTS list = out_data.model.ISPLOTST_list[i];
+                    //list_item.Text = list.LotId;
+                    //LotIDList.Items.Add(list_item.Text);
+
+
+                }
+                lblSucessMsg.Text = out_data._MsgCode;
+                return true;
+            }                                 
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
         }
     }
 }

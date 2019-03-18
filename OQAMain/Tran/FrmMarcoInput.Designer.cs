@@ -66,6 +66,7 @@
             // btnEdite
             // 
             this.btnEdite.Location = new System.Drawing.Point(550, 8);
+            this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
             // 
@@ -177,8 +178,12 @@
             this.imageUpload1.Location = new System.Drawing.Point(142, 20);
             this.imageUpload1.Name = "imageUpload1";
             this.imageUpload1.PicStream = null;
-            this.imageUpload1.Size = new System.Drawing.Size(283, 31);
+            this.imageUpload1.Size = new System.Drawing.Size(310, 31);
             this.imageUpload1.TabIndex = 17;
+            this.imageUpload1.UpLoadByArea = null;
+            this.imageUpload1.UpLoadByLot = null;
+            this.imageUpload1.UpLoadBySide = null;
+            this.imageUpload1.UpLoadByWafer = null;
             this.imageUpload1.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload1_btnUploadClicked);
             // 
             // cmtRichTextBox
@@ -257,7 +262,7 @@
             // frontButton
             // 
             this.frontButton.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.frontButton.Location = new System.Drawing.Point(260, 289);
+            this.frontButton.Location = new System.Drawing.Point(259, 299);
             this.frontButton.Name = "frontButton";
             this.frontButton.Size = new System.Drawing.Size(123, 23);
             this.frontButton.TabIndex = 31;
@@ -279,7 +284,7 @@
             this.waferSurF.Location = new System.Drawing.Point(216, 70);
             this.waferSurF.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.waferSurF.Name = "waferSurF";
-            this.waferSurF.Size = new System.Drawing.Size(210, 210);
+            this.waferSurF.Size = new System.Drawing.Size(220, 220);
             this.waferSurF.TabIndex = 27;
             // 
             // label14

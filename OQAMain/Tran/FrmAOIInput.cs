@@ -47,6 +47,14 @@ namespace OQAMain
             waferSurF.codeBox = this.defectTextBox;
             this.pageInfoShow();
         }
+        
+        public FrmAOIInput(string lotIdIn,string slotIdIn,string sideTypeIn)
+        {
+            InitializeComponent();
+            lotId = lotIdIn;
+            slotId = slotIdIn;
+            sideType = sideTypeIn;
+        }
         #endregion
 
         #region  Button or ValueChange Function 
@@ -76,6 +84,11 @@ namespace OQAMain
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+        //提交
+        private void btnEdite_Click(object sender, EventArgs e)
+        {
+            btnCreate_Click(sender, e);
+        }
         //图片保存按钮
         private void imageUpload1_btnUploadClicked(object sender, EventArgs e)
         {
@@ -84,9 +97,9 @@ namespace OQAMain
             item.LotID = lotId;
             item.Slot_ID = slotId;
             item.Side_Type = sideType;
-            item.Wafer_ID = "1";
-            item.Inspect_Type = "A";//mock
-            item.ImageType = "ISP";
+            item.Wafer_ID = waferId;
+            item.Inspect_Type = InspectType.AOI;//mock
+            item.ImageType = "Type_A";
             if (null != imgInfo)
             {
                 item.TranSeq = imgInfo.TransSeq;
@@ -177,7 +190,7 @@ namespace OQAMain
             }
         }
         #endregion
-        
+
         #region Common Function
         //刷新功能
         private void refreshPage()
@@ -247,7 +260,7 @@ namespace OQAMain
                 ISPWAFITM ISPWAFITM = new ISPWAFITM();
                 ISPWAFITM.LotId = lotId;
                 ISPWAFITM.SlotId = slotId;
-              //  ISPWAFITM.WaferId = waferId;
+                //  ISPWAFITM.WaferId = waferId;
                 ISPWAFITM.SideType = sideType;
                 ISPWAFITM.InspectType = InspectType.AOI;
                 AOIShowView model = new AOIShowView();
@@ -259,6 +272,7 @@ namespace OQAMain
                 ModelRsp<AOIShowView> view = new ModelRsp<AOIShowView>();
                 view.model = model;
                 ModelRsp<AOIShowView> qryResult = OQASrv.Call.QueryAOIInfo(view);
+                imgInfo = null;
                 if (!("").Equals(slotId))
                 {
                     if (null != qryResult.model)
@@ -271,7 +285,7 @@ namespace OQAMain
                             MagnificationTextBox.Text = qryResult.model.ISPWAFITM_list[0].Magnification;
                             qtyTextBox.Text = qryResult.model.ISPWAFITM_list[0].DieQty.ToString();
                             rateTextBox.Text = qryResult.model.ISPWAFITM_list[0].DefectRate.ToString();
-                            waferId= qryResult.model.ISPWAFITM_list[0].WaferId;
+                            waferId = qryResult.model.ISPWAFITM_list[0].WaferId;
                             //slotId = qryResult.model.ISPWAFITM_list[0].SlotId;
                             //slotComboBox.Text = slotId;
 
@@ -282,23 +296,25 @@ namespace OQAMain
                         }
                         if (null != qryResult.model.ISPIMGDEF_list && qryResult.model.ISPIMGDEF_list.Count > 0)
                         {
-                                foreach (Control control in groupBox3.Controls)
+                            imgInfo = qryResult.model.ISPIMGDEF_list[0];
+                            foreach (Control control in groupBox3.Controls)
+                            {
+                                if (control is ImageUpload.ImageUpload)
                                 {
-                                    if (control is ImageUpload.ImageUpload)
-                                    {
-                                        if (control.Name.Split('_')[1].Equals((imgInfo.AreaId).ToString()))
-                                        {
-                                            ImageUpload.ImageUpload img = control as ImageUpload.ImageUpload;
-                                            img.InitByImgInstance(imgInfo);
-                                        }
-                                    }
+                                    ImageUpload.ImageUpload img = control as ImageUpload.ImageUpload;
+                                    img.InitByImgInstance(imgInfo);
                                 }
+                            }
                         }
                         else
                         {//清除图片
                             foreach (Control control in groupBox3.Controls)
                             {
-                                ComFunc.ClearBoxValue(groupBox3);
+                                if (control is ImageUpload.ImageUpload)
+                                {
+                                    ImageUpload.ImageUpload img = control as ImageUpload.ImageUpload;
+                                    img.RefreshContrl();
+                                }
                             }
                         }
                         waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
@@ -314,10 +330,7 @@ namespace OQAMain
                     ComFunc.ClearBoxValue(groupBox3);
                     waferSurF.clearPanel();
                 }
-
-
-
-
+                
             }
             catch (Exception e)
             {
@@ -337,8 +350,7 @@ namespace OQAMain
 
                 //wafer
 
-                if (null == slotComboBox.Text || ("").Equals(slotComboBox.Text)
-                     && null == lotTextBox.Text || ("").Equals(lotTextBox.Text))
+                if (string.IsNullOrWhiteSpace(slotComboBox.Text) || string.IsNullOrWhiteSpace(lotTextBox.Text))
                 {
                     MessageBox.Show("请先选择lotId、slotId");
                     return;
@@ -349,7 +361,15 @@ namespace OQAMain
                 iSPWAFITM.InspectType = InspectType.AOI;
                 iSPWAFITM.SideType = sideType;
                 iSPWAFITM.Magnification = MagnificationTextBox.Text;
-                iSPWAFITM.DieQty = decimal.Parse(qtyTextBox.Text);
+                if (String.IsNullOrWhiteSpace(qtyTextBox.Text))
+                {
+                    qtyTextBox.Text = "0";
+                }
+                iSPWAFITM.DieQty = decimal.Parse(rateTextBox.Text);
+                if (String.IsNullOrWhiteSpace(rateTextBox.Text))
+                {
+                    rateTextBox.Text = "0";
+                }
                 iSPWAFITM.DefectRate = decimal.Parse(rateTextBox.Text);
                 iSPWAFITM.ReviewUser = ReviewTextBox.Text;
                 iSPWAFITM.DefectDesc = decRichTextBox.Text;
@@ -411,9 +431,10 @@ namespace OQAMain
                 }
             }
         }
+
+
         #endregion
 
-
-        
+       
     }
 }

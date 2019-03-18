@@ -78,6 +78,7 @@
             // btnEdite
             // 
             this.btnEdite.Location = new System.Drawing.Point(676, 11);
+            this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
             // 
@@ -122,15 +123,19 @@
             this.imageUpload1.Location = new System.Drawing.Point(123, 80);
             this.imageUpload1.Name = "imageUpload1";
             this.imageUpload1.PicStream = null;
-            this.imageUpload1.Size = new System.Drawing.Size(280, 31);
+            this.imageUpload1.Size = new System.Drawing.Size(310, 31);
             this.imageUpload1.TabIndex = 20;
+            this.imageUpload1.UpLoadByArea = null;
+            this.imageUpload1.UpLoadByLot = null;
+            this.imageUpload1.UpLoadBySide = null;
+            this.imageUpload1.UpLoadByWafer = null;
             this.imageUpload1.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload1_btnUploadClicked);
             // 
             // labelPer
             // 
             this.labelPer.AutoSize = true;
             this.labelPer.BackColor = System.Drawing.Color.Transparent;
-            this.labelPer.Location = new System.Drawing.Point(578, 85);
+            this.labelPer.Location = new System.Drawing.Point(604, 89);
             this.labelPer.Name = "labelPer";
             this.labelPer.Size = new System.Drawing.Size(11, 12);
             this.labelPer.TabIndex = 19;
@@ -150,7 +155,7 @@
             // 
             this.rateTextBox.Enabled = false;
             this.rateTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.rateTextBox.Location = new System.Drawing.Point(499, 80);
+            this.rateTextBox.Location = new System.Drawing.Point(525, 84);
             this.rateTextBox.Multiline = true;
             this.rateTextBox.Name = "rateTextBox";
             this.rateTextBox.Size = new System.Drawing.Size(100, 20);
@@ -160,7 +165,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.label6.Location = new System.Drawing.Point(409, 82);
+            this.label6.Location = new System.Drawing.Point(435, 86);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 14);
             this.label6.TabIndex = 6;
@@ -231,7 +236,7 @@
             this.defectTextBox.Enabled = false;
             this.defectTextBox.Font = new System.Drawing.Font("宋体", 10.5F);
             this.defectTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.defectTextBox.Location = new System.Drawing.Point(438, 37);
+            this.defectTextBox.Location = new System.Drawing.Point(525, 37);
             this.defectTextBox.Multiline = true;
             this.defectTextBox.Name = "defectTextBox";
             this.defectTextBox.Size = new System.Drawing.Size(100, 20);
@@ -250,7 +255,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.label3.Location = new System.Drawing.Point(348, 37);
+            this.label3.Location = new System.Drawing.Point(435, 37);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 14);
             this.label3.TabIndex = 3;
@@ -324,7 +329,7 @@
             // 
             this.frontButton.Enabled = false;
             this.frontButton.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.frontButton.Location = new System.Drawing.Point(260, 289);
+            this.frontButton.Location = new System.Drawing.Point(309, 299);
             this.frontButton.Name = "frontButton";
             this.frontButton.Size = new System.Drawing.Size(123, 23);
             this.frontButton.TabIndex = 31;
@@ -343,10 +348,10 @@
             // 
             // waferSurF
             // 
-            this.waferSurF.Location = new System.Drawing.Point(215, 70);
+            this.waferSurF.Location = new System.Drawing.Point(248, 70);
             this.waferSurF.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.waferSurF.Name = "waferSurF";
-            this.waferSurF.Size = new System.Drawing.Size(210, 210);
+            this.waferSurF.Size = new System.Drawing.Size(220, 220);
             this.waferSurF.TabIndex = 27;
             // 
             // label14

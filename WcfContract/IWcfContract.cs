@@ -1,5 +1,5 @@
 ﻿using System.ServiceModel;
-using WCFModels.MESDB.FWTST1;
+using WCFModels.Frame;
 using WCFModels.Message;
 
 namespace WcfContract

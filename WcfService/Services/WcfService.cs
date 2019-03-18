@@ -3,6 +3,7 @@ using HiDM.FactoryWorks.TibcoRV;
 using System.ServiceModel;
 using WcfContract;
 using WCFModels;
+using WCFModels.Frame;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 

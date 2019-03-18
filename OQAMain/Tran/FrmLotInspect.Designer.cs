@@ -57,7 +57,7 @@
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.grpOQAInfo = new System.Windows.Forms.GroupBox();
             this.txtStage = new System.Windows.Forms.TextBox();
-            this.imageUpload1 = new ImageUpload.ImageUpload();
+            this.ImgISPLot = new ImageUpload.ImageUpload();
             this.lblStage = new System.Windows.Forms.Label();
             this.txtPartID = new System.Windows.Forms.TextBox();
             this.lblPartID = new System.Windows.Forms.Label();
@@ -211,16 +211,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(659, 7);
+            this.btnClose.Location = new System.Drawing.Point(659, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(475, 8);
+            this.btnCreate.Location = new System.Drawing.Point(476, 7);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(569, 8);
+            this.btnEdite.Location = new System.Drawing.Point(568, 7);
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
@@ -242,7 +242,7 @@
             this.grpRcvLot.Controls.Add(this.txtCount);
             this.grpRcvLot.Controls.Add(this.LstRcvLot);
             this.grpRcvLot.Dock = System.Windows.Forms.DockStyle.Left;
-            this.grpRcvLot.Location = new System.Drawing.Point(3, 0);
+            this.grpRcvLot.Location = new System.Drawing.Point(0, 0);
             this.grpRcvLot.Name = "grpRcvLot";
             this.grpRcvLot.Size = new System.Drawing.Size(250, 732);
             this.grpRcvLot.TabIndex = 3;
@@ -437,7 +437,7 @@
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Location = new System.Drawing.Point(250, 0);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(3, 732);
             this.splitter1.TabIndex = 7;
@@ -446,7 +446,7 @@
             // grpOQAInfo
             // 
             this.grpOQAInfo.Controls.Add(this.txtStage);
-            this.grpOQAInfo.Controls.Add(this.imageUpload1);
+            this.grpOQAInfo.Controls.Add(this.ImgISPLot);
             this.grpOQAInfo.Controls.Add(this.lblStage);
             this.grpOQAInfo.Controls.Add(this.txtPartID);
             this.grpOQAInfo.Controls.Add(this.lblPartID);
@@ -487,18 +487,19 @@
             this.txtStage.Size = new System.Drawing.Size(100, 21);
             this.txtStage.TabIndex = 23;
             // 
-            // imageUpload1
+            // ImgISPLot
             // 
-            this.imageUpload1.Location = new System.Drawing.Point(30, 120);
-            this.imageUpload1.Name = "imageUpload1";
-            this.imageUpload1.PicStream = null;
-            this.imageUpload1.Size = new System.Drawing.Size(283, 31);
-            this.imageUpload1.TabIndex = 9;
-            this.imageUpload1.UpLoadByArea = null;
-            this.imageUpload1.UpLoadByLot = null;
-            this.imageUpload1.UpLoadBySide = null;
-            this.imageUpload1.UpLoadByWafer = null;
-            this.imageUpload1.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload1_btnUploadClicked);
+            this.ImgISPLot.Enabled = false;
+            this.ImgISPLot.Location = new System.Drawing.Point(30, 120);
+            this.ImgISPLot.Name = "ImgISPLot";
+            this.ImgISPLot.PicStream = null;
+            this.ImgISPLot.Size = new System.Drawing.Size(380, 31);
+            this.ImgISPLot.TabIndex = 9;
+            this.ImgISPLot.UpLoadByArea = null;
+            this.ImgISPLot.UpLoadByLot = null;
+            this.ImgISPLot.UpLoadBySide = null;
+            this.ImgISPLot.UpLoadByWafer = null;
+            this.ImgISPLot.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload1_btnUploadClicked);
             // 
             // lblStage
             // 
@@ -1661,15 +1662,15 @@
             this.Controls.Add(this.grpSlot);
             this.Controls.Add(this.grpOQAInfo);
             this.Controls.Add(this.grpMesLot);
-            this.Controls.Add(this.grpRcvLot);
             this.Controls.Add(this.splitter1);
+            this.Controls.Add(this.grpRcvLot);
             this.Name = "FrmLotInspect";
             this.Text = "Lot Inspect";
             this.Activated += new System.EventHandler(this.FrmLotInspect_Activated);
             this.Load += new System.EventHandler(this.FrmLotInspect_Load);
             this.Controls.SetChildIndex(this.pnlMenu, 0);
-            this.Controls.SetChildIndex(this.splitter1, 0);
             this.Controls.SetChildIndex(this.grpRcvLot, 0);
+            this.Controls.SetChildIndex(this.splitter1, 0);
             this.Controls.SetChildIndex(this.grpMesLot, 0);
             this.Controls.SetChildIndex(this.grpOQAInfo, 0);
             this.Controls.SetChildIndex(this.grpSlot, 0);
@@ -1746,7 +1747,7 @@
         private System.Windows.Forms.TextBox txtDept;
         private System.Windows.Forms.Label labDept;
         private ImageUpload.ImageUpload imageUploadLotIsp;
-        private ImageUpload.ImageUpload imageUpload1;
+        private ImageUpload.ImageUpload ImgISPLot;
         private System.Windows.Forms.GroupBox grpMesLot;
         private System.Windows.Forms.GroupBox grpSlot;
         private System.Windows.Forms.DataGridView dgSlotID;

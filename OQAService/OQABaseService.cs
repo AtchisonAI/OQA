@@ -107,7 +107,8 @@ namespace OQAService.Services
 
         public string GetSysTime()
         {
-            string result = DateTime.Now.ToString("yyyyMMddhhmmss");
+            string result = GetSystemDateTime();
+            //DateTime.Now.ToString("yyyyMMddhhmmss");
             return result;
         }
 

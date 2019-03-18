@@ -31,18 +31,6 @@ namespace OQAMain
         #region Page Load
         private void FrmMircoInput_Load(object sender, EventArgs e)
         {
-            lotId = "ITM0150";
-            slotId = "001";
-            sideType = "F";
-            waferId = "ITM0150.01";
-            if (sideType.Equals(SideType.Front))
-            {
-                radioButtonF.Checked = true;
-            }
-            else
-            {
-                radioButtonB.Checked = true;
-            }
             radioNine.Checked = true;
             checkAllOk();
             waferSurF.nodeMode = true;
@@ -57,6 +45,8 @@ namespace OQAMain
             lotId = lotIdIn;
             slotId = slotIdIn;
             sideType = sideTypeIn;
+            lotTextBox.Text = lotId;
+            slotComboBox.Text = slotId;
         }
         #endregion
 
@@ -147,21 +137,6 @@ namespace OQAMain
                 checkAllOk();
             }
         }
-        //side单选框CheckedChanged
-        private void radioButtonB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonB.Checked)
-            {
-                sideType = SideType.Back;
-            }
-            else
-            {
-                sideType = SideType.Front;
-            }
-            slotId = "";
-            slotComboBox.Items.Clear();
-            pageInfoShow();
-        }
         //qty文本框TextChanged
         private void qtyTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -242,14 +217,7 @@ namespace OQAMain
         {
             try
             {
-                if (sideType.Equals(SideType.Front))
-                {
-                    frontButton.Text = "Frontside";
-                }
-                else
-                {
-                    frontButton.Text = "Backside";
-                }
+                frontButton.Text = "Frontside";
                 lotTextBox.Text = lotId;
                 slotComboBox.Text = slotId;
                 ISPWAFITM ISPWAFITM = new ISPWAFITM();
@@ -319,7 +287,7 @@ namespace OQAMain
                 {
                     qtyTextBox.Text = "0";
                 }
-                iSPWAFITM.DieQty = decimal.Parse(rateTextBox.Text);
+                iSPWAFITM.DieQty = decimal.Parse(qtyTextBox.Text);
                 if (String.IsNullOrWhiteSpace(rateTextBox.Text))
                 {
                     rateTextBox.Text = "0";
@@ -608,10 +576,86 @@ namespace OQAMain
             imageUpload_14.UpLoadByArea = (item);
         }
 
-        
+
+
 
         #endregion
 
-      
+        #region PreviewLabelClicked
+
+        private void showPicture(ImageUpload.ImageUpload imageUpload)
+        {
+            string path = imageUpload.GetImagePath();
+            if (!string.IsNullOrEmpty(path))
+            {
+                pictureView1.LoadImageAsync(ComFunc.GetPicServerPath(path));
+            }
+        }
+
+        private void imageUpload_11_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_11);
+        }
+
+        private void imageUpload_13_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_13);
+        }
+
+        private void imageUpload_15_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_15);
+        }
+
+        private void imageUpload_3_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_3);
+        }
+
+        private void imageUpload_23_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_23);
+        }
+
+        private void imageUpload_17_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_17);
+        }
+
+        private void imageUpload_7_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_7);
+        }
+
+        private void imageUpload_9_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_9);
+        }
+
+        private void imageUpload_19_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_19);
+        }
+
+        private void imageUpload_18_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_18);
+        }
+
+        private void imageUpload_12_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_12);
+        }
+
+        private void imageUpload_8_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_8);
+        }
+
+        private void imageUpload_14_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_14);
+        }
+        #endregion
     }
 }

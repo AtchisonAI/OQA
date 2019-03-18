@@ -16,6 +16,7 @@ namespace OQAMain
         private string sideType = "";
         private string slotId = "";
         private string waferId = "";
+        private bool jumpFlag = false;//页面跳转
         private ISPIMGDEF imgInfo = new ISPIMGDEF();
         #endregion
 
@@ -30,10 +31,7 @@ namespace OQAMain
         #region Page Load
         private void FrmMarcoInput_Load(object sender, EventArgs e)
         {
-            lotId = "ITM0150";
-            slotId = "001";
-            sideType = "F";
-            waferId = "ITM0150.01";
+
             if (sideType.Equals(SideType.Front))
             {
                 radioButtonF.Checked = true;
@@ -48,9 +46,15 @@ namespace OQAMain
         public FrmMarcoInput(string lotIdIn, string slotIdIn, string sideTypeIn)
         {
             InitializeComponent();
-            lotId = lotIdIn;
-            slotId = slotIdIn;
-            sideType = sideTypeIn;
+            if (!string.IsNullOrWhiteSpace(lotIdIn) && !string.IsNullOrWhiteSpace(slotIdIn) && !string.IsNullOrWhiteSpace(sideTypeIn))
+            {
+                lotId = lotIdIn;
+                slotId = slotIdIn;
+                sideType = sideTypeIn;
+                lotTextBox.Text = lotId;
+                slotComboBox.Text = slotId;
+                jumpFlag = true;
+            }
         }
         #endregion
 
@@ -103,7 +107,7 @@ namespace OQAMain
             item.Slot_ID = slotId;
             item.Side_Type = sideType;
             item.Wafer_ID = waferId;
-            item.Inspect_Type = InspectType.MA;//mock
+            item.Inspect_Type = InspectType.MA;
             item.ImageType = "Type_M";
             if (null != imgInfo)
             {
@@ -121,6 +125,20 @@ namespace OQAMain
         //单选框CheckedChanged
         private void radioButtonB_CheckedChanged(object sender, EventArgs e)
         {
+            if (jumpFlag && radioButtonB.Checked)
+            {
+                if (sideType.Equals(SideType.Front))
+                {
+                    slotId = "";
+                    slotComboBox.Items.Clear();
+                }
+            }
+            else
+            {
+                slotId = "";
+                slotComboBox.Items.Clear();
+            }
+            jumpFlag = false;
             if (radioButtonB.Checked)
             {
                 sideType = SideType.Back;
@@ -129,8 +147,6 @@ namespace OQAMain
             {
                 sideType = SideType.Front;
             }
-            slotId = "";
-            slotComboBox.Items.Clear();
             pageInfoShow();
         }
         //lotId文本框TextChanged
@@ -359,8 +375,16 @@ namespace OQAMain
             }
         }
 
+
         #endregion
 
-       
+        private void imageUpload1_PreviewLableClicked(object sender, EventArgs e)
+        {
+            string path = imageUpload1.GetImagePath();
+            if (!string.IsNullOrEmpty(path))
+            {
+                pictureView1.LoadImageAsync(ComFunc.GetPicServerPath(path));
+            }
+        }
     }
 }

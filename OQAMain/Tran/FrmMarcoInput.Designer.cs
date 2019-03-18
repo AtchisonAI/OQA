@@ -48,6 +48,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.waferSurF = new WaferSf.WaferSur();
             this.label14 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pnlMenu.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -70,9 +71,8 @@
             // 
             // pnlMenu
             // 
-            this.pnlMenu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.None;
-            this.pnlMenu.Location = new System.Drawing.Point(0, 736);
+            this.pnlMenu.Location = new System.Drawing.Point(50, 736);
             this.pnlMenu.Size = new System.Drawing.Size(806, 40);
             // 
             // btnRefresh
@@ -81,14 +81,13 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox2.Controls.Add(this.radioButtonB);
             this.groupBox2.Controls.Add(this.radioButtonF);
             this.groupBox2.Controls.Add(this.slotComboBox);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.lotTextBox);
             this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Location = new System.Drawing.Point(24, 45);
+            this.groupBox2.Location = new System.Drawing.Point(50, 45);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(721, 94);
             this.groupBox2.TabIndex = 39;
@@ -160,14 +159,13 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox3.Controls.Add(this.imageUpload1);
             this.groupBox3.Controls.Add(this.cmtRichTextBox);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.decRichTextBox);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Location = new System.Drawing.Point(24, 538);
+            this.groupBox3.Location = new System.Drawing.Point(50, 538);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(721, 163);
             this.groupBox3.TabIndex = 38;
@@ -178,13 +176,14 @@
             this.imageUpload1.Location = new System.Drawing.Point(142, 20);
             this.imageUpload1.Name = "imageUpload1";
             this.imageUpload1.PicStream = null;
-            this.imageUpload1.Size = new System.Drawing.Size(310, 31);
+            this.imageUpload1.Size = new System.Drawing.Size(380, 31);
             this.imageUpload1.TabIndex = 17;
             this.imageUpload1.UpLoadByArea = null;
             this.imageUpload1.UpLoadByLot = null;
             this.imageUpload1.UpLoadBySide = null;
             this.imageUpload1.UpLoadByWafer = null;
             this.imageUpload1.btnUploadClicked += new ImageUpload.ImageUpload.BtnClickHandle(this.imageUpload1_btnUploadClicked);
+            this.imageUpload1.PreviewLableClicked += new ImageUpload.ImageUpload.PreViewClickHandle(this.imageUpload1_PreviewLableClicked);
             // 
             // cmtRichTextBox
             // 
@@ -236,14 +235,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.frontButton);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.waferSurF);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.groupBox1.Location = new System.Drawing.Point(24, 134);
+            this.groupBox1.Location = new System.Drawing.Point(50, 134);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(721, 398);
             this.groupBox1.TabIndex = 37;
@@ -273,7 +271,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.label12.Location = new System.Drawing.Point(96, 329);
+            this.label12.Location = new System.Drawing.Point(50, 329);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(490, 14);
             this.label12.TabIndex = 22;
@@ -297,11 +295,21 @@
             this.label14.TabIndex = 26;
             this.label14.Text = "Pls mark the defect with below special code";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Location = new System.Drawing.Point(775, 45);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(550, 656);
+            this.groupBox4.TabIndex = 40;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Preview";
+            // 
             // FrmMarcoInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(806, 776);
+            this.ClientSize = new System.Drawing.Size(1395, 776);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
@@ -312,6 +320,7 @@
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox3, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.groupBox4, 0);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -346,5 +355,6 @@
         private ImageUpload.ImageUpload imageUpload1;
         private System.Windows.Forms.RadioButton radioButtonB;
         private System.Windows.Forms.RadioButton radioButtonF;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }

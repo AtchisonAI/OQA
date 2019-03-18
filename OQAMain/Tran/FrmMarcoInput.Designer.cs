@@ -154,9 +154,9 @@
             this.label16.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label16.Location = new System.Drawing.Point(294, 57);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(35, 14);
+            this.label16.Size = new System.Drawing.Size(56, 14);
             this.label16.TabIndex = 2;
-            this.label16.Text = "Slot";
+            this.label16.Text = "Slot ID";
             // 
             // groupBox3
             // 

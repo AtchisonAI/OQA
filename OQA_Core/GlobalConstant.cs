@@ -29,7 +29,7 @@ namespace OQA_Core
         /// </summary>
         public const string ISP = "ISP";
         public const string PAK_F = "PAK_F";
-        public const string PAK_S = "PAKS";
+        public const string PAK_S = "PAK_S";
         public const string PAK_P = "PAK_P";
         public const string PAK_A = "PAK_A";
 

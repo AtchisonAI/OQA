@@ -252,9 +252,9 @@
             this.label16.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label16.Location = new System.Drawing.Point(236, 55);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(35, 14);
+            this.label16.Size = new System.Drawing.Size(56, 14);
             this.label16.TabIndex = 2;
-            this.label16.Text = "Slot";
+            this.label16.Text = "Slot ID";
             // 
             // groupBox3
             // 
@@ -1049,7 +1049,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label13.Location = new System.Drawing.Point(-3, 356);
+            this.label13.Location = new System.Drawing.Point(20, 380);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(329, 12);
             this.label13.TabIndex = 23;
@@ -1069,7 +1069,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(6, 327);
+            this.label12.Location = new System.Drawing.Point(26, 361);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(341, 12);
             this.label12.TabIndex = 22;

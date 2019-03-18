@@ -107,6 +107,9 @@ namespace OQAMain
             }else if (null == lotPackageInfo || !lotPackageInfo.lotInfo.LotId.Equals(lotId))
             {
                 Res = QueryLotSts(lotId);
+            }else
+            {
+                Res = true;
             }
 
             if(!Res) 
@@ -196,7 +199,8 @@ namespace OQAMain
                     try
                     {
                         var res = OQASrv.Call.UpdateLotSts(updateReq);
-                    }catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message.ToString());
                         //删除已上传的图片
@@ -205,8 +209,8 @@ namespace OQAMain
                     }
                     break;
 
-                //case LotSts.PackageOut:
-                //    break;
+                    //case LotSts.PackageOut:
+                    //    break;
             }
 
             MessageBox.Show("Lot package successed!");
@@ -257,6 +261,42 @@ namespace OQAMain
             lotId_textBox.Text = string.Empty;
             lotPackageInfo = null;
             ClearImageControl();
+        }
+
+        private void Fosb_imageUpload_PreviewLableClicked(object sender, EventArgs e)
+        {
+            string path = Fosb_imageUpload.GetImagePath();
+            if (!string.IsNullOrEmpty(path))
+            {
+                pictureView.LoadImageAsync(path);
+            }
+        }
+
+        private void ShipLabel_imageUpload_PreviewLableClicked(object sender, EventArgs e)
+        {
+            string path = ShipLabel_imageUpload.GetImagePath();
+            if (!string.IsNullOrEmpty(path))
+            {
+                pictureView.LoadImageAsync(path);
+            }
+        }
+
+        private void PackageType_imageUpload_PreviewLableClicked(object sender, EventArgs e)
+        {
+            string path = PackageType_imageUpload.GetImagePath();
+            if (!string.IsNullOrEmpty(path))
+            {
+                pictureView.LoadImageAsync(path);
+            }
+        }
+
+        private void Attachment_imageUpload_PreviewLableClicked(object sender, EventArgs e)
+        {
+            string path = Attachment_imageUpload.GetImagePath();
+            if (!string.IsNullOrEmpty(path))
+            {
+                pictureView.LoadImageAsync(path);
+            }
         }
     }
 }

@@ -119,7 +119,7 @@ namespace OQAService.Services
 
             Bitmap tn = new Bitmap(memStream);//创建一个位图；把ms变成图片；
 
-            string picPath = "../" + "/OQA_Pic/" + picID + ".jpeg";
+            string picPath = "OQA_Pic/" + picID + ".jpeg";
 
             string path = picPath.Substring(0, picPath.LastIndexOf("/"));
             if (!Directory.Exists(path))

@@ -159,6 +159,7 @@ namespace OQAMain
                         ComFunc.FieldClear(this);
                         labPndn.Visible = false;
                         d_tran_seq = 0;
+                        ImgISPLot.Enabled = false;
                         break;
                     case "2"://AFTER CREATE
                         ComFunc.FieldClear(grpMesLot);
@@ -180,6 +181,51 @@ namespace OQAMain
             }
         }
         #endregion
+
+        private bool QueryImgByLot(string s_lotid)
+        {
+            LotPackageInput in_node = new LotPackageInput();
+            in_node.lotId = s_lotid;
+            try
+            {
+                var out_node = OQASrv.Call.QueryPackageImg(in_node);
+                if (out_node.models.Count > 0)
+                {
+                    InitImageControl(out_node.models);
+                }
+                else
+                {
+                    ImgISPLot.RefreshContrl();
+                    ImgISPLot.Enabled = true;
+                }
+
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+
+        }
+
+        private void InitImageControl(List<ISPIMGDEF> imageList)
+        {
+            foreach (ISPIMGDEF img in imageList)
+            {
+                switch (img.ImageType)
+                {
+                    case ImageType.ISP:
+                        ImgISPLot.InitByImgInstance(img);
+                        break;
+
+                }
+            }
+        }
+
+        
+
 
         private bool SaveISPLotInfo(char c_proc_step, char c_tran_flag)
         {
@@ -746,13 +792,16 @@ namespace OQAMain
         private void imageUpload1_btnUploadClicked(object sender, EventArgs e)
         {
 
-            imageUpload1.UpLoadFlag = UpLoadFlag.ByLot;
-            ImageUpload.ImageUpload.ByLot item = new ImageUpload.ImageUpload.ByLot();
-            item.LotID = "2";
-            item.ImageType = ImageType.ISP;
-            //item.TranSeq = 0;
-            //item.ImageId = "test";
-            imageUpload1.UpLoadByLot = item;
+            if (string.IsNullOrWhiteSpace(txtLotID.Text) == false)
+            {
+                ImgISPLot.UpLoadFlag = UpLoadFlag.ByLot;
+                ImageUpload.ImageUpload.ByLot item = new ImageUpload.ImageUpload.ByLot();
+                item.LotID = txtLotID.Text.Trim();
+                item.ImageType = ImageType.ISP;
+                //item.TranSeq = 0;
+                //item.ImageId = "test";
+                ImgISPLot.UpLoadByLot = item;
+            }
         }
 
         private void btnFilterView_Click(object sender, EventArgs e)
@@ -838,19 +887,34 @@ namespace OQAMain
                 //调用事务服务
                 if (QueryISPWaferInfo(GlobConst.TRAN_VIEW, '2') == false) return;
 
+                ImgISPLot.Enabled = true;
+                QueryImgByLot(txtISPLotFilter.Text.Trim());
+
                 ClearData("3");
             }
         }
 
         private void dgAOI_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgAOI.Rows.Count > 0  )
+            try
             {
-                if (dgAOI.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Y")
+                if (dgAOI.Rows.Count > 0)
                 {
+                    if (dgAOI.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Y")
+                    {
+                        string s_side = dgAOI.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        FrmAOIInput AOI = new FrmAOIInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
+                        AOI.FormBorderStyle = FormBorderStyle.FixedDialog;
+                        AOI.WindowState = FormWindowState.Maximized;
+                        AOI.StartPosition = FormStartPosition.CenterParent;
+                        AOI.ShowDialog();
+                    }
 
                 }
-               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

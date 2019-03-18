@@ -11,7 +11,7 @@ namespace OQAMain.Print
         public string No { get; set; }
         public string LotID { get; set; }
         public string LotQty { get; set; }
-        public string InspectionRequest { get; set; }
+        public string InspectionResult { get; set; }
         public string Remark { get; set; }
     }
 }

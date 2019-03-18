@@ -265,39 +265,39 @@ namespace OQAMain
                     string Lotid = lstShipList[index].LotId.ToString();
                     string Qty = lstShipList[index].Qty;
                     string InspectResult = lstShipList[index].InspectResult;
-                    result.Add(new FrmOQAShipListPrintData() { No = No.ToString(), LotID = Lotid, LotQty = Qty, InspectionRequest = InspectResult, Remark = "" });
+                    result.Add(new FrmOQAShipListPrintData() { No = No.ToString(), LotID = Lotid, LotQty = Qty, InspectionResult = InspectResult, Remark = "" });
                 }
             }
             else {
-                result.Add(new FrmOQAShipListPrintData() { No = "", LotID = "", LotQty = "", InspectionRequest = "", Remark = "" });
+                result.Add(new FrmOQAShipListPrintData() { No = "", LotID = "", LotQty = "", InspectionResult = "", Remark = "" });
             }
 
             return result;
         }
 
-        private void btnQuery_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                if (CheckCondition("btnQuery") == false) return;
+        //private void btnQuery_Click_1(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (CheckCondition("btnQuery") == false) return;
 
-                ship_no = txtShipNo.Text.Trim();
-                this.reportViewer2.LocalReport.DataSources.Clear();
+        //        ship_no = txtShipNo.Text.Trim();
+        //        this.reportViewer2.LocalReport.DataSources.Clear();
 
-                if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', ship_no) == false)
-                    return;
+        //        if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', ship_no) == false)
+        //            return;
 
 
-               // ship_no = txtShipNo.Text.Trim();
-               //// ship_no = "12453";
-               // if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', ship_no) == false) return;
+        //       // ship_no = txtShipNo.Text.Trim();
+        //       //// ship_no = "12453";
+        //       // if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', ship_no) == false) return;
 
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message.ToString());
+        //    }
+        //}
 
         //checkshipid单选
         private void CheckShipID_ItemCheck(object sender, ItemCheckEventArgs e)

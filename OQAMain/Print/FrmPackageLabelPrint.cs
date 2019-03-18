@@ -190,6 +190,8 @@ namespace OQAMain
                 }
                 else {    
                     MessageBox.Show("输入的lotid有问题！");
+                    txtLotID.Focus();
+                    return false;
                 }
                 reportViewer1.LocalReport.SetParameters(new ReportParameter("paramSlot", Slot));
                 reportViewer1.LocalReport.SetParameters(new ReportParameter("paramCustomerId", CustomerId));

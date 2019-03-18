@@ -182,6 +182,8 @@ namespace OQAMain
             else
             {
                 MessageBox.Show("不存在此lotid可打印的检验报告，请确认lotid！");
+                txtLotID.Focus();
+                
             }
 
             lstParam.Add(new ReportParameter("paramLotID", lotID));

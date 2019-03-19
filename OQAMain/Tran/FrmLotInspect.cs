@@ -917,13 +917,15 @@ namespace OQAMain
             {
                 if (dgAOI.Rows.Count > 0)
                 {
-                    if (dgAOI.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Y" || dgMacro.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "D")
+                    if (dgAOI.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Y" || dgAOI.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "D")
                     {
                         string s_side = dgAOI.Rows[e.RowIndex].Cells[0].Value.ToString();
 
                         FrmAOIInput AOI = new FrmAOIInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
                         AOI.FormBorderStyle = FormBorderStyle.FixedDialog;
                         AOI.WindowState = FormWindowState.Normal;
+                        AOI.MaximizeBox = false;
+                        AOI.MinimizeBox = false;
                         AOI.StartPosition = FormStartPosition.CenterParent;
                         AOI.ShowDialog();
 
@@ -946,10 +948,12 @@ namespace OQAMain
                 {
                     string s_side = dgMacro.Rows[e.RowIndex].Cells[0].Value.ToString();
                     FrmMarcoInput MAC = new FrmMarcoInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
-                    //MAC.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    MAC.WindowState = FormWindowState.Maximized;
+                    MAC.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    MAC.WindowState = FormWindowState.Normal;
+                    MAC.MaximizeBox = false;
+                    MAC.MinimizeBox = false;
                     MAC.StartPosition = FormStartPosition.CenterParent;
-                    MAC.Show();
+                    MAC.ShowDialog();
                 }
 
             }
@@ -963,10 +967,12 @@ namespace OQAMain
                 {
                     string s_side = dgMIR.Rows[e.RowIndex].Cells[0].Value.ToString();
                     FrmMircoInput MIR = new FrmMircoInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
-                    //MIR.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    MIR.WindowState = FormWindowState.Maximized;
+                    MIR.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    MIR.WindowState = FormWindowState.Normal;
+                    MIR.MaximizeBox = false;
+                    MIR.MinimizeBox = false;
                     MIR.StartPosition = FormStartPosition.CenterParent;
-                    MIR.Show();
+                    MIR.ShowDialog();
                 }
 
             }

@@ -57,6 +57,10 @@ namespace OQAMain
                 lotTextBox.Text = lotId;
                 slotComboBox.Text = slotId;
                 jumpFlag = true;
+                lotTextBox.Enabled = false;
+                slotComboBox.Enabled = false;
+                radioButtonB.Enabled = false;
+                radioButtonF.Enabled = false;
             }
 
         }

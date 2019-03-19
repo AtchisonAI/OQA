@@ -99,6 +99,7 @@ namespace OQAMain
                     }
                 }
                 else
+
                 {
                     MessageBox.Show("LOT当前不符合Foup Change状态!");
                 }

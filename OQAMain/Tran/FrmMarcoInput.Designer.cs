@@ -55,25 +55,27 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(1254, 8);
+            this.btnClose.Location = new System.Drawing.Point(647, 7);
             // 
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCreate.Location = new System.Drawing.Point(1076, 8);
+            this.btnCreate.Location = new System.Drawing.Point(558, 7);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
+            this.btnEdite.Enabled = false;
             this.btnEdite.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnEdite.Location = new System.Drawing.Point(1165, 8);
+            this.btnEdite.Location = new System.Drawing.Point(558, 7);
+            this.btnEdite.Visible = false;
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
             // 
             this.pnlMenu.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.pnlMenu.Location = new System.Drawing.Point(0, 736);
-            this.pnlMenu.Size = new System.Drawing.Size(1395, 40);
+            this.pnlMenu.Location = new System.Drawing.Point(0, 353);
+            this.pnlMenu.Size = new System.Drawing.Size(739, 40);
             // 
             // btnRefresh
             // 
@@ -96,7 +98,7 @@
             this.groupBox2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1395, 94);
+            this.groupBox2.Size = new System.Drawing.Size(739, 50);
             this.groupBox2.TabIndex = 39;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Macro inspection simple MAP";
@@ -105,7 +107,7 @@
             // 
             this.radioButtonB.AutoSize = true;
             this.radioButtonB.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonB.Location = new System.Drawing.Point(411, 54);
+            this.radioButtonB.Location = new System.Drawing.Point(408, 22);
             this.radioButtonB.Name = "radioButtonB";
             this.radioButtonB.Size = new System.Drawing.Size(71, 16);
             this.radioButtonB.TabIndex = 8;
@@ -118,7 +120,7 @@
             // 
             this.radioButtonF.AutoSize = true;
             this.radioButtonF.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonF.Location = new System.Drawing.Point(328, 54);
+            this.radioButtonF.Location = new System.Drawing.Point(325, 22);
             this.radioButtonF.Name = "radioButtonF";
             this.radioButtonF.Size = new System.Drawing.Size(77, 16);
             this.radioButtonF.TabIndex = 7;
@@ -130,7 +132,7 @@
             // 
             this.slotComboBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.slotComboBox.FormattingEnabled = true;
-            this.slotComboBox.Location = new System.Drawing.Point(217, 52);
+            this.slotComboBox.Location = new System.Drawing.Point(214, 20);
             this.slotComboBox.Name = "slotComboBox";
             this.slotComboBox.Size = new System.Drawing.Size(100, 20);
             this.slotComboBox.TabIndex = 4;
@@ -140,7 +142,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label15.Location = new System.Drawing.Point(14, 56);
+            this.label15.Location = new System.Drawing.Point(11, 24);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(41, 12);
             this.label15.TabIndex = 1;
@@ -149,7 +151,7 @@
             // lotTextBox
             // 
             this.lotTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lotTextBox.Location = new System.Drawing.Point(58, 52);
+            this.lotTextBox.Location = new System.Drawing.Point(55, 20);
             this.lotTextBox.Multiline = true;
             this.lotTextBox.Name = "lotTextBox";
             this.lotTextBox.Size = new System.Drawing.Size(100, 20);
@@ -160,7 +162,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label16.Location = new System.Drawing.Point(169, 56);
+            this.label16.Location = new System.Drawing.Point(166, 24);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(47, 12);
             this.label16.TabIndex = 2;
@@ -183,7 +185,7 @@
             this.groupBox3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1395, 776);
+            this.groupBox3.Size = new System.Drawing.Size(739, 393);
             this.groupBox3.TabIndex = 38;
             this.groupBox3.TabStop = false;
             // 
@@ -191,7 +193,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label13.Location = new System.Drawing.Point(186, 508);
+            this.label13.Location = new System.Drawing.Point(287, 113);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(257, 12);
             this.label13.TabIndex = 23;
@@ -200,7 +202,7 @@
             // imageUpload1
             // 
             this.imageUpload1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.imageUpload1.Location = new System.Drawing.Point(93, 577);
+            this.imageUpload1.Location = new System.Drawing.Point(364, 161);
             this.imageUpload1.Name = "imageUpload1";
             this.imageUpload1.PicStream = null;
             this.imageUpload1.Size = new System.Drawing.Size(380, 31);
@@ -215,7 +217,7 @@
             // waferSurF
             // 
             this.waferSurF.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.waferSurF.Location = new System.Drawing.Point(208, 179);
+            this.waferSurF.Location = new System.Drawing.Point(38, 81);
             this.waferSurF.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.waferSurF.Name = "waferSurF";
             this.waferSurF.Size = new System.Drawing.Size(220, 220);
@@ -224,7 +226,7 @@
             // frontButton
             // 
             this.frontButton.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.frontButton.Location = new System.Drawing.Point(251, 422);
+            this.frontButton.Location = new System.Drawing.Point(90, 310);
             this.frontButton.Name = "frontButton";
             this.frontButton.Size = new System.Drawing.Size(123, 23);
             this.frontButton.TabIndex = 31;
@@ -234,9 +236,9 @@
             // cmtRichTextBox
             // 
             this.cmtRichTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmtRichTextBox.Location = new System.Drawing.Point(93, 647);
+            this.cmtRichTextBox.Location = new System.Drawing.Point(403, 224);
             this.cmtRichTextBox.Name = "cmtRichTextBox";
-            this.cmtRichTextBox.Size = new System.Drawing.Size(569, 29);
+            this.cmtRichTextBox.Size = new System.Drawing.Size(300, 29);
             this.cmtRichTextBox.TabIndex = 16;
             this.cmtRichTextBox.Text = "";
             // 
@@ -244,7 +246,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label14.Location = new System.Drawing.Point(212, 51);
+            this.label14.Location = new System.Drawing.Point(20, 63);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(263, 12);
             this.label14.TabIndex = 26;
@@ -254,7 +256,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(14, 620);
+            this.label8.Location = new System.Drawing.Point(285, 200);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(71, 12);
             this.label8.TabIndex = 8;
@@ -264,7 +266,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(102, 481);
+            this.label12.Location = new System.Drawing.Point(287, 95);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(419, 12);
             this.label12.TabIndex = 22;
@@ -273,9 +275,9 @@
             // decRichTextBox
             // 
             this.decRichTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.decRichTextBox.Location = new System.Drawing.Point(93, 611);
+            this.decRichTextBox.Location = new System.Drawing.Point(403, 192);
             this.decRichTextBox.Name = "decRichTextBox";
-            this.decRichTextBox.Size = new System.Drawing.Size(569, 29);
+            this.decRichTextBox.Size = new System.Drawing.Size(300, 29);
             this.decRichTextBox.TabIndex = 15;
             this.decRichTextBox.Text = "";
             // 
@@ -283,7 +285,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(14, 586);
+            this.label5.Location = new System.Drawing.Point(285, 170);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 12);
             this.label5.TabIndex = 5;
@@ -293,7 +295,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(14, 656);
+            this.label9.Location = new System.Drawing.Point(287, 231);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(47, 12);
             this.label9.TabIndex = 9;
@@ -303,7 +305,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1395, 776);
+            this.ClientSize = new System.Drawing.Size(739, 393);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Name = "FrmMarcoInput";

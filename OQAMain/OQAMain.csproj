@@ -55,8 +55,20 @@
     <Reference Include="FSLib.Extension">
       <HintPath>..\Components\FSLib.Extension.dll</HintPath>
     </Reference>
+    <Reference Include="HiDM.FactoryWorks.Common">
+      <HintPath>..\Components\HiDM.FactoryWorks.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="HiDM.FactoryWorks.Messages">
+      <HintPath>..\Components\HiDM.FactoryWorks.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="HiDM.FactoryWorks.TibcoRV">
+      <HintPath>..\Components\HiDM.FactoryWorks.TibcoRV.dll</HintPath>
+    </Reference>
     <Reference Include="HiDM.LabelPrinting.Common">
       <HintPath>..\Components\HiDM.LabelPrinting.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\Components\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>

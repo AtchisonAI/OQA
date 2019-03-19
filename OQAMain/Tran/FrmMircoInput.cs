@@ -299,11 +299,14 @@ namespace OQAMain
                     return;
                 }
                 iSPWAFITM.LotId = lotId;
-                iSPWAFITM.SlotId = slotComboBox.Text;
+                iSPWAFITM.SlotId = slotComboBox.Text.Trim();
                 iSPWAFITM.WaferId = waferId;//mock
                 iSPWAFITM.InspectType = InspectType.MI;
                 iSPWAFITM.SideType = sideType;
-                iSPWAFITM.Magnification = MagnificationTextBox.Text;
+                if (!string.IsNullOrWhiteSpace(MagnificationTextBox.Text))
+                {
+                    iSPWAFITM.Magnification = MagnificationTextBox.Text.Trim();
+                }
                 if (String.IsNullOrWhiteSpace(qtyTextBox.Text))
                 {
                     qtyTextBox.Text = "0";
@@ -314,8 +317,14 @@ namespace OQAMain
                     rateTextBox.Text = "0";
                 }
                 iSPWAFITM.DefectRate = decimal.Parse(rateTextBox.Text);
-                iSPWAFITM.DefectDesc = decRichTextBox.Text;
-                iSPWAFITM.Cmt = cmtRichTextBox.Text;
+                if (!String.IsNullOrWhiteSpace(decRichTextBox.Text))
+                {
+                    iSPWAFITM.DefectDesc = decRichTextBox.Text.Trim();
+                }
+                if (!String.IsNullOrWhiteSpace(cmtRichTextBox.Text))
+                {
+                    iSPWAFITM.Cmt = cmtRichTextBox.Text.Trim();
+                }
                 if (radioNine.Checked)
                 {
                     iSPWAFITM.InspectPoint = "9";

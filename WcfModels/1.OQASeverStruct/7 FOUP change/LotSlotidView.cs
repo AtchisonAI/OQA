@@ -44,6 +44,19 @@ namespace WCFModels.OQA
         private char c_tran_flag;
         //服务传入参数
         [DataMember]
+        public string S_USER_ID
+        {
+            get
+            {
+                return s_user_id;
+            }
+            set
+            {
+                s_user_id = value;
+            }
+        }
+        private string s_user_id;
+        [DataMember]
         public string IN_LOT_ID {
             get
             {

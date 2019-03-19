@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="1 Lot inspect\QryISPLotInfo.cs" />
+    <Compile Include="12 IOQA Ship List Print\QueryShipIDList.cs" />
     <Compile Include="6 Defect send %28PNDN%29\IstPndnInfo.cs" />
     <Compile Include="6 Defect send %28PNDN%29\QryIspDftInfo.cs" />
     <Compile Include="7 FOUP change\IstLotSltInfo.cs" />

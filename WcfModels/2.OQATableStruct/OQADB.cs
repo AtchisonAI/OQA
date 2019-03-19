@@ -162,7 +162,7 @@ namespace WCFModels.OQA
         [DataMember]
         [Column("DEFECT_CODE")] public string DefectCode { get; set; }
         [DataMember]
-        [Column("WAFER_ID")] public string WaferId { get; set; }
+        [Column("SLOT_ID")] public string SlotId { get; set; }
         [DataMember]
         [Column("SPEC")] public string Spec { get; set; }
         [DataMember]
@@ -213,6 +213,8 @@ namespace WCFModels.OQA
         [Column("UPDATE_TIME")] public string UpdateTime { get; set; }
         [DataMember]
         [Column("UPDATE_USER_ID")] public string UpdateUserId { get; set; }
+        [DataMember]
+        [Column("PNDN_STATUS")] public string PndnStatus { get; set; }
     }
 
 

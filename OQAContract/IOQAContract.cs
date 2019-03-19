@@ -73,6 +73,16 @@ namespace OQAContract
         ModelRsp<LotSlotidView> UptLotIspStsInfo(ModelRsp<LotSlotidView> UptLotIspStsInfo);
         #endregion
 
+        #region Dft Send Pndn
+
+        [OperationContract]
+        ModelRsp<IspWafDftView> QryIspDftInfo(ModelRsp<IspWafDftView> IspWafDftView);
+        [OperationContract]
+        ModelRsp<LotPndnInfoSave> IstPndnInfo(ModelRsp<LotPndnInfoSave> SavePndnInfo);
+
+        
+        #endregion
+
         #region  IOQA Ship List Print
         [OperationContract]
         ModelRsp<PKGShipView> QryPKGShipInfo(ModelRsp<PKGShipView> PKGShip);

@@ -197,7 +197,8 @@ namespace OQAService.Services
 
                             AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.Status), ISPStatus.Create, LogicCondition.AndAlso, CompareType.Equal);
                             AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), IspResult.Hold, LogicCondition.AndAlso, CompareType.Equal);
-                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), IspResult.Pndn, LogicCondition.OrElse, CompareType.Equal);
+                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.Status), ISPStatus.Create, LogicCondition.OrElse, CompareType.Equal);
+                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), IspResult.Pndn, LogicCondition.AndAlso, CompareType.Equal);
 
                             AddSortCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);
 

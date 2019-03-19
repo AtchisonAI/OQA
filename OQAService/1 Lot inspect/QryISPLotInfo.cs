@@ -1,6 +1,7 @@
 ﻿using OQAContract;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using WCFModels;
 using WCFModels.Message;
 using WCFModels.OQA;
@@ -69,7 +70,8 @@ namespace OQAService.Services
                     {
                         case '1':
                             //验证业务级输入参数
-
+                            Stopwatch stopwatch = new Stopwatch();
+                            stopwatch.Start();
                             //Lot Query
                             QueryLotReq.CurrentPage = 1;
                             QueryLotReq.ItemsPerPage = 200;
@@ -83,7 +85,7 @@ namespace OQAService.Services
                             }
 
                             AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.Status), ISPStatus.Create, LogicCondition.AndAlso, CompareType.Equal);
-                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), ISPStatus.Create, LogicCondition.AndAlso, CompareType.Equal);
+                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), IspResult.Create, LogicCondition.AndAlso, CompareType.Equal);
 
                             AddSortCondition(QueryLotReq, GetParaName <ISPLOTSTS> (p=>p.LotId), SortType.ASC);
                             
@@ -91,7 +93,9 @@ namespace OQAService.Services
 
                             Out_node.model.ISPLOTSTS_LIST = lot.models;
 
+                            stopwatch.Stop();
 
+                            long time = stopwatch.ElapsedMilliseconds;
 
                             break;
 
@@ -103,12 +107,15 @@ namespace OQAService.Services
                                 return Out_node;
                             }
                             //Lot Query
+                            stopwatch = new Stopwatch();
+                            stopwatch.Start();
+                            BeginTrans();
                             QueryLotReq.CurrentPage = 1;
                             QueryLotReq.ItemsPerPage = 200;
 
                             AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.LotId), In_node.model.C_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
-                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.Status), ISPStatus.Create, LogicCondition.AndAlso, CompareType.Equal);
-                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), ISPStatus.Create, LogicCondition.AndAlso, CompareType.Equal);
+                            //AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.Status), ISPStatus.Create, LogicCondition.AndAlso, CompareType.Equal);
+                            //AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), ISPStatus.Create, LogicCondition.AndAlso, CompareType.Equal);
 
                             AddSortCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);
 
@@ -167,12 +174,38 @@ namespace OQAService.Services
                             var mir = PageQuery<ISPWAFITM>(QueryMIRReq);
 
                             Out_node.model.MIR_LIST = mir.models;
+                            EndTrans();
+                            stopwatch.Stop();
 
-
+                             time = stopwatch.ElapsedMilliseconds;
 
                             break;
                         case '3':
-                            // TODO
+                            //验证业务级输入参数
+
+                            //Lot Query
+                            QueryLotReq.CurrentPage = 1;
+                            QueryLotReq.ItemsPerPage = 200;
+                            if (In_node.model.C_LOT_ID.Trim().Equals("") == false)
+                            {
+                                AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.LotId), In_node.model.C_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                            }
+                            if (In_node.model.C_FOUP_ID.Trim().Equals("") == false)
+                            {
+                                AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.FoupId), In_node.model.C_FOUP_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                            }
+
+                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.Status), ISPStatus.Create, LogicCondition.AndAlso, CompareType.Equal);
+                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), IspResult.Hold, LogicCondition.AndAlso, CompareType.Equal);
+                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), IspResult.Pndn, LogicCondition.OrElse, CompareType.Equal);
+
+                            AddSortCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);
+
+                            var Holdlot = PageQuery<ISPLOTSTS>(QueryLotReq);
+
+                            Out_node.model.ISPLOTSTS_LIST = Holdlot.models;
+
+
 
                             break;
 

@@ -332,6 +332,58 @@ namespace OQAService.Services
                         SaveISPLotHistory(ISPLOTSTS_message, SysTime, ISPLotSave.model.S_USER_ID);
                        
                         break;
+                    case '3':
+                        //hold的lot提交检查结果
+                        //验证业务级输入参数
+
+                        T_ISPLOTSTS.InspectResult = IspResult.Pass;
+                        T_ISPLOTSTS.Status = ISPStatus.IspOut;
+
+                        SysTime = GetSysTime();
+                        T_ISPLOTSTS.LotId = ISPLotSave.model.S_LOT_ID;
+                        T_ISPLOTSTS.TransSeq = ISPLotSave.model.D_TRAN_SEQ;
+                        T_ISPLOTSTS.RecShift = ISPLotSave.model.S_REC_SHIFT;
+                        T_ISPLOTSTS.Phone = ISPLotSave.model.S_PHONE;
+                        T_ISPLOTSTS.Dept = ISPLotSave.model.S_DEPT;
+
+                        T_ISPLOTSTS.UpdateTime = SysTime;
+                        T_ISPLOTSTS.UpdateUserId = ISPLotSave.model.S_USER_ID;
+
+                        ISPLOTSTS_Save.operateType = OperateType.Update;
+                        ISPLOTSTS_Save.models.Add(T_ISPLOTSTS);
+                        //执行
+                        UpdateModels(ISPLOTSTS_Save, ISPLOTSTS_message, true);
+
+                        //记录历史
+                        SaveISPLotHistory(ISPLOTSTS_message, SysTime, ISPLotSave.model.S_USER_ID);
+
+                        break;
+                    case '4':
+                        //hold的lot提交检查结果
+                        //验证业务级输入参数
+
+                        T_ISPLOTSTS.InspectResult = IspResult.Scrap;
+                        T_ISPLOTSTS.Status = ISPStatus.Close;
+
+                        SysTime = GetSysTime();
+                        T_ISPLOTSTS.LotId = ISPLotSave.model.S_LOT_ID;
+                        T_ISPLOTSTS.TransSeq = ISPLotSave.model.D_TRAN_SEQ;
+                        T_ISPLOTSTS.RecShift = ISPLotSave.model.S_REC_SHIFT;
+                        T_ISPLOTSTS.Phone = ISPLotSave.model.S_PHONE;
+                        T_ISPLOTSTS.Dept = ISPLotSave.model.S_DEPT;
+
+                        T_ISPLOTSTS.UpdateTime = SysTime;
+                        T_ISPLOTSTS.UpdateUserId = ISPLotSave.model.S_USER_ID;
+
+                        ISPLOTSTS_Save.operateType = OperateType.Update;
+                        ISPLOTSTS_Save.models.Add(T_ISPLOTSTS);
+                        //执行
+                        UpdateModels(ISPLOTSTS_Save, ISPLOTSTS_message, true);
+
+                        //记录历史
+                        SaveISPLotHistory(ISPLOTSTS_message, SysTime, ISPLotSave.model.S_USER_ID);
+
+                        break;
                 }
 
             }

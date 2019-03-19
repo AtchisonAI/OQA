@@ -120,6 +120,9 @@
             // 
             // LotIDList
             // 
+            this.LotIDList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LotIDList.CheckOnClick = true;
             this.LotIDList.FormattingEnabled = true;
             this.LotIDList.Location = new System.Drawing.Point(16, 115);
@@ -177,6 +180,7 @@
             // 
             this.txtCreater.Location = new System.Drawing.Point(121, 72);
             this.txtCreater.Name = "txtCreater";
+            this.txtCreater.ReadOnly = true;
             this.txtCreater.Size = new System.Drawing.Size(100, 21);
             this.txtCreater.TabIndex = 14;
             // 
@@ -260,7 +264,7 @@
             this.Part_ID,
             this.Inspection_Result,
             this.Transeq});
-            this.listship.Cursor = System.Windows.Forms.Cursors.No;
+            this.listship.Cursor = System.Windows.Forms.Cursors.Default;
             this.listship.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listship.Location = new System.Drawing.Point(231, 116);
             this.listship.Name = "listship";

@@ -124,6 +124,12 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="TIBCO.Rendezvous">
+      <HintPath>..\Components\TIBCO.Rendezvous.dll</HintPath>
+    </Reference>
+    <Reference Include="Tibco.ServiceModel">
+      <HintPath>..\Components\Tibco.ServiceModel.dll</HintPath>
+    </Reference>
     <Reference Include="WcfClientCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\WcfClientCore.dll</HintPath>

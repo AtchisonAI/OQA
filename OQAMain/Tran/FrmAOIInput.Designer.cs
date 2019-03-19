@@ -67,18 +67,19 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(666, 6);
+            this.btnClose.Location = new System.Drawing.Point(660, 5);
             // 
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCreate.Location = new System.Drawing.Point(488, 6);
+            this.btnCreate.Location = new System.Drawing.Point(571, 5);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
+            this.btnEdite.Enabled = false;
             this.btnEdite.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnEdite.Location = new System.Drawing.Point(577, 6);
+            this.btnEdite.Location = new System.Drawing.Point(571, 5);
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
@@ -86,6 +87,7 @@
             this.pnlMenu.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.pnlMenu.Location = new System.Drawing.Point(0, 388);
             this.pnlMenu.Size = new System.Drawing.Size(758, 40);
+            this.pnlMenu.Visible = false;
             // 
             // btnRefresh
             // 

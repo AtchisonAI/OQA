@@ -43,11 +43,16 @@ namespace OQAMain
         public FrmMircoInput(string lotIdIn, string slotIdIn, string sideTypeIn)
         {
             InitializeComponent();
-            lotId = lotIdIn;
-            slotId = slotIdIn;
-            sideType = sideTypeIn;
-            lotTextBox.Text = lotId;
-            slotComboBox.Text = slotId;
+            if (!string.IsNullOrWhiteSpace(lotIdIn) && !string.IsNullOrWhiteSpace(slotIdIn) && !string.IsNullOrWhiteSpace(sideTypeIn))
+            {
+                lotId = lotIdIn;
+                slotId = slotIdIn;
+                sideType = sideTypeIn;
+                lotTextBox.Text = lotId;
+                slotComboBox.Text = slotId;
+                lotTextBox.Enabled = false;
+                slotComboBox.Enabled = false;
+            }
         }
         #endregion
 

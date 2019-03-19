@@ -6,6 +6,7 @@ using System.Drawing;
 using WCFModels.OQA;
 using System.Collections.Generic;
 using WCFModels.Message;
+using OQA_Core.Controls;
 
 namespace OQAMain
 {
@@ -84,6 +85,7 @@ namespace OQAMain
                 else
                 {
                     lblSucessMsg.Text = rspInfo._MsgCode;
+                    MessageBox.Show("保存成功!");
                 }
             }
             catch (System.Exception ex)
@@ -94,7 +96,26 @@ namespace OQAMain
         //提交
         private void btnEdite_Click(object sender, EventArgs e)
         {
-            btnCreate_Click(sender, e);
+            try
+            {
+                UpdateModelReq<AOIShowView> updateReq = new UpdateModelReq<AOIShowView>();
+                getUpdateModel(updateReq);
+                ModelRsp<AOIShowView> rspInfo = OQASrv.Call.CreateOrUpdateAOI(updateReq);
+                refreshPage();
+                if (!rspInfo._success)
+                {
+                    MessageBox.Show(rspInfo._ErrorMsg);
+                }
+                else
+                {
+                    lblSucessMsg.Text = rspInfo._MsgCode;
+                    this.Close();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
         //刷新按钮
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -156,7 +177,7 @@ namespace OQAMain
         private void qtyTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             ComFunc.CheckKeyPress(sender, e);
-            if (qtyTextBox.Text.Length > 6)
+            if (qtyTextBox.Text.Length > 5)
             {
                 qtyTextBox.Text = "";
             }
@@ -295,7 +316,6 @@ namespace OQAMain
                 iSPWAFITM.DefectRate = decimal.Parse(rateTextBox.Text);
                 iSPWAFITM.DefectDesc = decRichTextBox.Text;
                 iSPWAFITM.Cmt = cmtRichTextBox.Text;
-                iSPWAFITM.IsInspect = "Y";
                 if (radioNine.Checked)
                 {
                     iSPWAFITM.InspectPoint = "9";
@@ -323,7 +343,14 @@ namespace OQAMain
                         }
                     }
                 }
-
+                if (sftList.Count > 0)
+                {
+                    iSPWAFITM.InspectResult = "N";
+                }
+                else
+                {
+                    iSPWAFITM.InspectResult = "Y";
+                }
                 model.C_PROC_STEP = '1';
                 model.C_TRAN_FLAG = GlobConst.TRAN_CREATE;
                 model.ISPWAFITM_list = new List<ISPWAFITM>();
@@ -585,11 +612,17 @@ namespace OQAMain
 
         private void showPicture(ImageUpload.ImageUpload imageUpload)
         {
+            Form newForm = new Form();
+            newForm.StartPosition = FormStartPosition.CenterScreen;
+            newForm.Size = new System.Drawing.Size(600, 600);
+            PictureView pictureView = new PictureView();
             string path = imageUpload.GetImagePath();
             if (!string.IsNullOrEmpty(path))
             {
-                pictureView1.LoadImageAsync(ComFunc.GetPicServerPath(path));
+                pictureView.LoadImageAsync(ComFunc.GetPicServerPath(path));
             }
+            newForm.Controls.Add(pictureView);
+            newForm.ShowDialog();
         }
 
         private void imageUpload_11_PreviewLableClicked(object sender, EventArgs e)
@@ -657,5 +690,7 @@ namespace OQAMain
             showPicture(imageUpload_14);
         }
         #endregion
+
+      
     }
 }

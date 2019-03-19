@@ -700,9 +700,9 @@ namespace WCFModels.OQA
         [DataMember]
         [Column("PARTID")] public string Partid { get; set; }
         [DataMember]
-        [Column("QTY")] public decimal Qty { get; set; }
+        [Column("QTY")] public decimal? Qty { get; set; }
         [DataMember]
-        [Column("DIEQTY")] public decimal Dieqty { get; set; }
+        [Column("DIEQTY")] public decimal? Dieqty { get; set; }
         [DataMember]
         [Column("STAGE")] public string Stage { get; set; }
         [DataMember]

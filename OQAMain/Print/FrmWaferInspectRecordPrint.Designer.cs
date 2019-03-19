@@ -40,16 +40,24 @@
             // 
             // btnClose
             // 
+            this.btnClose.Location = new System.Drawing.Point(650, 6);
             this.btnClose.Visible = false;
             // 
             // btnCreate
             // 
-            this.btnCreate.Text = "Print";
+            this.btnCreate.Location = new System.Drawing.Point(462, 6);
+            this.btnCreate.Text = "Query";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
+            this.btnEdite.Location = new System.Drawing.Point(556, 6);
             this.btnEdite.Visible = false;
+            // 
+            // pnlMenu
+            // 
+            this.pnlMenu.Location = new System.Drawing.Point(0, 540);
+            this.pnlMenu.Size = new System.Drawing.Size(750, 40);
             // 
             // groupBox1
             // 
@@ -115,6 +123,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmWaferInspectRecordPrint";
+            this.Text = "FrmWaferInspectRecordPrint";
             this.Load += new System.EventHandler(this.FrmWaferInspectRecordPrint_Load);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.pnlMenu, 0);

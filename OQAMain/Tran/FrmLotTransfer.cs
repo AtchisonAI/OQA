@@ -239,6 +239,12 @@ namespace OQAMain
                 formshiplistprint.WindowState = FormWindowState.Maximized;
                 formshiplistprint.StartPosition = FormStartPosition.CenterParent;
                 formshiplistprint.ShowDialog();
+                ComFunc.InitListView(listship, true);
+                txtPartID.Text = "";
+                txtQTY.Text = "";
+                txtDate.Text= "";
+                LotIDList.Items.Clear();
+                if (QueryLotIDList(GlobConst.TRAN_VIEW, '1') == false) return;
 
             }                     
         }

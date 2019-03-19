@@ -49,16 +49,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(697, 11);
+            this.btnClose.Location = new System.Drawing.Point(804, 11);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(1076, 13);
+            this.btnCreate.Location = new System.Drawing.Point(1183, 13);
             this.btnCreate.Visible = false;
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1397, 10);
+            this.btnEdite.Location = new System.Drawing.Point(1504, 10);
             this.btnEdite.Text = "Export";
             this.btnEdite.Visible = false;
             // 
@@ -208,6 +208,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmOQAShipListPrint";
+            this.Text = "FrmOQAShipListPrint";
             this.Load += new System.EventHandler(this.FrmOQAShipListPrint_Load);
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);

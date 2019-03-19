@@ -396,7 +396,7 @@ namespace OQAMain
             in_data.IN_QTY = QTY;
             in_data.IN_ISP_RESULT= isp_result;
             in_data.IN_SHIPID = ship_id;
-
+            in_data.S_USER_ID= AuthorityControl.GetUserProfile().userId;
 
             in_node.model = in_data;
 

@@ -120,5 +120,18 @@ namespace WCFModels.OQA
         }
         private string in_shipid;
 
+        [DataMember]
+        public string S_USER_ID
+        {
+            get
+            {
+                return s_user_id;
+            }
+            set
+            {
+                s_user_id = value;
+            }
+        }
+        private string s_user_id;
     }
 }

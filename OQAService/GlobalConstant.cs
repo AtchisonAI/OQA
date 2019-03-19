@@ -15,16 +15,18 @@
         public const string ChangeOut = "ChangeOut";
         public const string PackageOut = "PackageOut";
         public const string TransferOut = "TransferOut";
-        
+        public const string Close = "Close";
+
     }
 
 
     class IspResult
     {
         public const string Create = "Create";
-        public const string IspOut = "Pass";
-        public const string ChangeOut = "Hold";
-        public const string PackageOut = "Pndn";
+        public const string Pass = "Pass";
+        public const string Hold = "Hold";
+        public const string Pndn = "Pndn";
+        public const string Scrap = "Scrap";
     }
 
     class IspType

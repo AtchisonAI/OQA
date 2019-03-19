@@ -111,8 +111,20 @@ namespace OQAService.Services
 
                             break;
                     }
-                    
+
+                    if (Do_message._success == true)
+                    {
+                        Out_node._success = true;
+                        Out_node._MsgCode = "Program Success.";
+                    }
+                    else
+                    {
+                        Out_node._success = false;
+                        Out_node._ErrorMsg = Do_message._ErrorMsg;
+                    }
+
                 }
+               
 
                 if (In_node.model.C_PROC_STEP == GlobalConstant.TRAN_UPDATE)
                 {
@@ -129,17 +141,21 @@ namespace OQAService.Services
                                 return Out_node;
                             }
 
+
+                            T_UPDATEISPLOTSTS.LotId = In_node.model.IN_LOTID;
+
                             ////输入数据表主键
                             T_UPDATEISPLOTSTS.Status = "TransferOut";
-                           
+                            T_UPDATEISPLOTSTS.TransSeq = In_node.model.D_TRANSSEQ;
                             T_UPDATEISPLOTSTS.UpdateTime = GetSysTime();
-                            T_UPDATEISPLOTSTS.UpdateUserId = " ";
+                            T_UPDATEISPLOTSTS.UpdateUserId = In_node.model.S_USER_ID;
 
                             Do_Update.operateType = OperateType.Update;
                             Do_Update.models.Add(T_UPDATEISPLOTSTS);
                             BeginTrans();
                             //执行
                             UpdateModels(Do_Update, Do_updatemessage, true);
+                            SaveISPLotHistory(Do_updatemessage, GetSysTime(), In_node.model.S_USER_ID);
                             EndTrans();
 
                             break;
@@ -150,19 +166,20 @@ namespace OQAService.Services
 
                             break;
                     }
+                    if (Do_updatemessage._success == true)
+                    {
+                        Out_node._success = true;
+                        Out_node._MsgCode = "Program Success.";
+                    }
+                    else
+                    {
+                        Out_node._success = false;
+                        Out_node._ErrorMsg = Do_updatemessage._ErrorMsg;
+                    }
+
 
                 }
 
-                if (Do_message._success == true && Do_updatemessage._success==true)
-                {
-                    Out_node._success = true;
-                    Out_node._MsgCode = "Program Success.";
-                }
-                else
-                {
-                    Out_node._success = false;
-                    Out_node._ErrorMsg = Do_message._ErrorMsg + Do_updatemessage._ErrorMsg;
-                }
 
                 return Out_node;
             }

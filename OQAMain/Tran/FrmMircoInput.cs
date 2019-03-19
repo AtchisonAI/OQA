@@ -6,6 +6,7 @@ using System.Drawing;
 using WCFModels.OQA;
 using System.Collections.Generic;
 using WCFModels.Message;
+using OQA_Core.Controls;
 
 namespace OQAMain
 {
@@ -16,7 +17,7 @@ namespace OQAMain
         private string sideType = "";
         private string slotId = "";
         private string waferId = "";
-        private decimal num = 0;
+        private decimal? num = 0;
         private List<ISPIMGDEF> imgInfoList = new List<ISPIMGDEF>();
         #endregion
 
@@ -31,24 +32,27 @@ namespace OQAMain
         #region Page Load
         private void FrmMircoInput_Load(object sender, EventArgs e)
         {
-            lotId = "ITM0150";
-            slotId = "001";
-            sideType = "F";
-            waferId = "ITM0150.01";
-            if (sideType.Equals(SideType.Front))
-            {
-                radioButtonF.Checked = true;
-            }
-            else
-            {
-                radioButtonB.Checked = true;
-            }
             radioNine.Checked = true;
             checkAllOk();
             waferSurF.nodeMode = true;
             waferSurF.WaferSur_Load(null, null);
             waferSurF.groupNode = this.groupBoxSelect;
             this.pageInfoShow();
+        }
+
+        public FrmMircoInput(string lotIdIn, string slotIdIn, string sideTypeIn)
+        {
+            InitializeComponent();
+            if (!string.IsNullOrWhiteSpace(lotIdIn) && !string.IsNullOrWhiteSpace(slotIdIn) && !string.IsNullOrWhiteSpace(sideTypeIn))
+            {
+                lotId = lotIdIn;
+                slotId = slotIdIn;
+                sideType = sideTypeIn;
+                lotTextBox.Text = lotId;
+                slotComboBox.Text = slotId;
+                lotTextBox.Enabled = false;
+                slotComboBox.Enabled = false;
+            }
         }
         #endregion
 
@@ -86,6 +90,31 @@ namespace OQAMain
                 else
                 {
                     lblSucessMsg.Text = rspInfo._MsgCode;
+                    MessageBox.Show("保存成功!");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+        //提交
+        private void btnEdite_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UpdateModelReq<AOIShowView> updateReq = new UpdateModelReq<AOIShowView>();
+                getUpdateModel(updateReq);
+                ModelRsp<AOIShowView> rspInfo = OQASrv.Call.CreateOrUpdateAOI(updateReq);
+                refreshPage();
+                if (!rspInfo._success)
+                {
+                    MessageBox.Show(rspInfo._ErrorMsg);
+                }
+                else
+                {
+                    lblSucessMsg.Text = rspInfo._MsgCode;
+                    this.Close();
                 }
             }
             catch (System.Exception ex)
@@ -134,21 +163,6 @@ namespace OQAMain
                 checkAllOk();
             }
         }
-        //side单选框CheckedChanged
-        private void radioButtonB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonB.Checked)
-            {
-                sideType = SideType.Back;
-            }
-            else
-            {
-                sideType = SideType.Front;
-            }
-            slotId = "";
-            slotComboBox.Items.Clear();
-            pageInfoShow();
-        }
         //qty文本框TextChanged
         private void qtyTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -168,7 +182,7 @@ namespace OQAMain
         private void qtyTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             ComFunc.CheckKeyPress(sender, e);
-            if (qtyTextBox.Text.Length > 6)
+            if (qtyTextBox.Text.Length > 5)
             {
                 qtyTextBox.Text = "";
             }
@@ -218,24 +232,22 @@ namespace OQAMain
         private void refreshPage()
         {
             ComFunc.ClearBoxValue(groupBox3);
+            ComFunc.ClearBoxValue(groupBoxSelect);
             waferSurF.clearPanel();
             slotComboBox.Text = slotId;
             queryPageInfo(lotId, slotId, sideType);
-            ComFunc.ClearBoxValue(groupBoxSelect);
+            
         }
         //页面查询及slot下拉框查询
         private void pageInfoShow()
         {
             try
             {
-                if (sideType.Equals(SideType.Front))
+                if (string.IsNullOrWhiteSpace(lotId))
                 {
-                    frontButton.Text = "Frontside";
+                    return;
                 }
-                else
-                {
-                    frontButton.Text = "Backside";
-                }
+                frontButton.Text = "Frontside";
                 lotTextBox.Text = lotId;
                 slotComboBox.Text = slotId;
                 ISPWAFITM ISPWAFITM = new ISPWAFITM();
@@ -290,23 +302,38 @@ namespace OQAMain
 
                 //wafer
 
-                if (null == slotComboBox.Text || ("").Equals(slotComboBox.Text)
-                     && null == lotTextBox.Text || ("").Equals(lotTextBox.Text))
+                if (string.IsNullOrWhiteSpace(slotComboBox.Text) || string.IsNullOrWhiteSpace(lotTextBox.Text))
                 {
                     MessageBox.Show("请先选择lotId、slotId");
                     return;
                 }
                 iSPWAFITM.LotId = lotId;
-                iSPWAFITM.SlotId = slotComboBox.Text;
+                iSPWAFITM.SlotId = slotComboBox.Text.Trim();
                 iSPWAFITM.WaferId = waferId;//mock
                 iSPWAFITM.InspectType = InspectType.MI;
                 iSPWAFITM.SideType = sideType;
-                iSPWAFITM.Magnification = MagnificationTextBox.Text;
+                if (!string.IsNullOrWhiteSpace(MagnificationTextBox.Text))
+                {
+                    iSPWAFITM.Magnification = MagnificationTextBox.Text.Trim();
+                }
+                if (String.IsNullOrWhiteSpace(qtyTextBox.Text))
+                {
+                    qtyTextBox.Text = "0";
+                }
                 iSPWAFITM.DieQty = decimal.Parse(qtyTextBox.Text);
+                if (String.IsNullOrWhiteSpace(rateTextBox.Text))
+                {
+                    rateTextBox.Text = "0";
+                }
                 iSPWAFITM.DefectRate = decimal.Parse(rateTextBox.Text);
-                iSPWAFITM.DefectDesc = decRichTextBox.Text;
-                iSPWAFITM.Cmt = cmtRichTextBox.Text;
-                iSPWAFITM.IsInspect = "Y";
+                if (!String.IsNullOrWhiteSpace(decRichTextBox.Text))
+                {
+                    iSPWAFITM.DefectDesc = decRichTextBox.Text.Trim();
+                }
+                if (!String.IsNullOrWhiteSpace(cmtRichTextBox.Text))
+                {
+                    iSPWAFITM.Cmt = cmtRichTextBox.Text.Trim();
+                }
                 if (radioNine.Checked)
                 {
                     iSPWAFITM.InspectPoint = "9";
@@ -334,7 +361,14 @@ namespace OQAMain
                         }
                     }
                 }
-
+                if (sftList.Count > 0)
+                {
+                    iSPWAFITM.InspectResult = "N";
+                }
+                else
+                {
+                    iSPWAFITM.InspectResult = "Y";
+                }
                 model.C_PROC_STEP = '1';
                 model.C_TRAN_FLAG = GlobConst.TRAN_CREATE;
                 model.ISPWAFITM_list = new List<ISPWAFITM>();
@@ -367,6 +401,7 @@ namespace OQAMain
                 model.C_TRAN_FLAG = GlobConst.TRAN_VIEW;
                 ModelRsp<AOIShowView> view = new ModelRsp<AOIShowView>();
                 view.model = model;
+                imgInfoList = null;
                 ModelRsp<AOIShowView> qryResult = OQASrv.Call.QueryAOIInfo(view);
                 if (!("").Equals(slotId))
                 {
@@ -409,10 +444,7 @@ namespace OQAMain
                         }
                         else
                         {//清除图片
-                            foreach (Control control in groupBoxSelect.Controls)
-                            {
-                                ComFunc.ClearBoxValue(groupBoxSelect);
-                            }
+                            ComFunc.ClearBoxValue(groupBoxSelect);
                         }
                         waferSurF.showWafer(qryResult.model.ISPWAFDFT_list);
                     }
@@ -423,6 +455,7 @@ namespace OQAMain
                     ComFunc.ClearBoxValue(groupBox3);
                     waferSurF.clearPanel();
                     checkAllOk();
+                    ComFunc.ClearBoxValue(groupBoxSelect);
                 }
 
 
@@ -455,16 +488,17 @@ namespace OQAMain
             }
         }
         //图片上传
-        private void uploadCommonFunc(decimal araeId, ImageUpload.ImageUpload.ByArea item)
+        private void uploadCommonFunc(decimal areaId, ImageUpload.ImageUpload.ByArea item)
         {
             //ImageUpload.ImageUpload.ByArea item = new ImageUpload.ImageUpload.ByArea();
+           
             item.LotID = lotId;
             item.Slot_ID = slotId;
             item.Side_Type = sideType;
-            item.Wafer_ID = "1";
-            item.Inspect_Type = "A";//mock
-            item.ImageType = "ISP";
-            item.Area_ID = araeId;
+            item.Wafer_ID = waferId;
+            item.Inspect_Type =InspectType.MI;
+            item.ImageType = "Type_"+ areaId;
+            item.Area_ID = areaId;
             if (null != imgInfoList && imgInfoList.Count > 0)
             {
                 foreach (ISPIMGDEF img in imgInfoList)
@@ -586,11 +620,95 @@ namespace OQAMain
             imageUpload_14.UpLoadFlag = 4;//by area
             imageUpload_14.UpLoadByArea = (item);
         }
+
+
+
+
         #endregion
 
+        #region PreviewLabelClicked
 
+        private void showPicture(ImageUpload.ImageUpload imageUpload)
+        {
+            Form newForm = new Form();
+            newForm.StartPosition = FormStartPosition.CenterScreen;
+            newForm.Size = new System.Drawing.Size(600, 600);
+            PictureView pictureView = new PictureView();
+            string path = imageUpload.GetImagePath();
+            if (!string.IsNullOrEmpty(path))
+            {
+                pictureView.LoadImageAsync(ComFunc.GetPicServerPath(path));
+            }
+            newForm.Controls.Add(pictureView);
+            newForm.ShowDialog();
+        }
 
+        private void imageUpload_11_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_11);
+        }
 
+        private void imageUpload_13_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_13);
+        }
 
+        private void imageUpload_15_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_15);
+        }
+
+        private void imageUpload_3_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_3);
+        }
+
+        private void imageUpload_23_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_23);
+        }
+
+        private void imageUpload_17_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_17);
+        }
+
+        private void imageUpload_7_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_7);
+        }
+
+        private void imageUpload_9_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_9);
+        }
+
+        private void imageUpload_19_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_19);
+        }
+
+        private void imageUpload_18_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_18);
+        }
+
+        private void imageUpload_12_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_12);
+        }
+
+        private void imageUpload_8_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_8);
+        }
+
+        private void imageUpload_14_PreviewLableClicked(object sender, EventArgs e)
+        {
+            showPicture(imageUpload_14);
+        }
+        #endregion
+
+      
     }
 }

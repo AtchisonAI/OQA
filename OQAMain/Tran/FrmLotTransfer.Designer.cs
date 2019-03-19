@@ -32,7 +32,7 @@
             this.btnUnCheckAll = new System.Windows.Forms.Button();
             this.btnCheckAll = new System.Windows.Forms.Button();
             this.LotIDList = new System.Windows.Forms.CheckedListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearchLotID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtDate = new System.Windows.Forms.TextBox();
@@ -50,6 +50,7 @@
             this.Qty = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Part_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Inspection_Result = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Transeq = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -58,18 +59,18 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1351, 14);
+            this.btnClose.Location = new System.Drawing.Point(2100, 14);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(454, 13);
+            this.btnCreate.Location = new System.Drawing.Point(664, 11);
             this.btnCreate.Text = "OK";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1152, 11);
+            this.btnEdite.Location = new System.Drawing.Point(1901, 11);
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
@@ -87,7 +88,7 @@
             this.groupBox1.Controls.Add(this.btnUnCheckAll);
             this.groupBox1.Controls.Add(this.btnCheckAll);
             this.groupBox1.Controls.Add(this.LotIDList);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtSearchLotID);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
@@ -119,6 +120,9 @@
             // 
             // LotIDList
             // 
+            this.LotIDList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LotIDList.CheckOnClick = true;
             this.LotIDList.FormattingEnabled = true;
             this.LotIDList.Location = new System.Drawing.Point(16, 115);
@@ -127,19 +131,19 @@
             this.LotIDList.Sorted = true;
             this.LotIDList.TabIndex = 7;
             this.LotIDList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.LotIDList_ItemCheck);
-            this.LotIDList.SelectedIndexChanged += new System.EventHandler(this.LstIspCode_SelectedIndexChanged);
             // 
-            // textBox1
+            // txtSearchLotID
             // 
-            this.textBox1.Location = new System.Drawing.Point(104, 50);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 5;
+            this.txtSearchLotID.Location = new System.Drawing.Point(12, 59);
+            this.txtSearchLotID.Name = "txtSearchLotID";
+            this.txtSearchLotID.Size = new System.Drawing.Size(100, 21);
+            this.txtSearchLotID.TabIndex = 5;
+            this.txtSearchLotID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1Press_check);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 56);
+            this.label1.Location = new System.Drawing.Point(14, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 4;
@@ -176,6 +180,7 @@
             // 
             this.txtCreater.Location = new System.Drawing.Point(121, 72);
             this.txtCreater.Name = "txtCreater";
+            this.txtCreater.ReadOnly = true;
             this.txtCreater.Size = new System.Drawing.Size(100, 21);
             this.txtCreater.TabIndex = 14;
             // 
@@ -257,7 +262,9 @@
             this.Lot_ID,
             this.Qty,
             this.Part_ID,
-            this.Inspection_Result});
+            this.Inspection_Result,
+            this.Transeq});
+            this.listship.Cursor = System.Windows.Forms.Cursors.Default;
             this.listship.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listship.Location = new System.Drawing.Point(231, 116);
             this.listship.Name = "listship";
@@ -269,18 +276,26 @@
             // Lot_ID
             // 
             this.Lot_ID.Text = "Lot_ID";
+            this.Lot_ID.Width = 125;
             // 
             // Qty
             // 
             this.Qty.Text = "Qty";
+            this.Qty.Width = 125;
             // 
             // Part_ID
             // 
             this.Part_ID.Text = "Part_ID";
+            this.Part_ID.Width = 125;
             // 
             // Inspection_Result
             // 
             this.Inspection_Result.Text = "Inspection_Result";
+            this.Inspection_Result.Width = 125;
+            // 
+            // Transeq
+            // 
+            this.Transeq.Width = 0;
             // 
             // FrmLotTransfer
             // 
@@ -293,6 +308,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FrmLotTransfer";
+            this.Text = "FrmLotTransfer";
             this.Load += new System.EventHandler(this.FrmLotTransfer_Load);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
             this.Controls.SetChildIndex(this.pnlMenu, 0);
@@ -325,7 +341,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearchLotID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView listship;
         private System.Windows.Forms.ColumnHeader Lot_ID;
@@ -335,5 +351,6 @@
         private System.Windows.Forms.CheckedListBox LotIDList;
         private System.Windows.Forms.Button btnUnCheckAll;
         private System.Windows.Forms.Button btnCheckAll;
+        private System.Windows.Forms.ColumnHeader Transeq;
     }
 }

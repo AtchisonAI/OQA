@@ -170,7 +170,7 @@ namespace WCFModels.OQA
         [DataMember]
         [Column("PART_ID")] public string PartId { get; set; }
         [DataMember]
-        [Column("QTY")] public decimal Qty { get; set; }
+        [Column("QTY")] public decimal? Qty { get; set; }
         [DataMember]
         [Column("STEP_ID")] public string StepId { get; set; }
         [DataMember]
@@ -354,7 +354,7 @@ namespace WCFModels.OQA
 
     [DataContract]
     [TableName("ISPLOTHIS")]
-    [PrimaryKey("LOT_ID,FOUP_ID",AutoIncrement = false)]
+    [PrimaryKey("TRAN_TIME", AutoIncrement = false)]
     [ExplicitColumns]
     public partial class ISPLOTHI
     {
@@ -371,9 +371,9 @@ namespace WCFModels.OQA
         [DataMember]
         [Column("PART_DESC")] public string PartDesc { get; set; }
         [DataMember]
-        [Column("PRODUCT_DIE_QTY")] public decimal ProductDieQty { get; set; }
+        [Column("PRODUCT_DIE_QTY")] public decimal? ProductDieQty { get; set; }
         [DataMember]
-        [Column("QTY")] public decimal Qty { get; set; }
+        [Column("QTY")] public decimal? Qty { get; set; }
         [DataMember]
         [Column("REC_USER")] public string RecUser { get; set; }
         [DataMember]
@@ -425,7 +425,8 @@ namespace WCFModels.OQA
         [DataMember]
         [Column("CMF_10")] public string Cmf10 { get; set; }
         [DataMember]
-        [VersionColumn("TRANS_SEQ",VersionColumnType.Number)] public decimal TransSeq { get; set; }
+        [Column("TRANS_SEQ")] public decimal TransSeq { get; set; }
+        //[VersionColumn("TRANS_SEQ",VersionColumnType.Number)] public decimal TransSeq { get; set; }
         [DataMember]
         [Column("CREATE_TIME")] public string CreateTime { get; set; }
         [DataMember]
@@ -446,6 +447,8 @@ namespace WCFModels.OQA
     [ExplicitColumns]
     public partial class ISPLOTSTS
     {
+
+        
         [DataMember]
         [Column("LOT_ID")] public string LotId { get; set; }
         [DataMember]
@@ -459,9 +462,9 @@ namespace WCFModels.OQA
         [DataMember]
         [Column("PART_DESC")] public string PartDesc { get; set; }
         [DataMember]
-        [Column("PRODUCT_DIE_QTY")] public decimal ProductDieQty { get; set; }
+        [Column("PRODUCT_DIE_QTY")] public decimal? ProductDieQty { get; set; }
         [DataMember]
-        [Column("QTY")] public decimal Qty { get; set; }
+        [Column("QTY")] public decimal? Qty { get; set; }
         [DataMember]
         [Column("REC_USER")] public string RecUser { get; set; }
         [DataMember]
@@ -601,7 +604,7 @@ namespace WCFModels.OQA
         [DataMember]
         [Column("MAGNIFICATION")] public string Magnification { get; set; }
         [DataMember]
-        [Column("DIE_QTY")] public decimal DieQty { get; set; }
+        [Column("DIE_QTY")] public decimal? DieQty { get; set; }
         [DataMember]
         [Column("DEFECT_RATE")] public decimal DefectRate { get; set; }
         [DataMember]
@@ -688,6 +691,7 @@ namespace WCFModels.OQA
 
     [DataContract]
     [TableName("OQA_MESLOT")]
+    [PrimaryKey("LOTID", AutoIncrement = false)]
     [ExplicitColumns]
     public partial class OqaMeslot
     {
@@ -698,9 +702,9 @@ namespace WCFModels.OQA
         [DataMember]
         [Column("PARTID")] public string Partid { get; set; }
         [DataMember]
-        [Column("QTY")] public decimal Qty { get; set; }
+        [Column("QTY")] public decimal? Qty { get; set; }
         [DataMember]
-        [Column("DIEQTY")] public decimal Dieqty { get; set; }
+        [Column("DIEQTY")] public decimal? Dieqty { get; set; }
         [DataMember]
         [Column("STAGE")] public string Stage { get; set; }
         [DataMember]
@@ -720,7 +724,7 @@ namespace WCFModels.OQA
         [DataMember]
         [Column("RECUSER")] public string Recuser { get; set; }
         [DataMember]
-        [Column("RECFLAG")] public decimal Recflag { get; set; }
+        [Column("RECFLAG")] public string Recflag { get; set; }
     }
 
     [DataContract]

@@ -89,6 +89,8 @@ namespace OQAContract
 
         [OperationContract]
         ModelRsp<PKGShipView> QryPKGShipSummaryInfo(ModelRsp<PKGShipView> PKGShipSummary);
+        [OperationContract]
+        ModelRsp<ShipIDListView> QueryShipIDList(ModelRsp<ShipIDListView> ShipID);
 
         #endregion
 

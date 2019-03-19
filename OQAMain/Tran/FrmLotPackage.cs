@@ -42,9 +42,14 @@ namespace OQAMain
                 case "CREATE":
                 case "UPDATE":
                     // TODO
-                    if(null == lotPackageInfo)
+                    if(null == lotPackageInfo || string.IsNullOrEmpty(lotId_textBox.Text.Trim()))
                     {
                         MessageBox.Show("无Lot信息！");
+                        lotId_textBox.Focus();
+                        return false;
+                    } else if (!lotId_textBox.Text.Trim().Equals(lotPackageInfo.lotInfo.LotId))
+                    {
+                        MessageBox.Show("图片与当前lot不匹配，请重新上传图片");
                         lotId_textBox.Focus();
                         return false;
                     }
@@ -102,6 +107,9 @@ namespace OQAMain
             }else if (null == lotPackageInfo || !lotPackageInfo.lotInfo.LotId.Equals(lotId))
             {
                 Res = QueryLotSts(lotId);
+            }else
+            {
+                Res = true;
             }
 
             if(!Res) 
@@ -191,7 +199,8 @@ namespace OQAMain
                     try
                     {
                         var res = OQASrv.Call.UpdateLotSts(updateReq);
-                    }catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message.ToString());
                         //删除已上传的图片
@@ -200,8 +209,8 @@ namespace OQAMain
                     }
                     break;
 
-                //case LotSts.PackageOut:
-                //    break;
+                    //case LotSts.PackageOut:
+                    //    break;
             }
 
             MessageBox.Show("Lot package successed!");
@@ -250,7 +259,44 @@ namespace OQAMain
         private void lotId_textBox_Click(object sender, EventArgs e)
         {
             lotId_textBox.Text = string.Empty;
+            lotPackageInfo = null;
             ClearImageControl();
+        }
+
+        private void Fosb_imageUpload_PreviewLableClicked(object sender, EventArgs e)
+        {
+            string path = Fosb_imageUpload.GetImagePath();
+            if (!string.IsNullOrEmpty(path))
+            {
+                pictureView.LoadImageAsync(ComFunc.GetPicServerPath(path));
+            }
+        }
+
+        private void ShipLabel_imageUpload_PreviewLableClicked(object sender, EventArgs e)
+        {
+            string path = ShipLabel_imageUpload.GetImagePath();
+            if (!string.IsNullOrEmpty(path))
+            {
+                pictureView.LoadImageAsync(ComFunc.GetPicServerPath(path));
+            }
+        }
+
+        private void PackageType_imageUpload_PreviewLableClicked(object sender, EventArgs e)
+        {
+            string path = PackageType_imageUpload.GetImagePath();
+            if (!string.IsNullOrEmpty(path))
+            {
+                pictureView.LoadImageAsync(ComFunc.GetPicServerPath(path));
+            }
+        }
+
+        private void Attachment_imageUpload_PreviewLableClicked(object sender, EventArgs e)
+        {
+            string path = Attachment_imageUpload.GetImagePath();
+            if (!string.IsNullOrEmpty(path))
+            {
+                pictureView.LoadImageAsync(ComFunc.GetPicServerPath(path));
+            }
         }
     }
 }

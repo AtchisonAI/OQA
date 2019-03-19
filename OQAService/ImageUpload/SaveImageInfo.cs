@@ -151,7 +151,23 @@ namespace OQAService.Services
                 }
                 return Out_node;
             }
-        }
 
+
+        private string TrimUrl(string Url,int turn)
+        {
+            int index = 0;
+            for (int i = 0;i<turn;++i)
+            {
+                index = Url.IndexOf('/'); 
+                if(-1 == index)
+                {
+                    throw new Exception("传入的图片URL格式错误");
+                }
+                Url = Url.Substring(index + 1);
+            }
+
+            return Url;
+        }
     }
+}
 

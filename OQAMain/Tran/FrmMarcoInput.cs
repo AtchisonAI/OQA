@@ -206,6 +206,10 @@ namespace OQAMain
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(lotId))
+                {
+                    return;
+                }
                 if (sideType.Equals("F"))
                 {
                     frontButton.Text = "Frontside";
@@ -273,12 +277,18 @@ namespace OQAMain
                     return;
                 }
                 iSPWAFITM.LotId = lotId;
-                iSPWAFITM.SlotId = slotComboBox.Text;
+                iSPWAFITM.SlotId = slotComboBox.Text.Trim();
                 iSPWAFITM.WaferId = waferId;
                 iSPWAFITM.InspectType = InspectType.MA;
                 iSPWAFITM.SideType = sideType;
-                iSPWAFITM.DefectDesc = decRichTextBox.Text;
-                iSPWAFITM.Cmt = cmtRichTextBox.Text;
+                if (!String.IsNullOrWhiteSpace(decRichTextBox.Text))
+                {
+                    iSPWAFITM.DefectDesc = decRichTextBox.Text.Trim();
+                }
+                if (!String.IsNullOrWhiteSpace(cmtRichTextBox.Text))
+                {
+                    iSPWAFITM.Cmt = cmtRichTextBox.Text.Trim();
+                }
                 iSPWAFITM.InspectPoint = "25";
 
                 for (int i = 0; i < 24; i++)

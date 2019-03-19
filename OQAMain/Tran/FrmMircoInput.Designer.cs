@@ -1004,6 +1004,7 @@
             this.MagnificationTextBox.Name = "MagnificationTextBox";
             this.MagnificationTextBox.Size = new System.Drawing.Size(120, 20);
             this.MagnificationTextBox.TabIndex = 12;
+            this.MagnificationTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MagnificationTextBox_KeyPress);
             // 
             // cmtRichTextBox
             // 

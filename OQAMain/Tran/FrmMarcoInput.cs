@@ -206,6 +206,10 @@ namespace OQAMain
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(lotId))
+                {
+                    return;
+                }
                 if (sideType.Equals("F"))
                 {
                     frontButton.Text = "Frontside";

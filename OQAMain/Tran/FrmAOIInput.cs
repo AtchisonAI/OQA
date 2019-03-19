@@ -259,6 +259,10 @@ namespace OQAMain
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(lotId))
+                {
+                    return;
+                }
                 if (sideType.Equals(SideType.Front))
                 {
                     frontButton.Text = "Frontside";
@@ -297,8 +301,8 @@ namespace OQAMain
                         }
                     }
                 }
-
                 queryPageInfo(lotId, slotId, sideType);
+
             }
             catch (Exception e)
             {

@@ -238,6 +238,10 @@ namespace OQAMain
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(lotId))
+                {
+                    return;
+                }
                 frontButton.Text = "Frontside";
                 lotTextBox.Text = lotId;
                 slotComboBox.Text = slotId;

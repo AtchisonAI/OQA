@@ -30,15 +30,7 @@ namespace OQAMain
 
 
         #region " Variable Definition "
-        //private bool b_load_flag  ;
-        private decimal d_lotdieqty;
-        private string s_vendorname;
-        private string s_vendorlotno;
-        private string s_orderno;
-        private string s_sentime;
         public decimal d_tran_seq = 0;
-        private List<OqaMeslot>  list_meslot;
-        private List<OqaMeswafer> list_wafer;
         private List<ISPWAFST> list_ispwafer;
         private List<ISPWAFITM> list_AOI;
         private List<ISPWAFITM> list_MAC;
@@ -219,8 +211,6 @@ namespace OQAMain
         }
 
         
-
-
         private bool SaveISPLotInfo(char c_proc_step, char c_tran_flag)
         {
             try
@@ -231,19 +221,10 @@ namespace OQAMain
                 in_data.C_TRAN_FLAG = c_tran_flag;
                 //string.IsNullOrWhiteSpace(ISPLotSave.model.S_USER_NAME)        
 
-                if (c_proc_step == GlobConst.TRAN_CREATE)
-                {
-                    in_data.S_USER_ID = ComFunc.Trim(txtUserID.Text);
-                    in_data.S_USER_NAME = ComFunc.Trim(txtName.Text);
-                    in_data.ISPMESLOT_List = list_meslot;
-                    in_data.ISPMESWAFER_List = list_wafer;
-                }
-                else
-                {
-                    in_data.S_LOT_ID = ComFunc.Trim(txtLotID.Text);
-                    in_data.D_TRAN_SEQ = d_tran_seq;
-                    in_data.S_USER_ID = ComFunc.Trim(AuthorityControl.GetUserProfile().userId);
-                }
+                in_data.S_LOT_ID = ComFunc.Trim(txtLotID.Text);
+                in_data.D_TRAN_SEQ = d_tran_seq;
+                in_data.S_USER_ID = ComFunc.Trim(AuthorityControl.GetUserProfile().userId);
+
 
                 if (string.IsNullOrWhiteSpace(txtDept.Text) == false)
                 {
@@ -264,12 +245,13 @@ namespace OQAMain
                 var out_data = OQASrv.Call.SaveISPLotInfo(in_node);
                 if (out_data._success == true)
                 {
-                    lblSucessMsg.Text = out_data._ErrorMsg;
+                    MessageBox.Show(out_data._MsgCode);
+                    //lblSucessMsg.Text = out_data._ErrorMsg;
                     return true;
                 }
                 else
                 {
-                    MessageBox.Show(out_data._MsgCode);
+                    MessageBox.Show(out_data._ErrorMsg);
                     return false;
                 }
             }
@@ -314,12 +296,13 @@ namespace OQAMain
                 var out_data = OQASrv.Call.SaveISPLotInfo(in_node);
                 if (out_data._success == true)
                 {
-                    lblSucessMsg.Text = out_data._ErrorMsg;
+
+                    MessageBox.Show(out_data._MsgCode);
                     return true;
                 }
                 else
                 {
-                    MessageBox.Show(out_data._MsgCode);
+                    MessageBox.Show(out_data._ErrorMsg);
                     return false;
                 }
             }
@@ -669,25 +652,6 @@ namespace OQAMain
                 txtISPLotFilter.Text = txtLotID.Text;
                 btnISPLotFilter.PerformClick();
 
-
-                //ClearData("2");
-
-                //控件重定义
-                //if (MPCF.Trim(txtBox_LotID.Text) != "")
-                //{
-                //控件初始化
-                //ComFunc.ClearList(lisOperLotList);
-                //ComFunc.ClearList(spdBox_SubTask);
-                ////MPCF.ClearList(spdOrderID);
-                //ComFunc.FieldClear(spdOrderID);
-                //ComFunc.ClearList(spdBox_LayoutID_MarkID);
-                //ComFunc.FieldClear(pnlTask);
-                //重新查询
-                //View_Lot_List("2");
-                //ViewSubLotListExt();
-                //ViewLotBoxListExt('2');
-                //View_Order_list(txtBox_LotID.Text);
-                //}
             }
             catch (System.Exception ex)
             {
@@ -709,10 +673,6 @@ namespace OQAMain
                 ImgISPLot.UpLoadByLot = item;
             }
         }
-
-
-
-
 
         private void txtShift_KeyPress(object sender, KeyPressEventArgs e)
         {

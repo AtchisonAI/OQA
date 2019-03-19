@@ -32,7 +32,7 @@ namespace OQAMain
 
         #region " Variable Definition "
         //private bool b_load_flag  ;
-        private decimal d_lotdieqty;
+        private decimal? d_lotdieqty;
         private string s_vendorname;
         private string s_vendorlotno;
         private string s_orderno;
@@ -272,12 +272,12 @@ namespace OQAMain
                 var out_data = OQASrv.Call.SaveISPLotInfo(in_node);
                 if (out_data._success == true)
                 {
-                    lblSucessMsg.Text = out_data._ErrorMsg;
+                    MessageBox.Show(out_data._MsgCode);
                     return true;
                 }
                 else
                 {
-                    MessageBox.Show(out_data._MsgCode);
+                    MessageBox.Show(out_data._ErrorMsg);
                     return false;
                 }
             }
@@ -331,7 +331,7 @@ namespace OQAMain
                 var out_data = OQASrv.Call.SaveISPLotInfo(in_node);
                 if (out_data._success == true)
                 {
-                    lblSucessMsg.Text = out_data._ErrorMsg;
+                    MessageBox.Show(out_data._MsgCode);
                     //PNDN跳转
                     if (out_data.__ByPass == false)
                     {
@@ -346,7 +346,7 @@ namespace OQAMain
                 }
                 else
                 {
-                    MessageBox.Show(out_data._MsgCode);
+                    MessageBox.Show(out_data._ErrorMsg);
                     return false;
                 }
             }
@@ -374,6 +374,7 @@ namespace OQAMain
             if (out_data._success == true)
             {
                 labPndn.Visible = true;
+                lblSucessMsg.Text = out_data._MsgCode;
                 txtShift.Focus();
 
                 list_meslot = out_data.model.OQAMESLOT_LIST;

@@ -64,12 +64,14 @@ namespace OQAService.Services
 
                             T_ISPLOTSTS.LotId =In_node.model.IN_LOT_ID;
                             T_ISPLOTSTS.TransSeq = In_node.model.D_TRANSSEQ;
-                            T_ISPLOTSTS.Status = "ChangeOut";
+                            T_ISPLOTSTS.Status =ISPStatus.ChangeOut;
                             Do_Save.operateType = OperateType.Update;
                             Do_Save.models.Add(T_ISPLOTSTS);
                             //InitTable(T_ISPLOTSTS);
                             UpdateModels(Do_Save, Do_message, true);
-                            
+
+                            //记录历史
+                            //SaveISPLotHistory(Do_message, SysTime, In_node.model.);
 
                             break;
 

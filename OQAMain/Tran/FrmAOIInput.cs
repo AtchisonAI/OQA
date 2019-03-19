@@ -33,7 +33,7 @@ namespace OQAMain
         #region Page Load
         private void FrmAOIInput_Load(object sender, EventArgs e)
         {
-            
+
             if (sideType.Equals(SideType.Front))
             {
                 radioButtonF.Checked = true;
@@ -45,11 +45,11 @@ namespace OQAMain
             waferSurF.codeBox = this.defectTextBox;
             this.pageInfoShow();
         }
-        
-        public FrmAOIInput(string lotIdIn,string slotIdIn,string sideTypeIn)
+
+        public FrmAOIInput(string lotIdIn, string slotIdIn, string sideTypeIn)
         {
             InitializeComponent();
-            if(!string.IsNullOrWhiteSpace(lotIdIn)&& !string.IsNullOrWhiteSpace(slotIdIn) && !string.IsNullOrWhiteSpace(sideTypeIn))
+            if (!string.IsNullOrWhiteSpace(lotIdIn) && !string.IsNullOrWhiteSpace(slotIdIn) && !string.IsNullOrWhiteSpace(sideTypeIn))
             {
                 lotId = lotIdIn;
                 slotId = slotIdIn;
@@ -58,7 +58,7 @@ namespace OQAMain
                 slotComboBox.Text = slotId;
                 jumpFlag = true;
             }
-            
+
         }
         #endregion
 
@@ -143,7 +143,7 @@ namespace OQAMain
             {
                 sideType = SideType.Front;
             }
-            
+
             pageInfoShow();
         }
         //lotId文本框TextChanged
@@ -205,6 +205,21 @@ namespace OQAMain
             {
                 qtyTextBox.Text = "";
             }
+        }
+        //图片预览
+        private void imageUpload1_PreviewLableClicked(object sender, EventArgs e)
+        {
+            Form newForm = new Form();
+            newForm.StartPosition = FormStartPosition.CenterScreen;
+            newForm.Size = new System.Drawing.Size(600, 600);
+            PictureView pictureView = new PictureView();
+            string path = imageUpload1.GetImagePath();
+            if (!string.IsNullOrEmpty(path))
+            {
+                pictureView.LoadImageAsync(ComFunc.GetPicServerPath(path));
+            }
+            newForm.Controls.Add(pictureView);
+            newForm.ShowDialog();
         }
         #endregion
 
@@ -347,7 +362,7 @@ namespace OQAMain
                     ComFunc.ClearBoxValue(groupBox3);
                     waferSurF.clearPanel();
                 }
-                
+
             }
             catch (Exception e)
             {
@@ -453,22 +468,7 @@ namespace OQAMain
 
 
         #endregion
-
-        private void imageUpload1_PreviewLableClicked(object sender, EventArgs e)
-        {
-            //Form formView = new Form();
-            //formView.Size = new System.Drawing.Size(500, 500);
-            //formView.Location = new System.Drawing.Point(200, 200);
-            //PictureView pictureView = new PictureView();
-            string path = imageUpload1.GetImagePath();
-            if (!string.IsNullOrEmpty(path))
-            {
-                pictureView1.LoadImageAsync(ComFunc.GetPicServerPath(path));
-            }
-            //formView.Controls.Add(pictureView);
-            
-            //formView.Show();
-            
-        }
+        
+   
     }
 }

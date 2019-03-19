@@ -203,16 +203,25 @@ namespace OQAService.Services
                                         break;
 
                                     case "C_13":
-                                        if (In_node.model.ISPMESWAFER_List.Count > 13 && chooseList.Contains(rowIndex) == true)
+                                        if (In_node.model.ISPMESWAFER_List.Count > 13 )
                                             //ispnum.ord(rowIndex)== true)
                                         {
-                                            T_ISPWAFITM.IsInspect = "Y";
-                                            T_ISPWAFITM.InspectResult = "Y";
+                                            if (chooseList.Contains(rowIndex) == true)
+                                            {
+                                                T_ISPWAFITM.IsInspect = "Y";
+                                                T_ISPWAFITM.InspectResult = "Y";
+                                            }
+                                            else
+                                            {
+                                                T_ISPWAFITM.IsInspect = "N";
+                                                T_ISPWAFITM.InspectResult = " ";
+
+                                            }
                                         }
                                         else
                                         {
-                                            T_ISPWAFITM.IsInspect = "N";
-                                            T_ISPWAFITM.InspectResult = " ";
+                                            T_ISPWAFITM.IsInspect = "Y";
+                                            T_ISPWAFITM.InspectResult = "Y";
                                         }
 
                                         break;

@@ -6,6 +6,7 @@ using System.Drawing;
 using WCFModels.OQA;
 using System.Collections.Generic;
 using WCFModels.Message;
+using OQA_Core.Controls;
 
 namespace OQAMain
 {
@@ -374,17 +375,22 @@ namespace OQAMain
                 MessageBox.Show(e.Message);
             }
         }
-
-
-        #endregion
-
+        //图片预览
         private void imageUpload1_PreviewLableClicked(object sender, EventArgs e)
         {
+            Form newForm = new Form();
+            newForm.StartPosition = FormStartPosition.CenterScreen;
+            newForm.Size = new System.Drawing.Size(600, 600);
+            PictureView pictureView = new PictureView();
             string path = imageUpload1.GetImagePath();
             if (!string.IsNullOrEmpty(path))
             {
-                pictureView1.LoadImageAsync(ComFunc.GetPicServerPath(path));
+                pictureView.LoadImageAsync(ComFunc.GetPicServerPath(path));
             }
+            newForm.Controls.Add(pictureView);
+            newForm.ShowDialog();
         }
+
+        #endregion
     }
 }

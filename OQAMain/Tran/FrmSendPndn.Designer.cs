@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grpAbnInf = new System.Windows.Forms.GroupBox();
             this.txtHoldCmt = new System.Windows.Forms.TextBox();
             this.txtHoldCode = new System.Windows.Forms.TextBox();
@@ -44,7 +47,8 @@
             this.labPartId = new System.Windows.Forms.Label();
             this.labLotid = new System.Windows.Forms.Label();
             this.grpPndnInf = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,14 +56,6 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.PndnNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dept = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InspectType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DefectCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SlotId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Spec = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labOperatorNo = new System.Windows.Forms.Label();
             this.txtOperatorNo = new System.Windows.Forms.TextBox();
             this.txtSupervisorNo = new System.Windows.Forms.TextBox();
@@ -67,22 +63,22 @@
             this.pnlMenu.SuspendLayout();
             this.grpAbnInf.SuspendLayout();
             this.grpPndnInf.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(653, 4);
+            this.btnClose.Location = new System.Drawing.Point(659, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(466, 4);
+            this.btnCreate.Location = new System.Drawing.Point(471, 6);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(560, 4);
+            this.btnEdite.Location = new System.Drawing.Point(565, 6);
+            this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
             // 
@@ -94,12 +90,16 @@
             this.pnlMenu.Size = new System.Drawing.Size(750, 40);
             this.pnlMenu.Controls.SetChildIndex(this.labOperatorNo, 0);
             this.pnlMenu.Controls.SetChildIndex(this.txtOperatorNo, 0);
-            this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnRefresh, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
             this.pnlMenu.Controls.SetChildIndex(this.labSupervisorNo, 0);
             this.pnlMenu.Controls.SetChildIndex(this.txtSupervisorNo, 0);
+            // 
+            // lblSucessMsg
+            // 
+            this.lblSucessMsg.Location = new System.Drawing.Point(106, 29);
             // 
             // grpAbnInf
             // 
@@ -184,9 +184,9 @@
             this.labHoldCmt.AutoSize = true;
             this.labHoldCmt.Location = new System.Drawing.Point(570, 55);
             this.labHoldCmt.Name = "labHoldCmt";
-            this.labHoldCmt.Size = new System.Drawing.Size(65, 12);
+            this.labHoldCmt.Size = new System.Drawing.Size(59, 12);
             this.labHoldCmt.TabIndex = 6;
-            this.labHoldCmt.Text = "Hold Cmt：";
+            this.labHoldCmt.Text = "Hold Cmt:";
             // 
             // labHoldCode
             // 
@@ -244,9 +244,8 @@
             // 
             // grpPndnInf
             // 
-            this.grpPndnInf.Controls.Add(this.dataGridView2);
-            this.grpPndnInf.Controls.Add(this.lblSucessMsg);
             this.grpPndnInf.Controls.Add(this.dataGridView1);
+            this.grpPndnInf.Controls.Add(this.lblSucessMsg);
             this.grpPndnInf.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpPndnInf.Location = new System.Drawing.Point(0, 100);
             this.grpPndnInf.Name = "grpPndnInf";
@@ -254,14 +253,24 @@
             this.grpPndnInf.TabIndex = 2;
             this.grpPndnInf.TabStop = false;
             this.grpPndnInf.Text = "异常单信息";
-            this.grpPndnInf.Controls.SetChildIndex(this.dataGridView1, 0);
             this.grpPndnInf.Controls.SetChildIndex(this.lblSucessMsg, 0);
-            this.grpPndnInf.Controls.SetChildIndex(this.dataGridView2, 0);
+            this.grpPndnInf.Controls.SetChildIndex(this.dataGridView1, 0);
             // 
-            // dataGridView2
+            // dataGridView1
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
@@ -269,17 +278,27 @@
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7});
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 17);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(744, 420);
-            this.dataGridView2.TabIndex = 8;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 17);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(744, 420);
+            this.dataGridView1.TabIndex = 8;
+            // 
+            // Column1
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column1.HeaderText = "No";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 30;
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "PNDN Number";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -290,16 +309,21 @@
             // 
             this.dataGridViewTextBoxColumn3.HeaderText = "Inspect Type";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.HeaderText = "Defect Code";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTextBoxColumn5.HeaderText = "Slot ID";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             this.dataGridViewTextBoxColumn5.Width = 300;
             // 
             // dataGridViewTextBoxColumn6
@@ -312,59 +336,6 @@
             this.dataGridViewTextBoxColumn7.HeaderText = "Remark";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.Width = 300;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PndnNo,
-            this.Dept,
-            this.InspectType,
-            this.DefectCode,
-            this.SlotId,
-            this.Spec,
-            this.Remark});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 17);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(744, 420);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // PndnNo
-            // 
-            this.PndnNo.HeaderText = "PNDN Number";
-            this.PndnNo.Name = "PndnNo";
-            // 
-            // Dept
-            // 
-            this.Dept.HeaderText = "Dept";
-            this.Dept.Name = "Dept";
-            // 
-            // InspectType
-            // 
-            this.InspectType.HeaderText = "Inspect Type";
-            this.InspectType.Name = "InspectType";
-            // 
-            // DefectCode
-            // 
-            this.DefectCode.HeaderText = "Defect Code";
-            this.DefectCode.Name = "DefectCode";
-            // 
-            // SlotId
-            // 
-            this.SlotId.HeaderText = "Slot ID";
-            this.SlotId.Name = "SlotId";
-            // 
-            // Spec
-            // 
-            this.Spec.HeaderText = "Spec";
-            this.Spec.Name = "Spec";
-            // 
-            // Remark
-            // 
-            this.Remark.HeaderText = "Remark";
-            this.Remark.Name = "Remark";
             // 
             // labOperatorNo
             // 
@@ -418,7 +389,6 @@
             this.grpAbnInf.PerformLayout();
             this.grpPndnInf.ResumeLayout(false);
             this.grpPndnInf.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -446,15 +416,8 @@
         private System.Windows.Forms.TextBox txtOperatorNo;
         private System.Windows.Forms.Label labOperatorNo;
         private System.Windows.Forms.GroupBox grpPndnInf;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PndnNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dept;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InspectType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DefectCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SlotId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Spec;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Remark;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;

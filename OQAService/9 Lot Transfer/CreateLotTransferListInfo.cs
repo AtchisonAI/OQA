@@ -155,7 +155,7 @@ namespace OQAService.Services
                             BeginTrans();
                             //执行
                             UpdateModels(Do_Update, Do_updatemessage, true);
-                            SaveISPLotHistory(Do_updatemessage, GetSysTime(), In_node.model.S_USER_ID);
+                            SaveISPLotHistory(Do_updatemessage,  In_node.model.S_USER_ID);
                             EndTrans();
 
                             break;

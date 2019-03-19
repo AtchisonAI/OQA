@@ -6,6 +6,7 @@ using WcfClientCore.WcfSrv;
 using WCFModels;
 using WCFModels.Frame;
 using WCFModels.Message;
+using WCFModels.MESDB.FWTST1;
 
 namespace WcfClient.Forms
 {

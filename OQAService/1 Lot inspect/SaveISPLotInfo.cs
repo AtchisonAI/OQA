@@ -21,7 +21,6 @@ namespace OQAService.Services
             stopwatch.Start();
             BeginTrans();
 
-            string _msg =" ";
             string SysTime;
             //定义服务过程中使用的结构
 
@@ -142,7 +141,7 @@ namespace OQAService.Services
                         //执行
                         UpdateModels(ISPLOTSTS_Save, ISPLOTSTS_message,true);
                         //记录历史
-                        SaveISPLotHistory(ISPLOTSTS_message, SysTime, ISPLotSave.model.S_USER_ID);
+                        SaveISPLotHistory(ISPLOTSTS_message, ISPLotSave.model.S_USER_ID);
 
                         //更新接口已读标记
                         T_OQAMESLOT.Lotid = ISPLotSave.model.ISPMESLOT_List[0].Lotid;
@@ -283,7 +282,7 @@ namespace OQAService.Services
                         UpdateModels(ISPLOTSTS_Save, ISPLOTSTS_message,true);
 
                         //记录历史
-                        SaveISPLotHistory(ISPLOTSTS_message, SysTime, ISPLotSave.model.S_USER_ID);
+                        SaveISPLotHistory(ISPLOTSTS_message, ISPLotSave.model.S_USER_ID);
 
                         break;
                     case '2':
@@ -338,7 +337,7 @@ namespace OQAService.Services
                         UpdateModels(ISPLOTSTS_Save, ISPLOTSTS_message,true);
 
                         //记录历史
-                        SaveISPLotHistory(ISPLOTSTS_message, SysTime, ISPLotSave.model.S_USER_ID);
+                        SaveISPLotHistory(ISPLOTSTS_message, ISPLotSave.model.S_USER_ID);
                        
                         break;
                     case '3':
@@ -364,7 +363,7 @@ namespace OQAService.Services
                         UpdateModels(ISPLOTSTS_Save, ISPLOTSTS_message, true);
 
                         //记录历史
-                        SaveISPLotHistory(ISPLOTSTS_message, SysTime, ISPLotSave.model.S_USER_ID);
+                        SaveISPLotHistory(ISPLOTSTS_message, ISPLotSave.model.S_USER_ID);
 
                         break;
                     case '4':
@@ -390,7 +389,7 @@ namespace OQAService.Services
                         UpdateModels(ISPLOTSTS_Save, ISPLOTSTS_message, true);
 
                         //记录历史
-                        SaveISPLotHistory(ISPLOTSTS_message, SysTime, ISPLotSave.model.S_USER_ID);
+                        SaveISPLotHistory(ISPLOTSTS_message,  ISPLotSave.model.S_USER_ID);
 
                         break;
                 }

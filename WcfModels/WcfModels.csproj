@@ -73,6 +73,8 @@
     <Compile Include="1.OQASeverStruct\3 AOI inspection input\LotstsInfoView.cs" />
     <Compile Include="1.OQASeverStruct\4 Marco inspection input\MacroView.cs" />
     <Compile Include="1.OQASeverStruct\5 Mirco inspection input\MicroView.cs" />
+    <Compile Include="1.OQASeverStruct\6 Defect send %28PNDN%29\IspWafDftView.cs" />
+    <Compile Include="1.OQASeverStruct\6 Defect send %28PNDN%29\LotPndnInfoSave.cs" />
     <Compile Include="1.OQASeverStruct\7 FOUP change\LotSlotidSave.cs" />
     <Compile Include="1.OQASeverStruct\7 FOUP change\LotSlotidView.cs" />
     <Compile Include="1.OQASeverStruct\8 Lot package\LotPackageInput.cs" />
@@ -102,7 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="1.OQASeverStruct\2 Defect Lot result\" />
-    <Folder Include="1.OQASeverStruct\6 Defect send %28PNDN%29\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

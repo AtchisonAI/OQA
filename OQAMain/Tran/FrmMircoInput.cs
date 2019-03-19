@@ -85,6 +85,7 @@ namespace OQAMain
                 else
                 {
                     lblSucessMsg.Text = rspInfo._MsgCode;
+                    MessageBox.Show("保存成功!");
                 }
             }
             catch (System.Exception ex)
@@ -95,7 +96,26 @@ namespace OQAMain
         //提交
         private void btnEdite_Click(object sender, EventArgs e)
         {
-            btnCreate_Click(sender, e);
+            try
+            {
+                UpdateModelReq<AOIShowView> updateReq = new UpdateModelReq<AOIShowView>();
+                getUpdateModel(updateReq);
+                ModelRsp<AOIShowView> rspInfo = OQASrv.Call.CreateOrUpdateAOI(updateReq);
+                refreshPage();
+                if (!rspInfo._success)
+                {
+                    MessageBox.Show(rspInfo._ErrorMsg);
+                }
+                else
+                {
+                    lblSucessMsg.Text = rspInfo._MsgCode;
+                    this.Close();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
         //刷新按钮
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -157,7 +177,7 @@ namespace OQAMain
         private void qtyTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             ComFunc.CheckKeyPress(sender, e);
-            if (qtyTextBox.Text.Length > 6)
+            if (qtyTextBox.Text.Length > 5)
             {
                 qtyTextBox.Text = "";
             }
@@ -218,6 +238,10 @@ namespace OQAMain
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(lotId))
+                {
+                    return;
+                }
                 frontButton.Text = "Frontside";
                 lotTextBox.Text = lotId;
                 slotComboBox.Text = slotId;
@@ -279,11 +303,14 @@ namespace OQAMain
                     return;
                 }
                 iSPWAFITM.LotId = lotId;
-                iSPWAFITM.SlotId = slotComboBox.Text;
+                iSPWAFITM.SlotId = slotComboBox.Text.Trim();
                 iSPWAFITM.WaferId = waferId;//mock
                 iSPWAFITM.InspectType = InspectType.MI;
                 iSPWAFITM.SideType = sideType;
-                iSPWAFITM.Magnification = MagnificationTextBox.Text;
+                if (!string.IsNullOrWhiteSpace(MagnificationTextBox.Text))
+                {
+                    iSPWAFITM.Magnification = MagnificationTextBox.Text.Trim();
+                }
                 if (String.IsNullOrWhiteSpace(qtyTextBox.Text))
                 {
                     qtyTextBox.Text = "0";
@@ -294,9 +321,14 @@ namespace OQAMain
                     rateTextBox.Text = "0";
                 }
                 iSPWAFITM.DefectRate = decimal.Parse(rateTextBox.Text);
-                iSPWAFITM.DefectDesc = decRichTextBox.Text;
-                iSPWAFITM.Cmt = cmtRichTextBox.Text;
-                iSPWAFITM.IsInspect = "Y";
+                if (!String.IsNullOrWhiteSpace(decRichTextBox.Text))
+                {
+                    iSPWAFITM.DefectDesc = decRichTextBox.Text.Trim();
+                }
+                if (!String.IsNullOrWhiteSpace(cmtRichTextBox.Text))
+                {
+                    iSPWAFITM.Cmt = cmtRichTextBox.Text.Trim();
+                }
                 if (radioNine.Checked)
                 {
                     iSPWAFITM.InspectPoint = "9";
@@ -324,7 +356,14 @@ namespace OQAMain
                         }
                     }
                 }
-
+                if (sftList.Count > 0)
+                {
+                    iSPWAFITM.InspectResult = "N";
+                }
+                else
+                {
+                    iSPWAFITM.InspectResult = "Y";
+                }
                 model.C_PROC_STEP = '1';
                 model.C_TRAN_FLAG = GlobConst.TRAN_CREATE;
                 model.ISPWAFITM_list = new List<ISPWAFITM>();
@@ -664,5 +703,7 @@ namespace OQAMain
             showPicture(imageUpload_14);
         }
         #endregion
+
+      
     }
 }

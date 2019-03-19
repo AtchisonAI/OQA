@@ -963,6 +963,7 @@
             this.qtyTextBox.Name = "qtyTextBox";
             this.qtyTextBox.Size = new System.Drawing.Size(120, 20);
             this.qtyTextBox.TabIndex = 21;
+            this.qtyTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.qtyTextBox_KeyPress);
             // 
             // rateTextBox
             // 
@@ -1003,6 +1004,7 @@
             this.MagnificationTextBox.Name = "MagnificationTextBox";
             this.MagnificationTextBox.Size = new System.Drawing.Size(120, 20);
             this.MagnificationTextBox.TabIndex = 12;
+            this.MagnificationTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MagnificationTextBox_KeyPress);
             // 
             // cmtRichTextBox
             // 

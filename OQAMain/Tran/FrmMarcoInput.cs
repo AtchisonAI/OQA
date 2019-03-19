@@ -77,7 +77,7 @@ namespace OQAMain
                 }
                 else
                 {
-
+                    MessageBox.Show("保存成功!");
                     lblSucessMsg.Text = rspInfo._MsgCode;
                 }
             }
@@ -89,7 +89,28 @@ namespace OQAMain
         //提交
         private void btnEdite_Click(object sender, EventArgs e)
         {
-            btnCreate_Click(sender, e);
+            try
+            {
+                //检查数据
+                // if (CheckCondition("CREATE") == false) return;
+                UpdateModelReq<AOIShowView> updateReq = new UpdateModelReq<AOIShowView>();
+                this.getUpdateModel(updateReq);
+                ModelRsp<AOIShowView> rspInfo = OQASrv.Call.CreateOrUpdateAOI(updateReq);
+                refreshPage();
+                if (!rspInfo._success)
+                {
+                    MessageBox.Show(rspInfo._ErrorMsg);
+                }
+                else
+                {
+                    lblSucessMsg.Text = rspInfo._MsgCode;
+                    this.Close();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
         //slotId下拉框SelectedIndexChanged
         private void slotComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -185,6 +206,10 @@ namespace OQAMain
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(lotId))
+                {
+                    return;
+                }
                 if (sideType.Equals("F"))
                 {
                     frontButton.Text = "Frontside";
@@ -252,13 +277,18 @@ namespace OQAMain
                     return;
                 }
                 iSPWAFITM.LotId = lotId;
-                iSPWAFITM.SlotId = slotComboBox.Text;
+                iSPWAFITM.SlotId = slotComboBox.Text.Trim();
                 iSPWAFITM.WaferId = waferId;
                 iSPWAFITM.InspectType = InspectType.MA;
                 iSPWAFITM.SideType = sideType;
-                iSPWAFITM.DefectDesc = decRichTextBox.Text;
-                iSPWAFITM.Cmt = cmtRichTextBox.Text;
-                iSPWAFITM.IsInspect = "Y";
+                if (!String.IsNullOrWhiteSpace(decRichTextBox.Text))
+                {
+                    iSPWAFITM.DefectDesc = decRichTextBox.Text.Trim();
+                }
+                if (!String.IsNullOrWhiteSpace(cmtRichTextBox.Text))
+                {
+                    iSPWAFITM.Cmt = cmtRichTextBox.Text.Trim();
+                }
                 iSPWAFITM.InspectPoint = "25";
 
                 for (int i = 0; i < 24; i++)
@@ -280,7 +310,14 @@ namespace OQAMain
                         }
                     }
                 }
-
+                if (sftList.Count > 0)
+                {
+                    iSPWAFITM.InspectResult = "N";
+                }
+                else
+                {
+                    iSPWAFITM.InspectResult = "Y";
+                }
                 model.C_PROC_STEP = '1';
                 model.C_TRAN_FLAG = GlobConst.TRAN_CREATE;
                 model.ISPWAFITM_list = new List<ISPWAFITM>();

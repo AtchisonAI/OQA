@@ -41,7 +41,7 @@ namespace OQAMain
         // private bool b_load_flag  ;
         private bool Have_flag = false;
         private string ship_no;
-        //private string shipID;
+        private string shipID;
         #endregion
 
 
@@ -288,7 +288,7 @@ namespace OQAMain
         //checkshipid单选
         private void CheckShipID_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            txtShipNo.Text = CheckShipID.SelectedItem.ToString();
+            shipID = CheckShipID.SelectedItem.ToString();
             if (CheckShipID.CheckedItems.Count > 0)
             {
                 for (int i = 0; i < CheckShipID.Items.Count; i++)
@@ -315,7 +315,7 @@ namespace OQAMain
                 return;
             }
 
-            if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', txtShipNo.Text) == false) return;
+            if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', shipID) == false) return;
         }
 
         private bool QueryShipIDList(char c_proc_step, char c_tran_flag)
@@ -365,9 +365,9 @@ namespace OQAMain
                     if (SearchShipIDList(GlobConst.TRAN_VIEW, '3', txtShipNo.Text.Trim()) == false) return;
                 }
                 else {
-                    CheckShipID.Items.Clear();
-                    if (QueryShipIDList(GlobConst.TRAN_VIEW, '1') == false) return;
-                    MessageBox.Show("需要选择打印的shipID");
+                        CheckShipID.Items.Clear();
+                        if (QueryShipIDList(GlobConst.TRAN_VIEW, '1') == false) return;
+                   // MessageBox.Show("输入要查询的shipID");
                 }
             }
         }
@@ -390,7 +390,6 @@ namespace OQAMain
                 CheckShipID.Items.Clear();
                 for (int i = 0; i < out_data.model.SEARCHshipID_list.Count; i++)
                 {
-
                     ListViewItem list_item = new ListViewItem();
 
                     list_item.Text = out_data.model.SEARCHshipID_list[i][0].ToString();

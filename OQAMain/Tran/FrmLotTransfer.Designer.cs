@@ -59,18 +59,18 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1993, 14);
+            this.btnClose.Location = new System.Drawing.Point(2100, 14);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(557, 11);
+            this.btnCreate.Location = new System.Drawing.Point(664, 11);
             this.btnCreate.Text = "OK";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1794, 11);
+            this.btnEdite.Location = new System.Drawing.Point(1901, 11);
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
@@ -308,6 +308,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FrmLotTransfer";
+            this.Text = "FrmLotTransfer";
             this.Load += new System.EventHandler(this.FrmLotTransfer_Load);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
             this.Controls.SetChildIndex(this.pnlMenu, 0);

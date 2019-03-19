@@ -290,6 +290,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\FrmWaferInspectRecordPrint.datasource" />
+    <None Include="Properties\DataSources\OQAMain.Print.FrmOQAShipListPrintData.datasource" />
     <None Include="Properties\DataSources\OQAMain.Print.FrmWaferInspectRecord_sub.datasource" />
     <None Include="Properties\DataSources\OQAMain.Print.WaferInspectRecord_sub.datasource" />
     <None Include="Properties\DataSources\WCFModels.MESDB.FWTST1.CEmpPercentView.datasource" />

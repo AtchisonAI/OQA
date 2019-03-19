@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ServiceModel;
+using System.Windows.Forms;
 using WcfClientCore.Utils.Authority;
 using WcfContract;
+using WCFModels;
+using WCFModels.Frame;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 
@@ -40,6 +44,13 @@ namespace WcfClientCore.WcfSrv
         public static ModelListRsp<ControlAccessString> QueryControlAccessString()
         {
             QueryReq req = new QueryReq();
+            QueryCondition querycon = new QueryCondition();
+            querycon.paramName = "SYSNAME";
+            querycon.value = "OQA";
+            querycon.compareType = CompareType.Equal;
+            querycon.conditionType = LogicCondition.AndAlso;
+            req.queryConditionList.Add(querycon);
+
             return WcfClient.QueryControlAccessString(req);
         }
 
@@ -51,7 +62,16 @@ namespace WcfClientCore.WcfSrv
                 operateType = type
             };
 
-            return WcfClient.UpdateControlAccessString(updateReq);
+            try
+            {
+                return WcfClient.UpdateControlAccessString(updateReq);
+            } catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                ModelRsp<ControlAccessString> rsp = new ModelRsp<ControlAccessString>();
+                rsp._success = false;
+                return rsp;
+            }
         }
 
         public static void LoadUserAccessString(List<string> userAccessList)

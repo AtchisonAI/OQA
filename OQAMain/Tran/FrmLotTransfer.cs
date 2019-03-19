@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using WCFModels.OQA;
 using WCFModels.Message;
 using System.Collections.Generic;
+using WcfClientCore.Utils.Authority;
 
 namespace OQAMain
 {
@@ -171,6 +172,7 @@ namespace OQAMain
       
         private void FrmLotTransfer_Load(object sender, EventArgs e)
         {
+            txtCreater.Text = AuthorityControl.GetUserProfile().userId;
             try
             {
                 if (QueryLotIDList(GlobConst.TRAN_VIEW, '1') == false) return;
@@ -474,7 +476,7 @@ namespace OQAMain
                 ComFunc.InitListView(listship, true);
                 txtPartID.Text = "";
                 txtQTY.Text = "";
-                txtCreater.Text = "";
+               // txtCreater.Text = "";
                 txtDate.Text = "";
                 return;
             }
@@ -535,7 +537,7 @@ namespace OQAMain
             ComFunc.InitListView(listship, true);
             txtPartID.Text = "";
             txtQTY.Text = "";
-            txtCreater.Text = "";
+            
             txtDate.Text = "";
             this.LotIDList.ItemCheck += LotIDList_ItemCheck;
         }

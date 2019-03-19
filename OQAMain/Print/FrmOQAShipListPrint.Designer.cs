@@ -49,16 +49,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(590, 11);
+            this.btnClose.Location = new System.Drawing.Point(697, 11);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(969, 13);
+            this.btnCreate.Location = new System.Drawing.Point(1076, 13);
             this.btnCreate.Visible = false;
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1290, 10);
+            this.btnEdite.Location = new System.Drawing.Point(1397, 10);
             this.btnEdite.Text = "Export";
             this.btnEdite.Visible = false;
             // 
@@ -93,6 +93,9 @@
             // 
             // CheckShipID
             // 
+            this.CheckShipID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckShipID.CheckOnClick = true;
             this.CheckShipID.FormattingEnabled = true;
             this.CheckShipID.Location = new System.Drawing.Point(13, 90);
@@ -195,7 +198,6 @@
             this.btnQuery.Text = "查询";
             this.btnQuery.UseVisualStyleBackColor = true;
             this.btnQuery.Visible = false;
-            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click_1);
             // 
             // FrmOQAShipListPrint
             // 

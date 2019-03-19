@@ -9,16 +9,23 @@
       </ConnectionProperties>
       <rd:DataSourceID>dbf6d191-ad72-4fc9-975e-fbc73e0756c3</rd:DataSourceID>
     </DataSource>
+    <DataSource Name="OQAMainPrint1">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>4baf7eb8-7577-440a-b08a-18a94bfac7c2</rd:DataSourceID>
+    </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>OQAMainPrint</DataSourceName>
+        <DataSourceName>OQAMainPrint1</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="InspectionRequest">
-          <DataField>InspectionRequest</DataField>
+        <Field Name="InspectionResult">
+          <DataField>InspectionResult</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="LotID">
@@ -53,19 +60,19 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.73279cm</Width>
+                  <Width>2.58556cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.39696cm</Width>
+                  <Width>3.33793cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.54148cm</Width>
+                  <Width>3.48245cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.57799cm</Width>
+                  <Width>3.51896cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.13686cm</Width>
+                  <Width>6.37297cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -176,7 +183,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Inspection Result:</Value>
+                                  <Value>Inspection Result</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -332,13 +339,13 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="InspectionRequest">
+                        <Textbox Name="InspectionResult">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!InspectionRequest.Value</Value>
+                                  <Value>=Fields!InspectionResult.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -347,7 +354,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>InspectionRequest</rd:DefaultName>
+                          <rd:DefaultName>InspectionResult</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -359,6 +366,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -418,9 +426,10 @@
             <FixedColumnHeaders>true</FixedColumnHeaders>
             <FixedRowHeaders>true</FixedRowHeaders>
             <DataSetName>DataSet1</DataSetName>
-            <Top>0.22712cm</Top>
+            <Top>0.03528cm</Top>
+            <Left>0.08821cm</Left>
             <Height>1.45076cm</Height>
-            <Width>19.38608cm</Width>
+            <Width>19.29787cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -431,370 +440,33 @@
         <Height>3.20356in</Height>
         <Style>
           <Border>
-            <Style>Solid</Style>
+            <Style>None</Style>
           </Border>
+          <LeftBorder>
+            <Style>Solid</Style>
+          </LeftBorder>
+          <RightBorder>
+            <Style>Solid</Style>
+          </RightBorder>
         </Style>
       </Body>
-      <Width>7.66356in</Width>
+      <Width>7.67398in</Width>
       <Page>
         <PageHeader>
           <Height>5.29759cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Rectangle Name="Rectangle2">
-              <ReportItems>
-                <Line Name="Line1">
-                  <Left>2.67375cm</Left>
-                  <Height>2.07077cm</Height>
-                  <Width>0cm</Width>
-                  <Style>
-                    <Border>
-                      <Style>Solid</Style>
-                    </Border>
-                  </Style>
-                </Line>
-                <Line Name="Line6">
-                  <Left>13.01309cm</Left>
-                  <Height>2.07077cm</Height>
-                  <Width>0cm</Width>
-                  <ZIndex>1</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>Solid</Style>
-                    </Border>
-                  </Style>
-                </Line>
-                <Line Name="Line7">
-                  <Left>9.49413cm</Left>
-                  <Height>2.07077cm</Height>
-                  <Width>0cm</Width>
-                  <ZIndex>2</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>Solid</Style>
-                    </Border>
-                  </Style>
-                </Line>
-                <Line Name="Line8">
-                  <Left>6.01168cm</Left>
-                  <Height>2.07077cm</Height>
-                  <Width>0cm</Width>
-                  <ZIndex>3</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>Solid</Style>
-                    </Border>
-                  </Style>
-                </Line>
-                <Line Name="Line9">
-                  <Left>16.19454cm</Left>
-                  <Height>2.07077cm</Height>
-                  <Width>0cm</Width>
-                  <ZIndex>4</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>Solid</Style>
-                    </Border>
-                  </Style>
-                </Line>
-                <Textbox Name="Textbox15">
-                  <CanGrow>true</CanGrow>
-                  <CanShrink>true</CanShrink>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>Wafer Qty:</Value>
-                          <Style />
-                        </TextRun>
-                      </TextRuns>
-                      <Style />
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>Textbox15</rd:DefaultName>
-                  <Top>0.41244cm</Top>
-                  <Left>6.19689cm</Left>
-                  <Height>0.6cm</Height>
-                  <Width>2.5cm</Width>
-                  <ZIndex>5</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-                <Textbox Name="Textbox16">
-                  <CanGrow>true</CanGrow>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>芯片数量：</Value>
-                          <Style>
-                            <FontFamily>宋体</FontFamily>
-                          </Style>
-                        </TextRun>
-                      </TextRuns>
-                      <Style />
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>Textbox16</rd:DefaultName>
-                  <Top>1.04744cm</Top>
-                  <Left>6.19689cm</Left>
-                  <Height>0.6cm</Height>
-                  <Width>2.5cm</Width>
-                  <ZIndex>6</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-                <Textbox Name="Textbox18">
-                  <CanGrow>true</CanGrow>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>Date:</Value>
-                          <Style />
-                        </TextRun>
-                      </TextRuns>
-                      <Style />
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>Textbox18</rd:DefaultName>
-                  <Top>0.41244cm</Top>
-                  <Left>13.11606cm</Left>
-                  <Height>0.6cm</Height>
-                  <Width>2.5cm</Width>
-                  <ZIndex>7</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-                <Textbox Name="Textbox20">
-                  <CanGrow>true</CanGrow>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>日期：</Value>
-                          <Style>
-                            <FontFamily>宋体</FontFamily>
-                          </Style>
-                        </TextRun>
-                      </TextRuns>
-                      <Style />
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>Textbox20</rd:DefaultName>
-                  <Top>1.04744cm</Top>
-                  <Left>13.11606cm</Left>
-                  <Height>0.6cm</Height>
-                  <Width>2.5cm</Width>
-                  <ZIndex>8</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-                <Textbox Name="ParamPartID">
-                  <CanGrow>true</CanGrow>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>Part ID:</Value>
-                          <Style />
-                        </TextRun>
-                      </TextRuns>
-                      <Style />
-                    </Paragraph>
-                  </Paragraphs>
-                  <Top>0.41244cm</Top>
-                  <Left>0.3175cm</Left>
-                  <Height>0.6cm</Height>
-                  <Width>2.18513cm</Width>
-                  <ZIndex>9</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-                <Textbox Name="ParamPartID2">
-                  <CanGrow>true</CanGrow>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>料号：</Value>
-                          <Style>
-                            <FontFamily>宋体</FontFamily>
-                          </Style>
-                        </TextRun>
-                      </TextRuns>
-                      <Style />
-                    </Paragraph>
-                  </Paragraphs>
-                  <Top>1.04744cm</Top>
-                  <Left>0.3175cm</Left>
-                  <Height>0.6cm</Height>
-                  <Width>2.18513cm</Width>
-                  <ZIndex>10</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-                <Textbox Name="ParameterPartID">
-                  <CanGrow>true</CanGrow>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>=Parameters!ParameterPartID.Value</Value>
-                          <Style />
-                        </TextRun>
-                      </TextRuns>
-                      <Style />
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>ParameterPartID</rd:DefaultName>
-                  <Top>0.83694cm</Top>
-                  <Left>3.06624cm</Left>
-                  <Height>0.6cm</Height>
-                  <Width>2.76905cm</Width>
-                  <ZIndex>11</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-                <Textbox Name="ParamWaferQty">
-                  <CanGrow>true</CanGrow>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>=Parameters!ParamWaferQty.Value</Value>
-                          <Style />
-                        </TextRun>
-                      </TextRuns>
-                      <Style />
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>ParamWaferQty</rd:DefaultName>
-                  <Top>0.67819cm</Top>
-                  <Left>10.16742cm</Left>
-                  <Height>0.6cm</Height>
-                  <Width>2.20718cm</Width>
-                  <ZIndex>12</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-                <Textbox Name="ParamDate">
-                  <CanGrow>true</CanGrow>
-                  <KeepTogether>true</KeepTogether>
-                  <Paragraphs>
-                    <Paragraph>
-                      <TextRuns>
-                        <TextRun>
-                          <Value>=Parameters!ParamDate.Value</Value>
-                          <Style />
-                        </TextRun>
-                      </TextRuns>
-                      <Style />
-                    </Paragraph>
-                  </Paragraphs>
-                  <rd:DefaultName>ParamDate</rd:DefaultName>
-                  <Top>0.67819cm</Top>
-                  <Left>16.48918cm</Left>
-                  <Height>0.6cm</Height>
-                  <Width>2.60174cm</Width>
-                  <ZIndex>13</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>None</Style>
-                    </Border>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                </Textbox>
-              </ReportItems>
-              <KeepTogether>true</KeepTogether>
-              <Top>3.22682cm</Top>
-              <Left>0.00001cm</Left>
-              <Height>2.07077cm</Height>
-              <Width>19.38606cm</Width>
-              <Style>
-                <Border>
-                  <Style>Solid</Style>
-                </Border>
-              </Style>
-            </Rectangle>
             <Rectangle Name="Rectangle1">
               <ReportItems>
                 <Image Name="Image1">
                   <Source>Embedded</Source>
                   <Value>logo</Value>
                   <Sizing>FitProportional</Sizing>
-                  <Top>0.7112cm</Top>
-                  <Left>0.08819cm</Left>
+                  <Top>0.44662cm</Top>
+                  <Left>0.22931cm</Left>
                   <Height>1.84396cm</Height>
-                  <Width>3.43146cm</Width>
+                  <Width>3.20215cm</Width>
                   <Style>
                     <Border>
                       <Style>None</Style>
@@ -817,8 +489,8 @@
                       <Style />
                     </Paragraph>
                   </Paragraphs>
-                  <Top>0.3937cm</Top>
-                  <Left>3.70981cm</Left>
+                  <Top>0.12912cm</Top>
+                  <Left>3.62162cm</Left>
                   <Height>1.28792cm</Height>
                   <Width>12.48473cm</Width>
                   <ZIndex>1</ZIndex>
@@ -851,9 +523,9 @@
                       </Style>
                     </Paragraph>
                   </Paragraphs>
-                  <Top>1.87716cm</Top>
-                  <Left>4.61933cm</Left>
-                  <Height>1.24383cm</Height>
+                  <Top>1.61258cm</Top>
+                  <Left>4.53114cm</Left>
+                  <Height>1.17327cm</Height>
                   <Width>9.88188cm</Width>
                   <ZIndex>2</ZIndex>
                   <Style>
@@ -872,10 +544,10 @@
                   <Value>=System.Convert.FromBase64String(Parameters!ParameterBarcode.Value)</Value>
                   <MIMEType>image/x-png</MIMEType>
                   <Sizing>FitProportional</Sizing>
-                  <Top>0.36724cm</Top>
-                  <Left>16.17168cm</Left>
+                  <Top>0.42016cm</Top>
+                  <Left>16.40099cm</Left>
                   <Height>2.32021cm</Height>
-                  <Width>2.91924cm</Width>
+                  <Width>2.60174cm</Width>
                   <ZIndex>3</ZIndex>
                   <Style>
                     <Border>
@@ -885,9 +557,353 @@
                 </Image>
               </ReportItems>
               <KeepTogether>true</KeepTogether>
-              <Left>0.00001cm</Left>
-              <Height>3.19154cm</Height>
-              <Width>19.38606cm</Width>
+              <Top>0.26458cm</Top>
+              <Left>0.08821cm</Left>
+              <Height>2.85641cm</Height>
+              <Width>19.29787cm</Width>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Rectangle>
+            <Rectangle Name="Rectangle2">
+              <ReportItems>
+                <Line Name="Line1">
+                  <Left>2.58556cm</Left>
+                  <Height>2.07077cm</Height>
+                  <Width>0cm</Width>
+                  <Style>
+                    <Border>
+                      <Style>Solid</Style>
+                    </Border>
+                  </Style>
+                </Line>
+                <Line Name="Line6">
+                  <Left>12.9249cm</Left>
+                  <Height>2.07077cm</Height>
+                  <Width>0cm</Width>
+                  <ZIndex>1</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>Solid</Style>
+                    </Border>
+                  </Style>
+                </Line>
+                <Line Name="Line7">
+                  <Left>9.40594cm</Left>
+                  <Height>2.07077cm</Height>
+                  <Width>0cm</Width>
+                  <ZIndex>2</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>Solid</Style>
+                    </Border>
+                  </Style>
+                </Line>
+                <Line Name="Line8">
+                  <Left>5.92349cm</Left>
+                  <Height>2.07077cm</Height>
+                  <Width>0cm</Width>
+                  <ZIndex>3</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>Solid</Style>
+                    </Border>
+                  </Style>
+                </Line>
+                <Line Name="Line9">
+                  <Left>16.10635cm</Left>
+                  <Height>2.07077cm</Height>
+                  <Width>0cm</Width>
+                  <ZIndex>4</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>Solid</Style>
+                    </Border>
+                  </Style>
+                </Line>
+                <Textbox Name="Textbox15">
+                  <CanGrow>true</CanGrow>
+                  <CanShrink>true</CanShrink>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Wafer Qty:</Value>
+                          <Style />
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox15</rd:DefaultName>
+                  <Top>0.41244cm</Top>
+                  <Left>6.1087cm</Left>
+                  <Height>0.6cm</Height>
+                  <Width>2.5cm</Width>
+                  <ZIndex>5</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Textbox16">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>芯片数量：</Value>
+                          <Style>
+                            <FontFamily>宋体</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox16</rd:DefaultName>
+                  <Top>1.04744cm</Top>
+                  <Left>6.1087cm</Left>
+                  <Height>0.6cm</Height>
+                  <Width>2.5cm</Width>
+                  <ZIndex>6</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Textbox18">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Date:</Value>
+                          <Style />
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox18</rd:DefaultName>
+                  <Top>0.41244cm</Top>
+                  <Left>13.02787cm</Left>
+                  <Height>0.6cm</Height>
+                  <Width>2.5cm</Width>
+                  <ZIndex>7</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Textbox20">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>日期：</Value>
+                          <Style>
+                            <FontFamily>宋体</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox20</rd:DefaultName>
+                  <Top>1.04744cm</Top>
+                  <Left>13.02787cm</Left>
+                  <Height>0.6cm</Height>
+                  <Width>2.5cm</Width>
+                  <ZIndex>8</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="ParamPartID">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Part ID:</Value>
+                          <Style />
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.41244cm</Top>
+                  <Left>0.22931cm</Left>
+                  <Height>0.6cm</Height>
+                  <Width>2.18513cm</Width>
+                  <ZIndex>9</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="ParamPartID2">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>料号：</Value>
+                          <Style>
+                            <FontFamily>宋体</FontFamily>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>1.04744cm</Top>
+                  <Left>0.22931cm</Left>
+                  <Height>0.6cm</Height>
+                  <Width>2.18513cm</Width>
+                  <ZIndex>10</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="ParameterPartID">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Parameters!ParameterPartID.Value</Value>
+                          <Style />
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>ParameterPartID</rd:DefaultName>
+                  <Top>0.83694cm</Top>
+                  <Left>2.97805cm</Left>
+                  <Height>0.6cm</Height>
+                  <Width>2.76905cm</Width>
+                  <ZIndex>11</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="ParamWaferQty">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Parameters!ParamWaferQty.Value</Value>
+                          <Style />
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>ParamWaferQty</rd:DefaultName>
+                  <Top>0.67819cm</Top>
+                  <Left>10.07923cm</Left>
+                  <Height>0.6cm</Height>
+                  <Width>2.20718cm</Width>
+                  <ZIndex>12</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="ParamDate">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Parameters!ParamDate.Value</Value>
+                          <Style />
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>ParamDate</rd:DefaultName>
+                  <Top>0.67819cm</Top>
+                  <Left>16.40099cm</Left>
+                  <Height>0.6cm</Height>
+                  <Width>2.60174cm</Width>
+                  <ZIndex>13</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+              </ReportItems>
+              <KeepTogether>true</KeepTogether>
+              <Top>3.19155cm</Top>
+              <Left>0.08821cm</Left>
+              <Height>2.07077cm</Height>
+              <Width>19.29787cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -956,7 +972,7 @@
                   </Paragraphs>
                   <rd:DefaultName>Textbox57</rd:DefaultName>
                   <Top>1.46239cm</Top>
-                  <Left>0.08819cm</Left>
+                  <Left>0.13097cm</Left>
                   <Height>0.6cm</Height>
                   <Width>2.41444cm</Width>
                   <ZIndex>1</ZIndex>
@@ -988,7 +1004,7 @@
                   </Paragraphs>
                   <rd:DefaultName>Textbox57</rd:DefaultName>
                   <Top>1.44465cm</Top>
-                  <Left>10.80674cm</Left>
+                  <Left>9.85424cm</Left>
                   <Height>0.6cm</Height>
                   <Width>2.5cm</Width>
                   <ZIndex>2</ZIndex>
@@ -1018,7 +1034,7 @@
                   </Paragraphs>
                   <rd:DefaultName>Textbox57</rd:DefaultName>
                   <Top>0.66826cm</Top>
-                  <Left>10.80674cm</Left>
+                  <Left>9.85424cm</Left>
                   <Height>0.6cm</Height>
                   <Width>2.5cm</Width>
                   <ZIndex>3</ZIndex>
@@ -1033,7 +1049,7 @@
                   </Style>
                 </Textbox>
                 <Line Name="Line11">
-                  <Left>2.85014cm</Left>
+                  <Left>3.80264cm</Left>
                   <Height>2.41315cm</Height>
                   <Width>0cm</Width>
                   <ZIndex>4</ZIndex>
@@ -1068,9 +1084,9 @@
               </ReportItems>
               <KeepTogether>true</KeepTogether>
               <Top>0.02805cm</Top>
-              <Left>0.00001cm</Left>
+              <Left>0.00002cm</Left>
               <Height>2.44843cm</Height>
-              <Width>19.38606cm</Width>
+              <Width>19.49189cm</Width>
               <Style>
                 <Border>
                   <Style>Solid</Style>

@@ -89,6 +89,8 @@
     <Compile Include="MESDB\FWTST1\View\FWTST1_View.cs" />
     <Compile Include="Message\Demo\DemoView.cs" />
     <Compile Include="Message\Emp\QueryEmpReq.cs" />
+    <Compile Include="Message\Login\LoginRsp.cs" />
+    <Compile Include="Message\Login\QuerUserFavoriteReq.cs" />
     <Compile Include="Message\Login\LoginReq.cs" />
     <Compile Include="Message\RMS\QueryRmsUser.cs" />
     <Compile Include="Message\WcfMsgBase.cs" />

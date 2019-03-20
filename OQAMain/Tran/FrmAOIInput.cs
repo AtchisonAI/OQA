@@ -7,6 +7,7 @@ using WCFModels.OQA;
 using System.Collections.Generic;
 using WCFModels.Message;
 using OQA_Core.Controls;
+using WcfClientCore.Utils.Authority;
 
 namespace OQAMain
 {
@@ -20,6 +21,7 @@ namespace OQAMain
         private decimal? num = 0;
         private bool jumpFlag = false;//页面跳转
         private ISPIMGDEF imgInfo = new ISPIMGDEF();
+        ISPWAFITM wafInfo = new ISPWAFITM();
         #endregion
 
         #region  Windows Form auto generated code 
@@ -298,9 +300,9 @@ namespace OQAMain
                     {
                         foreach (ISPWAFITM child in info.model.ISPWAFITM_list)
                         {
-                            if (!slotComboBox.Items.Contains(child.SlotId))
+                            if (!slotComboBox.Items.Contains(ComFunc.Trim(child.SlotId)))
                             {
-                                slotComboBox.Items.Add(child.SlotId);
+                                slotComboBox.Items.Add(ComFunc.Trim(child.SlotId));
                             }
                         }
                     }
@@ -341,13 +343,14 @@ namespace OQAMain
                     {
                         if (null != qryResult.model.ISPWAFITM_list && qryResult.model.ISPWAFITM_list.Count > 0)
                         {
-                            decRichTextBox.Text = qryResult.model.ISPWAFITM_list[0].DefectDesc;
-                            cmtRichTextBox.Text = qryResult.model.ISPWAFITM_list[0].Cmt;
-                            ReviewTextBox.Text = qryResult.model.ISPWAFITM_list[0].ReviewUser;
-                            MagnificationTextBox.Text = qryResult.model.ISPWAFITM_list[0].Magnification;
-                            qtyTextBox.Text = qryResult.model.ISPWAFITM_list[0].DieQty.ToString();
-                            rateTextBox.Text = qryResult.model.ISPWAFITM_list[0].DefectRate.ToString();
-                            waferId = qryResult.model.ISPWAFITM_list[0].WaferId;
+                            wafInfo = qryResult.model.ISPWAFITM_list[0];
+                            decRichTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DefectDesc);
+                            cmtRichTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].Cmt);
+                            ReviewTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].ReviewUser);
+                            MagnificationTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].Magnification);
+                            qtyTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DieQty.ToString());
+                            rateTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DefectRate.ToString());
+                            waferId = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].WaferId);
                             //slotId = qryResult.model.ISPWAFITM_list[0].SlotId;
                             //slotComboBox.Text = slotId;
 
@@ -417,38 +420,27 @@ namespace OQAMain
                     MessageBox.Show("请先选择lotId、slotId");
                     return;
                 }
-                iSPWAFITM.LotId = lotId;
-                iSPWAFITM.SlotId = slotComboBox.Text.Trim();
-                iSPWAFITM.WaferId = waferId;
-                iSPWAFITM.InspectType = InspectType.AOI;
-                iSPWAFITM.SideType = sideType;
-                if (!string.IsNullOrWhiteSpace(MagnificationTextBox.Text))
-                {
-                    iSPWAFITM.Magnification = MagnificationTextBox.Text.Trim();
-                }
+                //iSPWAFITM.LotId = lotId;
+                //iSPWAFITM.SlotId = ComFunc.Trim(slotComboBox.Text);
+                //iSPWAFITM.WaferId = waferId;
+                //iSPWAFITM.InspectType = InspectType.AOI;
+                //iSPWAFITM.SideType = sideType;
+                wafInfo.UpdateUserId = AuthorityControl.GetUserProfile().userId;
+                wafInfo.Magnification = ComFunc.Trim(MagnificationTextBox.Text);
                 if (String.IsNullOrWhiteSpace(qtyTextBox.Text))
                 {
                     qtyTextBox.Text = "0";
                 }
-                iSPWAFITM.DieQty = decimal.Parse(qtyTextBox.Text);
+                wafInfo.DieQty = decimal.Parse(qtyTextBox.Text);
                 if (String.IsNullOrWhiteSpace(rateTextBox.Text))
                 {
                     rateTextBox.Text = "0";
                 }
-                iSPWAFITM.DefectRate = decimal.Parse(rateTextBox.Text);
-                if (!String.IsNullOrWhiteSpace(ReviewTextBox.Text))
-                {
-                    iSPWAFITM.ReviewUser = ReviewTextBox.Text.Trim();
-                }
-                if (!String.IsNullOrWhiteSpace(decRichTextBox.Text))
-                {
-                    iSPWAFITM.DefectDesc = decRichTextBox.Text.Trim();
-                }
-                if (!String.IsNullOrWhiteSpace(cmtRichTextBox.Text))
-                {
-                    iSPWAFITM.Cmt = cmtRichTextBox.Text.Trim();
-                }
-                iSPWAFITM.InspectPoint = "25";
+                wafInfo.DefectRate = decimal.Parse(rateTextBox.Text);
+                wafInfo.ReviewUser = ComFunc.Trim(ReviewTextBox.Text);
+                wafInfo.DefectDesc = ComFunc.Trim(decRichTextBox.Text);
+                wafInfo.Cmt = ComFunc.Trim(cmtRichTextBox.Text);
+                wafInfo.InspectPoint = "25";
 
                 for (int i = 0; i < 24; i++)
                 {
@@ -458,13 +450,14 @@ namespace OQAMain
                         foreach (string defect in code)
                         {
                             ISPWAFDFT iSPWAFDFT = new ISPWAFDFT();
-                            iSPWAFDFT.LotId = iSPWAFITM.LotId;
-                            iSPWAFDFT.SlotId = iSPWAFITM.SlotId;
-                            iSPWAFDFT.WaferId = iSPWAFITM.WaferId;
-                            iSPWAFDFT.SideType = iSPWAFITM.SideType;
+                            iSPWAFDFT.LotId = wafInfo.LotId;
+                            iSPWAFDFT.SlotId = wafInfo.SlotId;
+                            iSPWAFDFT.WaferId = wafInfo.WaferId;
+                            iSPWAFDFT.SideType = wafInfo.SideType;
                             iSPWAFDFT.InspectType = InspectType.AOI;
                             iSPWAFDFT.DefectCode = defect;
                             iSPWAFDFT.AreaId = i + 1;
+                            iSPWAFDFT.CreateUserId = AuthorityControl.GetUserProfile().userId;
                             sftList.Add(iSPWAFDFT);
                         }
                     }
@@ -480,7 +473,7 @@ namespace OQAMain
                 model.C_PROC_STEP = '1';
                 model.C_TRAN_FLAG = GlobConst.TRAN_CREATE;
                 model.ISPWAFITM_list = new List<ISPWAFITM>();
-                model.ISPWAFITM_list.Add(iSPWAFITM);
+                model.ISPWAFITM_list.Add(wafInfo);
                 model.ISPWAFDFT_list = sftList;
                 updateReq.model = model;
             }

@@ -10,7 +10,7 @@ namespace WcfContract
         #region 登陆&权限
 
         [OperationContract]
-        ModelListRsp<string> Login(LoginReq loginReq);
+        ModelRsp<LoginRsp> Login(LoginReq loginReq);
 
         [OperationContract]
         ModelListRsp<ControlAccessString> QueryControlAccessString(QueryReq queryReq);
@@ -20,6 +20,12 @@ namespace WcfContract
 
         [OperationContract]
         ModelRsp<ControlAccessString> UpdateControlAccessString(UpdateModelReq<ControlAccessString> updateReq);
+
+        [OperationContract]
+        ModelListRsp<UserFavorite> QueryUserFavorite(QuerUserFavoriteReq querUserFavoriteReq);
+
+        [OperationContract]
+        ModelRsp<UserFavorite> UpdateUserFavorite(UpdateModelReq<UserFavorite> updateReq);
 
         #endregion
     }

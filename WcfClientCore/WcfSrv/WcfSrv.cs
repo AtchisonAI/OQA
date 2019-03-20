@@ -6,7 +6,6 @@ using WcfClientCore.Utils.Authority;
 using WcfContract;
 using WCFModels;
 using WCFModels.Frame;
-using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 
 namespace WcfClientCore.WcfSrv
@@ -22,21 +21,21 @@ namespace WcfClientCore.WcfSrv
             return proxy;
         }
 
-        public static ModelListRsp<string> Login(UserProfile userProfile)
+        public static ModelRsp<LoginRsp> Login(UserProfile userProfile)
         {
             LoginReq loginReq = new LoginReq()
             {
                 userProfile = userProfile
             };
 
-
             var rsp = WcfClient.Login(loginReq);
             if (rsp._success)
             {
                 //获取control&&user accessstring
-                LoadUserAccessString(rsp.models);
-                LoadControlAccessString(QueryControlAccessString().models);
                 LoadUserProfile(userProfile);
+                LoadUserAccessString(rsp.model.userAccessString);
+                LoadControlAccessString(rsp.model.controlAccessString);
+                LoadUserFavoriteCtl(rsp.model.userFavorite);
             }
             return rsp;
         }
@@ -56,10 +55,12 @@ namespace WcfClientCore.WcfSrv
 
         public static ModelRsp<ControlAccessString> UpdateControlAccessString(ControlAccessString dbModel, OperateType type)
         {
+            dbModel.SysName = "OQA";
             UpdateModelReq<ControlAccessString> updateReq = new UpdateModelReq<ControlAccessString>()
             {
                 model = dbModel,
-                operateType = type
+                operateType = type,
+                userId = AuthorityControl.GetUserProfile().userId
             };
 
             try
@@ -69,6 +70,35 @@ namespace WcfClientCore.WcfSrv
             {
                 MessageBox.Show(e.Message);
                 ModelRsp<ControlAccessString> rsp = new ModelRsp<ControlAccessString>();
+                rsp._success = false;
+                return rsp;
+            }
+        }
+
+        public static ModelListRsp<UserFavorite> QueryUserFavorites()
+        {
+            QuerUserFavoriteReq req = new QuerUserFavoriteReq();
+            req.userId = AuthorityControl.GetUserProfile().userId;
+
+            return WcfClient.QueryUserFavorite(req);
+        }
+
+        public static ModelRsp<UserFavorite> UpdateUserFavorite(UserFavorite model, OperateType type)
+        {
+            model.SysName = "OQA";
+            model.UserID = AuthorityControl.GetUserProfile().userId; ;
+
+            UpdateModelReq<UserFavorite> req = new UpdateModelReq<UserFavorite>();
+            req.userId = AuthorityControl.GetUserProfile().userId;
+            req.model = model;
+            req.operateType = type;
+            try
+            {
+                return WcfClient.UpdateUserFavorite(req);
+            } catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                ModelRsp<UserFavorite> rsp = new ModelRsp<UserFavorite>();
                 rsp._success = false;
                 return rsp;
             }
@@ -99,6 +129,11 @@ namespace WcfClientCore.WcfSrv
         public static UserProfile GetUserProfile()
         {
             return AuthorityControl.GetUserProfile();
+        }
+
+        public static void LoadUserFavoriteCtl(List<UserFavorite> list)
+        {
+            AuthorityControl.LoadUserFavoriteList(list);
         }
     }
 }

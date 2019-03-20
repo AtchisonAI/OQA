@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.tool_panel = new System.Windows.Forms.Panel();
+            this.picname_panel = new System.Windows.Forms.Panel();
+            this.name_label = new System.Windows.Forms.Label();
+            this.path_label = new System.Windows.Forms.Label();
+            this.picture_panel = new System.Windows.Forms.Panel();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.lspin_button = new System.Windows.Forms.Button();
             this.print_button = new System.Windows.Forms.Button();
             this.enlarge_button = new System.Windows.Forms.Button();
@@ -36,11 +41,6 @@
             this.reduce_button = new System.Windows.Forms.Button();
             this.rspin_button = new System.Windows.Forms.Button();
             this.zoom_button = new System.Windows.Forms.Button();
-            this.picname_panel = new System.Windows.Forms.Panel();
-            this.name_label = new System.Windows.Forms.Label();
-            this.path_label = new System.Windows.Forms.Label();
-            this.picture_panel = new System.Windows.Forms.Panel();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.tool_panel.SuspendLayout();
             this.picname_panel.SuspendLayout();
             this.picture_panel.SuspendLayout();
@@ -61,93 +61,6 @@
             this.tool_panel.Name = "tool_panel";
             this.tool_panel.Size = new System.Drawing.Size(510, 37);
             this.tool_panel.TabIndex = 8;
-            // 
-            // lspin_button
-            // 
-            this.lspin_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lspin_button.BackgroundImage = global::OQA_Core.Properties.Resources.左旋;
-            this.lspin_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.lspin_button.Location = new System.Drawing.Point(290, 3);
-            this.lspin_button.Name = "lspin_button";
-            this.lspin_button.Size = new System.Drawing.Size(30, 30);
-            this.lspin_button.TabIndex = 4;
-            this.lspin_button.UseVisualStyleBackColor = true;
-            this.lspin_button.Click += new System.EventHandler(this.lspin_button_Click);
-            // 
-            // print_button
-            // 
-            this.print_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.print_button.BackgroundImage = global::OQA_Core.Properties.Resources.打印;
-            this.print_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.print_button.Location = new System.Drawing.Point(474, 3);
-            this.print_button.Name = "print_button";
-            this.print_button.Size = new System.Drawing.Size(30, 30);
-            this.print_button.TabIndex = 7;
-            this.print_button.UseVisualStyleBackColor = true;
-            this.print_button.Visible = false;
-            this.print_button.Click += new System.EventHandler(this.print_button_Click);
-            // 
-            // enlarge_button
-            // 
-            this.enlarge_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.enlarge_button.BackgroundImage = global::OQA_Core.Properties.Resources.放大;
-            this.enlarge_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.enlarge_button.FlatAppearance.BorderSize = 0;
-            this.enlarge_button.ForeColor = System.Drawing.Color.Transparent;
-            this.enlarge_button.Location = new System.Drawing.Point(149, 3);
-            this.enlarge_button.Name = "enlarge_button";
-            this.enlarge_button.Size = new System.Drawing.Size(30, 30);
-            this.enlarge_button.TabIndex = 1;
-            this.enlarge_button.UseVisualStyleBackColor = false;
-            this.enlarge_button.Click += new System.EventHandler(this.enlarge_button_Click);
-            // 
-            // save_button
-            // 
-            this.save_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.save_button.BackgroundImage = global::OQA_Core.Properties.Resources.保存;
-            this.save_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.save_button.Location = new System.Drawing.Point(424, 3);
-            this.save_button.Name = "save_button";
-            this.save_button.Size = new System.Drawing.Size(30, 30);
-            this.save_button.TabIndex = 6;
-            this.save_button.UseVisualStyleBackColor = true;
-            this.save_button.Click += new System.EventHandler(this.save_button_Click);
-            // 
-            // reduce_button
-            // 
-            this.reduce_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.reduce_button.BackgroundImage = global::OQA_Core.Properties.Resources.缩小;
-            this.reduce_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.reduce_button.Location = new System.Drawing.Point(196, 3);
-            this.reduce_button.Name = "reduce_button";
-            this.reduce_button.Size = new System.Drawing.Size(30, 30);
-            this.reduce_button.TabIndex = 2;
-            this.reduce_button.UseVisualStyleBackColor = true;
-            this.reduce_button.Click += new System.EventHandler(this.reduce_button_Click);
-            // 
-            // rspin_button
-            // 
-            this.rspin_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rspin_button.BackgroundImage = global::OQA_Core.Properties.Resources.右旋;
-            this.rspin_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.rspin_button.Location = new System.Drawing.Point(337, 3);
-            this.rspin_button.Name = "rspin_button";
-            this.rspin_button.Size = new System.Drawing.Size(30, 30);
-            this.rspin_button.TabIndex = 5;
-            this.rspin_button.UseVisualStyleBackColor = true;
-            this.rspin_button.Click += new System.EventHandler(this.rspin_button_Click);
-            // 
-            // zoom_button
-            // 
-            this.zoom_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.zoom_button.BackgroundImage = global::OQA_Core.Properties.Resources.复位;
-            this.zoom_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.zoom_button.Location = new System.Drawing.Point(243, 3);
-            this.zoom_button.Name = "zoom_button";
-            this.zoom_button.Size = new System.Drawing.Size(30, 30);
-            this.zoom_button.TabIndex = 3;
-            this.zoom_button.UseVisualStyleBackColor = true;
-            this.zoom_button.Click += new System.EventHandler(this.zoom_button_Click);
             // 
             // picname_panel
             // 
@@ -200,6 +113,104 @@
             this.pictureBox.MouseLeave += new System.EventHandler(this.pictureBox_MouseLeave);
             this.pictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
             this.pictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseUp);
+            // 
+            // lspin_button
+            // 
+            this.lspin_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lspin_button.BackColor = System.Drawing.Color.Transparent;
+            this.lspin_button.BackgroundImage = global::OQA_Core.Properties.Resources.arrow_rotate_clockwise;
+            this.lspin_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.lspin_button.FlatAppearance.BorderSize = 0;
+            this.lspin_button.Location = new System.Drawing.Point(290, 3);
+            this.lspin_button.Name = "lspin_button";
+            this.lspin_button.Size = new System.Drawing.Size(32, 32);
+            this.lspin_button.TabIndex = 4;
+            this.lspin_button.UseVisualStyleBackColor = false;
+            this.lspin_button.Click += new System.EventHandler(this.lspin_button_Click);
+            // 
+            // print_button
+            // 
+            this.print_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.print_button.BackColor = System.Drawing.Color.Transparent;
+            this.print_button.BackgroundImage = global::OQA_Core.Properties.Resources.scanner_working;
+            this.print_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.print_button.Location = new System.Drawing.Point(474, 3);
+            this.print_button.Name = "print_button";
+            this.print_button.Size = new System.Drawing.Size(32, 32);
+            this.print_button.TabIndex = 7;
+            this.print_button.UseVisualStyleBackColor = false;
+            this.print_button.Visible = false;
+            this.print_button.Click += new System.EventHandler(this.print_button_Click);
+            // 
+            // enlarge_button
+            // 
+            this.enlarge_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.enlarge_button.BackColor = System.Drawing.Color.Transparent;
+            this.enlarge_button.BackgroundImage = global::OQA_Core.Properties.Resources.zoom_in1;
+            this.enlarge_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.enlarge_button.FlatAppearance.BorderSize = 0;
+            this.enlarge_button.ForeColor = System.Drawing.Color.Transparent;
+            this.enlarge_button.Location = new System.Drawing.Point(149, 3);
+            this.enlarge_button.Name = "enlarge_button";
+            this.enlarge_button.Size = new System.Drawing.Size(32, 32);
+            this.enlarge_button.TabIndex = 1;
+            this.enlarge_button.UseVisualStyleBackColor = false;
+            this.enlarge_button.Click += new System.EventHandler(this.enlarge_button_Click);
+            // 
+            // save_button
+            // 
+            this.save_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.save_button.BackColor = System.Drawing.Color.Transparent;
+            this.save_button.BackgroundImage = global::OQA_Core.Properties.Resources.saved_imports;
+            this.save_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.save_button.Location = new System.Drawing.Point(424, 3);
+            this.save_button.Name = "save_button";
+            this.save_button.Size = new System.Drawing.Size(32, 32);
+            this.save_button.TabIndex = 6;
+            this.save_button.UseVisualStyleBackColor = false;
+            this.save_button.Click += new System.EventHandler(this.save_button_Click);
+            // 
+            // reduce_button
+            // 
+            this.reduce_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.reduce_button.BackColor = System.Drawing.Color.Transparent;
+            this.reduce_button.BackgroundImage = global::OQA_Core.Properties.Resources.zoom_out;
+            this.reduce_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.reduce_button.FlatAppearance.BorderSize = 0;
+            this.reduce_button.Location = new System.Drawing.Point(196, 3);
+            this.reduce_button.Name = "reduce_button";
+            this.reduce_button.Size = new System.Drawing.Size(32, 32);
+            this.reduce_button.TabIndex = 2;
+            this.reduce_button.UseVisualStyleBackColor = false;
+            this.reduce_button.Click += new System.EventHandler(this.reduce_button_Click);
+            // 
+            // rspin_button
+            // 
+            this.rspin_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rspin_button.BackColor = System.Drawing.Color.Transparent;
+            this.rspin_button.BackgroundImage = global::OQA_Core.Properties.Resources.arrow_rotate_anticlockwise;
+            this.rspin_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rspin_button.FlatAppearance.BorderSize = 0;
+            this.rspin_button.Location = new System.Drawing.Point(337, 3);
+            this.rspin_button.Name = "rspin_button";
+            this.rspin_button.Size = new System.Drawing.Size(32, 32);
+            this.rspin_button.TabIndex = 5;
+            this.rspin_button.UseVisualStyleBackColor = false;
+            this.rspin_button.Click += new System.EventHandler(this.rspin_button_Click);
+            // 
+            // zoom_button
+            // 
+            this.zoom_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.zoom_button.BackColor = System.Drawing.Color.Transparent;
+            this.zoom_button.BackgroundImage = global::OQA_Core.Properties.Resources.zone_resize_actual;
+            this.zoom_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.zoom_button.FlatAppearance.BorderSize = 0;
+            this.zoom_button.Location = new System.Drawing.Point(243, 3);
+            this.zoom_button.Name = "zoom_button";
+            this.zoom_button.Size = new System.Drawing.Size(32, 32);
+            this.zoom_button.TabIndex = 3;
+            this.zoom_button.UseVisualStyleBackColor = false;
+            this.zoom_button.Click += new System.EventHandler(this.zoom_button_Click);
             // 
             // PictureView
             // 

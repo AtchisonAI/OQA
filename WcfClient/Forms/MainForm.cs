@@ -248,7 +248,6 @@ namespace WcfClient
                 log.Error("无法获取ActiveFrm");
                 return;
             }
-            
 
             if (Item.Checked)
             {
@@ -322,11 +321,12 @@ namespace WcfClient
         {
             shutcut_TreeView.Nodes.Clear();
             //从权限库加载
-            foreach(UserFavorite q in AuthorityControl.GetUserFavorite())
+            foreach (UserFavorite q in AuthorityControl.GetUserFavorite())
             {
                 TreeNode tNode = new TreeNode();
                 tNode.Text = q.FormName;
                 tNode.Name = q.ControlId;
+                tNode.ImageIndex = 0;
                 shutcut_TreeView.Nodes.Add(tNode);
             }
         }
@@ -348,6 +348,7 @@ namespace WcfClient
             TreeNode tNode = new TreeNode();
             tNode.Text = Text;
             tNode.Name = contrlId;
+            tNode.ImageIndex = 0;
             shutcut_TreeView.Nodes.Add(tNode);
         }
 

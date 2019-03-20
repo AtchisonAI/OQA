@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLotPackage));
             this.lotInfo_groupBox = new System.Windows.Forms.GroupBox();
             this.lotId_textBox = new System.Windows.Forms.TextBox();
             this.lotId_label = new System.Windows.Forms.Label();
@@ -50,14 +51,14 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1818, 8);
+            this.btnClose.Location = new System.Drawing.Point(1193, 8);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Size = new System.Drawing.Size(62, 26);
             this.btnClose.TabIndex = 6;
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(1628, 8);
+            this.btnCreate.Location = new System.Drawing.Point(1003, 8);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreate.Size = new System.Drawing.Size(62, 26);
             this.btnCreate.TabIndex = 9;
@@ -65,7 +66,7 @@
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1723, 8);
+            this.btnEdite.Location = new System.Drawing.Point(1098, 8);
             this.btnEdite.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdite.Size = new System.Drawing.Size(62, 26);
             this.btnEdite.TabIndex = 5;
@@ -272,6 +273,7 @@
             this.Controls.Add(this.pic_groupBox);
             this.Controls.Add(this.package_groupBox);
             this.Controls.Add(this.lotInfo_groupBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmLotPackage";
             this.Text = "Lot Package";

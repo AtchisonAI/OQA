@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using WCFModels.Message;
 using Syncfusion.Windows.Forms.Tools;
+using WCFModels.Frame;
 
 namespace WcfClientCore.Utils.Authority
 {
@@ -11,6 +12,7 @@ namespace WcfClientCore.Utils.Authority
         private static List<string> accessStringList = new List<string>();
         private static Dictionary<string, string> controlAccesstring = new Dictionary<string, string>();
         private static UserProfile userProfile;
+        private static List<UserFavorite> userFavoriteContrlList = new List<UserFavorite>();
 
         public static void InitializeAuthority(object obj)
         {
@@ -48,17 +50,6 @@ namespace WcfClientCore.Utils.Authority
                         }
                         break;
                     case "TreeView":
-                        TreeView treeViewItem = (TreeView)fi.GetValue(obj);
-                        if (treeViewItem != null && treeViewItem.Parent.Visible)
-                        {
-                            for (int i = 0; i < treeViewItem.Nodes.Count; ++i)
-                            {
-                                if (!IsAceessed(fieldPrefix + fi.Name + ':' + treeViewItem.Nodes[i].Name))
-                                {
-                                    treeViewItem.Nodes[i--].Remove();
-                                }
-                            }
-                        }
                         break;
                     default:
                         break;
@@ -103,6 +94,47 @@ namespace WcfClientCore.Utils.Authority
         public static UserProfile GetUserProfile()
         {
             return userProfile;
+        }
+
+        public static List<UserFavorite> GetUserFavorite()
+        {
+            return userFavoriteContrlList;
+        }
+
+        public static void LoadUserFavoriteList(List<UserFavorite> favoriteCtlList)
+        {
+            //check authority
+            foreach (UserFavorite q in favoriteCtlList)
+            {
+                if (IsAceessed(q.ControlId))
+                {
+                    userFavoriteContrlList.Add(q);
+                }
+            }
+        }
+
+        public static void RemoveUserFavorite(UserFavorite model)
+        {
+            foreach (UserFavorite q in userFavoriteContrlList)
+            {
+                if (q.ControlId.Equals(model.ControlId))
+                {
+                    userFavoriteContrlList.Remove(model);
+                    break;
+                }
+            }
+        }
+
+        public static void AddUserFavorite(UserFavorite model)
+        {
+            foreach (UserFavorite q in userFavoriteContrlList)
+            {
+                if (q.ControlId.Equals(model.ControlId))
+                {
+                    return;
+                }
+            }
+            userFavoriteContrlList.Add(model);
         }
     }
 }

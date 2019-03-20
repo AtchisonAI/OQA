@@ -55,8 +55,20 @@
     <Reference Include="FSLib.Extension">
       <HintPath>..\Components\FSLib.Extension.dll</HintPath>
     </Reference>
+    <Reference Include="HiDM.FactoryWorks.Common">
+      <HintPath>..\Components\HiDM.FactoryWorks.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="HiDM.FactoryWorks.Messages">
+      <HintPath>..\Components\HiDM.FactoryWorks.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="HiDM.FactoryWorks.TibcoRV">
+      <HintPath>..\Components\HiDM.FactoryWorks.TibcoRV.dll</HintPath>
+    </Reference>
     <Reference Include="HiDM.LabelPrinting.Common">
       <HintPath>..\Components\HiDM.LabelPrinting.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\Components\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -141,17 +153,17 @@
     <Compile Include="Print\FrmOQAShipListPrintData.cs" />
     <Compile Include="Print\FrmWaferInspectRecord_sub.cs" />
     <Compile Include="Print\ImageToBytes.cs" />
-    <Compile Include="Tran\FrmDefectLotResult.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tran\FrmDefectLotResult.Designer.cs">
-      <DependentUpon>FrmDefectLotResult.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tran\FrmAOIInput.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tran\FrmAOIInput.Designer.cs">
       <DependentUpon>FrmAOIInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tran\FrmDefectLotResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tran\FrmDefectLotResult.Designer.cs">
+      <DependentUpon>FrmDefectLotResult.cs</DependentUpon>
     </Compile>
     <Compile Include="Tran\FrmMarcoInput.cs">
       <SubType>Form</SubType>
@@ -240,11 +252,11 @@
     <EmbeddedResource Include="Print\FrmWaferInspectRecord.rdlc" />
     <EmbeddedResource Include="Print\FrmPackageLabelPrint.rdlc" />
     <EmbeddedResource Include="Print\FrmWaferInspectRecord_sub.rdlc" />
-    <EmbeddedResource Include="Tran\FrmDefectLotResult.resx">
-      <DependentUpon>FrmDefectLotResult.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Tran\FrmAOIInput.resx">
       <DependentUpon>FrmAOIInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tran\FrmDefectLotResult.resx">
+      <DependentUpon>FrmDefectLotResult.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tran\FrmMarcoInput.resx">
       <DependentUpon>FrmMarcoInput.cs</DependentUpon>

@@ -148,13 +148,14 @@ namespace OQAService.Services
                             T_UPDATEISPLOTSTS.Status = "TransferOut";
                             T_UPDATEISPLOTSTS.TransSeq = In_node.model.D_TRANSSEQ;
                             T_UPDATEISPLOTSTS.UpdateTime = GetSysTime();
-                            T_UPDATEISPLOTSTS.UpdateUserId = " ";
+                            T_UPDATEISPLOTSTS.UpdateUserId = In_node.model.S_USER_ID;
 
                             Do_Update.operateType = OperateType.Update;
                             Do_Update.models.Add(T_UPDATEISPLOTSTS);
                             BeginTrans();
                             //执行
                             UpdateModels(Do_Update, Do_updatemessage, true);
+                            SaveISPLotHistory(Do_updatemessage,  In_node.model.S_USER_ID);
                             EndTrans();
 
                             break;

@@ -161,7 +161,7 @@ namespace OQAService.Services
         }
 
 
-        public  void SaveISPLotHistory(ModelListRsp<ISPLOTSTS> IN_ISPLOTSTS,string s_time,string s_userid)
+        public  void SaveISPLotHistory(ModelListRsp<ISPLOTSTS> IN_ISPLOTSTS,string s_userid)
         {
 
             UpdateModelListReq<ISPLOTHI> ISPLOTHIS_Save = new UpdateModelListReq<ISPLOTHI>();
@@ -209,7 +209,7 @@ namespace OQAService.Services
                 T_ISPLOTHIS.CreateUserId = S_ISPLOTSTS.CreateUserId;
                 T_ISPLOTHIS.UpdateTime = S_ISPLOTSTS.UpdateTime;
                 T_ISPLOTHIS.UpdateUserId = S_ISPLOTSTS.UpdateUserId;
-                T_ISPLOTHIS.TranTime = s_time;
+                T_ISPLOTHIS.TranTime = GetSysTime();
                 T_ISPLOTHIS.TranUserId = s_userid;
 
                 InitTable(T_ISPLOTHIS);

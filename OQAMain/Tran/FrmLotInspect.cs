@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
 using System.Data;
+using System.Diagnostics;
 
 namespace OQAMain
 {
@@ -31,7 +32,7 @@ namespace OQAMain
 
         #region " Variable Definition "
         //private bool b_load_flag  ;
-        private decimal d_lotdieqty;
+        private decimal? d_lotdieqty;
         private string s_vendorname;
         private string s_vendorlotno;
         private string s_orderno;
@@ -160,11 +161,12 @@ namespace OQAMain
                         labPndn.Visible = false;
                         d_tran_seq = 0;
                         ImgISPLot.Enabled = false;
+                        ImgISPLot.RefreshContrl();
                         break;
-                    case "2"://AFTER CREATE
-                        ComFunc.FieldClear(grpMesLot);
-                        labPndn.Visible = false;
-                        d_tran_seq = 0;
+                    case "2"://
+                        dgAOI.Rows.Clear();
+                        dgMacro.Rows.Clear();
+                        dgMIR.Rows.Clear();
                         break;
                     case "3"://AFTER SELECT 
                         ComFunc.FieldClear(grpMesLot);
@@ -270,12 +272,12 @@ namespace OQAMain
                 var out_data = OQASrv.Call.SaveISPLotInfo(in_node);
                 if (out_data._success == true)
                 {
-                    lblSucessMsg.Text = out_data._ErrorMsg;
+                    MessageBox.Show(out_data._MsgCode);
                     return true;
                 }
                 else
                 {
-                    MessageBox.Show(out_data._MsgCode);
+                    MessageBox.Show(out_data._ErrorMsg);
                     return false;
                 }
             }
@@ -329,12 +331,22 @@ namespace OQAMain
                 var out_data = OQASrv.Call.SaveISPLotInfo(in_node);
                 if (out_data._success == true)
                 {
-                    lblSucessMsg.Text = out_data._ErrorMsg;
+                    MessageBox.Show(out_data._MsgCode);
+                    //PNDN跳转
+                    if (out_data.__ByPass == false)
+                    {
+                        //string s_side = dgMacro.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        //FrmMarcoInput MAC = new FrmMarcoInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
+                        //MAC.FormBorderStyle = FormBorderStyle.FixedDialog;
+                        //MAC.WindowState = FormWindowState.Maximized;
+                        //MAC.StartPosition = FormStartPosition.CenterParent;
+                        //MAC.ShowDialog();
+                    }
                     return true;
                 }
                 else
                 {
-                    MessageBox.Show(out_data._MsgCode);
+                    MessageBox.Show(out_data._ErrorMsg);
                     return false;
                 }
             }
@@ -362,6 +374,7 @@ namespace OQAMain
             if (out_data._success == true)
             {
                 labPndn.Visible = true;
+                lblSucessMsg.Text = out_data._MsgCode;
                 txtShift.Focus();
 
                 list_meslot = out_data.model.OQAMESLOT_LIST;
@@ -476,7 +489,7 @@ namespace OQAMain
                 }
 
                 list_AOI = out_data.model.AOI_LIST;
-                dgAOI.Rows.Clear();
+               
                 DataGridViewRow DT = new DataGridViewRow();
                 List<string> list_AOIside = new List<string>
                 {
@@ -539,7 +552,7 @@ namespace OQAMain
 
 
                 list_MAC = out_data.model.MAC_LIST;
-                dgMacro.Rows.Clear();
+                
                 DT = new DataGridViewRow();
 
                 List<string> list_Macside = new List<string>
@@ -602,7 +615,7 @@ namespace OQAMain
                 }
 
                 list_MIR = out_data.model.MIR_LIST;
-                dgMIR.Rows.Clear();
+                
                 DT = new DataGridViewRow();
 
                 List<string> list_MIRside = new List<string>
@@ -883,10 +896,14 @@ namespace OQAMain
 
                 //检查数据
                 if (CheckCondition("ISPVIEW") == false) return;
-
+                 Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
                 //调用事务服务
+                ClearData("2");
                 if (QueryISPWaferInfo(GlobConst.TRAN_VIEW, '2') == false) return;
+                stopwatch.Stop();
 
+                long time = stopwatch.ElapsedMilliseconds;
                 ImgISPLot.Enabled = true;
                 QueryImgByLot(txtISPLotFilter.Text.Trim());
 
@@ -900,14 +917,19 @@ namespace OQAMain
             {
                 if (dgAOI.Rows.Count > 0)
                 {
-                    if (dgAOI.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Y")
+                    if (dgAOI.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Y" || dgAOI.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "D")
                     {
                         string s_side = dgAOI.Rows[e.RowIndex].Cells[0].Value.ToString();
+
                         FrmAOIInput AOI = new FrmAOIInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
                         AOI.FormBorderStyle = FormBorderStyle.FixedDialog;
-                        AOI.WindowState = FormWindowState.Maximized;
+                        AOI.WindowState = FormWindowState.Normal;
+                        AOI.MaximizeBox = false;
+                        AOI.MinimizeBox = false;
                         AOI.StartPosition = FormStartPosition.CenterParent;
                         AOI.ShowDialog();
+
+                        btnISPLotFilter.PerformClick();
                     }
 
                 }
@@ -922,12 +944,14 @@ namespace OQAMain
         {
             if (dgMacro.Rows.Count > 0)
             {
-                if (dgMacro.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Y")
+                if (dgMacro.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Y" || dgMacro.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "D")
                 {
                     string s_side = dgMacro.Rows[e.RowIndex].Cells[0].Value.ToString();
                     FrmMarcoInput MAC = new FrmMarcoInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
                     MAC.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    MAC.WindowState = FormWindowState.Maximized;
+                    MAC.WindowState = FormWindowState.Normal;
+                    MAC.MaximizeBox = false;
+                    MAC.MinimizeBox = false;
                     MAC.StartPosition = FormStartPosition.CenterParent;
                     MAC.ShowDialog();
                 }
@@ -939,12 +963,14 @@ namespace OQAMain
         {
             if (dgMIR.Rows.Count > 0)
             {
-                if (dgMIR.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Y")
+                if (dgMIR.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Y" || dgMIR.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "D")
                 {
                     string s_side = dgMIR.Rows[e.RowIndex].Cells[0].Value.ToString();
                     FrmMircoInput MIR = new FrmMircoInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
                     MIR.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    MIR.WindowState = FormWindowState.Maximized;
+                    MIR.WindowState = FormWindowState.Normal;
+                    MIR.MaximizeBox = false;
+                    MIR.MinimizeBox = false;
                     MIR.StartPosition = FormStartPosition.CenterParent;
                     MIR.ShowDialog();
                 }

@@ -59,18 +59,18 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1993, 14);
+            this.btnClose.Location = new System.Drawing.Point(2100, 14);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(557, 11);
+            this.btnCreate.Location = new System.Drawing.Point(664, 11);
             this.btnCreate.Text = "OK";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1794, 11);
+            this.btnEdite.Location = new System.Drawing.Point(1901, 11);
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
@@ -120,6 +120,9 @@
             // 
             // LotIDList
             // 
+            this.LotIDList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LotIDList.CheckOnClick = true;
             this.LotIDList.FormattingEnabled = true;
             this.LotIDList.Location = new System.Drawing.Point(16, 115);
@@ -177,6 +180,7 @@
             // 
             this.txtCreater.Location = new System.Drawing.Point(121, 72);
             this.txtCreater.Name = "txtCreater";
+            this.txtCreater.ReadOnly = true;
             this.txtCreater.Size = new System.Drawing.Size(100, 21);
             this.txtCreater.TabIndex = 14;
             // 
@@ -260,7 +264,7 @@
             this.Part_ID,
             this.Inspection_Result,
             this.Transeq});
-            this.listship.Cursor = System.Windows.Forms.Cursors.No;
+            this.listship.Cursor = System.Windows.Forms.Cursors.Default;
             this.listship.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listship.Location = new System.Drawing.Point(231, 116);
             this.listship.Name = "listship";
@@ -304,6 +308,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FrmLotTransfer";
+            this.Text = "FrmLotTransfer";
             this.Load += new System.EventHandler(this.FrmLotTransfer_Load);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
             this.Controls.SetChildIndex(this.pnlMenu, 0);

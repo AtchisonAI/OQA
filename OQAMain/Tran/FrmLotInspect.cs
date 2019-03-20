@@ -172,6 +172,15 @@ namespace OQAMain
                         ComFunc.FieldClear(grpMesLot);
                         labPndn.Visible = false;
                         break;
+                    case "4":
+                        //Initialize
+                        ComFunc.InitListView(LstRcvLot, true);
+                        ComFunc.FieldClear(this,txtISPLotFilter,txtISPFoupFilter);
+                        labPndn.Visible = false;
+                        d_tran_seq = 0;
+                        ImgISPLot.Enabled = false;
+                        ImgISPLot.RefreshContrl();
+                        break;
                 }
 
                 
@@ -875,10 +884,21 @@ namespace OQAMain
                 //if (CheckCondition("ISPVIEW") == false) return;
 
                 //调用事务服务
-                if (QueryISPLotInfo(GlobConst.TRAN_VIEW, '1') == false) return;
-                if (LstRcvLot.Items.Count > 0)
+                if (QueryISPLotInfo(GlobConst.TRAN_VIEW, '1') == false)
                 {
-                    LstRcvLot.Items[0].Selected = true;
+                    ClearData("4");
+
+                }
+                else
+                {
+                    if (LstRcvLot.Items.Count > 0)
+                    {
+                        LstRcvLot.Items[0].Selected = true;
+                    }
+                    else
+                    {
+                        ClearData("4");
+                    }
                 }
 
             }
@@ -1018,6 +1038,30 @@ namespace OQAMain
 
                 txtISPLotFilter.Text = "";
                 btnISPLotFilter.PerformClick();
+        }
+
+        private void txtISPLotFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)13)
+            {
+                if (ComFunc.Trim(txtISPLotFilter.Text) != "")
+                {
+                    btnISPLotFilter.PerformClick();
+
+                }
+            }
+        }
+
+        private void txtISPFoupFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)13)
+            {
+                if (ComFunc.Trim(txtISPFoupFilter.Text) != "")
+                {
+                    btnISPLotFilter.PerformClick();
+
+                }
+            }
         }
     }
 }

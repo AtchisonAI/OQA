@@ -59,18 +59,18 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(2100, 14);
+            this.btnClose.Location = new System.Drawing.Point(2207, 14);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(664, 11);
+            this.btnCreate.Location = new System.Drawing.Point(771, 11);
             this.btnCreate.Text = "OK";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1901, 11);
+            this.btnEdite.Location = new System.Drawing.Point(2008, 11);
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
@@ -123,6 +123,7 @@
             this.LotIDList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.LotIDList.BackColor = System.Drawing.SystemColors.Window;
             this.LotIDList.CheckOnClick = true;
             this.LotIDList.FormattingEnabled = true;
             this.LotIDList.Location = new System.Drawing.Point(16, 115);
@@ -281,16 +282,19 @@
             // Qty
             // 
             this.Qty.Text = "Qty";
+            this.Qty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Qty.Width = 125;
             // 
             // Part_ID
             // 
             this.Part_ID.Text = "Part_ID";
+            this.Part_ID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Part_ID.Width = 125;
             // 
             // Inspection_Result
             // 
             this.Inspection_Result.Text = "Inspection_Result";
+            this.Inspection_Result.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Inspection_Result.Width = 125;
             // 
             // Transeq

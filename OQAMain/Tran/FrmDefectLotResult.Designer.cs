@@ -275,6 +275,7 @@
             this.txtISPFoupFilter.Name = "txtISPFoupFilter";
             this.txtISPFoupFilter.Size = new System.Drawing.Size(100, 21);
             this.txtISPFoupFilter.TabIndex = 12;
+            this.txtISPFoupFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtISPFoupFilter_KeyPress);
             // 
             // label4
             // 
@@ -291,6 +292,7 @@
             this.txtISPLotFilter.Name = "txtISPLotFilter";
             this.txtISPLotFilter.Size = new System.Drawing.Size(100, 21);
             this.txtISPLotFilter.TabIndex = 10;
+            this.txtISPLotFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtISPLotFilter_KeyPress);
             // 
             // txtCount
             // 

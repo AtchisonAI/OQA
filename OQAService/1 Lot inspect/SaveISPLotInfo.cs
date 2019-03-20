@@ -226,6 +226,9 @@ namespace OQAService.Services
                                         break;
                                 }
                                 T_ISPWAFITM.InspectPoint = ispitem.InspectPoint;
+
+                                T_ISPWAFITM.DieQty = ISPLotSave.model.ISPMESLOT_List[0].Dieqty;
+
                                 T_ISPWAFITM.CreateUserId = ISPLotSave.model.S_USER_ID;
                                 T_ISPWAFITM.CreateTime = SysTime;
                                 InitTable(T_ISPWAFITM);

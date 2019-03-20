@@ -55,19 +55,19 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(640, 6);
+            this.btnClose.Location = new System.Drawing.Point(638, 6);
             // 
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCreate.Location = new System.Drawing.Point(551, 6);
+            this.btnCreate.Location = new System.Drawing.Point(549, 6);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
             this.btnEdite.Enabled = false;
             this.btnEdite.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnEdite.Location = new System.Drawing.Point(551, 6);
+            this.btnEdite.Location = new System.Drawing.Point(549, 6);
             this.btnEdite.Visible = false;
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
@@ -202,7 +202,7 @@
             // imageUpload1
             // 
             this.imageUpload1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.imageUpload1.Location = new System.Drawing.Point(364, 161);
+            this.imageUpload1.Location = new System.Drawing.Point(364, 250);
             this.imageUpload1.Name = "imageUpload1";
             this.imageUpload1.PicStream = null;
             this.imageUpload1.Size = new System.Drawing.Size(380, 31);
@@ -241,6 +241,7 @@
             this.cmtRichTextBox.Size = new System.Drawing.Size(300, 29);
             this.cmtRichTextBox.TabIndex = 16;
             this.cmtRichTextBox.Text = "";
+            this.cmtRichTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmtRichTextBox_KeyPress);
             // 
             // label14
             // 
@@ -280,12 +281,13 @@
             this.decRichTextBox.Size = new System.Drawing.Size(300, 29);
             this.decRichTextBox.TabIndex = 15;
             this.decRichTextBox.Text = "";
+            this.decRichTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.decRichTextBox_KeyPress);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(285, 170);
+            this.label5.Location = new System.Drawing.Point(286, 259);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 12);
             this.label5.TabIndex = 5;

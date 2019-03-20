@@ -198,9 +198,14 @@ namespace OQAMain
             //}
         }
 
+
+        private List<PKGSHPDAT> insert_data = new List<PKGSHPDAT>();
+
+      
+
         private void btnCreate_Click_1(object sender, EventArgs e)
         {
-           
+            insert_data.Clear();
             GetSerialNum();
             MessageBox.Show("交接单号"+ srtNum);
             FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint(srtNum);
@@ -216,25 +221,39 @@ namespace OQAMain
             //调用事务服务
             //
             if (CreateLotTransferInfo(cTranFlag, '1', s_PartID, s_Creater, s_QTY, s_Date, srtNum, Trans_Seq) == true)
-            {               
+            {
+                
+            
                 foreach (ListViewItem item in this.listship.Items)
                 {
-                        string lotid = item.SubItems[0].Text;
-                        string qty = item.SubItems[1].Text;
-                        string partid = item.SubItems[2].Text;
-                        string isp_result = item.SubItems[3].Text;
-                        string update_trans_seq = item.SubItems[4].Text;
-                    if (CreateLotTransferListInfo(cTranFlag, '1', lotid, qty, partid, isp_result, srtNum, Trans_Seq) == true)
+                    PKGSHPDAT item1 = new PKGSHPDAT();
+                    string lotid = item.SubItems[0].Text;
+                    string qty = item.SubItems[1].Text;
+                    string partid = item.SubItems[2].Text;
+                    string isp_result = item.SubItems[3].Text;
+                    string update_trans_seq = item.SubItems[4].Text;
+                    item1.LotId= lotid.ToString();
+                    item1.Qty = qty;
+                    item1.PartId = partid;
+                    item1.InspectResult = isp_result;
+                    item1.TransSeq = Convert.ToDecimal(update_trans_seq);
+                    
+                    insert_data.Add(item1);
+                }
+
+
+                if (CreateLotTransferListInfo(cTranFlag, '1', srtNum) == true)
+                {
+                    if (CreateLotTransferListInfo(GlobConst.TRAN_UPDATE, '1', srtNum) == false)
                     {
-                        if (CreateLotTransferListInfo(GlobConst.TRAN_UPDATE, '1', lotid, qty, partid, isp_result, srtNum, Convert.ToDecimal(update_trans_seq)) == false)
-                        {
-                            return;
-                        }
-                    }
-                    else {
                         return;
                     }
                 }
+                else
+                {
+                    return;
+                }
+
                 formshiplistprint.FormBorderStyle = FormBorderStyle.FixedDialog;
                 formshiplistprint.WindowState = FormWindowState.Maximized;
                 formshiplistprint.StartPosition = FormStartPosition.CenterParent;
@@ -389,22 +408,18 @@ namespace OQAMain
         }
 
         //insert to PKGSHPDAT
-        private bool CreateLotTransferListInfo(char c_proc_step, char c_tran_flag, string lot_id, string QTY, string part_id, string isp_result, string ship_id, decimal TransSeq)
+        private bool CreateLotTransferListInfo(char c_proc_step, char c_tran_flag,  string ship_id)
         {
             ModelRsp<LotTransferListSave> in_node = new ModelRsp<LotTransferListSave>();
             LotTransferListSave in_data = new LotTransferListSave();
 
-            in_data.C_PROC_STEP = c_proc_step;
-            in_data.C_TRAN_FLAG = c_tran_flag;
-            in_data.D_TRANSSEQ = TransSeq; //事务控制
-            in_data.IN_PART_ID = part_id;
-            in_data.IN_LOTID= lot_id;
-            in_data.IN_QTY = QTY;
-            in_data.IN_ISP_RESULT= isp_result;
-            in_data.IN_SHIPID = ship_id;
-            in_data.S_USER_ID= AuthorityControl.GetUserProfile().userId;
 
-            in_node.model = in_data;
+            in_node.model.C_PROC_STEP = c_proc_step;
+            in_node.model.C_TRAN_FLAG = c_tran_flag;
+            in_node.model.IN_SHIPID = ship_id;
+            in_node.model.S_USER_ID = AuthorityControl.GetUserProfile().userId;
+
+            in_node.model.INSERTPKGSHPDAT_list = insert_data;
 
             var out_data = OQASrv.Call.CreateLotTransferListInfo(in_node);
 

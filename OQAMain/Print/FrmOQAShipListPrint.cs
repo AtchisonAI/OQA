@@ -39,8 +39,8 @@ namespace OQAMain
 
         #region " Variable Definition "
         // private bool b_load_flag  ;
-        private bool Have_flag = false;
-        private string ship_no;
+        //private bool Have_flag = false;
+        //private string ship_no;
         private string shipID;
         #endregion
 
@@ -98,39 +98,6 @@ namespace OQAMain
 
         #endregion
 
-
-
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //检查数据
-                if (CheckCondition("CREATE") == false) return;
-                //调用事务服务
-                // if (UpdateBoxShipment(GlobConst.TRAN_CREATE) == false) return;
-
-                //控件重定义
-                //if (MPCF.Trim(txtBox_LotID.Text) != "")
-                //{
-                //控件初始化
-                //ComFunc.ClearList(lisOperLotList);
-                //ComFunc.ClearList(spdBox_SubTask);
-                ////MPCF.ClearList(spdOrderID);
-                //ComFunc.FieldClear(spdOrderID);
-                //ComFunc.ClearList(spdBox_LayoutID_MarkID);
-                //ComFunc.FieldClear(pnlTask);
-                //重新查询
-                //View_Lot_List("2");
-                //ViewSubLotListExt();
-                //ViewLotBoxListExt('2');
-                //View_Order_list(txtBox_LotID.Text);
-                //}
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }
         
         private void FrmOQAShipListPrint_Load(object sender, EventArgs e)
         {

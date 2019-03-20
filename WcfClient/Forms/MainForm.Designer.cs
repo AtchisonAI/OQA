@@ -57,8 +57,6 @@ namespace WcfClient
             this.packageLabelPrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.waferInspactionRecordPrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iOQAShipListPrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Rep_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Emp_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabbedGroupedMDIManager = new Syncfusion.Windows.Forms.Tools.TabbedGroupedMDIManager();
             this.Time_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.Date_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
@@ -67,6 +65,7 @@ namespace WcfClient
             this.Version_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.System_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.statusBarAdv = new Syncfusion.Windows.Forms.Tools.StatusBarAdv();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dockingManager)).BeginInit();
             this.shortcut_panel.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -83,6 +82,7 @@ namespace WcfClient
             // dockingManager
             // 
             this.dockingManager.AnimateAutoHiddenWindow = true;
+            this.dockingManager.AutoHideActiveControl = true;
             this.dockingManager.AutoHideTabForeColor = System.Drawing.Color.Empty;
             this.dockingManager.DockBehavior = Syncfusion.Windows.Forms.Tools.DockBehavior.VS2010;
             this.dockingManager.DockLayoutStream = ((System.IO.MemoryStream)(resources.GetObject("dockingManager.DockLayoutStream")));
@@ -107,6 +107,7 @@ namespace WcfClient
             // 
             // shortcut_panel
             // 
+            this.shortcut_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.shortcut_panel.Controls.Add(this.shutcut_TreeView);
             this.shortcut_panel.Location = new System.Drawing.Point(1, 24);
             this.shortcut_panel.Name = "shortcut_panel";
@@ -118,8 +119,12 @@ namespace WcfClient
             // 
             this.shutcut_TreeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.shutcut_TreeView.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.shutcut_TreeView.ImageIndex = 0;
+            this.shutcut_TreeView.ImageList = this.imageList;
+            this.shutcut_TreeView.ItemHeight = 20;
             this.shutcut_TreeView.Location = new System.Drawing.Point(0, 0);
             this.shutcut_TreeView.Name = "shutcut_TreeView";
+            this.shutcut_TreeView.SelectedImageIndex = 0;
             this.shutcut_TreeView.Size = new System.Drawing.Size(131, 512);
             this.shutcut_TreeView.TabIndex = 0;
             this.shutcut_TreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.shutcut_TreeView_NodeMouseClick);
@@ -131,9 +136,7 @@ namespace WcfClient
             this.System_ToolStripMenuItem,
             this.Config_ToolStripMenuItem,
             this.OQAInspect_ToolStripMenuItem,
-            this.OQAShip_ToolStripMenuItem,
-            this.Rep_ToolStripMenuItem,
-            this.Emp_ToolStripMenuItem});
+            this.OQAShip_ToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -154,21 +157,21 @@ namespace WcfClient
             // Logout_ToolStripMenuItem
             // 
             this.Logout_ToolStripMenuItem.Name = "Logout_ToolStripMenuItem";
-            this.Logout_ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.Logout_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.Logout_ToolStripMenuItem.Text = "登出系统";
             this.Logout_ToolStripMenuItem.Click += new System.EventHandler(this.Logout_ToolStripMenuItem_Click);
             // 
             // ShortCut_ToolStripMenuItem
             // 
             this.ShortCut_ToolStripMenuItem.Name = "ShortCut_ToolStripMenuItem";
-            this.ShortCut_ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.ShortCut_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ShortCut_ToolStripMenuItem.Text = "快捷菜单";
             this.ShortCut_ToolStripMenuItem.Click += new System.EventHandler(this.ShortCut_ToolStripMenuItem_Click);
             // 
             // Authority_ToolStripMenuItem
             // 
             this.Authority_ToolStripMenuItem.Name = "Authority_ToolStripMenuItem";
-            this.Authority_ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.Authority_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.Authority_ToolStripMenuItem.Text = "权限控制";
             this.Authority_ToolStripMenuItem.Click += new System.EventHandler(this.Authority_ToolStripMenuItem_Click);
             // 
@@ -183,7 +186,7 @@ namespace WcfClient
             // defectCodeSetToolStripMenuItem
             // 
             this.defectCodeSetToolStripMenuItem.Name = "defectCodeSetToolStripMenuItem";
-            this.defectCodeSetToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.defectCodeSetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.defectCodeSetToolStripMenuItem.Text = "Defect Code Set";
             this.defectCodeSetToolStripMenuItem.Click += new System.EventHandler(this.defectCodeSetToolStripMenuItem_Click);
             // 
@@ -296,20 +299,6 @@ namespace WcfClient
             this.iOQAShipListPrintToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.iOQAShipListPrintToolStripMenuItem.Text = "IOQA Ship List Print";
             this.iOQAShipListPrintToolStripMenuItem.Click += new System.EventHandler(this.iOQAShipListPrintToolStripMenuItem_Click);
-            // 
-            // Rep_ToolStripMenuItem
-            // 
-            this.Rep_ToolStripMenuItem.Name = "Rep_ToolStripMenuItem";
-            this.Rep_ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.Rep_ToolStripMenuItem.Text = "报表";
-            this.Rep_ToolStripMenuItem.Click += new System.EventHandler(this.Rep_ToolStripMenuItem_Click);
-            // 
-            // Emp_ToolStripMenuItem
-            // 
-            this.Emp_ToolStripMenuItem.Name = "Emp_ToolStripMenuItem";
-            this.Emp_ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.Emp_ToolStripMenuItem.Text = "员工";
-            this.Emp_ToolStripMenuItem.Click += new System.EventHandler(this.Emp_ToolStripMenuItem_Click);
             // 
             // tabbedGroupedMDIManager
             // 
@@ -424,6 +413,13 @@ namespace WcfClient
             this.statusBarAdv.Spacing = new System.Drawing.Size(2, 2);
             this.statusBarAdv.TabIndex = 15;
             // 
+            // imageList
+            // 
+            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList.Images.SetKeyName(0, "form.png");
+            this.imageList.Images.SetKeyName(1, "folder_star.png");
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -434,6 +430,7 @@ namespace WcfClient
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip = this.menuStrip;
@@ -463,8 +460,6 @@ namespace WcfClient
         private Syncfusion.Windows.Forms.Tools.DockingManager dockingManager;
         private MenuStrip menuStrip;
         private ToolStripMenuItem System_ToolStripMenuItem;
-        private ToolStripMenuItem Emp_ToolStripMenuItem;
-        private ToolStripMenuItem Rep_ToolStripMenuItem;
         private Syncfusion.Windows.Forms.Tools.TabbedGroupedMDIManager tabbedGroupedMDIManager;
         private Panel shortcut_panel;
         private ToolStripMenuItem Authority_ToolStripMenuItem;
@@ -494,5 +489,6 @@ namespace WcfClient
         private Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel Date_statusBarAdvPanel;
         private Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel Time_statusBarAdvPanel;
         private TreeView shutcut_TreeView;
+        private ImageList imageList;
     }
 }

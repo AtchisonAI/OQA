@@ -11,7 +11,6 @@ namespace WcfContract
 
         [OperationContract]
         ModelRsp<LoginRsp> Login(LoginReq loginReq);
-        //ModelListRsp<string> Login(LoginReq loginReq);
 
         [OperationContract]
         ModelListRsp<ControlAccessString> QueryControlAccessString(QueryReq queryReq);

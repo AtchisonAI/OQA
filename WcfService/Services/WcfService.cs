@@ -12,49 +12,6 @@ namespace WcfService.Services
     public class WcfService : BaseService, IWcfContract
     {
         #region 登陆&权限
-
-        //public ModelListRsp<string> Login(LoginReq loginReq)
-        //{
-        //    ModelListRsp<string> loginRes = new ModelListRsp<string>();
-
-        //    //首先使用tibco 验证登陆
-        //    MessageService.Initialize();
-
-        //    QRYUSERRULE qryUserRule = new QRYUSERRULE();
-        //    qryUserRule.UserID = loginReq.userProfile.userId;
-        //    qryUserRule.Password = loginReq.userProfile.passwd;
-        //    qryUserRule.IsCheckPassowrd = true;
-
-        //    var result = MessageService.SendRequest(qryUserRule.ToString());
-
-        //    FWTxnRepMessage reply = new FWTxnRepMessage()
-        //    {
-        //        RepliedString = result
-        //    };
-        //    MessageService.Terminate();
-
-        //    if (reply.IsSuccess)
-        //    {
-        //        //登陆成功，查询相应的access string
-        //        QueryReq req = new QueryReq();
-        //        AddCondition(req, GetParaName<CUserAccessStringView>(q => q.userName), loginReq.userProfile.userId, LogicCondition.AndAlso, CompareType.Equal);
-        //        AddCondition(req, GetParaName<CUserAccessStringView>(q => q.accessName), loginReq.userProfile.systemPrefix,  LogicCondition.AndAlso, CompareType.Include);
-
-        //        var res = Query<CUserAccessStringView>(req);
-        //        foreach (CUserAccessStringView q in res.models)
-        //        {
-        //            loginRes.models.Add(q.accessName);
-        //        }
-
-        //        loginRes._success = true;
-        //    } else
-        //    {
-        //        loginRes._ErrorMsg = "OQA:账号密码验证失败，请重新输入";
-        //    }
-
-        //    return loginRes;
-        //}
-
         public ModelRsp<LoginRsp> Login(LoginReq loginReq)
         {
             ModelRsp<LoginRsp> loginRes = new ModelRsp<LoginRsp>();

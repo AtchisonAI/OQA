@@ -146,19 +146,25 @@ namespace OQA_Core.Controls
 
         private void lspin_button_Click(object sender, EventArgs e)
         {
-            pictureBox.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-            pictureBox.Refresh();
+            if(null != pictureBox.Image)
+            {
+                pictureBox.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                pictureBox.Refresh();
+            }
         }
 
         private void rspin_button_Click(object sender, EventArgs e)
         {
-            pictureBox.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            pictureBox.Refresh();
+            if (null != pictureBox.Image)
+            {
+                pictureBox.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                pictureBox.Refresh();
+            }
         }
 
         private void save_button_Click(object sender, EventArgs e)
         {
-            if(null == imageObj || string.IsNullOrEmpty(imageObj.imgPath))
+            if(null == pictureBox.Image || string.IsNullOrEmpty(imageObj.imgPath))
             {
                 MessageBox.Show("请先绑定图像");
                 return;

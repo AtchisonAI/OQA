@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using WCFModels.OQA;
 using WCFModels.Message;
 using System.Collections.Generic;
+using WcfClientCore.Utils.Authority;
 
 namespace OQAMain
 {
@@ -137,40 +138,10 @@ namespace OQAMain
 
 
         public static string srtNum;
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //检查数据
-                if (CheckCondition("CREATE") == false) return;
-                //调用事务服务
-                // if (UpdateBoxShipment(GlobConst.TRAN_CREATE) == false) return;
-
-                //控件重定义
-                //if (MPCF.Trim(txtBox_LotID.Text) != "")
-                //{
-                //控件初始化
-                //ComFunc.ClearList(lisOperLotList);
-                //ComFunc.ClearList(spdBox_SubTask);
-                ////MPCF.ClearList(spdOrderID);
-                //ComFunc.FieldClear(spdOrderID);
-                //ComFunc.ClearList(spdBox_LayoutID_MarkID);
-                //ComFunc.FieldClear(pnlTask);
-                //重新查询
-                //View_Lot_List("2");
-                //ViewSubLotListExt();
-                //ViewLotBoxListExt('2');
-                //View_Order_list(txtBox_LotID.Text);
-                //}
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }
       
         private void FrmLotTransfer_Load(object sender, EventArgs e)
         {
+            txtCreater.Text = AuthorityControl.GetUserProfile().userId;
             try
             {
                 if (QueryLotIDList(GlobConst.TRAN_VIEW, '1') == false) return;
@@ -196,9 +167,14 @@ namespace OQAMain
             //}
         }
 
+
+        private List<PKGSHPDAT> insert_data = new List<PKGSHPDAT>();
+
+      
+
         private void btnCreate_Click_1(object sender, EventArgs e)
         {
-           
+            insert_data.Clear();
             GetSerialNum();
             MessageBox.Show("交接单号"+ srtNum);
             FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint(srtNum);
@@ -212,44 +188,58 @@ namespace OQAMain
 
 
             //调用事务服务
-            //选择lotid之后，信息插入到PKGSHPDAT
+            //
             if (CreateLotTransferInfo(cTranFlag, '1', s_PartID, s_Creater, s_QTY, s_Date, srtNum, Trans_Seq) == true)
             {
-               
+                
+            
                 foreach (ListViewItem item in this.listship.Items)
                 {
-                        string lotid = item.SubItems[0].Text;
-                        string qty = item.SubItems[1].Text;
-                        string partid = item.SubItems[2].Text;
-                        string isp_result = item.SubItems[3].Text;
-                        string update_trans_seq = item.SubItems[4].Text;
-                    if (CreateLotTransferListInfo(cTranFlag, '1', lotid, qty, partid, isp_result, srtNum, Trans_Seq) == true)
+                    PKGSHPDAT item1 = new PKGSHPDAT();
+                    string lotid = item.SubItems[0].Text;
+                    string qty = item.SubItems[1].Text;
+                    string partid = item.SubItems[2].Text;
+                    string isp_result = item.SubItems[3].Text;
+                    string update_trans_seq = item.SubItems[4].Text;
+                    item1.LotId= lotid.ToString();
+                    item1.Qty = qty;
+                    item1.PartId = partid;
+                    item1.InspectResult = isp_result;
+                    item1.TransSeq = Convert.ToDecimal(update_trans_seq);
+                    
+                    insert_data.Add(item1);
+                }
+
+
+                if (CreateLotTransferListInfo(cTranFlag, '1', srtNum) == true)
+                {
+                    if (CreateLotTransferListInfo(GlobConst.TRAN_UPDATE, '1', srtNum) == false)
                     {
-                        if (CreateLotTransferListInfo(GlobConst.TRAN_UPDATE, '1', lotid, qty, partid, isp_result, srtNum, Convert.ToDecimal(update_trans_seq)) == false)
-                        {
-                            return;
-                        }
-                    }
-                    else {
                         return;
                     }
                 }
+                else
+                {
+                    return;
+                }
+
                 formshiplistprint.FormBorderStyle = FormBorderStyle.FixedDialog;
                 formshiplistprint.WindowState = FormWindowState.Maximized;
                 formshiplistprint.StartPosition = FormStartPosition.CenterParent;
                 formshiplistprint.ShowDialog();
+                ComFunc.InitListView(listship, true);
+                txtPartID.Text = "";
+                txtQTY.Text = "";
+                txtDate.Text= "";
+                LotIDList.Items.Clear();
+                if (QueryLotIDList(GlobConst.TRAN_VIEW, '1') == false) return;
 
-            }
-            
-
-           
+            }                     
         }
-
        
-
+        //得到shipID
         public string GetSerialNum()
         {
-
             srtNum = DateTime.Now.ToString("yyyyMMddHHmm");
             Random ra = new Random();
             string a = srtNum += (" ");  //空格
@@ -275,11 +265,7 @@ namespace OQAMain
             var out_data = OQASrv.Call.QueryLotList(in_node);
 
             if (out_data._success == true)
-            {
-                 //ComFunc.(LotIDList, true);
-                //      txtCount.Text = out_data.model.PKGSHPDAT_list.Count.ToString();
-
-                
+            {             
                 for (int i = 0; i < out_data.model.ISPLOTST_list.Count; i++)
                 {
                     ListViewItem list_item = new ListViewItem();
@@ -297,8 +283,7 @@ namespace OQAMain
             }
         }
 
-        
-    
+        //checkedlistbox的masterlot，checkedlistbox的masterlot
         private bool Querylotinfo(char c_proc_step, char c_tran_flag,string in_masterlot_no)
         {
             ModelRsp<QueryLotDetailView> in_node = new ModelRsp<QueryLotDetailView>();
@@ -312,7 +297,6 @@ namespace OQAMain
 
             var out_data = OQASrv.Call.QueryLotDetail(in_node);
             var total_count=0;
-            //var out_data_ship = OQASrv.Call.QryPKGShipSummaryInfo(in_node);
 
             if (out_data._success == true)
             {
@@ -322,9 +306,7 @@ namespace OQAMain
                     {
 
                         ListViewItem list_item = new ListViewItem();
-                      //  out_data.model.PKGLabel_list[0][(int)PKG_LIST.slot_id].ToString();
 
-                      //  PKGSHPDAT list = out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.LOT_ID].ToString();
                         list_item.Text = out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.LOT_ID].ToString();
                         list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.QTY].ToString());
                         list_item.SubItems.Add(out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.PART_ID].ToString());
@@ -343,12 +325,6 @@ namespace OQAMain
                     if (out_data.model.PKGSHPDAT_list.Count ==0 || out_data.model.PKGSHPDAT_list[0][0].ToString() != "1")
                     {
                         MessageBox.Show("选择的lotid不属于同一个part！");
-
-                        //for (int i = 0; i < LotIDList.Items.Count; i++)
-                        //{
-                        //    LotIDList.SetItemChecked(i, false);
-                        //}
-                        //Select_All.Checked = false;
                         MasterLot = string.Empty;
                         return false;
                     }
@@ -366,7 +342,7 @@ namespace OQAMain
 
 
         }
-
+        //insert to PKGSHPSTS 
         private bool CreateLotTransferInfo(char c_proc_step, char c_tran_flag, string part_id, string Creater, string QTY,string ship_date,string ship_id, decimal TransSeq)
         {
             ModelRsp<LotTransferSave> in_node = new ModelRsp<LotTransferSave>();
@@ -400,23 +376,19 @@ namespace OQAMain
 
         }
 
-       
-        private bool CreateLotTransferListInfo(char c_proc_step, char c_tran_flag, string lot_id, string QTY, string part_id, string isp_result, string ship_id, decimal TransSeq)
+        //insert to PKGSHPDAT
+        private bool CreateLotTransferListInfo(char c_proc_step, char c_tran_flag,  string ship_id)
         {
             ModelRsp<LotTransferListSave> in_node = new ModelRsp<LotTransferListSave>();
             LotTransferListSave in_data = new LotTransferListSave();
 
-            in_data.C_PROC_STEP = c_proc_step;
-            in_data.C_TRAN_FLAG = c_tran_flag;
-            in_data.D_TRANSSEQ = TransSeq; //事务控制
-            in_data.IN_PART_ID = part_id;
-            in_data.IN_LOTID= lot_id;
-            in_data.IN_QTY = QTY;
-            in_data.IN_ISP_RESULT= isp_result;
-            in_data.IN_SHIPID = ship_id;
 
+            in_node.model.C_PROC_STEP = c_proc_step;
+            in_node.model.C_TRAN_FLAG = c_tran_flag;
+            in_node.model.IN_SHIPID = ship_id;
+            in_node.model.S_USER_ID = AuthorityControl.GetUserProfile().userId;
 
-            in_node.model = in_data;
+            in_node.model.INSERTPKGSHPDAT_list = insert_data;
 
             var out_data = OQASrv.Call.CreateLotTransferListInfo(in_node);
 
@@ -434,12 +406,9 @@ namespace OQAMain
 
         }
 
-
+        //checkedlistbox选择，产生MASTERLOT
         private void LotIDList_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            // MasterLot = string.Empty;
-            
-
             foreach (var item in LotIDList.CheckedItems)
             {
                 if (e.NewValue == CheckState.Unchecked && item == LotIDList.Items[e.Index])
@@ -474,7 +443,7 @@ namespace OQAMain
                 ComFunc.InitListView(listship, true);
                 txtPartID.Text = "";
                 txtQTY.Text = "";
-                txtCreater.Text = "";
+               // txtCreater.Text = "";
                 txtDate.Text = "";
                 return;
             }
@@ -493,6 +462,7 @@ namespace OQAMain
             MasterLot = string.Empty;
         }
 
+        //全选
         private void btnCheckAll_Click(object sender, EventArgs e)
         {
             
@@ -528,18 +498,19 @@ namespace OQAMain
             this.LotIDList.ItemCheck += LotIDList_ItemCheck;
         }
 
+        //取消全选
         private void btnUnCheckAll_Click(object sender, EventArgs e)
         {
             this.LotIDList.ItemCheck -= LotIDList_ItemCheck;
             this.LotIDList.UnCheckAll();
             ComFunc.InitListView(listship, true);
             txtPartID.Text = "";
-            txtQTY.Text = "";
-            txtCreater.Text = "";
+            txtQTY.Text = "";          
             txtDate.Text = "";
             this.LotIDList.ItemCheck += LotIDList_ItemCheck;
         }
 
+        //点击回车
         private void textBox1Press_check(object sender, KeyPressEventArgs e)
         {
 
@@ -551,12 +522,13 @@ namespace OQAMain
                     if (SearchLotIDList(GlobConst.TRAN_VIEW, '3', txtSearchLotID.Text.Trim()) == false) return;
                 }
                 else {
-                    LotIDList.Items.Clear();
-                    if (QueryLotIDList(GlobConst.TRAN_VIEW, '1') == false) return;
+                        LotIDList.Items.Clear();
+                        if (QueryLotIDList(GlobConst.TRAN_VIEW, '1') == false) return;
                 }
             }
         }
 
+        //搜索lotID
         private bool SearchLotIDList(char c_proc_step, char c_tran_flag,string searchlotid)
         {
             ModelRsp<QueryLotDetailView> in_node = new ModelRsp<QueryLotDetailView>();
@@ -574,7 +546,6 @@ namespace OQAMain
                 LotIDList.Items.Clear();
                 for (int i = 0; i < out_data.model.SEARCHLOTID_list.Count; i++)
                 {
-
                     ListViewItem list_item = new ListViewItem();
                    
                     list_item.Text = out_data.model.SEARCHLOTID_list[i][0].ToString();

@@ -73,6 +73,8 @@
     <Compile Include="1.OQASeverStruct\3 AOI inspection input\LotstsInfoView.cs" />
     <Compile Include="1.OQASeverStruct\4 Marco inspection input\MacroView.cs" />
     <Compile Include="1.OQASeverStruct\5 Mirco inspection input\MicroView.cs" />
+    <Compile Include="1.OQASeverStruct\6 Defect send %28PNDN%29\IspWafDftView.cs" />
+    <Compile Include="1.OQASeverStruct\6 Defect send %28PNDN%29\LotPndnInfoSave.cs" />
     <Compile Include="1.OQASeverStruct\7 FOUP change\LotSlotidSave.cs" />
     <Compile Include="1.OQASeverStruct\7 FOUP change\LotSlotidView.cs" />
     <Compile Include="1.OQASeverStruct\8 Lot package\LotPackageInput.cs" />
@@ -82,10 +84,13 @@
     <Compile Include="1.OQASeverStruct\9 Lot Transfer\QueryLotDetailView.cs" />
     <Compile Include="1.OQASeverStruct\9 Lot Transfer\LotIDListView.cs" />
     <Compile Include="2.OQATableStruct\OQADB.cs" />
+    <Compile Include="FrameTableStruct\FrameDB.cs" />
     <Compile Include="MESDB\FWTST1\Table\FWTST1_Table.cs" />
     <Compile Include="MESDB\FWTST1\View\FWTST1_View.cs" />
     <Compile Include="Message\Demo\DemoView.cs" />
     <Compile Include="Message\Emp\QueryEmpReq.cs" />
+    <Compile Include="Message\Login\LoginRsp.cs" />
+    <Compile Include="Message\Login\QuerUserFavoriteReq.cs" />
     <Compile Include="Message\Login\LoginReq.cs" />
     <Compile Include="Message\RMS\QueryRmsUser.cs" />
     <Compile Include="Message\WcfMsgBase.cs" />
@@ -101,7 +106,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="1.OQASeverStruct\2 Defect Lot result\" />
-    <Folder Include="1.OQASeverStruct\6 Defect send %28PNDN%29\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

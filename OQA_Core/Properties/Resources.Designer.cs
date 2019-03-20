@@ -63,9 +63,9 @@ namespace OQA_Core.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 保存 {
+        internal static System.Drawing.Bitmap arrow_rotate_anticlockwise {
             get {
-                object obj = ResourceManager.GetObject("保存", resourceCulture);
+                object obj = ResourceManager.GetObject("arrow_rotate_anticlockwise", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace OQA_Core.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 右旋 {
+        internal static System.Drawing.Bitmap arrow_rotate_clockwise {
             get {
-                object obj = ResourceManager.GetObject("右旋", resourceCulture);
+                object obj = ResourceManager.GetObject("arrow_rotate_clockwise", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace OQA_Core.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 复位 {
+        internal static System.Drawing.Bitmap saved_imports {
             get {
-                object obj = ResourceManager.GetObject("复位", resourceCulture);
+                object obj = ResourceManager.GetObject("saved_imports", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace OQA_Core.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 左旋 {
+        internal static System.Drawing.Bitmap scanner_working {
             get {
-                object obj = ResourceManager.GetObject("左旋", resourceCulture);
+                object obj = ResourceManager.GetObject("scanner_working", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace OQA_Core.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 打印 {
+        internal static System.Drawing.Bitmap zone_resize_actual {
             get {
-                object obj = ResourceManager.GetObject("打印", resourceCulture);
+                object obj = ResourceManager.GetObject("zone_resize_actual", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace OQA_Core.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 放大 {
+        internal static System.Drawing.Bitmap zoom_in {
             get {
-                object obj = ResourceManager.GetObject("放大", resourceCulture);
+                object obj = ResourceManager.GetObject("zoom_in", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,19 @@ namespace OQA_Core.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 缩小 {
+        internal static System.Drawing.Bitmap zoom_in1 {
             get {
-                object obj = ResourceManager.GetObject("缩小", resourceCulture);
+                object obj = ResourceManager.GetObject("zoom_in1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap zoom_out {
+            get {
+                object obj = ResourceManager.GetObject("zoom_out", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

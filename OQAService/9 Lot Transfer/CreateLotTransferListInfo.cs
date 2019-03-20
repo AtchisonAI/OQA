@@ -21,7 +21,7 @@ namespace OQAService.Services
                 ModelListRsp<PKGSHPDAT> Do_message = new ModelListRsp<PKGSHPDAT>();         //定义数据库操作新增动作输出结构
                 ModelListRsp<ISPLOTSTS> Do_updatemessage = new ModelListRsp<ISPLOTSTS>();         //定义数据库操作新增动作输出结构
                 PKGSHPDAT T_PKGSHIPLIST = new PKGSHPDAT(); //定义临时表结构
-                ISPLOTSTS T_UPDATEISPLOTSTS = new ISPLOTSTS();
+              
 
                 //传入数据赋值
                 In_node.model = LotTransferListSave.model;
@@ -50,59 +50,37 @@ namespace OQAService.Services
                     {
                         case '1':
                             //验证业务级输入参数
-
-                            if (In_node.model.IN_PART_ID.Trim().Equals("") == true)
-                            {
-                                Out_node._success = false;
-                                Out_node._ErrorMsg = "IN_PART_ID is null!";
-                                return Out_node;
-                            }
-                            if (In_node.model.IN_LOTID.Trim().Equals("") == true)
-                            {
-                                Out_node._success = false;
-                                Out_node._ErrorMsg = "IN_LOTID is null!";
-                                return Out_node;
-                            }
-                            if (In_node.model.IN_QTY.Trim().Equals("") == true)
-                            {
-                                Out_node._success = false;
-                                Out_node._ErrorMsg = "IN_QTY is null!";
-                                return Out_node;
-                            }
-                            if (In_node.model.IN_ISP_RESULT.Trim().Equals("") == true)
-                            {
-                                Out_node._success = false;
-                                Out_node._ErrorMsg = "IN_ISP_RESULT is null!";
-                                return Out_node;
-                            }
-                            if (In_node.model.IN_SHIPID.Trim().Equals("") == true)
-                            {
-                                Out_node._success = false;
-                                Out_node._ErrorMsg = "IN_SHIPID is null!";
-                                return Out_node;
-                            }
                             //传入数据赋值
-                            T_PKGSHIPLIST.PartId = In_node.model.IN_PART_ID;
-                            T_PKGSHIPLIST.LotId = In_node.model.IN_LOTID;
-                            T_PKGSHIPLIST.Qty = In_node.model.IN_QTY;
-                            T_PKGSHIPLIST.InspectResult = In_node.model.IN_ISP_RESULT;
-                            T_PKGSHIPLIST.ShipId = In_node.model.IN_SHIPID;
+                            if (In_node.model.INSERTPKGSHPDAT_list.Count > 0)
+                            {
+                                int i;
+                                for (i = 0; i < In_node.model.INSERTPKGSHPDAT_list.Count; i++)
+                                {
+                                    In_node.model.INSERTPKGSHPDAT_list[i] .ShipId = In_node.model.IN_SHIPID;
+                                    In_node.model.INSERTPKGSHPDAT_list[i] .CreateUserId = In_node.model.S_USER_ID;
+                                    In_node.model.INSERTPKGSHPDAT_list[i] .UpdateTime = " ";
+                                    In_node.model.INSERTPKGSHPDAT_list[i] .UpdateUserId = " ";
+                                    In_node.model.INSERTPKGSHPDAT_list[i].CreateTime = GetSysTime();
 
+                                }
 
-                            //T_ISPDFTDEF.TransSeq = 0;
-                            T_PKGSHIPLIST.UpdateTime = " ";
-                            T_PKGSHIPLIST.UpdateUserId = " ";
-                            T_PKGSHIPLIST.CreateTime = GetSysTime();
-                          //  T_PKGSHIP.CreateUserId = " ";
+                                Do_Save.models = In_node.model.INSERTPKGSHPDAT_list;
+                                Do_Save.operateType = OperateType.Insert;
+                                //  BeginTrans();
+                                //执行
+                                UpdateModels(Do_Save, Do_message, true);
+                             //   EndTrans();
+
+                            }
+                            else {
+                                Out_node._success = false;
+                                Out_node._ErrorMsg = "T_PKGSHIPLIST is null!";
+                                return Out_node;
+                            }
+                            
 
                             //调用数据库操作
-                            Do_Save.operateType = OperateType.Insert;
-                            Do_Save.models.Add(T_PKGSHIPLIST) ;
-                            BeginTrans();
-                            //执行
-                            UpdateModels(Do_Save, Do_message, true);
-                            EndTrans();
-
+                           
                             break;
 
                         case '2':
@@ -134,28 +112,45 @@ namespace OQAService.Services
                         case '1':
                             //验证业务级输入参数
 
-                            if (In_node.model.IN_LOTID.Trim().Equals("") == true)
+                           
+
+
+                            if (In_node.model.INSERTPKGSHPDAT_list.Count > 0)
+                            {
+                                int i;
+                                for (i = 0; i < In_node.model.INSERTPKGSHPDAT_list.Count; i++)
+                                {
+                                    ISPLOTSTS T_UPDATEISPLOTSTS = new ISPLOTSTS();
+
+
+                                    T_UPDATEISPLOTSTS.LotId = In_node.model.INSERTPKGSHPDAT_list[i].LotId;
+                                    T_UPDATEISPLOTSTS.Status = "TransferOut";
+                                    T_UPDATEISPLOTSTS.TransSeq = In_node.model.INSERTPKGSHPDAT_list[i].TransSeq;
+                                    T_UPDATEISPLOTSTS.UpdateTime = GetSysTime();
+                                    T_UPDATEISPLOTSTS.UpdateUserId = In_node.model.S_USER_ID;
+
+                                    Do_Update.models.Add(T_UPDATEISPLOTSTS);
+                                    Do_Update.operateType = OperateType.Update;
+
+                                }
+                                
+                                //BeginTrans();
+                                //执行
+                                UpdateModels(Do_Update, Do_updatemessage, true);
+                                SaveISPLotHistory(Do_updatemessage, In_node.model.S_USER_ID);
+                               // EndTrans();
+                            }
+                            else
                             {
                                 Out_node._success = false;
-                                Out_node._ErrorMsg = "IN_LOTID is null!";
+                                Out_node._ErrorMsg = "T_UPDATEISPLOTSTS is null!";
                                 return Out_node;
                             }
 
-
-                            T_UPDATEISPLOTSTS.LotId = In_node.model.IN_LOTID;
-
                             ////输入数据表主键
-                            T_UPDATEISPLOTSTS.Status = "TransferOut";
-                            T_UPDATEISPLOTSTS.TransSeq = In_node.model.D_TRANSSEQ;
-                            T_UPDATEISPLOTSTS.UpdateTime = GetSysTime();
-                            T_UPDATEISPLOTSTS.UpdateUserId = " ";
 
-                            Do_Update.operateType = OperateType.Update;
-                            Do_Update.models.Add(T_UPDATEISPLOTSTS);
-                            BeginTrans();
-                            //执行
-                            UpdateModels(Do_Update, Do_updatemessage, true);
-                            EndTrans();
+
+                           
 
                             break;
 

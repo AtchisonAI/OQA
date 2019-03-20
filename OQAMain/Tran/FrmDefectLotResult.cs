@@ -753,6 +753,8 @@ namespace OQAMain
                         AOI.MinimizeBox = false;
                         AOI.StartPosition = FormStartPosition.CenterParent;
                         AOI.ShowDialog();
+
+                        btnISPLotFilter.PerformClick();
                     }
 
                 }
@@ -777,6 +779,8 @@ namespace OQAMain
                     MAC.MinimizeBox = false;
                     MAC.StartPosition = FormStartPosition.CenterParent;
                     MAC.ShowDialog();
+
+                    btnISPLotFilter.PerformClick();
                 }
 
             }
@@ -796,6 +800,8 @@ namespace OQAMain
                     MIR.MinimizeBox = false;
                     MIR.StartPosition = FormStartPosition.CenterParent;
                     MIR.ShowDialog();
+
+                    btnISPLotFilter.PerformClick();
                 }
 
             }

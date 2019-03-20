@@ -67,19 +67,19 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(658, 6);
+            this.btnClose.Location = new System.Drawing.Point(657, 8);
             // 
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCreate.Location = new System.Drawing.Point(569, 6);
+            this.btnCreate.Location = new System.Drawing.Point(568, 8);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
             this.btnEdite.Enabled = false;
             this.btnEdite.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnEdite.Location = new System.Drawing.Point(569, 6);
+            this.btnEdite.Location = new System.Drawing.Point(568, 8);
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
@@ -87,7 +87,6 @@
             this.pnlMenu.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.pnlMenu.Location = new System.Drawing.Point(0, 388);
             this.pnlMenu.Size = new System.Drawing.Size(758, 40);
-            this.pnlMenu.Visible = false;
             // 
             // btnRefresh
             // 
@@ -459,8 +458,8 @@
             this.Name = "FrmAOIInput";
             this.Text = "AOIInput";
             this.Load += new System.EventHandler(this.FrmAOIInput_Load);
-            this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.groupBox3, 0);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();

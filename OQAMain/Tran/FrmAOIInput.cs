@@ -464,11 +464,11 @@ namespace OQAMain
                 }
                 if (sftList.Count > 0)
                 {
-                    iSPWAFITM.InspectResult = "N";
+                    wafInfo.InspectResult = "N";
                 }
                 else
                 {
-                    iSPWAFITM.InspectResult = "Y";
+                    wafInfo.InspectResult = "Y";
                 }
                 model.C_PROC_STEP = '1';
                 model.C_TRAN_FLAG = GlobConst.TRAN_CREATE;

@@ -132,7 +132,13 @@ namespace OQAMain
 
         private void FrmPackageLabelPrint_Load(object sender, EventArgs e)
         {
-
+            
+            if (ComFunc.Trim(txtLotID.Text) != "") {
+                lotid = txtLotID.Text.Trim();
+                this.reportViewer1.LocalReport.DataSources.Clear();
+                if (QueryPKGLabelInfo(GlobConst.TRAN_VIEW, '1', lotid) == false)
+                    return;
+            }
         }
 
         private bool QueryPKGLabelInfo(char c_proc_step, char c_tran_flag, string in_lotid)
@@ -190,6 +196,8 @@ namespace OQAMain
                 }
                 else {    
                     MessageBox.Show("输入的lotid有问题！");
+                    txtLotID.Focus();
+                    return false;
                 }
                 reportViewer1.LocalReport.SetParameters(new ReportParameter("paramSlot", Slot));
                 reportViewer1.LocalReport.SetParameters(new ReportParameter("paramCustomerId", CustomerId));

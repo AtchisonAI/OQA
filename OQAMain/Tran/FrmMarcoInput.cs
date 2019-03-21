@@ -72,7 +72,11 @@ namespace OQAMain
             try
             {
                 //检查数据
-                // if (CheckCondition("CREATE") == false) return;
+                if (string.IsNullOrWhiteSpace(slotComboBox.Text) || string.IsNullOrWhiteSpace(lotTextBox.Text))
+                {
+                    MessageBox.Show("请先选择lotId、slotId");
+                    return;
+                }
                 UpdateModelReq<AOIShowView> updateReq = new UpdateModelReq<AOIShowView>();
                 this.getUpdateModel(updateReq);
                 ModelRsp<AOIShowView> rspInfo = OQASrv.Call.CreateOrUpdateAOI(updateReq);
@@ -98,7 +102,11 @@ namespace OQAMain
             try
             {
                 //检查数据
-                // if (CheckCondition("CREATE") == false) return;
+                if (string.IsNullOrWhiteSpace(slotComboBox.Text) || string.IsNullOrWhiteSpace(lotTextBox.Text))
+                {
+                    MessageBox.Show("请先选择lotId、slotId");
+                    return;
+                }
                 UpdateModelReq<AOIShowView> updateReq = new UpdateModelReq<AOIShowView>();
                 this.getUpdateModel(updateReq);
                 ModelRsp<AOIShowView> rspInfo = OQASrv.Call.CreateOrUpdateAOI(updateReq);
@@ -196,6 +204,21 @@ namespace OQAMain
                 waferSurF.clearPanel();
             }
         }
+        private void decRichTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)13)
+            {
+                if (ComFunc.Trim(decRichTextBox.Text) != "")
+                {
+                    cmtRichTextBox.Focus();
+                }
+            }
+        }
+
+        private void cmtRichTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
         #endregion
 
         #region Common Function
@@ -277,16 +300,8 @@ namespace OQAMain
                 codeList = waferSurF.defectCode;
 
                 //wafer
-                if (string.IsNullOrWhiteSpace(slotComboBox.Text) || string.IsNullOrWhiteSpace(lotTextBox.Text))
-                {
-                    MessageBox.Show("请先选择lotId、slotId");
-                    return;
-                }
-                //iSPWAFITM.LotId = lotId;
-                //iSPWAFITM.SlotId = ComFunc.Trim(slotComboBox.Text);
-                //iSPWAFITM.WaferId = waferId;
-                //iSPWAFITM.InspectType = InspectType.MA;
-                //iSPWAFITM.SideType = sideType;
+                
+                
                 wafInfo.DefectDesc = ComFunc.Trim(decRichTextBox.Text);
                 wafInfo.Cmt = ComFunc.Trim(cmtRichTextBox.Text);
                 wafInfo.InspectPoint = "25";
@@ -431,5 +446,7 @@ namespace OQAMain
         }
 
         #endregion
+
+       
     }
 }

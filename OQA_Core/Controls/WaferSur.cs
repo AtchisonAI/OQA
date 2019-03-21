@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using WCFModels.OQA;
+using OQA_Core.Controls;
+using OQA_Core;
 
 namespace WaferSf
 {
@@ -134,10 +136,11 @@ namespace WaferSf
             cc.Font = new System.Drawing.Font("宋体", 15);
             cc.Dock = DockStyle.Fill;
             String value = panelNum.Name.Split('_')[1]; ;//panel数
-            cc.Items.AddRange(new string[] { value,"A", "S" , "D", "F",
-                "C", "P", "R", "B", "O"});
+            cc.Items.AddRange(DefectCodeList.code);
+            cc.Items.Add(value);
             panelNum.Controls.Add(cc);
             cc.SelectedIndexChanged += cc_SelectedIndexChanged;
+            cc.DroppedDown = true;
             cc.MouseLeave += this.panel_MouseLeave;
 
 

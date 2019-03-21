@@ -119,19 +119,19 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(812, 8);
+            this.btnClose.Location = new System.Drawing.Point(822, 7);
             // 
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCreate.Location = new System.Drawing.Point(723, 8);
+            this.btnCreate.Location = new System.Drawing.Point(733, 7);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
             this.btnEdite.Enabled = false;
             this.btnEdite.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnEdite.Location = new System.Drawing.Point(723, 8);
+            this.btnEdite.Location = new System.Drawing.Point(733, 7);
             this.btnEdite.Visible = false;
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
@@ -961,9 +961,8 @@
             // 
             this.qtyTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.qtyTextBox.Location = new System.Drawing.Point(440, 13);
-            this.qtyTextBox.Multiline = true;
             this.qtyTextBox.Name = "qtyTextBox";
-            this.qtyTextBox.Size = new System.Drawing.Size(120, 20);
+            this.qtyTextBox.Size = new System.Drawing.Size(120, 21);
             this.qtyTextBox.TabIndex = 21;
             this.qtyTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.qtyTextBox_KeyPress);
             // 
@@ -973,9 +972,8 @@
             this.rateTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rateTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.rateTextBox.Location = new System.Drawing.Point(786, 13);
-            this.rateTextBox.Multiline = true;
             this.rateTextBox.Name = "rateTextBox";
-            this.rateTextBox.Size = new System.Drawing.Size(120, 20);
+            this.rateTextBox.Size = new System.Drawing.Size(120, 21);
             this.rateTextBox.TabIndex = 20;
             // 
             // label3
@@ -1002,9 +1000,8 @@
             // 
             this.MagnificationTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.MagnificationTextBox.Location = new System.Drawing.Point(93, 13);
-            this.MagnificationTextBox.Multiline = true;
             this.MagnificationTextBox.Name = "MagnificationTextBox";
-            this.MagnificationTextBox.Size = new System.Drawing.Size(120, 20);
+            this.MagnificationTextBox.Size = new System.Drawing.Size(120, 21);
             this.MagnificationTextBox.TabIndex = 12;
             this.MagnificationTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MagnificationTextBox_KeyPress);
             // 
@@ -1035,6 +1032,7 @@
             this.decRichTextBox.Size = new System.Drawing.Size(815, 29);
             this.decRichTextBox.TabIndex = 15;
             this.decRichTextBox.Text = "";
+            this.decRichTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.decRichTextBox_KeyPress);
             // 
             // label5
             // 

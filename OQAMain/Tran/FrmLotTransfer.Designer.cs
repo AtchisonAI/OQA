@@ -59,18 +59,18 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(2207, 14);
+            this.btnClose.Location = new System.Drawing.Point(2421, 14);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(771, 11);
+            this.btnCreate.Location = new System.Drawing.Point(712, 5);
             this.btnCreate.Text = "OK";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(2008, 11);
+            this.btnEdite.Location = new System.Drawing.Point(2222, 11);
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
@@ -84,7 +84,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Controls.Add(this.btnUnCheckAll);
             this.groupBox1.Controls.Add(this.btnCheckAll);
             this.groupBox1.Controls.Add(this.LotIDList);
@@ -129,7 +129,6 @@
             this.LotIDList.Location = new System.Drawing.Point(16, 115);
             this.LotIDList.Name = "LotIDList";
             this.LotIDList.Size = new System.Drawing.Size(199, 404);
-            this.LotIDList.Sorted = true;
             this.LotIDList.TabIndex = 7;
             this.LotIDList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.LotIDList_ItemCheck);
             // 
@@ -152,7 +151,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox2.Controls.Add(this.txtDate);
             this.groupBox2.Controls.Add(this.txtCreater);
             this.groupBox2.Controls.Add(this.txtQTY);
@@ -348,7 +347,6 @@
         private System.Windows.Forms.TextBox txtSearchLotID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView listship;
-        private System.Windows.Forms.ColumnHeader Lot_ID;
         private System.Windows.Forms.ColumnHeader Qty;
         private System.Windows.Forms.ColumnHeader Part_ID;
         private System.Windows.Forms.ColumnHeader Inspection_Result;
@@ -356,5 +354,6 @@
         private System.Windows.Forms.Button btnUnCheckAll;
         private System.Windows.Forms.Button btnCheckAll;
         private System.Windows.Forms.ColumnHeader Transeq;
+        private System.Windows.Forms.ColumnHeader Lot_ID;
     }
 }

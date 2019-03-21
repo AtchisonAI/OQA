@@ -62,7 +62,7 @@ namespace OQAService.Services
 
                             AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.Status), "PackageOut", LogicCondition.AndAlso, CompareType.Equal);
 
-                            AddSortCondition(PageQueryReq, GetParaName <ISPLOTSTS> (p=>p.LotId), SortType.ASC);
+                            AddSortCondition(PageQueryReq, GetParaName <ISPLOTSTS> (p=>p.LotId), SortType.DESC);
                             
                             var data = PageQuery<ISPLOTSTS>(PageQueryReq);
 

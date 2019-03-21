@@ -341,9 +341,9 @@ namespace OQAMain
                 txtUserID.Text = list_lot[0].RecUser;
                 txtRecDate.Text = list_lot[0].RecDate;
                 txtName.Text = list_lot[0].RecUserName;
-                txtShift.Text = list_lot[0].RecShift;
-                txtPhone.Text = list_lot[0].Phone;
-                txtDept.Text = list_lot[0].Dept;
+                txtShift.Text = list_lot[0].RecShift.Trim();
+                txtPhone.Text = list_lot[0].Phone.Trim();
+                txtDept.Text = list_lot[0].Dept.Trim();
                 txtStage.Text = list_lot[0].Stage;
                 txtLotQty.Text = list_lot[0].Qty.ToString();
                 d_tran_seq = list_lot[0].TransSeq;

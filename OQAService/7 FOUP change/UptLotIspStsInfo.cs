@@ -75,7 +75,7 @@ namespace OQAService.Services
                             UpdateModels(Do_Save, Do_message, true);
 
                             //记录历史
-                            SaveISPLotHistory(Do_message, In_node.model.S_USER_ID);
+                            SaveISPLotHistory(ISPStatus.ChangeOut, In_node.model.S_USER_ID,Do_message);
 
                             break;
 

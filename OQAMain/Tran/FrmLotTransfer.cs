@@ -6,6 +6,7 @@ using WCFModels.OQA;
 using WCFModels.Message;
 using System.Collections.Generic;
 using WcfClientCore.Utils.Authority;
+using System.Linq;
 
 namespace OQAMain
 {
@@ -190,9 +191,7 @@ namespace OQAMain
             //调用事务服务
             //
             if (CreateLotTransferInfo(cTranFlag, '1', s_PartID, s_Creater, s_QTY, s_Date, srtNum, Trans_Seq) == true)
-            {
-                
-            
+            {           
                 foreach (ListViewItem item in this.listship.Items)
                 {
                     PKGSHPDAT item1 = new PKGSHPDAT();
@@ -265,12 +264,13 @@ namespace OQAMain
             var out_data = OQASrv.Call.QueryLotList(in_node);
 
             if (out_data._success == true)
-            {             
-                for (int i = 0; i < out_data.model.ISPLOTST_list.Count; i++)
+            {
+                List<ISPLOTSTS> SortByTime = out_data.model.ISPLOTST_list.OrderByDescending(o => o.UpdateTime).ToList();
+                for (int i = 0; i < SortByTime.Count; i++)
                 {
                     ListViewItem list_item = new ListViewItem();
-                    ISPLOTSTS list = out_data.model.ISPLOTST_list[i];
-                    list_item.Text = list.LotId+'*'+list.PartId;
+                    ISPLOTSTS list = SortByTime[i];
+                    list_item.Text = list.LotId.PadRight(15)+ list.PartId;
                     LotIDList.Items.Add(list_item.Text);
                 }
                 lblSucessMsg.Text = out_data._MsgCode;
@@ -418,11 +418,11 @@ namespace OQAMain
 
                 if (MasterLot.Length == 0)
                 {
-                    MasterLot = "'" + item.ToString().Split('*')[0].Trim() + "'";
+                    MasterLot = "'" + item.ToString().Split(' ')[0].Trim() + "'";
                 }
                 else
                 {
-                    MasterLot = MasterLot + ",'" + item.ToString().Split('*')[0].Trim() + "'";
+                    MasterLot = MasterLot + ",'" + item.ToString().Split(' ')[0].Trim() + "'";
                 }
 
             }
@@ -430,11 +430,11 @@ namespace OQAMain
             {
                 if (MasterLot.Length == 0)
                 {
-                    MasterLot = "'" + LotIDList.Items[e.Index].ToString().Split('*')[0].Trim() + "'";
+                    MasterLot = "'" + LotIDList.Items[e.Index].ToString().Split(' ')[0].Trim() + "'";
                 }
                 else
                 {
-                    MasterLot = MasterLot + ",'" + LotIDList.Items[e.Index].ToString().Split('*')[0].Trim() + "'";
+                    MasterLot = MasterLot + ",'" + LotIDList.Items[e.Index].ToString().Split(' ')[0].Trim() + "'";
                 }
             }
 
@@ -547,7 +547,7 @@ namespace OQAMain
                 {
                     ListViewItem list_item = new ListViewItem();
                    
-                    list_item.Text = out_data.model.SEARCHLOTID_list[i][0].ToString()+'*'+out_data.model.SEARCHLOTID_list[i][1];
+                    list_item.Text = out_data.model.SEARCHLOTID_list[i][0].ToString().PadRight(15)+out_data.model.SEARCHLOTID_list[i][1];
                     LotIDList.Items.Add(list_item.Text);
                 }
                 lblSucessMsg.Text = out_data._MsgCode;

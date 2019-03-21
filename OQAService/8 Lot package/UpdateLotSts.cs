@@ -18,6 +18,7 @@ namespace OQAService.Services
             ModelRsp<ISPLOTSTS> rsp = new ModelRsp<ISPLOTSTS>();
             input.model.UpdateTime = GetSystemDateTime();
             UpdateModel(input,rsp,true);
+            SaveISPLotHistory(rsp, input.userId);
             return rsp;
         }
 

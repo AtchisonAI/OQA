@@ -36,25 +36,13 @@ namespace OQAMain
         #region " 事务前数据检查 "
         private bool CheckCondition(string FuncName)
         {
-
             switch (ComFunc.Trim(FuncName))
             {
                 case "CREATE":
                 case "UPDATE":
                     // TODO
-                    if(null == lotPackageInfo || string.IsNullOrEmpty(lotId_textBox.Text.Trim()))
-                    {
-                        MessageBox.Show("无Lot信息！");
-                        lotId_textBox.Focus();
-                        return false;
-                    } else if (!lotId_textBox.Text.Trim().Equals(lotPackageInfo.lotInfo.LotId))
-                    {
-                        MessageBox.Show("图片与当前lot不匹配，请重新上传图片");
-                        lotId_textBox.Focus();
-                        return false;
-                    }
-                    break;
-
+                    return ValidateLotInfo();
+ 
                 case "DELETE":
                     // TODO
                     break;
@@ -62,6 +50,17 @@ namespace OQAMain
 
             return true;
 
+        }
+
+        private bool ValidateLotInfo()
+        {
+            if (null == lotPackageInfo || string.IsNullOrEmpty(lotId_textBox.Text.Trim()))
+            {
+                MessageBox.Show("无Lot信息！");
+                lotId_textBox.Focus();
+                return false;
+            }
+            return true;
         }
 
         #endregion
@@ -90,51 +89,38 @@ namespace OQAMain
 
         private void lotId_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (ComFunc.CheckEnterKey(e)|| ComFunc.CheckTabKey(e))
+            if (ComFunc.CheckEnterKey(e))
             {
-                //查询当前输入的lot 是否为foup changed状态
-                CheckLotSts();
+                //查询当前输入的lot
+                QueryCurrentLotPackInfo();
             }
         }
 
-        private bool CheckLotSts()
+        private void QueryCurrentLotPackInfo()
         {
-            bool Res = false;
             string lotId = lotId_textBox.Text.Trim();
-            if(string.IsNullOrEmpty(lotId))
+            if (string.IsNullOrEmpty(lotId))
             {
                 MessageBox.Show("请输入lotID");
-            }else if (null == lotPackageInfo || !lotPackageInfo.lotInfo.LotId.Equals(lotId))
-            {
-                Res = QueryLotSts(lotId);
-            }else
-            {
-                Res = true;
+                lotId_textBox.Focus();
+                return;
             }
 
-            if(!Res) 
-                lotId_textBox.Focus();
-            return Res;
-        }
-
-        private bool QueryLotSts(string lotId)
-        {
-            var res = QueryLotInfo(lotId);
-            if (res._success && (res.model.lotInfo.Status == LotSts.ChangeOut || res.model.lotInfo.Status == LotSts.PackageOut))
+            var res = QueryLotPackageInfo(lotId);
+            if (res._success)
             {
                 lotPackageInfo = res.model;
                 InitImageControl(lotPackageInfo.packageImgList);
                 Fosb_imageUpload.Focus();
-                return true;
             }
             else
             {
-                MessageBox.Show("该lot未到Changeout状态");
-                return false;
+                MessageBox.Show(res._ErrorMsg);
+                lotId_textBox.Focus();
             }
         }
 
-        private ModelRsp<LotPackageView> QueryLotInfo(string lotIdInput)
+        private ModelRsp<LotPackageView> QueryLotPackageInfo(string lotIdInput)
         {
             LotPackageInput input = new LotPackageInput()
             {
@@ -170,6 +156,8 @@ namespace OQAMain
                         break;
                 }
             }
+
+            EnableImageControl();
         }
 
         private void ClearImageControl()
@@ -179,41 +167,53 @@ namespace OQAMain
             PackageType_imageUpload.RefreshContrl();
             ShipLabel_imageUpload.RefreshContrl();
         }
+
+        private void EnableImageControl()
+        {
+            Attachment_imageUpload.Enabled = true;
+            Fosb_imageUpload.Enabled = true;
+            PackageType_imageUpload.Enabled = true;
+            ShipLabel_imageUpload.Enabled = true;
+        }
+
+        private void DisableImageControl()
+        {
+            ClearImageControl();
+            Attachment_imageUpload.Enabled = false;
+            Fosb_imageUpload.Enabled = false;
+            PackageType_imageUpload.Enabled = false;
+            ShipLabel_imageUpload.Enabled = false;
+        }
         #endregion
 
         private void btnEdite_Click(object sender, EventArgs e)
         {
             if (!CheckCondition("UPDATE")) return;
-            switch (lotPackageInfo.lotInfo.Status)
-            {
-                case LotSts.ChangeOut:
-                    lotPackageInfo.lotInfo.Status = LotSts.PackageOut;
-                    lotPackageInfo.lotInfo.UpdateUserId = AuthorityControl.GetUserProfile().userId;
-                    UpdateModelReq<ISPLOTSTS> updateReq = new UpdateModelReq<ISPLOTSTS>
-                    {
-                        operateType = OperateType.Update,
-                        model = lotPackageInfo.lotInfo,
-                        partialUpdate = false,
-                        userId = AuthorityControl.GetUserProfile().userId
-                    };
-                    try
-                    {
-                        var res = OQASrv.Call.UpdateLotSts(updateReq);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message.ToString());
-                        //删除已上传的图片
-                        DeleteImg(lotPackageInfo.lotInfo.LotId);
-                        return;
-                    }
-                    break;
 
-                    //case LotSts.PackageOut:
-                    //    break;
+            lotPackageInfo.lotInfo.Status = WCFModels.OQA.LotSts.PackageOut;
+            lotPackageInfo.lotInfo.UpdateUserId = AuthorityControl.GetUserProfile().userId;
+            UpdateModelReq<ISPLOTSTS> updateReq = new UpdateModelReq<ISPLOTSTS>
+            {
+                operateType = OperateType.Update,
+                model = lotPackageInfo.lotInfo,
+                partialUpdate = false,
+                userId = AuthorityControl.GetUserProfile().userId
+            };
+            try
+            {
+                var res = OQASrv.Call.UpdateLotSts(updateReq);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+                //删除已上传的图片
+                DeleteImg(lotPackageInfo.lotInfo.LotId);
+                ClearImageControl();
+                return;
             }
 
-            MessageBox.Show("Lot package successed!");
+            MessageBox.Show("Lot package submitted!");
+            ClearForm();
         }
 
         private void DeleteImg(string lotID)
@@ -234,33 +234,34 @@ namespace OQAMain
 
         private void Fosb_imageUpload_btnUploadClicked(object sender, EventArgs e)
         {
-            if (!CheckLotSts()) return;
             Fosb_imageUpload.UploadBylot(lotId_textBox.Text.Trim(), ImageType.PAK_F);
         }
 
         private void ShipLabel_imageUpload_btnUploadClicked(object sender, EventArgs e)
         {
-            if (!CheckLotSts()) return;
             ShipLabel_imageUpload.UploadBylot(lotId_textBox.Text.Trim(), ImageType.PAK_S);
         }
 
         private void PackageType_imageUpload_btnUploadClicked(object sender, EventArgs e)
         {
-            if (!CheckLotSts()) return;
             PackageType_imageUpload.UploadBylot(lotId_textBox.Text.Trim(), ImageType.PAK_P);
         }
 
         private void Attachment_imageUpload_btnUploadClicked(object sender, EventArgs e)
         {
-            if (!CheckLotSts()) return;
             Attachment_imageUpload.UploadBylot(lotId_textBox.Text.Trim(), ImageType.PAK_A);
         }
 
         private void lotId_textBox_Click(object sender, EventArgs e)
         {
+            ClearForm();
+        }
+
+        private void ClearForm()
+        {
             lotId_textBox.Text = string.Empty;
             lotPackageInfo = null;
-            ClearImageControl();
+            DisableImageControl();
         }
 
         private void Fosb_imageUpload_PreviewLableClicked(object sender, EventArgs e)
@@ -297,6 +298,13 @@ namespace OQAMain
             {
                 pictureView.LoadImageAsync(ComFunc.GetPicServerPath(path));
             }
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            if (!CheckCondition("CREATE")) return;
+            MessageBox.Show("Lot package info saved!");
+            ClearForm();
         }
     }
 }

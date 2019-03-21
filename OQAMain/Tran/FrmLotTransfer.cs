@@ -464,19 +464,16 @@ namespace OQAMain
         //全选
         private void btnCheckAll_Click(object sender, EventArgs e)
         {
-            
-
-
             foreach (var item in LotIDList.Items)
             {
                
                 if (MasterLot.Length == 0)
                 {
-                    MasterLot = "'" + item.ToString().Trim() + "'";
+                    MasterLot = "'" + item.ToString().Split(' ')[0].Trim() + "'";
                 }
                 else
                 {
-                    MasterLot = MasterLot + ",'" + item.ToString().Trim() + "'";
+                    MasterLot = MasterLot + ",'" + item.ToString().Split(' ')[0].Trim() + "'";
                 }
 
             }

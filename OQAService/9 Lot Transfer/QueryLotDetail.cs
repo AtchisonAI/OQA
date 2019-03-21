@@ -102,7 +102,7 @@ namespace OQAService.Services
                             if (In_node.model.IN_SEARCHLOTID_NO.Trim().Equals("") == false)
                             {
                                 //AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), In_node.model.IN_SEARCHLOTID_NO.Trim(), LogicCondition.AndAlso, CompareType.Include);
-                                string sql = string.Format(@"select a.lot_id from isplotsts a where a.status='PackageOut' and a.lot_id like ('%{0}%')", In_node.model.IN_SEARCHLOTID_NO.Trim());
+                                string sql = string.Format(@"select a.lot_id,a.part_id from isplotsts a where a.status='PackageOut' and a.lot_id like ('%{0}%')", In_node.model.IN_SEARCHLOTID_NO.Trim());
                                 dataSearch = QueryRawSql(sql);
                             }
                             //  AddSortCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);

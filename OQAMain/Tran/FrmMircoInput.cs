@@ -81,6 +81,11 @@ namespace OQAMain
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(slotComboBox.Text) || string.IsNullOrWhiteSpace(lotTextBox.Text))
+                {
+                    MessageBox.Show("请先选择lotId、slotId");
+                    return;
+                }
                 UpdateModelReq<AOIShowView> updateReq = new UpdateModelReq<AOIShowView>();
                 getUpdateModel(updateReq);
                 ModelRsp<AOIShowView> rspInfo = OQASrv.Call.CreateOrUpdateAOI(updateReq);
@@ -105,6 +110,11 @@ namespace OQAMain
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(slotComboBox.Text) || string.IsNullOrWhiteSpace(lotTextBox.Text))
+                {
+                    MessageBox.Show("请先选择lotId、slotId");
+                    return;
+                }
                 UpdateModelReq<AOIShowView> updateReq = new UpdateModelReq<AOIShowView>();
                 getUpdateModel(updateReq);
                 ModelRsp<AOIShowView> rspInfo = OQASrv.Call.CreateOrUpdateAOI(updateReq);
@@ -140,9 +150,23 @@ namespace OQAMain
         private void MagnificationTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             ComFunc.CheckKeyPress(sender, e);
-            if (MagnificationTextBox.Text.Length > 6)
+            MagnificationTextBox.MaxLength = 6;
+            if (e.KeyChar == (Char)13)
             {
-                MagnificationTextBox.Text = "";
+                if (ComFunc.Trim(MagnificationTextBox.Text) != "")
+                {
+                    qtyTextBox.Focus();
+                }
+            }
+        }
+        private void decRichTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)13)
+            {
+                if (ComFunc.Trim(decRichTextBox.Text) != "")
+                {
+                    cmtRichTextBox.Focus();
+                }
             }
         }
         //lotId文本框TextChanged
@@ -184,10 +208,15 @@ namespace OQAMain
         private void qtyTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             ComFunc.CheckKeyPress(sender, e);
-            if (qtyTextBox.Text.Length > 5)
+            qtyTextBox.MaxLength = 6;
+            if (e.KeyChar == (Char)13)
             {
-                qtyTextBox.Text = "";
+                if (ComFunc.Trim(qtyTextBox.Text) != "")
+                {
+                    decRichTextBox.Focus();
+                }
             }
+
         }
         #endregion
 
@@ -304,16 +333,8 @@ namespace OQAMain
 
                 //wafer
 
-                if (string.IsNullOrWhiteSpace(slotComboBox.Text) || string.IsNullOrWhiteSpace(lotTextBox.Text))
-                {
-                    MessageBox.Show("请先选择lotId、slotId");
-                    return;
-                }
-                //iSPWAFITM.LotId = lotId;
-                //iSPWAFITM.SlotId = ComFunc.Trim(slotComboBox.Text);
-                //iSPWAFITM.WaferId = waferId;//mock
-                //iSPWAFITM.InspectType = InspectType.MI;
-                //iSPWAFITM.SideType = sideType;
+                
+                
                 wafInfo.Magnification = ComFunc.Trim(MagnificationTextBox.Text);
                 wafInfo.UpdateUserId= AuthorityControl.GetUserProfile().userId;
                 if (String.IsNullOrWhiteSpace(qtyTextBox.Text))
@@ -703,8 +724,9 @@ namespace OQAMain
         {
             showPicture(imageUpload_14);
         }
+
         #endregion
 
-
+      
     }
 }

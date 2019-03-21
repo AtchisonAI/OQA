@@ -49,16 +49,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(804, 11);
+            this.btnClose.Location = new System.Drawing.Point(1125, 11);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(1183, 13);
+            this.btnCreate.Location = new System.Drawing.Point(666, 7);
             this.btnCreate.Visible = false;
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1504, 10);
+            this.btnEdite.Location = new System.Drawing.Point(1825, 10);
             this.btnEdite.Text = "Export";
             this.btnEdite.Visible = false;
             // 
@@ -98,9 +98,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckShipID.CheckOnClick = true;
             this.CheckShipID.FormattingEnabled = true;
-            this.CheckShipID.Location = new System.Drawing.Point(13, 90);
+            this.CheckShipID.Location = new System.Drawing.Point(14, 104);
             this.CheckShipID.Name = "CheckShipID";
-            this.CheckShipID.Size = new System.Drawing.Size(200, 388);
+            this.CheckShipID.Size = new System.Drawing.Size(210, 436);
             this.CheckShipID.TabIndex = 4;
             this.CheckShipID.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.CheckShipID_ItemCheck);
             // 
@@ -155,16 +155,19 @@
             // Qty
             // 
             this.Qty.Text = "Qty";
+            this.Qty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Qty.Width = 125;
             // 
             // Part_ID
             // 
             this.Part_ID.Text = "Part_ID";
+            this.Part_ID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Part_ID.Width = 125;
             // 
             // Inspection_Result
             // 
             this.Inspection_Result.Text = "Inspection_Result";
+            this.Inspection_Result.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Inspection_Result.Width = 125;
             // 
             // groupBox3

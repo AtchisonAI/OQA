@@ -12,12 +12,13 @@ namespace OQAService.Services
 {
     public partial class OQAService : OQABaseService, IOQAContract
     {
-        [OperationBehavior(TransactionAutoComplete = true, TransactionScopeRequired = true)]
-        [TransactionFlow(TransactionFlowOption.Allowed)]
+        //[OperationBehavior(TransactionAutoComplete = true, TransactionScopeRequired = true)]
+        //[TransactionFlow(TransactionFlowOption.Allowed)]
         public ModelRsp<AOIShowView> CreateOrUpdateAOI(UpdateModelReq<AOIShowView> updateReq)
         {
             try
             {
+                BeginTrans();
                 ModelRsp<AOIShowView> out_Msg = new ModelRsp<AOIShowView>();
                 out_Msg._success = true;
                 updateReq.partialUpdate = true;//部分更新
@@ -256,6 +257,7 @@ namespace OQAService.Services
                             }
 
                         }
+                        EndTrans();
                         break;
                     case '2':
                         // TODO
@@ -272,7 +274,6 @@ namespace OQAService.Services
 
                 return out_Msg;
             }
-
             catch (Exception e)
             {
                 ModelRsp<AOIShowView> out_Msg = new ModelRsp<AOIShowView>();
@@ -280,9 +281,8 @@ namespace OQAService.Services
                 out_Msg._ErrorMsg = e.Message.ToString();
                 return out_Msg;
             }
-
+         
         }
-
         
     }
 }

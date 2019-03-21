@@ -133,5 +133,18 @@ namespace WCFModels.OQA
             }
         }
         private string s_user_id;
+
+        //public LotTransferListSave()
+        //{
+        //    INSERTPKGSHPDAT_list = new List<PKGSHPDAT>();
+        //}
+
+        [DataMember]
+         public List<PKGSHPDAT> INSERTPKGSHPDAT_list { get; set; }
+
+       
+
+
+
     }
 }

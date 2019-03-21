@@ -74,6 +74,7 @@
     <Compile Include="1.OQASeverStruct\4 Marco inspection input\MacroView.cs" />
     <Compile Include="1.OQASeverStruct\5 Mirco inspection input\MicroView.cs" />
     <Compile Include="1.OQASeverStruct\6 Defect send %28PNDN%29\IspWafDftView.cs" />
+    <Compile Include="1.OQASeverStruct\6 Defect send %28PNDN%29\LotPndnInfoView.cs" />
     <Compile Include="1.OQASeverStruct\6 Defect send %28PNDN%29\LotPndnInfoSave.cs" />
     <Compile Include="1.OQASeverStruct\7 FOUP change\LotSlotidSave.cs" />
     <Compile Include="1.OQASeverStruct\7 FOUP change\LotSlotidView.cs" />

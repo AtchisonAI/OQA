@@ -160,8 +160,15 @@ namespace OQAService.Services
 
         }
 
+        public void SaveISPLotHistory(string s_TranCode, string s_UserId, ModelRsp<ISPLOTSTS> IN_ISPLOTSTS)
+        {
+            ModelListRsp<ISPLOTSTS> lIST_ISPLOTSTS = new ModelListRsp<ISPLOTSTS>();
+            lIST_ISPLOTSTS.models.Add(IN_ISPLOTSTS.model);
+            SaveISPLotHistory( s_TranCode,  s_UserId, lIST_ISPLOTSTS);
 
-        public  void SaveISPLotHistory(string s_TranCode, string s_UserId ,ModelListRsp<ISPLOTSTS> IN_ISPLOTSTS)
+        }
+
+            public  void SaveISPLotHistory(string s_TranCode, string s_UserId ,ModelListRsp<ISPLOTSTS> IN_ISPLOTSTS)
         {
             
             UpdateModelListReq<ISPLOTHI> ISPLOTHIS_Save = new UpdateModelListReq<ISPLOTHI>();

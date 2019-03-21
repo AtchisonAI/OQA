@@ -83,30 +83,30 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.frontButton = new System.Windows.Forms.Button();
+            this.btnSide = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.waferSurF = new WaferSf.WaferSur();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.labelX = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.qtyTextBox = new System.Windows.Forms.TextBox();
-            this.rateTextBox = new System.Windows.Forms.TextBox();
+            this.txtQty = new System.Windows.Forms.TextBox();
+            this.txtRate = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.labelQty = new System.Windows.Forms.Label();
-            this.MagnificationTextBox = new System.Windows.Forms.TextBox();
-            this.cmtRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.txtMag = new System.Windows.Forms.TextBox();
+            this.rtboxCmt = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.decRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.rtboxDsc = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.lotTextBox = new System.Windows.Forms.TextBox();
+            this.txtLotId = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.slotComboBox = new System.Windows.Forms.ComboBox();
+            this.cboxSlotId = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.radioNine = new System.Windows.Forms.RadioButton();
-            this.radioThir = new System.Windows.Forms.RadioButton();
+            this.rbtnNine = new System.Windows.Forms.RadioButton();
+            this.rbtnThir = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -119,19 +119,19 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(826, 7);
+            this.btnClose.Location = new System.Drawing.Point(822, 7);
             // 
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCreate.Location = new System.Drawing.Point(737, 7);
+            this.btnCreate.Location = new System.Drawing.Point(733, 7);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
             this.btnEdite.Enabled = false;
             this.btnEdite.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnEdite.Location = new System.Drawing.Point(737, 7);
+            this.btnEdite.Location = new System.Drawing.Point(733, 7);
             this.btnEdite.Visible = false;
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
@@ -154,7 +154,7 @@
             // 
             this.groupBox1.Controls.Add(this.groupBoxSelect);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.frontButton);
+            this.groupBox1.Controls.Add(this.btnSide);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.waferSurF);
             this.groupBox1.Controls.Add(this.label14);
@@ -875,15 +875,15 @@
             this.label13.TabIndex = 23;
             this.label13.Text = " P:Particle R:Residue M:Probe Mark  B: Bridge O:Others";
             // 
-            // frontButton
+            // btnSide
             // 
-            this.frontButton.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.frontButton.Location = new System.Drawing.Point(137, 326);
-            this.frontButton.Name = "frontButton";
-            this.frontButton.Size = new System.Drawing.Size(123, 23);
-            this.frontButton.TabIndex = 31;
-            this.frontButton.Text = "Front side";
-            this.frontButton.UseVisualStyleBackColor = true;
+            this.btnSide.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSide.Location = new System.Drawing.Point(137, 326);
+            this.btnSide.Name = "btnSide";
+            this.btnSide.Size = new System.Drawing.Size(123, 23);
+            this.btnSide.TabIndex = 31;
+            this.btnSide.Text = "Front side";
+            this.btnSide.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -918,14 +918,14 @@
             // 
             this.groupBox3.Controls.Add(this.labelX);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.qtyTextBox);
-            this.groupBox3.Controls.Add(this.rateTextBox);
+            this.groupBox3.Controls.Add(this.txtQty);
+            this.groupBox3.Controls.Add(this.txtRate);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.labelQty);
-            this.groupBox3.Controls.Add(this.MagnificationTextBox);
-            this.groupBox3.Controls.Add(this.cmtRichTextBox);
+            this.groupBox3.Controls.Add(this.txtMag);
+            this.groupBox3.Controls.Add(this.rtboxCmt);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.decRichTextBox);
+            this.groupBox3.Controls.Add(this.rtboxDsc);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -957,26 +957,24 @@
             this.label4.TabIndex = 22;
             this.label4.Text = "%";
             // 
-            // qtyTextBox
+            // txtQty
             // 
-            this.qtyTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.qtyTextBox.Location = new System.Drawing.Point(440, 13);
-            this.qtyTextBox.Multiline = true;
-            this.qtyTextBox.Name = "qtyTextBox";
-            this.qtyTextBox.Size = new System.Drawing.Size(120, 20);
-            this.qtyTextBox.TabIndex = 21;
-            this.qtyTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.qtyTextBox_KeyPress);
+            this.txtQty.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtQty.Location = new System.Drawing.Point(440, 13);
+            this.txtQty.Name = "txtQty";
+            this.txtQty.Size = new System.Drawing.Size(120, 21);
+            this.txtQty.TabIndex = 21;
+            this.txtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.qtyTextBox_KeyPress);
             // 
-            // rateTextBox
+            // txtRate
             // 
-            this.rateTextBox.Enabled = false;
-            this.rateTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rateTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.rateTextBox.Location = new System.Drawing.Point(786, 13);
-            this.rateTextBox.Multiline = true;
-            this.rateTextBox.Name = "rateTextBox";
-            this.rateTextBox.Size = new System.Drawing.Size(120, 20);
-            this.rateTextBox.TabIndex = 20;
+            this.txtRate.Enabled = false;
+            this.txtRate.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtRate.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtRate.Location = new System.Drawing.Point(786, 13);
+            this.txtRate.Name = "txtRate";
+            this.txtRate.Size = new System.Drawing.Size(120, 21);
+            this.txtRate.TabIndex = 20;
             // 
             // label3
             // 
@@ -998,24 +996,23 @@
             this.labelQty.TabIndex = 19;
             this.labelQty.Text = "Suffer die Qty";
             // 
-            // MagnificationTextBox
+            // txtMag
             // 
-            this.MagnificationTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.MagnificationTextBox.Location = new System.Drawing.Point(93, 13);
-            this.MagnificationTextBox.Multiline = true;
-            this.MagnificationTextBox.Name = "MagnificationTextBox";
-            this.MagnificationTextBox.Size = new System.Drawing.Size(120, 20);
-            this.MagnificationTextBox.TabIndex = 12;
-            this.MagnificationTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MagnificationTextBox_KeyPress);
+            this.txtMag.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtMag.Location = new System.Drawing.Point(93, 13);
+            this.txtMag.Name = "txtMag";
+            this.txtMag.Size = new System.Drawing.Size(120, 21);
+            this.txtMag.TabIndex = 12;
+            this.txtMag.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MagnificationTextBox_KeyPress);
             // 
-            // cmtRichTextBox
+            // rtboxCmt
             // 
-            this.cmtRichTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmtRichTextBox.Location = new System.Drawing.Point(93, 71);
-            this.cmtRichTextBox.Name = "cmtRichTextBox";
-            this.cmtRichTextBox.Size = new System.Drawing.Size(815, 29);
-            this.cmtRichTextBox.TabIndex = 16;
-            this.cmtRichTextBox.Text = "";
+            this.rtboxCmt.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rtboxCmt.Location = new System.Drawing.Point(93, 71);
+            this.rtboxCmt.Name = "rtboxCmt";
+            this.rtboxCmt.Size = new System.Drawing.Size(815, 29);
+            this.rtboxCmt.TabIndex = 16;
+            this.rtboxCmt.Text = "";
             // 
             // label8
             // 
@@ -1027,14 +1024,15 @@
             this.label8.TabIndex = 8;
             this.label8.Text = "Description";
             // 
-            // decRichTextBox
+            // rtboxDsc
             // 
-            this.decRichTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.decRichTextBox.Location = new System.Drawing.Point(93, 38);
-            this.decRichTextBox.Name = "decRichTextBox";
-            this.decRichTextBox.Size = new System.Drawing.Size(815, 29);
-            this.decRichTextBox.TabIndex = 15;
-            this.decRichTextBox.Text = "";
+            this.rtboxDsc.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rtboxDsc.Location = new System.Drawing.Point(93, 38);
+            this.rtboxDsc.Name = "rtboxDsc";
+            this.rtboxDsc.Size = new System.Drawing.Size(815, 29);
+            this.rtboxDsc.TabIndex = 15;
+            this.rtboxDsc.Text = "";
+            this.rtboxDsc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.decRichTextBox_KeyPress);
             // 
             // label5
             // 
@@ -1066,15 +1064,15 @@
             this.label16.TabIndex = 2;
             this.label16.Text = "Slot ID";
             // 
-            // lotTextBox
+            // txtLotId
             // 
-            this.lotTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lotTextBox.Location = new System.Drawing.Point(61, 19);
-            this.lotTextBox.Multiline = true;
-            this.lotTextBox.Name = "lotTextBox";
-            this.lotTextBox.Size = new System.Drawing.Size(100, 20);
-            this.lotTextBox.TabIndex = 3;
-            this.lotTextBox.TextChanged += new System.EventHandler(this.lotTextBox_TextChanged);
+            this.txtLotId.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtLotId.Location = new System.Drawing.Point(61, 19);
+            this.txtLotId.Multiline = true;
+            this.txtLotId.Name = "txtLotId";
+            this.txtLotId.Size = new System.Drawing.Size(100, 20);
+            this.txtLotId.TabIndex = 3;
+            this.txtLotId.TextChanged += new System.EventHandler(this.lotTextBox_TextChanged);
             // 
             // label15
             // 
@@ -1086,58 +1084,58 @@
             this.label15.TabIndex = 1;
             this.label15.Text = "Lot ID";
             // 
-            // slotComboBox
+            // cboxSlotId
             // 
-            this.slotComboBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.slotComboBox.FormattingEnabled = true;
-            this.slotComboBox.Location = new System.Drawing.Point(244, 17);
-            this.slotComboBox.Name = "slotComboBox";
-            this.slotComboBox.Size = new System.Drawing.Size(100, 20);
-            this.slotComboBox.TabIndex = 4;
-            this.slotComboBox.SelectedIndexChanged += new System.EventHandler(this.slotComboBox_SelectedIndexChanged);
+            this.cboxSlotId.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cboxSlotId.FormattingEnabled = true;
+            this.cboxSlotId.Location = new System.Drawing.Point(244, 17);
+            this.cboxSlotId.Name = "cboxSlotId";
+            this.cboxSlotId.Size = new System.Drawing.Size(100, 20);
+            this.cboxSlotId.TabIndex = 4;
+            this.cboxSlotId.SelectedIndexChanged += new System.EventHandler(this.slotComboBox_SelectedIndexChanged);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.radioNine);
-            this.panel1.Controls.Add(this.radioThir);
+            this.panel1.Controls.Add(this.rbtnNine);
+            this.panel1.Controls.Add(this.rbtnThir);
             this.panel1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.panel1.Location = new System.Drawing.Point(375, 11);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 30);
             this.panel1.TabIndex = 10;
             // 
-            // radioNine
+            // rbtnNine
             // 
-            this.radioNine.AutoSize = true;
-            this.radioNine.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioNine.Location = new System.Drawing.Point(16, 9);
-            this.radioNine.Name = "radioNine";
-            this.radioNine.Size = new System.Drawing.Size(65, 16);
-            this.radioNine.TabIndex = 6;
-            this.radioNine.TabStop = true;
-            this.radioNine.Text = "9点检测";
-            this.radioNine.UseVisualStyleBackColor = true;
-            this.radioNine.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.rbtnNine.AutoSize = true;
+            this.rbtnNine.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rbtnNine.Location = new System.Drawing.Point(16, 9);
+            this.rbtnNine.Name = "rbtnNine";
+            this.rbtnNine.Size = new System.Drawing.Size(65, 16);
+            this.rbtnNine.TabIndex = 6;
+            this.rbtnNine.TabStop = true;
+            this.rbtnNine.Text = "9点检测";
+            this.rbtnNine.UseVisualStyleBackColor = true;
+            this.rbtnNine.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // radioThir
+            // rbtnThir
             // 
-            this.radioThir.AutoSize = true;
-            this.radioThir.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioThir.Location = new System.Drawing.Point(105, 9);
-            this.radioThir.Name = "radioThir";
-            this.radioThir.Size = new System.Drawing.Size(71, 16);
-            this.radioThir.TabIndex = 7;
-            this.radioThir.TabStop = true;
-            this.radioThir.Text = "13点检测";
-            this.radioThir.UseVisualStyleBackColor = true;
-            this.radioThir.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.rbtnThir.AutoSize = true;
+            this.rbtnThir.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rbtnThir.Location = new System.Drawing.Point(105, 9);
+            this.rbtnThir.Name = "rbtnThir";
+            this.rbtnThir.Size = new System.Drawing.Size(71, 16);
+            this.rbtnThir.TabIndex = 7;
+            this.rbtnThir.TabStop = true;
+            this.rbtnThir.Text = "13点检测";
+            this.rbtnThir.UseVisualStyleBackColor = true;
+            this.rbtnThir.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.panel1);
-            this.groupBox2.Controls.Add(this.slotComboBox);
+            this.groupBox2.Controls.Add(this.cboxSlotId);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.lotTextBox);
+            this.groupBox2.Controls.Add(this.txtLotId);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1222,7 +1220,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button frontButton;
+        private System.Windows.Forms.Button btnSide;
         private System.Windows.Forms.Label label12;
         private WaferSf.WaferSur waferSurF;
         private System.Windows.Forms.Label label14;
@@ -1242,23 +1240,23 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label labelX;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox qtyTextBox;
-        private System.Windows.Forms.TextBox rateTextBox;
+        private System.Windows.Forms.TextBox txtQty;
+        private System.Windows.Forms.TextBox txtRate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelQty;
-        private System.Windows.Forms.TextBox MagnificationTextBox;
-        private System.Windows.Forms.RichTextBox cmtRichTextBox;
+        private System.Windows.Forms.TextBox txtMag;
+        private System.Windows.Forms.RichTextBox rtboxCmt;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.RichTextBox decRichTextBox;
+        private System.Windows.Forms.RichTextBox rtboxDsc;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox lotTextBox;
+        private System.Windows.Forms.TextBox txtLotId;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox slotComboBox;
+        private System.Windows.Forms.ComboBox cboxSlotId;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton radioNine;
-        private System.Windows.Forms.RadioButton radioThir;
+        private System.Windows.Forms.RadioButton rbtnNine;
+        private System.Windows.Forms.RadioButton rbtnThir;
         private System.Windows.Forms.GroupBox groupBox2;
     }
 }

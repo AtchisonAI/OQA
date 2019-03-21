@@ -62,7 +62,7 @@ namespace OQAService.Services
                             //{
                             //    AddCondition(PageQueryReq, GetParaName<ISPDFTDEF>(p => p.DefectCode), In_node.model.IN_ISP_CODE.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             //}
-                                                        
+                            AddCondition(PageQueryReq, GetParaName<ISPWAFDFT>(p => p.InspectType), IspType.AOI, LogicCondition.AndAlso, CompareType.Equal);
                             AddSortCondition(PageQueryReq, GetParaName <ISPWAFDFT> (p=>p.SlotId), SortType.ASC);
                          
 

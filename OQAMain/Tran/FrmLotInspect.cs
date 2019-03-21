@@ -162,15 +162,28 @@ namespace OQAMain
                         d_tran_seq = 0;
                         ImgISPLot.Enabled = false;
                         ImgISPLot.RefreshContrl();
+                        btnEdite.Enabled = false;
                         break;
                     case "2"://
                         dgAOI.Rows.Clear();
                         dgMacro.Rows.Clear();
                         dgMIR.Rows.Clear();
+                        btnEdite.Enabled = false;
                         break;
                     case "3"://AFTER SELECT 
                         ComFunc.FieldClear(grpMesLot);
                         labPndn.Visible = false;
+                        btnEdite.Enabled = true;
+                        break;
+                    case "4":
+                        //Initialize
+                        ComFunc.InitListView(LstRcvLot, true);
+                        ComFunc.FieldClear(this,txtISPLotFilter,txtISPFoupFilter);
+                        labPndn.Visible = false;
+                        d_tran_seq = 0;
+                        ImgISPLot.Enabled = false;
+                        ImgISPLot.RefreshContrl();
+                        btnEdite.Enabled = true;
                         break;
                 }
 
@@ -454,9 +467,9 @@ namespace OQAMain
                 txtUserID.Text = list_lot[0].RecUser;
                 txtRecDate.Text = list_lot[0].RecDate;
                 txtName.Text = list_lot[0].RecUserName;
-                txtShift.Text = list_lot[0].RecShift;
-                txtPhone.Text = list_lot[0].Phone;
-                txtDept.Text = list_lot[0].Dept;
+                txtShift.Text = list_lot[0].RecShift.Trim();
+                txtPhone.Text = list_lot[0].Phone.Trim();
+                txtDept.Text = list_lot[0].Dept.Trim();
                 txtStage.Text = list_lot[0].Stage;
                 txtLotQty.Text = list_lot[0].Qty.ToString();
                 d_tran_seq = list_lot[0].TransSeq;
@@ -875,10 +888,21 @@ namespace OQAMain
                 //if (CheckCondition("ISPVIEW") == false) return;
 
                 //调用事务服务
-                if (QueryISPLotInfo(GlobConst.TRAN_VIEW, '1') == false) return;
-                if (LstRcvLot.Items.Count > 0)
+                if (QueryISPLotInfo(GlobConst.TRAN_VIEW, '1') == false)
                 {
-                    LstRcvLot.Items[0].Selected = true;
+                    ClearData("4");
+
+                }
+                else
+                {
+                    if (LstRcvLot.Items.Count > 0)
+                    {
+                        LstRcvLot.Items[0].Selected = true;
+                    }
+                    else
+                    {
+                        ClearData("4");
+                    }
                 }
 
             }
@@ -954,6 +978,8 @@ namespace OQAMain
                     MAC.MinimizeBox = false;
                     MAC.StartPosition = FormStartPosition.CenterParent;
                     MAC.ShowDialog();
+
+                    btnISPLotFilter.PerformClick();
                 }
 
             }
@@ -973,6 +999,8 @@ namespace OQAMain
                     MIR.MinimizeBox = false;
                     MIR.StartPosition = FormStartPosition.CenterParent;
                     MIR.ShowDialog();
+
+                    btnISPLotFilter.PerformClick();
                 }
 
             }
@@ -1018,6 +1046,30 @@ namespace OQAMain
 
                 txtISPLotFilter.Text = "";
                 btnISPLotFilter.PerformClick();
+        }
+
+        private void txtISPLotFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)13)
+            {
+                if (ComFunc.Trim(txtISPLotFilter.Text) != "")
+                {
+                    btnISPLotFilter.PerformClick();
+
+                }
+            }
+        }
+
+        private void txtISPFoupFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)13)
+            {
+                if (ComFunc.Trim(txtISPFoupFilter.Text) != "")
+                {
+                    btnISPLotFilter.PerformClick();
+
+                }
+            }
         }
     }
 }

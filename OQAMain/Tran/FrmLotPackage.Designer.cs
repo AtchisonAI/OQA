@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLotPackage));
             this.lotInfo_groupBox = new System.Windows.Forms.GroupBox();
             this.lotId_textBox = new System.Windows.Forms.TextBox();
             this.lotId_label = new System.Windows.Forms.Label();
@@ -50,22 +51,23 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1818, 8);
+            this.btnClose.Location = new System.Drawing.Point(1186, 8);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Size = new System.Drawing.Size(62, 26);
             this.btnClose.TabIndex = 6;
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(1628, 8);
+            this.btnCreate.Location = new System.Drawing.Point(996, 8);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreate.Size = new System.Drawing.Size(62, 26);
             this.btnCreate.TabIndex = 9;
             this.btnCreate.Visible = false;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1723, 8);
+            this.btnEdite.Location = new System.Drawing.Point(1091, 8);
             this.btnEdite.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdite.Size = new System.Drawing.Size(62, 26);
             this.btnEdite.TabIndex = 5;
@@ -133,6 +135,7 @@
             // 
             // Fosb_imageUpload
             // 
+            this.Fosb_imageUpload.Enabled = false;
             this.Fosb_imageUpload.Location = new System.Drawing.Point(270, 32);
             this.Fosb_imageUpload.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Fosb_imageUpload.Name = "Fosb_imageUpload";
@@ -158,6 +161,7 @@
             // 
             // ShipLabel_imageUpload
             // 
+            this.ShipLabel_imageUpload.Enabled = false;
             this.ShipLabel_imageUpload.Location = new System.Drawing.Point(270, 73);
             this.ShipLabel_imageUpload.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ShipLabel_imageUpload.Name = "ShipLabel_imageUpload";
@@ -183,6 +187,7 @@
             // 
             // PackageType_imageUpload
             // 
+            this.PackageType_imageUpload.Enabled = false;
             this.PackageType_imageUpload.Location = new System.Drawing.Point(270, 113);
             this.PackageType_imageUpload.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.PackageType_imageUpload.Name = "PackageType_imageUpload";
@@ -208,6 +213,7 @@
             // 
             // Attachment_imageUpload
             // 
+            this.Attachment_imageUpload.Enabled = false;
             this.Attachment_imageUpload.Location = new System.Drawing.Point(270, 153);
             this.Attachment_imageUpload.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Attachment_imageUpload.Name = "Attachment_imageUpload";
@@ -237,7 +243,7 @@
             this.package_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.package_groupBox.Name = "package_groupBox";
             this.package_groupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.package_groupBox.Size = new System.Drawing.Size(715, 654);
+            this.package_groupBox.Size = new System.Drawing.Size(715, 660);
             this.package_groupBox.TabIndex = 2;
             this.package_groupBox.TabStop = false;
             this.package_groupBox.Text = "Wafer Package";
@@ -250,7 +256,7 @@
             this.pic_groupBox.Controls.Add(this.pictureView);
             this.pic_groupBox.Location = new System.Drawing.Point(722, 65);
             this.pic_groupBox.Name = "pic_groupBox";
-            this.pic_groupBox.Size = new System.Drawing.Size(549, 654);
+            this.pic_groupBox.Size = new System.Drawing.Size(550, 660);
             this.pic_groupBox.TabIndex = 3;
             this.pic_groupBox.TabStop = false;
             this.pic_groupBox.Text = "Preview";
@@ -260,7 +266,7 @@
             this.pictureView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureView.Location = new System.Drawing.Point(3, 17);
             this.pictureView.Name = "pictureView";
-            this.pictureView.Size = new System.Drawing.Size(543, 634);
+            this.pictureView.Size = new System.Drawing.Size(544, 640);
             this.pictureView.TabIndex = 0;
             // 
             // FrmLotPackage
@@ -272,6 +278,7 @@
             this.Controls.Add(this.pic_groupBox);
             this.Controls.Add(this.package_groupBox);
             this.Controls.Add(this.lotInfo_groupBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmLotPackage";
             this.Text = "Lot Package";

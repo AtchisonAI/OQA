@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Print = new System.Windows.Forms.Button();
             this.txtLotID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.Print = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -74,6 +74,16 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "PackageLabelPrint";
+            // 
+            // Print
+            // 
+            this.Print.Location = new System.Drawing.Point(431, 34);
+            this.Print.Name = "Print";
+            this.Print.Size = new System.Drawing.Size(75, 23);
+            this.Print.TabIndex = 7;
+            this.Print.Text = "Query";
+            this.Print.UseVisualStyleBackColor = true;
+            this.Print.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // txtLotID
             // 
@@ -117,16 +127,6 @@
             this.reportViewer1.Size = new System.Drawing.Size(744, 380);
             this.reportViewer1.TabIndex = 0;
             // 
-            // Print
-            // 
-            this.Print.Location = new System.Drawing.Point(431, 34);
-            this.Print.Name = "Print";
-            this.Print.Size = new System.Drawing.Size(75, 23);
-            this.Print.TabIndex = 7;
-            this.Print.Text = "Print";
-            this.Print.UseVisualStyleBackColor = true;
-            this.Print.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
             // FrmPackageLabelPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -136,6 +136,7 @@
             this.Controls.Add(this.groupBox1);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "FrmPackageLabelPrint";
+            this.Text = "FrmPackageLabelPrint";
             this.Load += new System.EventHandler(this.FrmPackageLabelPrint_Load);
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);

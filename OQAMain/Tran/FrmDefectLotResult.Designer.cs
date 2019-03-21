@@ -204,16 +204,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(658, 7);
+            this.btnClose.Location = new System.Drawing.Point(658, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(475, 8);
+            this.btnCreate.Location = new System.Drawing.Point(475, 7);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(567, 8);
+            this.btnEdite.Location = new System.Drawing.Point(567, 7);
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
@@ -275,6 +275,7 @@
             this.txtISPFoupFilter.Name = "txtISPFoupFilter";
             this.txtISPFoupFilter.Size = new System.Drawing.Size(100, 21);
             this.txtISPFoupFilter.TabIndex = 12;
+            this.txtISPFoupFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtISPFoupFilter_KeyPress);
             // 
             // label4
             // 
@@ -291,6 +292,7 @@
             this.txtISPLotFilter.Name = "txtISPLotFilter";
             this.txtISPLotFilter.Size = new System.Drawing.Size(100, 21);
             this.txtISPLotFilter.TabIndex = 10;
+            this.txtISPLotFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtISPLotFilter_KeyPress);
             // 
             // txtCount
             // 
@@ -1581,7 +1583,7 @@
             // btnSrap
             // 
             this.btnSrap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSrap.Location = new System.Drawing.Point(384, 8);
+            this.btnSrap.Location = new System.Drawing.Point(384, 7);
             this.btnSrap.Name = "btnSrap";
             this.btnSrap.Size = new System.Drawing.Size(88, 26);
             this.btnSrap.TabIndex = 7;

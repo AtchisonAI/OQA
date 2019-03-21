@@ -10,6 +10,7 @@ namespace WcfService
     {
         public MyDB (string connectStringName) : base(connectStringName)
         {
+            Console.WriteLine("*******");
 
         }
 

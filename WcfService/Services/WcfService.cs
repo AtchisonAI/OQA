@@ -12,10 +12,9 @@ namespace WcfService.Services
     public class WcfService : BaseService, IWcfContract
     {
         #region 登陆&权限
-
-        public ModelListRsp<string> Login(LoginReq loginReq)
+        public ModelRsp<LoginRsp> Login(LoginReq loginReq)
         {
-            ModelListRsp<string> loginRes = new ModelListRsp<string>();
+            ModelRsp<LoginRsp> loginRes = new ModelRsp<LoginRsp>();
 
             //首先使用tibco 验证登陆
             MessageService.Initialize();
@@ -38,20 +37,32 @@ namespace WcfService.Services
                 //登陆成功，查询相应的access string
                 QueryReq req = new QueryReq();
                 AddCondition(req, GetParaName<CUserAccessStringView>(q => q.userName), loginReq.userProfile.userId, LogicCondition.AndAlso, CompareType.Equal);
-                AddCondition(req, GetParaName<CUserAccessStringView>(q => q.accessName), loginReq.userProfile.systemPrefix,  LogicCondition.AndAlso, CompareType.Include);
+                AddCondition(req, GetParaName<CUserAccessStringView>(q => q.accessName), loginReq.userProfile.systemPrefix, LogicCondition.AndAlso, CompareType.Include);
 
                 var res = Query<CUserAccessStringView>(req);
                 foreach (CUserAccessStringView q in res.models)
                 {
-                    loginRes.models.Add(q.accessName);
+                    loginRes.model.userAccessString.Add(q.accessName);
                 }
 
+                //查询受控的control
+                req.queryConditionList.Clear();
+                AddCondition(req, GetParaName<ControlAccessString>(q => q.SysName), "OQA", LogicCondition.AndAlso, CompareType.Equal);
+                loginRes.model.controlAccessString = Query<ControlAccessString>(req).models;
+
+                //查询当前用户的自定义快捷菜单并权限过滤
+                req.queryConditionList.Clear();
+                AddCondition(req, GetParaName<UserFavorite>(q => q.UserID), loginReq.userProfile.userId, LogicCondition.AndAlso, CompareType.Equal);
+                AddCondition(req, GetParaName<UserFavorite>(q => q.SysName), "OQA", LogicCondition.AndAlso, CompareType.Equal);
+                loginRes.model.userFavorite = Query<UserFavorite>(req).models;
+
                 loginRes._success = true;
-            } else
+            }
+            else
             {
                 loginRes._ErrorMsg = "OQA:账号密码验证失败，请重新输入";
             }
-    
+
             return loginRes;
         }
 
@@ -72,6 +83,23 @@ namespace WcfService.Services
             ModelRsp<ControlAccessString> rsp = new ModelRsp<ControlAccessString>();
             UpdateModel(updateReq, rsp,false);
 
+            return rsp;
+        }
+
+        public ModelListRsp<UserFavorite> QueryUserFavorite(QuerUserFavoriteReq querUserFavoriteReq)
+        {
+            QueryReq req = new QueryReq();
+            AddCondition(req, GetParaName<UserFavorite>(q => q.UserID), querUserFavoriteReq.userId, LogicCondition.AndAlso, CompareType.Equal);
+            AddCondition(req, GetParaName<UserFavorite>(q => q.SysName), "OQA", LogicCondition.AndAlso, CompareType.Equal);
+            return Query<UserFavorite>(req);
+        }
+
+        [OperationBehavior(TransactionAutoComplete = true, TransactionScopeRequired = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
+        public ModelRsp<UserFavorite> UpdateUserFavorite(UpdateModelReq<UserFavorite> updateReq)
+        {
+            ModelRsp<UserFavorite> rsp = new ModelRsp<UserFavorite>();
+            UpdateModel(updateReq, rsp, false);
             return rsp;
         }
 

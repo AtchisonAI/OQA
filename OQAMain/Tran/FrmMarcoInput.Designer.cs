@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButtonB = new System.Windows.Forms.RadioButton();
-            this.radioButtonF = new System.Windows.Forms.RadioButton();
-            this.slotComboBox = new System.Windows.Forms.ComboBox();
+            this.rbtnB = new System.Windows.Forms.RadioButton();
+            this.rbtnF = new System.Windows.Forms.RadioButton();
+            this.cboxSlotId = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.lotTextBox = new System.Windows.Forms.TextBox();
+            this.txtLotId = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.imageUpload1 = new ImageUpload.ImageUpload();
             this.waferSurF = new WaferSf.WaferSur();
-            this.frontButton = new System.Windows.Forms.Button();
-            this.cmtRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.btnSide = new System.Windows.Forms.Button();
+            this.rtboxCmt = new System.Windows.Forms.RichTextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.decRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.rtboxDsc = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
@@ -55,19 +55,19 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(647, 7);
+            this.btnClose.Location = new System.Drawing.Point(638, 6);
             // 
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCreate.Location = new System.Drawing.Point(558, 7);
+            this.btnCreate.Location = new System.Drawing.Point(549, 6);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
             this.btnEdite.Enabled = false;
             this.btnEdite.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnEdite.Location = new System.Drawing.Point(558, 7);
+            this.btnEdite.Location = new System.Drawing.Point(549, 6);
             this.btnEdite.Visible = false;
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
@@ -88,11 +88,11 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioButtonB);
-            this.groupBox2.Controls.Add(this.radioButtonF);
-            this.groupBox2.Controls.Add(this.slotComboBox);
+            this.groupBox2.Controls.Add(this.rbtnB);
+            this.groupBox2.Controls.Add(this.rbtnF);
+            this.groupBox2.Controls.Add(this.cboxSlotId);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.lotTextBox);
+            this.groupBox2.Controls.Add(this.txtLotId);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -103,40 +103,40 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Macro inspection simple MAP";
             // 
-            // radioButtonB
+            // rbtnB
             // 
-            this.radioButtonB.AutoSize = true;
-            this.radioButtonB.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonB.Location = new System.Drawing.Point(408, 22);
-            this.radioButtonB.Name = "radioButtonB";
-            this.radioButtonB.Size = new System.Drawing.Size(71, 16);
-            this.radioButtonB.TabIndex = 8;
-            this.radioButtonB.TabStop = true;
-            this.radioButtonB.Text = "BackSide";
-            this.radioButtonB.UseVisualStyleBackColor = true;
-            this.radioButtonB.CheckedChanged += new System.EventHandler(this.radioButtonB_CheckedChanged);
+            this.rbtnB.AutoSize = true;
+            this.rbtnB.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rbtnB.Location = new System.Drawing.Point(408, 22);
+            this.rbtnB.Name = "rbtnB";
+            this.rbtnB.Size = new System.Drawing.Size(71, 16);
+            this.rbtnB.TabIndex = 8;
+            this.rbtnB.TabStop = true;
+            this.rbtnB.Text = "BackSide";
+            this.rbtnB.UseVisualStyleBackColor = true;
+            this.rbtnB.CheckedChanged += new System.EventHandler(this.radioButtonB_CheckedChanged);
             // 
-            // radioButtonF
+            // rbtnF
             // 
-            this.radioButtonF.AutoSize = true;
-            this.radioButtonF.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonF.Location = new System.Drawing.Point(325, 22);
-            this.radioButtonF.Name = "radioButtonF";
-            this.radioButtonF.Size = new System.Drawing.Size(77, 16);
-            this.radioButtonF.TabIndex = 7;
-            this.radioButtonF.TabStop = true;
-            this.radioButtonF.Text = "FrontSide";
-            this.radioButtonF.UseVisualStyleBackColor = true;
+            this.rbtnF.AutoSize = true;
+            this.rbtnF.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rbtnF.Location = new System.Drawing.Point(325, 22);
+            this.rbtnF.Name = "rbtnF";
+            this.rbtnF.Size = new System.Drawing.Size(77, 16);
+            this.rbtnF.TabIndex = 7;
+            this.rbtnF.TabStop = true;
+            this.rbtnF.Text = "FrontSide";
+            this.rbtnF.UseVisualStyleBackColor = true;
             // 
-            // slotComboBox
+            // cboxSlotId
             // 
-            this.slotComboBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.slotComboBox.FormattingEnabled = true;
-            this.slotComboBox.Location = new System.Drawing.Point(214, 20);
-            this.slotComboBox.Name = "slotComboBox";
-            this.slotComboBox.Size = new System.Drawing.Size(100, 20);
-            this.slotComboBox.TabIndex = 4;
-            this.slotComboBox.SelectedIndexChanged += new System.EventHandler(this.slotComboBox_SelectedIndexChanged);
+            this.cboxSlotId.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cboxSlotId.FormattingEnabled = true;
+            this.cboxSlotId.Location = new System.Drawing.Point(214, 20);
+            this.cboxSlotId.Name = "cboxSlotId";
+            this.cboxSlotId.Size = new System.Drawing.Size(100, 20);
+            this.cboxSlotId.TabIndex = 4;
+            this.cboxSlotId.SelectedIndexChanged += new System.EventHandler(this.slotComboBox_SelectedIndexChanged);
             // 
             // label15
             // 
@@ -148,15 +148,15 @@
             this.label15.TabIndex = 1;
             this.label15.Text = "Lot ID";
             // 
-            // lotTextBox
+            // txtLotId
             // 
-            this.lotTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lotTextBox.Location = new System.Drawing.Point(55, 20);
-            this.lotTextBox.Multiline = true;
-            this.lotTextBox.Name = "lotTextBox";
-            this.lotTextBox.Size = new System.Drawing.Size(100, 20);
-            this.lotTextBox.TabIndex = 3;
-            this.lotTextBox.TextChanged += new System.EventHandler(this.lotTextBox_TextChanged);
+            this.txtLotId.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtLotId.Location = new System.Drawing.Point(55, 20);
+            this.txtLotId.Multiline = true;
+            this.txtLotId.Name = "txtLotId";
+            this.txtLotId.Size = new System.Drawing.Size(100, 20);
+            this.txtLotId.TabIndex = 3;
+            this.txtLotId.TextChanged += new System.EventHandler(this.lotTextBox_TextChanged);
             // 
             // label16
             // 
@@ -173,12 +173,12 @@
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.imageUpload1);
             this.groupBox3.Controls.Add(this.waferSurF);
-            this.groupBox3.Controls.Add(this.frontButton);
-            this.groupBox3.Controls.Add(this.cmtRichTextBox);
+            this.groupBox3.Controls.Add(this.btnSide);
+            this.groupBox3.Controls.Add(this.rtboxCmt);
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.decRichTextBox);
+            this.groupBox3.Controls.Add(this.rtboxDsc);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -202,7 +202,7 @@
             // imageUpload1
             // 
             this.imageUpload1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.imageUpload1.Location = new System.Drawing.Point(364, 161);
+            this.imageUpload1.Location = new System.Drawing.Point(364, 250);
             this.imageUpload1.Name = "imageUpload1";
             this.imageUpload1.PicStream = null;
             this.imageUpload1.Size = new System.Drawing.Size(380, 31);
@@ -223,24 +223,25 @@
             this.waferSurF.Size = new System.Drawing.Size(220, 220);
             this.waferSurF.TabIndex = 27;
             // 
-            // frontButton
+            // btnSide
             // 
-            this.frontButton.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.frontButton.Location = new System.Drawing.Point(90, 310);
-            this.frontButton.Name = "frontButton";
-            this.frontButton.Size = new System.Drawing.Size(123, 23);
-            this.frontButton.TabIndex = 31;
-            this.frontButton.Text = "Front side";
-            this.frontButton.UseVisualStyleBackColor = true;
+            this.btnSide.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSide.Location = new System.Drawing.Point(90, 310);
+            this.btnSide.Name = "btnSide";
+            this.btnSide.Size = new System.Drawing.Size(123, 23);
+            this.btnSide.TabIndex = 31;
+            this.btnSide.Text = "Front side";
+            this.btnSide.UseVisualStyleBackColor = true;
             // 
-            // cmtRichTextBox
+            // rtboxCmt
             // 
-            this.cmtRichTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmtRichTextBox.Location = new System.Drawing.Point(403, 224);
-            this.cmtRichTextBox.Name = "cmtRichTextBox";
-            this.cmtRichTextBox.Size = new System.Drawing.Size(300, 29);
-            this.cmtRichTextBox.TabIndex = 16;
-            this.cmtRichTextBox.Text = "";
+            this.rtboxCmt.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rtboxCmt.Location = new System.Drawing.Point(403, 224);
+            this.rtboxCmt.Name = "rtboxCmt";
+            this.rtboxCmt.Size = new System.Drawing.Size(300, 29);
+            this.rtboxCmt.TabIndex = 16;
+            this.rtboxCmt.Text = "";
+            this.rtboxCmt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmtRichTextBox_KeyPress);
             // 
             // label14
             // 
@@ -272,20 +273,21 @@
             this.label12.TabIndex = 22;
             this.label12.Text = "A:Arching  S:Scratch  D:Discolor  F:Defocus  C:Corrosion  P:Particle ";
             // 
-            // decRichTextBox
+            // rtboxDsc
             // 
-            this.decRichTextBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.decRichTextBox.Location = new System.Drawing.Point(403, 192);
-            this.decRichTextBox.Name = "decRichTextBox";
-            this.decRichTextBox.Size = new System.Drawing.Size(300, 29);
-            this.decRichTextBox.TabIndex = 15;
-            this.decRichTextBox.Text = "";
+            this.rtboxDsc.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rtboxDsc.Location = new System.Drawing.Point(403, 192);
+            this.rtboxDsc.Name = "rtboxDsc";
+            this.rtboxDsc.Size = new System.Drawing.Size(300, 29);
+            this.rtboxDsc.TabIndex = 15;
+            this.rtboxDsc.Text = "";
+            this.rtboxDsc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.decRichTextBox_KeyPress);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(285, 170);
+            this.label5.Location = new System.Drawing.Point(286, 259);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 12);
             this.label5.TabIndex = 5;
@@ -327,22 +329,22 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox slotComboBox;
+        private System.Windows.Forms.ComboBox cboxSlotId;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox lotTextBox;
+        private System.Windows.Forms.TextBox txtLotId;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RichTextBox cmtRichTextBox;
+        private System.Windows.Forms.RichTextBox rtboxCmt;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.RichTextBox decRichTextBox;
+        private System.Windows.Forms.RichTextBox rtboxDsc;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label9;
         private ImageUpload.ImageUpload imageUpload1;
-        private System.Windows.Forms.RadioButton radioButtonB;
-        private System.Windows.Forms.RadioButton radioButtonF;
+        private System.Windows.Forms.RadioButton rbtnB;
+        private System.Windows.Forms.RadioButton rbtnF;
         private System.Windows.Forms.Label label13;
         private WaferSf.WaferSur waferSurF;
-        private System.Windows.Forms.Button frontButton;
+        private System.Windows.Forms.Button btnSide;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;
     }

@@ -6,6 +6,7 @@ using WCFModels.OQA;
 using WCFModels.Message;
 using System.Collections.Generic;
 using WcfClientCore.Utils.Authority;
+using System.Linq;
 
 namespace OQAMain
 {
@@ -138,37 +139,6 @@ namespace OQAMain
 
 
         public static string srtNum;
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //检查数据
-                if (CheckCondition("CREATE") == false) return;
-                //调用事务服务
-                // if (UpdateBoxShipment(GlobConst.TRAN_CREATE) == false) return;
-
-                //控件重定义
-                //if (MPCF.Trim(txtBox_LotID.Text) != "")
-                //{
-                //控件初始化
-                //ComFunc.ClearList(lisOperLotList);
-                //ComFunc.ClearList(spdBox_SubTask);
-                ////MPCF.ClearList(spdOrderID);
-                //ComFunc.FieldClear(spdOrderID);
-                //ComFunc.ClearList(spdBox_LayoutID_MarkID);
-                //ComFunc.FieldClear(pnlTask);
-                //重新查询
-                //View_Lot_List("2");
-                //ViewSubLotListExt();
-                //ViewLotBoxListExt('2');
-                //View_Order_list(txtBox_LotID.Text);
-                //}
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }
       
         private void FrmLotTransfer_Load(object sender, EventArgs e)
         {
@@ -198,9 +168,14 @@ namespace OQAMain
             //}
         }
 
+
+        private List<PKGSHPDAT> insert_data = new List<PKGSHPDAT>();
+
+      
+
         private void btnCreate_Click_1(object sender, EventArgs e)
         {
-           
+            insert_data.Clear();
             GetSerialNum();
             MessageBox.Show("交接单号"+ srtNum);
             FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint(srtNum);
@@ -216,29 +191,47 @@ namespace OQAMain
             //调用事务服务
             //
             if (CreateLotTransferInfo(cTranFlag, '1', s_PartID, s_Creater, s_QTY, s_Date, srtNum, Trans_Seq) == true)
-            {               
+            {           
                 foreach (ListViewItem item in this.listship.Items)
                 {
-                        string lotid = item.SubItems[0].Text;
-                        string qty = item.SubItems[1].Text;
-                        string partid = item.SubItems[2].Text;
-                        string isp_result = item.SubItems[3].Text;
-                        string update_trans_seq = item.SubItems[4].Text;
-                    if (CreateLotTransferListInfo(cTranFlag, '1', lotid, qty, partid, isp_result, srtNum, Trans_Seq) == true)
+                    PKGSHPDAT item1 = new PKGSHPDAT();
+                    string lotid = item.SubItems[0].Text;
+                    string qty = item.SubItems[1].Text;
+                    string partid = item.SubItems[2].Text;
+                    string isp_result = item.SubItems[3].Text;
+                    string update_trans_seq = item.SubItems[4].Text;
+                    item1.LotId= lotid.ToString();
+                    item1.Qty = qty;
+                    item1.PartId = partid;
+                    item1.InspectResult = isp_result;
+                    item1.TransSeq = Convert.ToDecimal(update_trans_seq);
+                    
+                    insert_data.Add(item1);
+                }
+
+
+                if (CreateLotTransferListInfo(cTranFlag, '1', srtNum) == true)
+                {
+                    if (CreateLotTransferListInfo(GlobConst.TRAN_UPDATE, '1', srtNum) == false)
                     {
-                        if (CreateLotTransferListInfo(GlobConst.TRAN_UPDATE, '1', lotid, qty, partid, isp_result, srtNum, Convert.ToDecimal(update_trans_seq)) == false)
-                        {
-                            return;
-                        }
-                    }
-                    else {
                         return;
                     }
                 }
+                else
+                {
+                    return;
+                }
+
                 formshiplistprint.FormBorderStyle = FormBorderStyle.FixedDialog;
                 formshiplistprint.WindowState = FormWindowState.Maximized;
                 formshiplistprint.StartPosition = FormStartPosition.CenterParent;
                 formshiplistprint.ShowDialog();
+                ComFunc.InitListView(listship, true);
+                txtPartID.Text = "";
+                txtQTY.Text = "";
+                txtDate.Text= "";
+                LotIDList.Items.Clear();
+                if (QueryLotIDList(GlobConst.TRAN_VIEW, '1') == false) return;
 
             }                     
         }
@@ -271,12 +264,13 @@ namespace OQAMain
             var out_data = OQASrv.Call.QueryLotList(in_node);
 
             if (out_data._success == true)
-            {             
-                for (int i = 0; i < out_data.model.ISPLOTST_list.Count; i++)
+            {
+                List<ISPLOTSTS> SortByTime = out_data.model.ISPLOTST_list.OrderByDescending(o => o.UpdateTime).ToList();
+                for (int i = 0; i < SortByTime.Count; i++)
                 {
                     ListViewItem list_item = new ListViewItem();
-                    ISPLOTSTS list = out_data.model.ISPLOTST_list[i];
-                    list_item.Text = list.LotId;
+                    ISPLOTSTS list = SortByTime[i];
+                    list_item.Text = list.LotId.PadRight(15)+ list.PartId;
                     LotIDList.Items.Add(list_item.Text);
                 }
                 lblSucessMsg.Text = out_data._MsgCode;
@@ -383,22 +377,18 @@ namespace OQAMain
         }
 
         //insert to PKGSHPDAT
-        private bool CreateLotTransferListInfo(char c_proc_step, char c_tran_flag, string lot_id, string QTY, string part_id, string isp_result, string ship_id, decimal TransSeq)
+        private bool CreateLotTransferListInfo(char c_proc_step, char c_tran_flag,  string ship_id)
         {
             ModelRsp<LotTransferListSave> in_node = new ModelRsp<LotTransferListSave>();
             LotTransferListSave in_data = new LotTransferListSave();
 
-            in_data.C_PROC_STEP = c_proc_step;
-            in_data.C_TRAN_FLAG = c_tran_flag;
-            in_data.D_TRANSSEQ = TransSeq; //事务控制
-            in_data.IN_PART_ID = part_id;
-            in_data.IN_LOTID= lot_id;
-            in_data.IN_QTY = QTY;
-            in_data.IN_ISP_RESULT= isp_result;
-            in_data.IN_SHIPID = ship_id;
-            in_data.S_USER_ID= AuthorityControl.GetUserProfile().userId;
 
-            in_node.model = in_data;
+            in_node.model.C_PROC_STEP = c_proc_step;
+            in_node.model.C_TRAN_FLAG = c_tran_flag;
+            in_node.model.IN_SHIPID = ship_id;
+            in_node.model.S_USER_ID = AuthorityControl.GetUserProfile().userId;
+
+            in_node.model.INSERTPKGSHPDAT_list = insert_data;
 
             var out_data = OQASrv.Call.CreateLotTransferListInfo(in_node);
 
@@ -419,7 +409,7 @@ namespace OQAMain
         //checkedlistbox选择，产生MASTERLOT
         private void LotIDList_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            foreach (var item in LotIDList.CheckedItems)
+            foreach (var item in  LotIDList.CheckedItems)
             {
                 if (e.NewValue == CheckState.Unchecked && item == LotIDList.Items[e.Index])
                 {
@@ -428,11 +418,11 @@ namespace OQAMain
 
                 if (MasterLot.Length == 0)
                 {
-                    MasterLot = "'" + item.ToString().Trim() + "'";
+                    MasterLot = "'" + item.ToString().Split(' ')[0].Trim() + "'";
                 }
                 else
                 {
-                    MasterLot = MasterLot + ",'" + item.ToString().Trim() + "'";
+                    MasterLot = MasterLot + ",'" + item.ToString().Split(' ')[0].Trim() + "'";
                 }
 
             }
@@ -440,11 +430,11 @@ namespace OQAMain
             {
                 if (MasterLot.Length == 0)
                 {
-                    MasterLot = "'" + LotIDList.Items[e.Index].ToString().Trim() + "'";
+                    MasterLot = "'" + LotIDList.Items[e.Index].ToString().Split(' ')[0].Trim() + "'";
                 }
                 else
                 {
-                    MasterLot = MasterLot + ",'" + LotIDList.Items[e.Index].ToString().Trim() + "'";
+                    MasterLot = MasterLot + ",'" + LotIDList.Items[e.Index].ToString().Split(' ')[0].Trim() + "'";
                 }
             }
 
@@ -453,7 +443,6 @@ namespace OQAMain
                 ComFunc.InitListView(listship, true);
                 txtPartID.Text = "";
                 txtQTY.Text = "";
-               // txtCreater.Text = "";
                 txtDate.Text = "";
                 return;
             }
@@ -475,19 +464,16 @@ namespace OQAMain
         //全选
         private void btnCheckAll_Click(object sender, EventArgs e)
         {
-            
-
-
             foreach (var item in LotIDList.Items)
             {
                
                 if (MasterLot.Length == 0)
                 {
-                    MasterLot = "'" + item.ToString().Trim() + "'";
+                    MasterLot = "'" + item.ToString().Split(' ')[0].Trim() + "'";
                 }
                 else
                 {
-                    MasterLot = MasterLot + ",'" + item.ToString().Trim() + "'";
+                    MasterLot = MasterLot + ",'" + item.ToString().Split(' ')[0].Trim() + "'";
                 }
 
             }
@@ -558,7 +544,7 @@ namespace OQAMain
                 {
                     ListViewItem list_item = new ListViewItem();
                    
-                    list_item.Text = out_data.model.SEARCHLOTID_list[i][0].ToString();
+                    list_item.Text = out_data.model.SEARCHLOTID_list[i][0].ToString().PadRight(15)+out_data.model.SEARCHLOTID_list[i][1];
                     LotIDList.Items.Add(list_item.Text);
                 }
                 lblSucessMsg.Text = out_data._MsgCode;

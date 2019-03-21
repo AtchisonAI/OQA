@@ -12,12 +12,13 @@ namespace OQAService.Services
 {
     public partial class OQAService : OQABaseService, IOQAContract
     {
-        [OperationBehavior(TransactionAutoComplete = true, TransactionScopeRequired = true)]
-        [TransactionFlow(TransactionFlowOption.Allowed)]
+        //[OperationBehavior(TransactionAutoComplete = true, TransactionScopeRequired = true)]
+        //[TransactionFlow(TransactionFlowOption.Allowed)]
         public ModelRsp<AOIShowView> CreateOrUpdateAOI(UpdateModelReq<AOIShowView> updateReq)
         {
             try
             {
+                BeginTrans();
                 ModelRsp<AOIShowView> out_Msg = new ModelRsp<AOIShowView>();
                 out_Msg._success = true;
                 updateReq.partialUpdate = true;//部分更新
@@ -54,11 +55,12 @@ namespace OQAService.Services
                             {
                                 updateReq.model.ISPWAFITM_list[0].TransSeq = qryOut.model.ISPWAFITM_list[0].TransSeq;
                                 updateReq.model.ISPWAFITM_list[0].UpdateTime = GetSysTime();
-                                UpdateModelReq<ISPWAFITM> wafitm = new UpdateModelReq<ISPWAFITM>()
+                                UpdateModelReq <ISPWAFITM> wafitm = new UpdateModelReq<ISPWAFITM>()
                                 {
                                     model = updateReq.model.ISPWAFITM_list[0],
                                     operateType = OperateType.Update
                                 };
+                                InitTable(wafitm.model);
                                 ModelRsp<ISPWAFITM> backInfo = new ModelRsp<ISPWAFITM>();//定义数据库操作新增动作传入结构
                                 UpdateModel(wafitm, backInfo, true);
                                 if (!backInfo._success)
@@ -135,6 +137,7 @@ namespace OQAService.Services
                                     foreach (ISPWAFDFT detReq in updateReq.model.ISPWAFDFT_list)
                                     {
                                         detReq.TransSeq = 0;
+                                        detReq.CreateTime = GetSysTime();
                                         OperateType operateTypeDft = OperateType.Insert;
                                         for(int i = 0; i < qryOut.model.ISPWAFDFT_list.Count; i++)
                                         {
@@ -144,13 +147,12 @@ namespace OQAService.Services
                                             {
                                                 detReq.TransSeq = qryOut.model.ISPWAFDFT_list[i].TransSeq;
                                                 operateTypeDft = OperateType.Update;
+                                                detReq.CreateTime = qryOut.model.ISPWAFDFT_list[i].CreateTime;
                                                 detReq.UpdateTime = GetSysTime();
+                                                detReq.UpdateUserId = detReq.CreateUserId;
+                                                detReq.CreateUserId = qryOut.model.ISPWAFDFT_list[i].CreateUserId;
                                                 //移除更新的数据
                                                 copyQryList.Remove(qryOut.model.ISPWAFDFT_list[i]);
-                                            }
-                                            else
-                                            {
-                                                detReq.CreateTime = GetSysTime();
                                             }
                                             
                                         }
@@ -171,6 +173,7 @@ namespace OQAService.Services
                                             model = detReq,
                                             operateType = operateTypeDft
                                         };
+                                        InitTable(wafdet.model);
                                         ModelRsp<ISPWAFDFT> backInfo = new ModelRsp<ISPWAFDFT>();//定义数据库操作新增动作传入结构
                                         UpdateModel(wafdet, backInfo, true);
                                         if (!backInfo._success)
@@ -185,6 +188,7 @@ namespace OQAService.Services
                                         models = copyQryList,
                                         operateType = OperateType.Delete
                                     };
+                                    InitTable(deleteList.models);
                                     ModelListRsp<ISPWAFDFT> deleteBackInfo = new ModelListRsp<ISPWAFDFT>();//定义数据库操作新增动作传入结构
                                     UpdateModels(deleteList, deleteBackInfo, true);
                                     if (!deleteBackInfo._success)
@@ -204,6 +208,7 @@ namespace OQAService.Services
                                             model = detReq,
                                             operateType = OperateType.Insert
                                         };
+                                        InitTable(wafdet.model);
                                         ModelRsp<ISPWAFDFT> backInfo = new ModelRsp<ISPWAFDFT>();//定义数据库操作新增动作传入结构
                                         UpdateModel<ISPWAFDFT>(wafdet, backInfo, true);
                                         if (!backInfo._success)
@@ -224,6 +229,7 @@ namespace OQAService.Services
                                         models = qryOut.model.ISPWAFDFT_list,
                                         operateType = OperateType.Delete
                                     };
+                                    InitTable(wafdet.models);
                                     ModelListRsp<ISPWAFDFT> backInfo = new ModelListRsp<ISPWAFDFT>();//定义数据库操作新增动作传入结构
                                     UpdateModels(wafdet, backInfo, true);
                                     if (!backInfo._success)
@@ -251,6 +257,7 @@ namespace OQAService.Services
                             }
 
                         }
+                        EndTrans();
                         break;
                     case '2':
                         // TODO
@@ -267,7 +274,6 @@ namespace OQAService.Services
 
                 return out_Msg;
             }
-
             catch (Exception e)
             {
                 ModelRsp<AOIShowView> out_Msg = new ModelRsp<AOIShowView>();
@@ -275,9 +281,8 @@ namespace OQAService.Services
                 out_Msg._ErrorMsg = e.Message.ToString();
                 return out_Msg;
             }
-
+         
         }
-
         
     }
 }

@@ -77,6 +77,7 @@ namespace OQAService.Services
                         {
                             Out_node._success = false;
                             Out_node._ErrorMsg = "Lotid 已Check!";
+                            Out_node.model.PkgsltdefList = Query<PKGSLTDEF>(IsChkLot).models;
                             return Out_node;
                         }
 

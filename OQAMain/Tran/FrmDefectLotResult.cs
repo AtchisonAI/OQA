@@ -150,11 +150,13 @@ namespace OQAMain
                         ImgISPLot.Enabled = false;
                         ImgISPLot.RefreshContrl();
                         break;
-                    case "2"://AFTER CREATE
+                    case "2":
+                        //Initialize
+                        ComFunc.InitListView(LstRcvLot, true);
+                        ComFunc.FieldClear(this, txtISPLotFilter, txtISPFoupFilter);
                         d_tran_seq = 0;
-                        break;
-                    case "3"://AFTER SELECT 
-
+                        ImgISPLot.Enabled = false;
+                        ImgISPLot.RefreshContrl();
                         break;
                 }
 
@@ -339,9 +341,9 @@ namespace OQAMain
                 txtUserID.Text = list_lot[0].RecUser;
                 txtRecDate.Text = list_lot[0].RecDate;
                 txtName.Text = list_lot[0].RecUserName;
-                txtShift.Text = list_lot[0].RecShift;
-                txtPhone.Text = list_lot[0].Phone;
-                txtDept.Text = list_lot[0].Dept;
+                txtShift.Text = list_lot[0].RecShift.Trim();
+                txtPhone.Text = list_lot[0].Phone.Trim();
+                txtDept.Text = list_lot[0].Dept.Trim();
                 txtStage.Text = list_lot[0].Stage;
                 txtLotQty.Text = list_lot[0].Qty.ToString();
                 d_tran_seq = list_lot[0].TransSeq;
@@ -692,10 +694,21 @@ namespace OQAMain
                 //if (CheckCondition("ISPVIEW") == false) return;
 
                 //调用事务服务
-                if (QueryISPLotInfo(GlobConst.TRAN_VIEW, '3') == false) return;
-                if (LstRcvLot.Items.Count > 0)
+                if (QueryISPLotInfo(GlobConst.TRAN_VIEW, '3') == false)
                 {
-                    LstRcvLot.Items[0].Selected = true;
+                    ClearData("2");
+
+                }
+                else
+                {
+                    if (LstRcvLot.Items.Count > 0)
+                    {
+                        LstRcvLot.Items[0].Selected = true;
+                    }
+                    else
+                    {
+                        ClearData("2");
+                    }
                 }
 
             }
@@ -720,7 +733,7 @@ namespace OQAMain
                 ImgISPLot.Enabled = true;
                 QueryImgByLot(txtISPLotFilter.Text.Trim());
 
-                ClearData("3");
+               
             }
         }
 
@@ -740,6 +753,8 @@ namespace OQAMain
                         AOI.MinimizeBox = false;
                         AOI.StartPosition = FormStartPosition.CenterParent;
                         AOI.ShowDialog();
+
+                        btnISPLotFilter.PerformClick();
                     }
 
                 }
@@ -764,6 +779,8 @@ namespace OQAMain
                     MAC.MinimizeBox = false;
                     MAC.StartPosition = FormStartPosition.CenterParent;
                     MAC.ShowDialog();
+
+                    btnISPLotFilter.PerformClick();
                 }
 
             }
@@ -783,6 +800,8 @@ namespace OQAMain
                     MIR.MinimizeBox = false;
                     MIR.StartPosition = FormStartPosition.CenterParent;
                     MIR.ShowDialog();
+
+                    btnISPLotFilter.PerformClick();
                 }
 
             }
@@ -839,6 +858,30 @@ namespace OQAMain
 
             txtISPLotFilter.Text = "";
             btnISPLotFilter.PerformClick();
+        }
+
+        private void txtISPLotFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)13)
+            {
+                if (ComFunc.Trim(txtISPLotFilter.Text) != "")
+                {
+                    btnISPLotFilter.PerformClick();
+
+                }
+            }
+        }
+
+        private void txtISPFoupFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)13)
+            {
+                if (ComFunc.Trim(txtISPFoupFilter.Text) != "")
+                {
+                    btnISPLotFilter.PerformClick();
+
+                }
+            }
         }
     }
 }

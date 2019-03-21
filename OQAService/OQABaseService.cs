@@ -160,10 +160,17 @@ namespace OQAService.Services
 
         }
 
-
-        public  void SaveISPLotHistory(ModelListRsp<ISPLOTSTS> IN_ISPLOTSTS,string s_time,string s_userid)
+        public void SaveISPLotHistory(string s_TranCode, string s_UserId, ModelRsp<ISPLOTSTS> IN_ISPLOTSTS)
         {
+            ModelListRsp<ISPLOTSTS> lIST_ISPLOTSTS = new ModelListRsp<ISPLOTSTS>();
+            lIST_ISPLOTSTS.models.Add(IN_ISPLOTSTS.model);
+            SaveISPLotHistory( s_TranCode,  s_UserId, lIST_ISPLOTSTS);
 
+        }
+
+            public  void SaveISPLotHistory(string s_TranCode, string s_UserId ,ModelListRsp<ISPLOTSTS> IN_ISPLOTSTS)
+        {
+            
             UpdateModelListReq<ISPLOTHI> ISPLOTHIS_Save = new UpdateModelListReq<ISPLOTHI>();
             ModelListRsp<ISPLOTHI> ISPLOTHIS_message = new ModelListRsp<ISPLOTHI>();
 
@@ -209,8 +216,10 @@ namespace OQAService.Services
                 T_ISPLOTHIS.CreateUserId = S_ISPLOTSTS.CreateUserId;
                 T_ISPLOTHIS.UpdateTime = S_ISPLOTSTS.UpdateTime;
                 T_ISPLOTHIS.UpdateUserId = S_ISPLOTSTS.UpdateUserId;
-                T_ISPLOTHIS.TranTime = s_time;
-                T_ISPLOTHIS.TranUserId = s_userid;
+                T_ISPLOTHIS.TranTime = GetSysTime();
+                T_ISPLOTHIS.TranUserId = s_UserId;
+                T_ISPLOTHIS.Guid = Guid.NewGuid().ToString("N");
+                T_ISPLOTHIS.TranCode = s_TranCode;
 
                 InitTable(T_ISPLOTHIS);
                 ISPLOTHIS_Save.models.Add(T_ISPLOTHIS);

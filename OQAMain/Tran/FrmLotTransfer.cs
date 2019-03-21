@@ -270,7 +270,7 @@ namespace OQAMain
                 {
                     ListViewItem list_item = new ListViewItem();
                     ISPLOTSTS list = out_data.model.ISPLOTST_list[i];
-                    list_item.Text = list.LotId;
+                    list_item.Text = list.LotId+'*'+list.PartId;
                     LotIDList.Items.Add(list_item.Text);
                 }
                 lblSucessMsg.Text = out_data._MsgCode;
@@ -409,7 +409,7 @@ namespace OQAMain
         //checkedlistbox选择，产生MASTERLOT
         private void LotIDList_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            foreach (var item in LotIDList.CheckedItems)
+            foreach (var item in  LotIDList.CheckedItems)
             {
                 if (e.NewValue == CheckState.Unchecked && item == LotIDList.Items[e.Index])
                 {
@@ -418,11 +418,11 @@ namespace OQAMain
 
                 if (MasterLot.Length == 0)
                 {
-                    MasterLot = "'" + item.ToString().Trim() + "'";
+                    MasterLot = "'" + item.ToString().Split('*')[0].Trim() + "'";
                 }
                 else
                 {
-                    MasterLot = MasterLot + ",'" + item.ToString().Trim() + "'";
+                    MasterLot = MasterLot + ",'" + item.ToString().Split('*')[0].Trim() + "'";
                 }
 
             }
@@ -430,11 +430,11 @@ namespace OQAMain
             {
                 if (MasterLot.Length == 0)
                 {
-                    MasterLot = "'" + LotIDList.Items[e.Index].ToString().Trim() + "'";
+                    MasterLot = "'" + LotIDList.Items[e.Index].ToString().Split('*')[0].Trim() + "'";
                 }
                 else
                 {
-                    MasterLot = MasterLot + ",'" + LotIDList.Items[e.Index].ToString().Trim() + "'";
+                    MasterLot = MasterLot + ",'" + LotIDList.Items[e.Index].ToString().Split('*')[0].Trim() + "'";
                 }
             }
 
@@ -443,7 +443,6 @@ namespace OQAMain
                 ComFunc.InitListView(listship, true);
                 txtPartID.Text = "";
                 txtQTY.Text = "";
-               // txtCreater.Text = "";
                 txtDate.Text = "";
                 return;
             }
@@ -548,7 +547,7 @@ namespace OQAMain
                 {
                     ListViewItem list_item = new ListViewItem();
                    
-                    list_item.Text = out_data.model.SEARCHLOTID_list[i][0].ToString();
+                    list_item.Text = out_data.model.SEARCHLOTID_list[i][0].ToString()+'*'+out_data.model.SEARCHLOTID_list[i][1];
                     LotIDList.Items.Add(list_item.Text);
                 }
                 lblSucessMsg.Text = out_data._MsgCode;

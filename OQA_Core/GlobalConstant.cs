@@ -59,4 +59,9 @@ namespace OQA_Core
         public const string PackageOut = "PackageOut";
         public const string TransferOut = "TransferOut";
     }
+
+    public sealed class DefectCodeList
+    {
+        public static readonly string[] code = new string[] { "A", "S", "D", "F", "C", "P", "R", "B", "O" };
+    }
 }

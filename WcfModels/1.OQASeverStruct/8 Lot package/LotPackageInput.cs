@@ -12,6 +12,7 @@ namespace WCFModels.OQA
         public string lotId { get; set; }
     }
 
+    [DataContract]
     public class DeletePackageImgReq :UpdateReq
     {
         public DeletePackageImgReq()

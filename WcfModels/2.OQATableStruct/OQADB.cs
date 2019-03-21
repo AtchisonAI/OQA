@@ -354,7 +354,7 @@ namespace WCFModels.OQA
 
     [DataContract]
     [TableName("ISPLOTHIS")]
-    [PrimaryKey("TRAN_TIME", AutoIncrement = false)]
+    [PrimaryKey("GUID", AutoIncrement = false)]
     [ExplicitColumns]
     public partial class ISPLOTHI
     {
@@ -439,6 +439,10 @@ namespace WCFModels.OQA
         [Column("TRAN_TIME")] public string TranTime { get; set; }
         [DataMember]
         [Column("TRAN_USER_ID")] public string TranUserId { get; set; }
+        [DataMember]
+        [Column("TRAN_CODE")] public string TranCode { get; set; }
+        [DataMember]
+        [Column("GUID")] public string Guid { get; set; }
     }
 
     [DataContract]

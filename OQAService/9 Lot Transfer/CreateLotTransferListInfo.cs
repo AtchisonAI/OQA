@@ -124,7 +124,7 @@ namespace OQAService.Services
 
 
                                     T_UPDATEISPLOTSTS.LotId = In_node.model.INSERTPKGSHPDAT_list[i].LotId;
-                                    T_UPDATEISPLOTSTS.Status = "TransferOut";
+                                    T_UPDATEISPLOTSTS.Status = ISPStatus.TransferOut;
                                     T_UPDATEISPLOTSTS.TransSeq = In_node.model.INSERTPKGSHPDAT_list[i].TransSeq;
                                     T_UPDATEISPLOTSTS.UpdateTime = GetSysTime();
                                     T_UPDATEISPLOTSTS.UpdateUserId = In_node.model.S_USER_ID;
@@ -137,7 +137,7 @@ namespace OQAService.Services
                                 //BeginTrans();
                                 //执行
                                 UpdateModels(Do_Update, Do_updatemessage, true);
-                                SaveISPLotHistory(Do_updatemessage, In_node.model.S_USER_ID);
+                                SaveISPLotHistory(ISPStatus.TransferOut,In_node.model.S_USER_ID,Do_updatemessage );
                                // EndTrans();
                             }
                             else

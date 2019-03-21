@@ -69,18 +69,18 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(646, 6);
+            this.btnClose.Location = new System.Drawing.Point(57, 6);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(552, 5);
+            this.btnCreate.Location = new System.Drawing.Point(-37, 5);
             this.btnCreate.Text = "Submit";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(552, 6);
+            this.btnEdite.Location = new System.Drawing.Point(-37, 6);
             this.btnEdite.Visible = false;
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
@@ -95,6 +95,10 @@
             this.pnlMenu.Controls.SetChildIndex(this.btnRefresh, 0);
             this.pnlMenu.Controls.SetChildIndex(this.lblSucessMsg, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnPrint, 0);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // grpLotInfo
             // 

@@ -303,7 +303,7 @@ namespace OQAMain
             {
                 if (ComFunc.Trim(txtLotid.Text) != "")
                 {
-                    btnCheck.PerformClick();
+                    btnCheck_Click(null,null);
                 }
             }
         }
@@ -402,7 +402,8 @@ namespace OQAMain
             from.WindowState = FormWindowState.Maximized;
             from.StartPosition = FormStartPosition.CenterParent;
             from.ShowDialog();
-
+            ClearData("1");
+            txtLotid.Focus();
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -424,6 +425,11 @@ namespace OQAMain
         private void btnClose_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            ClearData("1");
         }
     }
 }

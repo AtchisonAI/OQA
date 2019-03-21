@@ -154,6 +154,15 @@ namespace OQAMain
 
             //this.reportViewer1.RefreshReport();
 
+            if (ComFunc.Trim(txtLotID.Text) != "")
+            {
+                lotid = txtLotID.Text.Trim();
+                this.reportViewer1.LocalReport.DataSources.Clear();
+                if (QueryWaferInspectRecordInfo(GlobConst.TRAN_VIEW, '1', lotid) == false)
+                    return;
+            }
+
+
             reportViewer1.LocalReport.SubreportProcessing += LocalReport_SubreportProcessing;
         }
 

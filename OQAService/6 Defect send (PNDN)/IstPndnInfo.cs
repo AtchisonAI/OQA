@@ -252,10 +252,9 @@ namespace OQAService.Services
                 else
                 {
 
-                    ModelRsp<LotSlotidView> In_node1 = new ModelRsp<LotSlotidView>();
-                    ModelRsp<LotSlotidView> Out_node1 = new ModelRsp<LotSlotidView>();
-                    UpdateModelListReq<ISPLOTSTS> Do_Save1 = new UpdateModelListReq<ISPLOTSTS>(); //定义数据库操作新增动作传入结构
-                    ModelListRsp<ISPLOTSTS> Do_message1 = new ModelListRsp<ISPLOTSTS>(); //定义数据库操作新增动作输出结构
+
+                    UpdateModelListReq<ISPLOTSTS> LOTSTS_Save = new UpdateModelListReq<ISPLOTSTS>(); //定义数据库操作新增动作传入结构
+                    ModelListRsp<ISPLOTSTS> LOTSTS_Message = new ModelListRsp<ISPLOTSTS>(); //定义数据库操作新增动作输出结构
                     ISPLOTSTS T_ISPLOTSTS = new ISPLOTSTS(); //定义临时表结构
                     switch (In_node.model.C_TRAN_FLAG)
                     {
@@ -268,11 +267,12 @@ namespace OQAService.Services
                             T_ISPLOTSTS.Status = ISPStatus.IspOut;
                             T_ISPLOTSTS.UpdateTime = GetSysTime();
                             T_ISPLOTSTS.UpdateUserId = In_node.model.PndnList[0].UserId;
-                            Do_Save1.operateType = OperateType.Update;
-                            Do_Save1.models.Add(T_ISPLOTSTS);
+                            LOTSTS_Save.operateType = OperateType.Update;
+                            LOTSTS_Save.models.Add(T_ISPLOTSTS);
 
-                            UpdateModels(Do_Save1, Do_message1, true);
+                            UpdateModels(LOTSTS_Save, LOTSTS_Message, true);
 
+                            SaveISPLotHistory("PNDNSubmit", In_node.model.PndnList[0].UserId, LOTSTS_Message);
 
                             break;
 

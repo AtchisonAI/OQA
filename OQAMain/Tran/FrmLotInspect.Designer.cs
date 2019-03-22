@@ -211,16 +211,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(655, 6);
+            this.btnClose.Location = new System.Drawing.Point(431, 4);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(472, 7);
+            this.btnCreate.Location = new System.Drawing.Point(248, 5);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(564, 7);
+            this.btnEdite.Location = new System.Drawing.Point(340, 5);
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu

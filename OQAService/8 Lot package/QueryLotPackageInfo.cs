@@ -11,7 +11,7 @@ namespace OQAService.Services
         {
             ModelRsp<LotPackageView> rsp = new ModelRsp<LotPackageView>();
             var stsRes = QueryLotSts(input);
-            if(stsRes._success && stsRes.model.Status.Equals(LotSts.PackageOut))
+            if(stsRes._success && stsRes.model.Status.Equals(LotSts.ChangeOut))
             {
                 var ImgListRes = QueryPackageImg(input);
                 rsp.model.lotInfo = stsRes.model;

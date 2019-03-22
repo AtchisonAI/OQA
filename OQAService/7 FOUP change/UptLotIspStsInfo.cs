@@ -64,7 +64,7 @@ namespace OQAService.Services
 
                             T_ISPLOTSTS.LotId =In_node.model.IN_LOT_ID;
                             T_ISPLOTSTS.TransSeq = In_node.model.D_TRANSSEQ;
-                            T_ISPLOTSTS.Status =ISPStatus.ChangeOut;
+                            T_ISPLOTSTS.Status = LotSts.ChangeOut;
 
                             T_ISPLOTSTS.UpdateUserId = In_node.model.S_USER_ID;
                             T_ISPLOTSTS.UpdateTime = GetSysTime();

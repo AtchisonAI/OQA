@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using WcfClient.Forms;
 using WcfClientCore.Form;
+using WcfClientCore.Message;
 using WcfClientCore.Utils.Authority;
 using WcfClientCore.WcfSrv;
 using WcfInspector;
@@ -174,16 +175,20 @@ namespace WcfClient
         private T GenerateNewForm<T>(string stripName) where T : BaseForm, new()
         {
             T Frm = new T();
+            //新Form绑定其对应的toolstripItemID 为了与权限控制保持一致，这里需要接上mainframe的命名空间
+            Frm.toolStripName = mainFrameFullName + stripName;
+            FormBindToTabMdi(Frm);
+            return Frm;
+        }
+
+        private void FormBindToTabMdi<T> (T Frm) where T : BaseForm, new()
+        {
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
             dockingManager.SetDockLabel(Frm, Frm.Text);
             Frm.FormClosed += new FormClosedEventHandler(this.ChildFormClosed);
 
-            //新Form绑定其对应的toolstripItemID 为了与权限控制保持一致，这里需要接上mainframe的命名空间
-            Frm.toolStripName = mainFrameFullName + stripName;
             SetActiveStatusBar(Frm.Text);
-
-            return Frm;
         }
 
         //FORM的Text可能相同，但是里面包含的菜单弹出按钮ID是唯一的
@@ -206,6 +211,7 @@ namespace WcfClient
             BaseForm form = sender as BaseForm;
             dockingManager.SetAsMDIChild(form, false);
             dockingManager.SetEnableDocking(form, false);
+            form.Dispose();
         }
 
         private void SetActiveStatusBar(string text)
@@ -278,6 +284,11 @@ namespace WcfClient
             BaseForm activeFrm = GetMdiActiveForm(); 
             SetActiveStatusBar(activeFrm.Text);
             SetBarItemChecked("Add To Favorite", activeFrm.b_Favorite);
+            if(string.IsNullOrEmpty(activeFrm.toolStripName))
+            {
+                //从子窗体弹出其他子窗体的不允许加入快捷菜单，因为无法控制权限
+                SetBarItemEnabled("Add To Favorite", false);
+            }
         }
 
         private void SetBarItemChecked(string barId,bool bCheck)
@@ -286,6 +297,15 @@ namespace WcfClient
             if (null != item)
             {
                 item.Checked = bCheck;
+            }
+        }
+
+        private void SetBarItemEnabled(string barId, bool bEnbled)
+        {
+            BarItem item = tabbedGroupedMDIManager.ContextMenuItem.Items.FindItem(barId);
+            if (null != item)
+            {
+                item.Enabled = bEnbled;
             }
         }
 
@@ -458,6 +478,20 @@ namespace WcfClient
         {
             AppStateSerializer serializer = new AppStateSerializer(SerializeMode.XMLFile, "Layout");
             tabbedGroupedMDIManager.LoadTabGroupStates(serializer);
+        }
+
+        public override void AddMdiChild(BaseForm form)
+        {
+            Form[] childs = tabbedGroupedMDIManager.MdiChildren;
+            foreach (DockingWrapperForm q in childs)
+            {
+                Form childFrm = (Form)q.ctrlChildRef;
+                if (childFrm.GetType() == form.GetType())
+                {
+                    childFrm.Close();
+                }
+            }
+            FormBindToTabMdi(form);
         }
     }
 }

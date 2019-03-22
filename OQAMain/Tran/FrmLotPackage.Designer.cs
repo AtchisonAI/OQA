@@ -43,6 +43,7 @@
             this.package_groupBox = new System.Windows.Forms.GroupBox();
             this.pic_groupBox = new System.Windows.Forms.GroupBox();
             this.pictureView = new OQA_Core.Controls.PictureView();
+            this.print_button = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.lotInfo_groupBox.SuspendLayout();
             this.package_groupBox.SuspendLayout();
@@ -51,14 +52,14 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1186, 8);
+            this.btnClose.Location = new System.Drawing.Point(1119, 8);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Size = new System.Drawing.Size(62, 26);
             this.btnClose.TabIndex = 6;
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(996, 8);
+            this.btnCreate.Location = new System.Drawing.Point(929, 8);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreate.Size = new System.Drawing.Size(62, 26);
             this.btnCreate.TabIndex = 9;
@@ -67,7 +68,7 @@
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1091, 8);
+            this.btnEdite.Location = new System.Drawing.Point(1024, 8);
             this.btnEdite.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdite.Size = new System.Drawing.Size(62, 26);
             this.btnEdite.TabIndex = 5;
@@ -89,6 +90,7 @@
             // 
             // lotInfo_groupBox
             // 
+            this.lotInfo_groupBox.Controls.Add(this.print_button);
             this.lotInfo_groupBox.Controls.Add(this.lotId_textBox);
             this.lotInfo_groupBox.Controls.Add(this.lotId_label);
             this.lotInfo_groupBox.Dock = System.Windows.Forms.DockStyle.Top;
@@ -269,6 +271,17 @@
             this.pictureView.Size = new System.Drawing.Size(544, 640);
             this.pictureView.TabIndex = 0;
             // 
+            // print_button
+            // 
+            this.print_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.print_button.Location = new System.Drawing.Point(1159, 23);
+            this.print_button.Name = "print_button";
+            this.print_button.Size = new System.Drawing.Size(62, 26);
+            this.print_button.TabIndex = 2;
+            this.print_button.Text = "Print";
+            this.print_button.UseVisualStyleBackColor = true;
+            this.print_button.Click += new System.EventHandler(this.print_button_Click);
+            // 
             // FrmLotPackage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -314,5 +327,6 @@
         private System.Windows.Forms.GroupBox package_groupBox;
         private System.Windows.Forms.GroupBox pic_groupBox;
         private OQA_Core.Controls.PictureView pictureView;
+        private System.Windows.Forms.Button print_button;
     }
 }

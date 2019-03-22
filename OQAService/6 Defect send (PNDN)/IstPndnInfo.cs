@@ -96,15 +96,17 @@ namespace OQAService.Services
                                     PndnNumber= GetPndnNumber(s_requestname, out_Pndn.UserId, out_Pndn.DefectCode);
                                     out_Pndn.PndnNo = PndnNumber;
                                     out_Pndn.PndnStatus = "Y";
+                                    out_Pndn.PndnErr = "Send Success";
                                 }
                                 catch (Exception e)
                                 {
                                     Console.WriteLine(e);
                                     out_Pndn.PndnStatus = "N";
                                     out_Pndn.PndnErr = e.ToString();
-
                                 }
-                                
+
+                                out_Pndn.CreateUserId = In_node.model.PndnList[0].UserId;
+                                out_Pndn.CreateTime = GetSysTime();
                                 InitTable(out_Pndn);
 
                                 insertpkgslt.models.Add(out_Pndn);
@@ -185,7 +187,8 @@ namespace OQAService.Services
                                             PndnNumber = GetPndnNumber(s_requestname, out_Pndn.UserId, out_Pndn.DefectCode);
                                             out_Pndn.PndnNo = PndnNumber;
                                             out_Pndn.PndnStatus = "Y";
-                                            Console.WriteLine(out_Pndn.TransSeq);
+                                            out_Pndn.PndnErr = "Send Success";
+                                        Console.WriteLine(out_Pndn.TransSeq);
                                         }
                                         catch (Exception e)
                                         {
@@ -194,6 +197,8 @@ namespace OQAService.Services
                                             out_Pndn.PndnErr = e.ToString();
 
                                         }
+                                        out_Pndn.UpdateUserId = In_node.model.PndnList[0].UserId;
+                                        out_Pndn.UpdateTime = GetSysTime();
 
                                         updatePndnNumber.models.Add(out_Pndn);
                                         updatePndnNumber.operateType = OperateType.Update;

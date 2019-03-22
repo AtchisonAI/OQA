@@ -851,8 +851,11 @@ namespace OQAMain
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //检查数据
-            if (CheckCondition("SCRAP") == false) return;
+            DialogResult result = MessageBox.Show("内容", "标题", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+
+                //检查数据
+                if (CheckCondition("SCRAP") == false) return;
 
             if (SubmitISPLotInfo(GlobConst.TRAN_DELETE, '4') == false) return;
 

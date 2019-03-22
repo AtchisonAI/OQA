@@ -348,12 +348,12 @@ namespace OQAMain
                     //PNDN跳转
                     if (out_data.__ByPass == false)
                     {
-                        //string s_side = dgMacro.Rows[e.RowIndex].Cells[0].Value.ToString();
-                        //FrmMarcoInput MAC = new FrmMarcoInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
-                        //MAC.FormBorderStyle = FormBorderStyle.FixedDialog;
-                        //MAC.WindowState = FormWindowState.Maximized;
-                        //MAC.StartPosition = FormStartPosition.CenterParent;
-                        //MAC.ShowDialog();
+                        string s_LotID = txtLotID.Text.Trim();
+                        FrmDefectSend DefectSend = new FrmDefectSend(s_LotID);
+                        DefectSend.FormBorderStyle = FormBorderStyle.FixedDialog;
+                        DefectSend.WindowState = FormWindowState.Maximized;
+                        DefectSend.StartPosition = FormStartPosition.CenterParent;
+                        DefectSend.ShowDialog();
                     }
                     return true;
                 }

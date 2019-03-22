@@ -432,6 +432,10 @@ namespace OQAMain
                             txtRate.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DefectRate.ToString());
                             txtQty.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DieQty.ToString());
                             waferId = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].WaferId);
+                            if (ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].InspectPoint).Equals("13"))
+                            {
+                                rbtnThir.Checked = true;
+                            }
                             //slotId = qryResult.model.ISPWAFITM_list[0].SlotId;
                             //slotComboBox.Text = slotId;
                         }

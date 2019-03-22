@@ -333,9 +333,10 @@ namespace WcfService
             {
                 rsp.model = db.SingleById<T>(primayKeyValue);
                 rsp._success = true;
-            } catch (Exception)
+            } catch (Exception e)
             {
                 rsp._success = false;
+                rsp._ErrorMsg = e.Message;
             }
 
             return rsp;

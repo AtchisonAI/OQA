@@ -204,16 +204,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(658, 7);
+            this.btnClose.Location = new System.Drawing.Point(534, 3);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(475, 8);
+            this.btnCreate.Location = new System.Drawing.Point(254, 3);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(567, 8);
+            this.btnEdite.Location = new System.Drawing.Point(346, 3);
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
@@ -1583,7 +1583,7 @@
             // btnSrap
             // 
             this.btnSrap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSrap.Location = new System.Drawing.Point(384, 8);
+            this.btnSrap.Location = new System.Drawing.Point(440, 3);
             this.btnSrap.Name = "btnSrap";
             this.btnSrap.Size = new System.Drawing.Size(88, 26);
             this.btnSrap.TabIndex = 7;

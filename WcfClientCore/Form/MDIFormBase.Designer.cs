@@ -1,6 +1,6 @@
 ﻿namespace WcfClientCore.Form
 {
-    partial class BaseForm
+    partial class MDIFormBase
     {
         /// <summary>
         /// Required designer variable.
@@ -28,24 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // BaseForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BorderColor = System.Drawing.Color.OliveDrab;
-            this.BorderThickness = 2;
-            this.ClientSize = new System.Drawing.Size(1333, 880);
-            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "BaseForm";
-            this.Text = "BaseForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.BaseForm_Load);
-            this.ResumeLayout(false);
-
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "MDIFormBase";
         }
 
         #endregion

@@ -52,41 +52,47 @@ namespace OQAService.Services
                         case '1':
                             //验证业务级输入参数
                             List<object[]> data = new List<object[]>();
-                           
-                            if (In_node.model.IN_LOTID.Trim().Equals("") == false)
+
+                            if (true)//判断PNDN表中是否没有数据，有则取PNDN表数据，没有则取defect表中数据，展示在客户端
                             {
-                                // AddCondition(PageQueryReq, GetParaName<PKGLabel>(p => p.LotId), In_node.model.IN_LOTID.Trim(), LogicCondition.AndAlso,CompareType.Equal);
-                                string sql = string.Format(@"select t.lot_id,
-                                                                   t.inspect_type,
-                                                                   t.defect_code,
-                                                                   listagg(t.slot_id, ', ') within
-                                                             group(
-                                                             order by t.lot_id) slot_id
-                                                              from (SELECT distinct d.lot_id, d.inspect_type, d.defect_code, d.slot_id
-                                                                      FROM ispwafdft d
-                                                                     WHERE d.lot_id = '{0}') t
-                                                             group by t.lot_id, t.inspect_type, t.defect_code
-                                                            ", In_node.model.IN_LOTID.Trim());
-                                
-                                data = QueryRawSql(sql);
+                                if (In_node.model.IN_LOTID.Trim().Equals("") == false)
+                                {
+                                    // AddCondition(PageQueryReq, GetParaName<PKGLabel>(p => p.LotId), In_node.model.IN_LOTID.Trim(), LogicCondition.AndAlso,CompareType.Equal);
+                                    string sql = string.Format(@"SELECT T.LOT_ID,
+                                                                    T.INSPECT_TYPE,
+                                                                    T.DEFECT_CODE,
+                                                                    LISTAGG(T.SLOT_ID, ', ') WITHIN
+                                                              GROUP(
+                                                              ORDER BY T.LOT_ID) SLOT_ID
+                                                               FROM (SELECT DISTINCT D.LOT_ID, D.INSPECT_TYPE, D.DEFECT_CODE, D.SLOT_ID
+                                                                       FROM ISPWAFDFT D, ISPLOTSTS S
+                                                                      WHERE D.LOT_ID = '{0}'
+                                                                        AND D.LOT_ID = S.LOT_ID
+                                                                        AND S.INSPECT_RESULT = '{1}') T
+                                                              GROUP BY T.LOT_ID, T.INSPECT_TYPE, T.DEFECT_CODE", In_node.model.IN_LOTID.Trim(), IspResult.Hold);
+
+                                    data = QueryRawSql(sql);
+                                }
+                                else
+                                {
+                                    Out_node._success = false;
+                                    Out_node._ErrorMsg = "Lot Inspect Result Err!";
+                                    return Out_node;
+                                }
                             }
+                            
                             
                             out_list.Ispwafdft_list = data;
                             Out_node.model = out_list;
 
-
                             break;
 
                         case '2':
-                            
                             // TODO
-
                             break;
                         case '3':
                             // TODO
-
                             break;
-
                     }
                     
                 }

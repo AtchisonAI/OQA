@@ -78,6 +78,13 @@ namespace OQAService.Services
 
             }
 
+            //验证业务级输入参数
+            QueryPndnReq.CurrentPage = 1;
+            QueryPndnReq.ItemsPerPage = 200;
+
+
+
+
             if (In_node.model.C_PROC_STEP == GlobalConstant.TRAN_CREATE)
             {
                 //业务逻辑选择
@@ -100,16 +107,16 @@ namespace OQAService.Services
                             Out_node._ErrorMsg = "This Lot Have Pndn!";
                             return Out_node;
 
-                        }                        
+                        }
 
                         //传入数据赋值
-                         SysTime = GetSysTime();
+                        SysTime = GetSysTime();
                         T_ISPLOTSTS.LotId = ISPLotSave.model.ISPMESLOT_List[0].Lotid;
                         T_ISPLOTSTS.FoupId = ISPLotSave.model.ISPMESLOT_List[0].Foupid;
                         T_ISPLOTSTS.PartId = ISPLotSave.model.ISPMESLOT_List[0].Partid;
                         T_ISPLOTSTS.Qty = ISPLotSave.model.ISPMESLOT_List[0].Qty;
                         T_ISPLOTSTS.RecUser = ISPLotSave.model.S_USER_ID;
-                        T_ISPLOTSTS.Status = ISPStatus.Create;
+                        T_ISPLOTSTS.Status = LotSts.Create;
                         T_ISPLOTSTS.InspectResult = IspResult.Create;
                         T_ISPLOTSTS.PartDesc = ISPLotSave.model.ISPMESLOT_List[0].Partid;
                         T_ISPLOTSTS.ProductDieQty = ISPLotSave.model.ISPMESLOT_List[0].Dieqty;
@@ -141,7 +148,7 @@ namespace OQAService.Services
                         //执行
                         UpdateModels(ISPLOTSTS_Save, ISPLOTSTS_message,true);
                         //记录历史
-                        SaveISPLotHistory(ISPLOTSTS_message, ISPLotSave.model.S_USER_ID);
+                        SaveISPLotHistory("ISPLotInsert", ISPLotSave.model.S_USER_ID, ISPLOTSTS_message);
 
                         //更新接口已读标记
                         T_OQAMESLOT.Lotid = ISPLotSave.model.ISPMESLOT_List[0].Lotid;
@@ -225,7 +232,7 @@ namespace OQAService.Services
 
                                         break;
                                 }
-                                T_ISPWAFITM.InspectPoint = ispitem.InspectPoint;
+                                T_ISPWAFITM.InspectPoint = ispitem.InspectPoint.Trim();
 
                                 T_ISPWAFITM.DieQty = ISPLotSave.model.ISPMESLOT_List[0].Dieqty;
 
@@ -257,18 +264,33 @@ namespace OQAService.Services
 
             if (In_node.model.C_PROC_STEP == GlobalConstant.TRAN_UPDATE)
                 {
-                    //业务逻辑选择
-                    switch (In_node.model.C_TRAN_FLAG)
+                //验证业务级输入参数
+                if (In_node.model.S_LOT_ID.Equals("") == true)
+                {
+                    Out_node._success = false;
+                    Out_node._ErrorMsg = "Lot ID is null!";
+                    return Out_node;
+                }
+
+                AddCondition(QueryPndnReq, GetParaName<ChkPndn>(p => p.Lotid), ISPLotSave.model.S_LOT_ID, LogicCondition.AndAlso, CompareType.Equal);
+
+                AddSortCondition(QueryPndnReq, GetParaName<ChkPndn>(p => p.Lotid), SortType.ASC);
+
+                var PndnCount = PageQuery<ChkPndn>(QueryPndnReq);
+                //如果检验项目有缺陷，hold记录，并通知客户端去PNDN
+                if (PndnCount.models.Count > 0)
+                {
+                    Out_node._success = false;
+                    Out_node._ErrorMsg = "This Lot Have Pndn!";
+                    return Out_node;
+
+                }
+                //业务逻辑选择
+                switch (In_node.model.C_TRAN_FLAG)
                     {
                     case '1':
                         //保存修改信息
-                        //验证业务级输入参数
-                        if (In_node.model.S_LOT_ID.Equals("") == true)
-                        {
-                            Out_node._success = false;
-                            Out_node._ErrorMsg = "Lot ID is null!";
-                            return Out_node;
-                        }
+
                          SysTime = GetSysTime();
                         T_ISPLOTSTS.LotId = ISPLotSave.model.S_LOT_ID;
                         T_ISPLOTSTS.TransSeq = ISPLotSave.model.D_TRAN_SEQ;
@@ -285,7 +307,7 @@ namespace OQAService.Services
                         UpdateModels(ISPLOTSTS_Save, ISPLOTSTS_message,true);
 
                         //记录历史
-                        SaveISPLotHistory(ISPLOTSTS_message, ISPLotSave.model.S_USER_ID);
+                        SaveISPLotHistory("ISPLotSave", ISPLotSave.model.S_USER_ID, ISPLOTSTS_message);
 
                         break;
                     case '2':
@@ -322,7 +344,7 @@ namespace OQAService.Services
                             T_ISPLOTSTS.InspectResult = IspResult.Pass;
                             Out_node.__ByPass = true;
                         }
-                        T_ISPLOTSTS.Status = ISPStatus.IspOut;
+                        T_ISPLOTSTS.Status = LotSts.IspOut;
 
                         SysTime = GetSysTime();
                         T_ISPLOTSTS.LotId = ISPLotSave.model.S_LOT_ID;
@@ -340,15 +362,15 @@ namespace OQAService.Services
                         UpdateModels(ISPLOTSTS_Save, ISPLOTSTS_message,true);
 
                         //记录历史
-                        SaveISPLotHistory(ISPLOTSTS_message, ISPLotSave.model.S_USER_ID);
+                        SaveISPLotHistory("ISPLotSubmit", ISPLotSave.model.S_USER_ID, ISPLOTSTS_message);
                        
                         break;
                     case '3':
-                        //hold的lot提交检查结果
+                        //hold的lot提交检查结果 Pass
                         //验证业务级输入参数
 
                         T_ISPLOTSTS.InspectResult = IspResult.Pass;
-                        T_ISPLOTSTS.Status = ISPStatus.IspOut;
+                        T_ISPLOTSTS.Status = LotSts.IspOut;
 
                         SysTime = GetSysTime();
                         T_ISPLOTSTS.LotId = ISPLotSave.model.S_LOT_ID;
@@ -366,15 +388,15 @@ namespace OQAService.Services
                         UpdateModels(ISPLOTSTS_Save, ISPLOTSTS_message, true);
 
                         //记录历史
-                        SaveISPLotHistory(ISPLOTSTS_message, ISPLotSave.model.S_USER_ID);
+                        SaveISPLotHistory("DefectLotPass", ISPLotSave.model.S_USER_ID, ISPLOTSTS_message);
 
                         break;
                     case '4':
-                        //hold的lot提交检查结果
+                        //hold的lot提交检查结果 Scrap
                         //验证业务级输入参数
 
                         T_ISPLOTSTS.InspectResult = IspResult.Scrap;
-                        T_ISPLOTSTS.Status = ISPStatus.Close;
+                        T_ISPLOTSTS.Status = LotSts.Close;
 
                         SysTime = GetSysTime();
                         T_ISPLOTSTS.LotId = ISPLotSave.model.S_LOT_ID;
@@ -392,7 +414,7 @@ namespace OQAService.Services
                         UpdateModels(ISPLOTSTS_Save, ISPLOTSTS_message, true);
 
                         //记录历史
-                        SaveISPLotHistory(ISPLOTSTS_message,  ISPLotSave.model.S_USER_ID);
+                        SaveISPLotHistory("DefectLotScrap", ISPLotSave.model.S_USER_ID,ISPLOTSTS_message);
 
                         break;
                 }

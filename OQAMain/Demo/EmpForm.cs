@@ -2,6 +2,7 @@
 using Syncfusion.Windows.Forms.Chart;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using WcfClientCore.Form;
 using WcfClientCore.Utils.Chart;
 using WCFModels;
@@ -10,7 +11,7 @@ using WCFModels.Message;
 
 namespace OQAMain
 {
-    public partial class EmpForm : BaseForm
+    public partial class EmpForm : ChildFormBase
     {
         public EmpForm()
         {

@@ -34,7 +34,7 @@ namespace OQAMain
         #region Page Load
         private void FrmMircoInput_Load(object sender, EventArgs e)
         {
-            radioNine.Checked = true;
+            rbtnNine.Checked = true;
             checkAllOk();
             waferSurF.nodeMode = true;
             waferSurF.WaferSur_Load(null, null);
@@ -50,10 +50,10 @@ namespace OQAMain
                 lotId = lotIdIn;
                 slotId = slotIdIn;
                 sideType = sideTypeIn;
-                lotTextBox.Text = lotId;
-                slotComboBox.Text = slotId;
-                lotTextBox.Enabled = false;
-                slotComboBox.Enabled = false;
+                txtLotId.Text = lotId;
+                cboxSlotId.Text = slotId;
+                txtLotId.Enabled = false;
+                cboxSlotId.Enabled = false;
             }
         }
         #endregion
@@ -62,17 +62,17 @@ namespace OQAMain
         //9/13点单选按钮CheckedChanged
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioNine.Checked)
+            if (rbtnNine.Checked)
             {
-                radioNine.Checked = true;
+                rbtnNine.Checked = true;
                 hideNode(false);
             }
         }
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioThir.Checked)
+            if (rbtnThir.Checked)
             {
-                radioThir.Checked = true;
+                rbtnThir.Checked = true;
                 hideNode(true);
             }
         }
@@ -81,7 +81,7 @@ namespace OQAMain
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(slotComboBox.Text) || string.IsNullOrWhiteSpace(lotTextBox.Text))
+                if (string.IsNullOrWhiteSpace(cboxSlotId.Text) || string.IsNullOrWhiteSpace(txtLotId.Text))
                 {
                     MessageBox.Show("请先选择lotId、slotId");
                     return;
@@ -110,7 +110,7 @@ namespace OQAMain
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(slotComboBox.Text) || string.IsNullOrWhiteSpace(lotTextBox.Text))
+                if (string.IsNullOrWhiteSpace(cboxSlotId.Text) || string.IsNullOrWhiteSpace(txtLotId.Text))
                 {
                     MessageBox.Show("请先选择lotId、slotId");
                     return;
@@ -150,12 +150,12 @@ namespace OQAMain
         private void MagnificationTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             ComFunc.CheckKeyPress(sender, e);
-            MagnificationTextBox.MaxLength = 6;
+            txtMag.MaxLength = 6;
             if (e.KeyChar == (Char)13)
             {
-                if (ComFunc.Trim(MagnificationTextBox.Text) != "")
+                if (ComFunc.Trim(txtMag.Text) != "")
                 {
-                    qtyTextBox.Focus();
+                    txtQty.Focus();
                 }
             }
         }
@@ -163,22 +163,22 @@ namespace OQAMain
         {
             if (e.KeyChar == (Char)13)
             {
-                if (ComFunc.Trim(decRichTextBox.Text) != "")
+                if (ComFunc.Trim(rtboxDsc.Text) != "")
                 {
-                    cmtRichTextBox.Focus();
+                    rtboxCmt.Focus();
                 }
             }
         }
         //lotId文本框TextChanged
         private void lotTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (null != lotTextBox.Text && !("").Equals(lotTextBox.Text))
+            if (null != txtLotId.Text && !("").Equals(txtLotId.Text))
             {
-                lotId = lotTextBox.Text;
-                if (slotComboBox.Items.Count > 0)
+                lotId = txtLotId.Text;
+                if (cboxSlotId.Items.Count > 0)
                 {
                     slotId = "";
-                    slotComboBox.Items.Clear();
+                    cboxSlotId.Items.Clear();
                 }
                 pageInfoShow();
             }
@@ -194,26 +194,26 @@ namespace OQAMain
         {
             string result = "0";
             queryLotInfo();
-            if (null != qtyTextBox.Text && !("").Equals(qtyTextBox.Text))//判断TextBox的内容不为空，如果不判断会导致后面的非数字对比异常
+            if (null != txtQty.Text && !("").Equals(txtQty.Text))//判断TextBox的内容不为空，如果不判断会导致后面的非数字对比异常
             {
                 if (num != 0)
                 {
-                    float rate = (float)(int.Parse(qtyTextBox.Text)) / (float)num * 100;
+                    float rate = (float)(int.Parse(txtQty.Text)) / (float)num * 100;
                     result = Math.Round(rate, 2).ToString();
                 }
             }
-            rateTextBox.Text = result;
+            txtRate.Text = result;
         }
         //qty文本框输入控制
         private void qtyTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             ComFunc.CheckKeyPress(sender, e);
-            qtyTextBox.MaxLength = 6;
+            txtQty.MaxLength = 6;
             if (e.KeyChar == (Char)13)
             {
-                if (ComFunc.Trim(qtyTextBox.Text) != "")
+                if (ComFunc.Trim(txtQty.Text) != "")
                 {
-                    decRichTextBox.Focus();
+                    rtboxDsc.Focus();
                 }
             }
 
@@ -265,7 +265,7 @@ namespace OQAMain
             ComFunc.ClearBoxValue(groupBox3);
             ComFunc.ClearBoxValue(groupBoxSelect);
             waferSurF.clearPanel();
-            slotComboBox.Text = slotId;
+            cboxSlotId.Text = slotId;
             queryPageInfo(lotId, slotId, sideType);
 
         }
@@ -278,9 +278,9 @@ namespace OQAMain
                 {
                     return;
                 }
-                frontButton.Text = "Frontside";
-                lotTextBox.Text = lotId;
-                slotComboBox.Text = slotId;
+                btnSide.Text = "Frontside";
+                txtLotId.Text = lotId;
+                cboxSlotId.Text = slotId;
                 ISPWAFITM ISPWAFITM = new ISPWAFITM();
                 ISPWAFITM.LotId = lotId;
                 ISPWAFITM.SideType = sideType;
@@ -302,9 +302,9 @@ namespace OQAMain
                     {
                         foreach (ISPWAFITM child in info.model.ISPWAFITM_list)
                         {
-                            if (!slotComboBox.Items.Contains(ComFunc.Trim(child.SlotId)))
+                            if (!cboxSlotId.Items.Contains(ComFunc.Trim(child.SlotId)))
                             {
-                                slotComboBox.Items.Add(ComFunc.Trim(child.SlotId));
+                                cboxSlotId.Items.Add(ComFunc.Trim(child.SlotId));
                             }
                         }
                     }
@@ -335,21 +335,21 @@ namespace OQAMain
 
                 
                 
-                wafInfo.Magnification = ComFunc.Trim(MagnificationTextBox.Text);
+                wafInfo.Magnification = ComFunc.Trim(txtMag.Text);
                 wafInfo.UpdateUserId= AuthorityControl.GetUserProfile().userId;
-                if (String.IsNullOrWhiteSpace(qtyTextBox.Text))
+                if (String.IsNullOrWhiteSpace(txtQty.Text))
                 {
-                    qtyTextBox.Text = "0";
+                    txtQty.Text = "0";
                 }
-                wafInfo.DieQty = decimal.Parse(qtyTextBox.Text);
-                if (String.IsNullOrWhiteSpace(rateTextBox.Text))
+                wafInfo.DieQty = decimal.Parse(txtQty.Text);
+                if (String.IsNullOrWhiteSpace(txtRate.Text))
                 {
-                    rateTextBox.Text = "0";
+                    txtRate.Text = "0";
                 }
-                wafInfo.DefectRate = decimal.Parse(rateTextBox.Text);
-                wafInfo.DefectDesc = ComFunc.Trim(decRichTextBox.Text);
-                wafInfo.Cmt = ComFunc.Trim(cmtRichTextBox.Text);
-                if (radioNine.Checked)
+                wafInfo.DefectRate = decimal.Parse(txtRate.Text);
+                wafInfo.DefectDesc = ComFunc.Trim(rtboxDsc.Text);
+                wafInfo.Cmt = ComFunc.Trim(rtboxCmt.Text);
+                if (rbtnNine.Checked)
                 {
                     wafInfo.InspectPoint = "9";
                 }
@@ -426,12 +426,16 @@ namespace OQAMain
                         if (null != qryResult.model.ISPWAFITM_list && qryResult.model.ISPWAFITM_list.Count > 0)
                         {
                             wafInfo = qryResult.model.ISPWAFITM_list[0];
-                            decRichTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DefectDesc);
-                            cmtRichTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].Cmt);
-                            MagnificationTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].Magnification);
-                            rateTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DefectRate.ToString());
-                            qtyTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DieQty.ToString());
+                            rtboxDsc.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DefectDesc);
+                            rtboxCmt.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].Cmt);
+                            txtMag.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].Magnification);
+                            txtRate.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DefectRate.ToString());
+                            txtQty.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DieQty.ToString());
                             waferId = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].WaferId);
+                            if (ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].InspectPoint).Equals("13"))
+                            {
+                                rbtnThir.Checked = true;
+                            }
                             //slotId = qryResult.model.ISPWAFITM_list[0].SlotId;
                             //slotComboBox.Text = slotId;
                         }

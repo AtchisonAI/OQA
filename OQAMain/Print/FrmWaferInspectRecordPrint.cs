@@ -21,7 +21,13 @@ namespace OQAMain
 
         #endregion
 
+        public FrmWaferInspectRecordPrint(string s_lotID)
+        {
+            InitializeComponent();
+            txtLotID.Text = s_lotID;
+            btnCreate.PerformClick();
 
+        }
         #region " Constant Definition "
         //private bool b_load_flag = false;
 

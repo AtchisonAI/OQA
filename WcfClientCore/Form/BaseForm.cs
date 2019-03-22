@@ -3,15 +3,13 @@ using Syncfusion.Windows.Forms;
 using WcfClientCore.Utils.Authority;
 using System.Windows.Forms;
 using WCFModels.Frame;
+using Syncfusion.Windows.Forms.Tools;
 
 namespace WcfClientCore.Form
 {
     public partial class BaseForm : MetroForm
     {
         public static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        public bool b_Favorite { get; set; }
-        public string toolStripName { get; set; }
 
         public BaseForm()
         {
@@ -51,26 +49,6 @@ namespace WcfClientCore.Form
         private void BaseForm_Load(object sender, System.EventArgs e)
         {
             AuthorityControl.InitializeAuthority(this);
-            CheckFavorite();
-        }
-
-        private void InitPara()
-        {
-            b_Favorite = false;
-            toolStripName = string.Empty;
-        }
-
-        private void CheckFavorite()
-        {
-            foreach (UserFavorite q in AuthorityControl.GetUserFavorite())
-            {
-                if(Text.Equals(q.FormName))
-                {
-                    b_Favorite = true;
-                    return;
-                }
-            }
-            b_Favorite = false;
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace WcfClient
 {
-    public partial class ReportForm : BaseForm
+    public partial class ReportForm : ChildFormBase
     {
         public ReportForm()
         {

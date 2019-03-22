@@ -1,12 +1,13 @@
 ﻿using OQA_Core;
 using System;
 using System.Windows.Forms;
+using WcfClientCore.Form;
 using WCFModels.MESDB.FWTST1;
 using WCFModels.Message;
 
 namespace OQAMain
 {
-    public partial class InsertEmpForm : Form
+    public partial class InsertEmpForm : ChildFormBase
     {
         public InsertEmpForm()
         {

@@ -41,6 +41,7 @@
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlMenu.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlMenu.Controls.Add(this.lblSucessMsg);
             this.pnlMenu.Controls.Add(this.btnRefresh);
             this.pnlMenu.Controls.Add(this.btnCreate);
@@ -56,7 +57,7 @@
             // lblSucessMsg
             // 
             this.lblSucessMsg.AutoSize = true;
-            this.lblSucessMsg.Location = new System.Drawing.Point(50, 14);
+            this.lblSucessMsg.Location = new System.Drawing.Point(35, 14);
             this.lblSucessMsg.Name = "lblSucessMsg";
             this.lblSucessMsg.Size = new System.Drawing.Size(107, 12);
             this.lblSucessMsg.TabIndex = 6;
@@ -75,11 +76,10 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreate.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnCreate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnCreate.Location = new System.Drawing.Point(1051, 6);
+            this.btnCreate.Location = new System.Drawing.Point(230, 6);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(88, 26);
@@ -88,11 +88,10 @@
             // 
             // btnEdite
             // 
-            this.btnEdite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEdite.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnEdite.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnEdite.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnEdite.Location = new System.Drawing.Point(1145, 6);
+            this.btnEdite.Location = new System.Drawing.Point(324, 6);
             this.btnEdite.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEdite.Name = "btnEdite";
             this.btnEdite.Size = new System.Drawing.Size(88, 26);
@@ -101,11 +100,10 @@
             // 
             // btnClose
             // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnClose.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnClose.Location = new System.Drawing.Point(1239, 6);
+            this.btnClose.Location = new System.Drawing.Point(418, 6);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(88, 26);

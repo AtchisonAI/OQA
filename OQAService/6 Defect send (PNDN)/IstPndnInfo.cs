@@ -48,6 +48,7 @@ namespace OQAService.Services
 
                 }
 
+               
                 if (In_node.model.C_PROC_STEP == GlobalConstant.TRAN_CREATE)
                 {
                     //业务逻辑选择
@@ -65,11 +66,10 @@ namespace OQAService.Services
                             }
 
                         QueryReq IsChkLot = new QueryReq();
-                       // QueryReq IsChkIspectType = new QueryReq();
-                       // QueryReq IsChkDefectCode = new QueryReq();
+
+
                         IsChkLot.queryConditionList.Add(new QueryCondition() { paramName = "LotId", value = In_node.model.IN_LOT_ID.Trim(),compareType = CompareType.Equal});
-                       // IsChkIspectType.queryConditionList.Add(new QueryCondition() { paramName = "LotId", value = In_node.model.IN_LOT_ID.Trim(), compareType = CompareType.Equal });
-                       // IsChkDefectCode.queryConditionList.Add(new QueryCondition() { paramName = "LotId", value = In_node.model.IN_LOT_ID.Trim(), compareType = CompareType.Equal });
+                        
 
                         if (Query<OUT_PNDN>(IsChkLot).models.Count > 0)
                         {
@@ -90,19 +90,23 @@ namespace OQAService.Services
                                 string s_requestname = out_Pndn.LotId + "-" + out_Pndn.InspectType + "-" + out_Pndn.DefectCode;
 
                                 //获取PNDN Number
-                                string PndnNumber = GetPndnNumber(s_requestname, out_Pndn.UserId, out_Pndn.DefectCode);
-
-                                if (string.IsNullOrEmpty(PndnNumber) == false)
+                                string PndnNumber = string.Empty;
+                                try
                                 {
+                                    PndnNumber= GetPndnNumber(s_requestname, out_Pndn.UserId, out_Pndn.DefectCode);
                                     out_Pndn.PndnNo = PndnNumber;
                                     out_Pndn.PndnStatus = "Y";
+                                    out_Pndn.PndnErr = "Send Success";
                                 }
-                                else
+                                catch (Exception e)
                                 {
+                                    Console.WriteLine(e);
                                     out_Pndn.PndnStatus = "N";
-
+                                    out_Pndn.PndnErr = e.ToString();
                                 }
 
+                                out_Pndn.CreateUserId = In_node.model.PndnList[0].UserId;
+                                out_Pndn.CreateTime = GetSysTime();
                                 InitTable(out_Pndn);
 
                                 insertpkgslt.models.Add(out_Pndn);
@@ -135,6 +139,158 @@ namespace OQAService.Services
                             break;
                     }
                 }
+                if (In_node.model.C_PROC_STEP == GlobalConstant.TRAN_UPDATE)
+                {
+                    //业务逻辑选择
+                    switch (In_node.model.C_TRAN_FLAG)
+                    {
+                        case '1':
+                            //验证业务级输入参数
+
+                            if (In_node.model.IN_LOT_ID.Trim().Equals("") == true)
+                            {
+                                Out_node._success = false;
+                                Out_node._ErrorMsg = "IN_LOT_ID is null!";
+                                return Out_node;
+                            }
+
+                            QueryReq IsChkLot = new QueryReq();
+
+
+                            IsChkLot.queryConditionList.Add(new QueryCondition() { paramName = "LotId", value = In_node.model.IN_LOT_ID.Trim(), compareType = CompareType.Equal });
+                            IsChkLot.queryConditionList.Add(new QueryCondition() { paramName = "PndnStatus", value = "N", compareType = CompareType.Equal });
+
+                            List<OUT_PNDN> uptPndnNumberList = Query<OUT_PNDN>(IsChkLot).models;
+                            if (Query<OUT_PNDN>(IsChkLot).models.Count == 0)
+                            {
+                                Out_node._success = false;
+                                Out_node._ErrorMsg = "没有未开单的PNDN!";
+                                return Out_node;
+                            }
+
+
+                            //传入数据赋值
+                            if (null != uptPndnNumberList && uptPndnNumberList.Count > 0)
+                            {
+                                UpdateModelListReq<OUT_PNDN> updatePndnNumber = new UpdateModelListReq<OUT_PNDN>();
+
+                                foreach (OUT_PNDN out_Pndn in uptPndnNumberList)
+                                {
+                                    if (out_Pndn.PndnStatus=="N")
+                                    {
+                                        string s_requestname = out_Pndn.LotId + "-" + out_Pndn.InspectType + "-" + out_Pndn.DefectCode;
+
+                                        //获取PNDN Number
+                                        string PndnNumber = string.Empty;
+                                        try
+                                        {
+                                            PndnNumber = GetPndnNumber(s_requestname, out_Pndn.UserId, out_Pndn.DefectCode);
+                                            out_Pndn.PndnNo = PndnNumber;
+                                            out_Pndn.PndnStatus = "Y";
+                                            out_Pndn.PndnErr = "Send Success";
+                                        Console.WriteLine(out_Pndn.TransSeq);
+                                        }
+                                        catch (Exception e)
+                                        {
+                                            Console.WriteLine(e);
+                                            out_Pndn.PndnStatus = "N";
+                                            out_Pndn.PndnErr = e.ToString();
+
+                                        }
+                                        out_Pndn.UpdateUserId = In_node.model.PndnList[0].UserId;
+                                        out_Pndn.UpdateTime = GetSysTime();
+
+                                        updatePndnNumber.models.Add(out_Pndn);
+                                        updatePndnNumber.operateType = OperateType.Update;
+                                    }
+
+                                }
+
+                                ModelListRsp<OUT_PNDN> backInfo = new ModelListRsp<OUT_PNDN>();//定义数据库操作新增动作传入结构
+                                OUT_PNDN t_OUT_PNDN = new OUT_PNDN();
+
+                                UpdateModels<OUT_PNDN>(updatePndnNumber, backInfo,true);
+                                Out_node.model.PndnList = backInfo.models;
+
+
+                                if (!backInfo._success)
+                                {
+                                    Out_node._success = false;
+                                    Out_node._ErrorMsg = Out_node._ErrorMsg + "  " + backInfo._ErrorMsg;
+                                }
+
+                            }
+
+                            break;
+
+                        case '2':
+                            // TODO
+                            break;
+                        case '3':
+                            // TODO
+                            break;
+                    }
+                }
+
+
+                //定义服务过程中使用的结构
+                PageQueryReq PageQueryReq = new PageQueryReq()
+                {
+                    queryConditionList = new List<QueryCondition>(),
+                    sortCondittionList = new List<SortCondition>()
+                };
+
+                AddCondition(PageQueryReq, GetParaName<OUT_PNDN>(p => p.LotId), In_node.model.IN_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                AddCondition(PageQueryReq, GetParaName<OUT_PNDN>(p => p.PndnStatus), "N", LogicCondition.AndAlso, CompareType.Equal);
+
+                var ChkPndnSts = PageQuery<OUT_PNDN>(PageQueryReq);
+                
+                PageQueryReq=new PageQueryReq();
+                AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), In_node.model.IN_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                var LotstsInfo = PageQuery<ISPLOTSTS>(PageQueryReq);
+        
+
+            if (ChkPndnSts.models.Count>0)
+                {
+                    //有PNDN未开成功，不更新Lot状态
+                }
+                else
+                {
+
+
+                    UpdateModelListReq<ISPLOTSTS> LOTSTS_Save = new UpdateModelListReq<ISPLOTSTS>(); //定义数据库操作新增动作传入结构
+                    ModelListRsp<ISPLOTSTS> LOTSTS_Message = new ModelListRsp<ISPLOTSTS>(); //定义数据库操作新增动作输出结构
+                    ISPLOTSTS T_ISPLOTSTS = new ISPLOTSTS(); //定义临时表结构
+                    switch (In_node.model.C_TRAN_FLAG)
+                    {
+                        case '1':
+                            //验证业务级输入参数
+
+                            T_ISPLOTSTS.LotId = LotstsInfo.models[0].LotId;
+                            T_ISPLOTSTS.TransSeq = LotstsInfo.models[0].TransSeq;
+                            T_ISPLOTSTS.InspectResult = IspResult.Pndn;                        
+                            T_ISPLOTSTS.Status = ISPStatus.IspOut;
+                            T_ISPLOTSTS.UpdateTime = GetSysTime();
+                            T_ISPLOTSTS.UpdateUserId = In_node.model.PndnList[0].UserId;
+                            LOTSTS_Save.operateType = OperateType.Update;
+                            LOTSTS_Save.models.Add(T_ISPLOTSTS);
+
+                            UpdateModels(LOTSTS_Save, LOTSTS_Message, true);
+
+                            SaveISPLotHistory("PNDNSubmit", In_node.model.PndnList[0].UserId, LOTSTS_Message);
+
+                            break;
+
+                        case '2':
+                            // TODO
+                            break;
+                        case '3':
+                            // TODO
+                            break;
+                    }
+                }
+
+
 
                 Out_node._success = true;
                 Out_node._MsgCode = "Program Success.";
@@ -147,11 +303,11 @@ namespace OQAService.Services
             using (WorkflowServicePortTypeClient client = new WorkflowServicePortTypeClient())
             {
 
-                string strUserID = client.getUserId("E100835", "0");
+                string strUserID = client.getUserId("LoginId", s_userid);
                 int userID;
 
                 //getUserId方法参数未知，写死strUserID Debug
-                strUserID = "602";
+               // strUserID = "602";
 
                 if (int.TryParse(strUserID, out userID) == false)
                 {
@@ -164,7 +320,7 @@ namespace OQAService.Services
                 workflowRequestInfo.requestName = s_requestName;//"OQAService-Date-001"; //请求标题
                 workflowRequestInfo.requestLevel = "0"; //请求重要级别
 
-                workflowRequestInfo.creatorId = s_userid;// "E100835";
+                workflowRequestInfo.creatorId = strUserID;// "E100835";
                 //workflowRequestInfo.creatorName = "徐涛";
 
 
@@ -209,9 +365,19 @@ namespace OQAService.Services
                             case -1:
                                 throw new Exception("创建流程失败!");
                             case -2:
-                                break;
+                                throw new Exception("没有创建权限!"); 
                             case -3:
-                                break;
+                                throw new Exception("创建流程失败!");
+                            case -4:
+                                throw new Exception("字段或表名不正!");
+                            case -5:
+                                throw new Exception("更新流程级别失败!");
+                            case -6:
+                                throw new Exception("无法创建流程待办任!");
+                            case -7:
+                                throw new Exception("流程下一节点出错，请检查流程的配置，在OA中发起流程进行测试!");
+                            case -8:
+                                throw new Exception("流程节点自动赋值操作错误!");
                             default:
                                 throw new Exception("Unknown Exception when create workflow!");
 
@@ -241,8 +407,7 @@ namespace OQAService.Services
             
         }
 
-
-
+        
         private static bool GetWorkFlowFieldValue(string field, WorkflowRequestInfo reqFlow, out string value)
         {
             try

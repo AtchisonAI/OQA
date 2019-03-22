@@ -59,18 +59,18 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(2421, 14);
+            this.btnClose.Location = new System.Drawing.Point(2528, 14);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(712, 5);
+            this.btnCreate.Location = new System.Drawing.Point(630, 7);
             this.btnCreate.Text = "OK";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(2222, 11);
+            this.btnEdite.Location = new System.Drawing.Point(2329, 11);
             this.btnEdite.Visible = false;
             // 
             // pnlMenu

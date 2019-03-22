@@ -63,7 +63,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a" />
+    <Reference Include="log4net">
+      <HintPath>..\Components\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NPoco">
       <HintPath>..\Components\NPoco.dll</HintPath>
@@ -94,6 +96,7 @@
     <Compile Include="1 Lot inspect\QryISPLotInfo.cs" />
     <Compile Include="12 IOQA Ship List Print\QueryShipIDList.cs" />
     <Compile Include="6 Defect send %28PNDN%29\IstPndnInfo.cs" />
+    <Compile Include="6 Defect send %28PNDN%29\QryPndnInfo.cs" />
     <Compile Include="6 Defect send %28PNDN%29\QryIspDftInfo.cs" />
     <Compile Include="7 FOUP change\IstLotSltInfo.cs" />
     <Compile Include="7 FOUP change\UptLotIspStsInfo.cs" />

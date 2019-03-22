@@ -6,9 +6,6 @@ using WCFModels.OQA;
 using WCFModels.Message;
 using System.Collections.Generic;
 using WcfClientCore.Utils.Authority;
-using WcfClientCore.Message;
-using System.Runtime.InteropServices;
-using Syncfusion.Windows.Forms.Tools;
 
 namespace OQAMain
 {

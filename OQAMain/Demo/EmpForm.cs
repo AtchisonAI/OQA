@@ -11,7 +11,7 @@ using WCFModels.Message;
 
 namespace OQAMain
 {
-    public partial class EmpForm :BaseForm
+    public partial class EmpForm : ChildFormBase
     {
         public EmpForm()
         {

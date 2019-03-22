@@ -7,7 +7,6 @@ using System.Reflection;
 using System.Windows.Forms;
 using WcfClient.Forms;
 using WcfClientCore.Form;
-using WcfClientCore.Message;
 using WcfClientCore.Utils.Authority;
 using WcfClientCore.WcfSrv;
 using WcfInspector;
@@ -16,9 +15,9 @@ using WCFModels.Message;
 
 namespace WcfClient
 {
-    public partial class MainForm : BaseForm
+    public partial class MainForm : MDIFormBase
     {
-        private string mainFrameFullName = System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.FullName.Replace('.',':') + ':';
+        private string mainFrameFullName = MethodBase.GetCurrentMethod().DeclaringType.FullName.Replace('.',':') + ':';
 
         public MainForm()
         {
@@ -145,7 +144,7 @@ namespace WcfClient
             FrmMircoInput frm = On_MenuItemClickImpl<FrmMircoInput>(ctr.Name);
         }
 
-        private T On_MenuItemClickImpl<T>(string toolBarName) where T : BaseForm, new()
+        private T On_MenuItemClickImpl<T>(string toolBarName) where T : ChildFormBase, new()
         {
             T frm = ActiveTabHost<T>();
             if(null == frm)
@@ -172,7 +171,7 @@ namespace WcfClient
             return null;
         }
 
-        private T GenerateNewForm<T>(string stripName) where T : BaseForm, new()
+        private T GenerateNewForm<T>(string stripName) where T : ChildFormBase, new()
         {
             T Frm = new T();
             //新Form绑定其对应的toolstripItemID 为了与权限控制保持一致，这里需要接上mainframe的命名空间
@@ -181,7 +180,7 @@ namespace WcfClient
             return Frm;
         }
 
-        private void FormBindToTabMdi<T> (T Frm) where T : BaseForm, new()
+        private void FormBindToTabMdi<T> (T Frm) where T : ChildFormBase, new()
         {
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
@@ -192,12 +191,12 @@ namespace WcfClient
         }
 
         //FORM的Text可能相同，但是里面包含的菜单弹出按钮ID是唯一的
-        private BaseForm GetFormByToolStripNameFromMDI(string toolStripId)
+        private ChildFormBase GetFormByToolStripNameFromMDI(string toolStripId)
         {
             Form[] childs = tabbedGroupedMDIManager.MdiChildren;
             foreach (DockingWrapperForm q in childs)
             {
-                BaseForm childFrm = (BaseForm)q.ctrlChildRef;
+                ChildFormBase childFrm = (ChildFormBase)q.ctrlChildRef;
                 if (childFrm.toolStripName.Equals(toolStripId))
                 {
                     return childFrm;
@@ -208,7 +207,7 @@ namespace WcfClient
 
         private void ChildFormClosed(object sender, System.EventArgs e)
         {
-            BaseForm form = sender as BaseForm;
+            ChildFormBase form = sender as ChildFormBase;
             dockingManager.SetAsMDIChild(form, false);
             dockingManager.SetEnableDocking(form, false);
             form.Dispose();
@@ -248,7 +247,7 @@ namespace WcfClient
         private void FavoriteBarItem_Click(object sender, System.EventArgs e)
         {
             BarItem Item = (BarItem)sender;
-            BaseForm activeFrm = GetMdiActiveForm();
+            ChildFormBase activeFrm = GetMdiActiveForm();
             if (null == activeFrm)
             {
                 log.Error("无法获取ActiveFrm");
@@ -281,13 +280,16 @@ namespace WcfClient
 
         private void MainForm_MdiChildActivate(object sender, EventArgs e)
         {
-            BaseForm activeFrm = GetMdiActiveForm(); 
+            ChildFormBase activeFrm = GetMdiActiveForm(); 
             SetActiveStatusBar(activeFrm.Text);
             SetBarItemChecked("Add To Favorite", activeFrm.b_Favorite);
             if(string.IsNullOrEmpty(activeFrm.toolStripName))
             {
                 //从子窗体弹出其他子窗体的不允许加入快捷菜单，因为无法控制权限
                 SetBarItemEnabled("Add To Favorite", false);
+            }else
+            {
+                SetBarItemEnabled("Add To Favorite", true);
             }
         }
 
@@ -309,29 +311,29 @@ namespace WcfClient
             }
         }
 
-        private BaseForm GetMdiActiveForm()
+        private ChildFormBase GetMdiActiveForm()
         {
-            BaseForm mainFrame = (BaseForm)tabbedGroupedMDIManager.AttachedTo;
+            MDIFormBase mainFrame = (MDIFormBase)tabbedGroupedMDIManager.AttachedTo;
             System.Diagnostics.Debug.Assert(null != mainFrame);
             if(null != mainFrame.ActiveControl)
             {
                 DockingWrapperForm activeDockedFrm = (DockingWrapperForm)mainFrame.ActiveControl;
                 if(null != activeDockedFrm.ActiveControl)
-                    return (BaseForm)activeDockedFrm.ActiveControl;
+                    return (ChildFormBase)activeDockedFrm.ActiveControl;
             }
             return null;
         }
 
-        private BaseForm GetActiveMDICtrlRef()
+        private ChildFormBase GetActiveMDICtrlRef()
         {
-            BaseForm mainFrame = (BaseForm)tabbedGroupedMDIManager.AttachedTo;
+            MDIFormBase mainFrame = (MDIFormBase)tabbedGroupedMDIManager.AttachedTo;
             System.Diagnostics.Debug.Assert(null != mainFrame);
             if(null != mainFrame.ActiveMdiChild)
             {
                 DockingWrapperForm activeMdiChild = (DockingWrapperForm)mainFrame.ActiveMdiChild;
                 if(null != activeMdiChild.ctrlChildRef)
                 {
-                    return (BaseForm)activeMdiChild.ctrlChildRef;
+                    return (ChildFormBase)activeMdiChild.ctrlChildRef;
                 }
             }
             return null;
@@ -372,7 +374,7 @@ namespace WcfClient
             shutcut_TreeView.Nodes.Add(tNode);
         }
 
-        private void AddFavoriteForm(BaseForm Frm)
+        private void AddFavoriteForm(ChildFormBase Frm)
         {
             UserFavorite model = new UserFavorite();
             model.ControlId = Frm.toolStripName;
@@ -384,7 +386,7 @@ namespace WcfClient
             Frm.b_Favorite = true;
         }
 
-        private void RemoveFavoriteForm(BaseForm Frm)
+        private void RemoveFavoriteForm(ChildFormBase Frm)
         {
             UserFavorite model = new UserFavorite();
             model.ControlId = Frm.toolStripName;
@@ -434,10 +436,10 @@ namespace WcfClient
             if(null != treenode)
             {
                 shutcut_TreeView.Nodes.Remove(treenode);
-                BaseForm Frm = GetFormByToolStripNameFromMDI(treenode.Name);
+                ChildFormBase Frm = GetFormByToolStripNameFromMDI(treenode.Name);
                 if (null == Frm)
                 {
-                    Frm = new BaseForm();
+                    Frm = new ChildFormBase();
                     Frm.toolStripName = treenode.Name;
                     Frm.Text = treenode.Text;
                 } else if (null != GetActiveMDICtrlRef()&& Frm.Text.Equals(GetActiveMDICtrlRef().Text))
@@ -480,7 +482,7 @@ namespace WcfClient
             tabbedGroupedMDIManager.LoadTabGroupStates(serializer);
         }
 
-        public override void AddMdiChild(BaseForm form)
+        public override void AddMdiChild(ChildFormBase form)
         {
             Form[] childs = tabbedGroupedMDIManager.MdiChildren;
             foreach (DockingWrapperForm q in childs)
@@ -489,6 +491,7 @@ namespace WcfClient
                 if (childFrm.GetType() == form.GetType())
                 {
                     childFrm.Close();
+                    break;
                 }
             }
             FormBindToTabMdi(form);

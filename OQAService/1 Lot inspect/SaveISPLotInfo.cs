@@ -109,7 +109,7 @@ namespace OQAService.Services
                         T_ISPLOTSTS.PartId = ISPLotSave.model.ISPMESLOT_List[0].Partid;
                         T_ISPLOTSTS.Qty = ISPLotSave.model.ISPMESLOT_List[0].Qty;
                         T_ISPLOTSTS.RecUser = ISPLotSave.model.S_USER_ID;
-                        T_ISPLOTSTS.Status = ISPStatus.Create;
+                        T_ISPLOTSTS.Status = LotSts.Create;
                         T_ISPLOTSTS.InspectResult = IspResult.Create;
                         T_ISPLOTSTS.PartDesc = ISPLotSave.model.ISPMESLOT_List[0].Partid;
                         T_ISPLOTSTS.ProductDieQty = ISPLotSave.model.ISPMESLOT_List[0].Dieqty;
@@ -322,7 +322,7 @@ namespace OQAService.Services
                             T_ISPLOTSTS.InspectResult = IspResult.Pass;
                             Out_node.__ByPass = true;
                         }
-                        T_ISPLOTSTS.Status = ISPStatus.IspOut;
+                        T_ISPLOTSTS.Status = LotSts.IspOut;
 
                         SysTime = GetSysTime();
                         T_ISPLOTSTS.LotId = ISPLotSave.model.S_LOT_ID;
@@ -348,7 +348,7 @@ namespace OQAService.Services
                         //验证业务级输入参数
 
                         T_ISPLOTSTS.InspectResult = IspResult.Pass;
-                        T_ISPLOTSTS.Status = ISPStatus.IspOut;
+                        T_ISPLOTSTS.Status = LotSts.IspOut;
 
                         SysTime = GetSysTime();
                         T_ISPLOTSTS.LotId = ISPLotSave.model.S_LOT_ID;
@@ -374,7 +374,7 @@ namespace OQAService.Services
                         //验证业务级输入参数
 
                         T_ISPLOTSTS.InspectResult = IspResult.Scrap;
-                        T_ISPLOTSTS.Status = ISPStatus.Close;
+                        T_ISPLOTSTS.Status = LotSts.Close;
 
                         SysTime = GetSysTime();
                         T_ISPLOTSTS.LotId = ISPLotSave.model.S_LOT_ID;

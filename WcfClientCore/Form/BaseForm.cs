@@ -3,6 +3,7 @@ using Syncfusion.Windows.Forms;
 using WcfClientCore.Utils.Authority;
 using System.Windows.Forms;
 using WCFModels.Frame;
+using Syncfusion.Windows.Forms.Tools;
 
 namespace WcfClientCore.Form
 {
@@ -71,6 +72,25 @@ namespace WcfClientCore.Form
                 }
             }
             b_Favorite = false;
+        }
+
+        public void AddNewFormToMdi(BaseForm form)
+        {
+            if (null != this.Parent)
+            {
+                DockingWrapperForm Frm = (DockingWrapperForm)this.Parent;
+                if (null != Frm.MdiParent)
+                {
+                    BaseForm mainFrm = (BaseForm)Frm.MdiParent;
+                    mainFrm.AddMdiChild(form);
+                }
+
+            }
+        }
+
+        public virtual void AddMdiChild(BaseForm form)
+        {
+            //非MDI子类不要实现该方法
         }
     }
 }

@@ -16,5 +16,6 @@ namespace WCFModels.OQA
         public const string ChangeOut = "ChangeOut";
         public const string PackageOut = "PackageOut";
         public const string TransferOut = "TransferOut";
+        public const string Close = "Close";
     }
 }

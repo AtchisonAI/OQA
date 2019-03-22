@@ -147,7 +147,7 @@ namespace WCFModels.OQA
 
     [DataContract]
     [TableName("OUT_PNDN")]
-    [PrimaryKey("PNDN_NO,LOT_ID", AutoIncrement = false)]
+    [PrimaryKey("LOT_ID,INSPECT_TYPE,DEFECT_CODE", AutoIncrement = false)]
     [ExplicitColumns]
     public partial class OUT_PNDN
     {
@@ -215,6 +215,8 @@ namespace WCFModels.OQA
         [Column("UPDATE_USER_ID")] public string UpdateUserId { get; set; }
         [DataMember]
         [Column("PNDN_STATUS")] public string PndnStatus { get; set; }
+        [DataMember]
+        [Column("PNDN_ERR")] public string PndnErr { get; set; }
     }
 
 

@@ -5,7 +5,7 @@ using WCFModels.Message;
 namespace WCFModels.OQA
 {
     [DataContract]
-    public class LotPndnInfoSave: BaseRsp
+    public class LotPndnInfoView: BaseRsp
     {
 
         //服务传入执行动作,事务标记必须输入
@@ -39,10 +39,6 @@ namespace WCFModels.OQA
         }
 
         private char c_tran_flag;
-
-
-
-
         //服务传入参数
         [DataMember]
         public string IN_LOT_ID {

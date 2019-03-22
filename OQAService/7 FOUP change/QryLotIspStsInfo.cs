@@ -58,30 +58,26 @@ namespace OQAService.Services
                             PageQueryReq.CurrentPage = 1;
                             PageQueryReq.ItemsPerPage = 200;
                            
-                            if (In_node.model.IN_LOT_ID.Trim().Equals("") == false)
+
+                            if (In_node.model.IN_LOT_ID.Trim().Equals("") == true)
                             {
-                               
-                                AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), In_node.model.IN_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                                Out_node._success = false;
+                                Out_node._ErrorMsg = "IN_LOT_ID is null!";
+                                return Out_node;
+
                             }
+                            AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), In_node.model.IN_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+                            AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), IspResult.Hold, LogicCondition.AndAlso, CompareType.Equal);
                             AddSortCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);
                             var data = PageQuery<ISPLOTSTS>(PageQueryReq);
                             
                             Out_node.model.ISPLOTSTS_list = data.models;
-
-                           
-                            //验证来料状态
-                            if (Out_node.model.ISPLOTSTS_list.Count > 0) 
+                            if (Out_node.model.ISPLOTSTS_list.Count == 0) 
                             {
-                                foreach (var temp in Out_node.model.ISPLOTSTS_list)
-                                {
-
-                                    if (temp.Status != "已检验")
-                                    {
-
-                                    }
-                                }
+                                Out_node._success = false;
+                                Out_node._ErrorMsg = "Lot Inspect Result Error,lotid is not found!";
+                                return Out_node;
                             }
-                            
 
                             break;
 

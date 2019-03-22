@@ -38,13 +38,13 @@ namespace OQAMain
 
             if (sideType.Equals(SideType.Front))
             {
-                radioButtonF.Checked = true;
+                rbtnF.Checked = true;
             }
             else
             {
-                radioButtonB.Checked = true;
+                rbtnB.Checked = true;
             }
-            waferSurF.codeBox = this.defectTextBox;
+            waferSurF.codeBox = this.txtDefectCode;
             this.pageInfoShow();
         }
 
@@ -56,13 +56,13 @@ namespace OQAMain
                 lotId = lotIdIn;
                 slotId = slotIdIn;
                 sideType = sideTypeIn;
-                lotTextBox.Text = lotId;
-                slotComboBox.Text = slotId;
+                txtLotId.Text = lotId;
+                cboxSlotId.Text = slotId;
                 jumpFlag = true;
-                lotTextBox.Enabled = false;
-                slotComboBox.Enabled = false;
-                radioButtonB.Enabled = false;
-                radioButtonF.Enabled = false;
+                txtLotId.Enabled = false;
+                cboxSlotId.Enabled = false;
+                rbtnB.Enabled = false;
+                rbtnF.Enabled = false;
             }
 
         }
@@ -76,7 +76,7 @@ namespace OQAMain
             try
             {
                 //检查数据
-                if (string.IsNullOrWhiteSpace(slotComboBox.Text) || string.IsNullOrWhiteSpace(lotTextBox.Text))
+                if (string.IsNullOrWhiteSpace(cboxSlotId.Text) || string.IsNullOrWhiteSpace(txtLotId.Text))
                 {
                     MessageBox.Show("请先选择lotId、slotId");
                     return;
@@ -106,7 +106,7 @@ namespace OQAMain
             try
             {
                 //检查数据
-                if (string.IsNullOrWhiteSpace(slotComboBox.Text) || string.IsNullOrWhiteSpace(lotTextBox.Text))
+                if (string.IsNullOrWhiteSpace(cboxSlotId.Text) || string.IsNullOrWhiteSpace(txtLotId.Text))
                 {
                     MessageBox.Show("请先选择lotId、slotId");
                     return;
@@ -157,21 +157,21 @@ namespace OQAMain
         //side单选框CheckedChanged
         private void radioButtonB_CheckedChanged(object sender, EventArgs e)
         {
-            if (jumpFlag && radioButtonB.Checked)
+            if (jumpFlag && rbtnB.Checked)
             {
                 if (sideType.Equals(SideType.Front))
                 {
                     slotId = "";
-                    slotComboBox.Items.Clear();
+                    cboxSlotId.Items.Clear();
                 }
             }
             else
             {
                 slotId = "";
-                slotComboBox.Items.Clear();
+                cboxSlotId.Items.Clear();
             }
             jumpFlag = false;
-            if (radioButtonB.Checked)
+            if (rbtnB.Checked)
             {
                 sideType = SideType.Back;
             }
@@ -185,13 +185,13 @@ namespace OQAMain
         //lotId文本框TextChanged
         private void lotTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (null != lotTextBox.Text && !("").Equals(lotTextBox.Text))
+            if (null != txtLotId.Text && !("").Equals(txtLotId.Text))
             {
-                lotId = lotTextBox.Text;
-                if (slotComboBox.Items.Count > 0)
+                lotId = txtLotId.Text;
+                if (cboxSlotId.Items.Count > 0)
                 {
                     slotId = "";
-                    slotComboBox.Items.Clear();
+                    cboxSlotId.Items.Clear();
                 }
                 pageInfoShow();
             }
@@ -213,12 +213,12 @@ namespace OQAMain
         private void MagnificationTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             ComFunc.CheckKeyPress(sender, e);
-            MagnificationTextBox.MaxLength = 6;
+            txtMag.MaxLength = 6;
             if (e.KeyChar == (Char)13)
             {
-                if (ComFunc.Trim(MagnificationTextBox.Text) != "")
+                if (ComFunc.Trim(txtMag.Text) != "")
                 {
-                    qtyTextBox.Focus();
+                    txtQty.Focus();
                 }
             }
         }
@@ -227,26 +227,26 @@ namespace OQAMain
         {
             string result = "0";
             queryLotInfo();
-            if (!string.IsNullOrWhiteSpace(qtyTextBox.Text))//判断TextBox的内容不为空，如果不判断会导致后面的非数字对比异常
+            if (!string.IsNullOrWhiteSpace(txtQty.Text))//判断TextBox的内容不为空，如果不判断会导致后面的非数字对比异常
             {
                 if (num != 0)
                 {
-                    float rate = (float)(int.Parse(qtyTextBox.Text)) / (float)num * 100;
+                    float rate = (float)(int.Parse(txtQty.Text)) / (float)num * 100;
                     result = Math.Round(rate, 2).ToString();
                 }
             }
-            rateTextBox.Text = result;
+            txtRate.Text = result;
         }
         //qty文本框输入控制
         private void qtyTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             ComFunc.CheckKeyPress(sender, e);
-            qtyTextBox.MaxLength = 6;
+            txtQty.MaxLength = 6;
             if (e.KeyChar == (Char)13)
             {
-                if (ComFunc.Trim(qtyTextBox.Text) != "")
+                if (ComFunc.Trim(txtQty.Text) != "")
                 {
-                    ReviewTextBox.Focus();
+                    txtReview.Focus();
                 }
             }
         }
@@ -255,9 +255,9 @@ namespace OQAMain
         {
             if (e.KeyChar == (Char)13)
             {
-                if (ComFunc.Trim(ReviewTextBox.Text) != "")
+                if (ComFunc.Trim(txtReview.Text) != "")
                 {
-                    decRichTextBox.Focus();
+                    rtboxDsc.Focus();
                 }
             }
         }
@@ -266,9 +266,9 @@ namespace OQAMain
         {
             if (e.KeyChar == (Char)13)
             {
-                if (ComFunc.Trim(decRichTextBox.Text) != "")
+                if (ComFunc.Trim(rtboxDsc.Text) != "")
                 {
-                    cmtRichTextBox.Focus();
+                    rtboxcmt.Focus();
                 }
             }
         }
@@ -300,7 +300,7 @@ namespace OQAMain
         {
             ComFunc.ClearBoxValue(groupBox3);
             waferSurF.clearPanel();
-            slotComboBox.Text = slotId;
+            cboxSlotId.Text = slotId;
             queryPageInfo(lotId, slotId, sideType);
         }
         //页面查询及slot下拉框查询
@@ -314,14 +314,14 @@ namespace OQAMain
                 }
                 if (sideType.Equals(SideType.Front))
                 {
-                    frontButton.Text = "Frontside";
+                    btnSide.Text = "Frontside";
                 }
                 else
                 {
-                    frontButton.Text = "Backside";
+                    btnSide.Text = "Backside";
                 }
-                lotTextBox.Text = lotId;
-                slotComboBox.Text = slotId;
+                txtLotId.Text = lotId;
+                cboxSlotId.Text = slotId;
                 ISPWAFITM ISPWAFITM = new ISPWAFITM();
                 ISPWAFITM.LotId = lotId;
                 ISPWAFITM.SideType = sideType;
@@ -343,9 +343,9 @@ namespace OQAMain
                     {
                         foreach (ISPWAFITM child in info.model.ISPWAFITM_list)
                         {
-                            if (!slotComboBox.Items.Contains(ComFunc.Trim(child.SlotId)))
+                            if (!cboxSlotId.Items.Contains(ComFunc.Trim(child.SlotId)))
                             {
-                                slotComboBox.Items.Add(ComFunc.Trim(child.SlotId));
+                                cboxSlotId.Items.Add(ComFunc.Trim(child.SlotId));
                             }
                         }
                     }
@@ -387,12 +387,12 @@ namespace OQAMain
                         if (null != qryResult.model.ISPWAFITM_list && qryResult.model.ISPWAFITM_list.Count > 0)
                         {
                             wafInfo = qryResult.model.ISPWAFITM_list[0];
-                            decRichTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DefectDesc);
-                            cmtRichTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].Cmt);
-                            ReviewTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].ReviewUser);
-                            MagnificationTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].Magnification);
-                            qtyTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DieQty.ToString());
-                            rateTextBox.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DefectRate.ToString());
+                            rtboxDsc.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DefectDesc);
+                            rtboxcmt.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].Cmt);
+                            txtReview.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].ReviewUser);
+                            txtMag.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].Magnification);
+                            txtQty.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DieQty.ToString());
+                            txtRate.Text = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].DefectRate.ToString());
                             waferId = ComFunc.Trim(qryResult.model.ISPWAFITM_list[0].WaferId);
                             //slotId = qryResult.model.ISPWAFITM_list[0].SlotId;
                             //slotComboBox.Text = slotId;
@@ -460,20 +460,20 @@ namespace OQAMain
 
                
                 wafInfo.UpdateUserId = AuthorityControl.GetUserProfile().userId;
-                wafInfo.Magnification = ComFunc.Trim(MagnificationTextBox.Text);
-                if (String.IsNullOrWhiteSpace(qtyTextBox.Text))
+                wafInfo.Magnification = ComFunc.Trim(txtMag.Text);
+                if (String.IsNullOrWhiteSpace(txtQty.Text))
                 {
-                    qtyTextBox.Text = "0";
+                    txtQty.Text = "0";
                 }
-                wafInfo.DieQty = decimal.Parse(qtyTextBox.Text);
-                if (String.IsNullOrWhiteSpace(rateTextBox.Text))
+                wafInfo.DieQty = decimal.Parse(txtQty.Text);
+                if (String.IsNullOrWhiteSpace(txtRate.Text))
                 {
-                    rateTextBox.Text = "0";
+                    txtRate.Text = "0";
                 }
-                wafInfo.DefectRate = decimal.Parse(rateTextBox.Text);
-                wafInfo.ReviewUser = ComFunc.Trim(ReviewTextBox.Text);
-                wafInfo.DefectDesc = ComFunc.Trim(decRichTextBox.Text);
-                wafInfo.Cmt = ComFunc.Trim(cmtRichTextBox.Text);
+                wafInfo.DefectRate = decimal.Parse(txtRate.Text);
+                wafInfo.ReviewUser = ComFunc.Trim(txtReview.Text);
+                wafInfo.DefectDesc = ComFunc.Trim(rtboxDsc.Text);
+                wafInfo.Cmt = ComFunc.Trim(rtboxcmt.Text);
                 wafInfo.InspectPoint = "25";
 
                 for (int i = 0; i < 24; i++)

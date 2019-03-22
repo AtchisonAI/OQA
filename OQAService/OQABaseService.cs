@@ -66,7 +66,7 @@ namespace OQAService.Services
                 return ballNumber;
                  
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return ballNumber;
             }

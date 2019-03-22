@@ -73,7 +73,7 @@
             this.groupBox1.Size = new System.Drawing.Size(750, 100);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "PackageLabelPrint";
+            this.groupBox1.Text = "`";
             // 
             // Print
             // 
@@ -115,7 +115,7 @@
             this.groupBox2.Size = new System.Drawing.Size(750, 400);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "PrintView";
+            this.groupBox2.Text = "```";
             // 
             // reportViewer1
             // 
@@ -134,6 +134,7 @@
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.DoubleBuffered = true;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "FrmPackageLabelPrint";
             this.Text = "FrmPackageLabelPrint";

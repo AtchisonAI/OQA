@@ -369,7 +369,7 @@ namespace OQAMain
                         //Lotid正确带出来料表中的信息
 
 
-                        if (QryLotIspStsInfo(GlobConst.TRAN_VIEW, '1') == false) return;
+                        if (QryLotIspStsInfo(GlobConst.TRAN_VIEW, '2') == false) return;
                         if (QryPndnInfo(GlobConst.TRAN_VIEW, '1') == false) return;
 
 

@@ -371,6 +371,7 @@
             this.Controls.Add(this.grpFoupChange);
             this.Controls.Add(this.grpLotInfo);
             this.Name = "FrmFoupChange";
+            this.Text = "Foup Chang";
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.grpLotInfo, 0);
             this.Controls.SetChildIndex(this.grpFoupChange, 0);

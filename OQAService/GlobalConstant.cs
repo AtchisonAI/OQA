@@ -8,18 +8,6 @@
         public const char TRAN_VIEW = 'Q';
     }
 
-    class ISPStatus
-    {
-        public const string Create = "Create";
-        public const string IspOut = "IspOut";
-        public const string ChangeOut = "ChangeOut";
-        public const string PackageOut = "PackageOut";
-        public const string TransferOut = "TransferOut";
-        public const string Close = "Close";
-
-    }
-
-
     class IspResult
     {
         public const string Create = "Create";

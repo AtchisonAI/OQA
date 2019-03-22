@@ -6,7 +6,7 @@ using WCFModels.OQA;
 using WCFModels.Message;
 using System.Collections.Generic;
 using WcfClientCore.Utils.Authority;
-using WcfClientCore.Message;
+//using WcfClientCore.Message;
 using System.Runtime.InteropServices;
 using Syncfusion.Windows.Forms.Tools;
 
@@ -205,6 +205,8 @@ namespace OQAMain
             try
             {
                 var res = OQASrv.Call.UpdateLotSts(updateReq);
+
+                print_button.PerformClick();
             }
             catch (Exception ex)
             {
@@ -312,7 +314,7 @@ namespace OQAMain
 
         private void print_button_Click(object sender, EventArgs e)
         {
-            FrmPackageLabelPrint frm = new FrmPackageLabelPrint(lotId_textBox.Text.Trim());
+            FrmWaferInspectRecordPrint frm = new FrmWaferInspectRecordPrint(lotId_textBox.Text.Trim());
             AddNewFormToMdi(frm);
         }
     }

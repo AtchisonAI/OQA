@@ -350,10 +350,11 @@ namespace OQAMain
                     {
                         string s_LotID = txtLotID.Text.Trim();
                         FrmDefectSend DefectSend = new FrmDefectSend(s_LotID);
-                        DefectSend.FormBorderStyle = FormBorderStyle.FixedDialog;
-                        DefectSend.WindowState = FormWindowState.Maximized;
-                        DefectSend.StartPosition = FormStartPosition.CenterParent;
-                        DefectSend.ShowDialog();
+                        //DefectSend.FormBorderStyle = FormBorderStyle.FixedDialog;
+                        //DefectSend.WindowState = FormWindowState.Maximized;
+                        //DefectSend.StartPosition = FormStartPosition.CenterParent;
+                        //DefectSend.ShowDialog();
+                        AddNewFormToMdi(DefectSend);
                     }
                     return true;
                 }
@@ -946,14 +947,15 @@ namespace OQAMain
                         string s_side = dgAOI.Rows[e.RowIndex].Cells[0].Value.ToString();
 
                         FrmAOIInput AOI = new FrmAOIInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
-                        AOI.FormBorderStyle = FormBorderStyle.FixedDialog;
-                        AOI.WindowState = FormWindowState.Normal;
-                        AOI.MaximizeBox = false;
-                        AOI.MinimizeBox = false;
-                        AOI.StartPosition = FormStartPosition.CenterParent;
-                        AOI.ShowDialog();
+                        //AOI.FormBorderStyle = FormBorderStyle.FixedDialog;
+                        //AOI.WindowState = FormWindowState.Normal;
+                        //AOI.MaximizeBox = false;
+                        //AOI.MinimizeBox = false;
+                        //AOI.StartPosition = FormStartPosition.CenterParent;
+                        //AOI.ShowDialog();
+                        AddNewFormToMdi(AOI);
 
-                        btnISPLotFilter.PerformClick();
+                        //tnISPLotFilter.PerformClick();
                     }
 
                 }
@@ -972,14 +974,14 @@ namespace OQAMain
                 {
                     string s_side = dgMacro.Rows[e.RowIndex].Cells[0].Value.ToString();
                     FrmMarcoInput MAC = new FrmMarcoInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
-                    MAC.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    MAC.WindowState = FormWindowState.Normal;
-                    MAC.MaximizeBox = false;
-                    MAC.MinimizeBox = false;
-                    MAC.StartPosition = FormStartPosition.CenterParent;
-                    MAC.ShowDialog();
-
-                    btnISPLotFilter.PerformClick();
+                    //MAC.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    //MAC.WindowState = FormWindowState.Normal;
+                    //MAC.MaximizeBox = false;
+                    //MAC.MinimizeBox = false;
+                    //MAC.StartPosition = FormStartPosition.CenterParent;
+                    //MAC.ShowDialog();
+                    AddNewFormToMdi(MAC);
+                   // btnISPLotFilter.PerformClick();
                 }
 
             }
@@ -993,14 +995,14 @@ namespace OQAMain
                 {
                     string s_side = dgMIR.Rows[e.RowIndex].Cells[0].Value.ToString();
                     FrmMircoInput MIR = new FrmMircoInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
-                    MIR.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    MIR.WindowState = FormWindowState.Normal;
-                    MIR.MaximizeBox = false;
-                    MIR.MinimizeBox = false;
-                    MIR.StartPosition = FormStartPosition.CenterParent;
-                    MIR.ShowDialog();
-
-                    btnISPLotFilter.PerformClick();
+                    //MIR.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    //MIR.WindowState = FormWindowState.Normal;
+                    //MIR.MaximizeBox = false;
+                    //MIR.MinimizeBox = false;
+                    //MIR.StartPosition = FormStartPosition.CenterParent;
+                    //MIR.ShowDialog();
+                    AddNewFormToMdi(MIR);
+                    //btnISPLotFilter.PerformClick();
                 }
 
             }

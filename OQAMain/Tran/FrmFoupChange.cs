@@ -398,12 +398,13 @@ namespace OQAMain
             string s_lot_id = ComFunc.Trim(txtLotid.Text);
             if (UptLotIspStsInfo(GlobConst.TRAN_UPDATE, '1', s_lot_id) == false) return;
             FrmPackageLabelPrint from = new FrmPackageLabelPrint(s_lot_id);
-            from.FormBorderStyle = FormBorderStyle.FixedDialog;
-            from.WindowState = FormWindowState.Maximized;
-            from.StartPosition = FormStartPosition.CenterParent;
-            from.ShowDialog();
-            ClearData("1");
-            txtLotid.Focus();
+            //from.FormBorderStyle = FormBorderStyle.FixedDialog;
+            //from.WindowState = FormWindowState.Maximized;
+            //from.StartPosition = FormStartPosition.CenterParent;
+            //from.ShowDialog();
+            AddNewFormToMdi(from);
+            //ClearData("1");
+            //txtLotid.Focus();
         }
 
         private void btnPrint_Click(object sender, EventArgs e)

@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using WcfClient.Forms;
 using WcfClientCore.Form;
-using WcfClientCore.Message;
+//using WcfClientCore.Message;
 using WcfClientCore.Utils.Authority;
 using WcfClientCore.WcfSrv;
 using WcfInspector;

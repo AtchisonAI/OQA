@@ -124,9 +124,9 @@ namespace OQAMain
                         string SlotId1 = string.Empty;
                         string SlotId2 = slotID < 10 ? "00" + slotID : "0" + slotID;
                         SlotId1 = "paramWaferID" + slotID.ToString().PadLeft(2, '0');
-                        if (lstISPWAFDFT.Count(p => decimal.Parse(p.SlotId) == decimal.Parse(SlotId2)) > 0)
+                        if (lstPKGSLTDEF.Count(p => decimal.Parse(p.SlotId) == decimal.Parse(SlotId2)) > 0)
                         {
-                            waferid = lstISPWAFDFT.Where(p => decimal.Parse(p.SlotId) == decimal.Parse(SlotId2)).First().WaferId.ToString();
+                            waferid = lstPKGSLTDEF.Where(p => decimal.Parse(p.SlotId) == decimal.Parse(SlotId2)).First().WaferId.ToString();
                         }
                         else
                         {
@@ -290,6 +290,7 @@ namespace OQAMain
 
         private List<ISPWAFDFT> lstISPWAFDFT;
         private List<ISPLOTSTS> lstLot;
+        private List<PKGSLTDEF> lstPKGSLTDEF;
 
         private bool QueryWaferInspectRecordInfo(char c_proc_step, char c_tran_flag, string in_lotid)
         {
@@ -307,11 +308,13 @@ namespace OQAMain
 
             var out_data = OQASrv.Call.QueryWaferInspectionRecordInfo(in_node);
             var out_data_lot = OQASrv.Call.QueryLotInfo(in_node);
-            //   var DataTableCount = out_data.model.ISPWAFDFT_list.Count;
+            var out_data_wafer = OQASrv.Call.QueryPKGWaferInfo(in_node);
+         
             if (out_data._success == true)
             {
                 lstISPWAFDFT = out_data.model.ISPWAFDFT_list;
                 lstLot = out_data_lot.model.LOT_list;
+                lstPKGSLTDEF = out_data_wafer.model.PKGSLTDEF_list;
 
                 this.reportViewer1.LocalReport.SetParameters(GenerateLabelParameters());
             }

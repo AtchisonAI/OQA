@@ -84,7 +84,11 @@ namespace WcfClientCore.Form
                     BaseForm mainFrm = (BaseForm)Frm.MdiParent;
                     mainFrm.AddMdiChild(form);
                 }
-
+                else
+                {
+                    //非MDI子窗体
+                    form.Show();
+                }
             }
         }
 

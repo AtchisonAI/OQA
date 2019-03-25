@@ -41,6 +41,8 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnQuery = new System.Windows.Forms.Button();
+            this.TxtLotQueryShipID = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -49,16 +51,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1232, 11);
+            this.btnClose.Location = new System.Drawing.Point(938, 11);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(773, 7);
+            this.btnCreate.Location = new System.Drawing.Point(479, 7);
             this.btnCreate.Visible = false;
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1932, 10);
+            this.btnEdite.Location = new System.Drawing.Point(1638, 10);
             this.btnEdite.Text = "Export";
             this.btnEdite.Visible = false;
             // 
@@ -80,6 +82,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.TxtLotQueryShipID);
             this.groupBox1.Controls.Add(this.CheckShipID);
             this.groupBox1.Controls.Add(this.txtShipNo);
             this.groupBox1.Controls.Add(this.label1);
@@ -202,6 +206,23 @@
             this.btnQuery.UseVisualStyleBackColor = true;
             this.btnQuery.Visible = false;
             // 
+            // TxtLotQueryShipID
+            // 
+            this.TxtLotQueryShipID.Location = new System.Drawing.Point(75, 66);
+            this.TxtLotQueryShipID.Name = "TxtLotQueryShipID";
+            this.TxtLotQueryShipID.Size = new System.Drawing.Size(100, 21);
+            this.TxtLotQueryShipID.TabIndex = 5;
+            this.TxtLotQueryShipID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1Press_check);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 71);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 12);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "LotID查询";
+            // 
             // FrmOQAShipListPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -242,5 +263,7 @@
         private System.Windows.Forms.ColumnHeader Inspection_Result;
         private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.CheckedListBox CheckShipID;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox TxtLotQueryShipID;
     }
 }

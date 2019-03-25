@@ -212,7 +212,69 @@ namespace OQAMain
             }
         }
 
-        
+        private bool QryPndnInfo(char c_proc_step, char c_tran_flag,string s_lot_id)
+        {
+            ModelRsp<LotPndnInfoView> in_node = new ModelRsp<LotPndnInfoView>();
+            LotPndnInfoView in_data = new LotPndnInfoView();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.IN_LOT_ID = s_lot_id;
+
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.QryPndnInfo(in_node);           
+
+            dgPndn.Rows.Clear();
+            DataGridViewRow dt = new DataGridViewRow();
+            if (out_data._success == true)
+            {
+                int Scount = out_data.model.PndnList.Count;
+
+                if (Scount > 0)
+                {
+                    for (int i = 0; i < Scount; i++)
+                    {
+                        int idx = dgPndn.Rows.Add();
+                        dt = dgPndn.Rows[idx];
+
+                        if (out_data.model.PndnList[i].PndnStatus == "Y")
+                        {
+                            dgPndn.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen;
+                        }
+                        else
+                        {
+                            dgPndn.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+                        }
+
+                        dt.Cells[0].Value = i + 1;
+                        dt.Cells[1].Value = out_data.model.PndnList[i].PndnNo.ToString();
+                        dt.Cells[2].Value = out_data.model.PndnList[i].Dept.ToString();
+                        dt.Cells[2].ReadOnly = true;
+                        dt.Cells[3].Value = out_data.model.PndnList[i].InspectType.ToString();
+                        dt.Cells[4].Value = out_data.model.PndnList[i].DefectCode.ToString();
+                        dt.Cells[5].Value = out_data.model.PndnList[i].SlotId.ToString();
+                        dt.Cells[6].Value = out_data.model.PndnList[i].Spec.ToString();
+                        dt.Cells[7].Value = out_data.model.PndnList[i].Remark.ToString();
+                         dt.Cells[8].Value = out_data.model.PndnList[i].HoldCode.ToString();
+                         dt.Cells[9].Value = out_data.model.PndnList[i].HoldComment.ToString();
+                        dt.Cells[10].Value = out_data.model.PndnList[i].SupervisorId.ToString();
+                    }
+
+                    
+                }
+
+                lblSucessMsg.Text = out_data._MsgCode;
+                return true;
+            }
+
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+        }
         private bool SaveISPLotInfo(char c_proc_step, char c_tran_flag)
         {
             try
@@ -794,6 +856,8 @@ namespace OQAMain
                 List<ISPWAFST> list_ispwafer = null;
                 List<OQA_CHKMESSLOTID> list_meswafer = null;
                 List<PKGSLTDEF> list_pkgwafer = new List<PKGSLTDEF>();
+
+                if (QryPndnInfo(GlobConst.TRAN_VIEW, '1', txtISPLotFilter.Text) == false) return;
 
                 if (QueryNewSlotInfo(GlobConst.TRAN_VIEW, '1', txtISPLotFilter.Text.Trim(),out list_ispwafer,out list_meswafer) == false) return;
 

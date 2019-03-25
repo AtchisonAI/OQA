@@ -95,7 +95,7 @@ namespace OQAService.Services
                             if (In_node.model.IN_SEARCHSHIP_NO.Trim().Equals("") == false)
                             {
                                 //AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), In_node.model.IN_SEARCHLOTID_NO.Trim(), LogicCondition.AndAlso, CompareType.Include);
-                                string sql = string.Format(@"select a.ship_id from PKGSHPSTS a where  a.ship_id like ('%{0}%')", In_node.model.IN_SEARCHSHIP_NO.Trim());
+                                string sql = string.Format(@"select B.SHIP_ID from PKGSHPDAT B where B.LOT_ID  like ('%{0}%')", In_node.model.IN_SEARCHSHIP_NO.Trim());
                                 dataSearch = QueryRawSql(sql);
                             }
                             //  AddSortCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);

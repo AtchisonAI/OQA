@@ -350,11 +350,11 @@ namespace OQAMain
                     {
                         string s_LotID = txtLotID.Text.Trim();
                         FrmDefectSend DefectSend = new FrmDefectSend(s_LotID);
-                        //DefectSend.FormBorderStyle = FormBorderStyle.FixedDialog;
-                        //DefectSend.WindowState = FormWindowState.Maximized;
-                        //DefectSend.StartPosition = FormStartPosition.CenterParent;
-                        //DefectSend.ShowDialog();
-                        AddNewFormToMdi(DefectSend);
+                        DefectSend.FormBorderStyle = FormBorderStyle.FixedDialog;
+                        DefectSend.WindowState = FormWindowState.Maximized;
+                        DefectSend.StartPosition = FormStartPosition.CenterParent;
+                        DefectSend.ShowDialog();
+                        //AddNewFormToMdi(DefectSend);
                     }
                     return true;
                 }

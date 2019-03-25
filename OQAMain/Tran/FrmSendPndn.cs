@@ -24,7 +24,20 @@ namespace OQAMain
         {
             InitializeComponent();
             this.txtLotId.Text = sLotId;
-            txtFilter_KeyPress(null, null);
+
+            try
+            {
+                if (ComFunc.Trim(txtLotId.Text) != "")
+                {
+                    //Lotid正确带出来料表中的信息
+                    if (QryLotIspStsInfo(GlobConst.TRAN_VIEW, '2') == false) return;
+                    if (QryPndnInfo(GlobConst.TRAN_VIEW, '1') == false) return;
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
 

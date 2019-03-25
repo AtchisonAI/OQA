@@ -1611,7 +1611,6 @@
             // 
             // btnSrap
             // 
-            this.btnSrap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSrap.Location = new System.Drawing.Point(438, 3);
             this.btnSrap.Name = "btnSrap";
             this.btnSrap.Size = new System.Drawing.Size(88, 26);

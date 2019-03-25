@@ -10,7 +10,7 @@ using WCFModels.MESDB.FWTST1;
 
 namespace WcfClient.Forms
 {
-    public partial class ControlAuthorityForm : BaseForm
+    public partial class ControlAuthorityForm : ChildFormBase
     {
         public ControlAuthorityForm()
         {

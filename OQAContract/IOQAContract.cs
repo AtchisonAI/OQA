@@ -77,6 +77,9 @@ namespace OQAContract
 
         [OperationContract]
         ModelRsp<IspWafDftView> QryIspDftInfo(ModelRsp<IspWafDftView> IspWafDftView);
+
+        [OperationContract]
+        ModelRsp<LotPndnInfoView> QryPndnInfo(ModelRsp<LotPndnInfoView> QryPndnInfo);
         [OperationContract]
         ModelRsp<LotPndnInfoSave> IstPndnInfo(ModelRsp<LotPndnInfoSave> SavePndnInfo);
 
@@ -115,6 +118,8 @@ namespace OQAContract
         [OperationContract]
         ModelRsp<WaferInspectRecordView> QueryWaferInspectionRecordInfo(ModelRsp<WaferInspectRecordView> WaferInspectRecord);
 
+        [OperationContract]
+        ModelRsp<WaferInspectRecordView> QueryPKGWaferInfo(ModelRsp<WaferInspectRecordView> PKGWafer);
         #endregion
 
         #region  Package Label Print

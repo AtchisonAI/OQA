@@ -3,7 +3,7 @@ using WcfClientCore.Form;
 
 namespace OQA_Core
 {
-    public partial class OQABaseForm : BaseForm
+    public partial class OQABaseForm : ChildFormBase
     {
         public OQABaseForm()
         {

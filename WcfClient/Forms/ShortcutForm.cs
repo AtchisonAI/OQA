@@ -1,8 +1,9 @@
 ﻿using System.Windows.Forms;
+using WcfClientCore.Form;
 
 namespace WcfClient
 {
-    public partial class ShortcutForm : Form
+    public partial class ShortcutForm : ChildFormBase
     {
         public ShortcutForm()
         {

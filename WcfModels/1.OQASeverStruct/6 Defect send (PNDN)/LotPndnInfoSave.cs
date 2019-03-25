@@ -39,6 +39,10 @@ namespace WCFModels.OQA
         }
 
         private char c_tran_flag;
+
+
+
+
         //服务传入参数
         [DataMember]
         public string IN_LOT_ID {

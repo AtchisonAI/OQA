@@ -84,7 +84,7 @@ namespace OQAService.Services
                                 AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.FoupId), In_node.model.C_FOUP_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
 
-                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.Status), ISPStatus.Create, LogicCondition.AndAlso, CompareType.Equal);
+                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.Status), LotSts.Create, LogicCondition.AndAlso, CompareType.Equal);
                             AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), IspResult.Create, LogicCondition.AndAlso, CompareType.Equal);
 
                             AddSortCondition(QueryLotReq, GetParaName <ISPLOTSTS> (p=>p.LotId), SortType.ASC);
@@ -195,7 +195,7 @@ namespace OQAService.Services
                                 AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.FoupId), In_node.model.C_FOUP_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
 
-                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.Status), ISPStatus.Create, LogicCondition.AndAlso, CompareType.Equal);
+                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.Status), LotSts.Create, LogicCondition.AndAlso, CompareType.Equal);
                             AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), IspResult.Hold, LogicCondition.AndAlso, CompareType.Equal);
                             //AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.Status), ISPStatus.Create, LogicCondition.OrElse, CompareType.Equal);
                             AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), IspResult.Pndn, LogicCondition.OrElse, CompareType.Equal);

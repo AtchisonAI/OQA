@@ -323,13 +323,13 @@ namespace OQAMain
         //搜索shipid
         private void textBox1Press_check(object sender, KeyPressEventArgs e)
         {
-
+            //LotQueryShipId = TxtLotQueryShipID.Text;
             if (e.KeyChar == (Char)13)
             {
 
-                if (ComFunc.Trim(txtShipNo.Text) != "")
+                if (ComFunc.Trim(TxtLotQueryShipID.Text) != "")
                 {
-                    if (SearchShipIDList(GlobConst.TRAN_VIEW, '3', txtShipNo.Text.Trim()) == false) return;
+                    if (SearchShipIDList(GlobConst.TRAN_VIEW, '3', TxtLotQueryShipID.Text.Trim()) == false) return;
                 }
                 else {
                         CheckShipID.Items.Clear();

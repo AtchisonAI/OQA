@@ -69,26 +69,24 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(607, 8);
+            this.btnClose.Location = new System.Drawing.Point(683, 5);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(519, 7);
+            this.btnCreate.Location = new System.Drawing.Point(595, 5);
             this.btnCreate.Text = "Submit";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(150, 6);
+            this.btnEdite.Location = new System.Drawing.Point(409, 7);
             this.btnEdite.Visible = false;
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
             // 
             this.pnlMenu.Controls.Add(this.btnPrint);
-            this.pnlMenu.Location = new System.Drawing.Point(0, 540);
-            this.pnlMenu.Size = new System.Drawing.Size(750, 40);
             this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
@@ -109,7 +107,7 @@
             this.grpLotInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpLotInfo.Location = new System.Drawing.Point(0, 0);
             this.grpLotInfo.Name = "grpLotInfo";
-            this.grpLotInfo.Size = new System.Drawing.Size(750, 50);
+            this.grpLotInfo.Size = new System.Drawing.Size(780, 50);
             this.grpLotInfo.TabIndex = 1;
             this.grpLotInfo.TabStop = false;
             this.grpLotInfo.Text = "Lot Information";
@@ -158,7 +156,7 @@
             this.grpFoupChange.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpFoupChange.Location = new System.Drawing.Point(0, 50);
             this.grpFoupChange.Name = "grpFoupChange";
-            this.grpFoupChange.Size = new System.Drawing.Size(750, 490);
+            this.grpFoupChange.Size = new System.Drawing.Size(780, 610);
             this.grpFoupChange.TabIndex = 2;
             this.grpFoupChange.TabStop = false;
             this.grpFoupChange.Text = "Foup Change";
@@ -198,7 +196,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(744, 470);
+            this.dataGridView1.Size = new System.Drawing.Size(774, 590);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
@@ -354,7 +352,7 @@
             // btnPrint
             // 
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrint.Location = new System.Drawing.Point(244, 6);
+            this.btnPrint.Location = new System.Drawing.Point(503, 6);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(88, 26);
             this.btnPrint.TabIndex = 6;
@@ -367,7 +365,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 580);
+            this.ClientSize = new System.Drawing.Size(780, 700);
             this.Controls.Add(this.grpFoupChange);
             this.Controls.Add(this.grpLotInfo);
             this.Name = "FrmFoupChange";

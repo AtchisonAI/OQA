@@ -820,7 +820,7 @@ namespace OQAMain
                 for (int i = 0; i < 25; i++)
                 {
                     bool isInIsp = false;
-                    dgNewSlot.Rows[0].Cells[i].Style.BackColor = Color.Green;
+                    dgNewSlot.Rows[0].Cells[i].Style.BackColor = Color.LightGreen;
                     int j = i + 1;
                     if (list_ispwafer.Count(p => p.SlotId == j.ToString().PadLeft(3, '0')) > 0)
                     {
@@ -850,6 +850,7 @@ namespace OQAMain
                         else
                         {
                             dgNewSlot.Rows[0].Cells[i].Value = "/";
+                            dgNewSlot.Rows[0].Cells[i].Style.BackColor = Color.LightGray;
                         }
                     }
 

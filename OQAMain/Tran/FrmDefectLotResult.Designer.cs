@@ -233,23 +233,22 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(530, 3);
+            this.btnClose.Location = new System.Drawing.Point(685, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(254, 3);
+            this.btnCreate.Location = new System.Drawing.Point(409, 6);
+            this.btnCreate.Visible = false;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(346, 3);
+            this.btnEdite.Location = new System.Drawing.Point(501, 6);
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
             // 
             this.pnlMenu.Controls.Add(this.btnSrap);
-            this.pnlMenu.Location = new System.Drawing.Point(0, 732);
-            this.pnlMenu.Size = new System.Drawing.Size(750, 40);
             this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
@@ -273,7 +272,7 @@
             this.grpRcvLot.Dock = System.Windows.Forms.DockStyle.Left;
             this.grpRcvLot.Location = new System.Drawing.Point(0, 0);
             this.grpRcvLot.Name = "grpRcvLot";
-            this.grpRcvLot.Size = new System.Drawing.Size(250, 732);
+            this.grpRcvLot.Size = new System.Drawing.Size(250, 660);
             this.grpRcvLot.TabIndex = 3;
             this.grpRcvLot.TabStop = false;
             this.grpRcvLot.Text = "Recive Lot Query";
@@ -327,7 +326,7 @@
             // 
             this.txtCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtCount.Enabled = false;
-            this.txtCount.Location = new System.Drawing.Point(2, 705);
+            this.txtCount.Location = new System.Drawing.Point(2, 633);
             this.txtCount.Name = "txtCount";
             this.txtCount.Size = new System.Drawing.Size(100, 21);
             this.txtCount.TabIndex = 8;
@@ -353,7 +352,7 @@
             this.Cust_part_ID});
             this.LstRcvLot.Location = new System.Drawing.Point(9, 63);
             this.LstRcvLot.Name = "LstRcvLot";
-            this.LstRcvLot.Size = new System.Drawing.Size(230, 630);
+            this.LstRcvLot.Size = new System.Drawing.Size(230, 558);
             this.LstRcvLot.TabIndex = 1;
             this.LstRcvLot.UseCompatibleStateImageBehavior = false;
             this.LstRcvLot.View = System.Windows.Forms.View.Details;
@@ -424,7 +423,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(250, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 732);
+            this.splitter1.Size = new System.Drawing.Size(3, 660);
             this.splitter1.TabIndex = 7;
             this.splitter1.TabStop = false;
             // 
@@ -458,7 +457,7 @@
             this.grpOQAInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpOQAInfo.Location = new System.Drawing.Point(253, 0);
             this.grpOQAInfo.Name = "grpOQAInfo";
-            this.grpOQAInfo.Size = new System.Drawing.Size(497, 160);
+            this.grpOQAInfo.Size = new System.Drawing.Size(527, 160);
             this.grpOQAInfo.TabIndex = 8;
             this.grpOQAInfo.TabStop = false;
             this.grpOQAInfo.Text = "OQA Information";
@@ -711,7 +710,7 @@
             this.grpSlot.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpSlot.Location = new System.Drawing.Point(253, 160);
             this.grpSlot.Name = "grpSlot";
-            this.grpSlot.Size = new System.Drawing.Size(497, 80);
+            this.grpSlot.Size = new System.Drawing.Size(527, 80);
             this.grpSlot.TabIndex = 11;
             this.grpSlot.TabStop = false;
             this.grpSlot.Text = "Slot Information";
@@ -751,7 +750,7 @@
             this.dgSlotID.Name = "dgSlotID";
             this.dgSlotID.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgSlotID.RowTemplate.Height = 23;
-            this.dgSlotID.Size = new System.Drawing.Size(491, 60);
+            this.dgSlotID.Size = new System.Drawing.Size(521, 60);
             this.dgSlotID.TabIndex = 0;
             // 
             // Column1
@@ -910,7 +909,7 @@
             this.grpAOI.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpAOI.Location = new System.Drawing.Point(253, 240);
             this.grpAOI.Name = "grpAOI";
-            this.grpAOI.Size = new System.Drawing.Size(497, 120);
+            this.grpAOI.Size = new System.Drawing.Size(527, 120);
             this.grpAOI.TabIndex = 12;
             this.grpAOI.TabStop = false;
             this.grpAOI.Text = "AOI Information";
@@ -953,7 +952,7 @@
             this.dgAOI.ReadOnly = true;
             this.dgAOI.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgAOI.RowTemplate.Height = 23;
-            this.dgAOI.Size = new System.Drawing.Size(491, 100);
+            this.dgAOI.Size = new System.Drawing.Size(521, 100);
             this.dgAOI.TabIndex = 0;
             this.dgAOI.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAOI_CellDoubleClick);
             // 
@@ -1145,7 +1144,7 @@
             this.grpMacro.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpMacro.Location = new System.Drawing.Point(253, 360);
             this.grpMacro.Name = "grpMacro";
-            this.grpMacro.Size = new System.Drawing.Size(497, 120);
+            this.grpMacro.Size = new System.Drawing.Size(527, 120);
             this.grpMacro.TabIndex = 13;
             this.grpMacro.TabStop = false;
             this.grpMacro.Text = "Macro Information";
@@ -1188,7 +1187,7 @@
             this.dgMacro.ReadOnly = true;
             this.dgMacro.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgMacro.RowTemplate.Height = 23;
-            this.dgMacro.Size = new System.Drawing.Size(491, 100);
+            this.dgMacro.Size = new System.Drawing.Size(521, 100);
             this.dgMacro.TabIndex = 0;
             this.dgMacro.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMacro_CellDoubleClick);
             // 
@@ -1380,7 +1379,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(253, 480);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(497, 120);
+            this.groupBox1.Size = new System.Drawing.Size(527, 100);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Mircro Information";
@@ -1423,7 +1422,7 @@
             this.dgMIR.ReadOnly = true;
             this.dgMIR.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgMIR.RowTemplate.Height = 23;
-            this.dgMIR.Size = new System.Drawing.Size(491, 100);
+            this.dgMIR.Size = new System.Drawing.Size(521, 80);
             this.dgMIR.TabIndex = 0;
             this.dgMIR.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMIR_CellDoubleClick);
             // 
@@ -1611,7 +1610,8 @@
             // 
             // btnSrap
             // 
-            this.btnSrap.Location = new System.Drawing.Point(438, 3);
+            this.btnSrap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSrap.Location = new System.Drawing.Point(593, 6);
             this.btnSrap.Name = "btnSrap";
             this.btnSrap.Size = new System.Drawing.Size(88, 26);
             this.btnSrap.TabIndex = 7;
@@ -1622,10 +1622,10 @@
             // grpFoupChange
             // 
             this.grpFoupChange.Controls.Add(this.dgNewSlot);
-            this.grpFoupChange.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpFoupChange.Location = new System.Drawing.Point(253, 600);
+            this.grpFoupChange.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grpFoupChange.Location = new System.Drawing.Point(253, 580);
             this.grpFoupChange.Name = "grpFoupChange";
-            this.grpFoupChange.Size = new System.Drawing.Size(497, 132);
+            this.grpFoupChange.Size = new System.Drawing.Size(527, 80);
             this.grpFoupChange.TabIndex = 15;
             this.grpFoupChange.TabStop = false;
             this.grpFoupChange.Text = "New Foup Information";
@@ -1665,7 +1665,7 @@
             this.dgNewSlot.Name = "dgNewSlot";
             this.dgNewSlot.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgNewSlot.RowTemplate.Height = 23;
-            this.dgNewSlot.Size = new System.Drawing.Size(491, 112);
+            this.dgNewSlot.Size = new System.Drawing.Size(521, 60);
             this.dgNewSlot.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn76
@@ -1822,7 +1822,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 772);
+            this.ClientSize = new System.Drawing.Size(780, 700);
             this.Controls.Add(this.grpFoupChange);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpMacro);

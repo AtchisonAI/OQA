@@ -71,20 +71,19 @@ namespace OQAService.Services
                             break;
 
                         case '2':
+                            List<object[]> SEARCHBYDATE = new List<object[]>();
+                            PageQueryReq.CurrentPage = 1;
+                            PageQueryReq.ItemsPerPage = 200;
+                            if (In_node.model.IN_SEARCHBYDATE_NO.Trim().Equals("") == false)
+                            {
+                                //AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), In_node.model.IN_SEARCHLOTID_NO.Trim(), LogicCondition.AndAlso, CompareType.Include);
+                                string sql = string.Format(@"select B.SHIP_ID from PKGSHPSTS B where B.SHIP_ID  like ('%{0}%')", In_node.model.IN_SEARCHBYDATE_NO.Trim());
+                                SEARCHBYDATE = QueryRawSql(sql);
+                            }
+                            //  AddSortCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);
 
-                            //if (In_node.model.in_isp_code.Trim().Equals("") == true)
-                            //{
-                            //    Out_node._success = false;
-                            //    Out_node._ErrorMsg = "IN_ISP_CODE is null!";
-                            //    return Out_node;
-                            //}
-                            //if (In_node.model.in_isp_type.Trim().Equals("") == true)
-                            //{
-                            //    Out_node._success = false;
-                            //    Out_node._ErrorMsg = "IN_ISP_TYPE is null!";
-                            //    return Out_node;
-                            //}
-                            // TODO
+                            out_list.SEARCHshipID_list = SEARCHBYDATE;
+                            Out_node.model = out_list;
 
                             break;
 

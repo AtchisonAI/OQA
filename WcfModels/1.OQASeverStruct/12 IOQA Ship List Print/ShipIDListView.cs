@@ -57,6 +57,19 @@ namespace WCFModels.OQA
             }
         }
         private string in_searchship_no;
+        [DataMember]
+        public string IN_SEARCHBYDATE_NO
+        {
+            get
+            {
+                return in_searchbydate_no;
+            }
+            set
+            {
+                in_searchbydate_no = value;
+            }
+        }
+        private string in_searchbydate_no;
 
         //服务传出数据结构
         [DataMember]

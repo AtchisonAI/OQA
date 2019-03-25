@@ -40,7 +40,7 @@ namespace OQAMain
         #region " Variable Definition "
         // private bool b_load_flag  ;
         //private bool Have_flag = false;
-        //private string ship_no;
+        private string searchbydate;
         private string shipID;
         #endregion
 
@@ -107,7 +107,8 @@ namespace OQAMain
                 if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', txtShipNo.Text) == false) return;
             }
             else {
-                if (QueryShipIDList(GlobConst.TRAN_VIEW, '1') == false) return;
+
+                if (SearchShipIDListByDate(GlobConst.TRAN_VIEW, '2', DateTime.Now.ToShortDateString().Replace("/","")) == false) return;
             }
 
         }
@@ -270,15 +271,7 @@ namespace OQAMain
 
             if (e.NewValue == CheckState.Unchecked)
             {
-                //txtShipNo.Text = "";
-                ComFunc.InitListView(lisship, true);
-                lstShip.Clear();
-                this.reportViewer2.LocalReport.SetParameters(GenerateLabelParameters());
-                this.reportViewer2.LocalReport.DataSources.Clear();
-                lstShipList.Clear();
-                var dataSource = new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", GenerateLabelDatasource());
-                this.reportViewer2.LocalReport.DataSources.Add(dataSource);
-                reportViewer2.RefreshReport();
+                clean();
                 return;
             }
 
@@ -326,6 +319,7 @@ namespace OQAMain
             //LotQueryShipId = TxtLotQueryShipID.Text;
             if (e.KeyChar == (Char)13)
             {
+                clean();
 
                 if (ComFunc.Trim(TxtLotQueryShipID.Text) != "")
                 {
@@ -337,8 +331,9 @@ namespace OQAMain
                    // MessageBox.Show("输入要查询的shipID");
                 }
             }
-        }
 
+        }
+        //LOTID查询shipid
         private bool SearchShipIDList(char c_proc_step, char c_tran_flag, string searchshipid)
         {
             ModelRsp<ShipIDListView> in_node = new ModelRsp<ShipIDListView>();
@@ -373,5 +368,88 @@ namespace OQAMain
             }
         }
 
+        //选择时间
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            if (lstShip != null)
+            {
+                clean();
+            }
+            TxtLotQueryShipID.Text = "";
+            searchbydate = dateTimePicker1.Value.ToShortDateString().Replace("/","");
+            //if (ComFunc.Trim(searchbydate) != "")
+            //{
+                if (SearchShipIDListByDate(GlobConst.TRAN_VIEW, '2', searchbydate) == false) return;
+            //}
+            //else
+            //{
+            //    CheckShipID.Items.Clear();
+            //    if (QueryShipIDList(GlobConst.TRAN_VIEW, '1') == false) return;
+            //    // MessageBox.Show("输入要查询的shipID");
+            //}
+        }
+
+        //search shipid by date
+        private bool SearchShipIDListByDate(char c_proc_step, char c_tran_flag, string searchshipidbydate)
+        {
+            ModelRsp<ShipIDListView> in_node = new ModelRsp<ShipIDListView>();
+            ShipIDListView in_data = new ShipIDListView();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.IN_SEARCHBYDATE_NO = searchshipidbydate;
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.QueryShipIDList(in_node);
+
+
+            if (out_data._success == true)
+            {
+                CheckShipID.Items.Clear();
+                for (int i = 0; i < out_data.model.SEARCHshipID_list.Count; i++)
+                {
+                    ListViewItem list_item = new ListViewItem();
+
+                    list_item.Text = out_data.model.SEARCHshipID_list[i][0].ToString();
+                    CheckShipID.Items.Add(list_item.Text);
+
+                }
+                lblSucessMsg.Text = out_data._MsgCode;
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+        }
+        private void clean()
+        {
+            ComFunc.InitListView(lisship, true);
+            lstShip.Clear();
+            this.reportViewer2.LocalReport.SetParameters(GenerateLabelParameters());
+            this.reportViewer2.LocalReport.DataSources.Clear();
+            lstShipList.Clear();
+            var dataSource = new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", GenerateLabelDatasource());
+            this.reportViewer2.LocalReport.DataSources.Add(dataSource);
+            reportViewer2.RefreshReport();
+            return;
+        }
+
+        private void btn_ByWeekly_Click(object sender, EventArgs e)
+        {
+           
+           // if (SearchShipIDListByDate(GlobConst.TRAN_VIEW, '2', DateTime.Now.add.ToShortDateString().Replace("/", "")) == false) return;
+        }
+
+        private void btn_Allshipid_Click(object sender, EventArgs e)
+        {
+            if (lstShip != null)
+            {
+                clean();
+            }
+            CheckShipID.Items.Clear();
+            if (QueryShipIDList(GlobConst.TRAN_VIEW, '1') == false) return;
+        }
     }
 }

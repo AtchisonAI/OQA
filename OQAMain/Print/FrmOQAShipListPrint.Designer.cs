@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TxtLotQueryShipID = new System.Windows.Forms.TextBox();
             this.CheckShipID = new System.Windows.Forms.CheckedListBox();
             this.txtShipNo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,8 +43,10 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnQuery = new System.Windows.Forms.Button();
-            this.TxtLotQueryShipID = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btn_ByWeekly = new System.Windows.Forms.Button();
+            this.btn_Allshipid = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -82,6 +86,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_Allshipid);
+            this.groupBox1.Controls.Add(this.btn_ByWeekly);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.TxtLotQueryShipID);
             this.groupBox1.Controls.Add(this.CheckShipID);
@@ -95,6 +103,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "已生成的交接单";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 71);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 12);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "LotID查询";
+            // 
+            // TxtLotQueryShipID
+            // 
+            this.TxtLotQueryShipID.Location = new System.Drawing.Point(75, 66);
+            this.TxtLotQueryShipID.Name = "TxtLotQueryShipID";
+            this.TxtLotQueryShipID.Size = new System.Drawing.Size(100, 21);
+            this.TxtLotQueryShipID.TabIndex = 5;
+            this.TxtLotQueryShipID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1Press_check);
+            // 
             // CheckShipID
             // 
             this.CheckShipID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -102,9 +127,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckShipID.CheckOnClick = true;
             this.CheckShipID.FormattingEnabled = true;
-            this.CheckShipID.Location = new System.Drawing.Point(14, 105);
+            this.CheckShipID.Location = new System.Drawing.Point(14, 197);
             this.CheckShipID.Name = "CheckShipID";
-            this.CheckShipID.Size = new System.Drawing.Size(210, 436);
+            this.CheckShipID.Size = new System.Drawing.Size(210, 340);
             this.CheckShipID.TabIndex = 4;
             this.CheckShipID.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.CheckShipID_ItemCheck);
             // 
@@ -206,22 +231,43 @@
             this.btnQuery.UseVisualStyleBackColor = true;
             this.btnQuery.Visible = false;
             // 
-            // TxtLotQueryShipID
+            // dateTimePicker1
             // 
-            this.TxtLotQueryShipID.Location = new System.Drawing.Point(75, 66);
-            this.TxtLotQueryShipID.Name = "TxtLotQueryShipID";
-            this.TxtLotQueryShipID.Size = new System.Drawing.Size(100, 21);
-            this.TxtLotQueryShipID.TabIndex = 5;
-            this.TxtLotQueryShipID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1Press_check);
+            this.dateTimePicker1.Location = new System.Drawing.Point(6, 135);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 21);
+            this.dateTimePicker1.TabIndex = 7;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
-            // label2
+            // label3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 12);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "LotID查询";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 109);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 12);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "按日单位查询";
+            // 
+            // btn_ByWeekly
+            // 
+            this.btn_ByWeekly.Location = new System.Drawing.Point(131, 168);
+            this.btn_ByWeekly.Name = "btn_ByWeekly";
+            this.btn_ByWeekly.Size = new System.Drawing.Size(75, 23);
+            this.btn_ByWeekly.TabIndex = 9;
+            this.btn_ByWeekly.Text = "ByWeekly";
+            this.btn_ByWeekly.UseVisualStyleBackColor = true;
+            this.btn_ByWeekly.Visible = false;
+            this.btn_ByWeekly.Click += new System.EventHandler(this.btn_ByWeekly_Click);
+            // 
+            // btn_Allshipid
+            // 
+            this.btn_Allshipid.Location = new System.Drawing.Point(5, 168);
+            this.btn_Allshipid.Name = "btn_Allshipid";
+            this.btn_Allshipid.Size = new System.Drawing.Size(75, 23);
+            this.btn_Allshipid.TabIndex = 10;
+            this.btn_Allshipid.Text = "All";
+            this.btn_Allshipid.UseVisualStyleBackColor = true;
+            this.btn_Allshipid.Click += new System.EventHandler(this.btn_Allshipid_Click);
             // 
             // FrmOQAShipListPrint
             // 
@@ -265,5 +311,9 @@
         private System.Windows.Forms.CheckedListBox CheckShipID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxtLotQueryShipID;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btn_Allshipid;
+        private System.Windows.Forms.Button btn_ByWeekly;
     }
 }

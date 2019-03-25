@@ -128,7 +128,7 @@
             this.LotIDList.FormattingEnabled = true;
             this.LotIDList.Location = new System.Drawing.Point(16, 115);
             this.LotIDList.Name = "LotIDList";
-            this.LotIDList.Size = new System.Drawing.Size(199, 404);
+            this.LotIDList.Size = new System.Drawing.Size(199, 388);
             this.LotIDList.TabIndex = 7;
             this.LotIDList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.LotIDList_ItemCheck);
             // 

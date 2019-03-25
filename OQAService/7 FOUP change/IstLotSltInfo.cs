@@ -12,19 +12,12 @@ namespace OQAService.Services
 {
     public partial class OQAService : OQABaseService, IOQAContract
     {
-        [OperationBehavior(TransactionAutoComplete = true, TransactionScopeRequired = true)]
-        [TransactionFlow(TransactionFlowOption.Allowed)]
+        //[OperationBehavior(TransactionAutoComplete = true, TransactionScopeRequired = true)]
+        //[TransactionFlow(TransactionFlowOption.Allowed)]
         public ModelRsp<LotSlotidSave> IstLotSltInfo(ModelRsp<LotSlotidSave> SaveMesSlotidInfo)
         {
-            //try
-            //{
-                ////定义服务过程中使用的结构
-                //PageQueryReq PageQueryReq = new PageQueryReq()
-                //{
-                //    queryConditionList = new List<QueryCondition>(),
-                //    sortCondittionList = new List<SortCondition>()
-                //};
-
+            BeginTrans();
+              
                 ModelRsp<LotSlotidSave> In_node = new ModelRsp<LotSlotidSave>();
                 ModelRsp<LotSlotidSave> Out_node = new ModelRsp<LotSlotidSave>();
 
@@ -115,19 +108,11 @@ namespace OQAService.Services
                             break;
                     }
                 }
-
+            EndTrans();
                 Out_node._success = true;
                 Out_node._MsgCode = "Program Success.";
                 return Out_node;
-            //}
-            //catch (Exception ex)
-            //{
-            //    ModelRsp<LotSlotidSave> Out_node = new ModelRsp<LotSlotidSave>();
-            //    Out_node._success = false;
-            //    Out_node._ErrorMsg = ex.Message.ToString();
 
-            //    return Out_node;
-            //}
         }
     }
 }

@@ -24,6 +24,7 @@ namespace OQAMain
         {
             InitializeComponent();
             this.txtLotId.Text = sLotId;
+            txtFilter_KeyPress(null, null);
         }
 
 

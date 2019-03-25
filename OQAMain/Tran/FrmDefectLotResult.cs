@@ -314,7 +314,66 @@ namespace OQAMain
                 return false;
             }
         }
-       
+
+        private bool QueryNewSlotInfo(char c_proc_step, char c_tran_flag,string s_lotid,out List<ISPWAFST> lst_ispwafer, out List<OQA_CHKMESSLOTID> lst_meswafer)
+        {
+            lst_ispwafer = null;
+            lst_meswafer = null;
+            ModelRsp<LotSlotidView> in_node = new ModelRsp<LotSlotidView>();
+            LotSlotidView in_data = new LotSlotidView();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.IN_LOT_ID = s_lotid;
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.QryLotIspSlotidInfo(in_node);
+            if (out_data._success == true)
+            {
+                lst_ispwafer = out_data.model.ISPWAFST_list;
+
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+
+             out_data = OQASrv.Call.QryLotMesSlotidInfo(in_node);
+            if (out_data._success == true)
+            {
+                lst_meswafer = out_data.model.OQA_CHKMESSLOTID_list;
+
+            }
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
+
+            return true;
+        }
+
+
+        private ModelRsp<LotSlotidSave> SavePackageSlt(char c_proc_step, char c_tran_flag, string c_lot_id, List<PKGSLTDEF> LSOQACHKMESSLOTIDS)
+        {
+            ModelRsp<LotSlotidSave> in_node = new ModelRsp<LotSlotidSave>();
+            ModelRsp<LotSlotidSave> out_node = new ModelRsp<LotSlotidSave>();
+            LotSlotidSave in_data = new LotSlotidSave();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+
+            in_data.PkgsltdefList = LSOQACHKMESSLOTIDS;
+            in_data.IN_LOT_ID = c_lot_id;
+
+            in_node.model = in_data;
+
+            out_node = OQASrv.Call.IstLotSltInfo(in_node);
+            return out_node;
+
+        }
 
         private bool QueryISPWaferInfo(char c_proc_step, char c_tran_flag)
         {
@@ -597,7 +656,7 @@ namespace OQAMain
                 ComFunc.InitListView(LstRcvLot, true);
                 txtCount.Text = out_data.model.ISPLOTSTS_LIST.Count.ToString();
 
-                List<ISPLOTSTS> SortByTime = out_data.model.ISPLOTSTS_LIST.OrderByDescending(o => o.RecDate).ToList();
+                List<ISPLOTSTS> SortByTime = out_data.model.ISPLOTSTS_LIST.OrderByDescending(o => o.UpdateTime).ToList();
 
                 for (int i = 0; i < SortByTime.Count; i++)
                 {
@@ -729,11 +788,73 @@ namespace OQAMain
 
                 //调用事务服务
                 if (QueryISPWaferInfo(GlobConst.TRAN_VIEW, '2') == false) return;
-
                 ImgISPLot.Enabled = true;
                 QueryImgByLot(txtISPLotFilter.Text.Trim());
+                //检查wafer信息更新
+                List<ISPWAFST> list_ispwafer = null;
+                List<OQA_CHKMESSLOTID> list_meswafer = null;
+                List<PKGSLTDEF> list_pkgwafer = new List<PKGSLTDEF>();
 
-               
+                if (QueryNewSlotInfo(GlobConst.TRAN_VIEW, '1', txtISPLotFilter.Text.Trim(),out list_ispwafer,out list_meswafer) == false) return;
+
+                //更新表中数据
+                for (int i = 0; i < list_meswafer.Count; i++)
+                {
+                    PKGSLTDEF item = new PKGSLTDEF();
+                    item.LotId = list_meswafer[i].LotId;
+                    item.SlotId = list_meswafer[i].SlotId;
+                    item.WaferId = list_meswafer[i].WaferId;
+
+                    list_pkgwafer.Add(item);
+                }
+                
+                var outInfo = SavePackageSlt(GlobConst.TRAN_CREATE, '1', txtISPLotFilter.Text.Trim(), list_pkgwafer);
+                if (!outInfo._success && null != outInfo.model)
+                {
+                    if (null != outInfo.model.PkgsltdefList && outInfo.model.PkgsltdefList.Count > 0)
+                    {
+                        list_pkgwafer = outInfo.model.PkgsltdefList;
+                    }
+                }
+
+                for (int i = 0; i < 25; i++)
+                {
+                    bool isInIsp = false;
+                    dgNewSlot.Rows[0].Cells[i].Style.BackColor = Color.Green;
+                    int j = i + 1;
+                    if (list_ispwafer.Count(p => p.SlotId == j.ToString().PadLeft(3, '0')) > 0)
+                    {
+                        isInIsp = true;
+                    }
+
+                    bool isInMes = list_meswafer.Count(p => p.SlotId == j.ToString().PadLeft(3, '0')) > 0;
+
+                    if (isInMes)
+                    {
+                        if (isInIsp)
+                        {
+                            dgNewSlot.Rows[0].Cells[i].Value = "OK";
+                        }
+                        else
+                        {
+                            dgNewSlot.Rows[0].Cells[i].Value = "I";
+                        }
+                    }
+                    else
+                    {
+                        if (isInIsp)
+                        {
+                            dgNewSlot.Rows[0].Cells[i].Value = "S";
+                            dgNewSlot.Rows[0].Cells[i].Style.BackColor = Color.Red;
+                        }
+                        else
+                        {
+                            dgNewSlot.Rows[0].Cells[i].Value = "/";
+                        }
+                    }
+
+                }
+
             }
         }
 
@@ -747,7 +868,14 @@ namespace OQAMain
                     {
                         string s_side = dgAOI.Rows[e.RowIndex].Cells[0].Value.ToString();
                         FrmAOIInput AOI = new FrmAOIInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
-                        AddNewFormToMdi(AOI);
+                        AOI.FormBorderStyle = FormBorderStyle.FixedDialog;
+                        AOI.WindowState = FormWindowState.Normal;
+                        AOI.MaximizeBox = false;
+                        AOI.MinimizeBox = false;
+                        AOI.StartPosition = FormStartPosition.CenterParent;
+                        AOI.ShowDialog();
+
+                        btnISPLotFilter.PerformClick();
                     }
 
                 }
@@ -766,7 +894,13 @@ namespace OQAMain
                 {
                     string s_side = dgMacro.Rows[e.RowIndex].Cells[0].Value.ToString();
                     FrmMarcoInput MAC = new FrmMarcoInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
-                    AddNewFormToMdi(MAC);
+                    MAC.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    MAC.WindowState = FormWindowState.Normal;
+                    MAC.MaximizeBox = false;
+                    MAC.MinimizeBox = false;
+                    MAC.StartPosition = FormStartPosition.CenterParent;
+                    MAC.ShowDialog();
+                    btnISPLotFilter.PerformClick();
                 }
 
             }
@@ -780,7 +914,13 @@ namespace OQAMain
                 {
                     string s_side = dgMIR.Rows[e.RowIndex].Cells[0].Value.ToString();
                     FrmMircoInput MIR = new FrmMircoInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
-                    AddNewFormToMdi(MIR);
+                    MIR.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    MIR.WindowState = FormWindowState.Normal;
+                    MIR.MaximizeBox = false;
+                    MIR.MinimizeBox = false;
+                    MIR.StartPosition = FormStartPosition.CenterParent;
+                    MIR.ShowDialog();
+                    btnISPLotFilter.PerformClick();
                 }
 
             }

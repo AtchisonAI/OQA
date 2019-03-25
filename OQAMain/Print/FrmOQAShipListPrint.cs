@@ -25,7 +25,7 @@ namespace OQAMain
         public FrmOQAShipListPrint(string shipId)
         {
             InitializeComponent();
-            this.txtShipNo.Text = shipId;
+            this.txtShipFilter.Text = shipId;
         }
 
         #endregion
@@ -101,15 +101,9 @@ namespace OQAMain
         
         private void FrmOQAShipListPrint_Load(object sender, EventArgs e)
         {
+            dtFromTime.Value = DateTime.Now.AddDays(-7);
             this.reportViewer2.LocalReport.DataSources.Clear();
-            if (txtShipNo.Text != "")
-            {            
-                if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', txtShipNo.Text) == false) return;
-            }
-            else {
-
-                if (SearchShipIDListByDate(GlobConst.TRAN_VIEW, '2', DateTime.Now.ToShortDateString().Replace("/","")) == false) return;
-            }
+            btnQuery.PerformClick();
 
         }
 
@@ -319,29 +313,23 @@ namespace OQAMain
             //LotQueryShipId = TxtLotQueryShipID.Text;
             if (e.KeyChar == (Char)13)
             {
-                clean();
+                txtLotFilter.Focus();
 
-                if (ComFunc.Trim(TxtLotQueryShipID.Text) != "")
-                {
-                    if (SearchShipIDList(GlobConst.TRAN_VIEW, '3', TxtLotQueryShipID.Text.Trim()) == false) return;
-                }
-                else {
-                        CheckShipID.Items.Clear();
-                        if (QueryShipIDList(GlobConst.TRAN_VIEW, '1') == false) return;
-                   // MessageBox.Show("输入要查询的shipID");
-                }
             }
 
         }
         //LOTID查询shipid
-        private bool SearchShipIDList(char c_proc_step, char c_tran_flag, string searchshipid)
+        private bool SearchShipIDList(char c_proc_step, char c_tran_flag, string s_ship_id,string s_lot_id,string s_from_time,string s_to_time)
         {
             ModelRsp<ShipIDListView> in_node = new ModelRsp<ShipIDListView>();
             ShipIDListView in_data = new ShipIDListView();
 
             in_data.C_PROC_STEP = c_proc_step;
             in_data.C_TRAN_FLAG = c_tran_flag;
-            in_data.IN_SEARCHSHIP_NO = searchshipid;
+            in_data.IN_SEARCHSHIP_NO = s_ship_id;
+            in_data.IN_LOT_ID = s_lot_id;
+            in_data.IN_FROM_TIME = s_from_time;
+            in_data.IN_TO_TIME = s_to_time;
             in_node.model = in_data;
 
             var out_data = OQASrv.Call.QueryShipIDList(in_node);
@@ -371,33 +359,33 @@ namespace OQAMain
         //选择时间
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            if (lstShip != null)
-            {
-                clean();
-            }
-            TxtLotQueryShipID.Text = "";
-            searchbydate = dateTimePicker1.Value.ToShortDateString().Replace("/","");
-            //if (ComFunc.Trim(searchbydate) != "")
-            //{
-                if (SearchShipIDListByDate(GlobConst.TRAN_VIEW, '2', searchbydate) == false) return;
-            //}
-            //else
-            //{
-            //    CheckShipID.Items.Clear();
-            //    if (QueryShipIDList(GlobConst.TRAN_VIEW, '1') == false) return;
-            //    // MessageBox.Show("输入要查询的shipID");
-            //}
+            //    if (lstShip != null)
+            //    {
+            //        clean();
+            //    }
+            //    txtLotFilter.Text = "";
+           
+        //    //if (ComFunc.Trim(searchbydate) != "")
+        //    //{
+        //        if (SearchShipIDListByDate(GlobConst.TRAN_VIEW, '1', searchbydate,) == false) return;
+        //    //}
+        //    //else
+        //    //{
+        //    //    CheckShipID.Items.Clear();
+        //    //    if (QueryShipIDList(GlobConst.TRAN_VIEW, '1') == false) return;
+        //    //    // MessageBox.Show("输入要查询的shipID");
+        //    //}
         }
 
         //search shipid by date
-        private bool SearchShipIDListByDate(char c_proc_step, char c_tran_flag, string searchshipidbydate)
+        private bool SearchShipIDListByDate(char c_proc_step, char c_tran_flag, string searchshipidbydate,string A)
         {
             ModelRsp<ShipIDListView> in_node = new ModelRsp<ShipIDListView>();
             ShipIDListView in_data = new ShipIDListView();
 
             in_data.C_PROC_STEP = c_proc_step;
             in_data.C_TRAN_FLAG = c_tran_flag;
-            in_data.IN_SEARCHBYDATE_NO = searchshipidbydate;
+           // in_data.IN_SEARCHBYDATE_NO = searchshipidbydate;
             in_node.model = in_data;
 
             var out_data = OQASrv.Call.QueryShipIDList(in_node);
@@ -434,22 +422,61 @@ namespace OQAMain
             this.reportViewer2.LocalReport.DataSources.Add(dataSource);
             reportViewer2.RefreshReport();
             return;
+        } 
+
+        private void btnQuery_Click(object sender, EventArgs e)
+        {
+            string s_to_time= null;
+            string s_from_time = null;
+
+            if (dtToTime.Enabled == true)
+            {
+                 s_to_time = dtToTime.Value.ToShortDateString().Replace("/", "");
+
+            }
+            if (dtFromTime.Enabled == true)
+            {
+                 s_from_time = dtFromTime.Value.ToShortDateString().Replace("/", "");
+
+            }
+
+
+            if (SearchShipIDList(GlobConst.TRAN_VIEW, '1', txtShipFilter.Text.Trim(),txtLotFilter.Text.Trim(), s_from_time, s_to_time) == false) return;
+
         }
 
-        private void btn_ByWeekly_Click(object sender, EventArgs e)
+        private void chkFromUse_CheckedChanged(object sender, EventArgs e)
         {
-           
-           // if (SearchShipIDListByDate(GlobConst.TRAN_VIEW, '2', DateTime.Now.add.ToShortDateString().Replace("/", "")) == false) return;
+            if (chkFromUse.Checked == false)
+            {
+                dtFromTime.Enabled = false;
+            }
+            else
+            {
+                dtFromTime.Enabled = true;
+            }
         }
 
-        private void btn_Allshipid_Click(object sender, EventArgs e)
+        private void chkToUse_CheckedChanged(object sender, EventArgs e)
         {
-            if (lstShip != null)
+            if (chkToUse.Checked == false)
+            {
+                dtToTime.Enabled = false;
+            }
+            else
+            {
+                dtToTime.Enabled = true;
+            }
+        }
+
+        private void txtLotFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txtLotFilter.Text != "")
             {
                 clean();
+                btnQuery.PerformClick();
             }
-            CheckShipID.Items.Clear();
-            if (QueryShipIDList(GlobConst.TRAN_VIEW, '1') == false) return;
+           
         }
     }
 }

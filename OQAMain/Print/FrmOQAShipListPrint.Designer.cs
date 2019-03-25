@@ -29,10 +29,17 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkToUse = new System.Windows.Forms.CheckBox();
+            this.chkFromUse = new System.Windows.Forms.CheckBox();
+            this.btnQuery = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtFromTime = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtToTime = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.TxtLotQueryShipID = new System.Windows.Forms.TextBox();
+            this.txtLotFilter = new System.Windows.Forms.TextBox();
             this.CheckShipID = new System.Windows.Forms.CheckedListBox();
-            this.txtShipNo = new System.Windows.Forms.TextBox();
+            this.txtShipFilter = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lisship = new System.Windows.Forms.ListView();
@@ -42,11 +49,6 @@
             this.Inspection_Result = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.btnQuery = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btn_ByWeekly = new System.Windows.Forms.Button();
-            this.btn_Allshipid = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -55,30 +57,23 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(938, 11);
+            this.btnClose.Location = new System.Drawing.Point(818, 11);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(479, 7);
+            this.btnCreate.Location = new System.Drawing.Point(359, 7);
             this.btnCreate.Visible = false;
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1638, 10);
+            this.btnEdite.Location = new System.Drawing.Point(1518, 10);
             this.btnEdite.Text = "Export";
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
             // 
-            this.pnlMenu.Controls.Add(this.btnQuery);
             this.pnlMenu.Location = new System.Drawing.Point(0, 540);
             this.pnlMenu.Size = new System.Drawing.Size(750, 40);
-            this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
-            this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
-            this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
-            this.pnlMenu.Controls.SetChildIndex(this.btnRefresh, 0);
-            this.pnlMenu.Controls.SetChildIndex(this.lblSucessMsg, 0);
-            this.pnlMenu.Controls.SetChildIndex(this.btnQuery, 0);
             // 
             // btnRefresh
             // 
@@ -86,14 +81,17 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btn_Allshipid);
-            this.groupBox1.Controls.Add(this.btn_ByWeekly);
+            this.groupBox1.Controls.Add(this.chkToUse);
+            this.groupBox1.Controls.Add(this.chkFromUse);
+            this.groupBox1.Controls.Add(this.btnQuery);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.dtFromTime);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.dtToTime);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.TxtLotQueryShipID);
+            this.groupBox1.Controls.Add(this.txtLotFilter);
             this.groupBox1.Controls.Add(this.CheckShipID);
-            this.groupBox1.Controls.Add(this.txtShipNo);
+            this.groupBox1.Controls.Add(this.txtShipFilter);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
@@ -101,24 +99,90 @@
             this.groupBox1.Size = new System.Drawing.Size(243, 540);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "已生成的交接单";
+            this.groupBox1.Text = "Search Ship ID";
+            // 
+            // chkToUse
+            // 
+            this.chkToUse.AutoSize = true;
+            this.chkToUse.Checked = true;
+            this.chkToUse.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkToUse.Location = new System.Drawing.Point(216, 128);
+            this.chkToUse.Name = "chkToUse";
+            this.chkToUse.Size = new System.Drawing.Size(15, 14);
+            this.chkToUse.TabIndex = 14;
+            this.chkToUse.UseVisualStyleBackColor = true;
+            this.chkToUse.CheckedChanged += new System.EventHandler(this.chkToUse_CheckedChanged);
+            // 
+            // chkFromUse
+            // 
+            this.chkFromUse.AutoSize = true;
+            this.chkFromUse.Checked = true;
+            this.chkFromUse.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkFromUse.Location = new System.Drawing.Point(216, 105);
+            this.chkFromUse.Name = "chkFromUse";
+            this.chkFromUse.Size = new System.Drawing.Size(15, 14);
+            this.chkFromUse.TabIndex = 1;
+            this.chkFromUse.UseVisualStyleBackColor = true;
+            this.chkFromUse.CheckedChanged += new System.EventHandler(this.chkFromUse_CheckedChanged);
+            // 
+            // btnQuery
+            // 
+            this.btnQuery.Location = new System.Drawing.Point(135, 151);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(75, 23);
+            this.btnQuery.TabIndex = 7;
+            this.btnQuery.Text = "查询";
+            this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 130);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 12);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "To Time";
+            // 
+            // dtFromTime
+            // 
+            this.dtFromTime.Location = new System.Drawing.Point(90, 100);
+            this.dtFromTime.Name = "dtFromTime";
+            this.dtFromTime.Size = new System.Drawing.Size(120, 21);
+            this.dtFromTime.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 106);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 12);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "From Time";
+            // 
+            // dtToTime
+            // 
+            this.dtToTime.Location = new System.Drawing.Point(90, 124);
+            this.dtToTime.Name = "dtToTime";
+            this.dtToTime.Size = new System.Drawing.Size(120, 21);
+            this.dtToTime.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 71);
+            this.label2.Location = new System.Drawing.Point(12, 56);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 12);
+            this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 6;
-            this.label2.Text = "LotID查询";
+            this.label2.Text = "Lot ID";
             // 
-            // TxtLotQueryShipID
+            // txtLotFilter
             // 
-            this.TxtLotQueryShipID.Location = new System.Drawing.Point(75, 66);
-            this.TxtLotQueryShipID.Name = "TxtLotQueryShipID";
-            this.TxtLotQueryShipID.Size = new System.Drawing.Size(100, 21);
-            this.TxtLotQueryShipID.TabIndex = 5;
-            this.TxtLotQueryShipID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1Press_check);
+            this.txtLotFilter.Location = new System.Drawing.Point(68, 53);
+            this.txtLotFilter.Name = "txtLotFilter";
+            this.txtLotFilter.Size = new System.Drawing.Size(158, 21);
+            this.txtLotFilter.TabIndex = 5;
+            this.txtLotFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLotFilter_KeyPress);
             // 
             // CheckShipID
             // 
@@ -133,22 +197,22 @@
             this.CheckShipID.TabIndex = 4;
             this.CheckShipID.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.CheckShipID_ItemCheck);
             // 
-            // txtShipNo
+            // txtShipFilter
             // 
-            this.txtShipNo.Location = new System.Drawing.Point(68, 29);
-            this.txtShipNo.Name = "txtShipNo";
-            this.txtShipNo.Size = new System.Drawing.Size(158, 21);
-            this.txtShipNo.TabIndex = 3;
-            this.txtShipNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1Press_check);
+            this.txtShipFilter.Location = new System.Drawing.Point(68, 29);
+            this.txtShipFilter.Name = "txtShipFilter";
+            this.txtShipFilter.Size = new System.Drawing.Size(158, 21);
+            this.txtShipFilter.TabIndex = 3;
+            this.txtShipFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1Press_check);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 32);
+            this.label1.Location = new System.Drawing.Point(11, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.Size = new System.Drawing.Size(47, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "交接单号：";
+            this.label1.Text = "Ship ID";
             // 
             // groupBox2
             // 
@@ -220,55 +284,6 @@
             this.reportViewer2.Size = new System.Drawing.Size(501, 350);
             this.reportViewer2.TabIndex = 5;
             // 
-            // btnQuery
-            // 
-            this.btnQuery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnQuery.Location = new System.Drawing.Point(356, 14);
-            this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(75, 23);
-            this.btnQuery.TabIndex = 7;
-            this.btnQuery.Text = "查询";
-            this.btnQuery.UseVisualStyleBackColor = true;
-            this.btnQuery.Visible = false;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(6, 135);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 21);
-            this.dateTimePicker1.TabIndex = 7;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 109);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 12);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "按日单位查询";
-            // 
-            // btn_ByWeekly
-            // 
-            this.btn_ByWeekly.Location = new System.Drawing.Point(131, 168);
-            this.btn_ByWeekly.Name = "btn_ByWeekly";
-            this.btn_ByWeekly.Size = new System.Drawing.Size(75, 23);
-            this.btn_ByWeekly.TabIndex = 9;
-            this.btn_ByWeekly.Text = "ByWeekly";
-            this.btn_ByWeekly.UseVisualStyleBackColor = true;
-            this.btn_ByWeekly.Visible = false;
-            this.btn_ByWeekly.Click += new System.EventHandler(this.btn_ByWeekly_Click);
-            // 
-            // btn_Allshipid
-            // 
-            this.btn_Allshipid.Location = new System.Drawing.Point(5, 168);
-            this.btn_Allshipid.Name = "btn_Allshipid";
-            this.btn_Allshipid.Size = new System.Drawing.Size(75, 23);
-            this.btn_Allshipid.TabIndex = 10;
-            this.btn_Allshipid.Text = "All";
-            this.btn_Allshipid.UseVisualStyleBackColor = true;
-            this.btn_Allshipid.Click += new System.EventHandler(this.btn_Allshipid_Click);
-            // 
             // FrmOQAShipListPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -302,7 +317,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
         private System.Windows.Forms.ListView lisship;
-        private System.Windows.Forms.TextBox txtShipNo;
+        private System.Windows.Forms.TextBox txtShipFilter;
         private System.Windows.Forms.ColumnHeader Lot_ID;
         private System.Windows.Forms.ColumnHeader Qty;
         private System.Windows.Forms.ColumnHeader Part_ID;
@@ -310,10 +325,12 @@
         private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.CheckedListBox CheckShipID;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox TxtLotQueryShipID;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox txtLotFilter;
+        private System.Windows.Forms.DateTimePicker dtToTime;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btn_Allshipid;
-        private System.Windows.Forms.Button btn_ByWeekly;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dtFromTime;
+        private System.Windows.Forms.CheckBox chkToUse;
+        private System.Windows.Forms.CheckBox chkFromUse;
     }
 }

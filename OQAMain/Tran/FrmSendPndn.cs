@@ -95,11 +95,7 @@ namespace OQAMain
                         MessageBox.Show("请填写Operator NO！");
                         return false;
                     }
-                    if (ComFunc.CheckValue(txtSupervisorNo, 1) == false)
-                    {
-                        MessageBox.Show("请填写Supervisor NO！");
-                        return false;
-                    }
+
                     break;
 
                 case "UPDATE":
@@ -188,7 +184,7 @@ namespace OQAMain
                         }
                         else
                         {
-                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightYellow;
                         }
                         
                         dt.Cells[0].Value = i + 1;
@@ -297,7 +293,7 @@ namespace OQAMain
             if (out_data._success == true)
             {
                 lblSucessMsg.Text = out_data._MsgCode;
-                //MessageBox.Show(out_data._MsgCode);
+                MessageBox.Show(out_data._MsgCode);
                 return true;
             }
             else
@@ -320,11 +316,11 @@ namespace OQAMain
                     dt = dataGridView1.Rows[idx];
                     if (PndnInfoList[i].PndnStatus=="Y")
                     {
-                        //dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Green;
+                        //dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen;
                     }
                     else
                     {
-                        dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+                        dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightYellow;
                     }
                     
                     dt.Cells[0].Value = i + 1;
@@ -435,12 +431,6 @@ namespace OQAMain
                     if (string.IsNullOrWhiteSpace(item.Dept) == true)
                     {
                         MessageBox.Show("请输入Dept");
-                        return;
-                    }
-
-                    if (string.IsNullOrWhiteSpace(item.Spec) == true)
-                    {
-                        MessageBox.Show("请输入Spec");
                         return;
                     }
 

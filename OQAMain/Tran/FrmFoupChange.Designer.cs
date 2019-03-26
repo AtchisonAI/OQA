@@ -87,6 +87,8 @@
             // pnlMenu
             // 
             this.pnlMenu.Controls.Add(this.btnPrint);
+            this.pnlMenu.Location = new System.Drawing.Point(0, 660);
+            this.pnlMenu.Size = new System.Drawing.Size(780, 40);
             this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);

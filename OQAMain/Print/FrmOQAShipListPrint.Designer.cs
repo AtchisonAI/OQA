@@ -47,15 +47,15 @@
             this.Qty = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Part_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Inspection_Result = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtShowShipID = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.txtShowShipID = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -72,11 +72,6 @@
             this.btnEdite.Location = new System.Drawing.Point(274, 7);
             this.btnEdite.Text = "Export";
             this.btnEdite.Visible = false;
-            // 
-            // pnlMenu
-            // 
-            this.pnlMenu.Location = new System.Drawing.Point(0, 540);
-            this.pnlMenu.Size = new System.Drawing.Size(750, 40);
             // 
             // btnRefresh
             // 
@@ -153,6 +148,7 @@
             this.dtFromTime.Name = "dtFromTime";
             this.dtFromTime.Size = new System.Drawing.Size(120, 21);
             this.dtFromTime.TabIndex = 11;
+            this.dtFromTime.ValueChanged += new System.EventHandler(this.dtFromTime_ValueChanged);
             // 
             // label3
             // 
@@ -267,6 +263,23 @@
             this.Inspection_Result.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Inspection_Result.Width = 125;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtShowShipID);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 17);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(501, 21);
+            this.panel1.TabIndex = 2;
+            // 
+            // txtShowShipID
+            // 
+            this.txtShowShipID.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txtShowShipID.Location = new System.Drawing.Point(0, 0);
+            this.txtShowShipID.Name = "txtShowShipID";
+            this.txtShowShipID.Size = new System.Drawing.Size(158, 21);
+            this.txtShowShipID.TabIndex = 1;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.reportViewer2);
@@ -288,23 +301,6 @@
             this.reportViewer2.Size = new System.Drawing.Size(501, 327);
             this.reportViewer2.TabIndex = 5;
             // 
-            // txtShowShipID
-            // 
-            this.txtShowShipID.Dock = System.Windows.Forms.DockStyle.Left;
-            this.txtShowShipID.Location = new System.Drawing.Point(0, 0);
-            this.txtShowShipID.Name = "txtShowShipID";
-            this.txtShowShipID.Size = new System.Drawing.Size(158, 21);
-            this.txtShowShipID.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txtShowShipID);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 17);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(501, 21);
-            this.panel1.TabIndex = 2;
-            // 
             // FrmOQAShipListPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -325,9 +321,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -438,24 +438,17 @@ namespace OQAMain
 
             if (dtToTime.Enabled == true)
             {
-                 s_to_time = dtToTime.Value.ToShortDateString().Replace("/", "");
+                 s_to_time = dtToTime.Value.ToString("yyyyMMdd");
 
             }
             if (dtFromTime.Enabled == true)
             {
-                 s_from_time = dtFromTime.Value.ToShortDateString().Replace("/", "");
+                 s_from_time = dtFromTime.Value.ToString("yyyyMMdd");
 
             }
-            if (Convert.ToInt32(s_from_time) <= Convert.ToInt32(s_to_time))
-            {
-                if (SearchShipIDList(GlobConst.TRAN_VIEW, '1', txtShipFilter.Text.Trim(), txtLotFilter.Text.Trim(), s_from_time, s_to_time) == false) return;
-            }
-            else
-            {
-                MessageBox.Show("To_Time早于From_Time");
-            }
 
-            
+            if (SearchShipIDList(GlobConst.TRAN_VIEW, '1', txtShipFilter.Text.Trim(), txtLotFilter.Text.Trim(), s_from_time, s_to_time) == false) return;
+
 
         }
 
@@ -494,6 +487,16 @@ namespace OQAMain
                 btnQuery.PerformClick();
             }
            
+        }
+
+        private void dtFromTime_ValueChanged(object sender, EventArgs e)
+        {
+
+            if (dtFromTime.Value > dtToTime.Value && dtToTime.Enabled == true)
+            {
+                MessageBox.Show("起始日期不能超过截至日期.");
+                dtFromTime.Value = DateTime.Now.AddDays(-7);
+            }
         }
     }
 }

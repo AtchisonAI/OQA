@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnQuery = new System.Windows.Forms.Button();
             this.chkALL = new System.Windows.Forms.CheckBox();
             this.btnUnCheckAll = new System.Windows.Forms.Button();
             this.btnCheckAll = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@
             this.Part_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Inspection_Result = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Transeq = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnQuery = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -61,24 +61,19 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(685, 6);
+            this.btnClose.Location = new System.Drawing.Point(655, 6);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(593, 6);
-            this.btnCreate.Text = "OK";
+            this.btnCreate.Location = new System.Drawing.Point(563, 6);
+            this.btnCreate.Text = "Submit";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(593, 6);
+            this.btnEdite.Location = new System.Drawing.Point(563, 6);
             this.btnEdite.Visible = false;
-            // 
-            // pnlMenu
-            // 
-            this.pnlMenu.Location = new System.Drawing.Point(0, 660);
-            this.pnlMenu.Size = new System.Drawing.Size(780, 40);
             // 
             // btnRefresh
             // 
@@ -102,10 +97,20 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(228, 660);
+            this.groupBox1.Size = new System.Drawing.Size(228, 540);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "待发料批次清单";
+            // 
+            // btnQuery
+            // 
+            this.btnQuery.Location = new System.Drawing.Point(137, 46);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(75, 23);
+            this.btnQuery.TabIndex = 12;
+            this.btnQuery.Text = "Query";
+            this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
             // 
             // chkALL
             // 
@@ -150,7 +155,7 @@
             this.LotIDList.FormattingEnabled = true;
             this.LotIDList.Location = new System.Drawing.Point(12, 101);
             this.LotIDList.Name = "LotIDList";
-            this.LotIDList.Size = new System.Drawing.Size(200, 548);
+            this.LotIDList.Size = new System.Drawing.Size(200, 420);
             this.LotIDList.TabIndex = 7;
             this.LotIDList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.LotIDList_ItemCheck);
             // 
@@ -185,7 +190,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(231, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(549, 80);
+            this.groupBox2.Size = new System.Drawing.Size(519, 80);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "发料批次信息";
@@ -262,7 +267,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(228, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 660);
+            this.splitter1.Size = new System.Drawing.Size(3, 540);
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
@@ -275,7 +280,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(780, 700);
+            this.dataGridView1.Size = new System.Drawing.Size(750, 580);
             this.dataGridView1.TabIndex = 4;
             // 
             // listship
@@ -290,7 +295,7 @@
             this.listship.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listship.Location = new System.Drawing.Point(231, 80);
             this.listship.Name = "listship";
-            this.listship.Size = new System.Drawing.Size(549, 580);
+            this.listship.Size = new System.Drawing.Size(519, 460);
             this.listship.TabIndex = 5;
             this.listship.UseCompatibleStateImageBehavior = false;
             this.listship.View = System.Windows.Forms.View.Details;
@@ -322,21 +327,11 @@
             // 
             this.Transeq.Width = 0;
             // 
-            // btnQuery
-            // 
-            this.btnQuery.Location = new System.Drawing.Point(137, 46);
-            this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(75, 23);
-            this.btnQuery.TabIndex = 12;
-            this.btnQuery.Text = "Query";
-            this.btnQuery.UseVisualStyleBackColor = true;
-            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
-            // 
             // FrmLotTransfer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(780, 700);
+            this.ClientSize = new System.Drawing.Size(750, 580);
             this.Controls.Add(this.listship);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.splitter1);
@@ -344,6 +339,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "FrmLotTransfer";
             this.Text = "FrmLotTransfer";
+            this.Load += new System.EventHandler(this.FrmLotTransfer_Load);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
@@ -381,7 +377,7 @@
         private System.Windows.Forms.ColumnHeader Qty;
         private System.Windows.Forms.ColumnHeader Part_ID;
         private System.Windows.Forms.ColumnHeader Inspection_Result;
-        private System.Windows.Forms.CheckedListBox LotIDList;
+        public System.Windows.Forms.CheckedListBox LotIDList;
         private System.Windows.Forms.Button btnUnCheckAll;
         private System.Windows.Forms.Button btnCheckAll;
         private System.Windows.Forms.ColumnHeader Transeq;

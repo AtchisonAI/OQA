@@ -76,6 +76,7 @@
             // 
             // btnCreate
             // 
+            this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreate.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnCreate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -88,6 +89,7 @@
             // 
             // btnEdite
             // 
+            this.btnEdite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEdite.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnEdite.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnEdite.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -100,6 +102,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnClose.ImeMode = System.Windows.Forms.ImeMode.NoControl;

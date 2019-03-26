@@ -16,6 +16,7 @@ namespace OQAMain
         public FrmLotTransfer()
         {
             InitializeComponent();
+            QueryLotIDList(GlobConst.TRAN_VIEW, '1') ;
         }
 
         #endregion
@@ -142,7 +143,7 @@ namespace OQAMain
       
         private void FrmLotTransfer_Load(object sender, EventArgs e)
         {
-            btnQuery.PerformClick();
+            //btnQuery.PerformClick();
         }
 
 
@@ -573,6 +574,7 @@ namespace OQAMain
 
         private void btnQuery_Click(object sender, EventArgs e)
         {
+            this.LotIDList.ItemCheck -= LotIDList_ItemCheck;
             if (ComFunc.Trim(txtSearchLotID.Text) != "")
             {
                 if (SearchLotIDList(GlobConst.TRAN_VIEW, '3', txtSearchLotID.Text.Trim()) == false) return;
@@ -582,6 +584,7 @@ namespace OQAMain
                 LotIDList.Items.Clear();
                 if (QueryLotIDList(GlobConst.TRAN_VIEW, '1') == false) return;
             }
+            this.LotIDList.ItemCheck += LotIDList_ItemCheck;
         }
 
         private void txtSearchLotID_KeyPress(object sender, KeyPressEventArgs e)

@@ -56,22 +56,17 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(883, 6);
+            this.btnClose.Location = new System.Drawing.Point(653, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(677, 6);
+            this.btnCreate.Location = new System.Drawing.Point(473, 6);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(780, 6);
+            this.btnEdite.Location = new System.Drawing.Point(563, 6);
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
-            // 
-            // pnlMenu
-            // 
-            this.pnlMenu.Location = new System.Drawing.Point(0, 653);
-            this.pnlMenu.Size = new System.Drawing.Size(1000, 40);
             // 
             // lotId_textBox
             // 
@@ -105,7 +100,7 @@
             this.lotInfo_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.lotInfo_groupBox.Name = "lotInfo_groupBox";
             this.lotInfo_groupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.lotInfo_groupBox.Size = new System.Drawing.Size(1000, 64);
+            this.lotInfo_groupBox.Size = new System.Drawing.Size(750, 64);
             this.lotInfo_groupBox.TabIndex = 2;
             this.lotInfo_groupBox.TabStop = false;
             this.lotInfo_groupBox.Text = "Lot Information";
@@ -113,7 +108,7 @@
             // print_button
             // 
             this.print_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.print_button.Location = new System.Drawing.Point(887, 23);
+            this.print_button.Location = new System.Drawing.Point(637, 23);
             this.print_button.Name = "print_button";
             this.print_button.Size = new System.Drawing.Size(62, 26);
             this.print_button.TabIndex = 2;
@@ -145,7 +140,7 @@
             this.package_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.package_groupBox.Name = "package_groupBox";
             this.package_groupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.package_groupBox.Size = new System.Drawing.Size(1000, 581);
+            this.package_groupBox.Size = new System.Drawing.Size(750, 468);
             this.package_groupBox.TabIndex = 3;
             this.package_groupBox.TabStop = false;
             this.package_groupBox.Text = "Wafer Package";
@@ -157,7 +152,7 @@
             this.pin_comboBox.Items.AddRange(new object[] {
             "Visual",
             "Manual"});
-            this.pin_comboBox.Location = new System.Drawing.Point(727, 241);
+            this.pin_comboBox.Location = new System.Drawing.Point(586, 241);
             this.pin_comboBox.Name = "pin_comboBox";
             this.pin_comboBox.Size = new System.Drawing.Size(76, 20);
             this.pin_comboBox.TabIndex = 24;
@@ -181,7 +176,7 @@
             this.foreign_comboBox.Items.AddRange(new object[] {
             "Visual",
             "Manual"});
-            this.foreign_comboBox.Location = new System.Drawing.Point(727, 394);
+            this.foreign_comboBox.Location = new System.Drawing.Point(586, 394);
             this.foreign_comboBox.Name = "foreign_comboBox";
             this.foreign_comboBox.Size = new System.Drawing.Size(76, 20);
             this.foreign_comboBox.TabIndex = 20;
@@ -194,7 +189,7 @@
             this.seal_comboBox.Items.AddRange(new object[] {
             "Visual",
             "Manual"});
-            this.seal_comboBox.Location = new System.Drawing.Point(727, 343);
+            this.seal_comboBox.Location = new System.Drawing.Point(586, 343);
             this.seal_comboBox.Name = "seal_comboBox";
             this.seal_comboBox.Size = new System.Drawing.Size(76, 20);
             this.seal_comboBox.TabIndex = 20;
@@ -207,7 +202,7 @@
             this.peel_comboBox.Items.AddRange(new object[] {
             "Visual",
             "Manual"});
-            this.peel_comboBox.Location = new System.Drawing.Point(727, 292);
+            this.peel_comboBox.Location = new System.Drawing.Point(586, 292);
             this.peel_comboBox.Name = "peel_comboBox";
             this.peel_comboBox.Size = new System.Drawing.Size(76, 20);
             this.peel_comboBox.TabIndex = 20;
@@ -220,7 +215,7 @@
             this.packing_comboBox.Items.AddRange(new object[] {
             "Visual",
             "Manual"});
-            this.packing_comboBox.Location = new System.Drawing.Point(727, 190);
+            this.packing_comboBox.Location = new System.Drawing.Point(586, 190);
             this.packing_comboBox.Name = "packing_comboBox";
             this.packing_comboBox.Size = new System.Drawing.Size(76, 20);
             this.packing_comboBox.TabIndex = 20;
@@ -233,7 +228,7 @@
             this.surface_comboBox.Items.AddRange(new object[] {
             "Visual",
             "Manual"});
-            this.surface_comboBox.Location = new System.Drawing.Point(727, 139);
+            this.surface_comboBox.Location = new System.Drawing.Point(586, 139);
             this.surface_comboBox.Name = "surface_comboBox";
             this.surface_comboBox.Size = new System.Drawing.Size(76, 20);
             this.surface_comboBox.TabIndex = 20;
@@ -246,7 +241,7 @@
             this.ship_comboBox.Items.AddRange(new object[] {
             "Visual",
             "Manual"});
-            this.ship_comboBox.Location = new System.Drawing.Point(727, 88);
+            this.ship_comboBox.Location = new System.Drawing.Point(586, 88);
             this.ship_comboBox.Name = "ship_comboBox";
             this.ship_comboBox.Size = new System.Drawing.Size(76, 20);
             this.ship_comboBox.TabIndex = 20;
@@ -259,7 +254,7 @@
             this.fosb_comboBox.Items.AddRange(new object[] {
             "Visual",
             "Manual"});
-            this.fosb_comboBox.Location = new System.Drawing.Point(727, 37);
+            this.fosb_comboBox.Location = new System.Drawing.Point(586, 37);
             this.fosb_comboBox.Name = "fosb_comboBox";
             this.fosb_comboBox.Size = new System.Drawing.Size(76, 20);
             this.fosb_comboBox.TabIndex = 19;
@@ -346,7 +341,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 693);
+            this.ClientSize = new System.Drawing.Size(750, 580);
             this.Controls.Add(this.package_groupBox);
             this.Controls.Add(this.lotInfo_groupBox);
             this.Name = "FrmLotPackageCheck";

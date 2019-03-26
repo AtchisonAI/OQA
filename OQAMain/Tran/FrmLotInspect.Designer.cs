@@ -211,16 +211,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(682, 5);
+            this.btnClose.Location = new System.Drawing.Point(715, 3);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(499, 6);
+            this.btnCreate.Location = new System.Drawing.Point(532, 4);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(591, 6);
+            this.btnEdite.Location = new System.Drawing.Point(624, 4);
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
@@ -1421,7 +1421,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgMIR);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(253, 530);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(527, 130);

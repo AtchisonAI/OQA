@@ -41,20 +41,21 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(699, 5);
+            this.btnClose.Location = new System.Drawing.Point(704, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(515, 5);
+            this.btnCreate.Location = new System.Drawing.Point(520, 6);
             this.btnCreate.Visible = false;
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(607, 5);
+            this.btnEdite.Location = new System.Drawing.Point(612, 6);
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
             // 
+            this.pnlMenu.Location = new System.Drawing.Point(0, 560);
             this.pnlMenu.Size = new System.Drawing.Size(800, 40);
             // 
             // groupBox1
@@ -105,7 +106,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 100);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(800, 560);
+            this.groupBox2.Size = new System.Drawing.Size(800, 460);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "```";
@@ -117,14 +118,14 @@
             this.reportViewer1.Location = new System.Drawing.Point(3, 17);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(794, 540);
+            this.reportViewer1.Size = new System.Drawing.Size(794, 440);
             this.reportViewer1.TabIndex = 0;
             // 
             // FrmPackageLabelPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 700);
+            this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.DoubleBuffered = true;

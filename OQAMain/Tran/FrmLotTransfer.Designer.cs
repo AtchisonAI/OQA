@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkALL = new System.Windows.Forms.CheckBox();
             this.btnUnCheckAll = new System.Windows.Forms.Button();
             this.btnCheckAll = new System.Windows.Forms.Button();
             this.LotIDList = new System.Windows.Forms.CheckedListBox();
@@ -51,7 +52,7 @@
             this.Part_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Inspection_Result = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Transeq = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chkALL = new System.Windows.Forms.CheckBox();
+            this.btnQuery = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -74,9 +75,15 @@
             this.btnEdite.Location = new System.Drawing.Point(593, 6);
             this.btnEdite.Visible = false;
             // 
+            // pnlMenu
+            // 
+            this.pnlMenu.Location = new System.Drawing.Point(0, 660);
+            this.pnlMenu.Size = new System.Drawing.Size(780, 40);
+            // 
             // btnRefresh
             // 
             this.btnRefresh.Location = new System.Drawing.Point(14, 6);
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // lblSucessMsg
             // 
@@ -85,6 +92,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Controls.Add(this.btnQuery);
             this.groupBox1.Controls.Add(this.chkALL);
             this.groupBox1.Controls.Add(this.btnUnCheckAll);
             this.groupBox1.Controls.Add(this.btnCheckAll);
@@ -99,24 +107,37 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "待发料批次清单";
             // 
+            // chkALL
+            // 
+            this.chkALL.AutoSize = true;
+            this.chkALL.Location = new System.Drawing.Point(15, 82);
+            this.chkALL.Name = "chkALL";
+            this.chkALL.Size = new System.Drawing.Size(42, 16);
+            this.chkALL.TabIndex = 11;
+            this.chkALL.Text = "ALL";
+            this.chkALL.UseVisualStyleBackColor = true;
+            this.chkALL.CheckedChanged += new System.EventHandler(this.chkALL_CheckedChanged);
+            // 
             // btnUnCheckAll
             // 
-            this.btnUnCheckAll.Location = new System.Drawing.Point(62, 57);
+            this.btnUnCheckAll.Location = new System.Drawing.Point(49, 126);
             this.btnUnCheckAll.Name = "btnUnCheckAll";
             this.btnUnCheckAll.Size = new System.Drawing.Size(75, 23);
             this.btnUnCheckAll.TabIndex = 9;
             this.btnUnCheckAll.Text = "Cancel";
             this.btnUnCheckAll.UseVisualStyleBackColor = true;
+            this.btnUnCheckAll.Visible = false;
             this.btnUnCheckAll.Click += new System.EventHandler(this.btnUnCheckAll_Click);
             // 
             // btnCheckAll
             // 
-            this.btnCheckAll.Location = new System.Drawing.Point(147, 57);
+            this.btnCheckAll.Location = new System.Drawing.Point(134, 126);
             this.btnCheckAll.Name = "btnCheckAll";
             this.btnCheckAll.Size = new System.Drawing.Size(75, 23);
             this.btnCheckAll.TabIndex = 8;
             this.btnCheckAll.Text = "Choose All";
             this.btnCheckAll.UseVisualStyleBackColor = true;
+            this.btnCheckAll.Visible = false;
             this.btnCheckAll.Click += new System.EventHandler(this.btnCheckAll_Click);
             // 
             // LotIDList
@@ -127,7 +148,7 @@
             this.LotIDList.BackColor = System.Drawing.SystemColors.Window;
             this.LotIDList.CheckOnClick = true;
             this.LotIDList.FormattingEnabled = true;
-            this.LotIDList.Location = new System.Drawing.Point(12, 86);
+            this.LotIDList.Location = new System.Drawing.Point(12, 101);
             this.LotIDList.Name = "LotIDList";
             this.LotIDList.Size = new System.Drawing.Size(200, 548);
             this.LotIDList.TabIndex = 7;
@@ -139,7 +160,7 @@
             this.txtSearchLotID.Name = "txtSearchLotID";
             this.txtSearchLotID.Size = new System.Drawing.Size(150, 21);
             this.txtSearchLotID.TabIndex = 5;
-            this.txtSearchLotID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1Press_check);
+            this.txtSearchLotID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchLotID_KeyPress);
             // 
             // label1
             // 
@@ -301,16 +322,15 @@
             // 
             this.Transeq.Width = 0;
             // 
-            // chkALL
+            // btnQuery
             // 
-            this.chkALL.AutoSize = true;
-            this.chkALL.Location = new System.Drawing.Point(15, 67);
-            this.chkALL.Name = "chkALL";
-            this.chkALL.Size = new System.Drawing.Size(42, 16);
-            this.chkALL.TabIndex = 11;
-            this.chkALL.Text = "ALL";
-            this.chkALL.UseVisualStyleBackColor = true;
-            this.chkALL.CheckedChanged += new System.EventHandler(this.chkALL_CheckedChanged);
+            this.btnQuery.Location = new System.Drawing.Point(137, 46);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(75, 23);
+            this.btnQuery.TabIndex = 12;
+            this.btnQuery.Text = "Query";
+            this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
             // 
             // FrmLotTransfer
             // 
@@ -324,7 +344,6 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "FrmLotTransfer";
             this.Text = "FrmLotTransfer";
-            this.Load += new System.EventHandler(this.FrmLotTransfer_Load);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
@@ -368,5 +387,6 @@
         private System.Windows.Forms.ColumnHeader Transeq;
         private System.Windows.Forms.ColumnHeader Lot_ID;
         private System.Windows.Forms.CheckBox chkALL;
+        private System.Windows.Forms.Button btnQuery;
     }
 }

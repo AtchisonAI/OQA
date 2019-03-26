@@ -354,6 +354,7 @@ namespace OQAMain
                         DefectSend.WindowState = FormWindowState.Maximized;
                         DefectSend.StartPosition = FormStartPosition.CenterParent;
                         DefectSend.ShowDialog();
+                        //AddNewFormToMdi(DefectSend);
                     }
                     return true;
                 }
@@ -978,7 +979,6 @@ namespace OQAMain
                     MAC.MinimizeBox = false;
                     MAC.StartPosition = FormStartPosition.CenterParent;
                     MAC.ShowDialog();
-
                     btnISPLotFilter.PerformClick();
                 }
 
@@ -999,7 +999,6 @@ namespace OQAMain
                     MIR.MinimizeBox = false;
                     MIR.StartPosition = FormStartPosition.CenterParent;
                     MIR.ShowDialog();
-
                     btnISPLotFilter.PerformClick();
                 }
 

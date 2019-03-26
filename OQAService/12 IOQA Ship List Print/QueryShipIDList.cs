@@ -53,57 +53,94 @@ namespace OQAService.Services
                             //验证业务级输入参数
 
 
-                            PageQueryReq.CurrentPage = 1;
-                            PageQueryReq.ItemsPerPage = 200;
-                            //if (In_node.model.IN_SHIP_NO.Trim().Equals("") == false)
-                            //{
-                                AddCondition(PageQueryReq, GetParaName<PKGSHPSTS>(p=>p.ShipId), null, LogicCondition.AndAlso,CompareType.NotEqual);
-                            // }
-
-                            //AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.Status), "PackageOut", LogicCondition.AndAlso, CompareType.Equal);
-
-                            AddSortCondition(PageQueryReq, GetParaName <PKGSHPSTS> (p=>p.ShipId), SortType.ASC);
-                            
-                            var data = PageQuery<PKGSHPSTS>(PageQueryReq);
-
-                            Out_node.model.SHIPIDLIST_list = data.models;
-
-                            break;
-
-                        case '2':
-
-                            //if (In_node.model.in_isp_code.Trim().Equals("") == true)
-                            //{
-                            //    Out_node._success = false;
-                            //    Out_node._ErrorMsg = "IN_ISP_CODE is null!";
-                            //    return Out_node;
-                            //}
-                            //if (In_node.model.in_isp_type.Trim().Equals("") == true)
-                            //{
-                            //    Out_node._success = false;
-                            //    Out_node._ErrorMsg = "IN_ISP_TYPE is null!";
-                            //    return Out_node;
-                            //}
-                            // TODO
-
-                            break;
-
-                        case '3':
                             List<object[]> dataSearch = new List<object[]>();
                             PageQueryReq.CurrentPage = 1;
                             PageQueryReq.ItemsPerPage = 200;
-                            if (In_node.model.IN_SEARCHSHIP_NO.Trim().Equals("") == false)
-                            {
+
                                 //AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), In_node.model.IN_SEARCHLOTID_NO.Trim(), LogicCondition.AndAlso, CompareType.Include);
-                                string sql = string.Format(@"select a.ship_id from PKGSHPSTS a where  a.ship_id like ('%{0}%')", In_node.model.IN_SEARCHSHIP_NO.Trim());
+                                string sql = string.Format(@"select A.SHIP_ID from PKGSHPSTS A where 1=1 ");
+
+                                if (string.IsNullOrWhiteSpace(In_node.model.IN_SEARCHSHIP_NO) == false)
+                                {
+                                    sql = sql + string.Format(@"  AND A.SHIP_ID  like ('%{0}%')", In_node.model.IN_SEARCHSHIP_NO.Trim());
+                                }
+
+                                if (string.IsNullOrWhiteSpace(In_node.model.IN_LOT_ID) == false)
+                                {
+                                    sql = sql + string.Format(@"  AND A.SHIP_ID =( select B.SHIP_ID from PKGSHPDAT B where B.LOT_ID = '{0}' )", In_node.model.IN_LOT_ID.Trim());
+                                }
+
+                                if (string.IsNullOrWhiteSpace(In_node.model.IN_FROM_TIME) == false)
+                                {
+                                    sql = sql + string.Format(@"  AND SUBSTR(A.CREATE_TIME,1,8) >= '{0}'", In_node.model.IN_FROM_TIME.Trim());
+                                }
+                                if (string.IsNullOrWhiteSpace(In_node.model.IN_TO_TIME) == false)
+                                {
+                                    sql = sql + string.Format(@"  AND SUBSTR(A.CREATE_TIME,1,8) <= '{0}'", In_node.model.IN_TO_TIME.Trim());
+                                }
+
                                 dataSearch = QueryRawSql(sql);
-                            }
-                            //  AddSortCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);
+                            
 
                             out_list.SEARCHshipID_list = dataSearch;
                             Out_node.model = out_list;
 
                             break;
+
+                        //case '2':
+                        //    List<object[]> SEARCHBYDATE = new List<object[]>();
+                        //    PageQueryReq.CurrentPage = 1;
+                        //    PageQueryReq.ItemsPerPage = 200;
+                        //    if (In_node.model.IN_SEARCHBYDATE_NO.Trim().Equals("") == false)
+                        //    {
+                        //        //AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), In_node.model.IN_SEARCHLOTID_NO.Trim(), LogicCondition.AndAlso, CompareType.Include);
+                        //        string sql = string.Format(@"select B.SHIP_ID from PKGSHPSTS B where B.SHIP_ID  like ('%{0}%')", In_node.model.IN_SEARCHBYDATE_NO.Trim());
+                        //        SEARCHBYDATE = QueryRawSql(sql);
+                        //    }
+                        //    //  AddSortCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);
+
+                        //    out_list.SEARCHshipID_list = SEARCHBYDATE;
+                        //    Out_node.model = out_list;
+
+                        //    break;
+
+                        //case '3':
+                        //    List<object[]> dataSearch = new List<object[]>();
+                        //    PageQueryReq.CurrentPage = 1;
+                        //    PageQueryReq.ItemsPerPage = 200;
+                        //    if (In_node.model.IN_SEARCHSHIP_NO.Trim().Equals("") == false)
+                        //    {
+                        //        //AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), In_node.model.IN_SEARCHLOTID_NO.Trim(), LogicCondition.AndAlso, CompareType.Include);
+                        //        string sql = string.Format(@"select B.SHIP_ID from PKGSHPDAT B where 1=1 ");
+
+                        //        if (string.IsNullOrWhiteSpace(In_node.model.IN_SEARCHSHIP_NO) == false)
+                        //        {
+                        //            sql = sql + string.Format(@"  AND B.LOT_ID  like ('%{0}%')", In_node.model.IN_SEARCHSHIP_NO.Trim());
+                        //        }
+                        //        dataSearch = QueryRawSql(sql);
+                        //    }
+                        //    //  AddSortCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);
+
+                        //    out_list.SEARCHshipID_list = dataSearch;
+                        //    Out_node.model = out_list;
+
+                        //    break;
+                        //case '4':
+                        //    List<object[]> datebysection = new List<object[]>();
+                        //    PageQueryReq.CurrentPage = 1;
+                        //    PageQueryReq.ItemsPerPage = 200;
+                        //    if (In_node.model.IN_SEARCHBYDATE_NO.Trim().Equals("") == false)
+                        //    {
+                        //        //AddCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), In_node.model.IN_SEARCHLOTID_NO.Trim(), LogicCondition.AndAlso, CompareType.Include);
+                        //        string sql = string.Format(@"select B.SHIP_ID from PKGSHPSTS B where b.create_time between ('{0}') and 'sysdate()' ", In_node.model.IN_SEARCHBYDATE_NO.Trim());
+                        //        datebysection = QueryRawSql(sql);
+                        //    }
+                        //    //  AddSortCondition(PageQueryReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);
+
+                        //    out_list.SEARCHshipID_list = datebysection;
+                        //    Out_node.model = out_list;
+
+                        //    break;
 
                     }
                     

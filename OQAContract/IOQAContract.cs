@@ -118,6 +118,8 @@ namespace OQAContract
         [OperationContract]
         ModelRsp<WaferInspectRecordView> QueryWaferInspectionRecordInfo(ModelRsp<WaferInspectRecordView> WaferInspectRecord);
 
+        [OperationContract]
+        ModelRsp<WaferInspectRecordView> QueryPKGWaferInfo(ModelRsp<WaferInspectRecordView> PKGWafer);
         #endregion
 
         #region  Package Label Print

@@ -350,38 +350,30 @@ namespace OQAMain
                 //显示
                 for (int i = 0; i < 25; i++)
                 {
-                    bool isInIsp = false;
-                    dataGridView1.Rows[0].Cells[i].Style.BackColor = Color.Green;
+                    //bool isInIsp = false;
+                    //dataGridView1.Rows[0].Cells[i].Style.BackColor = Color.Green;
                     int j = i + 1;
-                    if (lsIspwafsts.Count(p => p.SlotId == j.ToString().PadLeft(3, '0')) > 0)
-                    {
-                        isInIsp = true;
-                    }
+                    //if (lsIspwafsts.Count(p => p.SlotId == j.ToString().PadLeft(3, '0')) > 0)
+                    //{
+                    //    isInIsp = true;
+                    //}
 
                     bool isInMes = LSOQACHKMESSLOTIDS.Count(p => p.SlotId == j.ToString().PadLeft(3, '0')) > 0;
 
                     if (isInMes)
                     {
-                        if (isInIsp)
-                        {
+
                             dataGridView1.Rows[0].Cells[i].Value = "OK";
-                        }
-                        else
-                        {
-                            dataGridView1.Rows[0].Cells[i].Value = "I";
-                        }
+                        dataGridView1.Rows[0].Cells[i].Style.BackColor = Color.LightGreen;
+
+
                     }
                     else
                     {
-                        if (isInIsp)
-                        {
-                            dataGridView1.Rows[0].Cells[i].Value = "S";
-                            dataGridView1.Rows[0].Cells[i].Style.BackColor = Color.Red;
-                        }
-                        else
-                        {
+
                             dataGridView1.Rows[0].Cells[i].Value = "/";
-                        }
+                            dataGridView1.Rows[0].Cells[i].Style.BackColor = Color.LightGray;
+                        
                     }
 
                 }
@@ -398,12 +390,13 @@ namespace OQAMain
             string s_lot_id = ComFunc.Trim(txtLotid.Text);
             if (UptLotIspStsInfo(GlobConst.TRAN_UPDATE, '1', s_lot_id) == false) return;
             FrmPackageLabelPrint from = new FrmPackageLabelPrint(s_lot_id);
-            from.FormBorderStyle = FormBorderStyle.FixedDialog;
-            from.WindowState = FormWindowState.Maximized;
-            from.StartPosition = FormStartPosition.CenterParent;
-            from.ShowDialog();
-            ClearData("1");
-            txtLotid.Focus();
+            //from.FormBorderStyle = FormBorderStyle.FixedDialog;
+            //from.WindowState = FormWindowState.Maximized;
+            //from.StartPosition = FormStartPosition.CenterParent;
+            //from.ShowDialog();
+            AddNewFormToMdi(from);
+            //ClearData("1");
+            //txtLotid.Focus();
         }
 
         private void btnPrint_Click(object sender, EventArgs e)

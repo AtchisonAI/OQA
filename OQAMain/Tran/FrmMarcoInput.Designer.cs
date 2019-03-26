@@ -55,27 +55,25 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(638, 6);
+            this.btnClose.Location = new System.Drawing.Point(685, 6);
             // 
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCreate.Location = new System.Drawing.Point(549, 6);
+            this.btnCreate.Location = new System.Drawing.Point(596, 6);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
             this.btnEdite.Enabled = false;
             this.btnEdite.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnEdite.Location = new System.Drawing.Point(549, 6);
+            this.btnEdite.Location = new System.Drawing.Point(596, 6);
             this.btnEdite.Visible = false;
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
             // 
             this.pnlMenu.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.pnlMenu.Location = new System.Drawing.Point(0, 353);
-            this.pnlMenu.Size = new System.Drawing.Size(739, 40);
             // 
             // btnRefresh
             // 
@@ -98,7 +96,7 @@
             this.groupBox2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(739, 50);
+            this.groupBox2.Size = new System.Drawing.Size(780, 50);
             this.groupBox2.TabIndex = 39;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Macro inspection simple MAP";
@@ -185,7 +183,7 @@
             this.groupBox3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(739, 393);
+            this.groupBox3.Size = new System.Drawing.Size(780, 700);
             this.groupBox3.TabIndex = 38;
             this.groupBox3.TabStop = false;
             // 
@@ -307,7 +305,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(739, 393);
+            this.ClientSize = new System.Drawing.Size(780, 700);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Name = "FrmMarcoInput";

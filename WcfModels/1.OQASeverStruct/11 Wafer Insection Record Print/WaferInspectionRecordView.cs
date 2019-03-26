@@ -62,6 +62,11 @@ namespace WCFModels.OQA
         [DataMember]
         public List<ISPLOTSTS> LOT_list { get; set; }
 
+
+        //服务传出数据结构
+        [DataMember]
+        public List<PKGSLTDEF> PKGSLTDEF_list { get; set; }
+
         //服务传出结果在BaseRsq:_success  _ErrorMsg
 
 

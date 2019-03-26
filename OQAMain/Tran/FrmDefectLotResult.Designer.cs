@@ -221,7 +221,6 @@
             this.dataGridViewTextBoxColumn100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabctl = new System.Windows.Forms.TabControl();
             this.tabResult = new System.Windows.Forms.TabPage();
-            this.tabISP = new System.Windows.Forms.TabPage();
             this.grpPndnInf = new System.Windows.Forms.GroupBox();
             this.dgPndn = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn101 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -235,6 +234,7 @@
             this.HoldCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoldComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupervisorNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabISP = new System.Windows.Forms.TabPage();
             this.pnlMenu.SuspendLayout();
             this.grpRcvLot.SuspendLayout();
             this.grpOQAInfo.SuspendLayout();
@@ -250,9 +250,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgNewSlot)).BeginInit();
             this.tabctl.SuspendLayout();
             this.tabResult.SuspendLayout();
-            this.tabISP.SuspendLayout();
             this.grpPndnInf.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPndn)).BeginInit();
+            this.tabISP.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -273,6 +273,8 @@
             // pnlMenu
             // 
             this.pnlMenu.Controls.Add(this.btnSrap);
+            this.pnlMenu.Location = new System.Drawing.Point(0, 660);
+            this.pnlMenu.Size = new System.Drawing.Size(780, 40);
             this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
@@ -1865,19 +1867,6 @@
             this.tabResult.TabIndex = 0;
             this.tabResult.Text = "Defect Result";
             // 
-            // tabISP
-            // 
-            this.tabISP.BackColor = System.Drawing.SystemColors.Control;
-            this.tabISP.Controls.Add(this.groupBox1);
-            this.tabISP.Controls.Add(this.grpMacro);
-            this.tabISP.Controls.Add(this.grpAOI);
-            this.tabISP.Location = new System.Drawing.Point(4, 22);
-            this.tabISP.Name = "tabISP";
-            this.tabISP.Padding = new System.Windows.Forms.Padding(3);
-            this.tabISP.Size = new System.Drawing.Size(519, 394);
-            this.tabISP.TabIndex = 1;
-            this.tabISP.Text = "Inspect Type";
-            // 
             // grpPndnInf
             // 
             this.grpPndnInf.Controls.Add(this.dgPndn);
@@ -1995,6 +1984,19 @@
             this.SupervisorNo.Name = "SupervisorNo";
             this.SupervisorNo.ReadOnly = true;
             // 
+            // tabISP
+            // 
+            this.tabISP.BackColor = System.Drawing.SystemColors.Control;
+            this.tabISP.Controls.Add(this.groupBox1);
+            this.tabISP.Controls.Add(this.grpMacro);
+            this.tabISP.Controls.Add(this.grpAOI);
+            this.tabISP.Location = new System.Drawing.Point(4, 22);
+            this.tabISP.Name = "tabISP";
+            this.tabISP.Padding = new System.Windows.Forms.Padding(3);
+            this.tabISP.Size = new System.Drawing.Size(519, 394);
+            this.tabISP.TabIndex = 1;
+            this.tabISP.Text = "Inspect Type";
+            // 
             // FrmDefectLotResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2033,9 +2035,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgNewSlot)).EndInit();
             this.tabctl.ResumeLayout(false);
             this.tabResult.ResumeLayout(false);
-            this.tabISP.ResumeLayout(false);
             this.grpPndnInf.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgPndn)).EndInit();
+            this.tabISP.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

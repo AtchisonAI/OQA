@@ -476,6 +476,9 @@ namespace OQAMain
                 clean();
                 btnQuery.PerformClick();
             }
+            else {
+                btnQuery.PerformClick();
+            }
            
         }
     }

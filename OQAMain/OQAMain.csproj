@@ -166,6 +166,12 @@
     <Compile Include="Tran\FrmDefectLotResult.Designer.cs">
       <DependentUpon>FrmDefectLotResult.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tran\FrmLotPackageCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tran\FrmLotPackageCheck.Designer.cs">
+      <DependentUpon>FrmLotPackageCheck.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tran\FrmMarcoInput.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tran\FrmDefectLotResult.resx">
       <DependentUpon>FrmDefectLotResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tran\FrmLotPackageCheck.resx">
+      <DependentUpon>FrmLotPackageCheck.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tran\FrmMarcoInput.resx">
       <DependentUpon>FrmMarcoInput.cs</DependentUpon>

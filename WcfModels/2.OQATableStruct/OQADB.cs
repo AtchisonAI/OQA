@@ -781,5 +781,55 @@ namespace WCFModels.OQA
         [Column("WAFER_ID")] public string WaferId { get; set; }
     }
 
+    [DataContract]
+    [TableName("PKGCHKRST")]
+    [PrimaryKey("LOT_ID,CHK_TYPE", AutoIncrement = false)]
+    [ExplicitColumns]
+    public partial class PKGCHKRST
+    {
+        [DataMember]
+        [Column("LOT_ID")] public string LotId { get; set; }
+        [DataMember]
+        [Column("FOUP_ID")] public string FoupId { get; set; }
+        [DataMember]
+        [Column("CHK_TYPE")] public string ChkType { get; set; }
+        [DataMember]
+        [Column("CHK_DESC")] public string ChkDesc { get; set; }
+        [DataMember]
+        [Column("CHK_METHOD")] public string ChkMethod { get; set; }
+        [DataMember]
+        [Column("CHK_RESULT")] public string ChkResult { get; set; }
+        [DataMember]
+        [Column("CMF_1")] public string Cmf1 { get; set; }
+        [DataMember]
+        [Column("CMF_2")] public string Cmf2 { get; set; }
+        [DataMember]
+        [Column("CMF_3")] public string Cmf3 { get; set; }
+        [DataMember]
+        [Column("CMF_4")] public string Cmf4 { get; set; }
+        [DataMember]
+        [Column("CMF_5")] public string Cmf5 { get; set; }
+        [DataMember]
+        [Column("CMF_6")] public string Cmf6 { get; set; }
+        [DataMember]
+        [Column("CMF_7")] public string Cmf7 { get; set; }
+        [DataMember]
+        [Column("CMF_8")] public string Cmf8 { get; set; }
+        [DataMember]
+        [Column("CMF_9")] public string Cmf9 { get; set; }
+        [DataMember]
+        [Column("CMF_10")] public string Cmf10 { get; set; }
+        [DataMember]
+        [VersionColumn("TRANS_SEQ", VersionColumnType.Number)] public decimal TransSeq { get; set; }
+        [DataMember]
+        [Column("CREATE_TIME")] public string CreateTime { get; set; }
+        [DataMember]
+        [Column("CREATE_USER_ID")] public string CreateUserId { get; set; }
+        [DataMember]
+        [Column("UPDATE_TIME")] public string UpdateTime { get; set; }
+        [DataMember]
+        [Column("UPDATE_USER_ID")] public string UpdateUserId { get; set; }
+    }
+
 }
 

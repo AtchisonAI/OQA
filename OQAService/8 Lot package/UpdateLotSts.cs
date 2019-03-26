@@ -46,5 +46,43 @@ namespace OQAService.Services
             rsp._success = true;
             return rsp;
         }
+
+        [OperationBehavior(TransactionAutoComplete = true, TransactionScopeRequired = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
+        public ModelRsp<LotPackageView> UpdateLotPackageSts(UpdateModelReq<LotPackageView> input)
+        {
+            ModelRsp<LotPackageView> rsp = new ModelRsp<LotPackageView>();
+
+            UpdateModelReq<ISPLOTSTS> lotStsRep = new UpdateModelReq<ISPLOTSTS>();
+            lotStsRep.model = input.model.lotInfo;
+            lotStsRep.operateType = OperateType.Update;
+            var res = UpdateLotSts(lotStsRep);
+            if (res._success)
+            {
+                rsp.model.lotInfo = res.model;
+                UpdateModelListReq<PKGCHKRST> checkUpdateReq = new UpdateModelListReq<PKGCHKRST>();
+                checkUpdateReq.models = input.model.packageCheckList;
+                checkUpdateReq.operateType = input.operateType;
+                var checkUpdateRes = UpdateLotCheckList(checkUpdateReq);
+                rsp.model.packageCheckList = checkUpdateRes.models;
+                rsp._success = res._success && checkUpdateRes._success;
+            } else
+            {
+                rsp._success = false;
+                rsp._ErrorMsg = "lot package update failed";
+                log.Error(rsp._ErrorMsg);
+            }
+            
+            return rsp;
+        }
+
+        [OperationBehavior(TransactionAutoComplete = true, TransactionScopeRequired = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
+        public ModelListRsp<PKGCHKRST> UpdateLotCheckList(UpdateModelListReq<PKGCHKRST> input)
+        {
+            ModelListRsp<PKGCHKRST> rsp = new ModelListRsp<PKGCHKRST>();
+            UpdateModels<PKGCHKRST>(input, rsp, true);
+            return rsp;
+        }
     }
 }

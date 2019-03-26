@@ -140,6 +140,10 @@ namespace OQAContract
         ModelRsp<ISPLOTSTS> UpdateLotSts(UpdateModelReq<ISPLOTSTS> input);
         [OperationContract]
         BaseRsp DeletePackageImg(DeletePackageImgReq input);
+        [OperationContract]
+        ModelRsp<LotPackageView> UpdateLotPackageSts(UpdateModelReq<LotPackageView> input);
+        [OperationContract]
+        ModelListRsp<PKGCHKRST> UpdateLotCheckList(UpdateModelListReq<PKGCHKRST> input);
         #endregion
 
     }

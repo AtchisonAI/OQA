@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using WCFModels.Message;
 
 namespace WCFModels.OQA
 {
@@ -14,9 +13,13 @@ namespace WCFModels.OQA
         [DataMember]
         public List<ISPIMGDEF> packageImgList;
 
+        [DataMember]
+        public List<PKGCHKRST> packageCheckList;
+
         public LotPackageView()
         {
             packageImgList = new List<ISPIMGDEF>();
+            packageCheckList = new List<PKGCHKRST>();
         }
     }
 }

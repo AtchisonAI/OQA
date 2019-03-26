@@ -198,5 +198,11 @@ namespace OQAMain
         {
             emp_sfDataPager.PageSize = Convert.ToInt32(page_sfComboBox.Text);
         }
+
+        private void emp_sfDataGrid_Paint(object sender, PaintEventArgs e)
+        {
+            if (DesignMode)
+                System.Console.WriteLine("111");
+        }
     }
 }

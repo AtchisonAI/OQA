@@ -36,6 +36,7 @@ namespace WcfClient
             this.dockingManager = new Syncfusion.Windows.Forms.Tools.DockingManager(this.components);
             this.shortcut_panel = new System.Windows.Forms.Panel();
             this.shutcut_TreeView = new System.Windows.Forms.TreeView();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.System_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Logout_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,7 +66,6 @@ namespace WcfClient
             this.Version_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.System_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.statusBarAdv = new Syncfusion.Windows.Forms.Tools.StatusBarAdv();
-            this.imageList = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dockingManager)).BeginInit();
             this.shortcut_panel.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -129,6 +129,13 @@ namespace WcfClient
             this.shutcut_TreeView.TabIndex = 0;
             this.shutcut_TreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.shutcut_TreeView_NodeMouseClick);
             // 
+            // imageList
+            // 
+            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList.Images.SetKeyName(0, "form.png");
+            this.imageList.Images.SetKeyName(1, "folder_star.png");
+            // 
             // menuStrip
             // 
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -157,21 +164,21 @@ namespace WcfClient
             // Logout_ToolStripMenuItem
             // 
             this.Logout_ToolStripMenuItem.Name = "Logout_ToolStripMenuItem";
-            this.Logout_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.Logout_ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.Logout_ToolStripMenuItem.Text = "登出系统";
             this.Logout_ToolStripMenuItem.Click += new System.EventHandler(this.Logout_ToolStripMenuItem_Click);
             // 
             // ShortCut_ToolStripMenuItem
             // 
             this.ShortCut_ToolStripMenuItem.Name = "ShortCut_ToolStripMenuItem";
-            this.ShortCut_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ShortCut_ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.ShortCut_ToolStripMenuItem.Text = "快捷菜单";
             this.ShortCut_ToolStripMenuItem.Click += new System.EventHandler(this.ShortCut_ToolStripMenuItem_Click);
             // 
             // Authority_ToolStripMenuItem
             // 
             this.Authority_ToolStripMenuItem.Name = "Authority_ToolStripMenuItem";
-            this.Authority_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.Authority_ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.Authority_ToolStripMenuItem.Text = "权限控制";
             this.Authority_ToolStripMenuItem.Click += new System.EventHandler(this.Authority_ToolStripMenuItem_Click);
             // 
@@ -186,7 +193,7 @@ namespace WcfClient
             // defectCodeSetToolStripMenuItem
             // 
             this.defectCodeSetToolStripMenuItem.Name = "defectCodeSetToolStripMenuItem";
-            this.defectCodeSetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.defectCodeSetToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.defectCodeSetToolStripMenuItem.Text = "Defect Code Set";
             this.defectCodeSetToolStripMenuItem.Click += new System.EventHandler(this.defectCodeSetToolStripMenuItem_Click);
             // 
@@ -290,7 +297,7 @@ namespace WcfClient
             // 
             this.waferInspactionRecordPrintToolStripMenuItem.Name = "waferInspactionRecordPrintToolStripMenuItem";
             this.waferInspactionRecordPrintToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
-            this.waferInspactionRecordPrintToolStripMenuItem.Text = "Wafer Inspaction Record Print";
+            this.waferInspactionRecordPrintToolStripMenuItem.Text = "Wafer Inspection Record Print";
             this.waferInspactionRecordPrintToolStripMenuItem.Click += new System.EventHandler(this.waferInspactionRecordPrintToolStripMenuItem_Click);
             // 
             // iOQAShipListPrintToolStripMenuItem
@@ -412,13 +419,6 @@ namespace WcfClient
             this.statusBarAdv.Size = new System.Drawing.Size(1032, 26);
             this.statusBarAdv.Spacing = new System.Drawing.Size(2, 2);
             this.statusBarAdv.TabIndex = 15;
-            // 
-            // imageList
-            // 
-            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
-            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList.Images.SetKeyName(0, "form.png");
-            this.imageList.Images.SetKeyName(1, "folder_star.png");
             // 
             // MainForm
             // 

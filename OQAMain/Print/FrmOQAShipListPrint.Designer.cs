@@ -242,7 +242,7 @@
             // 
             // Lot_ID
             // 
-            this.Lot_ID.Text = "Lot_ID";
+            this.Lot_ID.Text = "Lot ID";
             this.Lot_ID.Width = 125;
             // 
             // Qty
@@ -253,13 +253,13 @@
             // 
             // Part_ID
             // 
-            this.Part_ID.Text = "Part_ID";
+            this.Part_ID.Text = "Part ID";
             this.Part_ID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Part_ID.Width = 125;
             // 
             // Inspection_Result
             // 
-            this.Inspection_Result.Text = "Inspection_Result";
+            this.Inspection_Result.Text = "Inspection Result";
             this.Inspection_Result.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Inspection_Result.Width = 125;
             // 

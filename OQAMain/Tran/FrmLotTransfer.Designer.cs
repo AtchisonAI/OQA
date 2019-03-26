@@ -31,11 +31,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnQuery = new System.Windows.Forms.Button();
             this.chkALL = new System.Windows.Forms.CheckBox();
-            this.btnUnCheckAll = new System.Windows.Forms.Button();
-            this.btnCheckAll = new System.Windows.Forms.Button();
             this.LotIDList = new System.Windows.Forms.CheckedListBox();
             this.txtSearchLotID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnUnCheckAll = new System.Windows.Forms.Button();
+            this.btnCheckAll = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtDate = new System.Windows.Forms.TextBox();
             this.txtCreater = new System.Windows.Forms.TextBox();
@@ -75,6 +75,18 @@
             this.btnEdite.Location = new System.Drawing.Point(563, 6);
             this.btnEdite.Visible = false;
             // 
+            // pnlMenu
+            // 
+            this.pnlMenu.Controls.Add(this.btnCheckAll);
+            this.pnlMenu.Controls.Add(this.btnUnCheckAll);
+            this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.btnUnCheckAll, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.btnCheckAll, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.btnRefresh, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.lblSucessMsg, 0);
+            // 
             // btnRefresh
             // 
             this.btnRefresh.Location = new System.Drawing.Point(14, 6);
@@ -89,8 +101,6 @@
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Controls.Add(this.btnQuery);
             this.groupBox1.Controls.Add(this.chkALL);
-            this.groupBox1.Controls.Add(this.btnUnCheckAll);
-            this.groupBox1.Controls.Add(this.btnCheckAll);
             this.groupBox1.Controls.Add(this.LotIDList);
             this.groupBox1.Controls.Add(this.txtSearchLotID);
             this.groupBox1.Controls.Add(this.label1);
@@ -123,28 +133,6 @@
             this.chkALL.UseVisualStyleBackColor = true;
             this.chkALL.CheckedChanged += new System.EventHandler(this.chkALL_CheckedChanged);
             // 
-            // btnUnCheckAll
-            // 
-            this.btnUnCheckAll.Location = new System.Drawing.Point(49, 126);
-            this.btnUnCheckAll.Name = "btnUnCheckAll";
-            this.btnUnCheckAll.Size = new System.Drawing.Size(75, 23);
-            this.btnUnCheckAll.TabIndex = 9;
-            this.btnUnCheckAll.Text = "Cancel";
-            this.btnUnCheckAll.UseVisualStyleBackColor = true;
-            this.btnUnCheckAll.Visible = false;
-            this.btnUnCheckAll.Click += new System.EventHandler(this.btnUnCheckAll_Click);
-            // 
-            // btnCheckAll
-            // 
-            this.btnCheckAll.Location = new System.Drawing.Point(134, 126);
-            this.btnCheckAll.Name = "btnCheckAll";
-            this.btnCheckAll.Size = new System.Drawing.Size(75, 23);
-            this.btnCheckAll.TabIndex = 8;
-            this.btnCheckAll.Text = "Choose All";
-            this.btnCheckAll.UseVisualStyleBackColor = true;
-            this.btnCheckAll.Visible = false;
-            this.btnCheckAll.Click += new System.EventHandler(this.btnCheckAll_Click);
-            // 
             // LotIDList
             // 
             this.LotIDList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -175,6 +163,28 @@
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 4;
             this.label1.Text = "Lot ID";
+            // 
+            // btnUnCheckAll
+            // 
+            this.btnUnCheckAll.Location = new System.Drawing.Point(104, 6);
+            this.btnUnCheckAll.Name = "btnUnCheckAll";
+            this.btnUnCheckAll.Size = new System.Drawing.Size(75, 23);
+            this.btnUnCheckAll.TabIndex = 9;
+            this.btnUnCheckAll.Text = "Cancel";
+            this.btnUnCheckAll.UseVisualStyleBackColor = true;
+            this.btnUnCheckAll.Visible = false;
+            this.btnUnCheckAll.Click += new System.EventHandler(this.btnUnCheckAll_Click);
+            // 
+            // btnCheckAll
+            // 
+            this.btnCheckAll.Location = new System.Drawing.Point(185, 6);
+            this.btnCheckAll.Name = "btnCheckAll";
+            this.btnCheckAll.Size = new System.Drawing.Size(75, 23);
+            this.btnCheckAll.TabIndex = 8;
+            this.btnCheckAll.Text = "Choose All";
+            this.btnCheckAll.UseVisualStyleBackColor = true;
+            this.btnCheckAll.Visible = false;
+            this.btnCheckAll.Click += new System.EventHandler(this.btnCheckAll_Click);
             // 
             // groupBox2
             // 
@@ -302,7 +312,7 @@
             // 
             // Lot_ID
             // 
-            this.Lot_ID.Text = "Lot_ID";
+            this.Lot_ID.Text = "Lot ID";
             this.Lot_ID.Width = 125;
             // 
             // Qty
@@ -313,13 +323,13 @@
             // 
             // Part_ID
             // 
-            this.Part_ID.Text = "Part_ID";
+            this.Part_ID.Text = "Part ID";
             this.Part_ID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Part_ID.Width = 125;
             // 
             // Inspection_Result
             // 
-            this.Inspection_Result.Text = "Inspection_Result";
+            this.Inspection_Result.Text = "Inspection Result";
             this.Inspection_Result.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Inspection_Result.Width = 125;
             // 

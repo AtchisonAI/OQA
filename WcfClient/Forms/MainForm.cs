@@ -84,6 +84,13 @@ namespace WcfClient
             FrmAOIInput frm = On_MenuItemClickImpl<FrmAOIInput>(ctr.Name);
         }
 
+        private void marcoInspectionEdgeInputToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem ctr = (ToolStripMenuItem)sender;
+            FrmMarcoEdgeInput frm = On_MenuItemClickImpl<FrmMarcoEdgeInput>(ctr.Name);
+            
+        }
+
         private void marcoInspectionInputToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             ToolStripMenuItem ctr = (ToolStripMenuItem)sender;
@@ -496,5 +503,7 @@ namespace WcfClient
             }
             FormBindToTabMdi(form);
         }
+
+
     }
 }

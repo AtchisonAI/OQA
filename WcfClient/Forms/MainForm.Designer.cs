@@ -36,6 +36,7 @@ namespace WcfClient
             this.dockingManager = new Syncfusion.Windows.Forms.Tools.DockingManager(this.components);
             this.shortcut_panel = new System.Windows.Forms.Panel();
             this.shutcut_TreeView = new System.Windows.Forms.TreeView();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.System_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Logout_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,7 +66,7 @@ namespace WcfClient
             this.Version_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.System_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.statusBarAdv = new Syncfusion.Windows.Forms.Tools.StatusBarAdv();
-            this.imageList = new System.Windows.Forms.ImageList(this.components);
+            this.marcoInspectionEdgeInputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dockingManager)).BeginInit();
             this.shortcut_panel.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -129,6 +130,13 @@ namespace WcfClient
             this.shutcut_TreeView.TabIndex = 0;
             this.shutcut_TreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.shutcut_TreeView_NodeMouseClick);
             // 
+            // imageList
+            // 
+            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList.Images.SetKeyName(0, "form.png");
+            this.imageList.Images.SetKeyName(1, "folder_star.png");
+            // 
             // menuStrip
             // 
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -157,21 +165,21 @@ namespace WcfClient
             // Logout_ToolStripMenuItem
             // 
             this.Logout_ToolStripMenuItem.Name = "Logout_ToolStripMenuItem";
-            this.Logout_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.Logout_ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.Logout_ToolStripMenuItem.Text = "登出系统";
             this.Logout_ToolStripMenuItem.Click += new System.EventHandler(this.Logout_ToolStripMenuItem_Click);
             // 
             // ShortCut_ToolStripMenuItem
             // 
             this.ShortCut_ToolStripMenuItem.Name = "ShortCut_ToolStripMenuItem";
-            this.ShortCut_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ShortCut_ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.ShortCut_ToolStripMenuItem.Text = "快捷菜单";
             this.ShortCut_ToolStripMenuItem.Click += new System.EventHandler(this.ShortCut_ToolStripMenuItem_Click);
             // 
             // Authority_ToolStripMenuItem
             // 
             this.Authority_ToolStripMenuItem.Name = "Authority_ToolStripMenuItem";
-            this.Authority_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.Authority_ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.Authority_ToolStripMenuItem.Text = "权限控制";
             this.Authority_ToolStripMenuItem.Click += new System.EventHandler(this.Authority_ToolStripMenuItem_Click);
             // 
@@ -186,7 +194,7 @@ namespace WcfClient
             // defectCodeSetToolStripMenuItem
             // 
             this.defectCodeSetToolStripMenuItem.Name = "defectCodeSetToolStripMenuItem";
-            this.defectCodeSetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.defectCodeSetToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.defectCodeSetToolStripMenuItem.Text = "Defect Code Set";
             this.defectCodeSetToolStripMenuItem.Click += new System.EventHandler(this.defectCodeSetToolStripMenuItem_Click);
             // 
@@ -198,7 +206,8 @@ namespace WcfClient
             this.marcoInspectionInputToolStripMenuItem,
             this.mircoInspectionInputToolStripMenuItem,
             this.defectSendPNDNToolStripMenuItem,
-            this.defectLotResultToolStripMenuItem});
+            this.defectLotResultToolStripMenuItem,
+            this.marcoInspectionEdgeInputToolStripMenuItem});
             this.OQAInspect_ToolStripMenuItem.Name = "OQAInspect_ToolStripMenuItem";
             this.OQAInspect_ToolStripMenuItem.Size = new System.Drawing.Size(72, 21);
             this.OQAInspect_ToolStripMenuItem.Text = "OQA检验";
@@ -206,42 +215,42 @@ namespace WcfClient
             // lotInspectToolStripMenuItem
             // 
             this.lotInspectToolStripMenuItem.Name = "lotInspectToolStripMenuItem";
-            this.lotInspectToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.lotInspectToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.lotInspectToolStripMenuItem.Text = "Lot Inspect";
             this.lotInspectToolStripMenuItem.Click += new System.EventHandler(this.lotInspectToolStripMenuItem_Click);
             // 
             // aOIInspectionInputToolStripMenuItem
             // 
             this.aOIInspectionInputToolStripMenuItem.Name = "aOIInspectionInputToolStripMenuItem";
-            this.aOIInspectionInputToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.aOIInspectionInputToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.aOIInspectionInputToolStripMenuItem.Text = "AOI Inspection Input";
             this.aOIInspectionInputToolStripMenuItem.Click += new System.EventHandler(this.aOIInspectionInputToolStripMenuItem_Click);
             // 
             // marcoInspectionInputToolStripMenuItem
             // 
             this.marcoInspectionInputToolStripMenuItem.Name = "marcoInspectionInputToolStripMenuItem";
-            this.marcoInspectionInputToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.marcoInspectionInputToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.marcoInspectionInputToolStripMenuItem.Text = "Marco Inspection Input";
             this.marcoInspectionInputToolStripMenuItem.Click += new System.EventHandler(this.marcoInspectionInputToolStripMenuItem_Click);
             // 
             // mircoInspectionInputToolStripMenuItem
             // 
             this.mircoInspectionInputToolStripMenuItem.Name = "mircoInspectionInputToolStripMenuItem";
-            this.mircoInspectionInputToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.mircoInspectionInputToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.mircoInspectionInputToolStripMenuItem.Text = "Mirco Inspection Input";
             this.mircoInspectionInputToolStripMenuItem.Click += new System.EventHandler(this.mircoInspectionInputToolStripMenuItem_Click);
             // 
             // defectSendPNDNToolStripMenuItem
             // 
             this.defectSendPNDNToolStripMenuItem.Name = "defectSendPNDNToolStripMenuItem";
-            this.defectSendPNDNToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.defectSendPNDNToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.defectSendPNDNToolStripMenuItem.Text = "Defect Send PNDN";
             this.defectSendPNDNToolStripMenuItem.Click += new System.EventHandler(this.defectSendPNDNToolStripMenuItem_Click);
             // 
             // defectLotResultToolStripMenuItem
             // 
             this.defectLotResultToolStripMenuItem.Name = "defectLotResultToolStripMenuItem";
-            this.defectLotResultToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.defectLotResultToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.defectLotResultToolStripMenuItem.Text = "Defect Lot Result";
             this.defectLotResultToolStripMenuItem.Click += new System.EventHandler(this.defectLotResultToolStripMenuItem_Click);
             // 
@@ -290,7 +299,7 @@ namespace WcfClient
             // 
             this.waferInspactionRecordPrintToolStripMenuItem.Name = "waferInspactionRecordPrintToolStripMenuItem";
             this.waferInspactionRecordPrintToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
-            this.waferInspactionRecordPrintToolStripMenuItem.Text = "Wafer Inspaction Record Print";
+            this.waferInspactionRecordPrintToolStripMenuItem.Text = "Wafer Inspection Record Print";
             this.waferInspactionRecordPrintToolStripMenuItem.Click += new System.EventHandler(this.waferInspactionRecordPrintToolStripMenuItem_Click);
             // 
             // iOQAShipListPrintToolStripMenuItem
@@ -413,12 +422,12 @@ namespace WcfClient
             this.statusBarAdv.Spacing = new System.Drawing.Size(2, 2);
             this.statusBarAdv.TabIndex = 15;
             // 
-            // imageList
+            // marcoInspectionEdgeInputToolStripMenuItem
             // 
-            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
-            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList.Images.SetKeyName(0, "form.png");
-            this.imageList.Images.SetKeyName(1, "folder_star.png");
+            this.marcoInspectionEdgeInputToolStripMenuItem.Name = "marcoInspectionEdgeInputToolStripMenuItem";
+            this.marcoInspectionEdgeInputToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.marcoInspectionEdgeInputToolStripMenuItem.Text = "Marco Inspection Edge Input";
+            this.marcoInspectionEdgeInputToolStripMenuItem.Click += new System.EventHandler(this.marcoInspectionEdgeInputToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -490,5 +499,6 @@ namespace WcfClient
         private Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel Time_statusBarAdvPanel;
         private TreeView shutcut_TreeView;
         private ImageList imageList;
+        private ToolStripMenuItem marcoInspectionEdgeInputToolStripMenuItem;
     }
 }

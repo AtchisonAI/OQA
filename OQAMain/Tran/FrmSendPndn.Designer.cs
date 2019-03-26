@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grpAbnInf = new System.Windows.Forms.GroupBox();
             this.txtHoldCmt = new System.Windows.Forms.TextBox();
             this.txtHoldCode = new System.Windows.Forms.TextBox();
@@ -68,16 +68,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(659, 6);
+            this.btnClose.Location = new System.Drawing.Point(682, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(565, 6);
+            this.btnCreate.Location = new System.Drawing.Point(588, 6);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(566, 6);
+            this.btnEdite.Location = new System.Drawing.Point(589, 6);
             this.btnEdite.Visible = false;
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
@@ -87,16 +87,14 @@
             this.pnlMenu.Controls.Add(this.labSupervisorNo);
             this.pnlMenu.Controls.Add(this.txtOperatorNo);
             this.pnlMenu.Controls.Add(this.labOperatorNo);
-            this.pnlMenu.Location = new System.Drawing.Point(0, 540);
-            this.pnlMenu.Size = new System.Drawing.Size(750, 40);
             this.pnlMenu.Controls.SetChildIndex(this.labOperatorNo, 0);
             this.pnlMenu.Controls.SetChildIndex(this.txtOperatorNo, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.labSupervisorNo, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.txtSupervisorNo, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnRefresh, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
-            this.pnlMenu.Controls.SetChildIndex(this.labSupervisorNo, 0);
-            this.pnlMenu.Controls.SetChildIndex(this.txtSupervisorNo, 0);
             // 
             // btnRefresh
             // 
@@ -125,7 +123,7 @@
             this.grpAbnInf.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpAbnInf.Location = new System.Drawing.Point(0, 0);
             this.grpAbnInf.Name = "grpAbnInf";
-            this.grpAbnInf.Size = new System.Drawing.Size(750, 100);
+            this.grpAbnInf.Size = new System.Drawing.Size(780, 100);
             this.grpAbnInf.TabIndex = 1;
             this.grpAbnInf.TabStop = false;
             this.grpAbnInf.Text = "异常品信息";
@@ -255,7 +253,7 @@
             this.grpPndnInf.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpPndnInf.Location = new System.Drawing.Point(0, 100);
             this.grpPndnInf.Name = "grpPndnInf";
-            this.grpPndnInf.Size = new System.Drawing.Size(750, 440);
+            this.grpPndnInf.Size = new System.Drawing.Size(780, 560);
             this.grpPndnInf.TabIndex = 2;
             this.grpPndnInf.TabStop = false;
             this.grpPndnInf.Text = "异常单信息";
@@ -266,14 +264,14 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -289,13 +287,13 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(744, 420);
+            this.dataGridView1.Size = new System.Drawing.Size(774, 540);
             this.dataGridView1.TabIndex = 8;
             // 
             // Column1
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column1.HeaderText = "No";
             this.Column1.Name = "Column1";
             this.Column1.Width = 30;
@@ -325,8 +323,8 @@
             // 
             // dataGridViewTextBoxColumn5
             // 
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn5.HeaderText = "Slot ID";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -379,7 +377,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 580);
+            this.ClientSize = new System.Drawing.Size(780, 700);
             this.Controls.Add(this.grpPndnInf);
             this.Controls.Add(this.grpAbnInf);
             this.Margin = new System.Windows.Forms.Padding(2);

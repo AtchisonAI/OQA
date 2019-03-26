@@ -119,27 +119,25 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(822, 7);
+            this.btnClose.Location = new System.Drawing.Point(681, 5);
             // 
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCreate.Location = new System.Drawing.Point(733, 7);
+            this.btnCreate.Location = new System.Drawing.Point(592, 5);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
             this.btnEdite.Enabled = false;
             this.btnEdite.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnEdite.Location = new System.Drawing.Point(733, 7);
+            this.btnEdite.Location = new System.Drawing.Point(592, 5);
             this.btnEdite.Visible = false;
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
             // 
             this.pnlMenu.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.pnlMenu.Location = new System.Drawing.Point(0, 563);
-            this.pnlMenu.Size = new System.Drawing.Size(923, 40);
             // 
             // btnRefresh
             // 
@@ -163,7 +161,7 @@
             this.groupBox1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(923, 603);
+            this.groupBox1.Size = new System.Drawing.Size(780, 700);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             // 
@@ -1068,11 +1066,11 @@
             // 
             this.txtLotId.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtLotId.Location = new System.Drawing.Point(61, 19);
-            this.txtLotId.Multiline = true;
             this.txtLotId.Name = "txtLotId";
-            this.txtLotId.Size = new System.Drawing.Size(100, 20);
+            this.txtLotId.Size = new System.Drawing.Size(100, 21);
             this.txtLotId.TabIndex = 3;
-            this.txtLotId.TextChanged += new System.EventHandler(this.lotTextBox_TextChanged);
+            this.txtLotId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLotId_KeyPress);
+            this.txtLotId.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtLotId_MouseDown);
             // 
             // label15
             // 
@@ -1141,7 +1139,7 @@
             this.groupBox2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(923, 50);
+            this.groupBox2.Size = new System.Drawing.Size(780, 50);
             this.groupBox2.TabIndex = 42;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Micro inspection simple MAP";
@@ -1150,7 +1148,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 603);
+            this.ClientSize = new System.Drawing.Size(780, 700);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

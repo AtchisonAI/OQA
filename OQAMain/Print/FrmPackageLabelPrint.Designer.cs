@@ -41,36 +41,31 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(973, 8);
-            this.btnClose.Visible = false;
+            this.btnClose.Location = new System.Drawing.Point(699, 5);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(461, 8);
+            this.btnCreate.Location = new System.Drawing.Point(515, 5);
             this.btnCreate.Visible = false;
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(879, 7);
+            this.btnEdite.Location = new System.Drawing.Point(607, 5);
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
             // 
-            this.pnlMenu.Dock = System.Windows.Forms.DockStyle.None;
-            this.pnlMenu.Location = new System.Drawing.Point(0, 560);
-            this.pnlMenu.Size = new System.Drawing.Size(777, 40);
+            this.pnlMenu.Size = new System.Drawing.Size(800, 40);
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.Print);
             this.groupBox1.Controls.Add(this.txtLotID);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(30, 31);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(750, 100);
+            this.groupBox1.Size = new System.Drawing.Size(800, 100);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "`";
@@ -106,13 +101,11 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.reportViewer1);
-            this.groupBox2.Location = new System.Drawing.Point(30, 146);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 100);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(750, 400);
+            this.groupBox2.Size = new System.Drawing.Size(800, 560);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "```";
@@ -124,14 +117,14 @@
             this.reportViewer1.Location = new System.Drawing.Point(3, 17);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(744, 380);
+            this.reportViewer1.Size = new System.Drawing.Size(794, 540);
             this.reportViewer1.TabIndex = 0;
             // 
             // FrmPackageLabelPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(800, 700);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.DoubleBuffered = true;

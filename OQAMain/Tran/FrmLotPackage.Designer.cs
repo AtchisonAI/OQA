@@ -32,6 +32,7 @@
             this.lotInfo_groupBox = new System.Windows.Forms.GroupBox();
             this.lotId_textBox = new System.Windows.Forms.TextBox();
             this.lotId_label = new System.Windows.Forms.Label();
+            this.print_button = new System.Windows.Forms.Button();
             this.fosb_label = new System.Windows.Forms.Label();
             this.Fosb_imageUpload = new ImageUpload.ImageUpload();
             this.ship_label = new System.Windows.Forms.Label();
@@ -43,7 +44,6 @@
             this.package_groupBox = new System.Windows.Forms.GroupBox();
             this.pic_groupBox = new System.Windows.Forms.GroupBox();
             this.pictureView = new OQA_Core.Controls.PictureView();
-            this.print_button = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.lotInfo_groupBox.SuspendLayout();
             this.package_groupBox.SuspendLayout();
@@ -52,33 +52,35 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1119, 8);
+            this.btnClose.Location = new System.Drawing.Point(684, 6);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
-            this.btnClose.Size = new System.Drawing.Size(62, 26);
             this.btnClose.TabIndex = 6;
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(929, 8);
+            this.btnCreate.Location = new System.Drawing.Point(500, 7);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCreate.Size = new System.Drawing.Size(62, 26);
             this.btnCreate.TabIndex = 9;
             this.btnCreate.Visible = false;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1024, 8);
+            this.btnEdite.Location = new System.Drawing.Point(592, 6);
             this.btnEdite.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEdite.Size = new System.Drawing.Size(62, 26);
             this.btnEdite.TabIndex = 5;
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
             // 
-            this.pnlMenu.Location = new System.Drawing.Point(0, 726);
+            this.pnlMenu.Controls.Add(this.print_button);
             this.pnlMenu.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.pnlMenu.Size = new System.Drawing.Size(1272, 40);
+            this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.btnRefresh, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.lblSucessMsg, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.print_button, 0);
             // 
             // btnRefresh
             // 
@@ -90,7 +92,6 @@
             // 
             // lotInfo_groupBox
             // 
-            this.lotInfo_groupBox.Controls.Add(this.print_button);
             this.lotInfo_groupBox.Controls.Add(this.lotId_textBox);
             this.lotInfo_groupBox.Controls.Add(this.lotId_label);
             this.lotInfo_groupBox.Dock = System.Windows.Forms.DockStyle.Top;
@@ -100,7 +101,7 @@
             this.lotInfo_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.lotInfo_groupBox.Name = "lotInfo_groupBox";
             this.lotInfo_groupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.lotInfo_groupBox.Size = new System.Drawing.Size(1272, 64);
+            this.lotInfo_groupBox.Size = new System.Drawing.Size(780, 64);
             this.lotInfo_groupBox.TabIndex = 1;
             this.lotInfo_groupBox.TabStop = false;
             this.lotInfo_groupBox.Text = "Lot Information";
@@ -124,6 +125,18 @@
             this.lotId_label.Size = new System.Drawing.Size(47, 12);
             this.lotId_label.TabIndex = 1;
             this.lotId_label.Text = "Lot ID:";
+            // 
+            // print_button
+            // 
+            this.print_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.print_button.Location = new System.Drawing.Point(500, 6);
+            this.print_button.Name = "print_button";
+            this.print_button.Size = new System.Drawing.Size(88, 26);
+            this.print_button.TabIndex = 2;
+            this.print_button.Text = "Print";
+            this.print_button.UseVisualStyleBackColor = true;
+            this.print_button.Visible = false;
+            this.print_button.Click += new System.EventHandler(this.print_button_Click);
             // 
             // fosb_label
             // 
@@ -231,8 +244,6 @@
             // 
             // package_groupBox
             // 
-            this.package_groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.package_groupBox.Controls.Add(this.Attachment_imageUpload);
             this.package_groupBox.Controls.Add(this.attach_label);
             this.package_groupBox.Controls.Add(this.PackageType_imageUpload);
@@ -241,20 +252,18 @@
             this.package_groupBox.Controls.Add(this.ship_label);
             this.package_groupBox.Controls.Add(this.Fosb_imageUpload);
             this.package_groupBox.Controls.Add(this.fosb_label);
-            this.package_groupBox.Location = new System.Drawing.Point(0, 65);
+            this.package_groupBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.package_groupBox.Location = new System.Drawing.Point(0, 64);
             this.package_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.package_groupBox.Name = "package_groupBox";
             this.package_groupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.package_groupBox.Size = new System.Drawing.Size(715, 660);
+            this.package_groupBox.Size = new System.Drawing.Size(780, 660);
             this.package_groupBox.TabIndex = 2;
             this.package_groupBox.TabStop = false;
             this.package_groupBox.Text = "Wafer Package";
             // 
             // pic_groupBox
             // 
-            this.pic_groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pic_groupBox.Controls.Add(this.pictureView);
             this.pic_groupBox.Location = new System.Drawing.Point(722, 65);
             this.pic_groupBox.Name = "pic_groupBox";
@@ -271,23 +280,12 @@
             this.pictureView.Size = new System.Drawing.Size(544, 640);
             this.pictureView.TabIndex = 0;
             // 
-            // print_button
-            // 
-            this.print_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.print_button.Location = new System.Drawing.Point(1159, 23);
-            this.print_button.Name = "print_button";
-            this.print_button.Size = new System.Drawing.Size(62, 26);
-            this.print_button.TabIndex = 2;
-            this.print_button.Text = "Print";
-            this.print_button.UseVisualStyleBackColor = true;
-            this.print_button.Click += new System.EventHandler(this.print_button_Click);
-            // 
             // FrmLotPackage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(1272, 766);
+            this.ClientSize = new System.Drawing.Size(780, 700);
             this.Controls.Add(this.pic_groupBox);
             this.Controls.Add(this.package_groupBox);
             this.Controls.Add(this.lotInfo_groupBox);

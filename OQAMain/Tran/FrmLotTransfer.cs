@@ -559,5 +559,51 @@ namespace OQAMain
                 return false;
             }
         }
+
+
+        private void chkALL_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkALL.Checked == true)
+            {
+                foreach (var item in LotIDList.Items)
+                {
+
+                    if (MasterLot.Length == 0)
+                    {
+                        MasterLot = "'" + item.ToString().Split(' ')[0].Trim() + "'";
+                    }
+                    else
+                    {
+                        MasterLot = MasterLot + ",'" + item.ToString().Split(' ')[0].Trim() + "'";
+                    }
+
+                }
+                if (string.IsNullOrWhiteSpace(MasterLot))
+                {
+                    ComFunc.InitListView(listship, true);
+                    return;
+                }
+
+                if (Querylotinfo(GlobConst.TRAN_VIEW, '2', MasterLot) == false)
+                {
+                    return;
+                }
+                if (Querylotinfo(GlobConst.TRAN_VIEW, '1', MasterLot) == false) return;
+
+                this.LotIDList.ItemCheck -= LotIDList_ItemCheck;
+                this.LotIDList.CheckAll();
+                this.LotIDList.ItemCheck += LotIDList_ItemCheck;
+            }
+            else
+            {
+                this.LotIDList.ItemCheck -= LotIDList_ItemCheck;
+                this.LotIDList.UnCheckAll();
+                ComFunc.InitListView(listship, true);
+                txtPartID.Text = "";
+                txtQTY.Text = "";
+                txtDate.Text = "";
+                this.LotIDList.ItemCheck += LotIDList_ItemCheck;
+            }
+        }
     }
 }

@@ -58,6 +58,49 @@ namespace WCFModels.OQA
         }
         private string in_searchship_no;
 
+        [DataMember]
+        public string IN_LOT_ID
+        {
+            get
+            {
+                return in_lot_id;
+            }
+            set
+            {
+                in_lot_id = value;
+            }
+        }
+        private string in_lot_id;
+
+        [DataMember]
+        public string IN_FROM_TIME
+        {
+            get
+            {
+                return in_from_time;
+            }
+            set
+            {
+                in_from_time = value;
+            }
+        }
+        private string in_from_time;
+
+        [DataMember]
+        public string IN_TO_TIME
+        {
+            get
+            {
+                return in_to_time;
+            }
+            set
+            {
+                in_to_time = value;
+            }
+        }
+        private string in_to_time;
+
+
         //服务传出数据结构
         [DataMember]
         public List<PKGSHPSTS> SHIPIDLIST_list { get; set; }

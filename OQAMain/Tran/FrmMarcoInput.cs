@@ -15,10 +15,10 @@ namespace OQAMain
     {
         #region Variable Definition 
         private string lotId = "";
-        private string sideType = "";
         private string slotId = "";
         private string waferId = "";
         private bool jumpFlag = false;//页面跳转
+        private string sideType = SideType.Front;
         private ISPIMGDEF imgInfo = new ISPIMGDEF();
         ISPWAFITM wafInfo = new ISPWAFITM();
         #endregion
@@ -185,25 +185,7 @@ namespace OQAMain
             }
             pageInfoShow();
         }
-        //lotId文本框TextChanged
-        private void lotTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (null != txtLotId.Text && !("").Equals(txtLotId.Text))
-            {
-                lotId = txtLotId.Text;
-                if (cboxSlotId.Items.Count > 0)
-                {
-                    slotId = "";
-                    cboxSlotId.Items.Clear();
-                }
-                pageInfoShow();
-            }
-            else
-            {
-                ComFunc.ClearBoxValue(groupBox3);
-                waferSurF.clearPanel();
-            }
-        }
+       
         private void decRichTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (Char)13)
@@ -211,6 +193,27 @@ namespace OQAMain
                 if (ComFunc.Trim(rtboxDsc.Text) != "")
                 {
                     rtboxCmt.Focus();
+                }
+            }
+        }
+        private void txtLotId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                if (null != txtLotId.Text && !("").Equals(txtLotId.Text))
+                {
+                    lotId = txtLotId.Text;
+                    if (cboxSlotId.Items.Count > 0)
+                    {
+                        slotId = "";
+                        cboxSlotId.Items.Clear();
+                    }
+                    pageInfoShow();
+                }
+                else
+                {
+                    ComFunc.ClearBoxValue(groupBox3);
+                    waferSurF.clearPanel();
                 }
             }
         }
@@ -445,8 +448,23 @@ namespace OQAMain
             newForm.ShowDialog();
         }
 
+
+
         #endregion
 
-       
+        private void txtLotId_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(lotId))
+            {
+                ComFunc.ClearBoxValue(groupBox3);
+                waferSurF.clearPanel();
+                txtLotId.Clear();
+                cboxSlotId.Items.Clear();
+                cboxSlotId.Text = "";
+                lotId = "";
+                slotId = "";
+                waferId = "";
+            }
+        }
     }
 }

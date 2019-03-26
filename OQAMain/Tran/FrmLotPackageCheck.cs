@@ -172,8 +172,9 @@ namespace OQAMain
             return true;
         }
 
-        private List<PKGCHKRST> GetLotCheckResList(OperateType operateType)
+        private OperateType GetLotCheckResList(ref List<PKGCHKRST> checkList)
         {
+            OperateType operateType = lotPackageInfo.packageCheckList.Count == 0 ? OperateType.Insert : OperateType.Update;
             if (operateType == OperateType.Insert)
             {
                 FieldInfo[] fieldInfo = this.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
@@ -210,7 +211,8 @@ namespace OQAMain
                 }
             }
 
-            return lotPackageInfo.packageCheckList;
+            checkList = lotPackageInfo.packageCheckList;
+            return operateType;
         }
 
 
@@ -243,8 +245,8 @@ namespace OQAMain
             UpdateModelReq<LotPackageView> updateReq = new UpdateModelReq<LotPackageView>();
             updateReq.userId = AuthorityControl.GetUserProfile().userId;
             updateReq.operateType = lotPackageInfo.packageCheckList.Count == 0 ?OperateType.Insert:OperateType.Update;
-            GetLotCheckResList(updateReq.operateType);
-            updateReq.model = lotPackageInfo;
+            updateReq.operateType = GetLotCheckResList(ref updateReq.model.packageCheckList);
+            updateReq.model.lotInfo = lotPackageInfo.lotInfo;
             try
             {
                 var res = OQASrv.Call.UpdateLotPackageSts(updateReq);
@@ -265,8 +267,9 @@ namespace OQAMain
             if (!CheckCondition("CREATE")) return;
             UpdateModelListReq<PKGCHKRST> updateReq = new UpdateModelListReq<PKGCHKRST>();
             updateReq.userId = AuthorityControl.GetUserProfile().userId;
-            updateReq.operateType = lotPackageInfo.packageCheckList.Count == 0 ? OperateType.Insert : OperateType.Update;
-            updateReq.models = GetLotCheckResList(updateReq.operateType);
+            List<PKGCHKRST> list = new List<PKGCHKRST>();
+            updateReq.operateType = GetLotCheckResList(ref list);
+            updateReq.models = list;
             updateReq.userId = AuthorityControl.GetUserProfile().userId;
 
             try

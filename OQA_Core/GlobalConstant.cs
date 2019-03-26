@@ -46,6 +46,7 @@ namespace OQA_Core
     {
         public const string Front = "F";
         public const string Back = "B";
+        public const string Edge = "E";
     }
 
     public sealed class DefectCodeList

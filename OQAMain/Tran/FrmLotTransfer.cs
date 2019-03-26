@@ -143,7 +143,8 @@ namespace OQAMain
       
         private void FrmLotTransfer_Load(object sender, EventArgs e)
         {
-            //btnQuery.PerformClick();
+            txtCreater.Text= AuthorityControl.GetUserProfile().userId;
+
         }
 
 

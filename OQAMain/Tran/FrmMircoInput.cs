@@ -226,6 +226,9 @@ namespace OQAMain
         //9点模式隐藏3个点
         private void hideNode(Boolean flag)
         {
+            label20.Visible = flag;
+            okBox_18.Visible = flag;
+            ngBox_18.Visible = flag;
             label21.Visible = flag;
             okBox_12.Visible = flag;
             ngBox_12.Visible = flag;
@@ -238,12 +241,11 @@ namespace OQAMain
             imageUpload_12.Visible = flag;
             imageUpload_8.Visible = flag;
             imageUpload_14.Visible = flag;
-            imageUpload_12.Visible = flag;
-            imageUpload_8.Visible = flag;
-            imageUpload_14.Visible = flag;
+            imageUpload_18.Visible = flag;
             waferSurF.panelF_8.Enabled = flag;
             waferSurF.panelF_12.Enabled = flag;
             waferSurF.panelF_14.Enabled = flag;
+            waferSurF.panelF_18.Enabled = flag;
         }
         //所有选择框初始化（都为ok）
         public void checkAllOk()

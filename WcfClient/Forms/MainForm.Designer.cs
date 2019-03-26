@@ -66,6 +66,7 @@ namespace WcfClient
             this.Version_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.System_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.statusBarAdv = new Syncfusion.Windows.Forms.Tools.StatusBarAdv();
+            this.marcoInspectionEdgeInputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dockingManager)).BeginInit();
             this.shortcut_panel.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -205,7 +206,8 @@ namespace WcfClient
             this.marcoInspectionInputToolStripMenuItem,
             this.mircoInspectionInputToolStripMenuItem,
             this.defectSendPNDNToolStripMenuItem,
-            this.defectLotResultToolStripMenuItem});
+            this.defectLotResultToolStripMenuItem,
+            this.marcoInspectionEdgeInputToolStripMenuItem});
             this.OQAInspect_ToolStripMenuItem.Name = "OQAInspect_ToolStripMenuItem";
             this.OQAInspect_ToolStripMenuItem.Size = new System.Drawing.Size(72, 21);
             this.OQAInspect_ToolStripMenuItem.Text = "OQA检验";
@@ -213,42 +215,42 @@ namespace WcfClient
             // lotInspectToolStripMenuItem
             // 
             this.lotInspectToolStripMenuItem.Name = "lotInspectToolStripMenuItem";
-            this.lotInspectToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.lotInspectToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.lotInspectToolStripMenuItem.Text = "Lot Inspect";
             this.lotInspectToolStripMenuItem.Click += new System.EventHandler(this.lotInspectToolStripMenuItem_Click);
             // 
             // aOIInspectionInputToolStripMenuItem
             // 
             this.aOIInspectionInputToolStripMenuItem.Name = "aOIInspectionInputToolStripMenuItem";
-            this.aOIInspectionInputToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.aOIInspectionInputToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.aOIInspectionInputToolStripMenuItem.Text = "AOI Inspection Input";
             this.aOIInspectionInputToolStripMenuItem.Click += new System.EventHandler(this.aOIInspectionInputToolStripMenuItem_Click);
             // 
             // marcoInspectionInputToolStripMenuItem
             // 
             this.marcoInspectionInputToolStripMenuItem.Name = "marcoInspectionInputToolStripMenuItem";
-            this.marcoInspectionInputToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.marcoInspectionInputToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.marcoInspectionInputToolStripMenuItem.Text = "Marco Inspection Input";
             this.marcoInspectionInputToolStripMenuItem.Click += new System.EventHandler(this.marcoInspectionInputToolStripMenuItem_Click);
             // 
             // mircoInspectionInputToolStripMenuItem
             // 
             this.mircoInspectionInputToolStripMenuItem.Name = "mircoInspectionInputToolStripMenuItem";
-            this.mircoInspectionInputToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.mircoInspectionInputToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.mircoInspectionInputToolStripMenuItem.Text = "Mirco Inspection Input";
             this.mircoInspectionInputToolStripMenuItem.Click += new System.EventHandler(this.mircoInspectionInputToolStripMenuItem_Click);
             // 
             // defectSendPNDNToolStripMenuItem
             // 
             this.defectSendPNDNToolStripMenuItem.Name = "defectSendPNDNToolStripMenuItem";
-            this.defectSendPNDNToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.defectSendPNDNToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.defectSendPNDNToolStripMenuItem.Text = "Defect Send PNDN";
             this.defectSendPNDNToolStripMenuItem.Click += new System.EventHandler(this.defectSendPNDNToolStripMenuItem_Click);
             // 
             // defectLotResultToolStripMenuItem
             // 
             this.defectLotResultToolStripMenuItem.Name = "defectLotResultToolStripMenuItem";
-            this.defectLotResultToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.defectLotResultToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.defectLotResultToolStripMenuItem.Text = "Defect Lot Result";
             this.defectLotResultToolStripMenuItem.Click += new System.EventHandler(this.defectLotResultToolStripMenuItem_Click);
             // 
@@ -420,6 +422,13 @@ namespace WcfClient
             this.statusBarAdv.Spacing = new System.Drawing.Size(2, 2);
             this.statusBarAdv.TabIndex = 15;
             // 
+            // marcoInspectionEdgeInputToolStripMenuItem
+            // 
+            this.marcoInspectionEdgeInputToolStripMenuItem.Name = "marcoInspectionEdgeInputToolStripMenuItem";
+            this.marcoInspectionEdgeInputToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.marcoInspectionEdgeInputToolStripMenuItem.Text = "Marco Inspection Edge Input";
+            this.marcoInspectionEdgeInputToolStripMenuItem.Click += new System.EventHandler(this.marcoInspectionEdgeInputToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -490,5 +499,6 @@ namespace WcfClient
         private Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel Time_statusBarAdvPanel;
         private TreeView shutcut_TreeView;
         private ImageList imageList;
+        private ToolStripMenuItem marcoInspectionEdgeInputToolStripMenuItem;
     }
 }

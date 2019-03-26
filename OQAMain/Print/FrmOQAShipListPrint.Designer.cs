@@ -60,7 +60,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(818, 11);
+            this.btnClose.Location = new System.Drawing.Point(652, 4);
             // 
             // btnCreate
             // 
@@ -69,7 +69,7 @@
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(1518, 10);
+            this.btnEdite.Location = new System.Drawing.Point(274, 7);
             this.btnEdite.Text = "Export";
             this.btnEdite.Visible = false;
             // 
@@ -109,7 +109,7 @@
             this.chkToUse.AutoSize = true;
             this.chkToUse.Checked = true;
             this.chkToUse.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkToUse.Location = new System.Drawing.Point(216, 128);
+            this.chkToUse.Location = new System.Drawing.Point(210, 108);
             this.chkToUse.Name = "chkToUse";
             this.chkToUse.Size = new System.Drawing.Size(15, 14);
             this.chkToUse.TabIndex = 14;
@@ -121,7 +121,7 @@
             this.chkFromUse.AutoSize = true;
             this.chkFromUse.Checked = true;
             this.chkFromUse.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFromUse.Location = new System.Drawing.Point(216, 105);
+            this.chkFromUse.Location = new System.Drawing.Point(210, 85);
             this.chkFromUse.Name = "chkFromUse";
             this.chkFromUse.Size = new System.Drawing.Size(15, 14);
             this.chkFromUse.TabIndex = 1;
@@ -130,18 +130,18 @@
             // 
             // btnQuery
             // 
-            this.btnQuery.Location = new System.Drawing.Point(135, 151);
+            this.btnQuery.Location = new System.Drawing.Point(149, 131);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(75, 23);
             this.btnQuery.TabIndex = 7;
-            this.btnQuery.Text = "查询";
+            this.btnQuery.Text = "Query";
             this.btnQuery.UseVisualStyleBackColor = true;
             this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 130);
+            this.label4.Location = new System.Drawing.Point(11, 110);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 12);
             this.label4.TabIndex = 12;
@@ -149,7 +149,7 @@
             // 
             // dtFromTime
             // 
-            this.dtFromTime.Location = new System.Drawing.Point(90, 100);
+            this.dtFromTime.Location = new System.Drawing.Point(84, 80);
             this.dtFromTime.Name = "dtFromTime";
             this.dtFromTime.Size = new System.Drawing.Size(120, 21);
             this.dtFromTime.TabIndex = 11;
@@ -157,7 +157,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 106);
+            this.label3.Location = new System.Drawing.Point(10, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 12);
             this.label3.TabIndex = 8;
@@ -165,7 +165,7 @@
             // 
             // dtToTime
             // 
-            this.dtToTime.Location = new System.Drawing.Point(90, 124);
+            this.dtToTime.Location = new System.Drawing.Point(84, 104);
             this.dtToTime.Name = "dtToTime";
             this.dtToTime.Size = new System.Drawing.Size(120, 21);
             this.dtToTime.TabIndex = 7;
@@ -194,9 +194,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckShipID.CheckOnClick = true;
             this.CheckShipID.FormattingEnabled = true;
-            this.CheckShipID.Location = new System.Drawing.Point(14, 197);
+            this.CheckShipID.Location = new System.Drawing.Point(14, 160);
             this.CheckShipID.Name = "CheckShipID";
-            this.CheckShipID.Size = new System.Drawing.Size(210, 340);
+            this.CheckShipID.Size = new System.Drawing.Size(210, 372);
             this.CheckShipID.TabIndex = 4;
             this.CheckShipID.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.CheckShipID_ItemCheck);
             // 
@@ -227,7 +227,7 @@
             this.groupBox2.Size = new System.Drawing.Size(507, 193);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "发货批次信息";
+            this.groupBox2.Text = "Ship Lots";
             // 
             // lisship
             // 
@@ -276,7 +276,7 @@
             this.groupBox3.Size = new System.Drawing.Size(507, 347);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "交接单打印预览";
+            this.groupBox3.Text = "Print";
             // 
             // reportViewer2
             // 

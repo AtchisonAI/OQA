@@ -418,7 +418,7 @@ namespace OQAMain
         }
 
 
-        private ModelRsp<LotSlotidSave> SavePackageSlt(char c_proc_step, char c_tran_flag, string c_lot_id, List<PKGSLTDEF> LSOQACHKMESSLOTIDS)
+        private ModelRsp<LotSlotidSave> SavePackageSlt(char c_proc_step, char c_tran_flag, string c_lot_id, List<PKGSLTDEF> lst_meswafer)
         {
             ModelRsp<LotSlotidSave> in_node = new ModelRsp<LotSlotidSave>();
             ModelRsp<LotSlotidSave> out_node = new ModelRsp<LotSlotidSave>();
@@ -427,7 +427,7 @@ namespace OQAMain
             in_data.C_PROC_STEP = c_proc_step;
             in_data.C_TRAN_FLAG = c_tran_flag;
 
-            in_data.PkgsltdefList = LSOQACHKMESSLOTIDS;
+            in_data.PkgsltdefList = lst_meswafer;
             in_data.IN_LOT_ID = c_lot_id;
 
             in_node.model = in_data;

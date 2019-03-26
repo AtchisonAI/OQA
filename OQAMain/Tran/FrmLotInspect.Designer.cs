@@ -223,6 +223,11 @@
             this.btnEdite.Location = new System.Drawing.Point(591, 6);
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
+            // pnlMenu
+            // 
+            this.pnlMenu.Location = new System.Drawing.Point(0, 660);
+            this.pnlMenu.Size = new System.Drawing.Size(780, 40);
+            // 
             // btnRefresh
             // 
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
@@ -293,7 +298,7 @@
             // 
             this.txtCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtCount.Enabled = false;
-            this.txtCount.Location = new System.Drawing.Point(2, 633);
+            this.txtCount.Location = new System.Drawing.Point(9, 628);
             this.txtCount.Name = "txtCount";
             this.txtCount.Size = new System.Drawing.Size(100, 21);
             this.txtCount.TabIndex = 8;

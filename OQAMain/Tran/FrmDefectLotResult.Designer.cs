@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grpRcvLot = new System.Windows.Forms.GroupBox();
             this.btnISPLotFilter = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -221,7 +221,6 @@
             this.dataGridViewTextBoxColumn100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabctl = new System.Windows.Forms.TabControl();
             this.tabResult = new System.Windows.Forms.TabPage();
-            this.tabISP = new System.Windows.Forms.TabPage();
             this.grpPndnInf = new System.Windows.Forms.GroupBox();
             this.dgPndn = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn101 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -235,6 +234,7 @@
             this.HoldCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoldComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupervisorNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabISP = new System.Windows.Forms.TabPage();
             this.pnlMenu.SuspendLayout();
             this.grpRcvLot.SuspendLayout();
             this.grpOQAInfo.SuspendLayout();
@@ -250,9 +250,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgNewSlot)).BeginInit();
             this.tabctl.SuspendLayout();
             this.tabResult.SuspendLayout();
-            this.tabISP.SuspendLayout();
             this.grpPndnInf.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPndn)).BeginInit();
+            this.tabISP.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -273,6 +273,8 @@
             // pnlMenu
             // 
             this.pnlMenu.Controls.Add(this.btnSrap);
+            this.pnlMenu.Location = new System.Drawing.Point(0, 660);
+            this.pnlMenu.Size = new System.Drawing.Size(780, 40);
             this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
@@ -350,7 +352,7 @@
             // 
             this.txtCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtCount.Enabled = false;
-            this.txtCount.Location = new System.Drawing.Point(2, 633);
+            this.txtCount.Location = new System.Drawing.Point(9, 630);
             this.txtCount.Name = "txtCount";
             this.txtCount.Size = new System.Drawing.Size(100, 21);
             this.txtCount.TabIndex = 8;
@@ -1865,19 +1867,6 @@
             this.tabResult.TabIndex = 0;
             this.tabResult.Text = "Defect Result";
             // 
-            // tabISP
-            // 
-            this.tabISP.BackColor = System.Drawing.SystemColors.Control;
-            this.tabISP.Controls.Add(this.groupBox1);
-            this.tabISP.Controls.Add(this.grpMacro);
-            this.tabISP.Controls.Add(this.grpAOI);
-            this.tabISP.Location = new System.Drawing.Point(4, 22);
-            this.tabISP.Name = "tabISP";
-            this.tabISP.Padding = new System.Windows.Forms.Padding(3);
-            this.tabISP.Size = new System.Drawing.Size(519, 394);
-            this.tabISP.TabIndex = 1;
-            this.tabISP.Text = "Inspect Type";
-            // 
             // grpPndnInf
             // 
             this.grpPndnInf.Controls.Add(this.dgPndn);
@@ -1893,14 +1882,14 @@
             // 
             this.dgPndn.AllowUserToAddRows = false;
             this.dgPndn.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgPndn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgPndn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgPndn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPndn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn101,
@@ -1924,8 +1913,8 @@
             // 
             // dataGridViewTextBoxColumn101
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn101.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn101.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumn101.HeaderText = "No";
             this.dataGridViewTextBoxColumn101.Name = "dataGridViewTextBoxColumn101";
             this.dataGridViewTextBoxColumn101.ReadOnly = true;
@@ -1957,8 +1946,8 @@
             // 
             // dataGridViewTextBoxColumn106
             // 
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn106.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn106.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTextBoxColumn106.HeaderText = "Slot ID";
             this.dataGridViewTextBoxColumn106.Name = "dataGridViewTextBoxColumn106";
             this.dataGridViewTextBoxColumn106.ReadOnly = true;
@@ -1994,6 +1983,19 @@
             this.SupervisorNo.HeaderText = "SupervisorNo";
             this.SupervisorNo.Name = "SupervisorNo";
             this.SupervisorNo.ReadOnly = true;
+            // 
+            // tabISP
+            // 
+            this.tabISP.BackColor = System.Drawing.SystemColors.Control;
+            this.tabISP.Controls.Add(this.groupBox1);
+            this.tabISP.Controls.Add(this.grpMacro);
+            this.tabISP.Controls.Add(this.grpAOI);
+            this.tabISP.Location = new System.Drawing.Point(4, 22);
+            this.tabISP.Name = "tabISP";
+            this.tabISP.Padding = new System.Windows.Forms.Padding(3);
+            this.tabISP.Size = new System.Drawing.Size(519, 394);
+            this.tabISP.TabIndex = 1;
+            this.tabISP.Text = "Inspect Type";
             // 
             // FrmDefectLotResult
             // 
@@ -2033,9 +2035,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgNewSlot)).EndInit();
             this.tabctl.ResumeLayout(false);
             this.tabResult.ResumeLayout(false);
-            this.tabISP.ResumeLayout(false);
             this.grpPndnInf.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgPndn)).EndInit();
+            this.tabISP.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

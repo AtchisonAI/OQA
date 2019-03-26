@@ -16,11 +16,15 @@ namespace OQAService.Services
                 var ImgListRes = QueryPackageImg(input);
                 rsp.model.lotInfo = stsRes.model;
                 rsp.model.packageImgList = ImgListRes.models;
-                rsp._success = stsRes._success && ImgListRes._success;
+
+                var CheckListRes = QueryCheckList(input);
+                rsp.model.packageCheckList = CheckListRes.models;
+
+                rsp._success = stsRes._success && ImgListRes._success && CheckListRes._success;
             } else
             {
                 rsp._success = false;
-                rsp._ErrorMsg = string.Format("Lot id:{0},Error:Lot 不存在或未到{1}状态", input.lotId,LotSts.PackageOut);
+                rsp._ErrorMsg = string.Format("Lot id:{0},Error:Lot 不存在或未到{1}状态,或已打包提交", input.lotId,LotSts.ChangeOut);
                 log.Error(rsp._ErrorMsg);
             } 
 
@@ -37,6 +41,13 @@ namespace OQAService.Services
         public ModelRsp<ISPLOTSTS> QueryLotSts(LotPackageInput input)
         {
             return SingleQuery<ISPLOTSTS>(input.lotId);
+        }
+
+        public ModelListRsp<PKGCHKRST> QueryCheckList(LotPackageInput input)
+        {
+            QueryReq req = new QueryReq();
+            AddCondition(req, GetParaName<PKGCHKRST>(P => P.LotId), input.lotId, LogicCondition.AndAlso, CompareType.Equal);
+            return Query<PKGCHKRST>(req);
         }
     }
 }

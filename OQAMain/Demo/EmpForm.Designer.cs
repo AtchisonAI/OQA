@@ -35,7 +35,6 @@
             this.empId_textBoxExt = new System.Windows.Forms.TextBox();
             this.pagesize_label = new System.Windows.Forms.Label();
             this.page_sfComboBox = new System.Windows.Forms.ComboBox();
-            this.emp_sfDataPager = new Syncfusion.WinForms.DataPager.SfDataPager();
             this.reset_button = new System.Windows.Forms.Button();
             this.search_button = new System.Windows.Forms.Button();
             this.delete_button = new System.Windows.Forms.Button();
@@ -45,6 +44,7 @@
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.empChartControl = new Syncfusion.Windows.Forms.Chart.ChartControl();
             this.empPieChartControl = new Syncfusion.Windows.Forms.Chart.ChartControl();
+            this.emp_sfDataPager = new Syncfusion.WinForms.DataPager.SfDataPager();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -64,13 +64,13 @@
             // 
             // splitContainer.Panel1
             // 
+            this.splitContainer.Panel1.Controls.Add(this.emp_sfDataPager);
             this.splitContainer.Panel1.Controls.Add(this.Dept_Lable);
             this.splitContainer.Panel1.Controls.Add(this.UserId_Lable);
             this.splitContainer.Panel1.Controls.Add(this.dept_textBoxExt);
             this.splitContainer.Panel1.Controls.Add(this.empId_textBoxExt);
             this.splitContainer.Panel1.Controls.Add(this.pagesize_label);
             this.splitContainer.Panel1.Controls.Add(this.page_sfComboBox);
-            this.splitContainer.Panel1.Controls.Add(this.emp_sfDataPager);
             this.splitContainer.Panel1.Controls.Add(this.reset_button);
             this.splitContainer.Panel1.Controls.Add(this.search_button);
             this.splitContainer.Panel1.Controls.Add(this.delete_button);
@@ -149,20 +149,6 @@
             this.page_sfComboBox.Text = "20";
             this.page_sfComboBox.SelectedIndexChanged += new System.EventHandler(this.page_sfComboBox_SelectedIndexChanged);
             // 
-            // emp_sfDataPager
-            // 
-            this.emp_sfDataPager.AccessibleName = "DataPager";
-            this.emp_sfDataPager.AllowOnDemandPaging = true;
-            this.emp_sfDataPager.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.emp_sfDataPager.Location = new System.Drawing.Point(272, 321);
-            this.emp_sfDataPager.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.emp_sfDataPager.Name = "emp_sfDataPager";
-            this.emp_sfDataPager.PageCount = 1;
-            this.emp_sfDataPager.Size = new System.Drawing.Size(297, 32);
-            this.emp_sfDataPager.TabIndex = 2;
-            this.emp_sfDataPager.Text = "sfDataPager1";
-            this.emp_sfDataPager.PageIndexChanged += new System.EventHandler<Syncfusion.WinForms.DataPager.Events.PageIndexChangedEventArgs>(this.sfDataPager_PageIndexChanged);
-            // 
             // reset_button
             // 
             this.reset_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -236,6 +222,7 @@
             this.emp_sfDataGrid.Size = new System.Drawing.Size(889, 276);
             this.emp_sfDataGrid.TabIndex = 1;
             this.emp_sfDataGrid.Text = "sfDataGrid1";
+            this.emp_sfDataGrid.Paint += new System.Windows.Forms.PaintEventHandler(this.emp_sfDataGrid_Paint);
             // 
             // tableLayoutPanel
             // 
@@ -364,13 +351,25 @@
             this.empPieChartControl.VisualTheme = "";
             this.empPieChartControl.Click += new System.EventHandler(this.empPieChartControl_Click);
             // 
+            // emp_sfDataPager
+            // 
+            this.emp_sfDataPager.AccessibleName = "DataPager";
+            this.emp_sfDataPager.AllowOnDemandPaging = true;
+            this.emp_sfDataPager.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.emp_sfDataPager.Location = new System.Drawing.Point(281, 322);
+            this.emp_sfDataPager.Name = "emp_sfDataPager";
+            this.emp_sfDataPager.PageCount = 1;
+            this.emp_sfDataPager.Size = new System.Drawing.Size(296, 31);
+            this.emp_sfDataPager.TabIndex = 8;
+            this.emp_sfDataPager.Text = "sfDataPager1";
+            this.emp_sfDataPager.PageIndexChanged += new System.EventHandler<Syncfusion.WinForms.DataPager.Events.PageIndexChangedEventArgs>(this.sfDataPager_PageIndexChanged);
+            // 
             // EmpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(897, 628);
             this.Controls.Add(this.splitContainer);
-            this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "EmpForm";
             this.Text = "EmpForm";
@@ -394,7 +393,6 @@
         private System.Windows.Forms.TextBox empId_textBoxExt;
         private System.Windows.Forms.Label pagesize_label;
         private System.Windows.Forms.ComboBox page_sfComboBox;
-        private Syncfusion.WinForms.DataPager.SfDataPager emp_sfDataPager;
         private System.Windows.Forms.Button reset_button;
         private System.Windows.Forms.Button search_button;
         private System.Windows.Forms.Button delete_button;
@@ -404,5 +402,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private Syncfusion.Windows.Forms.Chart.ChartControl empChartControl;
         private Syncfusion.Windows.Forms.Chart.ChartControl empPieChartControl;
+        private Syncfusion.WinForms.DataPager.SfDataPager emp_sfDataPager;
     }
 }

@@ -25,7 +25,7 @@ namespace OQAMain
         public FrmOQAShipListPrint(string shipId)
         {
             InitializeComponent();
-            this.txtShipFilter.Text = shipId;
+            this.txtShowShipID.Text = shipId;
         }
 
         #endregion
@@ -38,8 +38,7 @@ namespace OQAMain
 
 
         #region " Variable Definition "
-        // private bool b_load_flag  ;
-        //private bool Have_flag = false;
+       
         private string searchbydate;
         private string shipID;
         #endregion
@@ -101,6 +100,12 @@ namespace OQAMain
         
         private void FrmOQAShipListPrint_Load(object sender, EventArgs e)
         {
+            if (txtShowShipID.Text != "")
+            {
+                if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', txtShowShipID.Text) == false) return;
+
+            }
+            
             dtFromTime.Value = DateTime.Now.AddDays(-7);
             this.reportViewer2.LocalReport.DataSources.Clear();
             btnQuery.PerformClick();
@@ -250,6 +255,7 @@ namespace OQAMain
         //checkshipid单选
         private void CheckShipID_ItemCheck(object sender, ItemCheckEventArgs e)
         {
+            txtShowShipID.Text = "";
             shipID = CheckShipID.SelectedItem.ToString();
             if (CheckShipID.CheckedItems.Count > 0)
             {
@@ -313,6 +319,7 @@ namespace OQAMain
             //LotQueryShipId = TxtLotQueryShipID.Text;
             if (e.KeyChar == (Char)13)
             {
+                btnQuery.PerformClick();
                 txtLotFilter.Focus();
 
             }
@@ -426,8 +433,8 @@ namespace OQAMain
 
         private void btnQuery_Click(object sender, EventArgs e)
         {
-            string s_to_time= null;
-            string s_from_time = null;
+              string s_to_time = null;
+              string s_from_time = null;
 
             if (dtToTime.Enabled == true)
             {
@@ -439,9 +446,16 @@ namespace OQAMain
                  s_from_time = dtFromTime.Value.ToShortDateString().Replace("/", "");
 
             }
+            if (Convert.ToInt32(s_from_time) <= Convert.ToInt32(s_to_time))
+            {
+                if (SearchShipIDList(GlobConst.TRAN_VIEW, '1', txtShipFilter.Text.Trim(), txtLotFilter.Text.Trim(), s_from_time, s_to_time) == false) return;
+            }
+            else
+            {
+                MessageBox.Show("To_Time早于From_Time");
+            }
 
-
-            if (SearchShipIDList(GlobConst.TRAN_VIEW, '1', txtShipFilter.Text.Trim(),txtLotFilter.Text.Trim(), s_from_time, s_to_time) == false) return;
+            
 
         }
 

@@ -49,10 +49,13 @@
             this.Inspection_Result = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.txtShowShipID = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -217,10 +220,11 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lisship);
+            this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(243, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(507, 170);
+            this.groupBox2.Size = new System.Drawing.Size(507, 193);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "发货批次信息";
@@ -232,8 +236,8 @@
             this.Qty,
             this.Part_ID,
             this.Inspection_Result});
-            this.lisship.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lisship.Location = new System.Drawing.Point(3, 17);
+            this.lisship.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lisship.Location = new System.Drawing.Point(3, 38);
             this.lisship.Name = "lisship";
             this.lisship.Size = new System.Drawing.Size(501, 150);
             this.lisship.TabIndex = 0;
@@ -267,9 +271,9 @@
             // 
             this.groupBox3.Controls.Add(this.reportViewer2);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(243, 170);
+            this.groupBox3.Location = new System.Drawing.Point(243, 193);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(507, 370);
+            this.groupBox3.Size = new System.Drawing.Size(507, 347);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "交接单打印预览";
@@ -281,8 +285,25 @@
             this.reportViewer2.Location = new System.Drawing.Point(3, 17);
             this.reportViewer2.Name = "reportViewer2";
             this.reportViewer2.ServerReport.BearerToken = null;
-            this.reportViewer2.Size = new System.Drawing.Size(501, 350);
+            this.reportViewer2.Size = new System.Drawing.Size(501, 327);
             this.reportViewer2.TabIndex = 5;
+            // 
+            // txtShowShipID
+            // 
+            this.txtShowShipID.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txtShowShipID.Location = new System.Drawing.Point(0, 0);
+            this.txtShowShipID.Name = "txtShowShipID";
+            this.txtShowShipID.Size = new System.Drawing.Size(158, 21);
+            this.txtShowShipID.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtShowShipID);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 17);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(501, 21);
+            this.panel1.TabIndex = 2;
             // 
             // FrmOQAShipListPrint
             // 
@@ -305,6 +326,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -332,5 +355,7 @@
         private System.Windows.Forms.DateTimePicker dtFromTime;
         private System.Windows.Forms.CheckBox chkToUse;
         private System.Windows.Forms.CheckBox chkFromUse;
+        private System.Windows.Forms.TextBox txtShowShipID;
+        private System.Windows.Forms.Panel panel1;
     }
 }

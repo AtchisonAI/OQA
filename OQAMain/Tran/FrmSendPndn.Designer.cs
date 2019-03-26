@@ -68,16 +68,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(682, 6);
+            this.btnClose.Location = new System.Drawing.Point(654, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(588, 6);
+            this.btnCreate.Location = new System.Drawing.Point(560, 6);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(589, 6);
+            this.btnEdite.Location = new System.Drawing.Point(561, 6);
             this.btnEdite.Visible = false;
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
@@ -123,7 +123,7 @@
             this.grpAbnInf.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpAbnInf.Location = new System.Drawing.Point(0, 0);
             this.grpAbnInf.Name = "grpAbnInf";
-            this.grpAbnInf.Size = new System.Drawing.Size(780, 100);
+            this.grpAbnInf.Size = new System.Drawing.Size(750, 100);
             this.grpAbnInf.TabIndex = 1;
             this.grpAbnInf.TabStop = false;
             this.grpAbnInf.Text = "异常品信息";
@@ -253,7 +253,7 @@
             this.grpPndnInf.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpPndnInf.Location = new System.Drawing.Point(0, 100);
             this.grpPndnInf.Name = "grpPndnInf";
-            this.grpPndnInf.Size = new System.Drawing.Size(780, 560);
+            this.grpPndnInf.Size = new System.Drawing.Size(750, 440);
             this.grpPndnInf.TabIndex = 2;
             this.grpPndnInf.TabStop = false;
             this.grpPndnInf.Text = "异常单信息";
@@ -287,7 +287,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(774, 540);
+            this.dataGridView1.Size = new System.Drawing.Size(744, 420);
             this.dataGridView1.TabIndex = 8;
             // 
             // Column1
@@ -377,7 +377,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(780, 700);
+            this.ClientSize = new System.Drawing.Size(750, 580);
             this.Controls.Add(this.grpPndnInf);
             this.Controls.Add(this.grpAbnInf);
             this.Margin = new System.Windows.Forms.Padding(2);

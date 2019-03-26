@@ -16,6 +16,7 @@ namespace OQAMain
         public FrmLotTransfer()
         {
             InitializeComponent();
+            QueryLotIDList(GlobConst.TRAN_VIEW, '1') ;
         }
 
         #endregion
@@ -142,30 +143,8 @@ namespace OQAMain
       
         private void FrmLotTransfer_Load(object sender, EventArgs e)
         {
-            txtCreater.Text = AuthorityControl.GetUserProfile().userId;
-            try
-            {
-                if (QueryLotIDList(GlobConst.TRAN_VIEW, '1') == false) return;
+            txtCreater.Text= AuthorityControl.GetUserProfile().userId;
 
-                
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-
-            //try;
-            //{
-                
-            //   // ship_no = txtShipNo.Text.Trim();
-            //    // ship_no = "12453";
-            //    if (Querylotinfo(GlobConst.TRAN_VIEW, '1', MasterLot) == false) return;
-
-            //}
-            //catch (System.Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message.ToString());
-            //}
         }
 
 
@@ -509,23 +488,6 @@ namespace OQAMain
             this.LotIDList.ItemCheck += LotIDList_ItemCheck;
         }
 
-        //点击回车
-        private void textBox1Press_check(object sender, KeyPressEventArgs e)
-        {
-
-            if (e.KeyChar == (Char)13)
-            {
-
-                if (ComFunc.Trim(txtSearchLotID.Text) != "")
-                {
-                    if (SearchLotIDList(GlobConst.TRAN_VIEW, '3', txtSearchLotID.Text.Trim()) == false) return;
-                }
-                else {
-                        LotIDList.Items.Clear();
-                        if (QueryLotIDList(GlobConst.TRAN_VIEW, '1') == false) return;
-                }
-            }
-        }
 
         //搜索lotID
         private bool SearchLotIDList(char c_proc_step, char c_tran_flag,string searchlotid)
@@ -603,6 +565,34 @@ namespace OQAMain
                 txtQTY.Text = "";
                 txtDate.Text = "";
                 this.LotIDList.ItemCheck += LotIDList_ItemCheck;
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            ClearData("1");
+        }
+
+        private void btnQuery_Click(object sender, EventArgs e)
+        {
+            this.LotIDList.ItemCheck -= LotIDList_ItemCheck;
+            if (ComFunc.Trim(txtSearchLotID.Text) != "")
+            {
+                if (SearchLotIDList(GlobConst.TRAN_VIEW, '3', txtSearchLotID.Text.Trim()) == false) return;
+            }
+            else
+            {
+                LotIDList.Items.Clear();
+                if (QueryLotIDList(GlobConst.TRAN_VIEW, '1') == false) return;
+            }
+            this.LotIDList.ItemCheck += LotIDList_ItemCheck;
+        }
+
+        private void txtSearchLotID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                btnQuery.PerformClick();
             }
         }
     }

@@ -111,7 +111,7 @@ namespace WcfClient
         private void lotPackageToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             ToolStripMenuItem ctr = (ToolStripMenuItem)sender;
-            FrmLotPackage frm = On_MenuItemClickImpl<FrmLotPackage>(ctr.Name);
+            FrmLotPackageCheck frm = On_MenuItemClickImpl<FrmLotPackageCheck>(ctr.Name);
         }
 
         private void lotTransferToolStripMenuItem_Click(object sender, System.EventArgs e)

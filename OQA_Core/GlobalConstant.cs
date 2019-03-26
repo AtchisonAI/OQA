@@ -53,4 +53,24 @@ namespace OQA_Core
     {
         public static readonly string[] code = new string[] { "A", "S", "D", "F", "C", "P", "R", "B", "O" };
     }
+
+    public sealed class CheckType
+    {
+        //lot 检验类型
+        public const string FOREIGN_C = "FOREIGN_C";
+        public const string SEAL_C = "SEAL_C";
+        public const string PEEL_C = "PEEL_C";
+        public const string PACKING_C = "PACKING_C";
+        public const string SURFACE_C = "SURFACE_C";
+        public const string SHIP_C = "SHIP_C";
+        public const string PIN_C = "PIN_C";
+        public const string FOSB_C = "FOSB_C";
+    }
+
+    public sealed class CheckItemSts
+    {
+        //lot 检验类型
+        public const string OK = "OK";
+        public const string NO = "NO";
+    }
 }

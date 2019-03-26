@@ -152,11 +152,11 @@
             // 
             this.txtLotId.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtLotId.Location = new System.Drawing.Point(55, 20);
-            this.txtLotId.Multiline = true;
             this.txtLotId.Name = "txtLotId";
-            this.txtLotId.Size = new System.Drawing.Size(100, 20);
+            this.txtLotId.Size = new System.Drawing.Size(100, 21);
             this.txtLotId.TabIndex = 3;
-            this.txtLotId.TextChanged += new System.EventHandler(this.lotTextBox_TextChanged);
+            this.txtLotId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLotId_KeyPress);
+            this.txtLotId.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtLotId_MouseDown);
             // 
             // label16
             // 

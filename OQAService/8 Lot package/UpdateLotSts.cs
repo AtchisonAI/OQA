@@ -16,8 +16,7 @@ namespace OQAService.Services
         public ModelRsp<ISPLOTSTS> UpdateLotSts(UpdateModelReq<ISPLOTSTS> input)
         {
             ModelRsp<ISPLOTSTS> rsp = new ModelRsp<ISPLOTSTS>();
-            input.model.UpdateTime = GetSystemDateTime();
-            UpdateModel(input,rsp,true);
+            UpdateTrackModel(input,rsp,true);
             SaveISPLotHistory(LotSts.PackageOut, input.userId ,rsp);
             return rsp;
         }
@@ -81,7 +80,7 @@ namespace OQAService.Services
         public ModelListRsp<PKGCHKRST> UpdateLotCheckList(UpdateModelListReq<PKGCHKRST> input)
         {
             ModelListRsp<PKGCHKRST> rsp = new ModelListRsp<PKGCHKRST>();
-            UpdateModels<PKGCHKRST>(input, rsp, true);
+            UpdateTrackModels(input, rsp, true);
             return rsp;
         }
     }

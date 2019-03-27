@@ -12,6 +12,7 @@ using transferForm;
 using System.Data;
 using WCFModels.Message;
 using WCFModels.OQA;
+using System.Linq;
 
 namespace OQAMain
 {
@@ -295,11 +296,11 @@ namespace OQAMain
                 //ComFunc.(LotIDList, true);
                 //      txtCount.Text = out_data.model.PKGSHPDAT_list.Count.ToString();
 
-
-                for (int i = 0; i < out_data.model.SHIPIDLIST_list.Count; i++)
+                List< PKGSHPSTS >SortByTime= out_data.model.SHIPIDLIST_list.OrderByDescending(o => o.CreateTime).ToList();
+                for (int i = 0; i < SortByTime.Count; i++)
                 {
                     ListViewItem list_item = new ListViewItem();
-                    PKGSHPSTS list = out_data.model.SHIPIDLIST_list[i];
+                    PKGSHPSTS list = SortByTime[i];
                     list_item.Text = list.ShipId;
                     CheckShipID.Items.Add(list_item.Text);
                 }
@@ -492,10 +493,19 @@ namespace OQAMain
         private void dtFromTime_ValueChanged(object sender, EventArgs e)
         {
 
-            if (dtFromTime.Value > dtToTime.Value && dtToTime.Enabled == true)
+            if (dtFromTime.Value >= dtToTime.Value && dtToTime.Enabled == true)
             {
                 MessageBox.Show("起始日期不能超过截至日期.");
                 dtFromTime.Value = DateTime.Now.AddDays(-7);
+            }
+        }
+
+        private void dtToTime_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtToTime.Value <= dtFromTime.Value && dtFromTime.Enabled == true)
+            {
+                MessageBox.Show("起始日期不能超过截至日期.");
+                dtToTime.Value = DateTime.Now.Date;
             }
         }
     }

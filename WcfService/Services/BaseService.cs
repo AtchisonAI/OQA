@@ -216,7 +216,7 @@ namespace WcfService
         /// <summary>
         /// 批量更新建模对象，根据对象的_ProStep属性判断是新增/修改，还是删除操作。
         /// 可返回更新后的对象清单。
-        /// </summary>
+        /// </summary>  
         /// <typeparam name="T">具有IModelingObject接口的建模对象类型</typeparam>
         /// <param name="inMsg">需要更新的建模对象列表</param>
         /// <param name="outMsg">更新后的建模对象列表</param>

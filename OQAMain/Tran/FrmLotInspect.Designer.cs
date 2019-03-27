@@ -696,7 +696,6 @@
             this.txtDept.Name = "txtDept";
             this.txtDept.Size = new System.Drawing.Size(100, 21);
             this.txtDept.TabIndex = 1;
-            this.txtDept.Text = "OQA";
             // 
             // labDept
             // 

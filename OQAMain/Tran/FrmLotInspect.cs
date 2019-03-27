@@ -392,6 +392,7 @@ namespace OQAMain
                 txtShift.Focus();
 
                 list_meslot = out_data.model.OQAMESLOT_LIST;
+                list_meslot[0].Stage = "OQA";
                 txtLotID.Text = list_meslot[0].Lotid;
                 txtFoupID.Text = list_meslot[0].Foupid;
                 txtPartID.Text = list_meslot[0].Partid;
@@ -404,7 +405,7 @@ namespace OQAMain
                 s_sentime = list_meslot[0].Sentime;
                 txtUserID.Text = AuthorityControl.GetUserProfile().userId;
                 txtRecDate.Text = DateTime.Now.ToString("yyyyMMddhhmmss");
-                txtDept.Text = "OQA";
+                txtDept.Text = "FQA";
 
                 list_wafer = out_data.model.OQAMESWAFER_LIST;
                 int slotIndex;

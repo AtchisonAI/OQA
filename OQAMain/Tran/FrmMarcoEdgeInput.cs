@@ -403,6 +403,7 @@ namespace OQAMain
                 ComFunc.ClearBoxValue(groupBox3);
                 txtLotId.Clear();
                 cboxSlotId.Items.Clear();
+                comboBox1.Text = "";
                 cboxSlotId.Text = "";
                 lotId = "";
                 slotId = "";

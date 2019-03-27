@@ -492,10 +492,19 @@ namespace OQAMain
         private void dtFromTime_ValueChanged(object sender, EventArgs e)
         {
 
-            if (dtFromTime.Value > dtToTime.Value && dtToTime.Enabled == true)
+            if (dtFromTime.Value >= dtToTime.Value && dtToTime.Enabled == true)
             {
                 MessageBox.Show("起始日期不能超过截至日期.");
                 dtFromTime.Value = DateTime.Now.AddDays(-7);
+            }
+        }
+
+        private void dtToTime_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtToTime.Value <= dtFromTime.Value && dtFromTime.Enabled == true)
+            {
+                MessageBox.Show("起始日期不能超过截至日期.");
+                dtToTime.Value = DateTime.Now.Date;
             }
         }
     }

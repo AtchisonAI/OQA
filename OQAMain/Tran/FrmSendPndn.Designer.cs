@@ -48,6 +48,10 @@
             this.labLotid = new System.Windows.Forms.Label();
             this.grpPndnInf = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.labOperatorNo = new System.Windows.Forms.Label();
+            this.txtOperatorNo = new System.Windows.Forms.TextBox();
+            this.txtSupervisorNo = new System.Windows.Forms.TextBox();
+            this.labSupervisorNo = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,10 +60,6 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labOperatorNo = new System.Windows.Forms.Label();
-            this.txtOperatorNo = new System.Windows.Forms.TextBox();
-            this.txtSupervisorNo = new System.Windows.Forms.TextBox();
-            this.labSupervisorNo = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.grpAbnInf.SuspendLayout();
             this.grpPndnInf.SuspendLayout();
@@ -72,12 +72,12 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(560, 6);
+            this.btnCreate.Location = new System.Drawing.Point(560, 5);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(561, 6);
+            this.btnEdite.Location = new System.Drawing.Point(560, 6);
             this.btnEdite.Visible = false;
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
@@ -91,10 +91,10 @@
             this.pnlMenu.Controls.SetChildIndex(this.txtOperatorNo, 0);
             this.pnlMenu.Controls.SetChildIndex(this.labSupervisorNo, 0);
             this.pnlMenu.Controls.SetChildIndex(this.txtSupervisorNo, 0);
-            this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
-            this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnRefresh, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
+            this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
             // 
             // btnRefresh
             // 
@@ -195,34 +195,34 @@
             // labHoldCode
             // 
             this.labHoldCode.AutoSize = true;
-            this.labHoldCode.Location = new System.Drawing.Point(383, 55);
+            this.labHoldCode.Location = new System.Drawing.Point(378, 55);
             this.labHoldCode.Name = "labHoldCode";
-            this.labHoldCode.Size = new System.Drawing.Size(59, 12);
+            this.labHoldCode.Size = new System.Drawing.Size(65, 12);
             this.labHoldCode.TabIndex = 5;
-            this.labHoldCode.Text = "HoldCode:";
+            this.labHoldCode.Text = "Hold Code:";
             // 
             // labStepName
             // 
             this.labStepName.AutoSize = true;
-            this.labStepName.Location = new System.Drawing.Point(194, 58);
+            this.labStepName.Location = new System.Drawing.Point(187, 58);
             this.labStepName.Name = "labStepName";
-            this.labStepName.Size = new System.Drawing.Size(59, 12);
+            this.labStepName.Size = new System.Drawing.Size(65, 12);
             this.labStepName.TabIndex = 4;
-            this.labStepName.Text = "StepName:";
+            this.labStepName.Text = "Step Name:";
             // 
             // labStepId
             // 
             this.labStepId.AutoSize = true;
-            this.labStepId.Location = new System.Drawing.Point(20, 58);
+            this.labStepId.Location = new System.Drawing.Point(15, 58);
             this.labStepId.Name = "labStepId";
-            this.labStepId.Size = new System.Drawing.Size(47, 12);
+            this.labStepId.Size = new System.Drawing.Size(53, 12);
             this.labStepId.TabIndex = 3;
-            this.labStepId.Text = "StepId:";
+            this.labStepId.Text = "Step ID:";
             // 
             // labQty
             // 
             this.labQty.AutoSize = true;
-            this.labQty.Location = new System.Drawing.Point(385, 31);
+            this.labQty.Location = new System.Drawing.Point(381, 31);
             this.labQty.Name = "labQty";
             this.labQty.Size = new System.Drawing.Size(29, 12);
             this.labQty.TabIndex = 2;
@@ -231,16 +231,16 @@
             // labPartId
             // 
             this.labPartId.AutoSize = true;
-            this.labPartId.Location = new System.Drawing.Point(194, 31);
+            this.labPartId.Location = new System.Drawing.Point(190, 31);
             this.labPartId.Name = "labPartId";
-            this.labPartId.Size = new System.Drawing.Size(47, 12);
+            this.labPartId.Size = new System.Drawing.Size(53, 12);
             this.labPartId.TabIndex = 1;
-            this.labPartId.Text = "PartID:";
+            this.labPartId.Text = "Part ID:";
             // 
             // labLotid
             // 
             this.labLotid.AutoSize = true;
-            this.labLotid.Location = new System.Drawing.Point(20, 31);
+            this.labLotid.Location = new System.Drawing.Point(18, 31);
             this.labLotid.Name = "labLotid";
             this.labLotid.Size = new System.Drawing.Size(47, 12);
             this.labLotid.TabIndex = 0;
@@ -290,6 +290,40 @@
             this.dataGridView1.Size = new System.Drawing.Size(744, 420);
             this.dataGridView1.TabIndex = 8;
             // 
+            // labOperatorNo
+            // 
+            this.labOperatorNo.AutoSize = true;
+            this.labOperatorNo.Location = new System.Drawing.Point(57, 12);
+            this.labOperatorNo.Name = "labOperatorNo";
+            this.labOperatorNo.Size = new System.Drawing.Size(77, 12);
+            this.labOperatorNo.TabIndex = 1;
+            this.labOperatorNo.Text = "Operator No:";
+            // 
+            // txtOperatorNo
+            // 
+            this.txtOperatorNo.Location = new System.Drawing.Point(139, 8);
+            this.txtOperatorNo.Name = "txtOperatorNo";
+            this.txtOperatorNo.Size = new System.Drawing.Size(100, 21);
+            this.txtOperatorNo.TabIndex = 7;
+            // 
+            // txtSupervisorNo
+            // 
+            this.txtSupervisorNo.Location = new System.Drawing.Point(351, 8);
+            this.txtSupervisorNo.Name = "txtSupervisorNo";
+            this.txtSupervisorNo.Size = new System.Drawing.Size(100, 21);
+            this.txtSupervisorNo.TabIndex = 10;
+            this.txtSupervisorNo.Visible = false;
+            // 
+            // labSupervisorNo
+            // 
+            this.labSupervisorNo.AutoSize = true;
+            this.labSupervisorNo.Location = new System.Drawing.Point(262, 12);
+            this.labSupervisorNo.Name = "labSupervisorNo";
+            this.labSupervisorNo.Size = new System.Drawing.Size(89, 12);
+            this.labSupervisorNo.TabIndex = 9;
+            this.labSupervisorNo.Text = "Supervisor No:";
+            this.labSupervisorNo.Visible = false;
+            // 
             // Column1
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -334,44 +368,14 @@
             // 
             this.dataGridViewTextBoxColumn6.HeaderText = "Spec";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Visible = false;
+            this.dataGridViewTextBoxColumn6.Width = 5;
             // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.HeaderText = "Remark";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.Width = 300;
-            // 
-            // labOperatorNo
-            // 
-            this.labOperatorNo.AutoSize = true;
-            this.labOperatorNo.Location = new System.Drawing.Point(57, 12);
-            this.labOperatorNo.Name = "labOperatorNo";
-            this.labOperatorNo.Size = new System.Drawing.Size(77, 12);
-            this.labOperatorNo.TabIndex = 1;
-            this.labOperatorNo.Text = "Operator No:";
-            // 
-            // txtOperatorNo
-            // 
-            this.txtOperatorNo.Location = new System.Drawing.Point(139, 8);
-            this.txtOperatorNo.Name = "txtOperatorNo";
-            this.txtOperatorNo.Size = new System.Drawing.Size(100, 21);
-            this.txtOperatorNo.TabIndex = 7;
-            // 
-            // txtSupervisorNo
-            // 
-            this.txtSupervisorNo.Location = new System.Drawing.Point(351, 8);
-            this.txtSupervisorNo.Name = "txtSupervisorNo";
-            this.txtSupervisorNo.Size = new System.Drawing.Size(100, 21);
-            this.txtSupervisorNo.TabIndex = 10;
-            // 
-            // labSupervisorNo
-            // 
-            this.labSupervisorNo.AutoSize = true;
-            this.labSupervisorNo.Location = new System.Drawing.Point(262, 12);
-            this.labSupervisorNo.Name = "labSupervisorNo";
-            this.labSupervisorNo.Size = new System.Drawing.Size(89, 12);
-            this.labSupervisorNo.TabIndex = 9;
-            this.labSupervisorNo.Text = "Supervisor No:";
             // 
             // FrmDefectSend
             // 

@@ -165,6 +165,7 @@
             this.dtToTime.Name = "dtToTime";
             this.dtToTime.Size = new System.Drawing.Size(120, 21);
             this.dtToTime.TabIndex = 7;
+            this.dtToTime.ValueChanged += new System.EventHandler(this.dtToTime_ValueChanged);
             // 
             // label2
             // 

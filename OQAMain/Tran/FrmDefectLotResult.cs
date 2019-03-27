@@ -860,66 +860,69 @@ namespace OQAMain
                 if (QryPndnInfo(GlobConst.TRAN_VIEW, '1', txtISPLotFilter.Text) == false) return;
 
                 if (QueryNewSlotInfo(GlobConst.TRAN_VIEW, '1', txtISPLotFilter.Text.Trim(),out list_ispwafer,out list_meswafer) == false) return;
-
-                //更新表中数据
-                for (int i = 0; i < list_meswafer.Count; i++)
+                if (list_meswafer.Count > 0)
                 {
-                    PKGSLTDEF item = new PKGSLTDEF();
-                    item.LotId = list_meswafer[i].LotId;
-                    item.SlotId = list_meswafer[i].SlotId;
-                    item.WaferId = list_meswafer[i].WaferId;
-
-                    list_pkgwafer.Add(item);
-                }
-                
-                var outInfo = SavePackageSlt(GlobConst.TRAN_CREATE, '1', txtISPLotFilter.Text.Trim(), list_pkgwafer);
-                if (!outInfo._success && null != outInfo.model)
-                {
-                    if (null != outInfo.model.PkgsltdefList && outInfo.model.PkgsltdefList.Count > 0)
+                    //暂时写法，待同步数据有更新此字段时再改
+                    txtNewFoupID.Text = txtFoupID.Text;
+                    //更新表中数据
+                    for (int i = 0; i < list_meswafer.Count; i++)
                     {
-                        list_pkgwafer = outInfo.model.PkgsltdefList;
-                    }
-                }
+                        PKGSLTDEF item = new PKGSLTDEF();
+                        item.LotId = list_meswafer[i].LotId;
+                        item.SlotId = list_meswafer[i].SlotId;
+                        item.WaferId = list_meswafer[i].WaferId;
 
-                for (int i = 0; i < 25; i++)
-                {
-                    bool isInIsp = false;
-                    dgNewSlot.Rows[0].Cells[i].Style.BackColor = Color.LightGreen;
-                    int j = i + 1;
-                    if (list_ispwafer.Count(p => p.SlotId == j.ToString().PadLeft(3, '0')) > 0)
-                    {
-                        isInIsp = true;
+                        list_pkgwafer.Add(item);
                     }
 
-                    bool isInMes = list_meswafer.Count(p => p.SlotId == j.ToString().PadLeft(3, '0')) > 0;
-
-                    if (isInMes)
+                    var outInfo = SavePackageSlt(GlobConst.TRAN_CREATE, '1', txtISPLotFilter.Text.Trim(), list_pkgwafer);
+                    if (!outInfo._success && null != outInfo.model)
                     {
-                        if (isInIsp)
+                        if (null != outInfo.model.PkgsltdefList && outInfo.model.PkgsltdefList.Count > 0)
                         {
-                            dgNewSlot.Rows[0].Cells[i].Value = "OK";
+                            list_pkgwafer = outInfo.model.PkgsltdefList;
+                        }
+                    }
+
+                    for (int i = 0; i < 25; i++)
+                    {
+                        bool isInIsp = false;
+                        dgNewSlot.Rows[0].Cells[i].Style.BackColor = Color.LightGreen;
+                        int j = i + 1;
+                        if (list_ispwafer.Count(p => p.SlotId == j.ToString().PadLeft(3, '0')) > 0)
+                        {
+                            isInIsp = true;
+                        }
+
+                        bool isInMes = list_meswafer.Count(p => p.SlotId == j.ToString().PadLeft(3, '0')) > 0;
+
+                        if (isInMes)
+                        {
+                            if (isInIsp)
+                            {
+                                dgNewSlot.Rows[0].Cells[i].Value = "OK";
+                            }
+                            else
+                            {
+                                dgNewSlot.Rows[0].Cells[i].Value = "I";
+                            }
                         }
                         else
                         {
-                            dgNewSlot.Rows[0].Cells[i].Value = "I";
+                            if (isInIsp)
+                            {
+                                dgNewSlot.Rows[0].Cells[i].Value = "S";
+                                dgNewSlot.Rows[0].Cells[i].Style.BackColor = Color.Red;
+                            }
+                            else
+                            {
+                                dgNewSlot.Rows[0].Cells[i].Value = "/";
+                                dgNewSlot.Rows[0].Cells[i].Style.BackColor = Color.LightGray;
+                            }
                         }
-                    }
-                    else
-                    {
-                        if (isInIsp)
-                        {
-                            dgNewSlot.Rows[0].Cells[i].Value = "S";
-                            dgNewSlot.Rows[0].Cells[i].Style.BackColor = Color.Red;
-                        }
-                        else
-                        {
-                            dgNewSlot.Rows[0].Cells[i].Value = "/";
-                            dgNewSlot.Rows[0].Cells[i].Style.BackColor = Color.LightGray;
-                        }
-                    }
 
+                    }
                 }
-
             }
         }
 

@@ -16,16 +16,7 @@ namespace OQAService.Services
         public ModelRsp<ISPLOTSTS> UpdateLotSts(UpdateModelReq<ISPLOTSTS> input)
         {
             ModelRsp<ISPLOTSTS> rsp = new ModelRsp<ISPLOTSTS>();
-            if(input.operateType == OperateType.Insert)
-            {
-                input.model.CreateTime = GetSystemDateTime();
-            }
-            else if(input.operateType == OperateType.Update)
-            {
-                input.model.UpdateTime = GetSystemDateTime();
-            }
-            
-            UpdateModel(input,rsp,true);
+            UpdateTrackModel(input,rsp,true);
             SaveISPLotHistory(LotSts.PackageOut, input.userId ,rsp);
             return rsp;
         }
@@ -89,26 +80,7 @@ namespace OQAService.Services
         public ModelListRsp<PKGCHKRST> UpdateLotCheckList(UpdateModelListReq<PKGCHKRST> input)
         {
             ModelListRsp<PKGCHKRST> rsp = new ModelListRsp<PKGCHKRST>();
-
-            //foreach (PKGCHKRST m in input.models)
-            //{
-            //    UpdateModelReq<PKGCHKRST> req = new UpdateModelReq<PKGCHKRST>();
-            //    ModelRsp<PKGCHKRST> mRsp = new ModelRsp<PKGCHKRST>();
-            //    req.operateType = input.operateType;
-
-            //    if (input.operateType == OperateType.Insert)
-            //    {
-            //        m.CreateTime = GetSystemDateTime();
-            //    }
-            //    else if (input.operateType == OperateType.Update)
-            //    {
-            //        m.UpdateTime = GetSystemDateTime();
-            //    }
-            //    UpdateModel<PKGCHKRST>(req, mRsp, true);
-            //    rsp.models.Add(mRsp.model);
-            //}
-
-            UpdateModels<PKGCHKRST>(input, rsp, true);
+            UpdateTrackModels(input, rsp, true);
             return rsp;
         }
     }

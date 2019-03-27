@@ -451,7 +451,7 @@ namespace WCFModels.OQA
     [TableName("ISPLOTSTS")]
     [PrimaryKey("LOT_ID",AutoIncrement = false)]
     [ExplicitColumns]
-    public partial class ISPLOTSTS
+    public partial class ISPLOTSTS:ITrackModelObject
     {
 
         
@@ -785,7 +785,7 @@ namespace WCFModels.OQA
     [TableName("PKGCHKRST")]
     [PrimaryKey("LOT_ID,CHK_TYPE", AutoIncrement = false)]
     [ExplicitColumns]
-    public partial class PKGCHKRST
+    public partial class PKGCHKRST :ITrackModelObject
     {
         [DataMember]
         [Column("LOT_ID")] public string LotId { get; set; }

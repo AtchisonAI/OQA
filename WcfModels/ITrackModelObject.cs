@@ -4,9 +4,16 @@ namespace WCFModels
 {
     public interface ITrackModelObject
     {
-        [Column("Create_Time")]  string CreateTime { get; set; }
-        [Column("Create_UserId")] string CreateUserId { get; set; }
-        [Column("Update_Time")] string UpdateTime { get; set; }
-        [Column("Update_UserId")] string UpdateUserId { get; set; }
+        [Column("CREATE_TIME")]
+        string CreateTime { get; set; }
+
+        [Column("CREATE_USER_ID")]
+        string CreateUserId { get; set; }
+
+        [Column("UPDATE_TIME")]
+        string UpdateTime { get; set; }
+
+        [Column("UPDATE_USER_ID")]
+        string UpdateUserId { get; set; }
     }
 }

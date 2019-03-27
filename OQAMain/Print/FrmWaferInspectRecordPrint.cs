@@ -53,7 +53,7 @@ namespace OQAMain
 
                     if (ComFunc.CheckValue(txtLotID, 1) == false)
                     {
-                        MessageBox.Show("必填内容输入为空！");
+                        MessageBox.Show("Please enter LotID!");
                         txtLotID.Focus();
                         return false;
                     }
@@ -197,7 +197,7 @@ namespace OQAMain
             }
             else
             {
-                MessageBox.Show("不存在此lotid可打印的检验报告，请确认lotid！");
+                MessageBox.Show("Please check Lotid！");
                 txtLotID.Focus();
                 
             }

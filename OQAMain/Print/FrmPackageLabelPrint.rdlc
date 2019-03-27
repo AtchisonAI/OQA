@@ -458,7 +458,7 @@
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>3.8873cm</Top>
             <Left>1.02457cm</Left>
-            <Height>0.30374cm</Height>
+            <Height>0.38312cm</Height>
             <Width>1.56986cm</Width>
             <ZIndex>14</ZIndex>
             <Style>
@@ -529,7 +529,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Cust LotID:</Value>
+                    <Value>Cust Lot ID:</Value>
                     <Style>
                       <FontSize>5pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -544,7 +544,7 @@
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>4.28736cm</Top>
             <Left>1.02457cm</Left>
-            <Height>0.30374cm</Height>
+            <Height>0.35666cm</Height>
             <Width>1.56986cm</Width>
             <ZIndex>17</ZIndex>
             <Style>
@@ -579,7 +579,7 @@
             </Paragraphs>
             <Top>4.28736cm</Top>
             <Left>2.68933cm</Left>
-            <Height>0.30374cm</Height>
+            <Height>0.35666cm</Height>
             <Width>1.94804cm</Width>
             <ZIndex>18</ZIndex>
             <Style>
@@ -599,7 +599,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Orignalcountry:</Value>
+                    <Value>Orignal country:</Value>
                     <Style>
                       <FontSize>5pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -614,7 +614,7 @@
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>4.28736cm</Top>
             <Left>4.84022cm</Left>
-            <Height>0.30374cm</Height>
+            <Height>0.35666cm</Height>
             <Width>1.94804cm</Width>
             <ZIndex>19</ZIndex>
             <Style>
@@ -648,7 +648,7 @@
             </Paragraphs>
             <Top>4.28736cm</Top>
             <Left>7.15762cm</Left>
-            <Height>0.30374cm</Height>
+            <Height>0.35666cm</Height>
             <Width>1.94804cm</Width>
             <ZIndex>20</ZIndex>
             <Style>
@@ -738,7 +738,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Cust PartID:</Value>
+                    <Value>Cust Part ID:</Value>
                     <Style>
                       <FontSize>5pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -887,7 +887,7 @@
             </Style>
           </Line>
           <Line Name="Line23">
-            <Top>4.65668cm</Top>
+            <Top>4.73606cm</Top>
             <Left>0.82614cm</Left>
             <Height>0cm</Height>
             <Width>8.6854cm</Width>
@@ -1050,17 +1050,17 @@
             </Style>
           </Line>
         </ReportItems>
-        <Height>3.35417in</Height>
+        <Height>2.1875in</Height>
         <Style />
       </Body>
-      <Width>7.13538in</Width>
+      <Width>3.86455in</Width>
       <Page>
-        <PageHeight>21cm</PageHeight>
-        <PageWidth>29.7cm</PageWidth>
+        <PageHeight>6cm</PageHeight>
+        <PageWidth>10cm</PageWidth>
         <LeftMargin>0cm</LeftMargin>
         <RightMargin>0cm</RightMargin>
-        <TopMargin>2cm</TopMargin>
-        <BottomMargin>2cm</BottomMargin>
+        <TopMargin>0cm</TopMargin>
+        <BottomMargin>0cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style />
       </Page>

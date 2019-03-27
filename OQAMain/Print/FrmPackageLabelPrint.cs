@@ -8,6 +8,7 @@ using System.Linq;
 using WCFModels.Message;
 using WCFModels.OQA;
 using HiDM.LabelPrinting.Common.Extension;
+using WcfClientCore.Utils.Authority;
 
 namespace OQAMain
 {
@@ -186,7 +187,7 @@ namespace OQAMain
                     OrignalCountry = out_data.model.PKGLabel_list[0][(int)PKG_LIST.orignal_country].ToString();
                     PartName = out_data.model.PKGLabel_list[0][(int)PKG_LIST.part_desc].ToString();
                     PartNo = out_data.model.PKGLabel_list[0][(int)PKG_LIST.part_id].ToString();
-                    QAstamp = out_data.model.PKGLabel_list[0][(int)PKG_LIST.qa_stamp].ToString();
+                    QAstamp = AuthorityControl.GetUserProfile().userId;
                     Quantity = out_data.model.PKGLabel_list[0][(int)PKG_LIST.qty].ToString();
 
                     PartNOBarcode = out_data.model.PKGLabel_list[0][(int)PKG_LIST.part_id].ToString().ToBarcode39().ImageToBytes().ToBase64();

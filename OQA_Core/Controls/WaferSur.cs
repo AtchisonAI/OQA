@@ -40,7 +40,7 @@ namespace WaferSf
         {
             if (nodeMode)
             {
-                string[] nineList = { "11", "13", "15", "3", "23", "17", "7", "9", "19", "18" };
+                string[] nineList = { "11", "13", "15", "3", "23", "17", "7", "9", "19"};
 
                 foreach (Control control in tableLayoutPanel1.Controls)
                 {

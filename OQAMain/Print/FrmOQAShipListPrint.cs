@@ -27,6 +27,7 @@ namespace OQAMain
         {
             InitializeComponent();
             this.txtShowShipID.Text = shipId;
+            this.txtShipFilter.Text = shipId;
         }
 
         #endregion
@@ -104,7 +105,6 @@ namespace OQAMain
             if (txtShowShipID.Text != "")
             {
                 if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', txtShowShipID.Text) == false) return;
-
             }
             
             dtFromTime.Value = DateTime.Now.AddDays(-7);
@@ -296,7 +296,7 @@ namespace OQAMain
                 //ComFunc.(LotIDList, true);
                 //      txtCount.Text = out_data.model.PKGSHPDAT_list.Count.ToString();
 
-                List< PKGSHPSTS >SortByTime= out_data.model.SHIPIDLIST_list.OrderByDescending(o => o.CreateTime).ToList();
+                List<PKGSHPSTS> SortByTime = out_data.model.SHIPIDLIST_list.OrderBy(o => o.CreateTime).ToList();
                 for (int i = 0; i < SortByTime.Count; i++)
                 {
                     ListViewItem list_item = new ListViewItem();
@@ -386,39 +386,39 @@ namespace OQAMain
         }
 
         //search shipid by date
-        private bool SearchShipIDListByDate(char c_proc_step, char c_tran_flag, string searchshipidbydate,string A)
-        {
-            ModelRsp<ShipIDListView> in_node = new ModelRsp<ShipIDListView>();
-            ShipIDListView in_data = new ShipIDListView();
+        //private bool SearchShipIDListByDate(char c_proc_step, char c_tran_flag, string searchshipidbydate,string A)
+        //{
+        //    ModelRsp<ShipIDListView> in_node = new ModelRsp<ShipIDListView>();
+        //    ShipIDListView in_data = new ShipIDListView();
 
-            in_data.C_PROC_STEP = c_proc_step;
-            in_data.C_TRAN_FLAG = c_tran_flag;
-           // in_data.IN_SEARCHBYDATE_NO = searchshipidbydate;
-            in_node.model = in_data;
+        //    in_data.C_PROC_STEP = c_proc_step;
+        //    in_data.C_TRAN_FLAG = c_tran_flag;
+        //   // in_data.IN_SEARCHBYDATE_NO = searchshipidbydate;
+        //    in_node.model = in_data;
 
-            var out_data = OQASrv.Call.QueryShipIDList(in_node);
+        //    var out_data = OQASrv.Call.QueryShipIDList(in_node);
 
 
-            if (out_data._success == true)
-            {
-                CheckShipID.Items.Clear();
-                for (int i = 0; i < out_data.model.SEARCHshipID_list.Count; i++)
-                {
-                    ListViewItem list_item = new ListViewItem();
+        //    if (out_data._success == true)
+        //    {
+        //        CheckShipID.Items.Clear();
+        //        for (int i = 0; i < out_data.model.SEARCHshipID_list.Count; i++)
+        //        {
+        //            ListViewItem list_item = new ListViewItem();
 
-                    list_item.Text = out_data.model.SEARCHshipID_list[i][0].ToString();
-                    CheckShipID.Items.Add(list_item.Text);
+        //            list_item.Text = out_data.model.SEARCHshipID_list[i][0].ToString();
+        //            CheckShipID.Items.Add(list_item.Text);
 
-                }
-                lblSucessMsg.Text = out_data._MsgCode;
-                return true;
-            }
-            else
-            {
-                MessageBox.Show(out_data._ErrorMsg);
-                return false;
-            }
-        }
+        //        }
+        //        lblSucessMsg.Text = out_data._MsgCode;
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show(out_data._ErrorMsg);
+        //        return false;
+        //    }
+        //}
         private void clean()
         {
             ComFunc.InitListView(lisship, true);

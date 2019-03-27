@@ -223,6 +223,10 @@
             this.tabResult = new System.Windows.Forms.TabPage();
             this.grpPndnInf = new System.Windows.Forms.GroupBox();
             this.dgPndn = new System.Windows.Forms.DataGridView();
+            this.tabISP = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtNewFoupID = new System.Windows.Forms.TextBox();
+            this.lblNewFoupID = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn101 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn102 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn103 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -234,7 +238,6 @@
             this.HoldCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoldComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupervisorNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabISP = new System.Windows.Forms.TabPage();
             this.pnlMenu.SuspendLayout();
             this.grpRcvLot.SuspendLayout();
             this.grpOQAInfo.SuspendLayout();
@@ -253,28 +256,28 @@
             this.grpPndnInf.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPndn)).BeginInit();
             this.tabISP.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(685, 4);
+            this.btnClose.Location = new System.Drawing.Point(652, 4);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(409, 4);
+            this.btnCreate.Location = new System.Drawing.Point(376, 4);
             this.btnCreate.Visible = false;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(501, 4);
+            this.btnEdite.Location = new System.Drawing.Point(468, 4);
+            this.btnEdite.Text = "Continue";
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
             // 
             this.pnlMenu.Controls.Add(this.btnSrap);
-            this.pnlMenu.Location = new System.Drawing.Point(0, 660);
-            this.pnlMenu.Size = new System.Drawing.Size(780, 40);
             this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
@@ -298,10 +301,10 @@
             this.grpRcvLot.Dock = System.Windows.Forms.DockStyle.Left;
             this.grpRcvLot.Location = new System.Drawing.Point(0, 0);
             this.grpRcvLot.Name = "grpRcvLot";
-            this.grpRcvLot.Size = new System.Drawing.Size(250, 660);
+            this.grpRcvLot.Size = new System.Drawing.Size(250, 540);
             this.grpRcvLot.TabIndex = 3;
             this.grpRcvLot.TabStop = false;
-            this.grpRcvLot.Text = "Recive Lot Query";
+            this.grpRcvLot.Text = "Defect Lot Query";
             // 
             // btnISPLotFilter
             // 
@@ -352,7 +355,7 @@
             // 
             this.txtCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtCount.Enabled = false;
-            this.txtCount.Location = new System.Drawing.Point(9, 630);
+            this.txtCount.Location = new System.Drawing.Point(9, 510);
             this.txtCount.Name = "txtCount";
             this.txtCount.Size = new System.Drawing.Size(100, 21);
             this.txtCount.TabIndex = 8;
@@ -378,7 +381,7 @@
             this.Cust_part_ID});
             this.LstRcvLot.Location = new System.Drawing.Point(9, 63);
             this.LstRcvLot.Name = "LstRcvLot";
-            this.LstRcvLot.Size = new System.Drawing.Size(230, 558);
+            this.LstRcvLot.Size = new System.Drawing.Size(230, 438);
             this.LstRcvLot.TabIndex = 1;
             this.LstRcvLot.UseCompatibleStateImageBehavior = false;
             this.LstRcvLot.View = System.Windows.Forms.View.Details;
@@ -449,7 +452,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(250, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 660);
+            this.splitter1.Size = new System.Drawing.Size(3, 540);
             this.splitter1.TabIndex = 7;
             this.splitter1.TabStop = false;
             // 
@@ -483,7 +486,7 @@
             this.grpOQAInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpOQAInfo.Location = new System.Drawing.Point(253, 0);
             this.grpOQAInfo.Name = "grpOQAInfo";
-            this.grpOQAInfo.Size = new System.Drawing.Size(527, 160);
+            this.grpOQAInfo.Size = new System.Drawing.Size(497, 160);
             this.grpOQAInfo.TabIndex = 8;
             this.grpOQAInfo.TabStop = false;
             this.grpOQAInfo.Text = "OQA Information";
@@ -736,7 +739,7 @@
             this.grpSlot.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpSlot.Location = new System.Drawing.Point(253, 160);
             this.grpSlot.Name = "grpSlot";
-            this.grpSlot.Size = new System.Drawing.Size(527, 80);
+            this.grpSlot.Size = new System.Drawing.Size(497, 80);
             this.grpSlot.TabIndex = 11;
             this.grpSlot.TabStop = false;
             this.grpSlot.Text = "Slot Information";
@@ -776,7 +779,7 @@
             this.dgSlotID.Name = "dgSlotID";
             this.dgSlotID.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgSlotID.RowTemplate.Height = 23;
-            this.dgSlotID.Size = new System.Drawing.Size(521, 60);
+            this.dgSlotID.Size = new System.Drawing.Size(491, 60);
             this.dgSlotID.TabIndex = 0;
             // 
             // Column1
@@ -1637,11 +1640,11 @@
             // btnSrap
             // 
             this.btnSrap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSrap.Location = new System.Drawing.Point(593, 4);
+            this.btnSrap.Location = new System.Drawing.Point(560, 4);
             this.btnSrap.Name = "btnSrap";
             this.btnSrap.Size = new System.Drawing.Size(88, 26);
             this.btnSrap.TabIndex = 7;
-            this.btnSrap.Text = "Scrap";
+            this.btnSrap.Text = "File";
             this.btnSrap.UseVisualStyleBackColor = true;
             this.btnSrap.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -1649,9 +1652,9 @@
             // 
             this.grpFoupChange.Controls.Add(this.dgNewSlot);
             this.grpFoupChange.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grpFoupChange.Location = new System.Drawing.Point(3, 3);
+            this.grpFoupChange.Location = new System.Drawing.Point(3, 26);
             this.grpFoupChange.Name = "grpFoupChange";
-            this.grpFoupChange.Size = new System.Drawing.Size(513, 80);
+            this.grpFoupChange.Size = new System.Drawing.Size(483, 80);
             this.grpFoupChange.TabIndex = 15;
             this.grpFoupChange.TabStop = false;
             this.grpFoupChange.Text = "New Foup Information";
@@ -1691,7 +1694,7 @@
             this.dgNewSlot.Name = "dgNewSlot";
             this.dgNewSlot.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgNewSlot.RowTemplate.Height = 23;
-            this.dgNewSlot.Size = new System.Drawing.Size(507, 60);
+            this.dgNewSlot.Size = new System.Drawing.Size(477, 60);
             this.dgNewSlot.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn76
@@ -1852,7 +1855,7 @@
             this.tabctl.Location = new System.Drawing.Point(253, 240);
             this.tabctl.Name = "tabctl";
             this.tabctl.SelectedIndex = 0;
-            this.tabctl.Size = new System.Drawing.Size(527, 420);
+            this.tabctl.Size = new System.Drawing.Size(497, 300);
             this.tabctl.TabIndex = 24;
             // 
             // tabResult
@@ -1860,10 +1863,11 @@
             this.tabResult.BackColor = System.Drawing.SystemColors.Control;
             this.tabResult.Controls.Add(this.grpPndnInf);
             this.tabResult.Controls.Add(this.grpFoupChange);
+            this.tabResult.Controls.Add(this.panel1);
             this.tabResult.Location = new System.Drawing.Point(4, 22);
             this.tabResult.Name = "tabResult";
             this.tabResult.Padding = new System.Windows.Forms.Padding(3);
-            this.tabResult.Size = new System.Drawing.Size(519, 394);
+            this.tabResult.Size = new System.Drawing.Size(489, 274);
             this.tabResult.TabIndex = 0;
             this.tabResult.Text = "Defect Result";
             // 
@@ -1871,9 +1875,9 @@
             // 
             this.grpPndnInf.Controls.Add(this.dgPndn);
             this.grpPndnInf.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpPndnInf.Location = new System.Drawing.Point(3, 83);
+            this.grpPndnInf.Location = new System.Drawing.Point(3, 106);
             this.grpPndnInf.Name = "grpPndnInf";
-            this.grpPndnInf.Size = new System.Drawing.Size(513, 308);
+            this.grpPndnInf.Size = new System.Drawing.Size(483, 165);
             this.grpPndnInf.TabIndex = 16;
             this.grpPndnInf.TabStop = false;
             this.grpPndnInf.Text = "Pndn Information";
@@ -1908,8 +1912,49 @@
             this.dgPndn.Name = "dgPndn";
             this.dgPndn.RowHeadersVisible = false;
             this.dgPndn.RowTemplate.Height = 23;
-            this.dgPndn.Size = new System.Drawing.Size(507, 288);
+            this.dgPndn.Size = new System.Drawing.Size(477, 145);
             this.dgPndn.TabIndex = 8;
+            // 
+            // tabISP
+            // 
+            this.tabISP.BackColor = System.Drawing.SystemColors.Control;
+            this.tabISP.Controls.Add(this.groupBox1);
+            this.tabISP.Controls.Add(this.grpMacro);
+            this.tabISP.Controls.Add(this.grpAOI);
+            this.tabISP.Location = new System.Drawing.Point(4, 22);
+            this.tabISP.Name = "tabISP";
+            this.tabISP.Padding = new System.Windows.Forms.Padding(3);
+            this.tabISP.Size = new System.Drawing.Size(519, 394);
+            this.tabISP.TabIndex = 1;
+            this.tabISP.Text = "Inspect Type";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtNewFoupID);
+            this.panel1.Controls.Add(this.lblNewFoupID);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(483, 23);
+            this.panel1.TabIndex = 17;
+            // 
+            // txtNewFoupID
+            // 
+            this.txtNewFoupID.Enabled = false;
+            this.txtNewFoupID.Location = new System.Drawing.Point(93, 0);
+            this.txtNewFoupID.MaxLength = 30;
+            this.txtNewFoupID.Name = "txtNewFoupID";
+            this.txtNewFoupID.Size = new System.Drawing.Size(100, 21);
+            this.txtNewFoupID.TabIndex = 15;
+            // 
+            // lblNewFoupID
+            // 
+            this.lblNewFoupID.AutoSize = true;
+            this.lblNewFoupID.Location = new System.Drawing.Point(6, 4);
+            this.lblNewFoupID.Name = "lblNewFoupID";
+            this.lblNewFoupID.Size = new System.Drawing.Size(71, 12);
+            this.lblNewFoupID.TabIndex = 14;
+            this.lblNewFoupID.Text = "New Foup ID";
             // 
             // dataGridViewTextBoxColumn101
             // 
@@ -1958,6 +2003,7 @@
             this.dataGridViewTextBoxColumn107.HeaderText = "Spec";
             this.dataGridViewTextBoxColumn107.Name = "dataGridViewTextBoxColumn107";
             this.dataGridViewTextBoxColumn107.ReadOnly = true;
+            this.dataGridViewTextBoxColumn107.Visible = false;
             // 
             // dataGridViewTextBoxColumn108
             // 
@@ -1984,24 +2030,11 @@
             this.SupervisorNo.Name = "SupervisorNo";
             this.SupervisorNo.ReadOnly = true;
             // 
-            // tabISP
-            // 
-            this.tabISP.BackColor = System.Drawing.SystemColors.Control;
-            this.tabISP.Controls.Add(this.groupBox1);
-            this.tabISP.Controls.Add(this.grpMacro);
-            this.tabISP.Controls.Add(this.grpAOI);
-            this.tabISP.Location = new System.Drawing.Point(4, 22);
-            this.tabISP.Name = "tabISP";
-            this.tabISP.Padding = new System.Windows.Forms.Padding(3);
-            this.tabISP.Size = new System.Drawing.Size(519, 394);
-            this.tabISP.TabIndex = 1;
-            this.tabISP.Text = "Inspect Type";
-            // 
             // FrmDefectLotResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(780, 700);
+            this.ClientSize = new System.Drawing.Size(750, 580);
             this.Controls.Add(this.tabctl);
             this.Controls.Add(this.grpSlot);
             this.Controls.Add(this.grpOQAInfo);
@@ -2038,6 +2071,8 @@
             this.grpPndnInf.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgPndn)).EndInit();
             this.tabISP.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2248,5 +2283,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HoldCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoldComment;
         private System.Windows.Forms.DataGridViewTextBoxColumn SupervisorNo;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtNewFoupID;
+        private System.Windows.Forms.Label lblNewFoupID;
     }
 }

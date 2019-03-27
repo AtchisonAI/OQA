@@ -72,7 +72,7 @@ namespace OQAService.Services
                             if (PndnCount.models.Count > 0)
                             {
                                 Out_node._success = false;
-                                Out_node._ErrorMsg = "This Lot Have Pndn!";
+                                Out_node._ErrorMsg = "This Lot Have PNDN!";
                                 return Out_node;
 
                             }

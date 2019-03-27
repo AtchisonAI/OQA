@@ -183,6 +183,14 @@ namespace OQAMain
             {
                 sideType = SideType.Front;
             }
+            if (sideType.Equals(SideType.Front))
+            {
+                btnSide.Text = "Frontside";
+            }
+            else
+            {
+                btnSide.Text = "Backside";
+            }
             pageInfoShow();
         }
        

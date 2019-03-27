@@ -8,6 +8,7 @@ using Microsoft.Reporting.WinForms;
 using System.Linq;
 using OQAMain.Print;
 using System.Collections.Generic;
+using WcfClientCore.Utils.Authority;
 
 namespace OQAMain
 {
@@ -189,7 +190,7 @@ namespace OQAMain
                 Partid = lstLot[0].PartId.ToString();
                 Qty = lstLot[0].Qty.ToString();
                 Stime = lstLot[0].UpdateTime.ToString();
-                uerid = lstLot[0].CreateUserId.ToString();
+                uerid = AuthorityControl.GetUserProfile().userId;
                 Foupid = lstLot[0].FoupId.ToString();
 
                

@@ -75,6 +75,28 @@ namespace WcfClientCore.WcfSrv
             }
         }
 
+        public static ModelListRsp<ControlAccessString> UpdateControlAccessStringList(List<ControlAccessString> dbModelList, OperateType type)
+        {
+            UpdateModelListReq<ControlAccessString> updateReq = new UpdateModelListReq<ControlAccessString>()
+            {
+                models = dbModelList,
+                operateType = type,
+                userId = AuthorityControl.GetUserProfile().userId
+            };
+
+            try
+            {
+                return WcfClient.UpdateControlAccessStringList(updateReq);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                ModelListRsp<ControlAccessString> rsp = new ModelListRsp<ControlAccessString>();
+                rsp._success = false;
+                return rsp;
+            }
+        }
+
         public static ModelListRsp<UserFavorite> QueryUserFavorites()
         {
             QuerUserFavoriteReq req = new QuerUserFavoriteReq();

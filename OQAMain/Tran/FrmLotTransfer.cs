@@ -156,7 +156,7 @@ namespace OQAMain
         {
             insert_data.Clear();
             GetSerialNum();
-            MessageBox.Show("交接单号"+ srtNum);
+            MessageBox.Show("Ship ID:\n"+ srtNum);
             FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint(srtNum);
 
             string s_PartID = ComFunc.Trim(txtPartID.Text);
@@ -252,7 +252,7 @@ namespace OQAMain
                 {
                     ListViewItem list_item = new ListViewItem();
                     ISPLOTSTS list = SortByTime[i];
-                    list_item.Text = list.LotId.PadRight(15)+ list.PartId;
+                    list_item.Text = list.LotId.PadRight(18)+ list.PartId;
                     LotIDList.Items.Add(list_item.Text);
                 }
                 lblSucessMsg.Text = out_data._MsgCode;
@@ -299,14 +299,14 @@ namespace OQAMain
                         txtPartID.Text = out_data.model.PKGSHPDAT_list[i][(int)SHIPLIST.PART_ID].ToString();
                     }
                     txtQTY.Text = total_count.ToString();
-                    txtDate.Text = DateTime.Now.ToString("yyyyMMddHHmm");
+                    txtDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 }
                 if (c_tran_flag == '2')
                 {
                     
                     if (out_data.model.PKGSHPDAT_list.Count ==0 || out_data.model.PKGSHPDAT_list[0][0].ToString() != "1")
                     {
-                        MessageBox.Show("选择的lotid不属于同一个part！");
+                        MessageBox.Show("The Lot ID selected does not belong to the same Part ID!");
                         MasterLot = string.Empty;
                         return false;
                     }
@@ -509,7 +509,7 @@ namespace OQAMain
                 {
                     ListViewItem list_item = new ListViewItem();
                    
-                    list_item.Text = out_data.model.SEARCHLOTID_list[i][0].ToString().PadRight(15)+out_data.model.SEARCHLOTID_list[i][1];
+                    list_item.Text = out_data.model.SEARCHLOTID_list[i][0].ToString().PadRight(18)+out_data.model.SEARCHLOTID_list[i][1];
                     LotIDList.Items.Add(list_item.Text);
                 }
                 lblSucessMsg.Text = out_data._MsgCode;

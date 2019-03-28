@@ -109,6 +109,7 @@
     <Reference Include="Syncfusion.Core.WinForms">
       <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.Core.WinForms.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.Data.WinForms, Version=16.4460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.SfDataGrid.WinForms">
       <HintPath>..\Syncfusion.Tools.4.6\Syncfusion.SfDataGrid.WinForms.dll</HintPath>
     </Reference>

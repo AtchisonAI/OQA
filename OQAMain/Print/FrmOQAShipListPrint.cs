@@ -187,7 +187,9 @@ namespace OQAMain
             if (lstShip.Count > 0)
             {
                 string Partid = lstShip[0].PartId.ToString();
-                string Shipdate = DateTime.Now.Date.ToString("yyyy-MM-dd");
+                string Shipdate1 = lstShip[0].ShipDate.ToString();
+                string Shipdate = Shipdate1.Substring(0, 4) + "-" + Shipdate1.Substring(4, 2) + "-" + Shipdate1.Substring(6, 2);
+               // string Shipdate2 = DateTime.Now.Date.ToString("yyyy-MM-dd");
                 string Qty = lstShip[0].Qty.ToString();
                 string codePackedDate = GenerateBarCodeByZen(lstShip[0].ShipId.ToString());
 

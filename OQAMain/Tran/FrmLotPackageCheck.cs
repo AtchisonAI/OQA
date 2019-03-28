@@ -511,7 +511,7 @@ namespace OQAMain
         private void print_button_Click(object sender, EventArgs e)
         {
             if (!ValidateLotInfo()) return;
-            FrmPackageLabelPrint printForm = new FrmPackageLabelPrint(lotPackageInfo.lotInfo.LotId);
+            FrmWaferInspectRecordPrint printForm = new FrmWaferInspectRecordPrint(lotPackageInfo.lotInfo.LotId);
 
             AddNewFormToMdi(printForm);
         }

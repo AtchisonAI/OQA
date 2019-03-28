@@ -92,7 +92,7 @@ namespace OQAMain
                 else
                 {
                     lblSucessMsg.Text = rspInfo._MsgCode;
-                    MessageBox.Show("保存成功!");
+                    MessageBox.Show("Program Success.");
                 }
             }
             catch (System.Exception ex)
@@ -285,6 +285,20 @@ namespace OQAMain
 
         }
         //回车光标控制
+        private void txtLotId_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(lotId))
+            {
+                ComFunc.ClearBoxValue(groupBox3);
+                waferSurF.clearPanel();
+                txtLotId.Clear();
+                cboxSlotId.Items.Clear();
+                cboxSlotId.Text = "";
+                lotId = "";
+                slotId = "";
+                waferId = "";
+            }
+        }
         private void cmtRichTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
 
@@ -555,19 +569,6 @@ namespace OQAMain
 
         #endregion
 
-        private void txtLotId_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(lotId))
-            {
-                ComFunc.ClearBoxValue(groupBox3);
-                waferSurF.clearPanel();
-                txtLotId.Clear();
-                cboxSlotId.Items.Clear();
-                cboxSlotId.Text = "";
-                lotId = "";
-                slotId = "";
-                waferId = "";
-            } 
-    }
+ 
     }
 }

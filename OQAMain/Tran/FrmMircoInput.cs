@@ -146,6 +146,22 @@ namespace OQAMain
             //查询数据
             queryPageInfo(lotId, slotId, sideType);
         }
+        private void txtLotId_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(lotId))
+            {
+                ComFunc.ClearBoxValue(groupBox3);
+                ComFunc.ClearBoxValue(groupBoxSelect);
+                rbtnNine.Checked = true;
+                waferSurF.clearPanel();
+                txtLotId.Clear();
+                cboxSlotId.Items.Clear();
+                cboxSlotId.Text = "";
+                lotId = "";
+                slotId = "";
+                waferId = "";
+            }
+        }
         //MagnificationTextBox文本框输入控制
         private void MagnificationTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -736,21 +752,6 @@ namespace OQAMain
 
         #endregion
 
-        private void txtLotId_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(lotId))
-            {
-                ComFunc.ClearBoxValue(groupBox3);
-                ComFunc.ClearBoxValue(groupBoxSelect);
-                rbtnNine.Checked = true;
-                waferSurF.clearPanel();
-                txtLotId.Clear();
-                cboxSlotId.Items.Clear();
-                cboxSlotId.Text = "";
-                lotId = "";
-                slotId = "";
-                waferId = "";
-            }
-        }
+       
     }
 }

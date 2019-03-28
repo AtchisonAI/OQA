@@ -14,7 +14,7 @@
         public const string Pass = "Pass";
         public const string Hold = "Hold";
         public const string Pndn = "Pndn";
-        public const string Scrap = "Scrap";
+        public const string Save = "Save";
     }
 
     class IspType

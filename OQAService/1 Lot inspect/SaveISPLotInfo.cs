@@ -104,7 +104,7 @@ namespace OQAService.Services
                         if (PndnCount.models.Count > 0)
                         {
                             Out_node._success = false;
-                            Out_node._ErrorMsg = "This Lot Have Pndn!";
+                            Out_node._ErrorMsg = "This Lot Have PNDN!";
                             return Out_node;
 
                         }
@@ -281,7 +281,7 @@ namespace OQAService.Services
                 if (PndnCount.models.Count > 0)
                 {
                     Out_node._success = false;
-                    Out_node._ErrorMsg = "This Lot Have Pndn!";
+                    Out_node._ErrorMsg = "This Lot Have PNDN!";
                     return Out_node;
 
                 }
@@ -395,7 +395,7 @@ namespace OQAService.Services
                         //hold的lot提交检查结果 Scrap
                         //验证业务级输入参数
 
-                        T_ISPLOTSTS.InspectResult = IspResult.Scrap;
+                        T_ISPLOTSTS.InspectResult = IspResult.Save;
                         T_ISPLOTSTS.Status = LotSts.Close;
 
                         SysTime = GetSysTime();
@@ -414,7 +414,7 @@ namespace OQAService.Services
                         UpdateModels(ISPLOTSTS_Save, ISPLOTSTS_message, true);
 
                         //记录历史
-                        SaveISPLotHistory("DefectLotScrap", ISPLotSave.model.S_USER_ID,ISPLOTSTS_message);
+                        SaveISPLotHistory("DefectLotSave", ISPLotSave.model.S_USER_ID,ISPLOTSTS_message);
 
                         break;
                 }
@@ -422,6 +422,19 @@ namespace OQAService.Services
             }
 
 
+            if (In_node.model.C_PROC_STEP == GlobalConstant.TRAN_DELETE)
+            {
+                //业务逻辑选择
+                switch (In_node.model.C_TRAN_FLAG)
+                {
+                    case '1':
+
+
+                        break;
+
+                }
+
+            }
 
             EndTrans();
             stopwatch.Stop();

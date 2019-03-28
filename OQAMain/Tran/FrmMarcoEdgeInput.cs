@@ -17,7 +17,6 @@ namespace OQAMain
         private string lotId = "";
         private string slotId = "";
         private string waferId = "";
-        private bool jumpFlag = false;//页面跳转
         private string sideType = SideType.Edge;
         private ISPIMGDEF imgInfo = new ISPIMGDEF();
         ISPWAFITM wafInfo = new ISPWAFITM();
@@ -47,7 +46,6 @@ namespace OQAMain
                 sideType = sideTypeIn;
                 txtLotId.Text = lotId;
                 cboxSlotId.Text = slotId;
-                jumpFlag = true;
                 txtLotId.Enabled = false;
                 cboxSlotId.Enabled = false;
             }
@@ -178,7 +176,20 @@ namespace OQAMain
                 }
             }
         }
-
+        private void txtLotId_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(lotId))
+            {
+                ComFunc.ClearBoxValue(groupBox3);
+                txtLotId.Clear();
+                cboxSlotId.Items.Clear();
+                comboBox1.Text = "";
+                cboxSlotId.Text = "";
+                lotId = "";
+                slotId = "";
+                waferId = "";
+            }
+        }
         #endregion
 
         #region Common Function
@@ -396,19 +407,6 @@ namespace OQAMain
 
         #endregion
 
-        private void txtLotId_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(lotId))
-            {
-                ComFunc.ClearBoxValue(groupBox3);
-                txtLotId.Clear();
-                cboxSlotId.Items.Clear();
-                comboBox1.Text = "";
-                cboxSlotId.Text = "";
-                lotId = "";
-                slotId = "";
-                waferId = "";
-            }
-        }
+    
     }
 }

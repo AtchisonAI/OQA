@@ -47,7 +47,7 @@ namespace WcfClientCore.Form
             b_Favorite = false;
         }
 
-        public void AddNewFormToMdi(ChildFormBase form)
+        public void AddNewFormToMdi(ChildFormBase form, bool b_single = true)
         {
             if (null != this.Parent)
             {
@@ -55,7 +55,7 @@ namespace WcfClientCore.Form
                 if (null != Frm.MdiParent)
                 {
                     MDIFormBase mainFrm = (MDIFormBase)Frm.MdiParent;
-                    mainFrm.AddMdiChild(form);
+                    mainFrm.AddMdiChild(form,b_single);
                 }
                 else
                 {

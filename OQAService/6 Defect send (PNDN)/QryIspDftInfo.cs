@@ -76,7 +76,7 @@ namespace OQAService.Services
                                 else
                                 {
                                     Out_node._success = false;
-                                    Out_node._ErrorMsg = "Lot Inspect Result Err!";
+                                    Out_node._ErrorMsg = "Lot inspect result error!";
                                     return Out_node;
                                 }
                             }

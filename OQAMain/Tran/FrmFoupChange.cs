@@ -52,7 +52,7 @@ namespace OQAMain
                         {
                             dataGridView1.Rows[0].Cells[column.Name].Value = string.Empty;
                         }
-                        MessageBox.Show("Input of required contents is null！");
+                        MessageBox.Show("Lot ID is null！");
                         return false;
                     }
 
@@ -71,6 +71,50 @@ namespace OQAMain
 
             return true;
 
+        }
+
+        private bool QryInfo(char c_proc_step, char c_tran_flag)
+        {
+            ModelRsp<LotSlotidView> in_node = new ModelRsp<LotSlotidView>();
+            LotSlotidView in_data = new LotSlotidView();
+
+            in_data.C_PROC_STEP = c_proc_step;
+            in_data.C_TRAN_FLAG = c_tran_flag;
+            in_data.IN_LOT_ID = txtLotid.Text.Trim();
+
+            in_node.model = in_data;
+
+            var out_data = OQASrv.Call.QryLotIspStsInfo(in_node);
+            _ispLotSts = out_data.model.ISPLOTSTS_list;
+
+            if (out_data._success == true)
+            {
+                //判断Lot是否收料
+                if (out_data.model.ISPLOTSTS_list.Count > 0)
+                {
+                    //判断收料Lot状态是否检验完成
+                    if (out_data.model.ISPLOTSTS_list.Count(p => p.Status == LotSts.IspOut) == 0)
+                    {
+                        MessageBox.Show("LOT status can not Foup Change!");
+                        return false;
+                    }
+                }
+                else
+
+                {
+                    MessageBox.Show("LOT status can not Foup Change!");
+                    return false;
+                }
+
+                lblSucessMsg.Text = out_data._MsgCode;
+                return true;
+            }
+
+            else
+            {
+                MessageBox.Show(out_data._ErrorMsg);
+                return false;
+            }
         }
 
         private bool QryLotIspStsInfo(char c_proc_step, char c_tran_flag)
@@ -93,16 +137,16 @@ namespace OQAMain
                 if (out_data.model.ISPLOTSTS_list.Count > 0)
                 {
                     //判断收料Lot状态是否检验完成
-                    if (out_data.model.ISPLOTSTS_list.Count(p => p.Status == "IspOut") == 0)
+                    if (out_data.model.ISPLOTSTS_list.Count(p => p.Status == LotSts.IspOut ) == 0)
                     {
-                        MessageBox.Show("LOT当前不符合Foup Change状态!");
+                        MessageBox.Show("LOT status can not Foup Change!");
                         return false;
                     }
                 }
                 else
 
                 {
-                    MessageBox.Show("LOT当前不符合Foup Change状态!");
+                    MessageBox.Show("LOT status can not Foup Change!");
                     return false;
                 }
 
@@ -196,7 +240,8 @@ namespace OQAMain
         }
 
 
-        private ModelRsp<LotSlotidSave> IstLotSltInfo(char c_proc_step, char c_tran_flag, string c_lot_id, List<PKGSLTDEF> LSOQACHKMESSLOTIDS, decimal TransSeq)
+
+        private ModelRsp<LotSlotidSave> IstLotSltInfo(char c_proc_step, char c_tran_flag, string c_lot_id,List<PKGSLTDEF> LSOQACHKMESSLOTIDS, decimal TransSeq)
         {
             ModelRsp<LotSlotidSave> in_node = new ModelRsp<LotSlotidSave>();
             ModelRsp<LotSlotidSave> out_node = new ModelRsp<LotSlotidSave>();
@@ -212,21 +257,6 @@ namespace OQAMain
 
             out_node = OQASrv.Call.IstLotSltInfo(in_node);
             return out_node;
-            //if (out_data._success == true)
-            //{
-            //    lblSucessMsg.Text = out_data._MsgCode;
-            //    //MessageBox.Show(out_data._MsgCode);
-            //    return true;
-            //}
-            //else
-            //{
-            //    if(out_data._ErrorMsg.Equals("Lotid 已Check!"))
-            //    {
-            //        return true;
-            //    }
-            //    MessageBox.Show(out_data._ErrorMsg);
-            //    return false;
-            //}
         }
 
 
@@ -260,7 +290,6 @@ namespace OQAMain
             if (out_data._success == true)
             {
                 lblSucessMsg.Text = out_data._MsgCode;
-                //MessageBox.Show(out_data._MsgCode);
                 MessageBox.Show(out_data._MsgCode);
                 ClearData("1");
                 return true;
@@ -350,30 +379,19 @@ namespace OQAMain
                 //显示
                 for (int i = 0; i < 25; i++)
                 {
-                    //bool isInIsp = false;
-                    //dataGridView1.Rows[0].Cells[i].Style.BackColor = Color.Green;
                     int j = i + 1;
-                    //if (lsIspwafsts.Count(p => p.SlotId == j.ToString().PadLeft(3, '0')) > 0)
-                    //{
-                    //    isInIsp = true;
-                    //}
-
+                    
                     bool isInMes = LSOQACHKMESSLOTIDS.Count(p => p.SlotId == j.ToString().PadLeft(3, '0')) > 0;
 
                     if (isInMes)
                     {
-
-                            dataGridView1.Rows[0].Cells[i].Value = "OK";
+                        dataGridView1.Rows[0].Cells[i].Value = "OK";
                         dataGridView1.Rows[0].Cells[i].Style.BackColor = Color.LightGreen;
-
-
                     }
                     else
                     {
-
-                            dataGridView1.Rows[0].Cells[i].Value = "/";
-                            dataGridView1.Rows[0].Cells[i].Style.BackColor = Color.LightGray;
-                        
+                        dataGridView1.Rows[0].Cells[i].Value = "/";
+                        dataGridView1.Rows[0].Cells[i].Style.BackColor = Color.LightGray;
                     }
 
                 }
@@ -388,14 +406,13 @@ namespace OQAMain
         private void btnCreate_Click(object sender, EventArgs e)
         {
             string s_lot_id = ComFunc.Trim(txtLotid.Text);
+
+
             if (UptLotIspStsInfo(GlobConst.TRAN_UPDATE, '1', s_lot_id) == false) return;
+
+            //跳转打印Label页面
             FrmPackageLabelPrint from = new FrmPackageLabelPrint(s_lot_id);
-            //from.FormBorderStyle = FormBorderStyle.FixedDialog;
-            //from.WindowState = FormWindowState.Maximized;
-            //from.StartPosition = FormStartPosition.CenterParent;
-            //from.ShowDialog();
             AddNewFormToMdi(from);
-            //ClearData("1");
             //txtLotid.Focus();
         }
 
@@ -423,6 +440,12 @@ namespace OQAMain
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             ClearData("1");
+        }
+
+        private void txtLotid_MouseDown(object sender, MouseEventArgs e)
+        {
+            ClearData("1");
+            btnCheck.Enabled = true;
         }
     }
 }

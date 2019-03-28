@@ -62,10 +62,32 @@ namespace OQAService.Services
                                 return Out_node;
                             }
 
+                            PageQueryReq PageQueryReq = new PageQueryReq()
+                            {
+                                queryConditionList = new List<QueryCondition>(),
+                                sortCondittionList = new List<SortCondition>()
+                            };
+                            PageQueryReq.CurrentPage = 1;
+                            PageQueryReq.ItemsPerPage = 200;
+                            AddCondition(PageQueryReq, GetParaName<PKGSLTDEF>(p => p.LotId), In_node.model.IN_LOT_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
+
+                            AddSortCondition(PageQueryReq, GetParaName<PKGSLTDEF>(p => p.LotId), SortType.ASC);
+
+                            var FoupChangeCount = PageQuery<PKGSLTDEF>(PageQueryReq);
+                            //如果检验项目有缺陷，hold记录，并通知客户端去PNDN
+                            if (FoupChangeCount.models.Count == 0)
+                            {
+                                Out_node._success = false;
+                                Out_node._ErrorMsg = "Please do Check first!";
+                                return Out_node;
+
+                            }
+
+                            //更新
                             T_ISPLOTSTS.LotId =In_node.model.IN_LOT_ID;
                             T_ISPLOTSTS.TransSeq = In_node.model.D_TRANSSEQ;
                             T_ISPLOTSTS.Status = LotSts.ChangeOut;
-
+                            T_ISPLOTSTS.Qty = FoupChangeCount.models.Count;
                             T_ISPLOTSTS.UpdateUserId = In_node.model.S_USER_ID;
                             T_ISPLOTSTS.UpdateTime = GetSysTime();
 

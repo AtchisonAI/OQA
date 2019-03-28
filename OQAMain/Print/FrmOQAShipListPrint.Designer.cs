@@ -313,6 +313,7 @@
             this.Name = "FrmOQAShipListPrint";
             this.Text = "FrmOQAShipListPrint";
             this.Load += new System.EventHandler(this.FrmOQAShipListPrint_Load);
+            this.Shown += new System.EventHandler(this.FrmOQAShipListPrint_Shown);
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);

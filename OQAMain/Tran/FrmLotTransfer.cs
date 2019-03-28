@@ -201,11 +201,11 @@ namespace OQAMain
                     return;
                 }
 
-                //formshiplistprint.FormBorderStyle = FormBorderStyle.FixedDialog;
-                //formshiplistprint.WindowState = FormWindowState.Maximized;
-                //formshiplistprint.StartPosition = FormStartPosition.CenterParent;
-                //formshiplistprint.ShowDialog();
-               
+                formshiplistprint.FormBorderStyle = FormBorderStyle.FixedDialog;
+                formshiplistprint.WindowState = FormWindowState.Maximized;
+                formshiplistprint.StartPosition = FormStartPosition.CenterParent;
+                formshiplistprint.ShowDialog();
+
                 ComFunc.InitListView(listship, true);
                 txtPartID.Text = "";
                 txtQTY.Text = "";
@@ -213,7 +213,7 @@ namespace OQAMain
                 LotIDList.Items.Clear();
                 if (QueryLotIDList(GlobConst.TRAN_VIEW, '1') == false) return;
 
-                AddNewFormToMdi(formshiplistprint);
+               // AddNewFormToMdi(formshiplistprint);
 
             }                     
         }

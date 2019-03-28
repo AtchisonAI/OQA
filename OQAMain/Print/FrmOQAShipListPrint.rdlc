@@ -7,20 +7,13 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>dbf6d191-ad72-4fc9-975e-fbc73e0756c3</rd:DataSourceID>
-    </DataSource>
-    <DataSource Name="OQAMainPrint1">
-      <ConnectionProperties>
-        <DataProvider>System.Data.DataSet</DataProvider>
-        <ConnectString>/* Local Connection */</ConnectString>
-      </ConnectionProperties>
-      <rd:DataSourceID>4baf7eb8-7577-440a-b08a-18a94bfac7c2</rd:DataSourceID>
+      <rd:DataSourceID>56388ddc-3969-45c5-a4c4-d9fefb042321</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>OQAMainPrint1</DataSourceName>
+        <DataSourceName>OQAMainPrint</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -1071,7 +1064,6 @@
                 </Line>
               </ReportItems>
               <KeepTogether>true</KeepTogether>
-              <Top>0cm</Top>
               <Height>2cm</Height>
               <Width>19.83587cm</Width>
               <Style>

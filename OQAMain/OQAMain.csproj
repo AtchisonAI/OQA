@@ -274,6 +274,9 @@
     <EmbeddedResource Include="Tran\FrmLotPackageCheck.resx">
       <DependentUpon>FrmLotPackageCheck.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tran\FrmMacroEdgeInput.resx">
+      <DependentUpon>FrmMacroEdgeInput.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tran\FrmMarcoInput.resx">
       <DependentUpon>FrmMarcoInput.cs</DependentUpon>
     </EmbeddedResource>

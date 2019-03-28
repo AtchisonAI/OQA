@@ -17,7 +17,7 @@ namespace WcfClientCore.Form
             InitializeComponent();
         }
 
-        public virtual void AddMdiChild(ChildFormBase form)
+        public virtual void AddMdiChild(ChildFormBase form,bool b_single = true)
         {
             throw new NotImplementedException();
         }

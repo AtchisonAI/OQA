@@ -2,7 +2,7 @@
 using Syncfusion.WinForms.DataGrid;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
+using System.Linq;
 using System.Windows.Forms;
 using WcfClientCore.Utils.Authority;
 using WCFModels.Message;
@@ -416,14 +416,29 @@ namespace OQAMain
 
         }
 
+        private List<PKGCHKRST> lst_pkg;
+
         private bool CheckCondition(string FuncName)
         {
             switch (ComFunc.Trim(FuncName))
             {
                 case "CREATE":
+                    break;
                 case "UPDATE":
                     // TODO
+                    if (check_sfDataGrid.RowCount > 0)
+                    {
+                        lst_pkg = (List<PKGCHKRST>)check_sfDataGrid.DataSource;
+
+                        if (lst_pkg.Count(p => p.ChkResult=="NG") > 0)
+                        {
+                            MessageBox.Show("Please check 'NG' item！");
+                            return false;
+                        }
+
+                    }
                     return ValidateLotInfo();
+                    break;
 
                 case "DELETE":
                     // TODO

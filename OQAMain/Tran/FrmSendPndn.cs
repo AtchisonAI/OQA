@@ -77,22 +77,22 @@ namespace OQAMain
 
                     if (ComFunc.CheckValue(txtLotId, 1) == false)
                     {
-                        MessageBox.Show("请填写Lot ID！");
+                        MessageBox.Show("Please Fill In Lot ID！");
                         return false;
                     }
                     if (ComFunc.CheckValue(txtHoldCode, 1) == false)
                     {
-                        MessageBox.Show("请填写Hold Code！");
+                        MessageBox.Show("Please Fill In Hold Code！");
                         return false;
                     }
                     if (ComFunc.CheckValue(txtHoldCmt, 1) == false)
                     {
-                        MessageBox.Show("请填写Hold Comment！");
+                        MessageBox.Show("Please Fill In Hold Comment！");
                         return false;
                     }
                     if (ComFunc.CheckValue(txtOperatorNo, 1) == false)
                     {
-                        MessageBox.Show("请填写Operator NO！");
+                        MessageBox.Show("Please Fill In Operator NO！");
                         return false;
                     }
 
@@ -430,13 +430,13 @@ namespace OQAMain
 
                     if (string.IsNullOrWhiteSpace(item.Dept) == true)
                     {
-                        MessageBox.Show("请输入Dept");
+                        MessageBox.Show("Please Fill In Dept");
                         return;
                     }
 
                     if (string.IsNullOrWhiteSpace(item.Remark) == true)
                     {
-                        MessageBox.Show("请输入Remark");
+                        MessageBox.Show("Please Fill In Remark");
                         return;
                     }
 

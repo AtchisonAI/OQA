@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.WinForms.DataGrid;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using WcfClientCore.Form;
@@ -6,7 +7,6 @@ using WcfClientCore.WcfSrv;
 using WCFModels;
 using WCFModels.Frame;
 using WCFModels.Message;
-using WCFModels.MESDB.FWTST1;
 
 namespace WcfClient.Forms
 {
@@ -15,6 +15,50 @@ namespace WcfClient.Forms
         public ControlAuthorityForm()
         {
             InitializeComponent();
+            InitSfDataGrid();
+        }
+
+        private void InitSfDataGrid()
+        {
+            sfDataGrid.AutoGenerateColumns = false;
+
+            GridTextColumn ControlID = new GridTextColumn();
+            ControlID.MappingName = "ControlID";
+            ControlID.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCellsWithLastColumnFill;
+            sfDataGrid.Columns.Add(ControlID);
+
+            GridTextColumn AccessString = new GridTextColumn();
+            AccessString.MappingName = "AccessString";
+            AccessString.MinimumWidth = 750;
+            AccessString.MaximumWidth = 850;
+            sfDataGrid.Columns.Add(AccessString);
+
+            GridTextColumn SysName = new GridTextColumn();
+            SysName.MinimumWidth = 350;
+            SysName.MaximumWidth = 450;
+            SysName.MappingName = "SysName";
+            SysName.AllowEditing = false;
+            sfDataGrid.Columns.Add(SysName);
+
+            GridTextColumn CreateTime = new GridTextColumn();
+            CreateTime.MappingName = "CreateTime";
+            CreateTime.Visible = false;
+            sfDataGrid.Columns.Add(CreateTime);
+
+            GridTextColumn CreateUserId = new GridTextColumn();
+            CreateUserId.MappingName = "CreateUserId";
+            CreateUserId.Visible = false;
+            sfDataGrid.Columns.Add(CreateUserId);
+
+            GridTextColumn UpdateTime = new GridTextColumn();
+            UpdateTime.MappingName = "UpdateTime";
+            UpdateTime.Visible = false;
+            sfDataGrid.Columns.Add(UpdateTime);
+
+            GridTextColumn UpdateUserId = new GridTextColumn();
+            UpdateUserId.MappingName = "UpdateUserId";
+            UpdateUserId.Visible = false;
+            sfDataGrid.Columns.Add(UpdateUserId);
         }
 
         private void add_button_Click(object sender, EventArgs e)
@@ -26,30 +70,59 @@ namespace WcfClient.Forms
                 SysName = "OQA"
             };
 
-            WcfSrv.UpdateControlAccessString(controlAcc, OperateType.Insert);
-            List<ControlAccessString> contrlList = new List<ControlAccessString>();
-            contrlList.Add(controlAcc);
+            var rsp = WcfSrv.UpdateControlAccessString(controlAcc, OperateType.Insert);
+            if(rsp._success)
+            {
+                
+                if (null != sfDataGrid.DataSource)
+                {
+                    sfDataGrid.View.Records.Add(controlAcc);
+                } else
+                {
+                    List<ControlAccessString> contrlList = new List<ControlAccessString>();
+                    contrlList.Add(controlAcc);
+                    sfDataGrid.DataSource = contrlList;
+                }
 
-            sfDataGrid.DataSource = contrlList;
-            sfDataPager.PageCount = 1;
-            sfDataPager.Refresh();
+                MessageBox.Show("Insert successed!");
+            }
         }
 
         private void modify_button_Click(object sender, EventArgs e)
         {
-            var recoder = sfDataGrid.SelectedItem;
-            if ( recoder != null)
+            var recoders = sfDataGrid.SelectedItems;
+            if ( recoders != null)
             {
-                WcfSrv.UpdateControlAccessString((ControlAccessString)recoder, OperateType.Update);
+                List<ControlAccessString> recs = new List<ControlAccessString>();
+                foreach (ControlAccessString ca in sfDataGrid.SelectedItems)
+                {
+                    recs.Add(ca);
+                }
+                var res = WcfSrv.UpdateControlAccessStringList(recs, OperateType.Update);
+                if(res._success)
+                {
+                    MessageBox.Show("Modify successed!");
+                }
             }
         }
 
         private void delete_button_Click(object sender, EventArgs e)
         {
-            var recoder = sfDataGrid.SelectedItem;
-            if (recoder != null)
+            var recoders = sfDataGrid.SelectedItems;
+            if (recoders != null)
             {
-                WcfSrv.UpdateControlAccessString((ControlAccessString)recoder,OperateType.Delete);
+                List<ControlAccessString> recs = new List<ControlAccessString>();
+                foreach (ControlAccessString ca in sfDataGrid.SelectedItems)
+                {
+                    recs.Add(ca);          
+                }
+                var res = WcfSrv.UpdateControlAccessStringList(recs, OperateType.Delete);
+                sfDataGrid.DeleteSelectedRecords();
+
+                foreach (ControlAccessString ca in recs)
+                {
+                    sfDataGrid.SelectedItems.Remove(ca);
+                }
             }
         }
 
@@ -71,6 +144,9 @@ namespace WcfClient.Forms
         {
             contrlPath_textBox.ResetText();
             accessString_textBox.ResetText();
+            ((List<ControlAccessString>)sfDataGrid.DataSource).Clear();
+            sfDataGrid.View.Records.Clear();
+            sfDataPager.PageCount = 0;
         }
 
         private void sfDataPager_PageIndexChanged(object sender, Syncfusion.WinForms.DataPager.Events.PageIndexChangedEventArgs e)
@@ -87,10 +163,13 @@ namespace WcfClient.Forms
             string contrlId = contrlPath_textBox.Text.Trim();
             string accstring = accessString_textBox.Text.Trim();
             PageQueryReq queryReq = new PageQueryReq();
-            QueryCondition querycon = new QueryCondition();
+            queryReq.ItemsPerPage = pageSize;
+            queryReq.CurrentPage = pageIndex;
 
+            QueryCondition querycon = null;
             if (!string.IsNullOrEmpty(contrlId))
             {
+                querycon = new QueryCondition();
                 querycon.paramName = "ControlID";
                 querycon.value = contrlId;
                 querycon.compareType = CompareType.Equal;
@@ -99,6 +178,7 @@ namespace WcfClient.Forms
             }
             if (!string.IsNullOrEmpty(accstring))
             {
+                querycon = new QueryCondition();
                 querycon.paramName = "AccessString";
                 querycon.value = accstring;
                 querycon.compareType = CompareType.Equal;
@@ -106,6 +186,7 @@ namespace WcfClient.Forms
                 queryReq.queryConditionList.Add(querycon);
             }
 
+            querycon = new QueryCondition();
             querycon.paramName = "SYSNAME";
             querycon.value = "OQA";
             querycon.compareType = CompareType.Equal;

@@ -52,7 +52,7 @@ namespace OQAMain
                         {
                             dataGridView1.Rows[0].Cells[column.Name].Value = string.Empty;
                         }
-                        MessageBox.Show("必填内容输入为空！");
+                        MessageBox.Show("Input of required contents is null！");
                         return false;
                     }
 

@@ -109,7 +109,6 @@ namespace OQAMain
             }
             
             dtFromTime.Value = DateTime.Now.AddDays(-7);
-            //this.reportViewer2.LocalReport.DataSources.Clear();
             btnQuery.PerformClick();
 
         }

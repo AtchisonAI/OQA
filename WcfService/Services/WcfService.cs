@@ -83,7 +83,17 @@ namespace WcfService.Services
         public ModelRsp<ControlAccessString> UpdateControlAccessString(UpdateModelReq<ControlAccessString> updateReq)
         {
             ModelRsp<ControlAccessString> rsp = new ModelRsp<ControlAccessString>();
-            UpdateModel(updateReq, rsp,false);
+            UpdateTrackModel(updateReq, rsp,true);
+
+            return rsp;
+        }
+
+        [OperationBehavior(TransactionAutoComplete = true, TransactionScopeRequired = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
+        public ModelListRsp<ControlAccessString> UpdateControlAccessStringList(UpdateModelListReq<ControlAccessString> updateReq)
+        {
+            ModelListRsp<ControlAccessString> rsp = new ModelListRsp<ControlAccessString>();
+            UpdateTrackModels(updateReq, rsp, true);
 
             return rsp;
         }

@@ -67,7 +67,7 @@ namespace OQAMain
 
                     if (ComFunc.CheckValue(txtLotID, 1) == false)
                     {
-                        MessageBox.Show("Input of required contents is null！");
+                        MessageBox.Show("Please enter LotID!");
                         txtLotID.Focus();
                         return false;
                     }
@@ -196,7 +196,7 @@ namespace OQAMain
                     PartNameBarcode = out_data.model.PKGLabel_list[0][(int)PKG_LIST.part_desc].ToString().ToBarcode39().ImageToBytes().ToBase64();
                 }
                 else {    
-                    MessageBox.Show("输入的lotid有问题！");
+                    MessageBox.Show("Please check Lotid!");
                     txtLotID.Focus();
                     return false;
                 }

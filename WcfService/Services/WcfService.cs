@@ -1,5 +1,6 @@
 ﻿using HiDM.FactoryWorks.Messages;
 using HiDM.FactoryWorks.TibcoRV;
+using System;
 using System.ServiceModel;
 using WcfContract;
 using WCFModels;
@@ -62,6 +63,7 @@ namespace WcfService.Services
             {
                 loginRes._ErrorMsg = "OQA:账号密码验证失败，请重新输入";
             }
+
 
             return loginRes;
         }

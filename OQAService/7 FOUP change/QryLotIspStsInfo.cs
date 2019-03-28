@@ -76,7 +76,7 @@ namespace OQAService.Services
                             if (Out_node.model.ISPLOTSTS_list.Count == 0)
                             {
                                 Out_node._success = false;
-                                Out_node._ErrorMsg = "Lot Inspect Result Error,lotid is not found!";
+                                Out_node._ErrorMsg = "Lot inspect result error,lot ID is not found!";
                                 return Out_node;
                             }
 
@@ -104,7 +104,7 @@ namespace OQAService.Services
                             if (Out_node.model.ISPLOTSTS_list.Count == 0)
                             {
                                 Out_node._success = false;
-                                Out_node._ErrorMsg = "Lot Inspect Result Error,lotid is not found!";
+                                Out_node._ErrorMsg = "Lot inspect result error,lot ID is not found!";
                                 return Out_node;
                             }
 

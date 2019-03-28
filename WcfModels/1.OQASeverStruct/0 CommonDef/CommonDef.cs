@@ -9,7 +9,7 @@ namespace WCFModels.OQA
     public sealed class LotSts
     {
         /// <summary>
-        /// 同一级上传图片分类 LOT OQA 收料外观图片类型
+        /// Lot在OQA系统节点中的状态
         /// </summary>
         public const string Create = "Create";
         public const string IspOut = "IspOut";

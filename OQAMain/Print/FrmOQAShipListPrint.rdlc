@@ -444,7 +444,7 @@
                   <Source>Embedded</Source>
                   <Value>logo</Value>
                   <Sizing>FitProportional</Sizing>
-                  <Top>0.0762cm</Top>
+                  <Top>0.3937cm</Top>
                   <Left>0.26458cm</Left>
                   <Height>1.36771cm</Height>
                   <Width>2.93757cm</Width>
@@ -470,7 +470,7 @@
                       <Style />
                     </Paragraph>
                   </Paragraphs>
-                  <Top>0.0762cm</Top>
+                  <Top>0.3937cm</Top>
                   <Left>3.39231cm</Left>
                   <Height>1.28792cm</Height>
                   <Width>12.48473cm</Width>
@@ -504,7 +504,7 @@
                       </Style>
                     </Paragraph>
                   </Paragraphs>
-                  <Top>1.55966cm</Top>
+                  <Top>1.24216cm</Top>
                   <Left>4.30183cm</Left>
                   <Height>1.17327cm</Height>
                   <Width>9.88188cm</Width>
@@ -540,7 +540,7 @@
               <KeepTogether>true</KeepTogether>
               <Top>0.3175cm</Top>
               <Left>0.31752cm</Left>
-              <Height>2.73293cm</Height>
+              <Height>2.82114cm</Height>
               <Width>19.06856cm</Width>
               <Style>
                 <Border>
@@ -1064,6 +1064,7 @@
                 </Line>
               </ReportItems>
               <KeepTogether>true</KeepTogether>
+              <Top>0cm</Top>
               <Height>2cm</Height>
               <Width>19.83587cm</Width>
               <Style>

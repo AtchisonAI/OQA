@@ -42,22 +42,17 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(883, 6);
+            this.btnClose.Location = new System.Drawing.Point(651, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(677, 6);
+            this.btnCreate.Location = new System.Drawing.Point(467, 6);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(780, 6);
+            this.btnEdite.Location = new System.Drawing.Point(559, 6);
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
-            // 
-            // pnlMenu
-            // 
-            this.pnlMenu.Location = new System.Drawing.Point(0, 653);
-            this.pnlMenu.Size = new System.Drawing.Size(1000, 40);
             // 
             // lotId_textBox
             // 
@@ -91,7 +86,7 @@
             this.lotInfo_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.lotInfo_groupBox.Name = "lotInfo_groupBox";
             this.lotInfo_groupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.lotInfo_groupBox.Size = new System.Drawing.Size(1000, 64);
+            this.lotInfo_groupBox.Size = new System.Drawing.Size(750, 64);
             this.lotInfo_groupBox.TabIndex = 2;
             this.lotInfo_groupBox.TabStop = false;
             this.lotInfo_groupBox.Text = "Lot Information";
@@ -99,7 +94,7 @@
             // print_button
             // 
             this.print_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.print_button.Location = new System.Drawing.Point(887, 23);
+            this.print_button.Location = new System.Drawing.Point(637, 23);
             this.print_button.Name = "print_button";
             this.print_button.Size = new System.Drawing.Size(62, 26);
             this.print_button.TabIndex = 2;
@@ -117,7 +112,7 @@
             this.package_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.package_groupBox.Name = "package_groupBox";
             this.package_groupBox.Padding = new System.Windows.Forms.Padding(2);
-            this.package_groupBox.Size = new System.Drawing.Size(1000, 581);
+            this.package_groupBox.Size = new System.Drawing.Size(750, 468);
             this.package_groupBox.TabIndex = 3;
             this.package_groupBox.TabStop = false;
             this.package_groupBox.Text = "Wafer Package";
@@ -134,7 +129,7 @@
             this.check_sfDataGrid.Location = new System.Drawing.Point(1, 13);
             this.check_sfDataGrid.Name = "check_sfDataGrid";
             this.check_sfDataGrid.ShowBusyIndicator = true;
-            this.check_sfDataGrid.Size = new System.Drawing.Size(995, 400);
+            this.check_sfDataGrid.Size = new System.Drawing.Size(745, 400);
             this.check_sfDataGrid.TabIndex = 26;
             this.check_sfDataGrid.Text = "sfDataGrid1";
             // 
@@ -142,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 693);
+            this.ClientSize = new System.Drawing.Size(750, 580);
             this.Controls.Add(this.package_groupBox);
             this.Controls.Add(this.lotInfo_groupBox);
             this.Name = "FrmLotPackageCheck";

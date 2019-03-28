@@ -53,7 +53,7 @@ namespace OQAMain
 
                     if (ComFunc.CheckValue(txtLotID, 1) == false)
                     {
-                        MessageBox.Show("必填内容输入为空！");
+                        MessageBox.Show("Input of required contents is null！");
                         txtLotID.Focus();
                         return false;
                     }

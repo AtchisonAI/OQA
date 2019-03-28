@@ -172,10 +172,12 @@
     <Compile Include="Tran\FrmLotPackageCheck.Designer.cs">
       <DependentUpon>FrmLotPackageCheck.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tran\FrmMarcoEdgeInput.cs">
+    <Compile Include="Tran\FrmMacroEdgeInput.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tran\FrmMarcoEdgeInput.Designer.cs" />
+    <Compile Include="Tran\FrmMacroEdgeInput.Designer.cs">
+      <DependentUpon>FrmMacroEdgeInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tran\FrmMarcoInput.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,7 +274,6 @@
     <EmbeddedResource Include="Tran\FrmLotPackageCheck.resx">
       <DependentUpon>FrmLotPackageCheck.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tran\FrmMarcoEdgeInput.resx" />
     <EmbeddedResource Include="Tran\FrmMarcoInput.resx">
       <DependentUpon>FrmMarcoInput.cs</DependentUpon>
     </EmbeddedResource>

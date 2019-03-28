@@ -76,7 +76,7 @@ namespace OQAMain
                 }
                 else
                 {
-                    MessageBox.Show("保存成功!");
+                    MessageBox.Show("Program Success.");
                     lblSucessMsg.Text = rspInfo._MsgCode;
                 }
             }

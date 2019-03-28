@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.groupBoxSelect = new System.Windows.Forms.GroupBox();
             this.imageUpload_14 = new ImageUpload.ImageUpload();
             this.imageUpload_8 = new ImageUpload.ImageUpload();
@@ -108,8 +110,6 @@
             this.rbtnNine = new System.Windows.Forms.RadioButton();
             this.rbtnThir = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxSelect.SuspendLayout();
@@ -140,6 +140,7 @@
             // pnlMenu
             // 
             this.pnlMenu.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.pnlMenu.Location = new System.Drawing.Point(0, 589);
             // 
             // btnRefresh
             // 
@@ -165,9 +166,29 @@
             this.groupBox1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(750, 580);
+            this.groupBox1.Size = new System.Drawing.Size(750, 629);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label25.Location = new System.Drawing.Point(16, 424);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(53, 12);
+            this.label25.TabIndex = 41;
+            this.label25.Text = "O:Others";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label24.Location = new System.Drawing.Point(15, 364);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(209, 12);
+            this.label24.TabIndex = 40;
+            this.label24.Text = "A:Arching  S:Scratch  D:Discolor  ";
             // 
             // groupBoxSelect
             // 
@@ -1152,31 +1173,11 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Micro inspection simple MAP";
             // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label24.Location = new System.Drawing.Point(15, 364);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(209, 12);
-            this.label24.TabIndex = 40;
-            this.label24.Text = "A:Arching  S:Scratch  D:Discolor  ";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label25.Location = new System.Drawing.Point(16, 424);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(53, 12);
-            this.label25.TabIndex = 41;
-            this.label25.Text = "O:Others";
-            // 
             // FrmMircoInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 580);
+            this.ClientSize = new System.Drawing.Size(750, 629);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

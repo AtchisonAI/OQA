@@ -69,13 +69,20 @@ namespace OQAService.Services
 
                             var PndnCount = PageQuery<ChkPndn>(QueryPndnReq);
                             //如果检验项目有缺陷，hold记录，并通知客户端去PNDN
-                            if (PndnCount.models.Count > 0)
+                            string s_pndn_no = null;
+                            for (int i = 0; i < PndnCount.models.Count; i++)
                             {
-                                Out_node._success = false;
-                                Out_node._ErrorMsg = "This Lot Have PNDN!";
-                                return Out_node;
-
+                                s_pndn_no = s_pndn_no +" "+PndnCount.models[i].PndnNo;
                             }
+                            Out_node.model.S_PNDN_NO = "This Lot Have PNDN :"+ s_pndn_no+".";
+
+                            //if (PndnCount.models.Count > 0)
+                            //{
+                            //    Out_node._success = false;
+                            //    Out_node._ErrorMsg = "This Lot Have PNDN!";
+                            //    return Out_node;
+
+                            //}
                             //查询未被接收的
 
                             //MES Query

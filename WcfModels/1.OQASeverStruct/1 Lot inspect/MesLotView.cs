@@ -73,6 +73,20 @@ namespace WCFModels.OQA
         }
 
         private string c_foup_id;
+        [DataMember]
+        public string S_PNDN_NO
+        {
+            get
+            {
+                return s_pndn_no;
+            }
+            set
+            {
+                s_pndn_no = value;
+            }
+        }
+
+        private string s_pndn_no;
         public IspMesLot()
         {
             OQAMESLOT_LIST = new List<OqaMeslot>();

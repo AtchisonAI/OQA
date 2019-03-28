@@ -74,7 +74,7 @@ namespace OQAMain
                 }
                 else
                 {
-                    MessageBox.Show("保存成功!");
+                    MessageBox.Show("Program Success.");
                     lblSucessMsg.Text = rspInfo._MsgCode;
                 }
             }
@@ -267,8 +267,8 @@ namespace OQAMain
                 wafInfo.Cmt = ComFunc.Trim(rtboxCmt.Text);
                 wafInfo.InspectPoint = "0";
                 wafInfo.UpdateUserId = AuthorityControl.GetUserProfile().userId;
-                
-               
+
+
                 if (!string.IsNullOrWhiteSpace(comboBox1.Text))
                 {
                     wafInfo.InspectResult = "N";
@@ -407,6 +407,6 @@ namespace OQAMain
 
         #endregion
 
-    
+
     }
 }

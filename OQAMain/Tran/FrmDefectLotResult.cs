@@ -1029,25 +1029,27 @@ namespace OQAMain
         {
             //检查数据
             if (CheckCondition("UPDATE") == false) return;
-        
-                if (SubmitISPLotInfo(GlobConst.TRAN_UPDATE, '3') == false) return;
 
-                txtISPLotFilter.Text = "";
-                btnISPLotFilter.PerformClick();
+            if (SubmitISPLotInfo(GlobConst.TRAN_UPDATE, '3') == false) return;
+
+            btnRefresh.PerformClick();
+            //txtISPLotFilter.Text = "";
+            //btnISPLotFilter.PerformClick();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("提醒", "确认归档吗？", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("确认归档吗？", "提醒", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
             {
                 //检查数据
                 if (CheckCondition("SCRAP") == false) return;
 
-                if (SubmitISPLotInfo(GlobConst.TRAN_DELETE, '4') == false) return;
+                if (SubmitISPLotInfo(GlobConst.TRAN_UPDATE, '4') == false) return;
 
-                txtISPLotFilter.Text = "";
-                btnISPLotFilter.PerformClick();
+                btnRefresh.PerformClick();
+                //txtISPLotFilter.Text = "";
+                //btnISPLotFilter.PerformClick();
             }
         }
 

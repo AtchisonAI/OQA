@@ -1644,7 +1644,7 @@
             this.btnSrap.Name = "btnSrap";
             this.btnSrap.Size = new System.Drawing.Size(88, 26);
             this.btnSrap.TabIndex = 7;
-            this.btnSrap.Text = "File";
+            this.btnSrap.Text = "Save";
             this.btnSrap.UseVisualStyleBackColor = true;
             this.btnSrap.Click += new System.EventHandler(this.button1_Click);
             // 

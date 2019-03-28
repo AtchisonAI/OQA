@@ -407,6 +407,13 @@ namespace OQAMain
                 txtRecDate.Text = DateTime.Now.ToString("yyyyMMddhhmmss");
                 txtDept.Text = "FQA";
 
+                if (string.IsNullOrWhiteSpace(out_data.model.S_PNDN_NO) == false)
+                {
+                    labPndn.Text = out_data.model.S_PNDN_NO;
+                    labPndn.ForeColor = Color.Red;
+
+                }
+
                 list_wafer = out_data.model.OQAMESWAFER_LIST;
                 int slotIndex;
                 for (int i = 0; i < 25; i++)

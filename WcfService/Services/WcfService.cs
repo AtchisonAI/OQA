@@ -1,5 +1,6 @@
 ﻿using HiDM.FactoryWorks.Messages;
 using HiDM.FactoryWorks.TibcoRV;
+using System;
 using System.ServiceModel;
 using WcfContract;
 using WCFModels;
@@ -63,6 +64,7 @@ namespace WcfService.Services
                 loginRes._ErrorMsg = "OQA:账号密码验证失败，请重新输入";
             }
 
+
             return loginRes;
         }
 
@@ -81,7 +83,17 @@ namespace WcfService.Services
         public ModelRsp<ControlAccessString> UpdateControlAccessString(UpdateModelReq<ControlAccessString> updateReq)
         {
             ModelRsp<ControlAccessString> rsp = new ModelRsp<ControlAccessString>();
-            UpdateModel(updateReq, rsp,false);
+            UpdateTrackModel(updateReq, rsp,true);
+
+            return rsp;
+        }
+
+        [OperationBehavior(TransactionAutoComplete = true, TransactionScopeRequired = true)]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
+        public ModelListRsp<ControlAccessString> UpdateControlAccessStringList(UpdateModelListReq<ControlAccessString> updateReq)
+        {
+            ModelListRsp<ControlAccessString> rsp = new ModelListRsp<ControlAccessString>();
+            UpdateTrackModels(updateReq, rsp, true);
 
             return rsp;
         }

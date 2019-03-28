@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using NPoco;
 
@@ -10,7 +7,7 @@ namespace WCFModels.Frame
     [TableName("CONTROLACCESSSTRING")]
     [PrimaryKey("CONTROLID,SYSNAME", AutoIncrement = false)]
     [ExplicitColumns]
-    public partial class ControlAccessString
+    public partial class ControlAccessString: ITrackModelObject
     {
         [DataMember]
         [Column("CONTROLID")] public string ControlID { get; set; }
@@ -19,6 +16,14 @@ namespace WCFModels.Frame
 
         [DataMember]
         [Column("SYSNAME")] public string SysName { get; set; }
+        [DataMember]
+        [Column("CREATE_TIME")] public string CreateTime { get; set; }
+        [DataMember]
+        [Column("CREATE_USER_ID")] public string CreateUserId { get; set; }
+        [DataMember]
+        [Column("UPDATE_TIME")] public string UpdateTime { get; set; }
+        [DataMember]
+        [Column("UPDATE_USER_ID")] public string UpdateUserId { get; set; }
     }
 
     [DataContract]

@@ -22,6 +22,9 @@ namespace WcfContract
         ModelRsp<ControlAccessString> UpdateControlAccessString(UpdateModelReq<ControlAccessString> updateReq);
 
         [OperationContract]
+        ModelListRsp<ControlAccessString> UpdateControlAccessStringList(UpdateModelListReq<ControlAccessString> updateReq);
+
+        [OperationContract]
         ModelListRsp<UserFavorite> QueryUserFavorite(QuerUserFavoriteReq querUserFavoriteReq);
 
         [OperationContract]

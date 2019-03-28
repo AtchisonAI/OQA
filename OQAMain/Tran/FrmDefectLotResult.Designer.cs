@@ -223,10 +223,6 @@
             this.tabResult = new System.Windows.Forms.TabPage();
             this.grpPndnInf = new System.Windows.Forms.GroupBox();
             this.dgPndn = new System.Windows.Forms.DataGridView();
-            this.tabISP = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txtNewFoupID = new System.Windows.Forms.TextBox();
-            this.lblNewFoupID = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn101 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn102 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn103 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -238,6 +234,10 @@
             this.HoldCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoldComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupervisorNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtNewFoupID = new System.Windows.Forms.TextBox();
+            this.lblNewFoupID = new System.Windows.Forms.Label();
+            this.tabISP = new System.Windows.Forms.TabPage();
             this.pnlMenu.SuspendLayout();
             this.grpRcvLot.SuspendLayout();
             this.grpOQAInfo.SuspendLayout();
@@ -255,8 +255,8 @@
             this.tabResult.SuspendLayout();
             this.grpPndnInf.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPndn)).BeginInit();
-            this.tabISP.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tabISP.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -938,7 +938,7 @@
             this.grpAOI.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpAOI.Location = new System.Drawing.Point(3, 3);
             this.grpAOI.Name = "grpAOI";
-            this.grpAOI.Size = new System.Drawing.Size(513, 120);
+            this.grpAOI.Size = new System.Drawing.Size(483, 120);
             this.grpAOI.TabIndex = 12;
             this.grpAOI.TabStop = false;
             this.grpAOI.Text = "AOI Information";
@@ -981,7 +981,7 @@
             this.dgAOI.ReadOnly = true;
             this.dgAOI.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgAOI.RowTemplate.Height = 23;
-            this.dgAOI.Size = new System.Drawing.Size(507, 100);
+            this.dgAOI.Size = new System.Drawing.Size(477, 100);
             this.dgAOI.TabIndex = 0;
             this.dgAOI.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAOI_CellDoubleClick);
             // 
@@ -1173,7 +1173,7 @@
             this.grpMacro.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpMacro.Location = new System.Drawing.Point(3, 123);
             this.grpMacro.Name = "grpMacro";
-            this.grpMacro.Size = new System.Drawing.Size(513, 120);
+            this.grpMacro.Size = new System.Drawing.Size(483, 120);
             this.grpMacro.TabIndex = 13;
             this.grpMacro.TabStop = false;
             this.grpMacro.Text = "Macro Information";
@@ -1216,7 +1216,7 @@
             this.dgMacro.ReadOnly = true;
             this.dgMacro.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgMacro.RowTemplate.Height = 23;
-            this.dgMacro.Size = new System.Drawing.Size(507, 100);
+            this.dgMacro.Size = new System.Drawing.Size(477, 100);
             this.dgMacro.TabIndex = 0;
             this.dgMacro.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMacro_CellDoubleClick);
             // 
@@ -1408,7 +1408,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(3, 243);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(513, 100);
+            this.groupBox1.Size = new System.Drawing.Size(483, 100);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Mircro Information";
@@ -1451,7 +1451,7 @@
             this.dgMIR.ReadOnly = true;
             this.dgMIR.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgMIR.RowTemplate.Height = 23;
-            this.dgMIR.Size = new System.Drawing.Size(507, 80);
+            this.dgMIR.Size = new System.Drawing.Size(477, 80);
             this.dgMIR.TabIndex = 0;
             this.dgMIR.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMIR_CellDoubleClick);
             // 
@@ -1644,7 +1644,7 @@
             this.btnSrap.Name = "btnSrap";
             this.btnSrap.Size = new System.Drawing.Size(88, 26);
             this.btnSrap.TabIndex = 7;
-            this.btnSrap.Text = "File";
+            this.btnSrap.Text = "Save";
             this.btnSrap.UseVisualStyleBackColor = true;
             this.btnSrap.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -1880,7 +1880,7 @@
             this.grpPndnInf.Size = new System.Drawing.Size(483, 165);
             this.grpPndnInf.TabIndex = 16;
             this.grpPndnInf.TabStop = false;
-            this.grpPndnInf.Text = "Pndn Information";
+            this.grpPndnInf.Text = "PNDN Information";
             // 
             // dgPndn
             // 
@@ -1914,47 +1914,6 @@
             this.dgPndn.RowTemplate.Height = 23;
             this.dgPndn.Size = new System.Drawing.Size(477, 145);
             this.dgPndn.TabIndex = 8;
-            // 
-            // tabISP
-            // 
-            this.tabISP.BackColor = System.Drawing.SystemColors.Control;
-            this.tabISP.Controls.Add(this.groupBox1);
-            this.tabISP.Controls.Add(this.grpMacro);
-            this.tabISP.Controls.Add(this.grpAOI);
-            this.tabISP.Location = new System.Drawing.Point(4, 22);
-            this.tabISP.Name = "tabISP";
-            this.tabISP.Padding = new System.Windows.Forms.Padding(3);
-            this.tabISP.Size = new System.Drawing.Size(519, 394);
-            this.tabISP.TabIndex = 1;
-            this.tabISP.Text = "Inspect Type";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txtNewFoupID);
-            this.panel1.Controls.Add(this.lblNewFoupID);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(483, 23);
-            this.panel1.TabIndex = 17;
-            // 
-            // txtNewFoupID
-            // 
-            this.txtNewFoupID.Enabled = false;
-            this.txtNewFoupID.Location = new System.Drawing.Point(93, 0);
-            this.txtNewFoupID.MaxLength = 30;
-            this.txtNewFoupID.Name = "txtNewFoupID";
-            this.txtNewFoupID.Size = new System.Drawing.Size(100, 21);
-            this.txtNewFoupID.TabIndex = 15;
-            // 
-            // lblNewFoupID
-            // 
-            this.lblNewFoupID.AutoSize = true;
-            this.lblNewFoupID.Location = new System.Drawing.Point(6, 4);
-            this.lblNewFoupID.Name = "lblNewFoupID";
-            this.lblNewFoupID.Size = new System.Drawing.Size(71, 12);
-            this.lblNewFoupID.TabIndex = 14;
-            this.lblNewFoupID.Text = "New Foup ID";
             // 
             // dataGridViewTextBoxColumn101
             // 
@@ -2030,6 +1989,47 @@
             this.SupervisorNo.Name = "SupervisorNo";
             this.SupervisorNo.ReadOnly = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtNewFoupID);
+            this.panel1.Controls.Add(this.lblNewFoupID);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(483, 23);
+            this.panel1.TabIndex = 17;
+            // 
+            // txtNewFoupID
+            // 
+            this.txtNewFoupID.Enabled = false;
+            this.txtNewFoupID.Location = new System.Drawing.Point(93, 0);
+            this.txtNewFoupID.MaxLength = 30;
+            this.txtNewFoupID.Name = "txtNewFoupID";
+            this.txtNewFoupID.Size = new System.Drawing.Size(100, 21);
+            this.txtNewFoupID.TabIndex = 15;
+            // 
+            // lblNewFoupID
+            // 
+            this.lblNewFoupID.AutoSize = true;
+            this.lblNewFoupID.Location = new System.Drawing.Point(6, 4);
+            this.lblNewFoupID.Name = "lblNewFoupID";
+            this.lblNewFoupID.Size = new System.Drawing.Size(71, 12);
+            this.lblNewFoupID.TabIndex = 14;
+            this.lblNewFoupID.Text = "New Foup ID";
+            // 
+            // tabISP
+            // 
+            this.tabISP.BackColor = System.Drawing.SystemColors.Control;
+            this.tabISP.Controls.Add(this.groupBox1);
+            this.tabISP.Controls.Add(this.grpMacro);
+            this.tabISP.Controls.Add(this.grpAOI);
+            this.tabISP.Location = new System.Drawing.Point(4, 22);
+            this.tabISP.Name = "tabISP";
+            this.tabISP.Padding = new System.Windows.Forms.Padding(3);
+            this.tabISP.Size = new System.Drawing.Size(489, 274);
+            this.tabISP.TabIndex = 1;
+            this.tabISP.Text = "Inspect Type";
+            // 
             // FrmDefectLotResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2070,9 +2070,9 @@
             this.tabResult.ResumeLayout(false);
             this.grpPndnInf.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgPndn)).EndInit();
-            this.tabISP.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tabISP.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

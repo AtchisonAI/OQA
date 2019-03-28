@@ -1,9 +1,14 @@
-﻿using System;
+﻿using log4net;
+using Syncfusion.Windows.Forms.Chart.SvgBase;
+using System;
+using System.IO;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Configuration;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
+using System.Text;
+using System.Xml;
 
 namespace WcfInspector
 {
@@ -12,9 +17,12 @@ namespace WcfInspector
     /// </summary>
     public class WcfMessageInspector : IClientMessageInspector, IDispatchMessageInspector
     {
+        public static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         void IClientMessageInspector.AfterReceiveReply(ref Message reply, object correlationState)
         {
-  //          Console.WriteLine("客户端接收到的回复：\n{0}", reply.ToString());
+
+            //          Console.WriteLine("客户端接收到的回复：\n{0}", reply.ToString());
         }
 
         object IClientMessageInspector.BeforeSendRequest(ref Message request, IClientChannel channel)
@@ -33,17 +41,40 @@ namespace WcfInspector
 
         void IDispatchMessageInspector.BeforeSendReply(ref Message reply, object correlationState)
         {
+            if (reply.IsFault)
+            {
+                WriteExceptionLog(ref reply);
+            }
+
             Console.WriteLine("服务器即将作出以下回复：\n{0}", reply.ToString());
         }
 
-        public object BeforeSendRequest(ref Message request, IClientChannel channel)
+        private void WriteExceptionLog(ref Message message)
         {
-            throw new NotImplementedException();
-        }
+            var xd = new XmlDocument();
+            xd.LoadXml(message.ToString());
+            XmlNamespaceManager xnm = new XmlNamespaceManager(xd.NameTable);
+            xnm.AddNamespace("s", "http://www.w3.org/2003/05/soap-envelope");
+            xnm.AddNamespace("x", "http://schemas.datacontract.org/2004/07/System.ServiceModel");
+            XmlNode reasonNode = xd.SelectSingleNode("/s:Envelope/s:Body/s:Fault/s:Detail/x:ExceptionDetail/x:Message", xnm);
+            XmlNode stackNode = xd.SelectSingleNode("/s:Envelope/s:Body/s:Fault/s:Detail/x:ExceptionDetail/x:StackTrace", xnm);
+            XmlNode typeNode = xd.SelectSingleNode("/s:Envelope/s:Body/s:Fault/s:Detail/x:ExceptionDetail/x:Type", xnm);
 
-        public void AfterReceiveReply(ref Message reply, object correlationState)
-        {
-            throw new NotImplementedException();
+            StringBuilder strB = new StringBuilder();
+            if (null != reasonNode)
+            {
+                strB.Append("Exception Reason:" + reasonNode.InnerText);
+            }
+            if (null != stackNode)
+            {
+                strB.Append(",Exception Type:" + stackNode.InnerText);
+            }
+            if (null != typeNode)
+            {
+                strB.Append(",StackTrack:" + typeNode.InnerText);
+            }
+            
+            log.Error(strB.ToString().TrimStart(','));
         }
 
         private void AddMsgVersion(ref Message request)

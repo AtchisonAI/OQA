@@ -2,7 +2,6 @@
 using Syncfusion.WinForms.DataGrid;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Windows.Forms;
 using WcfClientCore.Utils.Authority;
 using WCFModels.Message;
@@ -511,7 +510,7 @@ namespace OQAMain
         private void print_button_Click(object sender, EventArgs e)
         {
             if (!ValidateLotInfo()) return;
-            FrmPackageLabelPrint printForm = new FrmPackageLabelPrint(lotPackageInfo.lotInfo.LotId);
+            FrmWaferInspectRecordPrint printForm = new FrmWaferInspectRecordPrint(lotPackageInfo.lotInfo.LotId);
 
             AddNewFormToMdi(printForm);
         }

@@ -51,7 +51,7 @@ namespace OQAMain
                 case "ISPVIEW":
                     if (ComFunc.CheckValue(txtISPLotFilter, 1) == false)
                     {
-                        MessageBox.Show("必填内容输入为空！");
+                        MessageBox.Show("Input of required contents is null！");
                         txtISPLotFilter.Focus();
                         return false;
                     }
@@ -60,7 +60,7 @@ namespace OQAMain
                 case "SCRAP":
                     if (ComFunc.CheckValue(txtLotID, 1) == false)
                     {
-                        MessageBox.Show("必填内容输入为空！");
+                        MessageBox.Show("Input of required contents is null！");
                         txtLotID.Focus();
                         return false;
                     }
@@ -70,7 +70,7 @@ namespace OQAMain
                 case "UPDATE":
                     if (ComFunc.CheckValue(txtLotID, 1) == false)
                     {
-                        MessageBox.Show("必填内容输入为空！");
+                        MessageBox.Show("Input of required contents is null！");
                         txtLotID.Focus();
                         return false;
                     }
@@ -79,31 +79,31 @@ namespace OQAMain
                 case "CREATE":
                     if (ComFunc.CheckValue(txtLotID, 1) == false)
                     {
-                        MessageBox.Show("必填内容输入为空！");
+                        MessageBox.Show("Input of required contents is null！");
                         txtLotID.Focus();
                         return false;
                     }
                     if (ComFunc.CheckValue(txtFoupID, 1) == false)
                     {
-                        MessageBox.Show("必填内容输入为空！");
+                        MessageBox.Show("Input of required contents is null！");
                         txtFoupID.Focus();
                         return false;
                     }
                     if (ComFunc.CheckValue(txtPartID, 1) == false)
                     {
-                        MessageBox.Show("必填内容输入为空！");
+                        MessageBox.Show("Input of required contents is null！");
                         txtPartID.Focus();
                         return false;
                     }
                     if (ComFunc.CheckValue(txtLotQty, 1) == false)
                     {
-                        MessageBox.Show("必填内容输入为空！");
+                        MessageBox.Show("Input of required contents is null！");
                         txtLotQty.Focus();
                         return false;
                     }
                     if (ComFunc.CheckValue(txtUserID, 1) == false)
                     {
-                        MessageBox.Show("必填内容输入为空！");
+                        MessageBox.Show("Input of required contents is null！");
                         txtUserID.Focus();
                         return false;
                     }
@@ -958,16 +958,31 @@ namespace OQAMain
         {
             if (dgMacro.Rows.Count > 0)
             {
-                if (dgMacro.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Y"|| dgMacro.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "D")
+                if (dgMacro.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Y" || dgMacro.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "D")
                 {
-                    string s_side = dgMacro.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    FrmMarcoInput MAC = new FrmMarcoInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
-                    MAC.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    MAC.WindowState = FormWindowState.Normal;
-                    MAC.MaximizeBox = false;
-                    MAC.MinimizeBox = false;
-                    MAC.StartPosition = FormStartPosition.CenterParent;
-                    MAC.ShowDialog();
+                    if (dgMacro.Rows[e.RowIndex].Cells[0].Value.ToString() == "E")
+                    {
+                        string s_side = dgMacro.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        FrmMarcoEdgeInput MAC = new FrmMarcoEdgeInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
+                        MAC.FormBorderStyle = FormBorderStyle.FixedDialog;
+                        MAC.WindowState = FormWindowState.Normal;
+                        MAC.MaximizeBox = false;
+                        MAC.MinimizeBox = false;
+                        MAC.StartPosition = FormStartPosition.CenterParent;
+                        MAC.ShowDialog();
+                    }
+                    else
+                    {
+                        string s_side = dgMacro.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        FrmMarcoInput MAC = new FrmMarcoInput(txtLotID.Text, e.ColumnIndex.ToString().PadLeft(3, '0'), s_side);
+                        MAC.FormBorderStyle = FormBorderStyle.FixedDialog;
+                        MAC.WindowState = FormWindowState.Normal;
+                        MAC.MaximizeBox = false;
+                        MAC.MinimizeBox = false;
+                        MAC.StartPosition = FormStartPosition.CenterParent;
+                        MAC.ShowDialog();
+                    }
+
                     btnISPLotFilter.PerformClick();
                 }
 
@@ -1029,25 +1044,28 @@ namespace OQAMain
         {
             //检查数据
             if (CheckCondition("UPDATE") == false) return;
-        
-                if (SubmitISPLotInfo(GlobConst.TRAN_UPDATE, '3') == false) return;
 
-                txtISPLotFilter.Text = "";
-                btnISPLotFilter.PerformClick();
+            if (SubmitISPLotInfo(GlobConst.TRAN_UPDATE, '3') == false) return;
+
+            btnRefresh.PerformClick();
+            //txtISPLotFilter.Text = "";
+            //btnISPLotFilter.PerformClick();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("内容", "标题", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Do you confirm save this lot？", "Remind Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
-
+            {
                 //检查数据
                 if (CheckCondition("SCRAP") == false) return;
 
-            if (SubmitISPLotInfo(GlobConst.TRAN_DELETE, '4') == false) return;
+                if (SubmitISPLotInfo(GlobConst.TRAN_UPDATE, '4') == false) return;
 
-            txtISPLotFilter.Text = "";
-            btnISPLotFilter.PerformClick();
+                btnRefresh.PerformClick();
+                //txtISPLotFilter.Text = "";
+                //btnISPLotFilter.PerformClick();
+            }
         }
 
         private void txtISPLotFilter_KeyPress(object sender, KeyPressEventArgs e)

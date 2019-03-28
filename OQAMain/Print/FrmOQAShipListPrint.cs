@@ -188,13 +188,12 @@ namespace OQAMain
                 string Partid = lstShip[0].PartId.ToString();
                 string Shipdate1 = lstShip[0].ShipDate.ToString();
                 string Shipdate = Shipdate1.Substring(0, 4) + "-" + Shipdate1.Substring(4, 2) + "-" + Shipdate1.Substring(6, 2);
-               // string Shipdate2 = DateTime.Now.Date.ToString("yyyy-MM-dd");
                 string Qty = lstShip[0].Qty.ToString();
                 string codePackedDate = GenerateBarCodeByZen(lstShip[0].ShipId.ToString());
 
                 lstParam.Add(new ReportParameter("ParameterPartID", Partid));
                 lstParam.Add(new ReportParameter("ParamWaferQty", Qty));
-                lstParam.Add(new ReportParameter("ParamDate", Shipdate));
+                lstParam.Add(new ReportParameter("ParamDate", Shipdate1));
                 lstParam.Add(new ReportParameter("ParameterBarcode", codePackedDate));
             }
             else

@@ -508,5 +508,10 @@ namespace OQAMain
                 dtToTime.Value = DateTime.Now.Date;
             }
         }
+
+        private void FrmOQAShipListPrint_Shown(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -14,6 +14,7 @@ using WCFModels.Message;
 using WCFModels.OQA;
 using System.Linq;
 
+
 namespace OQAMain
 {
     public partial class FrmOQAShipListPrint : OQABaseForm
@@ -108,7 +109,7 @@ namespace OQAMain
             }
             
             dtFromTime.Value = DateTime.Now.AddDays(-7);
-            this.reportViewer2.LocalReport.DataSources.Clear();
+            //this.reportViewer2.LocalReport.DataSources.Clear();
             btnQuery.PerformClick();
 
         }
@@ -186,7 +187,7 @@ namespace OQAMain
             if (lstShip.Count > 0)
             {
                 string Partid = lstShip[0].PartId.ToString();
-                string Shipdate = lstShip[0].ShipDate;
+                string Shipdate = DateTime.Now.Date.ToString("yyyy-MM-dd");
                 string Qty = lstShip[0].Qty.ToString();
                 string codePackedDate = GenerateBarCodeByZen(lstShip[0].ShipId.ToString());
 
@@ -495,7 +496,7 @@ namespace OQAMain
 
             if (dtFromTime.Value >= dtToTime.Value && dtToTime.Enabled == true)
             {
-                MessageBox.Show("起始日期不能超过截至日期.");
+                MessageBox.Show("The start date cannot exceed the end date.");
                 dtFromTime.Value = DateTime.Now.AddDays(-7);
             }
         }
@@ -504,7 +505,7 @@ namespace OQAMain
         {
             if (dtToTime.Value <= dtFromTime.Value && dtFromTime.Enabled == true)
             {
-                MessageBox.Show("起始日期不能超过截至日期.");
+                MessageBox.Show("The start date cannot exceed the end date.");
                 dtToTime.Value = DateTime.Now.Date;
             }
         }

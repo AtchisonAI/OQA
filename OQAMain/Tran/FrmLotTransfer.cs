@@ -156,7 +156,7 @@ namespace OQAMain
         {
             insert_data.Clear();
             GetSerialNum();
-            MessageBox.Show("交接单号"+ srtNum);
+            MessageBox.Show("Ship ID"+ srtNum);
             FrmOQAShipListPrint formshiplistprint = new FrmOQAShipListPrint(srtNum);
 
             string s_PartID = ComFunc.Trim(txtPartID.Text);
@@ -306,7 +306,7 @@ namespace OQAMain
                     
                     if (out_data.model.PKGSHPDAT_list.Count ==0 || out_data.model.PKGSHPDAT_list[0][0].ToString() != "1")
                     {
-                        MessageBox.Show("选择的lotid不属于同一个part！");
+                        MessageBox.Show("The Lot ID selected does not belong to the same Part ID!");
                         MasterLot = string.Empty;
                         return false;
                     }

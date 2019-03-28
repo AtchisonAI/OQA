@@ -47,14 +47,14 @@ namespace OQAMain
 
                     if (ComFunc.CheckValue(txtIspType, 1) == false)
                     {
-                        MessageBox.Show("必填内容输入为空！");
+                        MessageBox.Show("Input of required contents is null！");
                         txtIspType.Focus();
                         return false;
                     }
 
                     if (ComFunc.CheckValue(txtDefectCode, 1) == false)
                     {
-                        MessageBox.Show("必填内容输入为空！");
+                        MessageBox.Show("Input of required contents is null！");
                         txtIspType.Focus();
                         return false;
                     }

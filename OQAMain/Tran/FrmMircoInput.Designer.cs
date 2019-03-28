@@ -108,6 +108,8 @@
             this.rbtnNine = new System.Windows.Forms.RadioButton();
             this.rbtnThir = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxSelect.SuspendLayout();
@@ -150,6 +152,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label25);
+            this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.groupBoxSelect);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.btnSide);
@@ -220,7 +224,7 @@
             this.groupBoxSelect.Controls.Add(this.label2);
             this.groupBoxSelect.Controls.Add(this.label1);
             this.groupBoxSelect.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBoxSelect.Location = new System.Drawing.Point(367, 46);
+            this.groupBoxSelect.Location = new System.Drawing.Point(231, 46);
             this.groupBoxSelect.Name = "groupBoxSelect";
             this.groupBoxSelect.Size = new System.Drawing.Size(550, 400);
             this.groupBoxSelect.TabIndex = 39;
@@ -229,7 +233,7 @@
             // imageUpload_14
             // 
             this.imageUpload_14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.imageUpload_14.Location = new System.Drawing.Point(161, 368);
+            this.imageUpload_14.Location = new System.Drawing.Point(146, 368);
             this.imageUpload_14.Name = "imageUpload_14";
             this.imageUpload_14.PicStream = null;
             this.imageUpload_14.Size = new System.Drawing.Size(380, 31);
@@ -244,7 +248,7 @@
             // imageUpload_8
             // 
             this.imageUpload_8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.imageUpload_8.Location = new System.Drawing.Point(161, 338);
+            this.imageUpload_8.Location = new System.Drawing.Point(146, 338);
             this.imageUpload_8.Name = "imageUpload_8";
             this.imageUpload_8.PicStream = null;
             this.imageUpload_8.Size = new System.Drawing.Size(380, 31);
@@ -259,7 +263,7 @@
             // imageUpload_12
             // 
             this.imageUpload_12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.imageUpload_12.Location = new System.Drawing.Point(161, 308);
+            this.imageUpload_12.Location = new System.Drawing.Point(146, 308);
             this.imageUpload_12.Name = "imageUpload_12";
             this.imageUpload_12.PicStream = null;
             this.imageUpload_12.Size = new System.Drawing.Size(380, 31);
@@ -274,7 +278,7 @@
             // imageUpload_18
             // 
             this.imageUpload_18.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.imageUpload_18.Location = new System.Drawing.Point(159, 278);
+            this.imageUpload_18.Location = new System.Drawing.Point(144, 278);
             this.imageUpload_18.Name = "imageUpload_18";
             this.imageUpload_18.PicStream = null;
             this.imageUpload_18.Size = new System.Drawing.Size(380, 31);
@@ -289,7 +293,7 @@
             // imageUpload_19
             // 
             this.imageUpload_19.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.imageUpload_19.Location = new System.Drawing.Point(159, 248);
+            this.imageUpload_19.Location = new System.Drawing.Point(144, 248);
             this.imageUpload_19.Name = "imageUpload_19";
             this.imageUpload_19.PicStream = null;
             this.imageUpload_19.Size = new System.Drawing.Size(380, 31);
@@ -304,7 +308,7 @@
             // imageUpload_9
             // 
             this.imageUpload_9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.imageUpload_9.Location = new System.Drawing.Point(159, 218);
+            this.imageUpload_9.Location = new System.Drawing.Point(144, 218);
             this.imageUpload_9.Name = "imageUpload_9";
             this.imageUpload_9.PicStream = null;
             this.imageUpload_9.Size = new System.Drawing.Size(380, 31);
@@ -319,7 +323,7 @@
             // imageUpload_7
             // 
             this.imageUpload_7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.imageUpload_7.Location = new System.Drawing.Point(160, 188);
+            this.imageUpload_7.Location = new System.Drawing.Point(145, 188);
             this.imageUpload_7.Name = "imageUpload_7";
             this.imageUpload_7.PicStream = null;
             this.imageUpload_7.Size = new System.Drawing.Size(380, 31);
@@ -334,7 +338,7 @@
             // imageUpload_17
             // 
             this.imageUpload_17.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.imageUpload_17.Location = new System.Drawing.Point(159, 158);
+            this.imageUpload_17.Location = new System.Drawing.Point(144, 158);
             this.imageUpload_17.Name = "imageUpload_17";
             this.imageUpload_17.PicStream = null;
             this.imageUpload_17.Size = new System.Drawing.Size(380, 31);
@@ -349,7 +353,7 @@
             // imageUpload_23
             // 
             this.imageUpload_23.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.imageUpload_23.Location = new System.Drawing.Point(160, 128);
+            this.imageUpload_23.Location = new System.Drawing.Point(145, 128);
             this.imageUpload_23.Name = "imageUpload_23";
             this.imageUpload_23.PicStream = null;
             this.imageUpload_23.Size = new System.Drawing.Size(380, 31);
@@ -364,7 +368,7 @@
             // imageUpload_3
             // 
             this.imageUpload_3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.imageUpload_3.Location = new System.Drawing.Point(159, 98);
+            this.imageUpload_3.Location = new System.Drawing.Point(144, 98);
             this.imageUpload_3.Name = "imageUpload_3";
             this.imageUpload_3.PicStream = null;
             this.imageUpload_3.Size = new System.Drawing.Size(380, 31);
@@ -379,7 +383,7 @@
             // imageUpload_15
             // 
             this.imageUpload_15.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.imageUpload_15.Location = new System.Drawing.Point(159, 68);
+            this.imageUpload_15.Location = new System.Drawing.Point(144, 68);
             this.imageUpload_15.Name = "imageUpload_15";
             this.imageUpload_15.PicStream = null;
             this.imageUpload_15.Size = new System.Drawing.Size(380, 31);
@@ -394,7 +398,7 @@
             // imageUpload_13
             // 
             this.imageUpload_13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.imageUpload_13.Location = new System.Drawing.Point(159, 38);
+            this.imageUpload_13.Location = new System.Drawing.Point(144, 38);
             this.imageUpload_13.Name = "imageUpload_13";
             this.imageUpload_13.PicStream = null;
             this.imageUpload_13.Size = new System.Drawing.Size(380, 31);
@@ -409,7 +413,7 @@
             // imageUpload_11
             // 
             this.imageUpload_11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.imageUpload_11.Location = new System.Drawing.Point(159, 8);
+            this.imageUpload_11.Location = new System.Drawing.Point(144, 8);
             this.imageUpload_11.Name = "imageUpload_11";
             this.imageUpload_11.PicStream = null;
             this.imageUpload_11.Size = new System.Drawing.Size(380, 31);
@@ -426,7 +430,7 @@
             this.ngBox_14.AutoSize = true;
             this.ngBox_14.Enabled = false;
             this.ngBox_14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ngBox_14.Location = new System.Drawing.Point(119, 374);
+            this.ngBox_14.Location = new System.Drawing.Point(111, 374);
             this.ngBox_14.Name = "ngBox_14";
             this.ngBox_14.Size = new System.Drawing.Size(36, 16);
             this.ngBox_14.TabIndex = 202;
@@ -438,7 +442,7 @@
             this.ngBox_18.AutoSize = true;
             this.ngBox_18.Enabled = false;
             this.ngBox_18.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ngBox_18.Location = new System.Drawing.Point(119, 284);
+            this.ngBox_18.Location = new System.Drawing.Point(111, 284);
             this.ngBox_18.Name = "ngBox_18";
             this.ngBox_18.Size = new System.Drawing.Size(36, 16);
             this.ngBox_18.TabIndex = 181;
@@ -450,7 +454,7 @@
             this.okBox_14.AutoSize = true;
             this.okBox_14.Enabled = false;
             this.okBox_14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.okBox_14.Location = new System.Drawing.Point(77, 374);
+            this.okBox_14.Location = new System.Drawing.Point(69, 374);
             this.okBox_14.Name = "okBox_14";
             this.okBox_14.Size = new System.Drawing.Size(36, 16);
             this.okBox_14.TabIndex = 201;
@@ -462,7 +466,7 @@
             this.okBox_18.AutoSize = true;
             this.okBox_18.Enabled = false;
             this.okBox_18.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.okBox_18.Location = new System.Drawing.Point(77, 284);
+            this.okBox_18.Location = new System.Drawing.Point(69, 284);
             this.okBox_18.Name = "okBox_18";
             this.okBox_18.Size = new System.Drawing.Size(36, 16);
             this.okBox_18.TabIndex = 180;
@@ -474,7 +478,7 @@
             this.ngBox_8.AutoSize = true;
             this.ngBox_8.Enabled = false;
             this.ngBox_8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ngBox_8.Location = new System.Drawing.Point(119, 344);
+            this.ngBox_8.Location = new System.Drawing.Point(111, 344);
             this.ngBox_8.Name = "ngBox_8";
             this.ngBox_8.Size = new System.Drawing.Size(36, 16);
             this.ngBox_8.TabIndex = 200;
@@ -486,7 +490,7 @@
             this.okBox_8.AutoSize = true;
             this.okBox_8.Enabled = false;
             this.okBox_8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.okBox_8.Location = new System.Drawing.Point(77, 344);
+            this.okBox_8.Location = new System.Drawing.Point(69, 344);
             this.okBox_8.Name = "okBox_8";
             this.okBox_8.Size = new System.Drawing.Size(36, 16);
             this.okBox_8.TabIndex = 199;
@@ -498,7 +502,7 @@
             this.ngBox_19.AutoSize = true;
             this.ngBox_19.Enabled = false;
             this.ngBox_19.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ngBox_19.Location = new System.Drawing.Point(119, 254);
+            this.ngBox_19.Location = new System.Drawing.Point(111, 254);
             this.ngBox_19.Name = "ngBox_19";
             this.ngBox_19.Size = new System.Drawing.Size(36, 16);
             this.ngBox_19.TabIndex = 179;
@@ -510,7 +514,7 @@
             this.ngBox_12.AutoSize = true;
             this.ngBox_12.Enabled = false;
             this.ngBox_12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ngBox_12.Location = new System.Drawing.Point(119, 314);
+            this.ngBox_12.Location = new System.Drawing.Point(111, 314);
             this.ngBox_12.Name = "ngBox_12";
             this.ngBox_12.Size = new System.Drawing.Size(36, 16);
             this.ngBox_12.TabIndex = 198;
@@ -522,7 +526,7 @@
             this.okBox_19.AutoSize = true;
             this.okBox_19.Enabled = false;
             this.okBox_19.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.okBox_19.Location = new System.Drawing.Point(77, 254);
+            this.okBox_19.Location = new System.Drawing.Point(69, 254);
             this.okBox_19.Name = "okBox_19";
             this.okBox_19.Size = new System.Drawing.Size(36, 16);
             this.okBox_19.TabIndex = 178;
@@ -534,7 +538,7 @@
             this.okBox_12.AutoSize = true;
             this.okBox_12.Enabled = false;
             this.okBox_12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.okBox_12.Location = new System.Drawing.Point(77, 314);
+            this.okBox_12.Location = new System.Drawing.Point(69, 314);
             this.okBox_12.Name = "okBox_12";
             this.okBox_12.Size = new System.Drawing.Size(36, 16);
             this.okBox_12.TabIndex = 197;
@@ -546,7 +550,7 @@
             this.ngBox_9.AutoSize = true;
             this.ngBox_9.Enabled = false;
             this.ngBox_9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ngBox_9.Location = new System.Drawing.Point(119, 224);
+            this.ngBox_9.Location = new System.Drawing.Point(111, 224);
             this.ngBox_9.Name = "ngBox_9";
             this.ngBox_9.Size = new System.Drawing.Size(36, 16);
             this.ngBox_9.TabIndex = 177;
@@ -558,7 +562,7 @@
             this.okBox_9.AutoSize = true;
             this.okBox_9.Enabled = false;
             this.okBox_9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.okBox_9.Location = new System.Drawing.Point(77, 224);
+            this.okBox_9.Location = new System.Drawing.Point(69, 224);
             this.okBox_9.Name = "okBox_9";
             this.okBox_9.Size = new System.Drawing.Size(36, 16);
             this.okBox_9.TabIndex = 176;
@@ -570,7 +574,7 @@
             this.ngBox_7.AutoSize = true;
             this.ngBox_7.Enabled = false;
             this.ngBox_7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ngBox_7.Location = new System.Drawing.Point(119, 194);
+            this.ngBox_7.Location = new System.Drawing.Point(111, 194);
             this.ngBox_7.Name = "ngBox_7";
             this.ngBox_7.Size = new System.Drawing.Size(36, 16);
             this.ngBox_7.TabIndex = 175;
@@ -581,7 +585,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label23.Location = new System.Drawing.Point(10, 374);
+            this.label23.Location = new System.Drawing.Point(9, 374);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(59, 12);
             this.label23.TabIndex = 194;
@@ -592,7 +596,7 @@
             this.okBox_7.AutoSize = true;
             this.okBox_7.Enabled = false;
             this.okBox_7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.okBox_7.Location = new System.Drawing.Point(77, 194);
+            this.okBox_7.Location = new System.Drawing.Point(69, 194);
             this.okBox_7.Name = "okBox_7";
             this.okBox_7.Size = new System.Drawing.Size(36, 16);
             this.okBox_7.TabIndex = 174;
@@ -604,7 +608,7 @@
             this.ngBox_17.AutoSize = true;
             this.ngBox_17.Enabled = false;
             this.ngBox_17.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ngBox_17.Location = new System.Drawing.Point(119, 164);
+            this.ngBox_17.Location = new System.Drawing.Point(111, 164);
             this.ngBox_17.Name = "ngBox_17";
             this.ngBox_17.Size = new System.Drawing.Size(36, 16);
             this.ngBox_17.TabIndex = 173;
@@ -616,7 +620,7 @@
             this.okBox_17.AutoSize = true;
             this.okBox_17.Enabled = false;
             this.okBox_17.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.okBox_17.Location = new System.Drawing.Point(77, 164);
+            this.okBox_17.Location = new System.Drawing.Point(69, 164);
             this.okBox_17.Name = "okBox_17";
             this.okBox_17.Size = new System.Drawing.Size(36, 16);
             this.okBox_17.TabIndex = 172;
@@ -627,7 +631,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label22.Location = new System.Drawing.Point(12, 344);
+            this.label22.Location = new System.Drawing.Point(9, 344);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(59, 12);
             this.label22.TabIndex = 191;
@@ -638,7 +642,7 @@
             this.ngBox_23.AutoSize = true;
             this.ngBox_23.Enabled = false;
             this.ngBox_23.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ngBox_23.Location = new System.Drawing.Point(119, 134);
+            this.ngBox_23.Location = new System.Drawing.Point(111, 134);
             this.ngBox_23.Name = "ngBox_23";
             this.ngBox_23.Size = new System.Drawing.Size(36, 16);
             this.ngBox_23.TabIndex = 171;
@@ -650,7 +654,7 @@
             this.okBox_23.AutoSize = true;
             this.okBox_23.Enabled = false;
             this.okBox_23.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.okBox_23.Location = new System.Drawing.Point(77, 134);
+            this.okBox_23.Location = new System.Drawing.Point(69, 134);
             this.okBox_23.Name = "okBox_23";
             this.okBox_23.Size = new System.Drawing.Size(36, 16);
             this.okBox_23.TabIndex = 170;
@@ -662,7 +666,7 @@
             this.ngBox_3.AutoSize = true;
             this.ngBox_3.Enabled = false;
             this.ngBox_3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ngBox_3.Location = new System.Drawing.Point(119, 104);
+            this.ngBox_3.Location = new System.Drawing.Point(111, 104);
             this.ngBox_3.Name = "ngBox_3";
             this.ngBox_3.Size = new System.Drawing.Size(36, 16);
             this.ngBox_3.TabIndex = 169;
@@ -673,7 +677,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label21.Location = new System.Drawing.Point(12, 314);
+            this.label21.Location = new System.Drawing.Point(10, 314);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(59, 12);
             this.label21.TabIndex = 188;
@@ -684,7 +688,7 @@
             this.okBox_3.AutoSize = true;
             this.okBox_3.Enabled = false;
             this.okBox_3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.okBox_3.Location = new System.Drawing.Point(77, 104);
+            this.okBox_3.Location = new System.Drawing.Point(69, 104);
             this.okBox_3.Name = "okBox_3";
             this.okBox_3.Size = new System.Drawing.Size(36, 16);
             this.okBox_3.TabIndex = 168;
@@ -696,7 +700,7 @@
             this.ngBox_15.AutoSize = true;
             this.ngBox_15.Enabled = false;
             this.ngBox_15.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ngBox_15.Location = new System.Drawing.Point(119, 74);
+            this.ngBox_15.Location = new System.Drawing.Point(111, 74);
             this.ngBox_15.Name = "ngBox_15";
             this.ngBox_15.Size = new System.Drawing.Size(36, 16);
             this.ngBox_15.TabIndex = 167;
@@ -708,7 +712,7 @@
             this.okBox_15.AutoSize = true;
             this.okBox_15.Enabled = false;
             this.okBox_15.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.okBox_15.Location = new System.Drawing.Point(77, 74);
+            this.okBox_15.Location = new System.Drawing.Point(69, 74);
             this.okBox_15.Name = "okBox_15";
             this.okBox_15.Size = new System.Drawing.Size(36, 16);
             this.okBox_15.TabIndex = 166;
@@ -720,7 +724,7 @@
             this.ngBox_13.AutoSize = true;
             this.ngBox_13.Enabled = false;
             this.ngBox_13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ngBox_13.Location = new System.Drawing.Point(119, 45);
+            this.ngBox_13.Location = new System.Drawing.Point(111, 45);
             this.ngBox_13.Name = "ngBox_13";
             this.ngBox_13.Size = new System.Drawing.Size(36, 16);
             this.ngBox_13.TabIndex = 165;
@@ -732,7 +736,7 @@
             this.okBox_13.AutoSize = true;
             this.okBox_13.Enabled = false;
             this.okBox_13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.okBox_13.Location = new System.Drawing.Point(77, 45);
+            this.okBox_13.Location = new System.Drawing.Point(69, 45);
             this.okBox_13.Name = "okBox_13";
             this.okBox_13.Size = new System.Drawing.Size(36, 16);
             this.okBox_13.TabIndex = 164;
@@ -744,7 +748,7 @@
             this.ngBox_11.AutoSize = true;
             this.ngBox_11.Enabled = false;
             this.ngBox_11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ngBox_11.Location = new System.Drawing.Point(119, 18);
+            this.ngBox_11.Location = new System.Drawing.Point(111, 18);
             this.ngBox_11.Name = "ngBox_11";
             this.ngBox_11.Size = new System.Drawing.Size(36, 16);
             this.ngBox_11.TabIndex = 2;
@@ -756,7 +760,7 @@
             this.okBox_11.AutoSize = true;
             this.okBox_11.Enabled = false;
             this.okBox_11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.okBox_11.Location = new System.Drawing.Point(77, 18);
+            this.okBox_11.Location = new System.Drawing.Point(69, 18);
             this.okBox_11.Name = "okBox_11";
             this.okBox_11.Size = new System.Drawing.Size(36, 16);
             this.okBox_11.TabIndex = 1;
@@ -767,7 +771,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label20.Location = new System.Drawing.Point(10, 284);
+            this.label20.Location = new System.Drawing.Point(9, 284);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(59, 12);
             this.label20.TabIndex = 144;
@@ -857,7 +861,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(12, 18);
+            this.label1.Location = new System.Drawing.Point(9, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 12);
             this.label1.TabIndex = 99;
@@ -867,16 +871,16 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label13.Location = new System.Drawing.Point(12, 393);
+            this.label13.Location = new System.Drawing.Point(14, 405);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(329, 12);
+            this.label13.Size = new System.Drawing.Size(203, 12);
             this.label13.TabIndex = 23;
-            this.label13.Text = " P:Particle R:Residue M:Probe Mark  B: Bridge O:Others";
+            this.label13.Text = "R:Residue M:Probe Mark  B: Bridge";
             // 
             // btnSide
             // 
             this.btnSide.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSide.Location = new System.Drawing.Point(137, 326);
+            this.btnSide.Location = new System.Drawing.Point(54, 331);
             this.btnSide.Name = "btnSide";
             this.btnSide.Size = new System.Drawing.Size(123, 23);
             this.btnSide.TabIndex = 31;
@@ -887,16 +891,16 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(17, 373);
+            this.label12.Location = new System.Drawing.Point(15, 385);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(341, 12);
+            this.label12.Size = new System.Drawing.Size(215, 12);
             this.label12.TabIndex = 22;
-            this.label12.Text = "A:Arching  S:Scratch  D:Discolor  F:Defocus  C:Corrosion";
+            this.label12.Text = "F:Defocus  C:Corrosion  P:Particle ";
             // 
             // waferSurF
             // 
             this.waferSurF.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.waferSurF.Location = new System.Drawing.Point(88, 94);
+            this.waferSurF.Location = new System.Drawing.Point(8, 100);
             this.waferSurF.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.waferSurF.Name = "waferSurF";
             this.waferSurF.Size = new System.Drawing.Size(220, 220);
@@ -906,7 +910,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label14.Location = new System.Drawing.Point(19, 67);
+            this.label14.Location = new System.Drawing.Point(7, 65);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(263, 12);
             this.label14.TabIndex = 26;
@@ -927,7 +931,7 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox3.Location = new System.Drawing.Point(9, 446);
+            this.groupBox3.Location = new System.Drawing.Point(9, 440);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(910, 110);
             this.groupBox3.TabIndex = 42;
@@ -938,7 +942,7 @@
             this.labelX.AutoSize = true;
             this.labelX.BackColor = System.Drawing.Color.Transparent;
             this.labelX.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX.Location = new System.Drawing.Point(197, 16);
+            this.labelX.Location = new System.Drawing.Point(214, 18);
             this.labelX.Name = "labelX";
             this.labelX.Size = new System.Drawing.Size(11, 12);
             this.labelX.TabIndex = 23;
@@ -949,7 +953,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(880, 16);
+            this.label4.Location = new System.Drawing.Point(716, 17);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(11, 12);
             this.label4.TabIndex = 22;
@@ -958,7 +962,7 @@
             // txtQty
             // 
             this.txtQty.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtQty.Location = new System.Drawing.Point(440, 13);
+            this.txtQty.Location = new System.Drawing.Point(342, 14);
             this.txtQty.Name = "txtQty";
             this.txtQty.Size = new System.Drawing.Size(120, 21);
             this.txtQty.TabIndex = 21;
@@ -969,7 +973,7 @@
             this.txtRate.Enabled = false;
             this.txtRate.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtRate.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtRate.Location = new System.Drawing.Point(786, 13);
+            this.txtRate.Location = new System.Drawing.Point(594, 13);
             this.txtRate.Name = "txtRate";
             this.txtRate.Size = new System.Drawing.Size(120, 21);
             this.txtRate.TabIndex = 20;
@@ -978,7 +982,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(712, 17);
+            this.label3.Location = new System.Drawing.Point(520, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 12);
             this.label3.TabIndex = 18;
@@ -988,7 +992,7 @@
             // 
             this.labelQty.AutoSize = true;
             this.labelQty.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelQty.Location = new System.Drawing.Point(348, 16);
+            this.labelQty.Location = new System.Drawing.Point(250, 17);
             this.labelQty.Name = "labelQty";
             this.labelQty.Size = new System.Drawing.Size(89, 12);
             this.labelQty.TabIndex = 19;
@@ -997,7 +1001,7 @@
             // txtMag
             // 
             this.txtMag.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtMag.Location = new System.Drawing.Point(93, 13);
+            this.txtMag.Location = new System.Drawing.Point(93, 14);
             this.txtMag.Name = "txtMag";
             this.txtMag.Size = new System.Drawing.Size(120, 21);
             this.txtMag.TabIndex = 12;
@@ -1007,8 +1011,10 @@
             // 
             this.rtboxCmt.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rtboxCmt.Location = new System.Drawing.Point(93, 71);
+            this.rtboxCmt.MaxLength = 300;
+            this.rtboxCmt.Multiline = false;
             this.rtboxCmt.Name = "rtboxCmt";
-            this.rtboxCmt.Size = new System.Drawing.Size(815, 29);
+            this.rtboxCmt.Size = new System.Drawing.Size(623, 29);
             this.rtboxCmt.TabIndex = 16;
             this.rtboxCmt.Text = "";
             // 
@@ -1026,8 +1032,10 @@
             // 
             this.rtboxDsc.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rtboxDsc.Location = new System.Drawing.Point(93, 38);
+            this.rtboxDsc.MaxLength = 300;
+            this.rtboxDsc.Multiline = false;
             this.rtboxDsc.Name = "rtboxDsc";
-            this.rtboxDsc.Size = new System.Drawing.Size(815, 29);
+            this.rtboxDsc.Size = new System.Drawing.Size(623, 29);
             this.rtboxDsc.TabIndex = 15;
             this.rtboxDsc.Text = "";
             this.rtboxDsc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.decRichTextBox_KeyPress);
@@ -1036,7 +1044,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(7, 17);
+            this.label5.Location = new System.Drawing.Point(7, 18);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 12);
             this.label5.TabIndex = 5;
@@ -1143,6 +1151,26 @@
             this.groupBox2.TabIndex = 42;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Micro inspection simple MAP";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label24.Location = new System.Drawing.Point(15, 364);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(209, 12);
+            this.label24.TabIndex = 40;
+            this.label24.Text = "A:Arching  S:Scratch  D:Discolor  ";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label25.Location = new System.Drawing.Point(16, 424);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(53, 12);
+            this.label25.TabIndex = 41;
+            this.label25.Text = "O:Others";
             // 
             // FrmMircoInput
             // 
@@ -1256,5 +1284,7 @@
         private System.Windows.Forms.RadioButton rbtnNine;
         private System.Windows.Forms.RadioButton rbtnThir;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
     }
 }

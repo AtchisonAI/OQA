@@ -432,7 +432,7 @@ namespace OQAMain
 
                         if (lst_pkg.Count(p => p.ChkResult=="NG") > 0)
                         {
-                            MessageBox.Show("please check 'NG' item！");
+                            MessageBox.Show("Please check 'NG' item！");
                             return false;
                         }
 

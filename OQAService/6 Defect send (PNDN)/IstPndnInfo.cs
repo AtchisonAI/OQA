@@ -61,7 +61,7 @@ namespace OQAService.Services
                         if (In_node.model.IN_LOT_ID.Trim().Equals("") == true)
                             {
                                 Out_node._success = false;
-                                Out_node._ErrorMsg = "IN_LOT_ID is null!";
+                                Out_node._ErrorMsg = "LOT ID is null!";
                                 return Out_node;
                             }
 
@@ -74,7 +74,7 @@ namespace OQAService.Services
                         if (Query<OUT_PNDN>(IsChkLot).models.Count > 0)
                         {
                             Out_node._success = false;
-                            Out_node._ErrorMsg = "Lotid PNDN已存在!";
+                            Out_node._ErrorMsg = "Lot ID Have PNDN!";
                             return Out_node;
                         }
 
@@ -363,21 +363,21 @@ namespace OQAService.Services
                         switch (requestID)
                         {
                             case -1:
-                                throw new Exception("创建流程失败!");
+                                throw new Exception("Err-1：Create flow failed!");
                             case -2:
-                                throw new Exception("没有创建权限!"); 
+                                throw new Exception("Err-2：Create flow failed!"); //没有创建权限
                             case -3:
-                                throw new Exception("创建流程失败!");
+                                throw new Exception("Err-3：Create flow failed!");
                             case -4:
-                                throw new Exception("字段或表名不正!");
+                                throw new Exception("Err-4：Create flow failed!");//字段或表名不正
                             case -5:
-                                throw new Exception("更新流程级别失败!");
+                                throw new Exception("Err-5：Create flow failed!"); //更新流程级别失败
                             case -6:
-                                throw new Exception("无法创建流程待办任!");
+                                throw new Exception("Err-6：Create flow failed!");//无法创建流程待办任!
                             case -7:
-                                throw new Exception("流程下一节点出错，请检查流程的配置，在OA中发起流程进行测试!");
+                                throw new Exception("Err-7：Create flow failed!");//流程下一节点出错，请检查流程的配置，在OA中发起流程进行测试!
                             case -8:
-                                throw new Exception("流程节点自动赋值操作错误!");
+                                throw new Exception("Err-8：Create flow failed!");//流程节点自动赋值操作错误!
                             default:
                                 throw new Exception("Unknown Exception when create workflow!");
 
@@ -389,7 +389,7 @@ namespace OQAService.Services
                 if (flow == null)
                 {
 
-                    throw new Exception("创建流程失败!");
+                    throw new Exception("Create flow failed!");
                 }
 
                 string fieldValue;
@@ -398,7 +398,7 @@ namespace OQAService.Services
 
                 if (GetWorkFlowFieldValue("PNDNNumber", flow, out fieldValue) == false)
                 {
-                    throw new Exception("创建流程失败!");
+                    throw new Exception("Create flow failed!");
                 }
 
                 return fieldValue;

@@ -90,7 +90,12 @@ namespace OQAService.Services
                             AddSortCondition(QueryLotReq, GetParaName <ISPLOTSTS> (p=>p.LotId), SortType.ASC);
                             
                             var lot = PageQuery<ISPLOTSTS>(QueryLotReq);
-
+                            if (lot.models.Count == 0)
+                            {
+                                Out_node._success = false;
+                                Out_node._ErrorMsg = "Lot is not found!";
+                                return Out_node;
+                            }
                             Out_node.model.ISPLOTSTS_LIST = lot.models;
 
                             stopwatch.Stop();
@@ -120,6 +125,12 @@ namespace OQAService.Services
                             AddSortCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);
 
                             var s_lot = PageQuery<ISPLOTSTS>(QueryLotReq);
+                            if (s_lot.models.Count == 0)
+                            {
+                                Out_node._success = false;
+                                Out_node._ErrorMsg = "Lot is not found!";
+                                return Out_node;
+                            }
 
                             Out_node.model.ISPLOTSTS_LIST = s_lot.models;
                             //slot Query
@@ -133,6 +144,7 @@ namespace OQAService.Services
                             var wafer = PageQuery<ISPWAFST>(QueryWaferReq);
 
                             Out_node.model.ISPWAFSTS_LIST = wafer.models;
+
                             //AOI Item Query
                             QueryAOIReq.CurrentPage = 1;
                             QueryAOIReq.ItemsPerPage = 200;
@@ -195,14 +207,20 @@ namespace OQAService.Services
                                 AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.FoupId), In_node.model.C_FOUP_ID.Trim(), LogicCondition.AndAlso, CompareType.Equal);
                             }
 
-                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.Status), LotSts.Create, LogicCondition.AndAlso, CompareType.Equal);
-                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), IspResult.Hold, LogicCondition.AndAlso, CompareType.Equal);
+                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.Status), LotSts.IspOut, LogicCondition.AndAlso, CompareType.Equal);
+                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), IspResult.Pndn, LogicCondition.AndAlso, CompareType.Equal);
                             //AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.Status), ISPStatus.Create, LogicCondition.OrElse, CompareType.Equal);
-                            AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), IspResult.Pndn, LogicCondition.OrElse, CompareType.Equal);
+                            //AddCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.InspectResult), IspResult.Pndn, LogicCondition.OrElse, CompareType.Equal);
 
                             AddSortCondition(QueryLotReq, GetParaName<ISPLOTSTS>(p => p.LotId), SortType.ASC);
 
                             var Holdlot = PageQuery<ISPLOTSTS>(QueryLotReq);
+                            if (Holdlot.models.Count == 0)
+                            {
+                                Out_node._success = false;
+                                Out_node._ErrorMsg = "Lot is not found!";
+                                return Out_node;
+                            }
 
                             Out_node.model.ISPLOTSTS_LIST = Holdlot.models;
 

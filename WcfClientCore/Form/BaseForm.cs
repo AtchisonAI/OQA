@@ -50,7 +50,7 @@ namespace WcfClientCore.Form
         private void BaseForm_Load(object sender, System.EventArgs e)
         {
             AuthorityControl.InitializeAuthority(this);
-            SkinManager.SetVisualStyle(this, VisualTheme.Office2016DarkGray);
+            SkinManager.SetVisualStyle(this, VisualTheme.Office2016Colorful);
         }
     }
 }

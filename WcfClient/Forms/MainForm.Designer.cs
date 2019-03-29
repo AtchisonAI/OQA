@@ -168,21 +168,21 @@ namespace WcfClient
             // Logout_ToolStripMenuItem
             // 
             this.Logout_ToolStripMenuItem.Name = "Logout_ToolStripMenuItem";
-            this.Logout_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.Logout_ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.Logout_ToolStripMenuItem.Text = "登出系统";
             this.Logout_ToolStripMenuItem.Click += new System.EventHandler(this.Logout_ToolStripMenuItem_Click);
             // 
             // ShortCut_ToolStripMenuItem
             // 
             this.ShortCut_ToolStripMenuItem.Name = "ShortCut_ToolStripMenuItem";
-            this.ShortCut_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ShortCut_ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.ShortCut_ToolStripMenuItem.Text = "快捷菜单";
             this.ShortCut_ToolStripMenuItem.Click += new System.EventHandler(this.ShortCut_ToolStripMenuItem_Click);
             // 
             // Authority_ToolStripMenuItem
             // 
             this.Authority_ToolStripMenuItem.Name = "Authority_ToolStripMenuItem";
-            this.Authority_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.Authority_ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.Authority_ToolStripMenuItem.Text = "权限控制";
             this.Authority_ToolStripMenuItem.Click += new System.EventHandler(this.Authority_ToolStripMenuItem_Click);
             // 
@@ -197,7 +197,7 @@ namespace WcfClient
             // defectCodeSetToolStripMenuItem
             // 
             this.defectCodeSetToolStripMenuItem.Name = "defectCodeSetToolStripMenuItem";
-            this.defectCodeSetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.defectCodeSetToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.defectCodeSetToolStripMenuItem.Text = "Defect Code Set";
             this.defectCodeSetToolStripMenuItem.Click += new System.EventHandler(this.defectCodeSetToolStripMenuItem_Click);
             // 
@@ -321,6 +321,7 @@ namespace WcfClient
             // 
             // tabbedGroupedMDIManager
             // 
+            this.tabbedGroupedMDIManager.ActiveTabBackColor = System.Drawing.Color.DodgerBlue;
             this.tabbedGroupedMDIManager.AttachedTo = this;
             this.tabbedGroupedMDIManager.CloseButtonBackColor = System.Drawing.Color.White;
             this.tabbedGroupedMDIManager.CloseButtonToolTip = "";
@@ -330,6 +331,7 @@ namespace WcfClient
             this.tabbedGroupedMDIManager.NeedUpdateHostedForm = false;
             this.tabbedGroupedMDIManager.ShowCloseButton = true;
             this.tabbedGroupedMDIManager.ShowCloseButtonForActiveTabOnly = true;
+            this.tabbedGroupedMDIManager.TabStyle = typeof(Syncfusion.Windows.Forms.Tools.TabRendererOffice2016Colorful);
             this.tabbedGroupedMDIManager.ThemesEnabled = true;
             // 
             // Time_statusBarAdvPanel

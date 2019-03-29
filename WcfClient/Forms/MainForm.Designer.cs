@@ -101,8 +101,10 @@ namespace WcfClient
             this.dockingManager.CaptionButtons.Add(new Syncfusion.Windows.Forms.Tools.CaptionButton(Syncfusion.Windows.Forms.Tools.CaptionButtonType.Maximize, "MaximizeButton"));
             this.dockingManager.CaptionButtons.Add(new Syncfusion.Windows.Forms.Tools.CaptionButton(Syncfusion.Windows.Forms.Tools.CaptionButtonType.Restore, "RestoreButton"));
             this.dockingManager.CaptionButtons.Add(new Syncfusion.Windows.Forms.Tools.CaptionButton(Syncfusion.Windows.Forms.Tools.CaptionButtonType.Menu, "MenuButton"));
-            this.dockingManager.SetDockLabel(this.shortcut_panel, "shortcut_panel");
+            this.dockingManager.SetDockLabel(this.shortcut_panel, "Shuctcut");
             this.dockingManager.SetEnableDocking(this.shortcut_panel, true);
+            this.dockingManager.SetAutoHideOnLoad(this.shortcut_panel, true);
+            this.dockingManager.SetDockAbility(this.shortcut_panel, "Horizontal");
             ccbshortcut_panel.MergeWith(this.dockingManager.CaptionButtons, false);
             this.dockingManager.SetCustomCaptionButtons(this.shortcut_panel, ccbshortcut_panel);
             // 
@@ -148,8 +150,8 @@ namespace WcfClient
             this.OQAShip_ToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(1203, 25);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip.Size = new System.Drawing.Size(1032, 25);
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -166,22 +168,22 @@ namespace WcfClient
             // Logout_ToolStripMenuItem
             // 
             this.Logout_ToolStripMenuItem.Name = "Logout_ToolStripMenuItem";
-            this.Logout_ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.Logout_ToolStripMenuItem.Text = "登出系统";
+            this.Logout_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.Logout_ToolStripMenuItem.Text = "Login Out";
             this.Logout_ToolStripMenuItem.Click += new System.EventHandler(this.Logout_ToolStripMenuItem_Click);
             // 
             // ShortCut_ToolStripMenuItem
             // 
             this.ShortCut_ToolStripMenuItem.Name = "ShortCut_ToolStripMenuItem";
-            this.ShortCut_ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.ShortCut_ToolStripMenuItem.Text = "快捷菜单";
+            this.ShortCut_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ShortCut_ToolStripMenuItem.Text = "Shutcut Menu";
             this.ShortCut_ToolStripMenuItem.Click += new System.EventHandler(this.ShortCut_ToolStripMenuItem_Click);
             // 
             // Authority_ToolStripMenuItem
             // 
             this.Authority_ToolStripMenuItem.Name = "Authority_ToolStripMenuItem";
-            this.Authority_ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.Authority_ToolStripMenuItem.Text = "权限控制";
+            this.Authority_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.Authority_ToolStripMenuItem.Text = "Authority Setting";
             this.Authority_ToolStripMenuItem.Click += new System.EventHandler(this.Authority_ToolStripMenuItem_Click);
             // 
             // Config_ToolStripMenuItem
@@ -195,7 +197,7 @@ namespace WcfClient
             // defectCodeSetToolStripMenuItem
             // 
             this.defectCodeSetToolStripMenuItem.Name = "defectCodeSetToolStripMenuItem";
-            this.defectCodeSetToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.defectCodeSetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.defectCodeSetToolStripMenuItem.Text = "Defect Code Set";
             this.defectCodeSetToolStripMenuItem.Click += new System.EventHandler(this.defectCodeSetToolStripMenuItem_Click);
             // 
@@ -336,14 +338,14 @@ namespace WcfClient
             // 
             this.Time_statusBarAdvPanel.Alignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.Time_statusBarAdvPanel.AnimationDirection = Syncfusion.Windows.Forms.Tools.MarqueeDirection.Right;
-            this.Time_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(156, 24);
+            this.Time_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(134, 18);
             this.Time_statusBarAdvPanel.Border3DStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.Time_statusBarAdvPanel.HAlign = Syncfusion.Windows.Forms.Tools.HorzFlowAlign.Right;
-            this.Time_statusBarAdvPanel.Location = new System.Drawing.Point(1026, 2);
+            this.Time_statusBarAdvPanel.Location = new System.Drawing.Point(877, 2);
             this.Time_statusBarAdvPanel.Margin = new System.Windows.Forms.Padding(0);
             this.Time_statusBarAdvPanel.Name = "Time_statusBarAdvPanel";
             this.Time_statusBarAdvPanel.PanelType = Syncfusion.Windows.Forms.Tools.StatusBarAdvPanelType.LongTime24Format;
-            this.Time_statusBarAdvPanel.Size = new System.Drawing.Size(156, 24);
+            this.Time_statusBarAdvPanel.Size = new System.Drawing.Size(134, 18);
             this.Time_statusBarAdvPanel.TabIndex = 0;
             this.Time_statusBarAdvPanel.Text = null;
             // 
@@ -351,14 +353,14 @@ namespace WcfClient
             // 
             this.Date_statusBarAdvPanel.Alignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.Date_statusBarAdvPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Date_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(156, 24);
+            this.Date_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(134, 18);
             this.Date_statusBarAdvPanel.Border3DStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.Date_statusBarAdvPanel.HAlign = Syncfusion.Windows.Forms.Tools.HorzFlowAlign.Right;
-            this.Date_statusBarAdvPanel.Location = new System.Drawing.Point(868, 2);
+            this.Date_statusBarAdvPanel.Location = new System.Drawing.Point(741, 2);
             this.Date_statusBarAdvPanel.Margin = new System.Windows.Forms.Padding(0);
             this.Date_statusBarAdvPanel.Name = "Date_statusBarAdvPanel";
             this.Date_statusBarAdvPanel.PanelType = Syncfusion.Windows.Forms.Tools.StatusBarAdvPanelType.ShortDate;
-            this.Date_statusBarAdvPanel.Size = new System.Drawing.Size(156, 24);
+            this.Date_statusBarAdvPanel.Size = new System.Drawing.Size(134, 18);
             this.Date_statusBarAdvPanel.TabIndex = 2;
             this.Date_statusBarAdvPanel.Text = null;
             // 
@@ -366,56 +368,56 @@ namespace WcfClient
             // 
             this.Active_statusBarAdvPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Active_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(273, 24);
+            this.Active_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(229, 18);
             this.Active_statusBarAdvPanel.Border3DStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.Active_statusBarAdvPanel.HAlign = Syncfusion.Windows.Forms.Tools.HorzFlowAlign.Justify;
-            this.Active_statusBarAdvPanel.Location = new System.Drawing.Point(593, 2);
+            this.Active_statusBarAdvPanel.Location = new System.Drawing.Point(510, 2);
             this.Active_statusBarAdvPanel.Margin = new System.Windows.Forms.Padding(0);
             this.Active_statusBarAdvPanel.Name = "Active_statusBarAdvPanel";
             this.Active_statusBarAdvPanel.PreferredSize = new System.Drawing.Size(432, 24);
-            this.Active_statusBarAdvPanel.Size = new System.Drawing.Size(273, 24);
+            this.Active_statusBarAdvPanel.Size = new System.Drawing.Size(229, 18);
             this.Active_statusBarAdvPanel.TabIndex = 3;
             this.Active_statusBarAdvPanel.Text = null;
             // 
             // Emp_statusBarAdvPanel
             // 
             this.Emp_statusBarAdvPanel.Alignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Emp_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(184, 24);
+            this.Emp_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(158, 18);
             this.Emp_statusBarAdvPanel.Border3DStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.Emp_statusBarAdvPanel.Location = new System.Drawing.Point(407, 2);
+            this.Emp_statusBarAdvPanel.Location = new System.Drawing.Point(350, 2);
             this.Emp_statusBarAdvPanel.Margin = new System.Windows.Forms.Padding(0);
             this.Emp_statusBarAdvPanel.Name = "Emp_statusBarAdvPanel";
-            this.Emp_statusBarAdvPanel.Size = new System.Drawing.Size(184, 24);
+            this.Emp_statusBarAdvPanel.Size = new System.Drawing.Size(158, 18);
             this.Emp_statusBarAdvPanel.TabIndex = 4;
             this.Emp_statusBarAdvPanel.Text = null;
             // 
             // Version_statusBarAdvPanel
             // 
             this.Version_statusBarAdvPanel.Alignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Version_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(219, 24);
+            this.Version_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(188, 18);
             this.Version_statusBarAdvPanel.Border3DStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.Version_statusBarAdvPanel.Location = new System.Drawing.Point(186, 2);
+            this.Version_statusBarAdvPanel.Location = new System.Drawing.Point(160, 2);
             this.Version_statusBarAdvPanel.Margin = new System.Windows.Forms.Padding(0);
             this.Version_statusBarAdvPanel.Name = "Version_statusBarAdvPanel";
-            this.Version_statusBarAdvPanel.Size = new System.Drawing.Size(219, 24);
+            this.Version_statusBarAdvPanel.Size = new System.Drawing.Size(188, 18);
             this.Version_statusBarAdvPanel.TabIndex = 5;
             this.Version_statusBarAdvPanel.Text = null;
             // 
             // System_statusBarAdvPanel
             // 
             this.System_statusBarAdvPanel.Alignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.System_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(184, 24);
+            this.System_statusBarAdvPanel.BeforeTouchSize = new System.Drawing.Size(158, 18);
             this.System_statusBarAdvPanel.Border3DStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.System_statusBarAdvPanel.Location = new System.Drawing.Point(0, 2);
             this.System_statusBarAdvPanel.Margin = new System.Windows.Forms.Padding(0);
             this.System_statusBarAdvPanel.Name = "System_statusBarAdvPanel";
-            this.System_statusBarAdvPanel.Size = new System.Drawing.Size(184, 24);
+            this.System_statusBarAdvPanel.Size = new System.Drawing.Size(158, 18);
             this.System_statusBarAdvPanel.TabIndex = 6;
             this.System_statusBarAdvPanel.Text = null;
             // 
             // statusBarAdv
             // 
-            this.statusBarAdv.BeforeTouchSize = new System.Drawing.Size(1203, 32);
+            this.statusBarAdv.BeforeTouchSize = new System.Drawing.Size(1032, 26);
             this.statusBarAdv.Controls.Add(this.System_statusBarAdvPanel);
             this.statusBarAdv.Controls.Add(this.Version_statusBarAdvPanel);
             this.statusBarAdv.Controls.Add(this.Emp_statusBarAdvPanel);
@@ -424,19 +426,19 @@ namespace WcfClient
             this.statusBarAdv.Controls.Add(this.Time_statusBarAdvPanel);
             this.statusBarAdv.CustomLayoutBounds = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.statusBarAdv.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.statusBarAdv.Location = new System.Drawing.Point(0, 702);
+            this.statusBarAdv.Location = new System.Drawing.Point(0, 562);
             this.statusBarAdv.Margin = new System.Windows.Forms.Padding(2);
             this.statusBarAdv.Name = "statusBarAdv";
             this.statusBarAdv.Padding = new System.Windows.Forms.Padding(2);
-            this.statusBarAdv.Size = new System.Drawing.Size(1203, 32);
+            this.statusBarAdv.Size = new System.Drawing.Size(1032, 26);
             this.statusBarAdv.Spacing = new System.Drawing.Size(2, 2);
             this.statusBarAdv.TabIndex = 15;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(1203, 734);
+            this.ClientSize = new System.Drawing.Size(1032, 588);
             this.Controls.Add(this.statusBarAdv);
             this.Controls.Add(this.menuStrip);
             this.Cursor = System.Windows.Forms.Cursors.Default;
@@ -446,7 +448,7 @@ namespace WcfClient
             this.IsMdiContainer = true;
             this.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainForm";
             this.Text = "MainFrame";
             this.Load += new System.EventHandler(this.MainForm_Load);

@@ -7,7 +7,7 @@
     <ProjectGuid>{39E7EC5C-D223-4CF9-A034-969CB60AD090}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>WcfClient</RootNamespace>
-    <AssemblyName>WcfClient</AssemblyName>
+    <AssemblyName>OQA</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

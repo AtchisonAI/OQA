@@ -60,21 +60,7 @@ namespace WcfInspector
             XmlNode stackNode = xd.SelectSingleNode("/s:Envelope/s:Body/s:Fault/s:Detail/x:ExceptionDetail/x:StackTrace", xnm);
             XmlNode typeNode = xd.SelectSingleNode("/s:Envelope/s:Body/s:Fault/s:Detail/x:ExceptionDetail/x:Type", xnm);
 
-            StringBuilder strB = new StringBuilder();
-            if (null != reasonNode)
-            {
-                strB.Append("Exception Reason:" + reasonNode.InnerText);
-            }
-            if (null != stackNode)
-            {
-                strB.Append(",Exception Type:" + stackNode.InnerText);
-            }
-            if (null != typeNode)
-            {
-                strB.Append(",StackTrack:" + typeNode.InnerText);
-            }
-            
-            log.Error(strB.ToString().TrimStart(','));
+            log.Error(string.Format("Exception Reason:{0},Exception Type:{1},StackTrack:{2}", reasonNode?.InnerText, stackNode?.InnerText, typeNode?.InnerText));
         }
 
         private void AddMsgVersion(ref Message request)

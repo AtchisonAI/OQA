@@ -51,6 +51,7 @@ namespace WcfClient
             this.mircoInspectionInputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.defectSendPNDNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.defectLotResultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marcoInspectionEdgeInputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OQAShip_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.foupChangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lotPackageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,7 +67,6 @@ namespace WcfClient
             this.Version_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.System_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.statusBarAdv = new Syncfusion.Windows.Forms.Tools.StatusBarAdv();
-            this.marcoInspectionEdgeInputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dockingManager)).BeginInit();
             this.shortcut_panel.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -99,10 +99,8 @@ namespace WcfClient
             this.dockingManager.CaptionButtons.Add(new Syncfusion.Windows.Forms.Tools.CaptionButton(Syncfusion.Windows.Forms.Tools.CaptionButtonType.Maximize, "MaximizeButton"));
             this.dockingManager.CaptionButtons.Add(new Syncfusion.Windows.Forms.Tools.CaptionButton(Syncfusion.Windows.Forms.Tools.CaptionButtonType.Restore, "RestoreButton"));
             this.dockingManager.CaptionButtons.Add(new Syncfusion.Windows.Forms.Tools.CaptionButton(Syncfusion.Windows.Forms.Tools.CaptionButtonType.Menu, "MenuButton"));
-            this.dockingManager.SetDockLabel(this.shortcut_panel, "快捷菜单");
+            this.dockingManager.SetDockLabel(this.shortcut_panel, "shortcut_panel");
             this.dockingManager.SetEnableDocking(this.shortcut_panel, true);
-            this.dockingManager.SetAutoHideOnLoad(this.shortcut_panel, true);
-            this.dockingManager.SetDockAbility(this.shortcut_panel, "Horizontal");
             ccbshortcut_panel.MergeWith(this.dockingManager.CaptionButtons, false);
             this.dockingManager.SetCustomCaptionButtons(this.shortcut_panel, ccbshortcut_panel);
             // 
@@ -253,6 +251,13 @@ namespace WcfClient
             this.defectLotResultToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.defectLotResultToolStripMenuItem.Text = "Defect Lot Result";
             this.defectLotResultToolStripMenuItem.Click += new System.EventHandler(this.defectLotResultToolStripMenuItem_Click);
+            // 
+            // marcoInspectionEdgeInputToolStripMenuItem
+            // 
+            this.marcoInspectionEdgeInputToolStripMenuItem.Name = "marcoInspectionEdgeInputToolStripMenuItem";
+            this.marcoInspectionEdgeInputToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.marcoInspectionEdgeInputToolStripMenuItem.Text = "Marco Inspection Edge Input";
+            this.marcoInspectionEdgeInputToolStripMenuItem.Click += new System.EventHandler(this.marcoInspectionEdgeInputToolStripMenuItem_Click);
             // 
             // OQAShip_ToolStripMenuItem
             // 
@@ -421,13 +426,6 @@ namespace WcfClient
             this.statusBarAdv.Size = new System.Drawing.Size(1032, 26);
             this.statusBarAdv.Spacing = new System.Drawing.Size(2, 2);
             this.statusBarAdv.TabIndex = 15;
-            // 
-            // marcoInspectionEdgeInputToolStripMenuItem
-            // 
-            this.marcoInspectionEdgeInputToolStripMenuItem.Name = "marcoInspectionEdgeInputToolStripMenuItem";
-            this.marcoInspectionEdgeInputToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
-            this.marcoInspectionEdgeInputToolStripMenuItem.Text = "Marco Inspection Edge Input";
-            this.marcoInspectionEdgeInputToolStripMenuItem.Click += new System.EventHandler(this.marcoInspectionEdgeInputToolStripMenuItem_Click);
             // 
             // MainForm
             // 

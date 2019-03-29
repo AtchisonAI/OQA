@@ -24,7 +24,7 @@ namespace OQAService.Services
             } else
             {
                 rsp._success = false;
-                rsp._ErrorMsg = string.Format("Lot id:{0} is not found.Please check lot status.", input.lotId,LotSts.ChangeOut);
+                rsp._ErrorMsg = string.Format("Lot id:{0},Error:Lot hasn't in{1} status,or lot isn't exist!", input.lotId,LotSts.ChangeOut);
                 log.Error(rsp._ErrorMsg);
             } 
 

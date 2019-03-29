@@ -14,6 +14,7 @@ namespace WcfClientCore.Form
         public BaseForm()
         {
             InitializeComponent();
+            
         }
 
         public void ReFreshControl(Control parContainer)
@@ -49,6 +50,7 @@ namespace WcfClientCore.Form
         private void BaseForm_Load(object sender, System.EventArgs e)
         {
             AuthorityControl.InitializeAuthority(this);
+            SkinManager.SetVisualStyle(this, VisualTheme.Office2016DarkGray);
         }
     }
 }

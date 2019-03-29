@@ -161,7 +161,7 @@ namespace WcfClient
             return frm;
         }
 
-        private T ActiveTabHost<T>() where T : BaseForm, new()
+        private T ActiveTabHost<T>() where T : ChildFormBase, new()
         {
             //这里默认一种类型的Form只能由一个toolstrip弹出
             Form[] childs = tabbedGroupedMDIManager.MdiChildren;
@@ -192,6 +192,7 @@ namespace WcfClient
             dockingManager.SetEnableDocking(Frm, true);
             dockingManager.SetAsMDIChild(Frm, true);
             dockingManager.SetDockLabel(Frm, Frm.Text);
+            dockingManager.SetDockIcon(Frm,2);
             Frm.FormClosed += new FormClosedEventHandler(this.ChildFormClosed);
 
             SetActiveStatusBar(Frm.Text);

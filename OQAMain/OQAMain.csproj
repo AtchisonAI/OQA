@@ -154,6 +154,11 @@
     <Compile Include="Print\FrmOQAShipListPrintData.cs" />
     <Compile Include="Print\FrmWaferInspectRecord_sub.cs" />
     <Compile Include="Print\ImageToBytes.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tran\FrmAOIInput.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -265,6 +270,10 @@
     <EmbeddedResource Include="Print\FrmWaferInspectRecord.rdlc" />
     <EmbeddedResource Include="Print\FrmPackageLabelPrint.rdlc" />
     <EmbeddedResource Include="Print\FrmWaferInspectRecord_sub.rdlc" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tran\FrmAOIInput.resx">
       <DependentUpon>FrmAOIInput.cs</DependentUpon>
     </EmbeddedResource>

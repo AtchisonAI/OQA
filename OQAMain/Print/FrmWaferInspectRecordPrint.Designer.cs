@@ -53,11 +53,6 @@
             this.btnEdite.Location = new System.Drawing.Point(554, 6);
             this.btnEdite.Visible = false;
             // 
-            // pnlMenu
-            // 
-            this.pnlMenu.Location = new System.Drawing.Point(0, 540);
-            this.pnlMenu.Size = new System.Drawing.Size(750, 40);
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtLotID);
@@ -118,7 +113,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmWaferInspectRecordPrint";
-            this.Text = "FrmWaferInspectRecordPrint";
+            this.Text = "Wafer Inspect Record Print";
             this.Load += new System.EventHandler(this.FrmWaferInspectRecordPrint_Load);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.pnlMenu, 0);

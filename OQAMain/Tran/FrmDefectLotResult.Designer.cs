@@ -223,6 +223,10 @@
             this.tabResult = new System.Windows.Forms.TabPage();
             this.grpPndnInf = new System.Windows.Forms.GroupBox();
             this.dgPndn = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtNewFoupID = new System.Windows.Forms.TextBox();
+            this.lblNewFoupID = new System.Windows.Forms.Label();
+            this.tabISP = new System.Windows.Forms.TabPage();
             this.dataGridViewTextBoxColumn101 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn102 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn103 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -234,10 +238,6 @@
             this.HoldCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoldComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupervisorNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txtNewFoupID = new System.Windows.Forms.TextBox();
-            this.lblNewFoupID = new System.Windows.Forms.Label();
-            this.tabISP = new System.Windows.Forms.TabPage();
             this.pnlMenu.SuspendLayout();
             this.grpRcvLot.SuspendLayout();
             this.grpOQAInfo.SuspendLayout();
@@ -489,7 +489,7 @@
             this.grpOQAInfo.Size = new System.Drawing.Size(497, 160);
             this.grpOQAInfo.TabIndex = 8;
             this.grpOQAInfo.TabStop = false;
-            this.grpOQAInfo.Text = "OQA Information";
+            this.grpOQAInfo.Text = "Basic Information";
             // 
             // txtStage
             // 
@@ -705,12 +705,13 @@
             // 
             // txtDept
             // 
+            this.txtDept.Enabled = false;
             this.txtDept.Location = new System.Drawing.Point(73, 20);
             this.txtDept.MaxLength = 30;
             this.txtDept.Name = "txtDept";
             this.txtDept.Size = new System.Drawing.Size(100, 21);
             this.txtDept.TabIndex = 1;
-            this.txtDept.Text = "OQA";
+            this.txtDept.Text = " ";
             // 
             // labDept
             // 
@@ -1644,7 +1645,7 @@
             this.btnSrap.Name = "btnSrap";
             this.btnSrap.Size = new System.Drawing.Size(88, 26);
             this.btnSrap.TabIndex = 7;
-            this.btnSrap.Text = "Save";
+            this.btnSrap.Text = "Pending";
             this.btnSrap.UseVisualStyleBackColor = true;
             this.btnSrap.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -1915,6 +1916,47 @@
             this.dgPndn.Size = new System.Drawing.Size(477, 145);
             this.dgPndn.TabIndex = 8;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtNewFoupID);
+            this.panel1.Controls.Add(this.lblNewFoupID);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(483, 23);
+            this.panel1.TabIndex = 17;
+            // 
+            // txtNewFoupID
+            // 
+            this.txtNewFoupID.Enabled = false;
+            this.txtNewFoupID.Location = new System.Drawing.Point(93, 0);
+            this.txtNewFoupID.MaxLength = 30;
+            this.txtNewFoupID.Name = "txtNewFoupID";
+            this.txtNewFoupID.Size = new System.Drawing.Size(100, 21);
+            this.txtNewFoupID.TabIndex = 15;
+            // 
+            // lblNewFoupID
+            // 
+            this.lblNewFoupID.AutoSize = true;
+            this.lblNewFoupID.Location = new System.Drawing.Point(6, 4);
+            this.lblNewFoupID.Name = "lblNewFoupID";
+            this.lblNewFoupID.Size = new System.Drawing.Size(71, 12);
+            this.lblNewFoupID.TabIndex = 14;
+            this.lblNewFoupID.Text = "New Foup ID";
+            // 
+            // tabISP
+            // 
+            this.tabISP.BackColor = System.Drawing.SystemColors.Control;
+            this.tabISP.Controls.Add(this.groupBox1);
+            this.tabISP.Controls.Add(this.grpMacro);
+            this.tabISP.Controls.Add(this.grpAOI);
+            this.tabISP.Location = new System.Drawing.Point(4, 22);
+            this.tabISP.Name = "tabISP";
+            this.tabISP.Padding = new System.Windows.Forms.Padding(3);
+            this.tabISP.Size = new System.Drawing.Size(489, 274);
+            this.tabISP.TabIndex = 1;
+            this.tabISP.Text = "Inspect Type";
+            // 
             // dataGridViewTextBoxColumn101
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -1985,50 +2027,9 @@
             // 
             // SupervisorNo
             // 
-            this.SupervisorNo.HeaderText = "SupervisorNo";
+            this.SupervisorNo.HeaderText = "Status";
             this.SupervisorNo.Name = "SupervisorNo";
             this.SupervisorNo.ReadOnly = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txtNewFoupID);
-            this.panel1.Controls.Add(this.lblNewFoupID);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(483, 23);
-            this.panel1.TabIndex = 17;
-            // 
-            // txtNewFoupID
-            // 
-            this.txtNewFoupID.Enabled = false;
-            this.txtNewFoupID.Location = new System.Drawing.Point(93, 0);
-            this.txtNewFoupID.MaxLength = 30;
-            this.txtNewFoupID.Name = "txtNewFoupID";
-            this.txtNewFoupID.Size = new System.Drawing.Size(100, 21);
-            this.txtNewFoupID.TabIndex = 15;
-            // 
-            // lblNewFoupID
-            // 
-            this.lblNewFoupID.AutoSize = true;
-            this.lblNewFoupID.Location = new System.Drawing.Point(6, 4);
-            this.lblNewFoupID.Name = "lblNewFoupID";
-            this.lblNewFoupID.Size = new System.Drawing.Size(71, 12);
-            this.lblNewFoupID.TabIndex = 14;
-            this.lblNewFoupID.Text = "New Foup ID";
-            // 
-            // tabISP
-            // 
-            this.tabISP.BackColor = System.Drawing.SystemColors.Control;
-            this.tabISP.Controls.Add(this.groupBox1);
-            this.tabISP.Controls.Add(this.grpMacro);
-            this.tabISP.Controls.Add(this.grpAOI);
-            this.tabISP.Location = new System.Drawing.Point(4, 22);
-            this.tabISP.Name = "tabISP";
-            this.tabISP.Padding = new System.Windows.Forms.Padding(3);
-            this.tabISP.Size = new System.Drawing.Size(489, 274);
-            this.tabISP.TabIndex = 1;
-            this.tabISP.Text = "Inspect Type";
             // 
             // FrmDefectLotResult
             // 
@@ -2272,6 +2273,9 @@
         private System.Windows.Forms.TabPage tabISP;
         private System.Windows.Forms.GroupBox grpPndnInf;
         private System.Windows.Forms.DataGridView dgPndn;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtNewFoupID;
+        private System.Windows.Forms.Label lblNewFoupID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn101;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn102;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn103;
@@ -2283,8 +2287,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HoldCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoldComment;
         private System.Windows.Forms.DataGridViewTextBoxColumn SupervisorNo;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtNewFoupID;
-        private System.Windows.Forms.Label lblNewFoupID;
     }
 }

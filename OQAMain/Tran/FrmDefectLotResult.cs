@@ -1054,7 +1054,7 @@ namespace OQAMain
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Do you confirm save this lot？", "Remind Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Do you confirm Pending this lot？", "Remind Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
             {
                 //检查数据

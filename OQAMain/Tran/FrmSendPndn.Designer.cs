@@ -48,10 +48,6 @@
             this.labLotid = new System.Windows.Forms.Label();
             this.grpPndnInf = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.labOperatorNo = new System.Windows.Forms.Label();
-            this.txtOperatorNo = new System.Windows.Forms.TextBox();
-            this.txtSupervisorNo = new System.Windows.Forms.TextBox();
-            this.labSupervisorNo = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +56,10 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labOperatorNo = new System.Windows.Forms.Label();
+            this.txtOperatorNo = new System.Windows.Forms.TextBox();
+            this.txtSupervisorNo = new System.Windows.Forms.TextBox();
+            this.labSupervisorNo = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.grpAbnInf.SuspendLayout();
             this.grpPndnInf.SuspendLayout();
@@ -68,16 +68,16 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(654, 6);
+            this.btnClose.Location = new System.Drawing.Point(750, 8);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(560, 5);
+            this.btnCreate.Location = new System.Drawing.Point(640, 8);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(560, 6);
+            this.btnEdite.Location = new System.Drawing.Point(640, 8);
             this.btnEdite.Visible = false;
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
@@ -87,6 +87,8 @@
             this.pnlMenu.Controls.Add(this.labSupervisorNo);
             this.pnlMenu.Controls.Add(this.txtOperatorNo);
             this.pnlMenu.Controls.Add(this.labOperatorNo);
+            this.pnlMenu.Location = new System.Drawing.Point(0, 676);
+            this.pnlMenu.Size = new System.Drawing.Size(875, 49);
             this.pnlMenu.Controls.SetChildIndex(this.labOperatorNo, 0);
             this.pnlMenu.Controls.SetChildIndex(this.txtOperatorNo, 0);
             this.pnlMenu.Controls.SetChildIndex(this.labSupervisorNo, 0);
@@ -102,7 +104,7 @@
             // 
             // lblSucessMsg
             // 
-            this.lblSucessMsg.Location = new System.Drawing.Point(106, 29);
+            this.lblSucessMsg.Location = new System.Drawing.Point(124, 36);
             // 
             // grpAbnInf
             // 
@@ -122,63 +124,72 @@
             this.grpAbnInf.Controls.Add(this.labLotid);
             this.grpAbnInf.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpAbnInf.Location = new System.Drawing.Point(0, 0);
+            this.grpAbnInf.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grpAbnInf.Name = "grpAbnInf";
-            this.grpAbnInf.Size = new System.Drawing.Size(750, 100);
+            this.grpAbnInf.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grpAbnInf.Size = new System.Drawing.Size(875, 80);
             this.grpAbnInf.TabIndex = 1;
             this.grpAbnInf.TabStop = false;
-            this.grpAbnInf.Text = "异常品信息";
+            this.grpAbnInf.Text = "Defect Lot Information";
             // 
             // txtHoldCmt
             // 
-            this.txtHoldCmt.Location = new System.Drawing.Point(630, 51);
+            this.txtHoldCmt.Location = new System.Drawing.Point(735, 47);
+            this.txtHoldCmt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtHoldCmt.Name = "txtHoldCmt";
-            this.txtHoldCmt.Size = new System.Drawing.Size(100, 21);
+            this.txtHoldCmt.Size = new System.Drawing.Size(116, 23);
             this.txtHoldCmt.TabIndex = 13;
             // 
             // txtHoldCode
             // 
-            this.txtHoldCode.Location = new System.Drawing.Point(439, 52);
+            this.txtHoldCode.Location = new System.Drawing.Point(512, 48);
+            this.txtHoldCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtHoldCode.Name = "txtHoldCode";
-            this.txtHoldCode.Size = new System.Drawing.Size(100, 21);
+            this.txtHoldCode.Size = new System.Drawing.Size(116, 23);
             this.txtHoldCode.TabIndex = 12;
             // 
             // txtStepName
             // 
-            this.txtStepName.Location = new System.Drawing.Point(251, 52);
+            this.txtStepName.Location = new System.Drawing.Point(293, 48);
+            this.txtStepName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtStepName.Name = "txtStepName";
             this.txtStepName.ReadOnly = true;
-            this.txtStepName.Size = new System.Drawing.Size(100, 21);
+            this.txtStepName.Size = new System.Drawing.Size(116, 23);
             this.txtStepName.TabIndex = 11;
             // 
             // txtStepId
             // 
-            this.txtStepId.Location = new System.Drawing.Point(67, 52);
+            this.txtStepId.Location = new System.Drawing.Point(78, 48);
+            this.txtStepId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtStepId.Name = "txtStepId";
             this.txtStepId.ReadOnly = true;
-            this.txtStepId.Size = new System.Drawing.Size(100, 21);
+            this.txtStepId.Size = new System.Drawing.Size(116, 23);
             this.txtStepId.TabIndex = 10;
             // 
             // txtQty
             // 
-            this.txtQty.Location = new System.Drawing.Point(439, 27);
+            this.txtQty.Location = new System.Drawing.Point(512, 21);
+            this.txtQty.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtQty.Name = "txtQty";
             this.txtQty.ReadOnly = true;
-            this.txtQty.Size = new System.Drawing.Size(100, 21);
+            this.txtQty.Size = new System.Drawing.Size(116, 23);
             this.txtQty.TabIndex = 9;
             // 
             // txtPartId
             // 
-            this.txtPartId.Location = new System.Drawing.Point(251, 27);
+            this.txtPartId.Location = new System.Drawing.Point(293, 21);
+            this.txtPartId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPartId.Name = "txtPartId";
             this.txtPartId.ReadOnly = true;
-            this.txtPartId.Size = new System.Drawing.Size(100, 21);
+            this.txtPartId.Size = new System.Drawing.Size(116, 23);
             this.txtPartId.TabIndex = 8;
             // 
             // txtLotId
             // 
-            this.txtLotId.Location = new System.Drawing.Point(67, 27);
+            this.txtLotId.Location = new System.Drawing.Point(78, 21);
+            this.txtLotId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtLotId.Name = "txtLotId";
-            this.txtLotId.Size = new System.Drawing.Size(100, 21);
+            this.txtLotId.Size = new System.Drawing.Size(116, 23);
             this.txtLotId.TabIndex = 7;
             this.txtLotId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
             this.txtLotId.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtLotId_MouseDown);
@@ -186,63 +197,63 @@
             // labHoldCmt
             // 
             this.labHoldCmt.AutoSize = true;
-            this.labHoldCmt.Location = new System.Drawing.Point(570, 55);
+            this.labHoldCmt.Location = new System.Drawing.Point(665, 52);
             this.labHoldCmt.Name = "labHoldCmt";
-            this.labHoldCmt.Size = new System.Drawing.Size(59, 12);
+            this.labHoldCmt.Size = new System.Drawing.Size(62, 15);
             this.labHoldCmt.TabIndex = 6;
             this.labHoldCmt.Text = "Hold Cmt:";
             // 
             // labHoldCode
             // 
             this.labHoldCode.AutoSize = true;
-            this.labHoldCode.Location = new System.Drawing.Point(378, 55);
+            this.labHoldCode.Location = new System.Drawing.Point(441, 52);
             this.labHoldCode.Name = "labHoldCode";
-            this.labHoldCode.Size = new System.Drawing.Size(65, 12);
+            this.labHoldCode.Size = new System.Drawing.Size(67, 15);
             this.labHoldCode.TabIndex = 5;
             this.labHoldCode.Text = "Hold Code:";
             // 
             // labStepName
             // 
             this.labStepName.AutoSize = true;
-            this.labStepName.Location = new System.Drawing.Point(187, 58);
+            this.labStepName.Location = new System.Drawing.Point(218, 55);
             this.labStepName.Name = "labStepName";
-            this.labStepName.Size = new System.Drawing.Size(65, 12);
+            this.labStepName.Size = new System.Drawing.Size(68, 15);
             this.labStepName.TabIndex = 4;
             this.labStepName.Text = "Step Name:";
             // 
             // labStepId
             // 
             this.labStepId.AutoSize = true;
-            this.labStepId.Location = new System.Drawing.Point(15, 58);
+            this.labStepId.Location = new System.Drawing.Point(17, 55);
             this.labStepId.Name = "labStepId";
-            this.labStepId.Size = new System.Drawing.Size(53, 12);
+            this.labStepId.Size = new System.Drawing.Size(47, 15);
             this.labStepId.TabIndex = 3;
             this.labStepId.Text = "Step ID:";
             // 
             // labQty
             // 
             this.labQty.AutoSize = true;
-            this.labQty.Location = new System.Drawing.Point(381, 31);
+            this.labQty.Location = new System.Drawing.Point(444, 26);
             this.labQty.Name = "labQty";
-            this.labQty.Size = new System.Drawing.Size(29, 12);
+            this.labQty.Size = new System.Drawing.Size(29, 15);
             this.labQty.TabIndex = 2;
             this.labQty.Text = "Qty:";
             // 
             // labPartId
             // 
             this.labPartId.AutoSize = true;
-            this.labPartId.Location = new System.Drawing.Point(190, 31);
+            this.labPartId.Location = new System.Drawing.Point(222, 26);
             this.labPartId.Name = "labPartId";
-            this.labPartId.Size = new System.Drawing.Size(53, 12);
+            this.labPartId.Size = new System.Drawing.Size(45, 15);
             this.labPartId.TabIndex = 1;
             this.labPartId.Text = "Part ID:";
             // 
             // labLotid
             // 
             this.labLotid.AutoSize = true;
-            this.labLotid.Location = new System.Drawing.Point(18, 31);
+            this.labLotid.Location = new System.Drawing.Point(21, 26);
             this.labLotid.Name = "labLotid";
-            this.labLotid.Size = new System.Drawing.Size(47, 12);
+            this.labLotid.Size = new System.Drawing.Size(41, 15);
             this.labLotid.TabIndex = 0;
             this.labLotid.Text = "Lot ID:";
             // 
@@ -251,12 +262,14 @@
             this.grpPndnInf.Controls.Add(this.dataGridView1);
             this.grpPndnInf.Controls.Add(this.lblSucessMsg);
             this.grpPndnInf.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpPndnInf.Location = new System.Drawing.Point(0, 100);
+            this.grpPndnInf.Location = new System.Drawing.Point(0, 80);
+            this.grpPndnInf.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grpPndnInf.Name = "grpPndnInf";
-            this.grpPndnInf.Size = new System.Drawing.Size(750, 440);
+            this.grpPndnInf.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grpPndnInf.Size = new System.Drawing.Size(875, 596);
             this.grpPndnInf.TabIndex = 2;
             this.grpPndnInf.TabStop = false;
-            this.grpPndnInf.Text = "异常单信息";
+            this.grpPndnInf.Text = "PNDN Plan Information";
             this.grpPndnInf.Controls.SetChildIndex(this.lblSucessMsg, 0);
             this.grpPndnInf.Controls.SetChildIndex(this.dataGridView1, 0);
             // 
@@ -266,7 +279,7 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -283,46 +296,13 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 17);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 20);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(744, 420);
+            this.dataGridView1.Size = new System.Drawing.Size(869, 572);
             this.dataGridView1.TabIndex = 8;
-            // 
-            // labOperatorNo
-            // 
-            this.labOperatorNo.AutoSize = true;
-            this.labOperatorNo.Location = new System.Drawing.Point(57, 12);
-            this.labOperatorNo.Name = "labOperatorNo";
-            this.labOperatorNo.Size = new System.Drawing.Size(77, 12);
-            this.labOperatorNo.TabIndex = 1;
-            this.labOperatorNo.Text = "Operator No:";
-            // 
-            // txtOperatorNo
-            // 
-            this.txtOperatorNo.Location = new System.Drawing.Point(139, 8);
-            this.txtOperatorNo.Name = "txtOperatorNo";
-            this.txtOperatorNo.Size = new System.Drawing.Size(100, 21);
-            this.txtOperatorNo.TabIndex = 7;
-            // 
-            // txtSupervisorNo
-            // 
-            this.txtSupervisorNo.Location = new System.Drawing.Point(351, 8);
-            this.txtSupervisorNo.Name = "txtSupervisorNo";
-            this.txtSupervisorNo.Size = new System.Drawing.Size(100, 21);
-            this.txtSupervisorNo.TabIndex = 10;
-            this.txtSupervisorNo.Visible = false;
-            // 
-            // labSupervisorNo
-            // 
-            this.labSupervisorNo.AutoSize = true;
-            this.labSupervisorNo.Location = new System.Drawing.Point(262, 12);
-            this.labSupervisorNo.Name = "labSupervisorNo";
-            this.labSupervisorNo.Size = new System.Drawing.Size(89, 12);
-            this.labSupervisorNo.TabIndex = 9;
-            this.labSupervisorNo.Text = "Supervisor No:";
-            this.labSupervisorNo.Visible = false;
             // 
             // Column1
             // 
@@ -377,15 +357,52 @@
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.Width = 300;
             // 
+            // labOperatorNo
+            // 
+            this.labOperatorNo.AutoSize = true;
+            this.labOperatorNo.Location = new System.Drawing.Point(66, 15);
+            this.labOperatorNo.Name = "labOperatorNo";
+            this.labOperatorNo.Size = new System.Drawing.Size(76, 15);
+            this.labOperatorNo.TabIndex = 1;
+            this.labOperatorNo.Text = "Operator No:";
+            // 
+            // txtOperatorNo
+            // 
+            this.txtOperatorNo.Location = new System.Drawing.Point(162, 10);
+            this.txtOperatorNo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtOperatorNo.Name = "txtOperatorNo";
+            this.txtOperatorNo.ReadOnly = true;
+            this.txtOperatorNo.Size = new System.Drawing.Size(116, 23);
+            this.txtOperatorNo.TabIndex = 7;
+            // 
+            // txtSupervisorNo
+            // 
+            this.txtSupervisorNo.Location = new System.Drawing.Point(409, 10);
+            this.txtSupervisorNo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSupervisorNo.Name = "txtSupervisorNo";
+            this.txtSupervisorNo.Size = new System.Drawing.Size(116, 23);
+            this.txtSupervisorNo.TabIndex = 10;
+            this.txtSupervisorNo.Visible = false;
+            // 
+            // labSupervisorNo
+            // 
+            this.labSupervisorNo.AutoSize = true;
+            this.labSupervisorNo.Location = new System.Drawing.Point(306, 15);
+            this.labSupervisorNo.Name = "labSupervisorNo";
+            this.labSupervisorNo.Size = new System.Drawing.Size(84, 15);
+            this.labSupervisorNo.TabIndex = 9;
+            this.labSupervisorNo.Text = "Supervisor No:";
+            this.labSupervisorNo.Visible = false;
+            // 
             // FrmDefectSend
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 580);
+            this.ClientSize = new System.Drawing.Size(875, 725);
             this.Controls.Add(this.grpPndnInf);
             this.Controls.Add(this.grpAbnInf);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(750, 580);
+            this.MinimumSize = new System.Drawing.Size(875, 725);
             this.Name = "FrmDefectSend";
             this.Text = "Send PNDN";
             this.Load += new System.EventHandler(this.FrmDefectSend_Load);

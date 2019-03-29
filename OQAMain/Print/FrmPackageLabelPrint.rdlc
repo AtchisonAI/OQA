@@ -90,7 +90,6 @@
             </Style>
           </Textbox>
           <Textbox Name="ExecutionTime">
-            <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -101,6 +100,7 @@
                     <Style>
                       <FontSize>5pt</FontSize>
                       <FontWeight>Bold</FontWeight>
+                      <Format>yyyy-M-d</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>

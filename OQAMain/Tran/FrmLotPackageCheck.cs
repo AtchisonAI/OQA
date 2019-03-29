@@ -2,6 +2,7 @@
 using Syncfusion.WinForms.DataGrid;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using WcfClientCore.Utils.Authority;
 using WCFModels.Message;
@@ -363,7 +364,7 @@ namespace OQAMain
             string lotId = lotId_textBox.Text.Trim();
             if (string.IsNullOrEmpty(lotId))
             {
-                MessageBox.Show("请输入lotID");
+                MessageBox.Show("Input of required contents is null！");
                 lotId_textBox.Focus();
                 return;
             }
@@ -415,14 +416,28 @@ namespace OQAMain
 
         }
 
+
         private bool CheckCondition(string FuncName)
         {
             switch (ComFunc.Trim(FuncName))
             {
                 case "CREATE":
+                    break;
                 case "UPDATE":
                     // TODO
+                    if (check_sfDataGrid.RowCount > 0)
+                    {
+                        List<PKGCHKRST> lst_pkg = (List<PKGCHKRST>)check_sfDataGrid.DataSource;
+
+                        if (lst_pkg.Count(p => p.ChkResult=="NG") > 0)
+                        {
+                            MessageBox.Show("Please check 'NG' item！");
+                            return false;
+                        }
+
+                    }
                     return ValidateLotInfo();
+                    break;
 
                 case "DELETE":
                     // TODO
@@ -437,7 +452,7 @@ namespace OQAMain
         {
             if (null == lotPackageInfo || string.IsNullOrEmpty(lotId_textBox.Text.Trim()))
             {
-                MessageBox.Show("无Lot信息！");
+                MessageBox.Show("Lot is not found！");
                 lotId_textBox.Focus();
                 return false;
             }

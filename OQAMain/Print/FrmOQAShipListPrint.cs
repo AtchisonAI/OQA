@@ -42,7 +42,6 @@ namespace OQAMain
 
         #region " Variable Definition "
        
-        private string searchbydate;
         private string shipID;
         #endregion
 
@@ -103,9 +102,9 @@ namespace OQAMain
         
         private void FrmOQAShipListPrint_Load(object sender, EventArgs e)
         {
-            if (txtShowShipID.Text != "")
+            if (txtShipFilter.Text != "")
             {
-                if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', txtShowShipID.Text) == false) return;
+                if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', txtShipFilter.Text) == false) return;
             }
             
             dtFromTime.Value = DateTime.Now.AddDays(-7);
@@ -230,29 +229,7 @@ namespace OQAMain
             return result;
         }
 
-        //private void btnQuery_Click_1(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (CheckCondition("btnQuery") == false) return;
 
-        //        ship_no = txtShipNo.Text.Trim();
-        //        this.reportViewer2.LocalReport.DataSources.Clear();
-
-        //        if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', ship_no) == false)
-        //            return;
-
-
-        //       // ship_no = txtShipNo.Text.Trim();
-        //       //// ship_no = "12453";
-        //       // if (QueryPKGSHPInfo(GlobConst.TRAN_VIEW, '1', ship_no) == false) return;
-
-        //    }
-        //    catch (System.Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message.ToString());
-        //    }
-        //}
 
         //checkshipid单选
         private void CheckShipID_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -368,58 +345,10 @@ namespace OQAMain
         //选择时间
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            //    if (lstShip != null)
-            //    {
-            //        clean();
-            //    }
-            //    txtLotFilter.Text = "";
-           
-        //    //if (ComFunc.Trim(searchbydate) != "")
-        //    //{
-        //        if (SearchShipIDListByDate(GlobConst.TRAN_VIEW, '1', searchbydate,) == false) return;
-        //    //}
-        //    //else
-        //    //{
-        //    //    CheckShipID.Items.Clear();
-        //    //    if (QueryShipIDList(GlobConst.TRAN_VIEW, '1') == false) return;
-        //    //    // MessageBox.Show("输入要查询的shipID");
-        //    //}
+
         }
 
-        //search shipid by date
-        //private bool SearchShipIDListByDate(char c_proc_step, char c_tran_flag, string searchshipidbydate,string A)
-        //{
-        //    ModelRsp<ShipIDListView> in_node = new ModelRsp<ShipIDListView>();
-        //    ShipIDListView in_data = new ShipIDListView();
 
-        //    in_data.C_PROC_STEP = c_proc_step;
-        //    in_data.C_TRAN_FLAG = c_tran_flag;
-        //   // in_data.IN_SEARCHBYDATE_NO = searchshipidbydate;
-        //    in_node.model = in_data;
-
-        //    var out_data = OQASrv.Call.QueryShipIDList(in_node);
-
-
-        //    if (out_data._success == true)
-        //    {
-        //        CheckShipID.Items.Clear();
-        //        for (int i = 0; i < out_data.model.SEARCHshipID_list.Count; i++)
-        //        {
-        //            ListViewItem list_item = new ListViewItem();
-
-        //            list_item.Text = out_data.model.SEARCHshipID_list[i][0].ToString();
-        //            CheckShipID.Items.Add(list_item.Text);
-
-        //        }
-        //        lblSucessMsg.Text = out_data._MsgCode;
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show(out_data._ErrorMsg);
-        //        return false;
-        //    }
-        //}
         private void clean()
         {
             ComFunc.InitListView(lisship, true);

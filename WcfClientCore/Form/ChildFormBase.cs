@@ -1,11 +1,12 @@
 ﻿using Syncfusion.Windows.Forms.Tools;
+using Syncfusion.WinForms.Controls;
 using System;
 using WcfClientCore.Utils.Authority;
 using WCFModels.Frame;
 
 namespace WcfClientCore.Form
 {
-    public partial class ChildFormBase : BaseForm
+    public partial class ChildFormBase : BaseForm 
     {
         public bool b_Favorite { get; set; }
         public string toolStripName { get; set; }

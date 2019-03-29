@@ -61,24 +61,25 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(655, 6);
+            this.btnClose.Location = new System.Drawing.Point(764, 8);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(563, 6);
+            this.btnCreate.Location = new System.Drawing.Point(657, 8);
             this.btnCreate.Text = "Submit";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(563, 6);
+            this.btnEdite.Location = new System.Drawing.Point(657, 8);
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
             // 
             this.pnlMenu.Controls.Add(this.btnCheckAll);
             this.pnlMenu.Controls.Add(this.btnUnCheckAll);
+            this.pnlMenu.Location = new System.Drawing.Point(0, 676);
             this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
@@ -89,12 +90,12 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(14, 6);
+            this.btnRefresh.Location = new System.Drawing.Point(16, 8);
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // lblSucessMsg
             // 
-            this.lblSucessMsg.Location = new System.Drawing.Point(72, 12);
+            this.lblSucessMsg.Location = new System.Drawing.Point(84, 15);
             // 
             // groupBox1
             // 
@@ -106,28 +107,32 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(228, 540);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(266, 676);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "待发料批次清单";
+            this.groupBox1.Text = "Search Ship Lot";
             // 
             // btnQuery
             // 
-            this.btnQuery.Location = new System.Drawing.Point(137, 46);
+            this.btnQuery.Location = new System.Drawing.Point(205, 28);
+            this.btnQuery.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(75, 23);
+            this.btnQuery.Size = new System.Drawing.Size(42, 25);
             this.btnQuery.TabIndex = 12;
-            this.btnQuery.Text = "Query";
+            this.btnQuery.Text = "View";
             this.btnQuery.UseVisualStyleBackColor = true;
             this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
             // 
             // chkALL
             // 
             this.chkALL.AutoSize = true;
-            this.chkALL.Location = new System.Drawing.Point(15, 82);
+            this.chkALL.Location = new System.Drawing.Point(19, 63);
+            this.chkALL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkALL.Name = "chkALL";
-            this.chkALL.Size = new System.Drawing.Size(42, 16);
+            this.chkALL.Size = new System.Drawing.Size(46, 19);
             this.chkALL.TabIndex = 11;
             this.chkALL.Text = "ALL";
             this.chkALL.UseVisualStyleBackColor = true;
@@ -141,34 +146,37 @@
             this.LotIDList.BackColor = System.Drawing.SystemColors.Window;
             this.LotIDList.CheckOnClick = true;
             this.LotIDList.FormattingEnabled = true;
-            this.LotIDList.Location = new System.Drawing.Point(12, 101);
+            this.LotIDList.Location = new System.Drawing.Point(14, 82);
+            this.LotIDList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LotIDList.Name = "LotIDList";
-            this.LotIDList.Size = new System.Drawing.Size(200, 420);
+            this.LotIDList.Size = new System.Drawing.Size(233, 580);
             this.LotIDList.TabIndex = 7;
             this.LotIDList.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.LotIDList_ItemCheck);
             // 
             // txtSearchLotID
             // 
-            this.txtSearchLotID.Location = new System.Drawing.Point(62, 23);
+            this.txtSearchLotID.Location = new System.Drawing.Point(72, 29);
+            this.txtSearchLotID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSearchLotID.Name = "txtSearchLotID";
-            this.txtSearchLotID.Size = new System.Drawing.Size(150, 21);
+            this.txtSearchLotID.Size = new System.Drawing.Size(120, 23);
             this.txtSearchLotID.TabIndex = 5;
             this.txtSearchLotID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchLotID_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 26);
+            this.label1.Location = new System.Drawing.Point(16, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.Size = new System.Drawing.Size(38, 15);
             this.label1.TabIndex = 4;
             this.label1.Text = "Lot ID";
             // 
             // btnUnCheckAll
             // 
-            this.btnUnCheckAll.Location = new System.Drawing.Point(104, 6);
+            this.btnUnCheckAll.Location = new System.Drawing.Point(121, 8);
+            this.btnUnCheckAll.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnUnCheckAll.Name = "btnUnCheckAll";
-            this.btnUnCheckAll.Size = new System.Drawing.Size(75, 23);
+            this.btnUnCheckAll.Size = new System.Drawing.Size(87, 29);
             this.btnUnCheckAll.TabIndex = 9;
             this.btnUnCheckAll.Text = "Cancel";
             this.btnUnCheckAll.UseVisualStyleBackColor = true;
@@ -177,9 +185,10 @@
             // 
             // btnCheckAll
             // 
-            this.btnCheckAll.Location = new System.Drawing.Point(185, 6);
+            this.btnCheckAll.Location = new System.Drawing.Point(216, 8);
+            this.btnCheckAll.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCheckAll.Name = "btnCheckAll";
-            this.btnCheckAll.Size = new System.Drawing.Size(75, 23);
+            this.btnCheckAll.Size = new System.Drawing.Size(87, 29);
             this.btnCheckAll.TabIndex = 8;
             this.btnCheckAll.Text = "Choose All";
             this.btnCheckAll.UseVisualStyleBackColor = true;
@@ -198,86 +207,93 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(231, 0);
+            this.groupBox2.Location = new System.Drawing.Point(269, 0);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(519, 80);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Size = new System.Drawing.Size(606, 80);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "发料批次信息";
+            this.groupBox2.Text = "Shiping Information";
             // 
             // txtDate
             // 
-            this.txtDate.Location = new System.Drawing.Point(243, 44);
+            this.txtDate.Location = new System.Drawing.Point(283, 47);
+            this.txtDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDate.Name = "txtDate";
             this.txtDate.ReadOnly = true;
-            this.txtDate.Size = new System.Drawing.Size(100, 21);
+            this.txtDate.Size = new System.Drawing.Size(116, 23);
             this.txtDate.TabIndex = 15;
             // 
             // txtCreater
             // 
-            this.txtCreater.Location = new System.Drawing.Point(79, 47);
+            this.txtCreater.Location = new System.Drawing.Point(92, 49);
+            this.txtCreater.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCreater.Name = "txtCreater";
             this.txtCreater.ReadOnly = true;
-            this.txtCreater.Size = new System.Drawing.Size(100, 21);
+            this.txtCreater.Size = new System.Drawing.Size(116, 23);
             this.txtCreater.TabIndex = 14;
             // 
             // txtQTY
             // 
-            this.txtQTY.Location = new System.Drawing.Point(243, 21);
+            this.txtQTY.Location = new System.Drawing.Point(283, 21);
+            this.txtQTY.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtQTY.Name = "txtQTY";
             this.txtQTY.ReadOnly = true;
-            this.txtQTY.Size = new System.Drawing.Size(100, 21);
+            this.txtQTY.Size = new System.Drawing.Size(116, 23);
             this.txtQTY.TabIndex = 13;
             // 
             // txtPartID
             // 
-            this.txtPartID.Location = new System.Drawing.Point(79, 23);
+            this.txtPartID.Location = new System.Drawing.Point(92, 23);
+            this.txtPartID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPartID.Name = "txtPartID";
             this.txtPartID.ReadOnly = true;
-            this.txtPartID.Size = new System.Drawing.Size(100, 21);
+            this.txtPartID.Size = new System.Drawing.Size(116, 23);
             this.txtPartID.TabIndex = 12;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(198, 50);
+            this.label5.Location = new System.Drawing.Point(231, 53);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 12);
+            this.label5.Size = new System.Drawing.Size(31, 15);
             this.label5.TabIndex = 11;
             this.label5.Text = "Date";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 50);
+            this.label4.Location = new System.Drawing.Point(17, 52);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 12);
+            this.label4.Size = new System.Drawing.Size(45, 15);
             this.label4.TabIndex = 10;
             this.label4.Text = "Creater";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(198, 26);
+            this.label3.Location = new System.Drawing.Point(231, 26);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(23, 12);
+            this.label3.Size = new System.Drawing.Size(26, 15);
             this.label3.TabIndex = 9;
             this.label3.Text = "Qty";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 29);
+            this.label2.Location = new System.Drawing.Point(17, 28);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 12);
+            this.label2.Size = new System.Drawing.Size(42, 15);
             this.label2.TabIndex = 8;
             this.label2.Text = "Part ID";
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(228, 0);
+            this.splitter1.Location = new System.Drawing.Point(266, 0);
+            this.splitter1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 540);
+            this.splitter1.Size = new System.Drawing.Size(3, 676);
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
@@ -287,10 +303,11 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(750, 580);
+            this.dataGridView1.Size = new System.Drawing.Size(875, 725);
             this.dataGridView1.TabIndex = 4;
             // 
             // listship
@@ -303,9 +320,10 @@
             this.Transeq});
             this.listship.Cursor = System.Windows.Forms.Cursors.Default;
             this.listship.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listship.Location = new System.Drawing.Point(231, 80);
+            this.listship.Location = new System.Drawing.Point(269, 80);
+            this.listship.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listship.Name = "listship";
-            this.listship.Size = new System.Drawing.Size(519, 460);
+            this.listship.Size = new System.Drawing.Size(606, 596);
             this.listship.TabIndex = 5;
             this.listship.UseCompatibleStateImageBehavior = false;
             this.listship.View = System.Windows.Forms.View.Details;
@@ -339,16 +357,17 @@
             // 
             // FrmLotTransfer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 580);
+            this.ClientSize = new System.Drawing.Size(875, 725);
             this.Controls.Add(this.listship);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
+            this.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.Name = "FrmLotTransfer";
-            this.Text = "FrmLotTransfer";
+            this.Text = "Lot Transfer";
             this.Load += new System.EventHandler(this.FrmLotTransfer_Load);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
             this.Controls.SetChildIndex(this.pnlMenu, 0);

@@ -67,7 +67,7 @@ namespace OQAService.Services
                         if (In_node.model.IN_LOT_ID.Trim().Equals("") == true)
                             {
                                 Out_node._success = false;
-                                Out_node._ErrorMsg = "IN_LOT_ID is null!";
+                                Out_node._ErrorMsg = "LOT ID is null!";
                                 return Out_node;
                             }
 
@@ -76,7 +76,7 @@ namespace OQAService.Services
                         if (Query<PKGSLTDEF>(IsChkLot).models.Count > 0)
                         {
                             Out_node._success = false;
-                            Out_node._ErrorMsg = "Lotid 已Check!";
+                            Out_node._ErrorMsg = "Lot ID is checked!";
                             Out_node.model.PkgsltdefList = Query<PKGSLTDEF>(IsChkLot).models;
                             return Out_node;
                         }

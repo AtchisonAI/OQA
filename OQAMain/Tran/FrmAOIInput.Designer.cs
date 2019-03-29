@@ -132,7 +132,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label13.Location = new System.Drawing.Point(284, 40);
+            this.label13.Location = new System.Drawing.Point(289, 44);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(257, 12);
             this.label13.TabIndex = 23;
@@ -209,11 +209,11 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(284, 23);
+            this.label12.Location = new System.Drawing.Point(289, 23);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(419, 12);
+            this.label12.Size = new System.Drawing.Size(413, 12);
             this.label12.TabIndex = 22;
-            this.label12.Text = "A:Arching  S:Scratch  D:Discolor  F:Defocus  C:Corrosion  P:Particle ";
+            this.label12.Text = "A:Arcing  S:Scratch  D:Discolor  F:Defocus  C:Corrosion  P:Particle ";
             // 
             // txtRate
             // 

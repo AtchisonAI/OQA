@@ -351,7 +351,9 @@ namespace OQAMain
                         string s_LotID = txtLotID.Text.Trim();
                         FrmDefectSend DefectSend = new FrmDefectSend(s_LotID);
                         DefectSend.FormBorderStyle = FormBorderStyle.FixedDialog;
-                        DefectSend.WindowState = FormWindowState.Maximized;
+                        DefectSend.WindowState = FormWindowState.Normal;
+                        DefectSend.MaximizeBox = false;
+                        DefectSend.MinimizeBox = false;
                         DefectSend.StartPosition = FormStartPosition.CenterParent;
                         DefectSend.ShowDialog();
                         //AddNewFormToMdi(DefectSend);
@@ -412,6 +414,11 @@ namespace OQAMain
                     labPndn.Text = out_data.model.S_PNDN_NO;
                     labPndn.ForeColor = Color.Red;
 
+                }
+                else
+                {
+                    labPndn.Text = "Lot PNDN history and WAT data is OK!";
+                    labPndn.ForeColor = Color.Blue;
                 }
 
                 list_wafer = out_data.model.OQAMESWAFER_LIST;

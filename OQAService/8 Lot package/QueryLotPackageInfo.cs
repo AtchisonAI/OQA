@@ -24,7 +24,7 @@ namespace OQAService.Services
             } else
             {
                 rsp._success = false;
-                rsp._ErrorMsg = string.Format("Lot id:{0},Error:Lot 不存在或未到{1}状态,或已打包提交", input.lotId,LotSts.ChangeOut);
+                rsp._ErrorMsg = string.Format("Lot id:{0} is not found.Please check lot status.", input.lotId,LotSts.ChangeOut);
                 log.Error(rsp._ErrorMsg);
             } 
 

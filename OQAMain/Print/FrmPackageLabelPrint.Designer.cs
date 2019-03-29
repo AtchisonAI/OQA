@@ -41,22 +41,17 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(704, 6);
+            this.btnClose.Location = new System.Drawing.Point(653, 6);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(520, 6);
+            this.btnCreate.Location = new System.Drawing.Point(469, 6);
             this.btnCreate.Visible = false;
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(612, 6);
+            this.btnEdite.Location = new System.Drawing.Point(561, 6);
             this.btnEdite.Visible = false;
-            // 
-            // pnlMenu
-            // 
-            this.pnlMenu.Location = new System.Drawing.Point(0, 560);
-            this.pnlMenu.Size = new System.Drawing.Size(800, 40);
             // 
             // groupBox1
             // 
@@ -66,7 +61,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(800, 100);
+            this.groupBox1.Size = new System.Drawing.Size(750, 100);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "`";
@@ -106,7 +101,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 100);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(800, 460);
+            this.groupBox2.Size = new System.Drawing.Size(750, 440);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "```";
@@ -118,20 +113,20 @@
             this.reportViewer1.Location = new System.Drawing.Point(3, 17);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(794, 440);
+            this.reportViewer1.Size = new System.Drawing.Size(744, 420);
             this.reportViewer1.TabIndex = 0;
             // 
             // FrmPackageLabelPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(750, 580);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.DoubleBuffered = true;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(750, 580);
             this.Name = "FrmPackageLabelPrint";
-            this.Text = "FrmPackageLabelPrint";
+            this.Text = "Lot Label Print";
             this.Load += new System.EventHandler(this.FrmPackageLabelPrint_Load);
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);

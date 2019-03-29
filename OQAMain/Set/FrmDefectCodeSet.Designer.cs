@@ -224,7 +224,7 @@
             // txtIspType
             // 
             this.txtIspType.Location = new System.Drawing.Point(135, 42);
-            this.txtIspType.MaxLength = 1;
+            this.txtIspType.MaxLength = 10;
             this.txtIspType.Name = "txtIspType";
             this.txtIspType.Size = new System.Drawing.Size(100, 21);
             this.txtIspType.TabIndex = 1;

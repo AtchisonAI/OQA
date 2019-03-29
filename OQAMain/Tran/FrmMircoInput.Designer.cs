@@ -110,6 +110,7 @@
             this.rbtnNine = new System.Windows.Forms.RadioButton();
             this.rbtnThir = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxSelect.SuspendLayout();
@@ -153,6 +154,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label26);
             this.groupBox1.Controls.Add(this.label25);
             this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.groupBoxSelect);
@@ -186,9 +188,9 @@
             this.label24.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label24.Location = new System.Drawing.Point(15, 364);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(209, 12);
+            this.label24.Size = new System.Drawing.Size(203, 12);
             this.label24.TabIndex = 40;
-            this.label24.Text = "A:Arching  S:Scratch  D:Discolor  ";
+            this.label24.Text = "A:Arcing  S:Scratch  D:Discolor  ";
             // 
             // groupBoxSelect
             // 
@@ -931,11 +933,11 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label14.Location = new System.Drawing.Point(7, 65);
+            this.label14.Location = new System.Drawing.Point(23, 62);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(263, 12);
+            this.label14.Size = new System.Drawing.Size(185, 12);
             this.label14.TabIndex = 26;
-            this.label14.Text = "Pls mark the defect with below special code";
+            this.label14.Text = "Pls mark the defect with below";
             // 
             // groupBox3
             // 
@@ -1173,6 +1175,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Micro inspection simple MAP";
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(67, 79);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(83, 12);
+            this.label26.TabIndex = 42;
+            this.label26.Text = " special code";
+            // 
             // FrmMircoInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1287,5 +1298,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label26;
     }
 }

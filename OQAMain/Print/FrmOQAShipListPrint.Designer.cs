@@ -276,6 +276,7 @@
             // txtShowShipID
             // 
             this.txtShowShipID.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txtShowShipID.Enabled = false;
             this.txtShowShipID.Location = new System.Drawing.Point(0, 0);
             this.txtShowShipID.Name = "txtShowShipID";
             this.txtShowShipID.Size = new System.Drawing.Size(158, 21);
@@ -311,7 +312,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmOQAShipListPrint";
-            this.Text = "FrmOQAShipListPrint";
+            this.Text = "Ship  Print";
             this.Load += new System.EventHandler(this.FrmOQAShipListPrint_Load);
             this.Shown += new System.EventHandler(this.FrmOQAShipListPrint_Shown);
             this.Controls.SetChildIndex(this.pnlMenu, 0);

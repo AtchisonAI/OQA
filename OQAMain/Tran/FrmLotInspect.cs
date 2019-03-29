@@ -413,6 +413,11 @@ namespace OQAMain
                     labPndn.ForeColor = Color.Red;
 
                 }
+                else
+                {
+                    labPndn.Text = "Lot PNDN history and WAT data is OK!";
+                    labPndn.ForeColor = Color.Blue;
+                }
 
                 list_wafer = out_data.model.OQAMESWAFER_LIST;
                 int slotIndex;

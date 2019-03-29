@@ -475,7 +475,7 @@
             this.grpOQAInfo.Size = new System.Drawing.Size(497, 160);
             this.grpOQAInfo.TabIndex = 8;
             this.grpOQAInfo.TabStop = false;
-            this.grpOQAInfo.Text = "OQA Information";
+            this.grpOQAInfo.Text = "Basic Information";
             // 
             // txtStage
             // 

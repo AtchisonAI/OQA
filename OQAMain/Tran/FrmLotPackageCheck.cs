@@ -364,7 +364,7 @@ namespace OQAMain
             string lotId = lotId_textBox.Text.Trim();
             if (string.IsNullOrEmpty(lotId))
             {
-                MessageBox.Show("请输入lotID");
+                MessageBox.Show("Input of required contents is null！");
                 lotId_textBox.Focus();
                 return;
             }
@@ -416,7 +416,6 @@ namespace OQAMain
 
         }
 
-        private List<PKGCHKRST> lst_pkg;
 
         private bool CheckCondition(string FuncName)
         {
@@ -428,7 +427,7 @@ namespace OQAMain
                     // TODO
                     if (check_sfDataGrid.RowCount > 0)
                     {
-                        lst_pkg = (List<PKGCHKRST>)check_sfDataGrid.DataSource;
+                        List<PKGCHKRST> lst_pkg = (List<PKGCHKRST>)check_sfDataGrid.DataSource;
 
                         if (lst_pkg.Count(p => p.ChkResult=="NG") > 0)
                         {
@@ -453,7 +452,7 @@ namespace OQAMain
         {
             if (null == lotPackageInfo || string.IsNullOrEmpty(lotId_textBox.Text.Trim()))
             {
-                MessageBox.Show("无Lot信息！");
+                MessageBox.Show("Lot is not found！");
                 lotId_textBox.Focus();
                 return false;
             }

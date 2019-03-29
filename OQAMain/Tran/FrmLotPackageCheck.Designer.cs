@@ -141,7 +141,7 @@
             this.Controls.Add(this.package_groupBox);
             this.Controls.Add(this.lotInfo_groupBox);
             this.Name = "FrmLotPackageCheck";
-            this.Text = "FrmLotPackageCheck";
+            this.Text = "Lot Package Check";
             this.Controls.SetChildIndex(this.lotInfo_groupBox, 0);
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.package_groupBox, 0);

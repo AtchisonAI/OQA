@@ -489,18 +489,22 @@ namespace WcfClient
             tabbedGroupedMDIManager.LoadTabGroupStates(serializer);
         }
 
-        public override void AddMdiChild(ChildFormBase form)
+        public override void AddMdiChild(ChildFormBase form, bool b_single = true)
         {
-            Form[] childs = tabbedGroupedMDIManager.MdiChildren;
-            foreach (DockingWrapperForm q in childs)
+            if(b_single)
             {
-                Form childFrm = (Form)q.ctrlChildRef;
-                if (childFrm.GetType() == form.GetType())
+                Form[] childs = tabbedGroupedMDIManager.MdiChildren;
+                foreach (DockingWrapperForm q in childs)
                 {
-                    childFrm.Close();
-                    break;
+                    Form childFrm = (Form)q.ctrlChildRef;
+                    if (childFrm.GetType() == form.GetType())
+                    {
+                        childFrm.Close();
+                        break;
+                    }
                 }
             }
+
             FormBindToTabMdi(form);
         }
 

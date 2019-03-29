@@ -153,6 +153,8 @@ namespace WcfService
                 case OperateType.Insert:
                     model.CreateTime = sysdate;
                     model.CreateUserId = userId;
+                    model.UpdateTime = " ";
+                    model.UpdateUserId = " ";
 
                     db.Insert(model);
                     break;

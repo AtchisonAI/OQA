@@ -69,18 +69,18 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(683, 5);
+            this.btnClose.Location = new System.Drawing.Point(698, 5);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(595, 5);
+            this.btnCreate.Location = new System.Drawing.Point(610, 5);
             this.btnCreate.Text = "Submit";
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(409, 7);
+            this.btnEdite.Location = new System.Drawing.Point(423, 7);
             this.btnEdite.Visible = false;
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
@@ -142,15 +142,16 @@
             this.txtLotid.Size = new System.Drawing.Size(100, 21);
             this.txtLotid.TabIndex = 1;
             this.txtLotid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
+            this.txtLotid.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtLotid_MouseDown);
             // 
             // labLotid
             // 
             this.labLotid.AutoSize = true;
             this.labLotid.Location = new System.Drawing.Point(26, 20);
             this.labLotid.Name = "labLotid";
-            this.labLotid.Size = new System.Drawing.Size(35, 12);
+            this.labLotid.Size = new System.Drawing.Size(41, 12);
             this.labLotid.TabIndex = 0;
-            this.labLotid.Text = "Lotid";
+            this.labLotid.Text = "Lot ID";
             // 
             // grpFoupChange
             // 
@@ -354,7 +355,7 @@
             // btnPrint
             // 
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrint.Location = new System.Drawing.Point(503, 6);
+            this.btnPrint.Location = new System.Drawing.Point(393, 8);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(88, 26);
             this.btnPrint.TabIndex = 6;

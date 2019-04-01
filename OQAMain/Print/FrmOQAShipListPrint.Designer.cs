@@ -61,7 +61,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(588, 5);
+            this.btnClose.Location = new System.Drawing.Point(758, 7);
             // 
             // btnCreate
             // 

@@ -234,7 +234,7 @@ namespace OQAMain
         //checkshipid单选
         private void CheckShipID_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            txtShowShipID.Text = "";
+            txtShowShipID.Text = CheckShipID.SelectedItem.ToString();
             shipID = CheckShipID.SelectedItem.ToString();
             if (CheckShipID.CheckedItems.Count > 0)
             {

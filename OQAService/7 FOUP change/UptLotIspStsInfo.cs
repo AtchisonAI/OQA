@@ -58,7 +58,7 @@ namespace OQAService.Services
                             if (In_node.model.IN_LOT_ID.Trim().Equals("") == true)
                             {
                                 Out_node._success = false;
-                                Out_node._ErrorMsg = "IN_LOT_ID is null!";
+                                Out_node._ErrorMsg = "LOT ID is null!";
                                 return Out_node;
                             }
 

@@ -429,9 +429,7 @@ namespace OQAService.Services
                 {
                     case '1':
 
-
                         break;
-
                 }
 
             }

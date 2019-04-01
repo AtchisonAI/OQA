@@ -364,7 +364,7 @@ namespace OQAMain
                     item.LotId = lsOqaChkmesslotids[i].LotId;
                     item.SlotId = lsOqaChkmesslotids[i].SlotId;
                     item.WaferId = lsOqaChkmesslotids[i].WaferId;
-
+                    item.FoupId = lsOqaChkmesslotids[i].FoupId;
                     LSOQACHKMESSLOTIDS.Add(item);
                 }
 

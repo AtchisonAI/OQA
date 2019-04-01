@@ -213,17 +213,22 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(654, 4);
+            this.btnClose.Location = new System.Drawing.Point(643, 4);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(471, 5);
+            this.btnCreate.Location = new System.Drawing.Point(460, 5);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(563, 5);
+            this.btnEdite.Location = new System.Drawing.Point(552, 5);
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
+            // 
+            // pnlMenu
+            // 
+            this.pnlMenu.Location = new System.Drawing.Point(0, 540);
+            this.pnlMenu.Size = new System.Drawing.Size(750, 40);
             // 
             // btnRefresh
             // 
@@ -489,7 +494,7 @@
             // ImgISPLot
             // 
             this.ImgISPLot.Enabled = false;
-            this.ImgISPLot.Location = new System.Drawing.Point(30, 120);
+            this.ImgISPLot.Location = new System.Drawing.Point(14, 114);
             this.ImgISPLot.Name = "ImgISPLot";
             this.ImgISPLot.PicStream = null;
             this.ImgISPLot.Size = new System.Drawing.Size(380, 31);

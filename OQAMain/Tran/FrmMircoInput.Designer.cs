@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.groupBoxSelect = new System.Windows.Forms.GroupBox();
@@ -110,7 +111,6 @@
             this.rbtnNine = new System.Windows.Forms.RadioButton();
             this.rbtnThir = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label26 = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxSelect.SuspendLayout();
@@ -122,19 +122,19 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(654, 5);
+            this.btnClose.Location = new System.Drawing.Point(643, 5);
             // 
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCreate.Location = new System.Drawing.Point(565, 5);
+            this.btnCreate.Location = new System.Drawing.Point(554, 5);
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
             this.btnEdite.Enabled = false;
             this.btnEdite.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnEdite.Location = new System.Drawing.Point(565, 5);
+            this.btnEdite.Location = new System.Drawing.Point(554, 5);
             this.btnEdite.Visible = false;
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
@@ -142,6 +142,7 @@
             // 
             this.pnlMenu.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.pnlMenu.Location = new System.Drawing.Point(0, 589);
+            this.pnlMenu.Size = new System.Drawing.Size(750, 40);
             // 
             // btnRefresh
             // 
@@ -171,6 +172,15 @@
             this.groupBox1.Size = new System.Drawing.Size(750, 629);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(67, 79);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(83, 12);
+            this.label26.TabIndex = 42;
+            this.label26.Text = " special code";
             // 
             // label25
             // 
@@ -1139,10 +1149,10 @@
             this.rbtnNine.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rbtnNine.Location = new System.Drawing.Point(16, 9);
             this.rbtnNine.Name = "rbtnNine";
-            this.rbtnNine.Size = new System.Drawing.Size(65, 16);
+            this.rbtnNine.Size = new System.Drawing.Size(71, 16);
             this.rbtnNine.TabIndex = 6;
             this.rbtnNine.TabStop = true;
-            this.rbtnNine.Text = "9点检测";
+            this.rbtnNine.Text = "9 Point ";
             this.rbtnNine.UseVisualStyleBackColor = true;
             this.rbtnNine.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
@@ -1155,7 +1165,7 @@
             this.rbtnThir.Size = new System.Drawing.Size(71, 16);
             this.rbtnThir.TabIndex = 7;
             this.rbtnThir.TabStop = true;
-            this.rbtnThir.Text = "13点检测";
+            this.rbtnThir.Text = "13 Point";
             this.rbtnThir.UseVisualStyleBackColor = true;
             this.rbtnThir.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
@@ -1174,15 +1184,6 @@
             this.groupBox2.TabIndex = 42;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Micro inspection simple MAP";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(67, 79);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(83, 12);
-            this.label26.TabIndex = 42;
-            this.label26.Text = " special code";
             // 
             // FrmMircoInput
             // 

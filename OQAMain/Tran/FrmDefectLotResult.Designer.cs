@@ -223,10 +223,6 @@
             this.tabResult = new System.Windows.Forms.TabPage();
             this.grpPndnInf = new System.Windows.Forms.GroupBox();
             this.dgPndn = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txtNewFoupID = new System.Windows.Forms.TextBox();
-            this.lblNewFoupID = new System.Windows.Forms.Label();
-            this.tabISP = new System.Windows.Forms.TabPage();
             this.dataGridViewTextBoxColumn101 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn102 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn103 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -238,6 +234,10 @@
             this.HoldCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoldComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupervisorNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtNewFoupID = new System.Windows.Forms.TextBox();
+            this.lblNewFoupID = new System.Windows.Forms.Label();
+            this.tabISP = new System.Windows.Forms.TabPage();
             this.pnlMenu.SuspendLayout();
             this.grpRcvLot.SuspendLayout();
             this.grpOQAInfo.SuspendLayout();
@@ -261,23 +261,25 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(652, 4);
+            this.btnClose.Location = new System.Drawing.Point(641, 4);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(376, 4);
+            this.btnCreate.Location = new System.Drawing.Point(365, 4);
             this.btnCreate.Visible = false;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(468, 4);
+            this.btnEdite.Location = new System.Drawing.Point(457, 4);
             this.btnEdite.Text = "Continue";
             this.btnEdite.Click += new System.EventHandler(this.btnEdite_Click);
             // 
             // pnlMenu
             // 
             this.pnlMenu.Controls.Add(this.btnSrap);
+            this.pnlMenu.Location = new System.Drawing.Point(0, 540);
+            this.pnlMenu.Size = new System.Drawing.Size(750, 40);
             this.pnlMenu.Controls.SetChildIndex(this.btnClose, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnEdite, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnCreate, 0);
@@ -503,7 +505,7 @@
             // ImgISPLot
             // 
             this.ImgISPLot.Enabled = false;
-            this.ImgISPLot.Location = new System.Drawing.Point(30, 120);
+            this.ImgISPLot.Location = new System.Drawing.Point(13, 113);
             this.ImgISPLot.Name = "ImgISPLot";
             this.ImgISPLot.PicStream = null;
             this.ImgISPLot.Size = new System.Drawing.Size(380, 31);
@@ -1641,7 +1643,7 @@
             // btnSrap
             // 
             this.btnSrap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSrap.Location = new System.Drawing.Point(560, 4);
+            this.btnSrap.Location = new System.Drawing.Point(549, 4);
             this.btnSrap.Name = "btnSrap";
             this.btnSrap.Size = new System.Drawing.Size(88, 26);
             this.btnSrap.TabIndex = 7;
@@ -1916,47 +1918,6 @@
             this.dgPndn.Size = new System.Drawing.Size(477, 145);
             this.dgPndn.TabIndex = 8;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txtNewFoupID);
-            this.panel1.Controls.Add(this.lblNewFoupID);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(483, 23);
-            this.panel1.TabIndex = 17;
-            // 
-            // txtNewFoupID
-            // 
-            this.txtNewFoupID.Enabled = false;
-            this.txtNewFoupID.Location = new System.Drawing.Point(93, 0);
-            this.txtNewFoupID.MaxLength = 30;
-            this.txtNewFoupID.Name = "txtNewFoupID";
-            this.txtNewFoupID.Size = new System.Drawing.Size(100, 21);
-            this.txtNewFoupID.TabIndex = 15;
-            // 
-            // lblNewFoupID
-            // 
-            this.lblNewFoupID.AutoSize = true;
-            this.lblNewFoupID.Location = new System.Drawing.Point(6, 4);
-            this.lblNewFoupID.Name = "lblNewFoupID";
-            this.lblNewFoupID.Size = new System.Drawing.Size(71, 12);
-            this.lblNewFoupID.TabIndex = 14;
-            this.lblNewFoupID.Text = "New Foup ID";
-            // 
-            // tabISP
-            // 
-            this.tabISP.BackColor = System.Drawing.SystemColors.Control;
-            this.tabISP.Controls.Add(this.groupBox1);
-            this.tabISP.Controls.Add(this.grpMacro);
-            this.tabISP.Controls.Add(this.grpAOI);
-            this.tabISP.Location = new System.Drawing.Point(4, 22);
-            this.tabISP.Name = "tabISP";
-            this.tabISP.Padding = new System.Windows.Forms.Padding(3);
-            this.tabISP.Size = new System.Drawing.Size(489, 274);
-            this.tabISP.TabIndex = 1;
-            this.tabISP.Text = "Inspect Type";
-            // 
             // dataGridViewTextBoxColumn101
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -2030,6 +1991,47 @@
             this.SupervisorNo.HeaderText = "Status";
             this.SupervisorNo.Name = "SupervisorNo";
             this.SupervisorNo.ReadOnly = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtNewFoupID);
+            this.panel1.Controls.Add(this.lblNewFoupID);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(483, 23);
+            this.panel1.TabIndex = 17;
+            // 
+            // txtNewFoupID
+            // 
+            this.txtNewFoupID.Enabled = false;
+            this.txtNewFoupID.Location = new System.Drawing.Point(93, 0);
+            this.txtNewFoupID.MaxLength = 30;
+            this.txtNewFoupID.Name = "txtNewFoupID";
+            this.txtNewFoupID.Size = new System.Drawing.Size(100, 21);
+            this.txtNewFoupID.TabIndex = 15;
+            // 
+            // lblNewFoupID
+            // 
+            this.lblNewFoupID.AutoSize = true;
+            this.lblNewFoupID.Location = new System.Drawing.Point(6, 4);
+            this.lblNewFoupID.Name = "lblNewFoupID";
+            this.lblNewFoupID.Size = new System.Drawing.Size(71, 12);
+            this.lblNewFoupID.TabIndex = 14;
+            this.lblNewFoupID.Text = "New Foup ID";
+            // 
+            // tabISP
+            // 
+            this.tabISP.BackColor = System.Drawing.SystemColors.Control;
+            this.tabISP.Controls.Add(this.groupBox1);
+            this.tabISP.Controls.Add(this.grpMacro);
+            this.tabISP.Controls.Add(this.grpAOI);
+            this.tabISP.Location = new System.Drawing.Point(4, 22);
+            this.tabISP.Name = "tabISP";
+            this.tabISP.Padding = new System.Windows.Forms.Padding(3);
+            this.tabISP.Size = new System.Drawing.Size(489, 274);
+            this.tabISP.TabIndex = 1;
+            this.tabISP.Text = "Inspect Type";
             // 
             // FrmDefectLotResult
             // 

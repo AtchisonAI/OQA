@@ -269,7 +269,7 @@ namespace OQAService.Services
                 }
                 if (out_Msg._success)
                 {
-                    out_Msg._MsgCode = "Program Success1.";
+                    out_Msg._MsgCode = "Program Success.";
                 }
 
                 return out_Msg;

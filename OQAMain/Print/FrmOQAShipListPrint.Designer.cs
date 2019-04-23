@@ -48,10 +48,10 @@
             this.Part_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Inspection_Result = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.txtShowShipID = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.label5 = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -61,26 +61,27 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(761, 5);
+            this.btnClose.Location = new System.Drawing.Point(758, 7);
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(419, 9);
+            this.btnCreate.Location = new System.Drawing.Point(246, 9);
             this.btnCreate.Visible = false;
             // 
             // btnEdite
             // 
-            this.btnEdite.Location = new System.Drawing.Point(320, 9);
+            this.btnEdite.Location = new System.Drawing.Point(147, 9);
             this.btnEdite.Text = "Export";
             this.btnEdite.Visible = false;
             // 
             // pnlMenu
             // 
             this.pnlMenu.Location = new System.Drawing.Point(0, 676);
+            this.pnlMenu.Size = new System.Drawing.Size(875, 49);
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(3, 16);
+            this.btnRefresh.Location = new System.Drawing.Point(3, 11);
             // 
             // groupBox1
             // 
@@ -111,7 +112,7 @@
             this.chkToUse.AutoSize = true;
             this.chkToUse.Checked = true;
             this.chkToUse.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkToUse.Location = new System.Drawing.Point(237, 107);
+            this.chkToUse.Location = new System.Drawing.Point(237, 108);
             this.chkToUse.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkToUse.Name = "chkToUse";
             this.chkToUse.Size = new System.Drawing.Size(15, 14);
@@ -137,7 +138,7 @@
             this.btnQuery.Location = new System.Drawing.Point(217, 22);
             this.btnQuery.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(42, 25);
+            this.btnQuery.Size = new System.Drawing.Size(47, 25);
             this.btnQuery.TabIndex = 7;
             this.btnQuery.Text = "View";
             this.btnQuery.UseVisualStyleBackColor = true;
@@ -182,7 +183,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 53);
+            this.label2.Location = new System.Drawing.Point(14, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 15);
             this.label2.TabIndex = 6;
@@ -193,7 +194,7 @@
             this.txtLotFilter.Location = new System.Drawing.Point(91, 49);
             this.txtLotFilter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtLotFilter.Name = "txtLotFilter";
-            this.txtLotFilter.Size = new System.Drawing.Size(120, 23);
+            this.txtLotFilter.Size = new System.Drawing.Size(119, 23);
             this.txtLotFilter.TabIndex = 5;
             this.txtLotFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLotFilter_KeyPress);
             // 
@@ -207,7 +208,7 @@
             this.CheckShipID.Location = new System.Drawing.Point(16, 144);
             this.CheckShipID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CheckShipID.Name = "CheckShipID";
-            this.CheckShipID.Size = new System.Drawing.Size(244, 526);
+            this.CheckShipID.Size = new System.Drawing.Size(244, 490);
             this.CheckShipID.TabIndex = 4;
             this.CheckShipID.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.CheckShipID_ItemCheck);
             // 
@@ -216,7 +217,7 @@
             this.txtShipFilter.Location = new System.Drawing.Point(91, 22);
             this.txtShipFilter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtShipFilter.Name = "txtShipFilter";
-            this.txtShipFilter.Size = new System.Drawing.Size(120, 23);
+            this.txtShipFilter.Size = new System.Drawing.Size(119, 23);
             this.txtShipFilter.TabIndex = 3;
             this.txtShipFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1Press_check);
             // 
@@ -293,13 +294,22 @@
             this.panel1.Size = new System.Drawing.Size(586, 35);
             this.panel1.TabIndex = 2;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 8);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(91, 15);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Selected Ship ID";
+            // 
             // txtShowShipID
             // 
             this.txtShowShipID.Enabled = false;
-            this.txtShowShipID.Location = new System.Drawing.Point(122, 4);
+            this.txtShowShipID.Location = new System.Drawing.Point(138, 4);
             this.txtShowShipID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtShowShipID.Name = "txtShowShipID";
-            this.txtShowShipID.Size = new System.Drawing.Size(120, 23);
+            this.txtShowShipID.Size = new System.Drawing.Size(119, 23);
             this.txtShowShipID.TabIndex = 1;
             // 
             // groupBox3
@@ -325,15 +335,6 @@
             this.reportViewer2.ServerReport.BearerToken = null;
             this.reportViewer2.Size = new System.Drawing.Size(586, 411);
             this.reportViewer2.TabIndex = 5;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 7);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 15);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Selected Ship ID";
             // 
             // FrmOQAShipListPrint
             // 

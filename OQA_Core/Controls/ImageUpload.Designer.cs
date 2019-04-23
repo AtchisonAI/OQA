@@ -54,9 +54,9 @@
             this.lblSts.AutoSize = true;
             this.lblSts.Location = new System.Drawing.Point(7, 10);
             this.lblSts.Name = "lblSts";
-            this.lblSts.Size = new System.Drawing.Size(29, 12);
+            this.lblSts.Size = new System.Drawing.Size(47, 12);
             this.lblSts.TabIndex = 59;
-            this.lblSts.Text = "未传";
+            this.lblSts.Text = "Un Load";
             this.lblSts.Click += new System.EventHandler(this.lblSts_Click);
             // 
             // btnUpload
@@ -84,10 +84,10 @@
             // txtPicName
             // 
             this.txtPicName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPicName.Location = new System.Drawing.Point(39, 6);
+            this.txtPicName.Location = new System.Drawing.Point(59, 6);
             this.txtPicName.Margin = new System.Windows.Forms.Padding(2);
             this.txtPicName.Name = "txtPicName";
-            this.txtPicName.Size = new System.Drawing.Size(229, 21);
+            this.txtPicName.Size = new System.Drawing.Size(209, 21);
             this.txtPicName.TabIndex = 0;
             // 
             // ImageUpload

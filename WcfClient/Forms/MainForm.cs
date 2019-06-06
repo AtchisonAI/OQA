@@ -5,6 +5,7 @@ using Syncfusion.Windows.Forms.Tools.XPMenus;
 using System;
 using System.Reflection;
 using System.Windows.Forms;
+using OQAMain.YE;
 using WcfClient.Forms;
 using WcfClientCore.Form;
 using WcfClientCore.Utils.Authority;
@@ -509,6 +510,10 @@ namespace WcfClient
             FormBindToTabMdi(form);
         }
 
-
+        private void yEHoldLotHandleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem ctr = (ToolStripMenuItem)sender;
+            FrmYEHoldLotHandle frm = On_MenuItemClickImpl<FrmYEHoldLotHandle>(ctr.Name);
+        }
     }
 }

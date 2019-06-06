@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ServiceModel;
+using NPoco;
 using WCFModels;
 using WCFModels.Message;
 using WCFModels.MESDB.FWTST1;
@@ -92,6 +93,7 @@ namespace OQAService.Services
                                         model = pkgsltdef,
                                         operateType = OperateType.Insert
                                     };
+                                    pkgsltdef.CreateTime = GetSysTime();
                                     InitTable(pkgsltdef);
                                     ModelRsp<PKGSLTDEF> backInfo = new ModelRsp<PKGSLTDEF>();//定义数据库操作新增动作传入结构
                                     UpdateModel<PKGSLTDEF>(insertpkgslt, backInfo, true);

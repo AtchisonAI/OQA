@@ -4,6 +4,7 @@ using NPoco.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using Utils;
 using WCFModels;
 using WCFModels.Message;
@@ -21,7 +22,7 @@ namespace WcfService
             db = new MyDB(connectStringName);
         }
 
-        public BaseService( string connectStr)
+        public BaseService(string connectStr)
         {
             connectStringName = connectStr;
             db = new MyDB(connectStringName);
@@ -51,7 +52,6 @@ namespace WcfService
             else if (db.DatabaseType == DatabaseType.Oracle ||
                 db.DatabaseType == DatabaseType.OracleManaged)
             {
-                //有错误
                 sql = "select TO_CHAR(sysdate,'YYYYMMDDHH24MISS') from dual";
             }
             else
@@ -106,7 +106,7 @@ namespace WcfService
         /// <param name="inMsg">需要更新的建模对象</param>
         public void UpdateTrackModel<T>(UpdateModelReq<T> updateReq) where T : ITrackModelObject, new()
         {
-            UpdateTrackModelImp(updateReq.model, updateReq.operateType, updateReq.userId,updateReq.partialUpdate);
+            UpdateTrackModelImp(updateReq.model, updateReq.operateType, updateReq.userId, updateReq.partialUpdate);
         }
 
         /// <summary>
@@ -139,13 +139,13 @@ namespace WcfService
         /// <param name="inMsg">需要更新的建模对象列表</param>
         public void UpdateTrackModels<T>(UpdateModelListReq<T> updateReq) where T : ITrackModelObject, new()
         {
-            foreach(T model in updateReq.models)
+            foreach (T model in updateReq.models)
             {
                 UpdateTrackModelImp(model, updateReq.operateType, updateReq.userId, updateReq.partialUpdate);
             }
         }
 
-        private void UpdateTrackModelImp<T>(T model, OperateType operateType,string userId,bool partialUpdate) where T : ITrackModelObject, new()
+        private void UpdateTrackModelImp<T>(T model, OperateType operateType, string userId, bool partialUpdate) where T : ITrackModelObject, new()
         {
             var sysdate = GetSystemDateTime();
             switch (operateType)
@@ -243,13 +243,13 @@ namespace WcfService
         /// <param name="inMsg">需要更新的建模对象列表</param>
         public void UpdateModels<T>(UpdateModelListReq<T> updateReq)
         {
-            foreach(var model in updateReq.models)
+            foreach (var model in updateReq.models)
             {
                 UpdateModelImp(model, updateReq.operateType, updateReq.partialUpdate);
             }
         }
 
-        private void UpdateModelImp<T>(T model, OperateType operateType,bool partialUpdate)
+        private void UpdateModelImp<T>(T model, OperateType operateType, bool partialUpdate)
         {
             switch (operateType)
             {
@@ -258,7 +258,7 @@ namespace WcfService
                     break;
 
                 case OperateType.Update:
-                    if(partialUpdate)
+                    if (partialUpdate)
                     {
                         var oldModel = db.SingleOrDefaultById<T>(model);
                         var sanpShot = db.StartSnapshot(oldModel);
@@ -293,7 +293,7 @@ namespace WcfService
         {
             PageModelRsp<T> rsp = new PageModelRsp<T>();
             var res = PageQueryIml<T>(req);
-            if(null != res)
+            if (null != res)
             {
                 rsp.TotalItems = (int)res.TotalItems;
                 rsp.TotalPage = (int)res.TotalPages;
@@ -317,7 +317,7 @@ namespace WcfService
         {
             ModelListRsp<T> rsp = new ModelListRsp<T>();
             var res = QueryIml<T>(req);
-            if (null!= res)
+            if (null != res)
             {
                 rsp.models = res;
                 rsp._success = true;
@@ -328,7 +328,7 @@ namespace WcfService
             return rsp;
         }
 
-        public ModelRsp<T> SingleQuery<T>(object primayKeyValue) where T:new()
+        public ModelRsp<T> SingleQuery<T>(object primayKeyValue) where T : new()
         {
             ModelRsp<T> rsp = new ModelRsp<T>();
             try
@@ -365,7 +365,7 @@ namespace WcfService
 
         private Page<T> PageQueryIml<T>(PageQueryReq req)
         {
-            IQueryProvider < T > provider = null;
+            IQueryProvider<T> provider = null;
             if (req.queryConditionList != null && req.queryConditionList.Count > 0)
             {
                 provider = db.Query<T>().Where(LambdaHelper.LambdaBuilder<T>(req.queryConditionList));
@@ -408,7 +408,7 @@ namespace WcfService
             }
         }
 
-        public static string GetParaName<T>(System.Linq.Expressions.Expression<Func<T, object>> exp)
+        public static string GetParaName<T>(Expression<Func<T, object>> exp)
         {
             return LambdaHelper.GetParaName(exp);
         }
@@ -420,7 +420,7 @@ namespace WcfService
         /// <param name="colName">字段名称</param>
         /// <param name="Value">字段内容</param>
         /// <param name="LogicType">条件逻辑</param>
-        public static void AddCondition(QueryReq queryReq, string colName, string Value, LogicCondition LogicType,CompareType compare)
+        public static void AddCondition(QueryReq queryReq, string colName, string Value, LogicCondition LogicType, CompareType compare)
         {
             QueryCondition queryCon = new QueryCondition()
             {
@@ -440,6 +440,25 @@ namespace WcfService
             };
 
             PageQueryReq.sortCondittionList.Add(sortCon);
+        }
+
+        public bool CheckObjectExist<T>(object model)
+        {
+            try
+            {
+                var res = db.SingleOrDefaultById<T>(model);
+                if(null == res)
+                {
+                    log.Info(string.Format("Model is not found {0}", model.ToString()));
+                    return false;
+                }
+            } catch (Exception e)
+            {
+                log.Error(e.Message);
+                return false;
+            }
+            
+            return true;
         }
     }
 }

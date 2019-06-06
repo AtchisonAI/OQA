@@ -67,6 +67,7 @@ namespace WcfClient
             this.Version_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.System_statusBarAdvPanel = new Syncfusion.Windows.Forms.Tools.StatusBarAdvPanel();
             this.statusBarAdv = new Syncfusion.Windows.Forms.Tools.StatusBarAdv();
+            this.yEHoldLotHandleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dockingManager)).BeginInit();
             this.shortcut_panel.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -148,7 +149,8 @@ namespace WcfClient
             this.System_ToolStripMenuItem,
             this.Config_ToolStripMenuItem,
             this.OQAInspect_ToolStripMenuItem,
-            this.OQAShip_ToolStripMenuItem});
+            this.OQAShip_ToolStripMenuItem,
+            this.yEHoldLotHandleToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
@@ -281,42 +283,42 @@ namespace WcfClient
             // foupChangeToolStripMenuItem
             // 
             this.foupChangeToolStripMenuItem.Name = "foupChangeToolStripMenuItem";
-            this.foupChangeToolStripMenuItem.Size = new System.Drawing.Size(287, 26);
+            this.foupChangeToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
             this.foupChangeToolStripMenuItem.Text = "Foup Change";
             this.foupChangeToolStripMenuItem.Click += new System.EventHandler(this.foupChangeToolStripMenuItem_Click);
             // 
             // lotPackageToolStripMenuItem
             // 
             this.lotPackageToolStripMenuItem.Name = "lotPackageToolStripMenuItem";
-            this.lotPackageToolStripMenuItem.Size = new System.Drawing.Size(287, 26);
+            this.lotPackageToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
             this.lotPackageToolStripMenuItem.Text = "Lot Package";
             this.lotPackageToolStripMenuItem.Click += new System.EventHandler(this.lotPackageToolStripMenuItem_Click);
             // 
             // lotTransferToolStripMenuItem
             // 
             this.lotTransferToolStripMenuItem.Name = "lotTransferToolStripMenuItem";
-            this.lotTransferToolStripMenuItem.Size = new System.Drawing.Size(287, 26);
+            this.lotTransferToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
             this.lotTransferToolStripMenuItem.Text = "Lot Transfer";
             this.lotTransferToolStripMenuItem.Click += new System.EventHandler(this.lotTransferToolStripMenuItem_Click);
             // 
             // packageLabelPrintToolStripMenuItem
             // 
             this.packageLabelPrintToolStripMenuItem.Name = "packageLabelPrintToolStripMenuItem";
-            this.packageLabelPrintToolStripMenuItem.Size = new System.Drawing.Size(287, 26);
+            this.packageLabelPrintToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
             this.packageLabelPrintToolStripMenuItem.Text = "Package Label Print";
             this.packageLabelPrintToolStripMenuItem.Click += new System.EventHandler(this.packageLabelPrintToolStripMenuItem_Click);
             // 
             // waferInspactionRecordPrintToolStripMenuItem
             // 
             this.waferInspactionRecordPrintToolStripMenuItem.Name = "waferInspactionRecordPrintToolStripMenuItem";
-            this.waferInspactionRecordPrintToolStripMenuItem.Size = new System.Drawing.Size(287, 26);
+            this.waferInspactionRecordPrintToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
             this.waferInspactionRecordPrintToolStripMenuItem.Text = "Wafer Inspection Record Print";
             this.waferInspactionRecordPrintToolStripMenuItem.Click += new System.EventHandler(this.waferInspactionRecordPrintToolStripMenuItem_Click);
             // 
             // iOQAShipListPrintToolStripMenuItem
             // 
             this.iOQAShipListPrintToolStripMenuItem.Name = "iOQAShipListPrintToolStripMenuItem";
-            this.iOQAShipListPrintToolStripMenuItem.Size = new System.Drawing.Size(287, 26);
+            this.iOQAShipListPrintToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
             this.iOQAShipListPrintToolStripMenuItem.Text = "IOQA Ship List Print";
             this.iOQAShipListPrintToolStripMenuItem.Click += new System.EventHandler(this.iOQAShipListPrintToolStripMenuItem_Click);
             // 
@@ -437,6 +439,13 @@ namespace WcfClient
             this.statusBarAdv.Spacing = new System.Drawing.Size(2, 2);
             this.statusBarAdv.TabIndex = 15;
             // 
+            // yEHoldLotHandleToolStripMenuItem
+            // 
+            this.yEHoldLotHandleToolStripMenuItem.Name = "yEHoldLotHandleToolStripMenuItem";
+            this.yEHoldLotHandleToolStripMenuItem.Size = new System.Drawing.Size(155, 25);
+            this.yEHoldLotHandleToolStripMenuItem.Text = "YE Hold Lot Handle";
+            this.yEHoldLotHandleToolStripMenuItem.Click += new System.EventHandler(this.yEHoldLotHandleToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -508,5 +517,6 @@ namespace WcfClient
         private TreeView shutcut_TreeView;
         private ImageList imageList;
         private ToolStripMenuItem marcoInspectionEdgeInputToolStripMenuItem;
+        private ToolStripMenuItem yEHoldLotHandleToolStripMenuItem;
     }
 }

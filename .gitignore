@@ -260,3 +260,8 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/1.Doc
+/OQA检验系统开发需求规格书-V1.docx
+/HiDM_OQA_Solution_Design_V0.1.doc
+/Git 手册.docx
+/CIM Request Application PROJECT需求规格书.docx

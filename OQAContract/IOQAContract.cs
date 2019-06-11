@@ -146,5 +146,7 @@ namespace OQAContract
         ModelListRsp<PKGCHKRST> UpdateLotCheckList(UpdateModelListReq<PKGCHKRST> input);
         #endregion
 
+
+
     }
 }

@@ -17,5 +17,10 @@ namespace OQAMain.YE
         {
             InitializeComponent();
         }
+
+        private void btn_Query_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

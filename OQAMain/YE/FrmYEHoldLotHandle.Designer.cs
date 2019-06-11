@@ -81,6 +81,7 @@
             this.tb_HoldLotComment = new System.Windows.Forms.TextBox();
             this.lb_Action = new System.Windows.Forms.Label();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.btn_Query = new System.Windows.Forms.Button();
             this.gb_Qrery.SuspendLayout();
             this.gb_HoldLotList.SuspendLayout();
             this.gb_HoldLotHandle.SuspendLayout();
@@ -98,6 +99,7 @@
             // 
             // gb_Qrery
             // 
+            this.gb_Qrery.Controls.Add(this.btn_Query);
             this.gb_Qrery.Controls.Add(this.dateTimePicker1);
             this.gb_Qrery.Controls.Add(this.comboBox6);
             this.gb_Qrery.Controls.Add(this.comboBox5);
@@ -538,6 +540,16 @@
             this.comboBox7.Size = new System.Drawing.Size(121, 23);
             this.comboBox7.TabIndex = 10;
             // 
+            // btn_Query
+            // 
+            this.btn_Query.Location = new System.Drawing.Point(60, 513);
+            this.btn_Query.Name = "btn_Query";
+            this.btn_Query.Size = new System.Drawing.Size(75, 23);
+            this.btn_Query.TabIndex = 11;
+            this.btn_Query.Text = "Query";
+            this.btn_Query.UseVisualStyleBackColor = true;
+            this.btn_Query.Click += new System.EventHandler(this.btn_Query_Click);
+            // 
             // FrmYEHoldLotHandle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -616,5 +628,6 @@
         private System.Windows.Forms.Label lb_HoldLotComment;
         private System.Windows.Forms.Label lb_Action;
         private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.Button btn_Query;
     }
 }

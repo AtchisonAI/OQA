@@ -114,6 +114,8 @@ namespace WCFModels.OQA
         [DataMember]
         [Column("WAFER_ID")] public string WaferId { get; set; }
         [DataMember]
+        [Column("FOUP_ID")] public string FoupId { get; set; }
+        [DataMember]
         [Column("CMF_1")] public string Cmf1 { get; set; }
         [DataMember]
         [Column("CMF_2")] public string Cmf2 { get; set; }
@@ -779,6 +781,8 @@ namespace WCFModels.OQA
         [Column("SLOT_ID")] public string SlotId { get; set; }
         [DataMember]
         [Column("WAFER_ID")] public string WaferId { get; set; }
+        [DataMember]
+        [Column("FOUP_ID")] public string FoupId { get; set; }
     }
 
     [DataContract]

@@ -438,13 +438,7 @@ namespace WcfClient
             this.statusBarAdv.Size = new System.Drawing.Size(1203, 32);
             this.statusBarAdv.Spacing = new System.Drawing.Size(2, 2);
             this.statusBarAdv.TabIndex = 15;
-            // 
-            // yEHoldLotHandleToolStripMenuItem
-            // 
-            this.yEHoldLotHandleToolStripMenuItem.Name = "yEHoldLotHandleToolStripMenuItem";
-            this.yEHoldLotHandleToolStripMenuItem.Size = new System.Drawing.Size(155, 25);
-            this.yEHoldLotHandleToolStripMenuItem.Text = "YE Hold Lot Handle";
-            this.yEHoldLotHandleToolStripMenuItem.Click += new System.EventHandler(this.yEHoldLotHandleToolStripMenuItem_Click);
+
             // 
             // MainForm
             // 

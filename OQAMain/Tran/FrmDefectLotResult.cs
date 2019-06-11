@@ -871,7 +871,8 @@ namespace OQAMain
                         item.LotId = list_meswafer[i].LotId;
                         item.SlotId = list_meswafer[i].SlotId;
                         item.WaferId = list_meswafer[i].WaferId;
-
+                        item.FoupId = list_meswafer[i].FoupId;
+                        item.CreateUserId = AuthorityControl.GetUserProfile().userId;
                         list_pkgwafer.Add(item);
                     }
 

@@ -223,6 +223,10 @@
             this.tabResult = new System.Windows.Forms.TabPage();
             this.grpPndnInf = new System.Windows.Forms.GroupBox();
             this.dgPndn = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtNewFoupID = new System.Windows.Forms.TextBox();
+            this.lblNewFoupID = new System.Windows.Forms.Label();
+            this.tabISP = new System.Windows.Forms.TabPage();
             this.dataGridViewTextBoxColumn101 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn102 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn103 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -234,10 +238,6 @@
             this.HoldCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoldComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupervisorNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txtNewFoupID = new System.Windows.Forms.TextBox();
-            this.lblNewFoupID = new System.Windows.Forms.Label();
-            this.tabISP = new System.Windows.Forms.TabPage();
             this.pnlMenu.SuspendLayout();
             this.grpRcvLot.SuspendLayout();
             this.grpOQAInfo.SuspendLayout();
@@ -1962,6 +1962,50 @@
             this.dgPndn.Size = new System.Drawing.Size(560, 187);
             this.dgPndn.TabIndex = 8;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtNewFoupID);
+            this.panel1.Controls.Add(this.lblNewFoupID);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(566, 29);
+            this.panel1.TabIndex = 17;
+            // 
+            // txtNewFoupID
+            // 
+            this.txtNewFoupID.Enabled = false;
+            this.txtNewFoupID.Location = new System.Drawing.Point(108, 0);
+            this.txtNewFoupID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNewFoupID.MaxLength = 30;
+            this.txtNewFoupID.Name = "txtNewFoupID";
+            this.txtNewFoupID.Size = new System.Drawing.Size(116, 23);
+            this.txtNewFoupID.TabIndex = 15;
+            // 
+            // lblNewFoupID
+            // 
+            this.lblNewFoupID.AutoSize = true;
+            this.lblNewFoupID.Location = new System.Drawing.Point(7, 5);
+            this.lblNewFoupID.Name = "lblNewFoupID";
+            this.lblNewFoupID.Size = new System.Drawing.Size(75, 15);
+            this.lblNewFoupID.TabIndex = 14;
+            this.lblNewFoupID.Text = "New Foup ID";
+            // 
+            // tabISP
+            // 
+            this.tabISP.BackColor = System.Drawing.SystemColors.Control;
+            this.tabISP.Controls.Add(this.groupBox1);
+            this.tabISP.Controls.Add(this.grpMacro);
+            this.tabISP.Controls.Add(this.grpAOI);
+            this.tabISP.Location = new System.Drawing.Point(4, 24);
+            this.tabISP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabISP.Name = "tabISP";
+            this.tabISP.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabISP.Size = new System.Drawing.Size(572, 347);
+            this.tabISP.TabIndex = 1;
+            this.tabISP.Text = "Inspect Type";
+            // 
             // dataGridViewTextBoxColumn101
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -2020,13 +2064,13 @@
             // 
             // HoldCode
             // 
-            this.HoldCode.HeaderText = "HoldCode";
+            this.HoldCode.HeaderText = "Hold Code";
             this.HoldCode.Name = "HoldCode";
             this.HoldCode.ReadOnly = true;
             // 
             // HoldComment
             // 
-            this.HoldComment.HeaderText = "HoldComment";
+            this.HoldComment.HeaderText = "Hold Comment";
             this.HoldComment.Name = "HoldComment";
             this.HoldComment.ReadOnly = true;
             // 
@@ -2035,50 +2079,6 @@
             this.SupervisorNo.HeaderText = "Status";
             this.SupervisorNo.Name = "SupervisorNo";
             this.SupervisorNo.ReadOnly = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txtNewFoupID);
-            this.panel1.Controls.Add(this.lblNewFoupID);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(566, 29);
-            this.panel1.TabIndex = 17;
-            // 
-            // txtNewFoupID
-            // 
-            this.txtNewFoupID.Enabled = false;
-            this.txtNewFoupID.Location = new System.Drawing.Point(108, 0);
-            this.txtNewFoupID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtNewFoupID.MaxLength = 30;
-            this.txtNewFoupID.Name = "txtNewFoupID";
-            this.txtNewFoupID.Size = new System.Drawing.Size(116, 23);
-            this.txtNewFoupID.TabIndex = 15;
-            // 
-            // lblNewFoupID
-            // 
-            this.lblNewFoupID.AutoSize = true;
-            this.lblNewFoupID.Location = new System.Drawing.Point(7, 5);
-            this.lblNewFoupID.Name = "lblNewFoupID";
-            this.lblNewFoupID.Size = new System.Drawing.Size(75, 15);
-            this.lblNewFoupID.TabIndex = 14;
-            this.lblNewFoupID.Text = "New Foup ID";
-            // 
-            // tabISP
-            // 
-            this.tabISP.BackColor = System.Drawing.SystemColors.Control;
-            this.tabISP.Controls.Add(this.groupBox1);
-            this.tabISP.Controls.Add(this.grpMacro);
-            this.tabISP.Controls.Add(this.grpAOI);
-            this.tabISP.Location = new System.Drawing.Point(4, 24);
-            this.tabISP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabISP.Name = "tabISP";
-            this.tabISP.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabISP.Size = new System.Drawing.Size(572, 347);
-            this.tabISP.TabIndex = 1;
-            this.tabISP.Text = "Inspect Type";
             // 
             // FrmDefectLotResult
             // 
